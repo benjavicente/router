@@ -343,7 +343,13 @@ export class Generator {
     if (rootRouteNode === undefined) {
       let errorMessage = `rootRouteNode must not be undefined. Make sure you've added your root route into the route-tree.`
       if (!this.config.virtualRouteConfig) {
-        errorMessage += `\nMake sure that you add a "${rootPathId}.${this.config.disableTypes ? 'js' : 'tsx'}" file to your routes directory.\nAdd the file in: "${this.config.routesDirectory}/${rootPathId}.${this.config.disableTypes ? 'js' : 'tsx'}"`
+        const ext =
+          this.config.target === 'angular'
+            ? 'ts'
+            : this.config.disableTypes
+              ? 'js'
+              : 'tsx'
+        errorMessage += `\nMake sure that you add a "${rootPathId}.${ext}" file to your routes directory.\nAdd the file in: "${this.config.routesDirectory}/${rootPathId}.${ext}"`
       }
       throw new Error(errorMessage)
     }
@@ -1090,9 +1096,22 @@ ${acc.routeTree.map((child) => `${child.variableName}Route: typeof ${getResolved
       })
 
       if (transformResult.result === 'no-route-export') {
-        this.logger.warn(
-          `Route file "${node.fullPath}" does not contain any route piece. This is likely a mistake.`,
-        )
+        const fileName = path.basename(node.fullPath)
+        const dirName = path.dirname(node.fullPath)
+        const ignorePrefix = this.config.routeFileIgnorePrefix
+        const ignorePattern = this.config.routeFileIgnorePattern
+        const suggestedFileName = `${ignorePrefix}${fileName}`
+        const suggestedFullPath = path.join(dirName, suggestedFileName)
+
+        let message = `Warning: Route file "${node.fullPath}" does not export a Route. This file will not be included in the route tree.`
+        message += `\n\nIf this file is not intended to be a route, you can exclude it using one of these options:`
+        message += `\n  1. Rename the file to "${suggestedFullPath}" (prefix with "${ignorePrefix}")`
+        message += `\n  2. Use 'routeFileIgnorePattern' in your config to match this file`
+        message += `\n\nCurrent configuration:`
+        message += `\n  routeFileIgnorePrefix: "${ignorePrefix}"`
+        message += `\n  routeFileIgnorePattern: ${ignorePattern ? `"${ignorePattern}"` : 'undefined'}`
+
+        this.logger.warn(message)
         return null
       }
       if (transformResult.result === 'error') {
