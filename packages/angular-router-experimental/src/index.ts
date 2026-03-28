@@ -26,7 +26,7 @@ export {
 } from './fileRoute'
 
 // Router Provider
-export { RouterProvider } from './RouterProvider'
+export { RouterProvider, provideTanstackRouter } from './RouterProvider'
 
 // Components
 export { Outlet, RouteMatch } from './Match'

@@ -9,6 +9,7 @@ import { tanStackStartRouter } from './start-router-plugin/plugin'
 import { loadEnvPlugin } from './load-env-plugin/plugin'
 import { devServerPlugin } from './dev-server-plugin/plugin'
 import { previewServerPlugin } from './preview-server-plugin/plugin'
+import { getStartPackageName } from './frameworkPackages'
 import { parseStartConfig } from './schema'
 import { resolveEntry } from './resolve-entries'
 import {
@@ -200,8 +201,7 @@ export function TanStackStartVitePluginCore(
           [ENTRY_POINTS.router]: routerAlias,
         }
 
-        const startPackageName =
-          `@tanstack/${corePluginOpts.framework}-start` as const
+        const startPackageName = getStartPackageName(corePluginOpts.framework)
 
         // crawl packages that have start in "peerDependencies"
         // see https://github.com/svitejs/vitefu/blob/d8d82fa121e3b2215ba437107093c77bde51b63b/src/index.js#L95-L101

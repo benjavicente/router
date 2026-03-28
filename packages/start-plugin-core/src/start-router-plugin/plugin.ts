@@ -5,6 +5,7 @@ import {
 } from '@tanstack/router-plugin/vite'
 import { normalizePath } from 'vite'
 import path from 'pathe'
+import { getStartPackageName } from '../frameworkPackages'
 import { VITE_ENVIRONMENT_NAMES } from '../constants'
 import { routesManifestPlugin } from './generator-plugins/routes-manifest-plugin'
 import { prerenderRoutesPlugin } from './generator-plugins/prerender-routes-plugin'
@@ -40,6 +41,8 @@ function moduleDeclaration({
   corePluginOpts: TanStackStartVitePluginCoreOptions
   generatedRouteTreePath: string
 }): string {
+  const startPackageName = getStartPackageName(corePluginOpts.framework)
+
   function getImportPath(absolutePath: string) {
     let relativePath = path.relative(
       path.dirname(generatedRouteTreePath),
@@ -65,12 +68,10 @@ function moduleDeclaration({
   }
   // make sure we import something from start to get the server route declaration merge
   else {
-    result.push(
-      `import type { createStart } from '@tanstack/${corePluginOpts.framework}-start'`,
-    )
+    result.push(`import type { createStart } from '${startPackageName}'`)
   }
   result.push(
-    `declare module '@tanstack/${corePluginOpts.framework}-start' {
+    `declare module '${startPackageName}' {
   interface Register {
     ssr: true
     router: Awaited<ReturnType<typeof getRouter>>`,

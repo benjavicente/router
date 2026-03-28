@@ -1,6 +1,10 @@
 import { VIRTUAL_MODULES } from '@tanstack/start-server-core'
 import { TRANSFORM_ID_REGEX, VITE_ENVIRONMENT_NAMES } from '../constants'
 import {
+  getRouterPackageName,
+  getStartPackageName,
+} from '../frameworkPackages'
+import {
   KindDetectionPatterns,
   LookupKindsPerEnv,
   StartCompiler,
@@ -30,25 +34,28 @@ const getLookupConfigurationsForEnv = (
   env: 'client' | 'server',
   framework: CompileStartFrameworkOptions,
 ): Array<LookupConfig> => {
+  const startPackageName = getStartPackageName(framework)
+  const routerPackageName = getRouterPackageName(framework)
+
   // Common configs for all environments
   const commonConfigs: Array<LookupConfig> = [
     {
-      libName: `@tanstack/${framework}-start`,
+      libName: startPackageName,
       rootExport: 'createServerFn',
       kind: 'Root',
     },
     {
-      libName: `@tanstack/${framework}-start`,
+      libName: startPackageName,
       rootExport: 'createIsomorphicFn',
       kind: 'IsomorphicFn',
     },
     {
-      libName: `@tanstack/${framework}-start`,
+      libName: startPackageName,
       rootExport: 'createServerOnlyFn',
       kind: 'ServerOnlyFn',
     },
     {
-      libName: `@tanstack/${framework}-start`,
+      libName: startPackageName,
       rootExport: 'createClientOnlyFn',
       kind: 'ClientOnlyFn',
     },
@@ -57,12 +64,12 @@ const getLookupConfigurationsForEnv = (
   if (env === 'client') {
     return [
       {
-        libName: `@tanstack/${framework}-start`,
+        libName: startPackageName,
         rootExport: 'createMiddleware',
         kind: 'Root',
       },
       {
-        libName: `@tanstack/${framework}-start`,
+        libName: startPackageName,
         rootExport: 'createStart',
         kind: 'Root',
       },
@@ -73,7 +80,7 @@ const getLookupConfigurationsForEnv = (
     return [
       ...commonConfigs,
       {
-        libName: `@tanstack/${framework}-router`,
+        libName: routerPackageName,
         rootExport: 'ClientOnly',
         kind: 'ClientOnlyJSX',
       },

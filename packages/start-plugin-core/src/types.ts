@@ -1,6 +1,6 @@
 import type { TanStackStartOutputConfig } from './schema'
 
-export type CompileStartFrameworkOptions = 'react' | 'solid' | 'vue'
+export type CompileStartFrameworkOptions = 'react' | 'solid' | 'vue' | 'angular'
 
 export interface TanStackStartVitePluginCoreOptions {
   framework: CompileStartFrameworkOptions

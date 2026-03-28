@@ -42,7 +42,7 @@ function injectOnRendered({
 }
 
 @Angular.Component({
-  selector: 'router-match',
+  selector: 'router-match,[router-match]',
   template: '',
   standalone: true,
   host: {
@@ -190,7 +190,7 @@ export class RouteMatch {
 }
 
 @Angular.Component({
-  selector: 'outlet',
+  selector: 'outlet,[outlet]',
   template: '',
   standalone: true,
 })
