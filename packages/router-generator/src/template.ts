@@ -18,6 +18,7 @@ export function fillTemplate(
 export type TargetTemplate = {
   fullPkg: string
   subPkg: string
+  supportsLazyRouteComponent: boolean
   rootRoute: {
     template: () => string
     imports: {
@@ -51,6 +52,7 @@ export function getTargetTemplate(config: Config): TargetTemplate {
       return {
         fullPkg: '@tanstack/react-router',
         subPkg: 'react-router',
+        supportsLazyRouteComponent: true,
         rootRoute: {
           template: () =>
             [
@@ -112,6 +114,7 @@ export function getTargetTemplate(config: Config): TargetTemplate {
       return {
         fullPkg: '@tanstack/solid-router',
         subPkg: 'solid-router',
+        supportsLazyRouteComponent: true,
         rootRoute: {
           template: () =>
             [
@@ -175,6 +178,7 @@ export function getTargetTemplate(config: Config): TargetTemplate {
       return {
         fullPkg: '@tanstack/angular-router-experimental',
         subPkg: 'angular-router-experimental',
+        supportsLazyRouteComponent: false,
         rootRoute: {
           template: () =>
             [
@@ -238,6 +242,7 @@ export function getTargetTemplate(config: Config): TargetTemplate {
       return {
         fullPkg: '@tanstack/vue-router',
         subPkg: 'vue-router',
+        supportsLazyRouteComponent: true,
         rootRoute: {
           template: () =>
             [

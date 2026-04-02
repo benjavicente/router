@@ -63,12 +63,12 @@
   "devDependencies": {
     "@analogjs/vite-plugin-angular": "^2.0.0",
     "@analogjs/vitest-angular": "^2.2.1",
-    "@angular/compiler": "21.0.4",
-    "@angular/compiler-cli": "21.0.4",
+    "@angular/compiler": "^21.2.6",
+    "@angular/compiler-cli": "^21.2.6",
     "ng-packagr": "^21.0.0"
   },
   "peerDependencies": {
-    "@angular/core": "21.0.4",
+    "@angular/core": "^21.2.6",
     "@tanstack/angular-router-experimental": "workspace:^",
     "@tanstack/router-core": "workspace:^"
   },

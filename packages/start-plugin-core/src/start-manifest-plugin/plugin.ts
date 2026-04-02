@@ -112,7 +112,7 @@ export function startManifestPlugin(opts: {
           const clientBundle = opts.getClientBundle()
           const chunksByFileName = new Map<string, Rollup.OutputChunk>()
 
-          const routeChunks: Record<
+          const routeChunksByFilePath: Record<
             string /** fullPath of route file **/,
             Array<Rollup.OutputChunk>
           > = {}
@@ -127,11 +127,24 @@ export function startManifestPlugin(opts: {
                 }
                 entryFile = bundleEntry
               }
-              const routePieces = bundleEntry.moduleIds.flatMap((m) => {
+              const normalizedModuleIds = bundleEntry.moduleIds.map((m) => {
                 const [id, query] = m.split('?')
                 if (id === undefined) {
                   throw new Error('expected id to be defined')
                 }
+                return { id, query }
+              })
+
+              normalizedModuleIds.forEach(({ id }) => {
+                let array = routeChunksByFilePath[id]
+                if (array === undefined) {
+                  array = []
+                  routeChunksByFilePath[id] = array
+                }
+                array.push(bundleEntry)
+              })
+
+              const routePieces = normalizedModuleIds.flatMap(({ id, query }) => {
                 if (query === undefined) {
                   return []
                 }
@@ -148,10 +161,10 @@ export function startManifestPlugin(opts: {
               })
               if (routePieces.length > 0) {
                 routePieces.forEach((r) => {
-                  let array = routeChunks[r.id]
+                  let array = routeChunksByFilePath[r.id]
                   if (array === undefined) {
                     array = []
-                    routeChunks[r.id] = array
+                    routeChunksByFilePath[r.id] = array
                   }
                   array.push(bundleEntry)
                 })
@@ -165,39 +178,48 @@ export function startManifestPlugin(opts: {
             if (!v.filePath) {
               throw new Error(`expected filePath to be set for ${routeId}`)
             }
-            const chunks = routeChunks[v.filePath]
-            if (chunks) {
-              chunks.forEach((chunk) => {
-                // Map the relevant imports to their route paths,
-                // so that it can be imported in the browser.
-                const preloads = chunk.imports.map((d) => {
-                  const preloadPath = joinURL(
-                    resolvedStartConfig.viteAppBase,
-                    d,
-                  )
-                  return preloadPath
-                })
+            const candidateFilePaths = v.filePaths?.length
+              ? v.filePaths
+              : [v.filePath]
+            const chunks = [
+              ...new Set(
+                candidateFilePaths.flatMap(
+                  (filePath) => routeChunksByFilePath[filePath] ?? [],
+                ),
+              ),
+            ]
+            if (chunks.length > 0) {
+              const preloads = [
+                ...new Set(
+                  chunks.flatMap((chunk) => [
+                    joinURL(resolvedStartConfig.viteAppBase, chunk.fileName),
+                    ...chunk.imports.map((d) =>
+                      joinURL(resolvedStartConfig.viteAppBase, d),
+                    ),
+                  ]),
+                ),
+              ]
 
-                // Since this is the most important JS entry for the route,
-                // it should be moved to the front of the preloads so that
-                // it has the best chance of being loaded first.
-                preloads.unshift(
-                  joinURL(resolvedStartConfig.viteAppBase, chunk.fileName),
-                )
+              const assets = [
+                ...new Map(
+                  chunks
+                    .flatMap((chunk) =>
+                      getCSSRecursively(
+                        chunk,
+                        chunksByFileName,
+                        resolvedStartConfig.viteAppBase,
+                        cssPerChunkCache,
+                      ),
+                    )
+                    .map((asset) => [JSON.stringify(asset), asset] as const),
+                ).values(),
+              ]
 
-                const assets = getCSSRecursively(
-                  chunk,
-                  chunksByFileName,
-                  resolvedStartConfig.viteAppBase,
-                  cssPerChunkCache,
-                )
-
-                manifest.routes[routeId] = {
-                  ...v,
-                  assets,
-                  preloads,
-                }
-              })
+              manifest.routes[routeId] = {
+                ...v,
+                assets,
+                preloads,
+              }
             } else {
               manifest.routes[routeId] = v
             }

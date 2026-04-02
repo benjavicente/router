@@ -222,33 +222,35 @@ export function tanStackStartRouter(
         plugins,
       }
     }),
-    tanStackRouterCodeSplitter(() => {
-      const routerConfig = getConfig().startConfig.router
-      return {
-        ...routerConfig,
-        codeSplittingOptions: {
-          ...routerConfig.codeSplittingOptions,
-          deleteNodes: ['ssr', 'server', 'headers'],
-          addHmr: true,
-        },
-        plugin: {
-          vite: { environmentName: VITE_ENVIRONMENT_NAMES.client },
-        },
-      }
-    }),
-    tanStackRouterCodeSplitter(() => {
-      const routerConfig = getConfig().startConfig.router
-      return {
-        ...routerConfig,
-        codeSplittingOptions: {
-          ...routerConfig.codeSplittingOptions,
-          addHmr: false,
-        },
-        plugin: {
-          vite: { environmentName: VITE_ENVIRONMENT_NAMES.server },
-        },
-      }
-    }),
+    ...[
+      tanStackRouterCodeSplitter(() => {
+        const routerConfig = getConfig().startConfig.router
+        return {
+          ...routerConfig,
+          codeSplittingOptions: {
+            ...routerConfig.codeSplittingOptions,
+            deleteNodes: ['ssr', 'server', 'headers'],
+            addHmr: true,
+          },
+          plugin: {
+            vite: { environmentName: VITE_ENVIRONMENT_NAMES.client },
+          },
+        }
+      }),
+      tanStackRouterCodeSplitter(() => {
+        const routerConfig = getConfig().startConfig.router
+        return {
+          ...routerConfig,
+          codeSplittingOptions: {
+            ...routerConfig.codeSplittingOptions,
+            addHmr: false,
+          },
+          plugin: {
+            vite: { environmentName: VITE_ENVIRONMENT_NAMES.server },
+          },
+        }
+      }),
+    ],
     tanstackRouterAutoImport(startPluginOpts?.router),
   ]
 }

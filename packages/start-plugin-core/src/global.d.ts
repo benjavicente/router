@@ -4,6 +4,7 @@ declare global {
     string,
     {
       filePath: string
+      filePaths?: Array<string>
       children?: Array<string>
     }
   >

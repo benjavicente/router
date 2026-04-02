@@ -10,10 +10,7 @@ export default defineConfig({
   plugins: [
     tailwindcss(),
     tanstackStart({
-      router: {
-        routesDirectory: './src/routes',
-        generatedRouteTree: './src/routeTree.gen.ts',
-      },
+      srcDirectory: 'src',
     }),
     angular({
       tsconfig: './tsconfig.json',

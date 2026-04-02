@@ -7,6 +7,19 @@ import { fetchPost } from '../posts'
 
 export const Route = createFileRoute('/posts/$postId')({
   loader: ({ params }) => fetchPost(params.postId),
+  head: ({ loaderData, params }) => ({
+    meta: [
+      {
+        title: loaderData?.title ?? `Post ${params.postId}`,
+      },
+      {
+        name: 'description',
+        content:
+          loaderData?.body?.slice(0, 120) ??
+          `Post detail route for ${params.postId}.`,
+      },
+    ],
+  }),
   errorComponent: () => PostErrorComponent,
   notFoundComponent: () => PostNotFoundComponent,
   component: () => PostComponent,

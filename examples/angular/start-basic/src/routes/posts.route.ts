@@ -7,6 +7,17 @@ import {
 import { fetchPosts } from '../posts'
 
 export const Route = createFileRoute('/posts')({
+  head: () => ({
+    meta: [
+      {
+        title: 'Angular Start Posts',
+      },
+      {
+        name: 'description',
+        content: 'Posts route rendered through Angular Start experimental SSR.',
+      },
+    ],
+  }),
   loader: fetchPosts,
   component: () => PostsLayoutComponent,
 })

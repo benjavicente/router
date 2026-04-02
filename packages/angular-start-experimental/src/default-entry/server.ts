@@ -1,4 +1,4 @@
-import { 
+import {
   createStartHandler,
   defaultRenderHandler,
 } from '@tanstack/angular-start-experimental-server'

@@ -602,6 +602,12 @@ export class Generator {
       }
     }
     if (hasComponentPieces || hasLoaderPieces) {
+      if (hasComponentPieces && !this.targetTemplate.supportsLazyRouteComponent) {
+        throw new Error(
+          `The '${this.config.target}' target does not support code-splitting route component exports with lazyRouteComponent. Remove route component pieces such as '.component', '.pendingComponent', '.errorComponent', and '.notFoundComponent', or switch to route-level lazy loading.`,
+        )
+      }
+
       const runtimeImport: ImportDeclaration = {
         specifiers: [],
         source: this.targetTemplate.fullPkg,

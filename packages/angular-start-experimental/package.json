@@ -91,7 +91,6 @@
     "node": ">=22.12.0"
   },
   "dependencies": {
-    "@angular/platform-browser": "^21.2.6",
     "@tanstack/angular-router-experimental": "workspace:*",
     "@tanstack/angular-start-experimental-client": "workspace:*",
     "@tanstack/angular-start-experimental-server": "workspace:*",
@@ -102,11 +101,14 @@
     "pathe": "^2.0.3"
   },
   "devDependencies": {
+    "@angular/core": "^21.2.6",
+    "@angular/platform-browser": "^21.2.6",
     "@tanstack/router-utils": "workspace:*",
     "vite": "^7.1.7"
   },
   "peerDependencies": {
-    "@angular/core": ">=21.0.0",
+    "@angular/core": "^21.2.6",
+    "@angular/platform-browser": "^21.2.6",
     "vite": ">=7.0.0"
   }
 }

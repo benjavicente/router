@@ -1,23 +1,86 @@
+import type { ApplicationConfig, Type } from '@angular/core'
+import { enableProdMode } from '@angular/core'
 import { bootstrapApplication } from '@angular/platform-browser'
 import { provideServerRendering, renderApplication } from '@angular/platform-server'
-import { defineHandlerCallback } from '@tanstack/start-server-core'
-import { RouterProvider, provideTanstackRouter } from "@tanstack/angular-router-experimental"
+import {
+  createStartHandler,
+  defineHandlerCallback,
+} from '@tanstack/start-server-core'
+import {
+  type Register,
+  RouterProvider,
+  provideHeadContent,
+  provideTanstackRouter,
+} from '@tanstack/angular-router-experimental'
+import type { RequestHandler } from '@tanstack/start-server-core'
 
-export const defaultRenderHandler = defineHandlerCallback(async ({ router, responseHeaders }) => {
-  const htmlPromise = renderApplication(
-      (context) =>
-      bootstrapApplication(RouterProvider, {
-        providers: [
-          provideServerRendering(),
-          provideTanstackRouter({ router }),
-        ],
-      }, context),
-    {
-      document:
-        '<!doctype html><html><body router-provider></body></html>',
-    },
-  )
-  return new Response(await htmlPromise, {
-    headers: responseHeaders,
+const DEFAULT_DOCUMENT =
+  '<!doctype html><html><head></head><body><app-root></app-root></body></html>'
+
+const DEFAULT_ROUTER_PROVIDER_DOCUMENT =
+  '<!doctype html><html><head></head><body router-provider></body></html>'
+
+export type CreateServerHandlerOptions = {
+  document: string
+  serverAppConfig?: ApplicationConfig
+}
+
+function createAngularRenderHandler(
+  rootComponent: Type<any>,
+  appConfig: ApplicationConfig,
+  options?: CreateServerHandlerOptions,
+) {
+  if (process.env.NODE_ENV === 'production') {
+    enableProdMode()
+  }
+
+  const document = options?.document ?? DEFAULT_DOCUMENT
+
+  return defineHandlerCallback(async ({ router, responseHeaders }) => {
+    try {
+      const html = await renderApplication(
+        (context) =>
+          bootstrapApplication(
+            rootComponent,
+            {
+              providers: [
+                provideServerRendering(),
+                provideTanstackRouter({ router }),
+                provideHeadContent(router),
+                ...(appConfig.providers ?? []),
+                ...(options?.serverAppConfig?.providers ?? []),
+              ],
+            },
+            context,
+          ),
+        {
+          document,
+        },
+      )
+
+      return new Response(html, {
+        headers: responseHeaders,
+      })
+    } finally {
+      router.serverSsr?.cleanup()
+    }
   })
-})
+}
+
+export function createServerHandler<TRegister = Register>(
+  rootComponent: Type<any>,
+  appConfig: ApplicationConfig,
+  options: CreateServerHandlerOptions,
+): RequestHandler<TRegister> {
+  return createStartHandler(
+    createAngularRenderHandler(rootComponent, appConfig, options),
+  )
+}
+
+export const defaultRenderHandler = createAngularRenderHandler(
+  RouterProvider,
+  { providers: [] },
+  {
+    document: DEFAULT_ROUTER_PROVIDER_DOCUMENT,
+  },
+)

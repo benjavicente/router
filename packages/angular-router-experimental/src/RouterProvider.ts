@@ -25,6 +25,18 @@ export type TanstackRouterProviderOptions = {
   context?: RouterInputs['context']
   options?: Omit<RouterInputs, 'router' | 'context'>
 }
+
+function mergeContextWithInject(
+  context: RouterInputs['context'],
+): RouterInputs['context'] {
+  const environmentInjector = Angular.inject(Angular.EnvironmentInjector)
+
+  return {
+    inject: environmentInjector.get.bind(environmentInjector),
+    ...context,
+  } as RouterInputs['context']
+}
+
 export function provideTanstackRouter({ router, context, options }: TanstackRouterProviderOptions) {
   return [
     {
@@ -33,7 +45,7 @@ export function provideTanstackRouter({ router, context, options }: TanstackRout
     },
     {
       provide: CONTEXT_INPUT_INJECTION_KEY,
-      useValue: context ?? {},
+      useFactory: () => mergeContextWithInject(context ?? {}),
     },
     {
       provide: OPTIONS_INPUT_INJECTION_KEY,
@@ -53,7 +65,7 @@ export class RouterProvider<TRouter extends AnyRouter = RegisteredRouter> {
   injectedRouter = Angular.inject(ROUTER_INPUT_INJECTION_KEY, { optional: true })
 
   context: Angular.InputSignal<RouterInputs<TRouter>['context']> =
-    Angular.input<RouterInputs<TRouter>['context']>(this.injectedContext)
+    Angular.input<RouterInputs<TRouter>['context']>(this.injectedContext as RouterInputs<TRouter>['context'])
 
   options: Angular.InputSignal<
     Omit<RouterInputs<TRouter>, 'router' | 'context'>

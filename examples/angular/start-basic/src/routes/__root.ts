@@ -1,12 +1,42 @@
 import { Component } from '@angular/core'
+import type { AngularInjectFn } from '@tanstack/angular-router-experimental'
 import {
   Link,
   Outlet,
-  createRootRoute,
+  createRootRouteWithContext,
 } from '@tanstack/angular-router-experimental'
 import { TanStackRouterDevtools } from '@tanstack/angular-router-devtools'
+import stylesUrl from '../styles.css?url'
 
-export const Route = createRootRoute({
+export const Route = createRootRouteWithContext<{
+  inject: AngularInjectFn
+}>()({
+  head: () => ({
+    meta: [
+      {
+        title: 'Angular Start Basic',
+      },
+      {
+        name: 'description',
+        content: 'An Angular Start scaffold wired through the current experimental adapter.',
+      },
+    ],
+    scripts: [
+      {
+        type: 'application/json',
+        children: '{"adapter":"angular-start","scope":"head"}',
+      },
+    ],
+    links: [
+      { rel: 'stylesheet', href: stylesUrl },
+    ]
+  }),
+  scripts: () => [
+    {
+      type: 'application/json',
+      children: '{"adapter":"angular-start","scope":"body"}',
+    },
+  ],
   component: () => RootComponent,
   notFoundComponent: () => NotFoundComponent,
 })
@@ -33,6 +63,12 @@ export const Route = createRootRoute({
               Home
             </a>
             <a
+              [link]="{ to: '/lazy', activeProps: { class: 'bg-teal-600 text-white' } }"
+              class="rounded-full border px-3 py-1.5 transition hover:opacity-80"
+            >
+              Lazy
+            </a>
+            <a
               [link]="{ to: '/posts', activeProps: { class: 'bg-teal-600 text-white' } }"
               class="rounded-full border px-3 py-1.5 transition hover:opacity-80"
             >
@@ -42,8 +78,8 @@ export const Route = createRootRoute({
         </div>
 
         <p class="max-w-3xl text-sm text-gray-600 dark:text-gray-300">
-          This example wires the Angular Start package and route-tree shape, but
-          Angular SSR rendering and hydration are still deferred.
+          This example now boots through the Angular Start adapter with document
+          head and script management wired through the current experimental setup.
         </p>
       </header>
 

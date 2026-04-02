@@ -114,12 +114,12 @@ export class TanStackRouterDevtools implements OnInit {
         })
       })
 
+      const destroyRef = inject(DestroyRef)
       afterNextRender(() => {
         devtools.mount(this.elementRef.nativeElement)
-      })
-
-      inject(DestroyRef).onDestroy(() => {
-        devtools.unmount()
+        destroyRef.onDestroy(() => {
+          devtools.unmount()
+        })
       })
     })
   }

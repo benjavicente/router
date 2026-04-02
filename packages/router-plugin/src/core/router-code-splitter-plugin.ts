@@ -12,11 +12,11 @@ import {
   detectCodeSplitGroupingsFromRoute,
 } from './code-splitter/compilers'
 import {
-  defaultCodeSplitGroupings,
   splitRouteIdentNodes,
   tsrSplit,
 } from './constants'
 import { decodeIdentifier } from './code-splitter/path-ids'
+import { getFrameworkOptions } from './code-splitter/framework-options'
 import { debug } from './utils'
 import type { CodeSplitGroupings, SplitRouteIdentNodes } from './constants'
 import type { GetRoutesByFileMapResultValue } from '@tanstack/router-generator'
@@ -76,9 +76,13 @@ export const unpluginRouterCodeSplitterFactory: UnpluginFactory<
   const isProduction = process.env.NODE_ENV === 'production'
 
   const getGlobalCodeSplitGroupings = () => {
+    const frameworkDefaultCodeSplitGroupings = getFrameworkOptions(
+      userConfig.target,
+    ).defaultCodeSplitGroupings
+
     return (
       userConfig.codeSplittingOptions?.defaultBehavior ||
-      defaultCodeSplitGroupings
+      frameworkDefaultCodeSplitGroupings
     )
   }
   const getShouldSplitFn = () => {

@@ -1,22 +1,16 @@
+import {
+  createServerHandler,
+} from '@tanstack/angular-start-experimental/server'
 import type { Register } from '@tanstack/angular-router-experimental'
 import type { RequestHandler } from '@tanstack/angular-start-experimental/server'
-import { appConfigServer } from './app/app.config.server'
+import { App } from './app'
+import { appConfig } from './app.config'
+import { appConfigServer } from './app.config.server'
 
-// TODO(angular-start-example): replace this with Angular-specific server app
-// setup once Start defines how server-side providers and document rendering are
-// composed for Angular.
-void appConfigServer
-
-const fetch: RequestHandler<Register> = async () =>
-  new Response(
-    'Angular Start SSR and hydration are intentionally not implemented in this scaffold yet.',
-    {
-      status: 501,
-      headers: {
-        'Content-Type': 'text/plain; charset=utf-8',
-      },
-    },
-  )
+const fetch = createServerHandler<Register>(App, appConfig, {
+  document: '<!doctype html><html><head></head><body><app-root></app-root></body></html>',
+  serverAppConfig: appConfigServer,
+})
 
 export type ServerEntry = { fetch: RequestHandler<Register> }
 

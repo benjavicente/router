@@ -9,6 +9,7 @@ import {
   createRootRoute,
   createRoute,
   createRouter,
+  provideTanstackRouter,
 } from '../src'
 import type { RouterHistory } from '@tanstack/history'
 
@@ -84,7 +85,7 @@ describe('preload: matched routes', { timeout: 20000 }, () => {
     const { router } = createTestRouter(createBrowserHistory())
 
     await render(RouterProvider, {
-      bindings: [Angular.inputBinding('router', () => router)],
+      providers: [provideTanstackRouter({ router })],
     })
 
     const linkToHeavy = await screen.findByText('Link to heavy')

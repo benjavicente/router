@@ -112,6 +112,14 @@ function RootDocument({ children }: { children: React.ReactNode }) {
             Deferred
           </Link>{' '}
           <Link
+            to="/lazy"
+            activeProps={{
+              className: 'font-bold',
+            }}
+          >
+            Lazy
+          </Link>{' '}
+          <Link
             // @ts-expect-error
             to="/this-route-does-not-exist"
             activeProps={{

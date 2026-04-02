@@ -1,5 +1,10 @@
 // Router
-export { createRouter, Router } from './router'
+export {
+  createRouter,
+  Router,
+  type AngularInjectFn,
+  type AngularRouterContext,
+} from './router'
 
 // Route creation
 export {
@@ -27,6 +32,7 @@ export {
 
 // Router Provider
 export { RouterProvider, provideTanstackRouter } from './RouterProvider'
+export { provideHeadContent } from './provideHeadContent'
 
 // Components
 export { Outlet, RouteMatch } from './Match'
@@ -106,6 +112,7 @@ export { type LinkOptions as LinkInputOptions, Link } from './Link'
 
 // Core re-exports
 export {
+  lazyFn,
   notFound,
   redirect,
   isRedirect,

@@ -1,5 +1,10 @@
+import { defaultCodeSplitGroupings } from '../constants'
+import type { CodeSplitGroupings } from '../constants'
+
 type FrameworkOptions = {
   package: string
+  supportsLazyRouteComponent: boolean
+  defaultCodeSplitGroupings: CodeSplitGroupings
   idents: {
     createFileRoute: string
     lazyFn: string
@@ -14,6 +19,8 @@ export function getFrameworkOptions(framework: string): FrameworkOptions {
     case 'react':
       frameworkOptions = {
         package: '@tanstack/react-router',
+        supportsLazyRouteComponent: true,
+        defaultCodeSplitGroupings,
         idents: {
           createFileRoute: 'createFileRoute',
           lazyFn: 'lazyFn',
@@ -24,6 +31,20 @@ export function getFrameworkOptions(framework: string): FrameworkOptions {
     case 'solid':
       frameworkOptions = {
         package: '@tanstack/solid-router',
+        supportsLazyRouteComponent: true,
+        defaultCodeSplitGroupings,
+        idents: {
+          createFileRoute: 'createFileRoute',
+          lazyFn: 'lazyFn',
+          lazyRouteComponent: 'lazyRouteComponent',
+        },
+      }
+      break
+    case 'angular':
+      frameworkOptions = {
+        package: '@tanstack/angular-router-experimental',
+        supportsLazyRouteComponent: false,
+        defaultCodeSplitGroupings: [],
         idents: {
           createFileRoute: 'createFileRoute',
           lazyFn: 'lazyFn',
@@ -34,6 +55,8 @@ export function getFrameworkOptions(framework: string): FrameworkOptions {
     case 'vue':
       frameworkOptions = {
         package: '@tanstack/vue-router',
+        supportsLazyRouteComponent: true,
+        defaultCodeSplitGroupings,
         idents: {
           createFileRoute: 'createFileRoute',
           lazyFn: 'lazyFn',

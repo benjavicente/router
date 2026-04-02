@@ -1,4 +1,4 @@
-import { injectStore } from '@tanstack/angular-store'
+import { injectStore } from './injectStore'
 import { injectRouter } from './injectRouter'
 import type * as Angular from '@angular/core'
 import type {

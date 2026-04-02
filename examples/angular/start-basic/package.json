@@ -9,10 +9,11 @@
     "generate": "tsr generate"
   },
   "dependencies": {
-    "@angular/common": "21.0.4",
-    "@angular/compiler": "21.0.4",
-    "@angular/core": "21.0.4",
-    "@angular/platform-browser": "21.0.4",
+    "@angular/common": "^21.2.6",
+    "@angular/compiler": "^21.2.6",
+    "@angular/core": "^21.2.6",
+    "@angular/platform-browser": "^21.2.6",
+    "@angular/platform-server": "^21.2.6",
     "@tanstack/angular-router-devtools": "workspace:^",
     "@tanstack/angular-router-experimental": "workspace:^",
     "@tanstack/angular-start-experimental": "workspace:*",

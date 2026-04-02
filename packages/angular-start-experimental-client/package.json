@@ -57,12 +57,16 @@
     "node": ">=22.12.0"
   },
   "dependencies": {
-    "@angular/core": "^21.2.6",
-    "@angular/platform-browser": "^21.2.6",
     "@tanstack/router-core": "workspace:*",
     "@tanstack/start-client-core": "workspace:*"
   },
+  "devDependencies": {
+    "@angular/core": "^21.2.6",
+    "@angular/platform-browser": "^21.2.6"
+  },
   "peerDependencies": {
+    "@angular/core": "^21.2.6",
+    "@angular/platform-browser": "^21.2.6",
     "@tanstack/angular-router-experimental": "workspace:*"
   }
 }

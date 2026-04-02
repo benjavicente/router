@@ -17,5 +17,6 @@ export default mergeConfig(
     srcDir: './src',
     entry: './src/index.ts',
     cjs: false,
+    externalDeps: ['#tanstack-router-entry'],
   }),
 )

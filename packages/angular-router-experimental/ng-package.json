@@ -5,7 +5,6 @@
     "entryFile": "src/index.ts"
   },
   "allowedNonPeerDependencies": [
-    "@tanstack/angular-store",
     "@tanstack/history",
     "@tanstack/router-core",
     "tiny-invariant",
@@ -13,4 +12,3 @@
     "isbot"
   ]
 }
-

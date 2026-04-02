@@ -1,13 +1,79 @@
 import {
   RouterCore
 } from '@tanstack/router-core'
+import type { EnvironmentInjector } from '@angular/core'
 import type { RouterHistory } from '@tanstack/history'
 import type { ErrorRouteComponent, RouteComponent } from './route'
 import type {
   AnyRoute,
-  CreateRouterFn,
-  RouterConstructorOptions,
+  RouterOptions,
   TrailingSlashOption} from '@tanstack/router-core';
+
+export type AngularInjectFn = EnvironmentInjector['get']
+
+export type AngularRouterContext = {
+  inject: AngularInjectFn
+}
+
+type InferAngularRouterContext<TRouteTree extends AnyRoute> =
+  TRouteTree['types']['routerContext']
+
+type AngularRouterContextInput<TContext> = Omit<
+  TContext,
+  keyof AngularRouterContext
+> &
+  Partial<Pick<TContext, Extract<keyof TContext, keyof AngularRouterContext>>>
+
+type AngularRouterContextOptions<TRouteTree extends AnyRoute> =
+  {} extends Omit<InferAngularRouterContext<TRouteTree>, keyof AngularRouterContext>
+    ? {
+        context?: AngularRouterContextInput<InferAngularRouterContext<TRouteTree>>
+      }
+    : {
+        context: AngularRouterContextInput<InferAngularRouterContext<TRouteTree>>
+      }
+
+type AngularRouterConstructorOptions<
+  TRouteTree extends AnyRoute,
+  TTrailingSlashOption extends TrailingSlashOption,
+  TDefaultStructuralSharingOption extends boolean,
+  TRouterHistory extends RouterHistory,
+  TDehydrated extends Record<string, any>,
+> = Omit<
+  RouterOptions<
+    TRouteTree,
+    TTrailingSlashOption,
+    TDefaultStructuralSharingOption,
+    TRouterHistory,
+    TDehydrated
+  >,
+  'context' | 'serializationAdapters' | 'defaultSsr'
+> &
+  AngularRouterContextOptions<TRouteTree>
+
+export type CreateRouterFn = <
+  TRouteTree extends AnyRoute,
+  TTrailingSlashOption extends TrailingSlashOption = 'never',
+  TDefaultStructuralSharingOption extends boolean = false,
+  TRouterHistory extends RouterHistory = RouterHistory,
+  TDehydrated extends Record<string, any> = Record<string, any>,
+>(
+  options: undefined extends number
+    ? 'strictNullChecks must be enabled in tsconfig.json'
+    : AngularRouterConstructorOptions<
+        TRouteTree,
+        TTrailingSlashOption,
+        TDefaultStructuralSharingOption,
+        TRouterHistory,
+        TDehydrated
+      >,
+) => Router<
+  TRouteTree,
+  TTrailingSlashOption,
+  TDefaultStructuralSharingOption,
+  TRouterHistory,
+  TDehydrated
+>
 
 declare module '@tanstack/router-core' {
   export interface RouterOptionsExtensions {
@@ -62,7 +128,7 @@ export class Router<
   TDehydrated
 > {
   constructor(
-    options: RouterConstructorOptions<
+    options: AngularRouterConstructorOptions<
       TRouteTree,
       TTrailingSlashOption,
       TDefaultStructuralSharingOption,
@@ -70,6 +136,6 @@ export class Router<
       TDehydrated
     >,
   ) {
-    super(options)
+    super(options as any)
   }
 }

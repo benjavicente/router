@@ -241,6 +241,12 @@ export function compileCodeSplitReferenceRoute(
                       if (
                         splitNodeMeta.splitStrategy === 'lazyRouteComponent'
                       ) {
+                        if (!frameworkOptions.supportsLazyRouteComponent) {
+                          throw new Error(
+                            `[compileCodeSplitReferenceRoute] The '${opts.targetFramework}' target does not support code-splitting route component exports with lazyRouteComponent. Unsupported export: '${key}' in '${opts.filename}'.`,
+                          )
+                        }
+
                         const value = prop.value
 
                         let shouldSplit = true
