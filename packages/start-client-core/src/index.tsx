@@ -59,6 +59,7 @@ export {
 export type {
   CompiledFetcherFnOptions,
   CompiledFetcherFn,
+  CustomFetch,
   Fetcher,
   RscStream,
   FetcherBaseOptions,
@@ -93,7 +94,11 @@ export {
   X_TSS_CONTEXT,
   validateFramedProtocolVersion,
 } from './constants'
-export type { FrameType as FrameTypeValue } from './constants'
+export type {
+  FrameType as FrameTypeValue,
+  ClientFnMeta,
+  ServerFnMeta,
+} from './constants'
 
 export type * from './serverRoute'
 
@@ -104,6 +109,7 @@ export type {
   AnyStartInstance,
   AnyStartInstanceOptions,
   StartInstance,
+  StartInstanceOptions,
 } from './createStart'
 export type { Register } from '@tanstack/router-core'
 

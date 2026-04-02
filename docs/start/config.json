@@ -34,6 +34,10 @@
               "to": "framework/react/comparison"
             },
             {
+              "label": "Start vs Next.js",
+              "to": "framework/react/start-vs-nextjs"
+            },
+            {
               "label": "Migrate from Next.js",
               "to": "framework/react/migrate-from-next-js"
             }
@@ -80,6 +84,10 @@
             {
               "label": "Code Execution Patterns",
               "to": "framework/react/guide/code-execution-patterns"
+            },
+            {
+              "label": "Import Protection",
+              "to": "framework/react/guide/import-protection"
             },
             {
               "label": "Environment Variables",
@@ -132,6 +140,10 @@
             {
               "label": "Server Entry Point",
               "to": "framework/react/guide/server-entry-point"
+            },
+            {
+              "label": "CDN Asset URLs",
+              "to": "framework/react/guide/cdn-asset-urls"
             },
             {
               "label": "Client Entry Point",
@@ -193,6 +205,10 @@
             {
               "label": "Code Execution Patterns",
               "to": "framework/solid/guide/code-execution-patterns"
+            },
+            {
+              "label": "Import Protection",
+              "to": "framework/solid/guide/import-protection"
             },
             {
               "label": "Environment Variables",
@@ -404,6 +420,19 @@
             {
               "label": "Fetching Data from External API",
               "to": "framework/react/tutorial/fetching-external-api"
+            }
+          ]
+        },
+        {
+          "label": "solid",
+          "children": [
+            {
+              "label": "Reading and Writing a File",
+              "to": "framework/solid/tutorial/reading-writing-file"
+            },
+            {
+              "label": "Fetching Data from External API",
+              "to": "framework/solid/tutorial/fetching-external-api"
             }
           ]
         }

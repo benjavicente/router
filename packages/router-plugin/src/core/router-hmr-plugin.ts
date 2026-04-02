@@ -1,6 +1,8 @@
 import { generateFromAst, logDiff, parseAst } from '@tanstack/router-utils'
-import { routeHmrStatement } from './route-hmr-statement'
-import { debug } from './utils'
+import { compileCodeSplitReferenceRoute } from './code-splitter/compilers'
+import { getReferenceRouteCompilerPlugins } from './code-splitter/plugins/framework-plugins'
+import { createRouteHmrStatement } from './route-hmr-statement'
+import { debug, normalizePath } from './utils'
 import { getConfig } from './config'
 import type { UnpluginFactory } from 'unplugin'
 import type { Config } from './config'
@@ -34,18 +36,44 @@ export const unpluginRouterHmrFactory: UnpluginFactory<
         },
       },
       handler(code, id) {
-        if (!globalThis.TSR_ROUTES_BY_ID_MAP?.has(id)) {
+        const normalizedId = normalizePath(id)
+        if (!globalThis.TSR_ROUTES_BY_ID_MAP?.has(normalizedId)) {
           return null
         }
 
-        if (debug) console.info('Adding HMR handling to route ', id)
+        if (debug) console.info('Adding HMR handling to route ', normalizedId)
+
+        if (userConfig.target === 'react') {
+          const compilerPlugins = getReferenceRouteCompilerPlugins({
+            targetFramework: 'react',
+            addHmr: true,
+          })
+          const compiled = compileCodeSplitReferenceRoute({
+            code,
+            filename: normalizedId,
+            id: normalizedId,
+            addHmr: true,
+            codeSplitGroupings: [],
+            targetFramework: 'react',
+            compilerPlugins,
+          })
+
+          if (compiled) {
+            if (debug) {
+              logDiff(code, compiled.code)
+              console.log('Output:\n', compiled.code + '\n\n')
+            }
+
+            return compiled
+          }
+        }
 
         const ast = parseAst({ code })
-        ast.program.body.push(routeHmrStatement)
+        ast.program.body.push(createRouteHmrStatement([]))
         const result = generateFromAst(ast, {
           sourceMaps: true,
-          filename: id,
-          sourceFileName: id,
+          filename: normalizedId,
+          sourceFileName: normalizedId,
         })
         if (debug) {
           logDiff(code, result.code)

@@ -12,12 +12,19 @@ import {
 } from '@tanstack/router-core'
 import {
   attachRouterServerSsrUtils,
+  getNormalizedURL,
   getOrigin,
 } from '@tanstack/router-core/ssr/server'
 import { runWithStartContext } from '@tanstack/start-storage-context'
 import { requestHandler } from './request-response'
 import { getStartManifest } from './router-manifest'
 import { handleServerAction } from './server-functions-handler'
+import {
+  adaptTransformAssetUrlsConfigToTransformAssets,
+  buildManifestWithClientEntry,
+  resolveTransformAssetsConfig,
+  transformManifestAssets,
+} from './transformAssetUrls'
 
 import { HEADERS } from './constants'
 import { ServerFunctionSerializationAdapter } from './serializer/ServerFunctionSerializationAdapter'
@@ -38,6 +45,12 @@ import type {
   Register,
 } from '@tanstack/router-core'
 import type { HandlerCallback } from '@tanstack/router-core/ssr/server'
+import type {
+  StartManifestWithClientEntry,
+  TransformAssetUrls,
+  TransformAssets,
+  TransformAssetsFn,
+} from './transformAssetUrls'
 
 type TODO = any
 
@@ -45,12 +58,147 @@ type AnyMiddlewareServerFn =
   | AnyRequestMiddleware['options']['server']
   | AnyFunctionMiddleware['options']['server']
 
+export interface CreateStartHandlerOptions {
+  handler: HandlerCallback<AnyRouter>
+  /**
+   * Transform asset URLs and attributes at runtime, e.g. to prepend a CDN prefix.
+   *
+   * **String** — a URL prefix prepended to every asset URL (cached by default):
+   * ```ts
+   * createStartHandler({
+   *   handler: defaultStreamHandler,
+   *   transformAssets: 'https://cdn.example.com',
+   * })
+   * ```
+   *
+   * **Object shorthand** — a URL prefix with optional `crossOrigin`:
+   * ```ts
+   * createStartHandler({
+   *   handler: defaultStreamHandler,
+   *   transformAssets: {
+   *     prefix: 'https://cdn.example.com',
+   *     crossOrigin: 'anonymous',
+   *   },
+   * })
+   * ```
+   *
+   * `crossOrigin` accepts a single value or a per-kind record:
+   * ```ts
+   * transformAssets: {
+   *   prefix: 'https://cdn.example.com',
+   *   crossOrigin: {
+   *     modulepreload: 'anonymous',
+   *     stylesheet: 'use-credentials',
+   *   },
+   * }
+   * ```
+   *
+   * **Callback** — receives `{ kind, url }` and returns either a string URL or
+   * `{ href, crossOrigin? }` (cached by default — runs once on first request):
+   * ```ts
+   * createStartHandler({
+   *   handler: defaultStreamHandler,
+   *   transformAssets: ({ kind, url }) => {
+   *     const href = `https://cdn.example.com${url}`
+   *
+   *     if (kind === 'modulepreload') {
+   *       return { href, crossOrigin: 'anonymous' }
+   *     }
+   *
+   *     return { href }
+   *   },
+   * })
+   * ```
+   *
+   * **Object** — for explicit cache control:
+   * ```ts
+   * createStartHandler({
+   *   handler: defaultStreamHandler,
+   *   transformAssets: {
+   *     transform: ({ url }) => {
+   *       const region = getRequest().headers.get('x-region') || 'us'
+   *       return { href: `https://cdn-${region}.example.com${url}` }
+   *     },
+   *     cache: false,
+   *   },
+   * })
+   * ```
+   *
+   * `kind` is one of `'modulepreload' | 'stylesheet' | 'clientEntry'`.
+   * `crossOrigin` applies to manifest-managed `<link>` assets.
+   *
+   * By default, the transformed manifest is cached after the first request
+   * (`cache: true`). Set `cache: false` for per-request transforms.
+   *
+   * If you're using a cached transform, you can optionally set `warmup: true`
+   * (object form only) to compute the transformed manifest in the background at
+   * server startup.
+   *
+   * Note: This only transforms URLs managed by TanStack Start's manifest
+   * (JS preloads, CSS links, and the client entry script). For asset imports
+   * used directly in components (e.g. `import logo from './logo.svg'`),
+   * configure Vite's `experimental.renderBuiltUrl` in your vite.config.ts.
+   */
+  transformAssets?: TransformAssets
+  /**
+   * @deprecated Use `transformAssets` instead.
+   *
+   * **String** — a URL prefix prepended to every asset URL (cached by default):
+   * ```ts
+   * createStartHandler({
+   *   handler: defaultStreamHandler,
+   *   transformAssetUrls: 'https://cdn.example.com',
+   * })
+   * ```
+   *
+   * **Callback** — receives `{ url, type }` and returns a new URL
+   * (cached by default — runs once on first request):
+   * ```ts
+   * createStartHandler({
+   *   handler: defaultStreamHandler,
+   *   transformAssetUrls: ({ url, type }) => {
+   *     return `https://cdn.example.com${url}`
+   *   },
+   * })
+   * ```
+   *
+   * **Object** — for explicit cache control:
+   * ```ts
+   * createStartHandler({
+   *   handler: defaultStreamHandler,
+   *   transformAssetUrls: {
+   *     transform: ({ url }) => {
+   *       const region = getRequest().headers.get('x-region') || 'us'
+   *       return `https://cdn-${region}.example.com${url}`
+   *     },
+   *     cache: false, // transform per-request
+   *   },
+   * })
+   * ```
+   *
+   * `type` is one of `'modulepreload' | 'stylesheet' | 'clientEntry'`.
+   *
+   * By default, the transformed manifest is cached after the first request
+   * (`cache: true`). Set `cache: false` for per-request transforms.
+   *
+   * If you're using a cached transform, you can optionally set `warmup: true`
+   * (object form only) to compute the transformed manifest in the background at
+   * server startup.
+   *
+   * Note: This only transforms URLs managed by TanStack Start's manifest
+   * (JS preloads, CSS links, and the client entry script). For asset imports
+   * used directly in components (e.g. `import logo from './logo.svg'`),
+   * configure Vite's `experimental.renderBuiltUrl` in your vite.config.ts.
+   */
+  transformAssetUrls?: TransformAssetUrls
+}
+
 function getStartResponseHeaders(opts: { router: AnyRouter }) {
   const headers = mergeHeaders(
     {
       'Content-Type': 'text/html; charset=utf-8',
     },
-    ...opts.router.state.matches.map((match) => {
+    ...opts.router.stores.activeMatchesSnapshot.state.map((match) => {
       return match.headers
     }),
   )
@@ -65,7 +213,13 @@ let entriesPromise:
       routerEntry: RouterEntry
     }>
   | undefined
-let manifestPromise: Promise<Manifest> | undefined
+let baseManifestPromise: Promise<StartManifestWithClientEntry> | undefined
+
+/**
+ * Cached final manifest (with client entry script tag). In production,
+ * this is computed once and reused for every request when caching is enabled.
+ */
+let cachedFinalManifestPromise: Promise<Manifest> | undefined
 
 async function loadEntries() {
   // @ts-ignore when building, we currently don't respect tsconfig.ts' `include` so we are not picking up the .d.ts from start-client-core
@@ -82,11 +236,59 @@ function getEntries() {
   return entriesPromise
 }
 
-function getManifest() {
-  if (!manifestPromise) {
-    manifestPromise = getStartManifest()
+/**
+ * Returns the raw manifest data (without client entry script tag baked in).
+ * In dev mode, always returns fresh data. In prod, cached.
+ */
+function getBaseManifest(
+  matchedRoutes?: ReadonlyArray<AnyRoute>,
+): Promise<StartManifestWithClientEntry> {
+  // In dev mode, always get fresh manifest (no caching) to include route-specific dev styles
+  if (process.env.TSS_DEV_SERVER === 'true') {
+    return getStartManifest(matchedRoutes)
   }
-  return manifestPromise
+  // In prod, cache the base manifest
+  if (!baseManifestPromise) {
+    baseManifestPromise = getStartManifest()
+  }
+  return baseManifestPromise
+}
+
+/**
+ * Resolves a final Manifest for a given request.
+ *
+ * - No transform: builds client entry script tag and returns (cached in prod).
+ * - Cached transform: transforms all URLs + builds script tag, caches result.
+ * - Per-request transform: deep-clones base manifest, transforms per-request.
+ */
+async function resolveManifest(
+  matchedRoutes: ReadonlyArray<AnyRoute> | undefined,
+  transformFn: TransformAssetsFn | undefined,
+  cache: boolean,
+): Promise<Manifest> {
+  const base = await getBaseManifest(matchedRoutes)
+
+  const computeFinalManifest = async () => {
+    return transformFn
+      ? await transformManifestAssets(base, transformFn, { clone: !cache })
+      : buildManifestWithClientEntry(base)
+  }
+
+  // In dev, always compute fresh to include route-specific dev styles.
+  if (process.env.TSS_DEV_SERVER === 'true') {
+    return computeFinalManifest()
+  }
+
+  // In prod, cache unless we're explicitly doing per-request transforms.
+  if (!transformFn || cache) {
+    if (!cachedFinalManifestPromise) {
+      cachedFinalManifestPromise = computeFinalManifest()
+    }
+    return cachedFinalManifestPromise
+  }
+
+  // Per-request transform — deep-clone and transform every time.
+  return computeFinalManifest()
 }
 
 // Pre-computed constants
@@ -200,9 +402,132 @@ function handlerToMiddleware(
   }
 }
 
+/**
+ * Creates the TanStack Start request handler.
+ *
+ * @example Backwards-compatible usage (handler callback only):
+ * ```ts
+ * export default createStartHandler(defaultStreamHandler)
+ * ```
+ *
+ * @example With CDN URL rewriting:
+ * ```ts
+ * export default createStartHandler({
+ *   handler: defaultStreamHandler,
+ *   transformAssets: 'https://cdn.example.com',
+ * })
+ * ```
+ *
+ * @example With per-request URL rewriting:
+ * ```ts
+ * export default createStartHandler({
+ *   handler: defaultStreamHandler,
+ *   transformAssets: {
+ *     transform: ({ url }) => {
+ *       const cdnBase = getRequest().headers.get('x-cdn-base') || ''
+ *       return { href: `${cdnBase}${url}` }
+ *     },
+ *     cache: false,
+ *   },
+ * })
+ * ```
+ */
 export function createStartHandler<TRegister = Register>(
-  cb: HandlerCallback<AnyRouter>,
+  cbOrOptions: HandlerCallback<AnyRouter> | CreateStartHandlerOptions,
 ): RequestHandler<TRegister> {
+  // Normalize the overloaded argument
+  const cb: HandlerCallback<AnyRouter> =
+    typeof cbOrOptions === 'function' ? cbOrOptions : cbOrOptions.handler
+  const transformAssetsOption: TransformAssets | undefined =
+    typeof cbOrOptions === 'function' ? undefined : cbOrOptions.transformAssets
+  const transformAssetUrlsOption: TransformAssetUrls | undefined =
+    typeof cbOrOptions === 'function'
+      ? undefined
+      : cbOrOptions.transformAssetUrls
+
+  const transformOption =
+    transformAssetsOption !== undefined
+      ? resolveTransformAssetsConfig(transformAssetsOption)
+      : transformAssetUrlsOption !== undefined
+        ? resolveTransformAssetsConfig(
+            adaptTransformAssetUrlsConfigToTransformAssets(
+              transformAssetUrlsOption,
+            ),
+          )
+        : undefined
+
+  const warmupTransformManifest =
+    (!!transformAssetsOption &&
+      typeof transformAssetsOption === 'object' &&
+      'warmup' in transformAssetsOption &&
+      transformAssetsOption.warmup === true) ||
+    (!!transformAssetUrlsOption &&
+      typeof transformAssetUrlsOption === 'object' &&
+      transformAssetUrlsOption.warmup === true)
+
+  // Pre-resolve the transform function and cache flag
+  const resolvedTransformConfig = transformOption
+  const cache = resolvedTransformConfig ? resolvedTransformConfig.cache : true
+  const shouldCacheCreateTransform =
+    cache && process.env.TSS_DEV_SERVER !== 'true'
+
+  // Memoize a single createTransform() result when caching is enabled outside
+  // of the dev server.
+  let cachedCreateTransformPromise: Promise<TransformAssetsFn> | undefined
+
+  const getTransformFn = async (
+    opts: { warmup: true } | { warmup: false; request: Request },
+  ): Promise<TransformAssetsFn | undefined> => {
+    if (!resolvedTransformConfig) return undefined
+
+    if (resolvedTransformConfig.type === 'createTransform') {
+      if (shouldCacheCreateTransform) {
+        if (!cachedCreateTransformPromise) {
+          cachedCreateTransformPromise = Promise.resolve(
+            resolvedTransformConfig.createTransform(opts),
+          ).catch((error) => {
+            cachedCreateTransformPromise = undefined
+            throw error
+          })
+        }
+
+        return cachedCreateTransformPromise
+      }
+
+      return resolvedTransformConfig.createTransform(opts)
+    }
+
+    return resolvedTransformConfig.transformFn
+  }
+
+  // Background warmup for cached transforms (production only)
+  if (
+    warmupTransformManifest &&
+    cache &&
+    process.env.TSS_DEV_SERVER !== 'true' &&
+    !cachedFinalManifestPromise
+  ) {
+    // NOTE: Do not call resolveManifest() here.
+    // resolveManifest() reads from cachedFinalManifestPromise, and since we set
+    // cachedFinalManifestPromise to this warmup promise, that would create a
+    // self-referential promise and hang forever.
+    const warmupPromise = (async () => {
+      const base = await getBaseManifest(undefined)
+      const transformFn = await getTransformFn({ warmup: true })
+      return transformFn
+        ? await transformManifestAssets(base, transformFn, { clone: false })
+        : buildManifestWithClientEntry(base)
+    })()
+    cachedFinalManifestPromise = warmupPromise
+    warmupPromise.catch(() => {
+      // If warmup fails, allow the next request to retry.
+      if (cachedFinalManifestPromise === warmupPromise) {
+        cachedFinalManifestPromise = undefined
+      }
+      cachedCreateTransformPromise = undefined
+    })
+  }
+
   const startRequestResolver: RequestHandler<Register> = async (
     request,
     requestOpts,
@@ -211,9 +536,16 @@ export function createStartHandler<TRegister = Register>(
     let cbWillCleanup = false as boolean
 
     try {
-      const url = new URL(request.url)
-      const href = url.href.replace(url.origin, '')
+      // normalizing and sanitizing the pathname here for server, so we always deal with the same format during SSR.
+      // during normalization paths like '//posts' are flattened to '/posts'.
+      // in these cases we would prefer to redirect to the new path
+      const { url, handledProtocolRelativeURL } = getNormalizedURL(request.url)
+      const href = url.pathname + url.search + url.hash
       const origin = getOrigin(request)
+
+      if (handledProtocolRelativeURL) {
+        return Response.redirect(url, 308)
+      }
 
       const entries = await getEntries()
       const startOptions: AnyStartInstanceOptions =
@@ -306,6 +638,7 @@ export function createStartHandler<TRegister = Register>(
         )
         const ctx = await executeMiddleware([...middlewares, serverFnHandler], {
           request,
+          pathname: url.pathname,
           context: createNullProtoObject(requestOpts?.context),
         })
 
@@ -313,7 +646,10 @@ export function createStartHandler<TRegister = Register>(
       }
 
       // Router execution function
-      const executeRouter = async (serverContext: TODO): Promise<Response> => {
+      const executeRouter = async (
+        serverContext: TODO,
+        matchedRoutes?: ReadonlyArray<AnyRoute>,
+      ): Promise<Response> => {
         const acceptHeader = request.headers.get('Accept') || '*/*'
         const acceptParts = acceptHeader.split(',')
         const supportedMimeTypes = ['*/*', 'text/html']
@@ -329,7 +665,11 @@ export function createStartHandler<TRegister = Register>(
           )
         }
 
-        const manifest = await getManifest()
+        const manifest = await resolveManifest(
+          matchedRoutes,
+          await getTransformFn({ warmup: false, request }),
+          cache,
+        )
         const routerInstance = await getRouter()
 
         attachRouterServerSsrUtils({
@@ -393,7 +733,11 @@ export function createStartHandler<TRegister = Register>(
       )
       const ctx = await executeMiddleware(
         [...middlewares, requestHandlerMiddleware],
-        { request, context: createNullProtoObject(requestOpts?.context) },
+        {
+          request,
+          pathname: url.pathname,
+          context: createNullProtoObject(requestOpts?.context),
+        },
       )
 
       return handleRedirectResponse(ctx.response, request, getRouter)
@@ -477,7 +821,10 @@ async function handleServerRoutes({
   getRouter: () => Promise<AnyRouter>
   request: Request
   url: URL
-  executeRouter: (serverContext: any) => Promise<Response>
+  executeRouter: (
+    serverContext: any,
+    matchedRoutes?: ReadonlyArray<AnyRoute>,
+  ) => Promise<Response>
   context: any
   executedRequestMiddlewares: Set<AnyRequestMiddleware>
 }): Promise<Response> {
@@ -541,8 +888,10 @@ async function handleServerRoutes({
     }
   }
 
-  // Final middleware: execute router
-  routeMiddlewares.push((ctx: TODO) => executeRouter(ctx.context))
+  // Final middleware: execute router with matched routes for dev styles
+  routeMiddlewares.push((ctx: TODO) =>
+    executeRouter(ctx.context, matchedRoutes),
+  )
 
   const ctx = await executeMiddleware(routeMiddlewares, {
     request,

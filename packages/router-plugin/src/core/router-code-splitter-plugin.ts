@@ -8,61 +8,78 @@ import { logDiff } from '@tanstack/router-utils'
 import { getConfig, splitGroupingsSchema } from './config'
 import {
   compileCodeSplitReferenceRoute,
+  compileCodeSplitSharedRoute,
   compileCodeSplitVirtualRoute,
+  computeSharedBindings,
   detectCodeSplitGroupingsFromRoute,
 } from './code-splitter/compilers'
+import { getReferenceRouteCompilerPlugins } from './code-splitter/plugins/framework-plugins'
 import {
   splitRouteIdentNodes,
+  tsrShared,
   tsrSplit,
 } from './constants'
 import { decodeIdentifier } from './code-splitter/path-ids'
 import { getFrameworkOptions } from './code-splitter/framework-options'
-import { debug } from './utils'
+import { debug, normalizePath } from './utils'
 import type { CodeSplitGroupings, SplitRouteIdentNodes } from './constants'
 import type { GetRoutesByFileMapResultValue } from '@tanstack/router-generator'
 import type { Config } from './config'
 import type {
-  UnpluginContextMeta,
   UnpluginFactory,
   TransformResult as UnpluginTransformResult,
 } from 'unplugin'
 
-type BannedBeforeExternalPlugin = {
-  identifier: string
+const PLUGIN_NAME = 'unplugin:router-code-splitter'
+const CODE_SPLITTER_PLUGIN_NAME =
+  'tanstack-router:code-splitter:compile-reference-file'
+
+type TransformationPluginInfo = {
+  pluginNames: Array<string>
   pkg: string
   usage: string
-  frameworks: Array<UnpluginContextMeta['framework']>
 }
 
-const bannedBeforeExternalPlugins: Array<BannedBeforeExternalPlugin> = [
-  {
-    identifier: '@react-refresh',
-    pkg: '@vitejs/plugin-react',
-    usage: 'viteReact()',
-    frameworks: ['vite'],
-  },
-]
-
-class FoundPluginInBeforeCode extends Error {
-  constructor(
-    externalPlugin: BannedBeforeExternalPlugin,
-    pluginFramework: string,
-  ) {
-    super(`We detected that the '${externalPlugin.pkg}' was passed before '@tanstack/router-plugin/${pluginFramework}'. Please make sure that '@tanstack/router-plugin' is passed before '${externalPlugin.pkg}' and try again: 
-e.g.
-plugins: [
-  tanstackRouter(), // Place this before ${externalPlugin.usage}
-  ${externalPlugin.usage},
-]
-`)
-  }
+/**
+ * JSX transformation plugins grouped by framework.
+ * These plugins must come AFTER the TanStack Router plugin in the Vite config.
+ */
+const TRANSFORMATION_PLUGINS_BY_FRAMEWORK: Record<
+  string,
+  Array<TransformationPluginInfo>
+> = {
+  react: [
+    {
+      // Babel-based React plugin
+      pluginNames: ['vite:react-babel', 'vite:react-refresh'],
+      pkg: '@vitejs/plugin-react',
+      usage: 'react()',
+    },
+    {
+      // SWC-based React plugin
+      pluginNames: ['vite:react-swc', 'vite:react-swc:resolve-runtime'],
+      pkg: '@vitejs/plugin-react-swc',
+      usage: 'reactSwc()',
+    },
+    {
+      // OXC-based React plugin (deprecated but should still be handled)
+      pluginNames: ['vite:react-oxc:config', 'vite:react-oxc:refresh-runtime'],
+      pkg: '@vitejs/plugin-react-oxc',
+      usage: 'reactOxc()',
+    },
+  ],
+  solid: [
+    {
+      pluginNames: ['solid'],
+      pkg: 'vite-plugin-solid',
+      usage: 'solid()',
+    },
+  ],
 }
-
-const PLUGIN_NAME = 'unplugin:router-code-splitter'
 
 export const unpluginRouterCodeSplitterFactory: UnpluginFactory<
   Partial<Config | (() => Config)> | undefined
-> = (options = {}, { framework }) => {
+> = (options = {}, { framework: _framework }) => {
   let ROOT: string = process.cwd()
   let userConfig: Config
 
@@ -74,6 +91,9 @@ export const unpluginRouterCodeSplitterFactory: UnpluginFactory<
     }
   }
   const isProduction = process.env.NODE_ENV === 'production'
+  // Map from normalized route file path → set of shared binding names.
+  // Populated by the reference compiler, consumed by virtual and shared compilers.
+  const sharedBindingsMap = new Map<string, Set<string>>()
 
   const getGlobalCodeSplitGroupings = () => {
     const frameworkDefaultCodeSplitGroupings = getFrameworkOptions(
@@ -100,7 +120,7 @@ export const unpluginRouterCodeSplitterFactory: UnpluginFactory<
       code,
     })
 
-    if (fromCode.groupings) {
+    if (fromCode.groupings !== undefined) {
       const res = splitGroupingsSchema.safeParse(fromCode.groupings)
       if (!res.success) {
         const message = res.error.errors.map((e) => e.message).join('. ')
@@ -127,7 +147,21 @@ export const unpluginRouterCodeSplitterFactory: UnpluginFactory<
     }
 
     const splitGroupings: CodeSplitGroupings =
-      fromCode.groupings || pluginSplitBehavior || getGlobalCodeSplitGroupings()
+      fromCode.groupings ?? pluginSplitBehavior ?? getGlobalCodeSplitGroupings()
+
+    // Compute shared bindings before compiling the reference route
+    const sharedBindings = computeSharedBindings({
+      code,
+      codeSplitGroupings: splitGroupings,
+    })
+    if (sharedBindings.size > 0) {
+      sharedBindingsMap.set(id, sharedBindings)
+    } else {
+      sharedBindingsMap.delete(id)
+    }
+
+    const addHmr =
+      (userConfig.codeSplittingOptions?.addHmr ?? true) && !isProduction
 
     const compiledReferenceRoute = compileCodeSplitReferenceRoute({
       code,
@@ -138,8 +172,12 @@ export const unpluginRouterCodeSplitterFactory: UnpluginFactory<
       deleteNodes: userConfig.codeSplittingOptions?.deleteNodes
         ? new Set(userConfig.codeSplittingOptions.deleteNodes)
         : undefined,
-      addHmr:
-        (userConfig.codeSplittingOptions?.addHmr ?? true) && !isProduction,
+      addHmr,
+      sharedBindings: sharedBindings.size > 0 ? sharedBindings : undefined,
+      compilerPlugins: getReferenceRouteCompilerPlugins({
+        targetFramework: userConfig.target,
+        addHmr,
+      }),
     })
 
     if (compiledReferenceRoute === null) {
@@ -180,10 +218,14 @@ export const unpluginRouterCodeSplitterFactory: UnpluginFactory<
       splitRouteIdentNodes.includes(p as any),
     ) as Array<SplitRouteIdentNodes>
 
+    const baseId = id.split('?')[0]!
+    const resolvedSharedBindings = sharedBindingsMap.get(baseId)
+
     const result = compileCodeSplitVirtualRoute({
       code,
       filename: id,
       splitTargets: grouping,
+      sharedBindings: resolvedSharedBindings,
     })
 
     if (debug) {
@@ -207,7 +249,7 @@ export const unpluginRouterCodeSplitterFactory: UnpluginFactory<
       transform: {
         filter: {
           id: {
-            exclude: tsrSplit,
+            exclude: [tsrSplit, tsrShared],
             // this is necessary for webpack / rspack to avoid matching .html files
             include: /\.(m|c)?(j|t)sx?$/,
           },
@@ -216,22 +258,18 @@ export const unpluginRouterCodeSplitterFactory: UnpluginFactory<
           },
         },
         handler(code, id) {
-          const generatorFileInfo = globalThis.TSR_ROUTES_BY_ID_MAP?.get(id)
+          const normalizedId = normalizePath(id)
+          const generatorFileInfo =
+            globalThis.TSR_ROUTES_BY_ID_MAP?.get(normalizedId)
           if (
             generatorFileInfo &&
             includedCode.some((included) => code.includes(included))
           ) {
-            for (const externalPlugin of bannedBeforeExternalPlugins) {
-              if (!externalPlugin.frameworks.includes(framework)) {
-                continue
-              }
-
-              if (code.includes(externalPlugin.identifier)) {
-                throw new FoundPluginInBeforeCode(externalPlugin, framework)
-              }
-            }
-
-            return handleCompilingReferenceFile(code, id, generatorFileInfo)
+            return handleCompilingReferenceFile(
+              code,
+              normalizedId,
+              generatorFileInfo,
+            )
           }
 
           return null
@@ -242,6 +280,38 @@ export const unpluginRouterCodeSplitterFactory: UnpluginFactory<
         configResolved(config) {
           ROOT = config.root
           initUserConfig()
+
+          // Validate plugin order - router must come before JSX transformation plugins
+          const routerPluginIndex = config.plugins.findIndex(
+            (p) => p.name === CODE_SPLITTER_PLUGIN_NAME,
+          )
+
+          if (routerPluginIndex === -1) return
+
+          const frameworkPlugins =
+            TRANSFORMATION_PLUGINS_BY_FRAMEWORK[userConfig.target]
+          if (!frameworkPlugins) return
+
+          for (const transformPlugin of frameworkPlugins) {
+            const transformPluginIndex = config.plugins.findIndex((p) =>
+              transformPlugin.pluginNames.includes(p.name),
+            )
+
+            if (
+              transformPluginIndex !== -1 &&
+              transformPluginIndex < routerPluginIndex
+            ) {
+              throw new Error(
+                `Plugin order error: '${transformPlugin.pkg}' is placed before '@tanstack/router-plugin'.\n\n` +
+                  `The TanStack Router plugin must come BEFORE JSX transformation plugins.\n\n` +
+                  `Please update your Vite config:\n\n` +
+                  `  plugins: [\n` +
+                  `    tanstackRouter(),\n` +
+                  `    ${transformPlugin.usage},\n` +
+                  `  ]\n`,
+              )
+            }
+          }
         },
         applyToEnvironment(environment) {
           if (userConfig.plugin?.vite?.environmentName) {
@@ -251,9 +321,15 @@ export const unpluginRouterCodeSplitterFactory: UnpluginFactory<
         },
       },
 
-      rspack() {
+      rspack(compiler) {
         ROOT = process.cwd()
         initUserConfig()
+
+        if (compiler.options.mode === 'production') {
+          compiler.hooks.done.tap(PLUGIN_NAME, () => {
+            console.info('✅ ' + PLUGIN_NAME + ': code-splitting done!')
+          })
+        }
       },
 
       webpack(compiler) {
@@ -263,9 +339,6 @@ export const unpluginRouterCodeSplitterFactory: UnpluginFactory<
         if (compiler.options.mode === 'production') {
           compiler.hooks.done.tap(PLUGIN_NAME, () => {
             console.info('✅ ' + PLUGIN_NAME + ': code-splitting done!')
-            setTimeout(() => {
-              process.exit(0)
-            })
           })
         }
       },
@@ -281,8 +354,62 @@ export const unpluginRouterCodeSplitterFactory: UnpluginFactory<
         handler(code, id) {
           const url = pathToFileURL(id)
           url.searchParams.delete('v')
-          id = fileURLToPath(url).replace(/\\/g, '/')
-          return handleCompilingVirtualFile(code, id)
+          const normalizedId = normalizePath(fileURLToPath(url))
+          return handleCompilingVirtualFile(code, normalizedId)
+        },
+      },
+
+      vite: {
+        applyToEnvironment(environment) {
+          if (userConfig.plugin?.vite?.environmentName) {
+            return userConfig.plugin.vite.environmentName === environment.name
+          }
+          return true
+        },
+      },
+    },
+    {
+      name: 'tanstack-router:code-splitter:compile-shared-file',
+      enforce: 'pre',
+
+      transform: {
+        filter: {
+          id: /tsr-shared/,
+        },
+        handler(code, id) {
+          const url = pathToFileURL(id)
+          url.searchParams.delete('v')
+          const normalizedId = normalizePath(fileURLToPath(url))
+          const [baseId] = normalizedId.split('?')
+
+          if (!baseId) return null
+
+          const sharedBindings = sharedBindingsMap.get(baseId)
+          if (!sharedBindings || sharedBindings.size === 0) return null
+
+          if (debug) console.info('Compiling Shared Module: ', id)
+
+          const result = compileCodeSplitSharedRoute({
+            code,
+            sharedBindings,
+            filename: normalizedId,
+          })
+
+          if (debug) {
+            logDiff(code, result.code)
+            console.log('Output:\n', result.code + '\n\n')
+          }
+
+          return result
+        },
+      },
+
+      vite: {
+        applyToEnvironment(environment) {
+          if (userConfig.plugin?.vite?.environmentName) {
+            return userConfig.plugin.vite.environmentName === environment.name
+          }
+          return true
         },
       },
     },

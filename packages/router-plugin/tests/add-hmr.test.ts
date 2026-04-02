@@ -4,6 +4,7 @@ import { describe, expect, it } from 'vitest'
 
 import { compileCodeSplitReferenceRoute } from '../src/core/code-splitter/compilers'
 import { defaultCodeSplitGroupings } from '../src/core/constants'
+import { getReferenceRouteCompilerPlugins } from '../src/core/code-splitter/plugins/framework-plugins'
 import { frameworks } from './constants'
 
 function getFrameworkDir(framework: string) {
@@ -30,6 +31,10 @@ describe('add-hmr works', () => {
           addHmr: true,
           codeSplitGroupings: defaultCodeSplitGroupings,
           targetFramework: framework,
+          compilerPlugins: getReferenceRouteCompilerPlugins({
+            targetFramework: framework,
+            addHmr: true,
+          }),
         })
 
         await expect(compileResult?.code || code).toMatchFileSnapshot(
@@ -51,12 +56,49 @@ describe('add-hmr works', () => {
           addHmr: false,
           codeSplitGroupings: defaultCodeSplitGroupings,
           targetFramework: framework,
+          compilerPlugins: getReferenceRouteCompilerPlugins({
+            targetFramework: framework,
+            addHmr: false,
+          }),
         })
 
         await expect(compileResult?.code || code).toMatchFileSnapshot(
           path.join(dirs.snapshots, filename.replace('.tsx', '@false.tsx')),
         )
       },
+    )
+  })
+
+  it('initializes import.meta.hot.data before storing stable split components', () => {
+    const code = `
+import * as React from 'react'
+import { createFileRoute } from '@tanstack/react-router'
+
+export const Route = createFileRoute('/posts')({
+  component: component,
+})
+
+function component() {
+  return <div>posts</div>
+}
+`
+
+    const compileResult = compileCodeSplitReferenceRoute({
+      code,
+      filename: 'posts.tsx',
+      id: 'posts.tsx',
+      addHmr: true,
+      codeSplitGroupings: defaultCodeSplitGroupings,
+      targetFramework: 'react',
+      compilerPlugins: getReferenceRouteCompilerPlugins({
+        targetFramework: 'react',
+        addHmr: true,
+      }),
+    })
+
+    expect(compileResult?.code).toContain('import.meta.hot.data ??= {}')
+    expect(compileResult?.code).toContain(
+      'import.meta.hot.data["tsr-split-component:component"] = TSRSplitComponent',
     )
   })
 })

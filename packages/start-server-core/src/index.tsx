@@ -1,4 +1,21 @@
 export { createStartHandler } from './createStartHandler'
+export type { CreateStartHandlerOptions } from './createStartHandler'
+
+export type {
+  TransformAssets,
+  TransformAssetsFn,
+  TransformAssetsContext,
+  TransformAssetsOptions,
+  TransformAssetsObjectShorthand,
+  TransformAssetsCrossOriginConfig,
+  TransformAssetResult,
+  TransformAssetUrls,
+  TransformAssetUrlsFn,
+  TransformAssetUrlsContext,
+  TransformAssetUrlsOptions,
+  AssetUrlType,
+  TransformAssetKind,
+} from './transformAssetUrls'
 
 export {
   attachRouterServerSsrUtils,

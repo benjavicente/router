@@ -3,6 +3,7 @@ import {
   hydrate as queryHydrate,
 } from '@tanstack/query-core'
 import { isRedirect } from '@tanstack/router-core'
+import { isServer } from '@tanstack/router-core/isServer'
 import type { AnyRouter } from '@tanstack/router-core'
 import type {
   QueryClient,
@@ -35,7 +36,7 @@ export function setupCoreRouterSsrQueryIntegration<TRouter extends AnyRouter>({
   const ogHydrate = router.options.hydrate
   const ogDehydrate = router.options.dehydrate
 
-  if (router.isServer) {
+  if (isServer ?? router.isServer) {
     const sentQueries = new Set<string>()
     const queryStream = createPushableStream()
     let unsubscribe: (() => void) | undefined = undefined
@@ -139,7 +140,7 @@ export function setupCoreRouterSsrQueryIntegration<TRouter extends AnyRouter>({
         ...ogMutationCacheConfig,
         onError: (error, ...rest) => {
           if (isRedirect(error)) {
-            error.options._fromLocation = router.state.location
+            error.options._fromLocation = router.stores.location.state
             return router.navigate(router.resolveRedirect(error).options)
           }
 
@@ -152,7 +153,7 @@ export function setupCoreRouterSsrQueryIntegration<TRouter extends AnyRouter>({
         ...ogQueryCacheConfig,
         onError: (error, ...rest) => {
           if (isRedirect(error)) {
-            error.options._fromLocation = router.state.location
+            error.options._fromLocation = router.stores.location.state
             return router.navigate(router.resolveRedirect(error).options)
           }
 

@@ -1,8 +1,10 @@
 import { pathToFileURL } from 'node:url'
 import { basename, extname, join } from 'pathe'
 import { NodeRequest, sendNodeResponse } from 'srvx/node'
+import { joinURL } from 'ufo'
 import { VITE_ENVIRONMENT_NAMES } from '../constants'
 import { getServerOutputDirectory } from '../output-directory'
+import { getBundlerOptions } from '../utils'
 import type { Plugin } from 'vite'
 
 export function previewServerPlugin(): Plugin {
@@ -26,7 +28,7 @@ export function previewServerPlugin(): Plugin {
                 const serverEnv =
                   server.config.environments[VITE_ENVIRONMENT_NAMES.server]
                 const serverInput =
-                  serverEnv?.build.rollupOptions.input ?? 'server'
+                  getBundlerOptions(serverEnv?.build)?.input ?? 'server'
 
                 if (typeof serverInput !== 'string') {
                   throw new Error('Invalid server input. Expected a string.')
@@ -43,8 +45,15 @@ export function previewServerPlugin(): Plugin {
                 serverBuild = imported.default
               }
 
+              // Prepend base path to request URL to match routing setup
+              req.url = joinURL(server.config.base, req.url ?? '/')
+
               const webReq = new NodeRequest({ req, res })
               const webRes: Response = await serverBuild.fetch(webReq)
+
+              if (webRes.headers.get('content-type')?.startsWith('text/html')) {
+                res.setHeader('content-encoding', 'identity')
+              }
 
               // Temporary workaround
               // Vite preview's compression middleware doesn't support flattened array headers that srvx sets

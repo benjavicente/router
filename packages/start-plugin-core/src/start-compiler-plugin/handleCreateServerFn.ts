@@ -13,22 +13,22 @@ const TSS_SERVERFN_SPLIT_PARAM = 'tss-serverfn-split'
 // Pre-compiled babel templates (compiled once at module load time)
 // ============================================================================
 
-// Template for provider files: createServerRpc('id', fn)
+// Template for provider files: createServerRpc(serverFnMeta, fn)
 const serverRpcTemplate = babel.template.expression(
-  `createServerRpc(%%functionId%%, %%fn%%)`,
+  `createServerRpc(%%serverFnMeta%%, %%fn%%)`,
 )
 
-// Template for client caller files: createClientRpc('id')
+// Template for client caller files: createClientRpc(functionId)
 const clientRpcTemplate = babel.template.expression(
   `createClientRpc(%%functionId%%)`,
 )
 
-// Template for SSR caller files (manifest lookup): createSsrRpc('id')
+// Template for SSR caller files (manifest lookup): createSsrRpc(functionId)
 const ssrRpcManifestTemplate = babel.template.expression(
   `createSsrRpc(%%functionId%%)`,
 )
 
-// Template for SSR caller files (with importer): createSsrRpc('id', () => import(...).then(m => m['name']))
+// Template for SSR caller files (with importer): createSsrRpc(functionId, () => import(...).then(m => m['name']))
 const ssrRpcImporterTemplate = babel.template.expression(
   `createSsrRpc(%%functionId%%, () => import(%%extractedFilename%%).then(m => m[%%functionName%%]))`,
 )
@@ -120,15 +120,31 @@ function getEnvConfig(
 }
 
 /**
+ * Builds the serverFnMeta object literal AST node.
+ * The object contains: { id, name, filename }
+ */
+function buildServerFnMetaObject(
+  functionId: string,
+  variableName: string,
+  filename: string,
+): t.ObjectExpression {
+  return t.objectExpression([
+    t.objectProperty(t.identifier('id'), t.stringLiteral(functionId)),
+    t.objectProperty(t.identifier('name'), t.stringLiteral(variableName)),
+    t.objectProperty(t.identifier('filename'), t.stringLiteral(filename)),
+  ])
+}
+
+/**
  * Generates the RPC stub expression for provider files.
  * Uses pre-compiled template for performance.
  */
 function generateProviderRpcStub(
-  functionId: string,
+  serverFnMeta: t.ObjectExpression,
   fn: t.Expression,
 ): t.Expression {
   return serverRpcTemplate({
-    functionId: t.stringLiteral(functionId),
+    serverFnMeta,
     fn,
   })
 }
@@ -136,6 +152,7 @@ function generateProviderRpcStub(
 /**
  * Generates the RPC stub expression for caller files.
  * Uses pre-compiled templates for performance.
+ * Note: Client and SSR callers only receive the functionId string, not the full metadata.
  */
 function generateCallerRpcStub(
   functionId: string,
@@ -144,9 +161,11 @@ function generateCallerRpcStub(
   isClientReferenced: boolean,
   envConfig: EnvConfig,
 ): t.Expression {
+  const functionIdLiteral = t.stringLiteral(functionId)
+
   if (envConfig.runtimeCodeType === 'client') {
     return clientRpcTemplate({
-      functionId: t.stringLiteral(functionId),
+      functionId: functionIdLiteral,
     })
   }
 
@@ -156,12 +175,12 @@ function generateCallerRpcStub(
   // Otherwise, use the importer for functions only referenced on the server when SSR is the provider
   if (isClientReferenced || !envConfig.ssrIsProvider) {
     return ssrRpcManifestTemplate({
-      functionId: t.stringLiteral(functionId),
+      functionId: functionIdLiteral,
     })
   }
 
   return ssrRpcImporterTemplate({
-    functionId: t.stringLiteral(functionId),
+    functionId: functionIdLiteral,
     extractedFilename: t.stringLiteral(extractedFilename),
     functionName: t.stringLiteral(functionName),
   })
@@ -308,25 +327,32 @@ export function handleCreateServerFn(
       // 2. Modify .handler() to pass (extractedFn, serverFn) - two arguments
       //
       // Expected output format:
-      // const extractedFn = createServerRpc("id", (opts) => varName.__executeServer(opts));
+      // const extractedFn = createServerRpc({id, name, filename}, (opts) => varName.__executeServer(opts));
       // const varName = createServerFn().handler(extractedFn, originalHandler);
 
-      // Build the arrow function: (opts, signal) => varName.__executeServer(opts, signal)
+      // Build the arrow function: (opts) => varName.__executeServer(opts)
       // The signal parameter is passed through to allow abort signal propagation
       const executeServerArrowFn = t.arrowFunctionExpression(
-        [t.identifier('opts'), t.identifier('signal')],
+        [t.identifier('opts')],
         t.callExpression(
           t.memberExpression(
             t.identifier(existingVariableName),
             t.identifier('__executeServer'),
           ),
-          [t.identifier('opts'), t.identifier('signal')],
+          [t.identifier('opts')],
         ),
+      )
+
+      // Build the serverFnMeta object
+      const serverFnMeta = buildServerFnMetaObject(
+        functionId,
+        existingVariableName,
+        relativeFilename,
       )
 
       // Generate the replacement using pre-compiled template
       const extractedFnInit = generateProviderRpcStub(
-        functionId,
+        serverFnMeta,
         executeServerArrowFn,
       )
 
@@ -383,6 +409,7 @@ export function handleCreateServerFn(
       }
 
       // Generate the RPC stub using pre-compiled templates
+      // Note: Caller files only pass functionId, not the full serverFnMeta
       const rpcStub = generateCallerRpcStub(
         functionId,
         functionName,
