@@ -1,12 +1,16 @@
-
 import { createRoute } from './route'
-import { injectLoaderData } from './injectLoaderData'
-import { injectLoaderDeps } from './injectLoaderDeps'
+
 import { injectMatch } from './injectMatch'
-import { injectNavigate } from './injectNavigate'
-import { injectParams } from './injectParams'
-import { injectRouter } from './injectRouter'
+import { injectLoaderDeps } from './injectLoaderDeps'
+import { injectLoaderData } from './injectLoaderData'
 import { injectSearch } from './injectSearch'
+import { injectParams } from './injectParams'
+import { injectNavigate } from './injectNavigate'
+import { injectRouter } from './injectRouter'
+import { injectRouteContext } from './injectRouteContext'
+import type { InjectParamsRoute } from './injectParams'
+import type { InjectMatchRoute } from './injectMatch'
+import type { InjectSearchRoute } from './injectSearch'
 import type {
   AnyContext,
   AnyRoute,
@@ -23,14 +27,11 @@ import type {
   RouteConstraints,
   RouteIds,
   UpdatableRouteOptions,
+  UseNavigateResult,
 } from '@tanstack/router-core'
-import type { InjectLoaderDataRoute } from './injectLoaderData'
 import type { InjectLoaderDepsRoute } from './injectLoaderDeps'
-import type { InjectMatchRoute } from './injectMatch'
-import type { InjectNavigateResult } from './injectNavigate'
-import type { InjectParamsRoute } from './injectParams'
+import type { InjectLoaderDataRoute } from './injectLoaderData'
 import type { InjectRouteContextRoute } from './injectRouteContext'
-import type { InjectSearchRoute } from './injectSearch'
 
 export function createFileRoute<
   TFilePath extends keyof FileRoutesByPath,
@@ -150,7 +151,7 @@ declare module '@tanstack/router-core' {
     injectParams: InjectParamsRoute<TRoute['id']>
     injectLoaderDeps: InjectLoaderDepsRoute<TRoute['id']>
     injectLoaderData: InjectLoaderDataRoute<TRoute['id']>
-    injectNavigate: () => InjectNavigateResult<AnyRouter, TRoute['fullPath']>
+    injectNavigate: () => UseNavigateResult<TRoute['fullPath']>
   }
 }
 
@@ -175,10 +176,7 @@ export class LazyRoute<TRoute extends AnyRoute> {
   }
 
   injectRouteContext: InjectRouteContextRoute<TRoute['id']> = (opts) => {
-    return injectMatch({
-      from: this.options.id,
-      select: (d: any) => (opts?.select ? opts.select(d.context) : d.context),
-    }) as any
+    return injectRouteContext({ ...(opts as any), from: this.options.id }) as any
   }
 
   injectSearch: InjectSearchRoute<TRoute['id']> = (opts) => {
@@ -203,24 +201,12 @@ export class LazyRoute<TRoute extends AnyRoute> {
     return injectLoaderData({ ...opts, from: this.options.id } as any)
   }
 
-  injectNavigate = (): InjectNavigateResult<AnyRouter, TRoute['fullPath']> => {
+  injectNavigate = (): UseNavigateResult<TRoute['fullPath']> => {
     const router = injectRouter()
     return injectNavigate({ from: router.routesById[this.options.id].fullPath })
   }
 }
 
-/**
- * Creates a lazily-configurable code-based route stub by ID.
- *
- * Use this for code-splitting with code-based routes. The returned function
- * accepts only non-critical route options like `component`, `pendingComponent`,
- * `errorComponent`, and `notFoundComponent` which are applied when the route
- * is matched.
- *
- * @param id Route ID string literal to associate with the lazy route.
- * @returns A function that accepts lazy route options and returns a `LazyRoute`.
- * @link https://tanstack.com/router/latest/docs/framework/react/api/router/createLazyRouteFunction
- */
 export function createLazyRoute<
   TRouter extends AnyRouter = RegisteredRouter,
   TId extends string = string,

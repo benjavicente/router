@@ -1,5 +1,6 @@
 import * as Angular from '@angular/core'
-import { injectRouterState } from './injectRouterState'
+import { injectRouter } from './injectRouter'
+import { injectStore } from './injectStore'
 import { injectRender } from './renderer/injectRender'
 import { RouteMatch } from './Match'
 import { injectTransitionerSetup } from './transitioner'
@@ -10,9 +11,9 @@ import { injectTransitionerSetup } from './transitioner'
   standalone: true,
 })
 export class Matches {
-  private matchId = injectRouterState({
-    select: (s) => s.matches[0]?.id,
-  })
+  router = injectRouter()
+
+  private matchId = injectStore(this.router.stores.firstMatchId, (id) => id)
 
   transitioner = injectTransitionerSetup()
 

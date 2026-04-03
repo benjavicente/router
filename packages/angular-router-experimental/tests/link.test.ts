@@ -18,7 +18,7 @@ import {
   injectLoaderData,
   injectMatch,
   injectParams,
-  injectRouterContext,
+  injectRouteContext,
   injectSearch,
   redirect,
   retainSearchParams,
@@ -202,19 +202,19 @@ describe('Link', () => {
       })
 
       // round 1
-      const indexExactLink = await screen.findByRole('link', {
+      let indexExactLink = await screen.findByRole('link', {
         name: 'Index exact',
       })
 
-      const indexFooUndefinedLink = await screen.findByRole('link', {
+      let indexFooUndefinedLink = await screen.findByRole('link', {
         name: 'Index foo=undefined',
       })
 
-      const indexFooUndefinedExactLink = await screen.findByRole('link', {
+      let indexFooUndefinedExactLink = await screen.findByRole('link', {
         name: 'Index foo=undefined-exact',
       })
 
-      const indexFooBarLink = await screen.findByRole('link', {
+      let indexFooBarLink = await screen.findByRole('link', {
         name: 'Index foo=bar',
       })
 
@@ -261,6 +261,19 @@ describe('Link', () => {
 
       await waitFor(() => {
         expect(window.location.search).toBe('?foo=bar')
+      })
+
+      indexExactLink = await screen.findByRole('link', {
+        name: 'Index exact',
+      })
+      indexFooUndefinedLink = await screen.findByRole('link', {
+        name: 'Index foo=undefined',
+      })
+      indexFooUndefinedExactLink = await screen.findByRole('link', {
+        name: 'Index foo=undefined-exact',
+      })
+      indexFooBarLink = await screen.findByRole('link', {
+        name: 'Index foo=bar',
       })
 
       expect(indexExactLink.getAttribute('href')).toBe('/')
@@ -999,7 +1012,7 @@ describe('Link', () => {
         standalone: true,
       })
       class PostsComponentClass {
-        context = injectRouterContext({ strict: false })
+        context = injectRouteContext({ strict: false })
       }
       return PostsComponentClass
     }

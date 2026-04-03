@@ -4,6 +4,7 @@ import {
 import type { EnvironmentInjector } from '@angular/core'
 import type { RouterHistory } from '@tanstack/history'
 import type { ErrorRouteComponent, RouteComponent } from './route'
+import { getStoreFactory } from './routerStores'
 import type {
   AnyRoute,
   RouterOptions,
@@ -136,6 +137,6 @@ export class Router<
       TDehydrated
     >,
   ) {
-    super(options as any)
+    super(options as any, getStoreFactory)
   }
 }

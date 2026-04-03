@@ -12,7 +12,7 @@ import {
 } from '@angular/core'
 import { TanStackRouterDevtoolsPanelCore } from '@tanstack/router-devtools-core'
 import { injectRouter } from '@tanstack/angular-router-experimental'
-import { injectLazyRouterState } from './utils'
+import { injectStore } from '@tanstack/angular-router-experimental'
 import type { AnyRouter } from '@tanstack/router-core'
 
 export interface TanStackRouterDevtoolsPanelOptions {
@@ -72,7 +72,7 @@ export class TanStackRouterDevtoolsPanel {
 
   private contextRouter = injectRouter({ warn: false })
   private router = computed(() => this.inputRouter() ?? this.contextRouter)
-  private routerState = injectLazyRouterState(this.router)
+  private routerState = injectStore(() => this.router()?.stores.__store)
 
   private injector = inject(EnvironmentInjector)
 

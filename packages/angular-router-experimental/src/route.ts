@@ -9,6 +9,7 @@ import { injectLoaderDeps } from './injectLoaderDeps'
 import { injectMatch } from './injectMatch'
 import { injectNavigate } from './injectNavigate'
 import { injectParams } from './injectParams'
+import { injectRouteContext } from './injectRouteContext'
 import { injectRouter } from './injectRouter'
 import { injectSearch } from './injectSearch'
 import type { InjectParamsRoute } from './injectParams'
@@ -97,10 +98,7 @@ export class RouteApi<
   }
 
   injectRouteContext: InjectRouteContextRoute<TId> = (opts) => {
-    return injectMatch({
-      from: this.id as any,
-      select: (d) => (opts?.select ? opts.select(d.context) : d.context),
-    }) as any
+    return injectRouteContext({ ...(opts as any), from: this.id as any }) as any
   }
 
   injectSearch: InjectSearchRoute<TId> = (opts) => {

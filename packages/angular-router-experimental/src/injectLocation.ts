@@ -1,6 +1,8 @@
-import { injectRouterState } from './injectRouterState'
+import { deepEqual } from '@tanstack/router-core'
+import { injectRouter } from './injectRouter'
+import { injectStore } from './injectStore'
 import type * as Angular from '@angular/core'
-import type { AnyRouter, RegisteredRouter, RouterState } from '@tanstack/router-core'
+import { type AnyRouter, type RegisteredRouter, type RouterState } from '@tanstack/router-core'
 
 export interface InjectLocationOptions<TRouter extends AnyRouter, TSelected> {
   select?: (
@@ -21,7 +23,12 @@ export function injectLocation<
 >(
   opts?: InjectLocationOptions<TRouter, TSelected>,
 ): Angular.Signal<InjectLocationResult<TRouter, TSelected>> {
-  return injectRouterState({
-    select: (s) => (opts?.select ? opts.select(s.location) : s.location),
-  }) as any
+  const router = injectRouter<TRouter>()
+
+  return injectStore(
+    router.stores.location,
+    (location) =>
+      (opts?.select ? opts.select(location as any) : location) as any,
+    { equal: deepEqual }
+  ) as Angular.Signal<InjectLocationResult<TRouter, TSelected>>
 }

@@ -5,7 +5,7 @@ import {
   trimPathRight,
 } from '@tanstack/router-core'
 import { injectRouter } from './injectRouter'
-import { injectRouterState } from './injectRouterState'
+import { injectStore } from './injectStore'
 import type { AnyRouter } from '@tanstack/router-core'
 
 // Track mount state per router to avoid double-loading
@@ -36,17 +36,25 @@ export function injectTransitionerSetup() {
 
   const destroyRef = Angular.inject(Angular.DestroyRef)
   let destroyed = false
-  const isLoading = injectRouterState({
-    select: (s) => s.isLoading,
-  })
+  const isLoading = injectStore(router.stores.isLoading, (value) => value)
 
   // Track if we're in a transition
-  const isTransitioning = Angular.signal(false)
+  const isTransitioning = injectStore(
+    router.stores.isTransitioning,
+    (value) => value,
+  )
 
   // Track pending state changes
-  const hasPendingMatches = injectRouterState({
-    select: (s) => s.matches.some((d) => d.status === 'pending'),
-  })
+  const hasPendingMatches = injectStore(
+    router.stores.hasPendingMatches,
+    (value) => value,
+  )
+  const status = injectStore(router.stores.status, (value) => value)
+  const location = injectStore(router.stores.location, (value) => value)
+  const resolvedLocation = injectStore(
+    router.stores.resolvedLocation,
+    (value) => value,
+  )
 
   const isAnyPending = Angular.computed(
     () => isLoading() || isTransitioning() || hasPendingMatches(),
@@ -64,13 +72,7 @@ export function injectTransitionerSetup() {
   // Implement startTransition similar to React/Solid
   // Angular doesn't have a native startTransition like React 18, so we simulate it
   router.startTransition = (fn: () => void | Promise<void>) => {
-    isTransitioning.set(true)
-    // Also update the router state so useMatch can check it
-    try {
-      router.__store.setState((s) => ({ ...s, isTransitioning: true }))
-    } catch {
-      // Ignore errors if component is unmounted
-    }
+    router.stores.isTransitioning.setState(() => true)
 
     // Helper to end the transition
     const endTransition = () => {
@@ -82,8 +84,7 @@ export function injectTransitionerSetup() {
         {
           read: () => {
             try {
-              isTransitioning.set(false)
-              router.__store.setState((s) => ({ ...s, isTransitioning: false }))
+              router.stores.isTransitioning.setState(() => false)
             } catch {
               // Ignore errors if component is unmounted
             }
@@ -131,11 +132,10 @@ export function injectTransitionerSetup() {
   Angular.afterNextRender(() => {
     isMounted.set(true)
     if (!isAnyPending()) {
-      router.__store.setState((s) =>
-        s.status === 'pending'
-          ? { ...s, status: 'idle', resolvedLocation: s.location }
-          : s,
-      )
+      if (status() === 'pending') {
+        router.stores.status.setState(() => 'idle')
+        router.stores.resolvedLocation.setState(() => location())
+      }
     }
   })
 
@@ -176,7 +176,10 @@ export function injectTransitionerSetup() {
       if (prevIsLoading() && !isLoading()) {
         router.emit({
           type: 'onLoad',
-          ...getLocationChangeInfo(router.state),
+          ...getLocationChangeInfo(
+            location(),
+            resolvedLocation(),
+          ),
         })
       }
     } catch {
@@ -191,7 +194,10 @@ export function injectTransitionerSetup() {
       if (prevIsPagePending() && !isPagePending()) {
         router.emit({
           type: 'onBeforeRouteMount',
-          ...getLocationChangeInfo(router.state),
+          ...getLocationChangeInfo(
+            location(),
+            resolvedLocation(),
+          ),
         })
       }
     } catch {
@@ -206,18 +212,18 @@ export function injectTransitionerSetup() {
       if (
         prevIsAnyPending() &&
         !isAnyPending() &&
-        router.__store.state.status === 'pending'
+        status() === 'pending'
       ) {
-        router.__store.setState((s) => ({
-          ...s,
-          status: 'idle',
-          resolvedLocation: s.location,
-        }))
+        router.stores.status.setState(() => 'idle')
+        router.stores.resolvedLocation.setState(() => location())
       }
 
       // The router was pending and now it's not
       if (prevIsAnyPending() && !isAnyPending()) {
-        const changeInfo = getLocationChangeInfo(router.state)
+        const changeInfo = getLocationChangeInfo(
+          location(),
+          resolvedLocation(),
+        )
         router.emit({
           type: 'onResolved',
           ...changeInfo,

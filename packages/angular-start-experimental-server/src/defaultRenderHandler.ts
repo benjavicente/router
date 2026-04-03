@@ -30,7 +30,10 @@ function createAngularRenderHandler(
   appConfig: ApplicationConfig,
   options?: CreateServerHandlerOptions,
 ) {
-  if (process.env.NODE_ENV === 'production') {
+  if (
+    (globalThis as { process?: { env?: { NODE_ENV?: string } } }).process?.env
+      ?.NODE_ENV === 'production'
+  ) {
     enableProdMode()
   }
 

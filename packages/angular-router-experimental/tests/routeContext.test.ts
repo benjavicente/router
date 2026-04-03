@@ -8,7 +8,7 @@ import {
   createRootRouteWithContext,
   createRoute,
   createRouter,
-  injectRouterContext,
+  injectRouteContext,
   redirect,
 } from '../src'
 
@@ -29,7 +29,7 @@ describe('route context runtime behavior', () => {
       standalone: true,
     })
     class IndexComponent {
-      ctx = injectRouterContext({ from: '/' })
+      ctx = injectRouteContext({ from: '/' })
     }
 
     const indexRoute = createRoute({
@@ -70,7 +70,7 @@ describe('route context runtime behavior', () => {
       standalone: true,
     })
     class PostComponent {
-      ctx = injectRouterContext({ from: '/posts/$postId' })
+      ctx = injectRouteContext({ from: '/posts/$postId' })
     }
 
     const postsRoute = createRoute({
@@ -123,7 +123,7 @@ describe('route context runtime behavior', () => {
       standalone: true,
     })
     class TargetComponent {
-      ctx = injectRouterContext({ from: '/target' })
+      ctx = injectRouteContext({ from: '/target' })
     }
 
     const indexRoute = createRoute({

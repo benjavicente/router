@@ -1,6 +1,8 @@
-import { injectStore } from './injectStore'
+import { isServer } from '@tanstack/router-core/isServer'
+import * as Angular from '@angular/core'
+import { deepEqual } from '@tanstack/router-core'
 import { injectRouter } from './injectRouter'
-import type * as Angular from '@angular/core'
+import { injectStore } from './injectStore'
 import type {
   AnyRouter,
   RegisteredRouter,
@@ -26,12 +28,25 @@ export function injectRouterState<
   const contextRouter = injectRouter({
     warn: opts?.router === undefined,
   })
-
   const router = opts?.router ?? contextRouter
+  const state = injectStore(router.stores.__store, (state) => state)
 
-  return injectStore(router.__store, (state) => {
-    if (opts?.select) return opts.select(state)
+  // During SSR we render exactly once and do not need reactivity.
+  // Avoid subscribing to the store on the server since the server store
+  // implementation does not provide subscribe() semantics.
+  const _isServer = isServer ?? router.isServer
+  if (_isServer) {
+    const state = router.stores.__store.state as RouterState<
+      TRouter['routeTree']
+    >
+    const selected = (
+      opts?.select ? opts.select(state) : state
+    ) as InjectRouterStateResult<TRouter, TSelected>
+    return (() => selected) as Angular.Signal<InjectRouterStateResult<TRouter, TSelected>>
+  }
 
-    return state
-  }) as Angular.Signal<InjectRouterStateResult<TRouter, TSelected>>
+  return Angular.computed(() => {
+    const result = opts?.select ? opts.select(state()) : state()
+    return result as InjectRouterStateResult<TRouter, TSelected>
+  }, { equal: deepEqual }) as any;
 }

@@ -1,14 +1,23 @@
 import * as Angular from '@angular/core'
+import type { AnyRouteMatch } from '@tanstack/router-core'
 
-export const MATCH_ID_INJECTOR_TOKEN = new Angular.InjectionToken<
-  Angular.Signal<string | undefined>
->('MATCH_ID_INJECTOR', {
-  factory: () => Angular.signal(undefined),
-})
+export type NearestMatchContextValue = {
+  matchId: () => string | undefined,
+  routeId: () => string | undefined,
+  match: () => AnyRouteMatch | undefined,
+  hasPending: () => boolean,
+}
 
-// N.B. this only exists so we can conditionally inject a value when we are not interested in the nearest match
-export const DUMMY_MATCH_ID_INJECTOR_TOKEN = new Angular.InjectionToken<
-  Angular.Signal<string | undefined>
->('DUMMY_MATCH_ID_INJECTOR', {
-  factory: () => Angular.signal(undefined),
+const defaultNearestMatchContext: NearestMatchContextValue = {
+  matchId: () => undefined,
+  routeId: () => undefined,
+  match: () => undefined,
+  hasPending: () => false,
+}
+
+export const MATCH_CONTEXT_INJECTOR_TOKEN = new Angular.InjectionToken<
+  NearestMatchContextValue
+>('MATCH_CONTEXT_INJECTOR', {
+  providedIn: 'root',
+  factory: () => defaultNearestMatchContext,
 })

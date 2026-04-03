@@ -4,7 +4,7 @@ import {
   createRootRouteWithContext,
   createRoute,
   createRouter,
-  injectRouterContext,
+  injectRouteContext,
 } from '../src'
 import type * as Angular from '@angular/core'
 
@@ -37,33 +37,33 @@ test('when there is no context', () => {
 
   type DefaultRouter = typeof _defaultRouter
 
-  expectTypeOf(injectRouterContext<DefaultRouter>)
+  expectTypeOf(injectRouteContext<DefaultRouter>)
     .parameter(0)
     .toHaveProperty('from')
     .toExtend<'/invoices' | '__root__' | '/invoices/' | '/' | undefined>()
 
-  expectTypeOf(injectRouterContext<DefaultRouter>)
+  expectTypeOf(injectRouteContext<DefaultRouter>)
     .parameter(0)
     .toHaveProperty('strict')
     .toEqualTypeOf<true | undefined>()
 
-  expectTypeOf(injectRouterContext<DefaultRouter, '/'>)
+  expectTypeOf(injectRouteContext<DefaultRouter, '/'>)
     .parameter(0)
     .toHaveProperty('select')
     .parameter(0)
     .toEqualTypeOf<{}>()
 
-  expectTypeOf(injectRouterContext<DefaultRouter, '/'>)
+  expectTypeOf(injectRouteContext<DefaultRouter, '/'>)
     .parameter(0)
     .toHaveProperty('select')
     .returns.toEqualTypeOf<unknown>()
 
-  expectTypeOf(injectRouterContext<DefaultRouter, '/'>).returns.toEqualTypeOf<
+  expectTypeOf(injectRouteContext<DefaultRouter, '/'>).returns.toEqualTypeOf<
     Angular.Signal<{}>
   >()
 
   expectTypeOf(
-    injectRouterContext<DefaultRouter, '/', false>({
+    injectRouteContext<DefaultRouter, '/', false>({
       strict: false,
     }),
   ).toEqualTypeOf<Angular.Signal<{}>>()
@@ -108,32 +108,32 @@ test('when there is the root context', () => {
 
   type DefaultRouter = typeof _defaultRouter
 
-  expectTypeOf(injectRouterContext<DefaultRouter, '/'>).returns.toEqualTypeOf<
+  expectTypeOf(injectRouteContext<DefaultRouter, '/'>).returns.toEqualTypeOf<
     Angular.Signal<{
       userId: string
     }>
   >()
 
   expectTypeOf(
-    injectRouterContext<DefaultRouter, '/invoices/$invoiceId'>,
+    injectRouteContext<DefaultRouter, '/invoices/$invoiceId'>,
   ).returns.toEqualTypeOf<Angular.Signal<{ userId: string }>>()
 
-  expectTypeOf(injectRouterContext<DefaultRouter, '/invoices/$invoiceId'>)
+  expectTypeOf(injectRouteContext<DefaultRouter, '/invoices/$invoiceId'>)
     .parameter(0)
     .toHaveProperty('select')
     .toEqualTypeOf<((search: { userId: string }) => unknown) | undefined>()
 
   expectTypeOf(
-    injectRouterContext<DefaultRouter, '/invoices', false>,
+    injectRouteContext<DefaultRouter, '/invoices', false>,
   ).returns.toEqualTypeOf<Angular.Signal<{ userId?: string }>>()
 
-  expectTypeOf(injectRouterContext<DefaultRouter, '/invoices', false>)
+  expectTypeOf(injectRouteContext<DefaultRouter, '/invoices', false>)
     .parameter(0)
     .toHaveProperty('select')
     .toEqualTypeOf<((search: { userId?: string }) => unknown) | undefined>()
 
   expectTypeOf(
-    injectRouterContext<DefaultRouter, '/invoices', false, number>,
+    injectRouteContext<DefaultRouter, '/invoices', false, number>,
   ).returns.toEqualTypeOf<Angular.Signal<number>>()
 })
 
@@ -191,28 +191,28 @@ test('when there are multiple contexts', () => {
 
   type DefaultRouter = typeof _defaultRouter
 
-  expectTypeOf(injectRouterContext<DefaultRouter, '/'>).returns.toEqualTypeOf<
+  expectTypeOf(injectRouteContext<DefaultRouter, '/'>).returns.toEqualTypeOf<
     Angular.Signal<{
       userId: string
     }>
   >()
 
   expectTypeOf(
-    injectRouterContext<DefaultRouter, '/invoices/$invoiceId'>,
+    injectRouteContext<DefaultRouter, '/invoices/$invoiceId'>,
   ).returns.toEqualTypeOf<Angular.Signal<{ userId: string }>>()
 
-  expectTypeOf(injectRouterContext<DefaultRouter, '/invoices/$invoiceId'>)
+  expectTypeOf(injectRouteContext<DefaultRouter, '/invoices/$invoiceId'>)
     .parameter(0)
     .toHaveProperty('select')
     .toEqualTypeOf<((search: { userId: string }) => unknown) | undefined>()
 
   expectTypeOf(
-    injectRouterContext<DefaultRouter, '/invoices', false>,
+    injectRouteContext<DefaultRouter, '/invoices', false>,
   ).returns.toEqualTypeOf<
     Angular.Signal<{ userId?: string; username?: string }>
   >()
 
-  expectTypeOf(injectRouterContext<DefaultRouter, '/invoices', false>)
+  expectTypeOf(injectRouteContext<DefaultRouter, '/invoices', false>)
     .parameter(0)
     .toHaveProperty('select')
     .toEqualTypeOf<
@@ -276,14 +276,14 @@ test('when there are overlapping contexts', () => {
 
   type DefaultRouter = typeof _defaultRouter
 
-  expectTypeOf(injectRouterContext<DefaultRouter, '/'>).returns.toEqualTypeOf<
+  expectTypeOf(injectRouteContext<DefaultRouter, '/'>).returns.toEqualTypeOf<
     Angular.Signal<{
       userId: string
     }>
   >
 
   expectTypeOf(
-    injectRouterContext<DefaultRouter, '/invoices/$invoiceId'>,
+    injectRouteContext<DefaultRouter, '/invoices/$invoiceId'>,
   ).returns.toEqualTypeOf<
     Angular.Signal<{
       userId: string
@@ -291,7 +291,7 @@ test('when there are overlapping contexts', () => {
     }>
   >()
 
-  expectTypeOf(injectRouterContext<DefaultRouter, '/invoices/$invoiceId'>)
+  expectTypeOf(injectRouteContext<DefaultRouter, '/invoices/$invoiceId'>)
     .parameter(0)
     .toHaveProperty('select')
     .toEqualTypeOf<
@@ -303,7 +303,7 @@ test('when there are overlapping contexts', () => {
     >()
 
   expectTypeOf(
-    injectRouterContext<DefaultRouter, '/invoices', false>,
+    injectRouteContext<DefaultRouter, '/invoices', false>,
   ).returns.toEqualTypeOf<
     Angular.Signal<{
       userId?: string
@@ -311,7 +311,7 @@ test('when there are overlapping contexts', () => {
     }>
   >()
 
-  expectTypeOf(injectRouterContext<DefaultRouter, '/invoices', false>)
+  expectTypeOf(injectRouteContext<DefaultRouter, '/invoices', false>)
     .parameter(0)
     .toHaveProperty('select')
     .toEqualTypeOf<
@@ -322,5 +322,4 @@ test('when there are overlapping contexts', () => {
       | undefined
     >()
 })
-
 

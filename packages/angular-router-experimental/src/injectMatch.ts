@@ -1,10 +1,8 @@
 import * as Angular from '@angular/core'
-import invariant from 'tiny-invariant'
-import { injectRouterState } from './injectRouterState'
-import {
-  DUMMY_MATCH_ID_INJECTOR_TOKEN,
-  MATCH_ID_INJECTOR_TOKEN,
-} from './matchInjectorToken'
+import { replaceEqualDeep, invariant, deepEqual } from '@tanstack/router-core'
+import { MATCH_CONTEXT_INJECTOR_TOKEN } from './matchInjectorToken'
+import { injectRouter } from './injectRouter'
+import { injectStore } from './injectStore'
 import type {
   AnyRouter,
   MakeRouteMatch,
@@ -72,49 +70,49 @@ export function injectMatch<
 ): Angular.Signal<
   ThrowOrOptional<InjectMatchResult<TRouter, TFrom, TStrict, TSelected>, TThrow>
 > {
-  const nearestMatchId = Angular.inject(
-    opts.from ? DUMMY_MATCH_ID_INJECTOR_TOKEN : MATCH_ID_INJECTOR_TOKEN,
-  )
-
-  const matchState = injectRouterState({
-    select: (state) => {
-      const match = state.matches.find((d) =>
-        opts.from ? opts.from === d.routeId : d.id === nearestMatchId(),
-      )
-
-      if (match === undefined) {
-        // During navigation transitions, check if the match exists in pendingMatches
-        const pendingMatch = state.pendingMatches?.find((d) =>
-          opts.from ? opts.from === d.routeId : d.id === nearestMatchId(),
-        )
-
-        // Determine if we should throw an error
-        const shouldThrowError =
-          !pendingMatch && !state.isTransitioning && (opts.shouldThrow ?? true)
-
-        return {
-          match: undefined,
-          shouldThrowError,
-        } as const
+  const router = injectRouter<TRouter>()
+  const nearestMatch = opts.from
+    ? undefined
+    : Angular.inject(MATCH_CONTEXT_INJECTOR_TOKEN)
+  
+    const match = () => {
+      if (opts.from) {
+        return router.stores.getMatchStoreByRouteId(opts.from).state
       }
 
-      return {
-        match: opts.select ? opts.select(match) : match,
-        shouldThrowError: false,
-      } as const
-    },
-  })
-
-  // Throw the error if we have one - this happens after the selector runs
-  // Using a computed so the error is thrown when the return value is accessed
-  return Angular.computed(() => {
-    const state = matchState()
-    if (state.shouldThrowError) {
-      invariant(
-        false,
-        `Could not find ${opts.from ? `an active match from "${opts.from}"` : 'a nearest match!'}`,
-      )
+      return nearestMatch?.match()
     }
-    return state.match as any
-  })
+
+
+
+    Angular.effect(() => {
+      if (match() !== undefined) {
+        return
+      }
+
+      const hasPendingMatch = opts.from
+        ? Boolean(router.stores.pendingRouteIds.state[opts.from])
+        : nearestMatch?.hasPending() ?? false
+        
+        
+      if (
+        !hasPendingMatch &&
+        !router.stores.isTransitioning.state &&
+        (opts.shouldThrow ?? true)) {
+          if (process.env.NODE_ENV !== 'production') {
+            throw new Error(
+              `Invariant failed: Could not find ${opts.from ? `an active match from "${opts.from}"` : 'a nearest match!'}`,
+            )
+          }
+    
+          invariant()
+        }
+    })
+
+  return Angular.computed(() => {
+    const selectedMatch = match()
+
+    if (selectedMatch === undefined) return undefined
+    return opts.select ? opts.select(selectedMatch as any) : selectedMatch
+  }, { equal: deepEqual }) as any
 }

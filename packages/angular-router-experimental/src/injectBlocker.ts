@@ -73,7 +73,7 @@ export type UseBlockerOpts<
 > = {
   shouldBlockFn: ShouldBlockFn<TRouter>
   enableBeforeUnload?: boolean | (() => boolean)
-  disabled?: boolean | (() => boolean)
+  disabled?: boolean
   withResolver?: TWithResolver
 }
 
@@ -95,14 +95,14 @@ export function injectBlocker<
 ): TWithResolver extends true
   ? Angular.Signal<BlockerResolver<TRouter>>
   : void {
-  const shouldBlockFn = opts.shouldBlockFn as ShouldBlockFn<AnyRouter>
+  const {
+    shouldBlockFn,
+    enableBeforeUnload = true,
+    disabled = false,
+    withResolver = false,
+  } = opts
   const router = injectRouter()
-
-  const isDisabled = Angular.computed(() => {
-    return typeof opts.disabled === 'function'
-      ? opts.disabled()
-      : (opts.disabled ?? false)
-  })
+  const { history } = router
 
   const resolver = Angular.signal<BlockerResolver>({
     status: 'idle',
@@ -150,10 +150,10 @@ export function injectBlocker<
 
       const shouldBlock = await shouldBlockFn({
         action: blockerFnArgs.action,
-        current,
-        next,
+        current: current as MakeShouldBlockFnLocationUnion<TRouter>,
+        next: next as MakeShouldBlockFnLocationUnion<TRouter>,
       })
-      if (!opts.withResolver) {
+      if (!withResolver) {
         return shouldBlock
       }
 
@@ -164,8 +164,8 @@ export function injectBlocker<
       const promise = new Promise<boolean>((resolve) => {
         resolver.set({
           status: 'blocked',
-          current,
-          next,
+          current: current as MakeShouldBlockFnLocationUnion<TRouter>,
+          next: next as MakeShouldBlockFnLocationUnion<TRouter>,
           action: blockerFnArgs.action,
           proceed: () => resolve(false),
           reset: () => resolve(true),
@@ -184,13 +184,10 @@ export function injectBlocker<
 
       return canNavigateAsync
     }
-
-    const disposeBlock = isDisabled()
+    const isDisabled = typeof disabled === 'function' ? disabled() : disabled
+    const disposeBlock = isDisabled
       ? undefined
-      : router.history.block({
-          blockerFn: blockerFnComposed,
-          enableBeforeUnload: opts.enableBeforeUnload,
-        })
+      : history.block({ blockerFn: blockerFnComposed, enableBeforeUnload })
 
     onCleanup(() => disposeBlock?.())
   })

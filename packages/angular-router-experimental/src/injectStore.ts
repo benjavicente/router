@@ -1,20 +1,12 @@
-// https://github.com/TanStack/store/pull/291
-
 import {
-  Injector,
   assertInInjectionContext,
   effect,
-  inject,
   linkedSignal,
-  runInInjectionContext,
 } from '@angular/core'
 import type { CreateSignalOptions, Signal } from '@angular/core'
 
 type ReadableStore<TState> = {
   state: TState
-  subscribe: (
-    listener: (value: { currentVal: TState; prevVal: TState }) => void,
-  ) => () => void
 }
 
 export function injectStore<TState, TSelected = NoInfer<TState>>(
@@ -23,32 +15,24 @@ export function injectStore<TState, TSelected = NoInfer<TState>>(
     | (() => ReadableStore<TState>),
   selector: (state: NoInfer<TState>) => TSelected = (d) =>
     d as unknown as TSelected,
-  options: CreateSignalOptions<TSelected> & { injector?: Injector } = {
+  options: CreateSignalOptions<TSelected> = {
     equal: shallow,
   },
 ): Signal<TSelected> {
-  if (!options.injector) {
-    assertInInjectionContext(injectStore)
-    options.injector = inject(Injector)
-  }
+  assertInInjectionContext(injectStore)
 
-  return runInInjectionContext(options.injector, () => {
-    const storeSignal =
-      typeof storeOrStoreSignal === 'function'
-        ? storeOrStoreSignal
-        : () => storeOrStoreSignal
+  const storeSignal =
+    typeof storeOrStoreSignal === 'function'
+      ? storeOrStoreSignal
+      : () => storeOrStoreSignal
 
-    const slice = linkedSignal(() => selector(storeSignal().state), options)
+  const slice = linkedSignal(() => selector(storeSignal().state), options)
 
-    effect((onCleanup) => {
-      const unsubscribe = storeSignal().subscribe(({ currentVal }) => {
-        slice.set(selector(currentVal))
-      })
-      onCleanup(() => unsubscribe())
-    })
-
-    return slice.asReadonly()
+  effect(() => {
+    slice()
   })
+
+  return slice.asReadonly()
 }
 
 function shallow<T>(objA: T, objB: T) {

@@ -22,9 +22,3 @@ export function injectNavigate<
     })
   }) as UseNavigateResult<TDefaultFrom>
 }
-
-export type InjectNavigateResult<
-  TRouter extends AnyRouter = RegisteredRouter,
-  TDefaultFrom extends string = string,
-> = UseNavigateResult<TDefaultFrom> &
-  (TRouter extends AnyRouter ? unknown : never)

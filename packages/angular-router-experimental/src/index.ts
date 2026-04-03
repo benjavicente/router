@@ -37,9 +37,17 @@ export { provideHeadContent } from './provideHeadContent'
 // Components
 export { Outlet, RouteMatch } from './Match'
 export { Matches } from './Matches'
+export {
+  injectMatches,
+  injectParentMatches,
+  injectChildMatches,
+  type InjectMatchesBaseOptions,
+  type InjectMatchesResult,
+} from './injectMatches'
+export { injectMatchRoute, type InjectMatchRouteOptions } from './injectMatchRoute'
 
 // Injection functions
-export { injectRouter, type InjectRouterResult } from './injectRouter'
+export { injectRouter } from './injectRouter'
 
 export {
   injectRouterState,
@@ -47,7 +55,7 @@ export {
   type InjectRouterStateResult,
 } from './injectRouterState'
 
-export { injectNavigate, type InjectNavigateResult } from './injectNavigate'
+export { injectNavigate } from './injectNavigate'
 
 export {
   injectMatch,
@@ -86,7 +94,7 @@ export {
 } from './injectLoaderDeps'
 
 export {
-  injectRouterContext,
+  injectRouteContext,
   type InjectRouteContextRoute,
 } from './injectRouteContext'
 
@@ -94,7 +102,7 @@ export {
   injectLocation,
   type InjectLocationOptions,
   type InjectLocationResult,
-} from './injectLocationResult'
+} from './injectLocation'
 
 export {
   injectBlocker,
@@ -106,6 +114,8 @@ export {
 export { injectCanGoBack } from './injectCanGoBack'
 
 export { injectErrorState } from './injectErrorState'
+
+export { injectStore } from './injectStore'
 
 // Link
 export { type LinkOptions as LinkInputOptions, Link } from './Link'

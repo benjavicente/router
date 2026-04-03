@@ -2,7 +2,6 @@ import * as Angular from '@angular/core'
 import {
   AnyRouter,
   LinkOptions as CoreLinkOptions,
-  LinkCurrentTargetElement,
   RegisteredRouter,
   RoutePaths,
   deepEqual,
@@ -10,7 +9,7 @@ import {
   preloadWarning,
   removeTrailingSlash,
 } from '@tanstack/router-core'
-import { injectRouterState } from './injectRouterState'
+import { injectLocation } from './injectLocation'
 import { injectRouter } from './injectRouter'
 import { injectIntersectionObserver } from './injectIntersectionObserver'
 
@@ -54,10 +53,6 @@ export class Link<
   protected router = injectRouter()
   protected isTransitioning = Angular.signal(false)
 
-  protected currentSearch = injectRouterState({
-    select: (s) => s.location.searchStr,
-  })
-
   protected from = Angular.computed(() =>
     Angular.untracked(() => this.options().from),
   )
@@ -75,8 +70,11 @@ export class Link<
   })
 
   protected nextLocation = Angular.computed(() => {
-    this.currentSearch()
-    return this.router.buildLocation(this._options() as any)
+    const currentLocation = this.location()
+    return this.router.buildLocation({
+      _fromLocation: currentLocation,
+      ...this._options(),
+    } as any)
   })
 
   protected hrefOption = Angular.computed(() => {
@@ -84,23 +82,12 @@ export class Link<
       return undefined
     }
 
-    let href
-    const maskedLocation = this.nextLocation().maskedLocation
-    if (maskedLocation) {
-      href = maskedLocation.url.href
-    } else {
-      href = this.nextLocation().url.href
-    }
-    let external = false
-    if (this.router.origin) {
-      if (href.startsWith(this.router.origin)) {
-        href = this.router.history.createHref(
-          href.replace(this.router.origin, ''),
-        )
-      } else {
-        external = true
-      }
-    }
+    const location = this.nextLocation().maskedLocation ?? this.nextLocation()
+    const external = location.external
+    const href = external
+      ? location.publicHref
+      : this.router.history.createHref(location.publicHref) || '/'
+
     return { href, external }
   })
 
@@ -131,10 +118,7 @@ export class Link<
     )
   })
 
-  protected location = injectRouterState({
-    select: (s) => s.location,
-  })
-
+  protected location = injectLocation<TRouter>()
 
   protected isActiveProps = Angular.computed(() => {
     const opts = this.options()
@@ -148,8 +132,9 @@ export class Link<
     if (this.externalLink()) return false
 
     const options = this.options()
+    const activeOptions = options.activeOptions
 
-    if (options.activeOptions?.exact) {
+    if (activeOptions?.exact) {
       const testExact = exactPathTest(
         this.location().pathname,
         this.nextLocation().pathname,
@@ -178,13 +163,13 @@ export class Link<
       }
     }
 
-    if (options.activeOptions?.includeSearch ?? true) {
+    if (activeOptions?.includeSearch ?? true) {
       const searchTest = deepEqual(
         this.location().search,
         this.nextLocation().search,
         {
-          partial: !options.activeOptions?.exact,
-          ignoreUndefined: !options.activeOptions?.explicitUndefined,
+          partial: !activeOptions?.exact,
+          ignoreUndefined: !activeOptions?.explicitUndefined,
         },
       )
       if (!searchTest) {
@@ -192,7 +177,7 @@ export class Link<
       }
     }
 
-    if (options.activeOptions?.includeHash) {
+    if (activeOptions?.includeHash) {
       return this.location().hash === this.nextLocation().hash
     }
     return true
@@ -272,7 +257,7 @@ export class Link<
 
   protected handleEnter = (event: MouseEvent) => {
     if (this._options().disabled) return
-    const eventTarget = (event.currentTarget || {}) as LinkCurrentTargetElement
+    const eventTarget = (event.currentTarget || {}) as EventTargetWithPreloadTimeout
 
     if (this.preload()) {
       if (eventTarget.preloadTimeout) {
@@ -288,7 +273,7 @@ export class Link<
 
   protected handleLeave = (event: MouseEvent) => {
     if (this._options().disabled) return
-    const eventTarget = (event.currentTarget || {}) as LinkCurrentTargetElement
+    const eventTarget = (event.currentTarget || {}) as EventTargetWithPreloadTimeout
 
     if (eventTarget.preloadTimeout) {
       clearTimeout(eventTarget.preloadTimeout)
@@ -305,6 +290,10 @@ interface ActiveLinkProps {
 interface ActiveLinkOptionProps {
   activeProps?: ActiveLinkProps
   inactiveProps?: ActiveLinkProps
+}
+
+type EventTargetWithPreloadTimeout = EventTarget & {
+  preloadTimeout?: ReturnType<typeof setTimeout> | null
 }
 
 export type LinkOptions<
@@ -330,13 +319,22 @@ type PassiveEvents = {
 
 function injectPasiveEvents(passiveEvents: () => PassiveEvents) {
   const element = Angular.inject(Angular.ElementRef).nativeElement
+  const destroyRef = Angular.inject(Angular.DestroyRef)
   const renderer = Angular.inject(Angular.Renderer2)
+  const cleanups: Array<() => void> = []
 
   Angular.afterNextRender(() => {
     for (const [event, handler] of Object.entries(passiveEvents())) {
-      renderer.listen(element, event, handler, {
+      const cleanup = renderer.listen(element, event, handler, {
         passive: true,
       })
+      cleanups.push(cleanup)
+    }
+  })
+
+  destroyRef.onDestroy(() => {
+    while (cleanups.length) {
+      cleanups.pop()?.()
     }
   })
 }

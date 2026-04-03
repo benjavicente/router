@@ -7,6 +7,7 @@
 import { DOCUMENT } from '@angular/common'
 import * as Angular from '@angular/core'
 import type { AnyRouter, RouterManagedTag } from '@tanstack/router-core'
+import { injectStore } from './injectStore'
 
 const HEAD_CONTENT_ROUTER_INJECTION_KEY = new Angular.InjectionToken<AnyRouter>(
   'HEAD_CONTENT_ROUTER',
@@ -62,6 +63,11 @@ export function provideHeadContent(
           optional: true,
         }),
         destroyRef: Angular.inject(Angular.DestroyRef),
+        activeMatches: injectStore(
+          Angular.inject(HEAD_CONTENT_ROUTER_INJECTION_KEY).stores
+            .activeMatchesSnapshot,
+          (matches) => matches,
+        ),
       })
 
       manager.start()
@@ -73,16 +79,16 @@ export function buildManagedDocumentContent(
   router: AnyRouter,
 ): ManagedDocumentContent {
   const nonce = router.options.ssr?.nonce
-  const state = router.__store.state
-  const title = selectTitle(state.matches)
-  const metaTags = selectMetaTags(state.matches, nonce)
-  const links = selectConstructedLinks(state.matches, nonce)
-  const manifestLinks = selectManifestLinks(router, state.matches, nonce)
-  const preloadLinks = selectPreloadLinks(router, state.matches, nonce)
-  const styles = selectStyles(state.matches, nonce)
-  const headScripts = selectHeadScripts(state.matches, nonce)
-  const routeScripts = selectRouteScripts(state.matches, nonce)
-  const manifestScripts = selectManifestScripts(router, state.matches, nonce)
+  const matches = router.stores.activeMatchesSnapshot.state
+  const title = selectTitle(matches)
+  const metaTags = selectMetaTags(matches, nonce)
+  const links = selectConstructedLinks(matches, nonce)
+  const manifestLinks = selectManifestLinks(router, matches, nonce)
+  const preloadLinks = selectPreloadLinks(router, matches, nonce)
+  const styles = selectStyles(matches, nonce)
+  const headScripts = selectHeadScripts(matches, nonce)
+  const routeScripts = selectRouteScripts(matches, nonce)
+  const manifestScripts = selectManifestScripts(router, matches, nonce)
   const serverBufferedScript = selectServerBufferedScript(router)
 
   const head = uniqManagedTags(
@@ -116,11 +122,13 @@ function createHeadContentManager({
   document,
   rendererFactory,
   destroyRef,
+  activeMatches,
 }: {
   router: AnyRouter
   document: Document
   rendererFactory: Angular.RendererFactory2 | null
   destroyRef: Angular.DestroyRef
+  activeMatches: Angular.Signal<Array<any>>
 }) {
   const renderer = rendererFactory?.createRenderer(null, null) ?? null
   const initialTitle = document.title
@@ -151,7 +159,8 @@ function createHeadContentManager({
         nextContent: currentContent,
       })
 
-      const unsubscribe = router.__store.subscribe(() => {
+      const syncEffect = Angular.effect(() => {
+        activeMatches()
         const nextContent = buildManagedDocumentContent(router)
         if (areManagedDocumentContentsEqual(currentContent, nextContent)) {
           return
@@ -168,7 +177,7 @@ function createHeadContentManager({
       })
 
       destroyRef.onDestroy(() => {
-        unsubscribe()
+        syncEffect.destroy()
         headCollection.destroy()
         bodyCollection?.destroy()
         document.title = initialTitle

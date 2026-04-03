@@ -73,7 +73,7 @@ declare module '@tanstack/router-core' {
     >
   }
 
-  interface BeforeLoadContextOptions<
+  interface BeforeLoadContextOptionsExtensions<
     in out TRegister,
     in out TParentRoute extends AnyRoute,
     in out TSearchValidator,
@@ -92,7 +92,7 @@ declare module '@tanstack/router-core' {
     >
   }
 
-  interface LoaderFnContext<
+  interface LoaderFnContextExtensions<
     in out TRegister,
     in out TParentRoute extends AnyRoute = AnyRoute,
     in out TId extends string = string,

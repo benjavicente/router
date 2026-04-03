@@ -4,8 +4,8 @@ import {
   RegisteredRouter,
   RouterOptions,
 } from '@tanstack/router-core'
-import { injectRender } from './renderer/injectRender'
 import { Matches } from './Matches'
+import { injectRender } from './renderer/injectRender'
 import { getRouterInjectionKey } from './routerInjectionToken'
 
 const ROUTER_INPUT_INJECTION_KEY = new Angular.InjectionToken<AnyRouter>('ROUTER')
@@ -60,39 +60,55 @@ export function provideTanstackRouter({ router, context, options }: TanstackRout
   standalone: true,
 })
 export class RouterProvider<TRouter extends AnyRouter = RegisteredRouter> {
-  injectedContext = Angular.inject(CONTEXT_INPUT_INJECTION_KEY)
-  injectedOptions = Angular.inject(OPTIONS_INPUT_INJECTION_KEY)
-  injectedRouter = Angular.inject(ROUTER_INPUT_INJECTION_KEY, { optional: true })
+  readonly injectedContext: RouterInputs<TRouter>['context'] = Angular.inject(
+    CONTEXT_INPUT_INJECTION_KEY,
+  )
+  readonly injectedOptions: Omit<RouterInputs<TRouter>, 'router' | 'context'> =
+    Angular.inject(OPTIONS_INPUT_INJECTION_KEY)
+  readonly injectedRouter: AnyRouter | null = Angular.inject(
+    ROUTER_INPUT_INJECTION_KEY,
+    { optional: true },
+  )
 
-  context: Angular.InputSignal<RouterInputs<TRouter>['context']> =
-    Angular.input<RouterInputs<TRouter>['context']>(this.injectedContext as RouterInputs<TRouter>['context'])
-
-  options: Angular.InputSignal<
+  readonly context: Angular.InputSignal<RouterInputs<TRouter>['context']> =
+    Angular.input<RouterInputs<TRouter>['context']>(
+    this.injectedContext as RouterInputs<TRouter>['context'],
+  )
+  readonly options: Angular.InputSignal<
     Omit<RouterInputs<TRouter>, 'router' | 'context'>
-  > = Angular.input<Omit<RouterInputs<TRouter>, 'router' | 'context'>>(this.injectedOptions)
+  > = Angular.input<Omit<RouterInputs<TRouter>, 'router' | 'context'>>(
+    this.injectedOptions,
+  )
+  readonly routerInput: Angular.InputSignal<TRouter | undefined> =
+    Angular.input<TRouter | undefined>(undefined, {
+      alias: 'router',
+    })
 
-  inputRouter = Angular.input<AnyRouter>()
-
-  router = Angular.computed(() => {
-    const inputRouterValue = this.inputRouter()
-    if (inputRouterValue) return inputRouterValue
-    if (this.injectedRouter) return this.injectedRouter
-    throw new Error('No router provided to <router-provider>. Provide a router with provideTanstackRouter or the router input')
+  readonly router: Angular.Signal<TRouter> = Angular.computed(() => {
+    const inputRouter = this.routerInput()
+    if (inputRouter) return inputRouter
+    if (this.injectedRouter) return this.injectedRouter as TRouter
+    throw new Error(
+      'No router provided to <router-provider>. Provide a router with provideTanstackRouter or the router input',
+    )
   })
 
-  updateContext = Angular.effect(() => {
+  readonly updateRouter: Angular.EffectRef = Angular.effect(() => {
     const router = this.router()
     const context = this.context()
-    router.update({ context: { ...router.options.context, ...context } })
-  })
-
-  updateOptions = Angular.effect(() => {
-    const router = this.router()
     const options = this.options()
-    router.update({ ...router.options, ...options })
+
+    router.update({
+      ...router.options,
+      ...options,
+      context: {
+        ...router.options.context,
+        ...context,
+      },
+    })
   })
 
-  render = injectRender(() => {
+  readonly render: ReturnType<typeof injectRender> = injectRender(() => {
     const router = Angular.untracked(this.router)
     return {
       component: Matches,

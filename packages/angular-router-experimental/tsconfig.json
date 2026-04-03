@@ -4,7 +4,8 @@
     "experimentalDecorators": true,
     "emitDecoratorMetadata": true,
     "target": "ES2022",
-    "useDefineForClassFields": false
+    "useDefineForClassFields": false,
+    "types": ["node"]
   },
   "include": ["src", "experimental", "tests", "vitest.config.ts", "eslint.config.js"]
 }

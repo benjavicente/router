@@ -62,12 +62,10 @@ export function injectParams<
 > {
   return injectMatch({
     from: opts.from!,
-    strict: opts.strict as true | undefined,
+    strict: opts.strict,
     shouldThrow: opts.shouldThrow,
     select: (match: any) => {
-      const params = opts.strict === false ? match.params : match._strictParams
-
-      return opts.select ? opts.select(params) : params
+      return opts.select ? opts.select(match.params) : match.params
     },
   } as any) as Angular.Signal<any>
 }
