@@ -5,7 +5,6 @@ import {
   getLocationChangeInfo,
   rootRouteId,
 } from '@tanstack/router-core'
-import warning from 'tiny-warning'
 import { injectRouter } from './injectRouter'
 import { injectStore } from './injectStore'
 import { DefaultNotFoundComponent } from './DefaultNotFound'
@@ -280,9 +279,8 @@ function getNotFoundComponent(router: AnyRouter, route: AnyRoute) {
     return NotFoundComponent
   }
 
-  if (Angular.isDevMode()) {
-    warning(
-      route.options.notFoundComponent,
+  if (Angular.isDevMode() && !route.options.notFoundComponent) {
+    console.warn(
       `A notFoundError was encountered on the route with ID "${route.id}", but a notFoundComponent option was not configured, nor was a router level defaultNotFoundComponent configured. Consider configuring at least one of these to avoid TanStack Router's overly generic defaultNotFoundComponent (<p>Page not found</p>)`,
     )
   }

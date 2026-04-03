@@ -62,7 +62,9 @@
   },
   "devDependencies": {
     "@angular/core": "^21.2.6",
-    "@angular/platform-browser": "^21.2.6"
+    "@angular/platform-browser": "^21.2.6",
+    "@types/node": ">=20",
+    "vite": "*"
   },
   "peerDependencies": {
     "@angular/core": "^21.2.6",

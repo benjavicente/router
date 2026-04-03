@@ -1,3 +1,4 @@
+import '@angular/compiler'
 import type { ApplicationConfig, Type } from '@angular/core'
 import { enableProdMode } from '@angular/core'
 import { bootstrapApplication } from '@angular/platform-browser'
@@ -8,27 +9,20 @@ import {
 } from '@tanstack/start-server-core'
 import {
   type Register,
-  RouterProvider,
   provideHeadContent,
   provideTanstackRouter,
 } from '@tanstack/angular-router-experimental'
 import type { RequestHandler } from '@tanstack/start-server-core'
 
-const DEFAULT_DOCUMENT =
-  '<!doctype html><html><head></head><body><app-root></app-root></body></html>'
-
-const DEFAULT_ROUTER_PROVIDER_DOCUMENT =
-  '<!doctype html><html><head></head><body router-provider></body></html>'
-
 export type CreateServerHandlerOptions = {
+  /** Host document: must match the root component’s selector. */
   document: string
-  serverAppConfig?: ApplicationConfig
 }
 
 function createAngularRenderHandler(
   rootComponent: Type<any>,
   appConfig: ApplicationConfig,
-  options?: CreateServerHandlerOptions,
+  options: CreateServerHandlerOptions,
 ) {
   if (
     (globalThis as { process?: { env?: { NODE_ENV?: string } } }).process?.env
@@ -37,7 +31,7 @@ function createAngularRenderHandler(
     enableProdMode()
   }
 
-  const document = options?.document ?? DEFAULT_DOCUMENT
+  const { document } = options
 
   return defineHandlerCallback(async ({ router, responseHeaders }) => {
     try {
@@ -51,7 +45,6 @@ function createAngularRenderHandler(
                 provideTanstackRouter({ router }),
                 provideHeadContent(router),
                 ...(appConfig.providers ?? []),
-                ...(options?.serverAppConfig?.providers ?? []),
               ],
             },
             context,
@@ -79,11 +72,3 @@ export function createServerHandler<TRegister = Register>(
     createAngularRenderHandler(rootComponent, appConfig, options),
   )
 }
-
-export const defaultRenderHandler = createAngularRenderHandler(
-  RouterProvider,
-  { providers: [] },
-  {
-    document: DEFAULT_ROUTER_PROVIDER_DOCUMENT,
-  },
-)

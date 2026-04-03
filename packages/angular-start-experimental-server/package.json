@@ -38,17 +38,20 @@
     "build": "vite build"
   },
   "type": "module",
-  "types": "dist/esm/index.d.ts",
+  "types": "dist/esm/src/index.d.ts",
   "exports": {
     ".": {
       "import": {
-        "types": "./dist/esm/index.d.ts",
+        "types": "./dist/esm/src/index.d.ts",
         "default": "./dist/esm/index.js"
       }
     },
     "./package.json": "./package.json"
   },
-  "sideEffects": false,
+  "sideEffects": [
+    "./dist/esm/defaultRenderHandler.js",
+    "./src/defaultRenderHandler.ts"
+  ],
   "files": [
     "dist",
     "src"
@@ -61,11 +64,13 @@
     "@tanstack/start-server-core": "workspace:*"
   },
   "devDependencies": {
+    "@angular/compiler": "^21.2.6",
     "@angular/core": "^21.2.6",
     "@angular/platform-browser": "^21.2.6",
     "@angular/platform-server": "^21.2.6"
   },
   "peerDependencies": {
+    "@angular/compiler": "^21.2.6",
     "@angular/core": "^21.2.6",
     "@angular/platform-browser": "^21.2.6",
     "@angular/platform-server": "^21.2.6",

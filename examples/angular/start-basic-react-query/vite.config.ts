@@ -9,7 +9,7 @@ export default defineConfig({
     noExternal: ['@angular/compiler'],
   },
   server: {
-    port: 4200,
+    port: 4201,
   },
   resolve: {
     tsconfigPaths: true,

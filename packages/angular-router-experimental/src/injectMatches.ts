@@ -1,5 +1,5 @@
 import * as Angular from '@angular/core'
-import { replaceEqualDeep } from '@tanstack/router-core'
+import { deepEqual, replaceEqualDeep } from '@tanstack/router-core'
 import { injectRouter } from './injectRouter'
 import { injectStore } from './injectStore'
 import { MATCH_CONTEXT_INJECTOR_TOKEN } from './matchInjectorToken'
@@ -31,20 +31,12 @@ export function injectMatches<
   const matches = injectStore(router.stores.activeMatchesSnapshot, (value) => {
     return value as Array<MakeRouteMatchUnion<TRouter>>
   })
-  let previousResult: TSelected | undefined
 
   return Angular.computed(() => {
     const currentMatches = matches()
     const result = opts?.select ? opts.select(currentMatches) : currentMatches
-
-    if (previousResult === undefined) {
-      previousResult = result as TSelected
-      return result as InjectMatchesResult<TRouter, TSelected>
-    }
-
-    previousResult = replaceEqualDeep(previousResult, result) as TSelected
-    return previousResult as InjectMatchesResult<TRouter, TSelected>
-  })
+    return result as InjectMatchesResult<TRouter, TSelected>
+  }, { equal: deepEqual }) as any
 }
 
 export function injectParentMatches<

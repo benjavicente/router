@@ -1,3 +1,8 @@
-import { bootstrapTanstackStartApplication } from '@tanstack/angular-start-experimental-client'
+import {
+  bootstrapTanstackStartApplication,
+  TanStackStartRoot,
+} from '@tanstack/angular-start-experimental-client'
 
-bootstrapTanstackStartApplication()
+bootstrapTanstackStartApplication(TanStackStartRoot, []).catch((err) =>
+  console.error(err),
+)

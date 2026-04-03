@@ -7,8 +7,6 @@
   "allowedNonPeerDependencies": [
     "@tanstack/history",
     "@tanstack/router-core",
-    "tiny-invariant",
-    "tiny-warning",
     "isbot"
   ]
 }

@@ -1,7 +1,6 @@
 import * as Angular from '@angular/core'
 import { fireEvent, render, screen } from '@testing-library/angular'
 import { afterEach, beforeEach, describe, expect, test, vi } from 'vitest'
-import invariant from 'tiny-invariant'
 import {
   Link,
   RouterProvider,
@@ -325,9 +324,8 @@ describe('redirect', () => {
 
       expect(router.state.redirect).toBeDefined()
       expect(router.state.redirect).toBeInstanceOf(Response)
-      invariant(router.state.redirect)
 
-      expect(router.state.redirect.options).toEqual({
+      expect(router.state.redirect!.options).toEqual({
         _fromLocation: expect.objectContaining({
           hash: '',
           href: '/',
@@ -381,10 +379,9 @@ describe('redirect', () => {
 
       expect(currentRedirect).toBeDefined()
       expect(currentRedirect).toBeInstanceOf(Response)
-      invariant(currentRedirect)
-      expect(currentRedirect.status).toEqual(307)
-      expect(currentRedirect.headers.get('Location')).toEqual('/about')
-      expect(currentRedirect.options).toEqual({
+      expect(currentRedirect!.status).toEqual(307)
+      expect(currentRedirect!.headers.get('Location')).toEqual('/about')
+      expect(currentRedirect!.options).toEqual({
         _fromLocation: {
           external: false,
           hash: '',
@@ -395,8 +392,8 @@ describe('redirect', () => {
           searchStr: '',
           state: {
             __TSR_index: 0,
-            __TSR_key: currentRedirect.options._fromLocation!.state.__TSR_key,
-            key: currentRedirect.options._fromLocation!.state.key,
+            __TSR_key: currentRedirect!.options._fromLocation!.state.__TSR_key,
+            key: currentRedirect!.options._fromLocation!.state.key,
           },
         },
         href: '/about',

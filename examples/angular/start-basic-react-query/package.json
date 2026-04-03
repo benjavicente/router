@@ -1,5 +1,5 @@
 {
-  "name": "tanstack-angular-start-example-basic",
+  "name": "tanstack-angular-start-example-basic-react-query",
   "private": true,
   "type": "module",
   "scripts": {
@@ -10,6 +10,8 @@
     "generate": "tsr generate"
   },
   "dependencies": {
+    "@benjavicente/angular-query-devtools": "^5.96.1",
+    "@benjavicente/angular-query-experimental": "^5.96.1",
     "@angular/common": "^21.2.6",
     "@angular/compiler": "^21.2.6",
     "@angular/core": "^21.2.6",
