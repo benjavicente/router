@@ -144,8 +144,8 @@ test('renders success route', async () => {
   await expect(screen.findByTestId('home')).resolves.toBeTruthy()
 })
 
-// Skipped: deferred/pending UI during route load is n/a for Angular per PARITY_MATRIX.
-// Pending component may not reliably render before success state due to timing/rendering.
+// Intentionally skipped: pending-route UI during async load is not an Angular parity
+// target (see repo PARITY_MATRIX); PendingComponent often never wins the race vs success.
 test.skip('renders pending state and then success state', async () => {
   const router = makeRouter()
 

@@ -1,5 +1,5 @@
-import type * as Angular from '@angular/core'
 import { injectMatch } from './injectMatch'
+import type * as Angular from '@angular/core'
 import type {
   AnyRouter,
   RegisteredRouter,

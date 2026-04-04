@@ -34,7 +34,8 @@ export function injectRouterState<
   // During SSR we render exactly once and do not need reactivity.
   // Avoid subscribing to the store on the server since the server store
   // implementation does not provide subscribe() semantics.
-  const _isServer = isServer ?? router.isServer
+  const _isServer =
+    typeof isServer === 'boolean' ? isServer : router.isServer
   if (_isServer) {
     const state = router.stores.__store.state as RouterState<
       TRouter['routeTree']

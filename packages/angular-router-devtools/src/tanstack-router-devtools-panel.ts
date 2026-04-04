@@ -10,10 +10,9 @@ import {
   input,
   runInInjectionContext,
 } from '@angular/core'
+import type { AnyRouter } from '@tanstack/angular-router-experimental'
+import { injectRouter, injectStore } from '@tanstack/angular-router-experimental'
 import { TanStackRouterDevtoolsPanelCore } from '@tanstack/router-devtools-core'
-import { injectRouter } from '@tanstack/angular-router-experimental'
-import { injectStore } from '@tanstack/angular-router-experimental'
-import type { AnyRouter } from '@tanstack/router-core'
 
 export interface TanStackRouterDevtoolsPanelOptions {
   /**
@@ -72,7 +71,7 @@ export class TanStackRouterDevtoolsPanel {
 
   private contextRouter = injectRouter({ warn: false })
   private router = computed(() => this.inputRouter() ?? this.contextRouter)
-  private routerState = injectStore(() => this.router()?.stores.__store)
+  private routerState = injectStore(() => this.router().stores.__store)
 
   private injector = inject(EnvironmentInjector)
 

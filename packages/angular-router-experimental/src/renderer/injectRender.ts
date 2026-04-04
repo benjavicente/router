@@ -1,45 +1,49 @@
-import * as Angular from '@angular/core'
+import {
+  DestroyRef,
+  Injector,
+  ViewContainerRef,
+  effect,
+  inject,
+  inputBinding,
+} from '@angular/core'
+import type { Provider, Type } from '@angular/core'
 
 export type RenderValue = {
   key?: string
-  component: Angular.Type<any> | null | undefined
+  component: Type<any> | null | undefined
   inputs?: Record<string, () => unknown>
-  providers?: Array<Angular.Provider>
+  providers?: Array<Provider>
 } | null | undefined
 
 export function injectRender(renderValueFn: () => RenderValue): void {
-  const vcr = Angular.inject(Angular.ViewContainerRef)
-  const parent = Angular.inject(Angular.Injector)
+  const vcr = inject(ViewContainerRef)
+  const parent = inject(Injector)
 
-  Angular.inject(Angular.DestroyRef).onDestroy(() => {
+  inject(DestroyRef).onDestroy(() => {
     vcr.clear()
   })
 
-  let lastKey: Array<any> = [];
+  let lastKey: Array<any> = []
 
-  Angular.effect(() => {
+  effect(() => {
     const renderValue = renderValueFn()
 
     const newKey = resolvedKey(renderValue)
     if (keysAreEqual(lastKey, newKey)) return
 
-    // Clear if there was a previous value
     if (lastKey.length > 0) vcr.clear()
 
-    // Update component
     lastKey = newKey
 
-    // No value, do not render
     const component = renderValue?.component
     if (!component) return
 
-    // Angular renderer code
     const providers = renderValue.providers ?? []
-    const injector = Angular.Injector.create({ providers, parent })
+    const childInjector = Injector.create({ providers, parent })
     const bindings = Object.entries(renderValue.inputs ?? {}).map(([name, value]) =>
-      Angular.inputBinding(name, value),
+      inputBinding(name, value),
     )
-    const cmpRef = vcr.createComponent(component, { injector, bindings })
+    const cmpRef = vcr.createComponent(component, { injector: childInjector, bindings })
     cmpRef.changeDetectorRef.markForCheck()
   })
 }

@@ -7,5 +7,13 @@
     "useDefineForClassFields": false,
     "types": ["node"]
   },
-  "include": ["src", "experimental", "tests", "vitest.config.ts", "eslint.config.js"]
+  "include": [
+    "src",
+    "experimental",
+    "tests",
+    "vite.config.ts",
+    "vite.lib.config.ts",
+    "tsconfig.build.json",
+    "eslint.config.js"
+  ]
 }

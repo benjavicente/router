@@ -1,4 +1,5 @@
 import { Component } from '@angular/core'
+import type { QueryClient } from '@benjavicente/angular-query-experimental'
 import type { AngularInjectFn } from '@tanstack/angular-router-experimental'
 import {
   Link,
@@ -10,6 +11,7 @@ import stylesUrl from '../styles.css?url'
 
 export const Route = createRootRouteWithContext<{
   inject: AngularInjectFn
+  queryClient: QueryClient
 }>()({
   head: () => ({
     meta: [

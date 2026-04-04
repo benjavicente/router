@@ -32,7 +32,16 @@ export {
 
 // Router Provider
 export { RouterProvider, provideTanstackRouter } from './RouterProvider'
-export { provideHeadContent } from './provideHeadContent'
+export {
+  provideHeadContent,
+  provideTanstackDocument,
+  provideTanstackDocumentTitle,
+  provideTanstackHeadManagedTags,
+  provideTanstackBodyManagedTags,
+  type TanstackDocumentFeatures,
+  buildMatchManagedDocumentContent,
+  buildManagedDocumentContent,
+} from './document'
 
 // Components
 export { Outlet, RouteMatch } from './Match'

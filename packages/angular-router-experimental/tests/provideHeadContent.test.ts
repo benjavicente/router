@@ -4,6 +4,8 @@ import { afterEach, describe, expect, test } from 'vitest'
 import {
   Outlet,
   RouterProvider,
+  buildManagedDocumentContent,
+  buildMatchManagedDocumentContent,
   createMemoryHistory,
   createRootRoute,
   createRoute,
@@ -11,7 +13,6 @@ import {
   provideHeadContent,
   provideTanstackRouter,
 } from '../src'
-import { buildManagedDocumentContent } from '../src/provideHeadContent'
 
 afterEach(() => {
   document.head.innerHTML = ''
@@ -153,6 +154,35 @@ function makeRouter() {
 }
 
 describe('buildManagedDocumentContent', () => {
+  test('emits escaped application/ld+json script from script:ld+json meta', async () => {
+    const rootRoute = createRootRoute({
+      head: () => ({
+        meta: [
+          {
+            'script:ld+json': {
+              '@context': 'https://schema.org',
+              name: 'Test<script>',
+            },
+          },
+        ],
+      }),
+    })
+    const router = createRouter({
+      routeTree: rootRoute,
+      history: createMemoryHistory({ initialEntries: ['/'] }),
+    })
+    await router.load()
+    const content = buildMatchManagedDocumentContent(router)
+    const ld = content.head.find(
+      (t) =>
+        t.tag === 'script' &&
+        t.attrs &&
+        (t.attrs as { type?: string }).type === 'application/ld+json',
+    )
+    expect(ld?.children).toContain('\\u003c')
+    expect(ld?.children).not.toContain('<script>')
+  })
+
   test('derives title, dedupes meta, and includes nonce/manifest tags', async () => {
     const router = makeRouter()
     router.serverSsr = {
@@ -246,7 +276,7 @@ describe('buildManagedDocumentContent', () => {
     const descriptionMeta = content.head.find(
       (tag) => tag.tag === 'meta' && tag.attrs?.name === 'description',
     )
-    const descriptionMetaAgain = buildManagedDocumentContent(router).head.find(
+    const descriptionMetaAgain = buildMatchManagedDocumentContent(router).head.find(
       (tag) => tag.tag === 'meta' && tag.attrs?.name === 'description',
     )
 

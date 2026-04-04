@@ -12,12 +12,12 @@
     "useDefineForClassFields": false
   },
   "angularCompilerOptions": {
-    "compilationMode": "partial",
+    "compilationMode": "full",
     "strictInjectionParameters": true,
     "strictInputAccessModifiers": false,
     "strictTemplates": true,
     "skipMetadataEmit": false
   },
-  "include": ["src/**/*.ts"],
+  "include": ["src/**/*.ts", "experimental/**/*.ts"],
   "exclude": ["**/*.spec.ts", "tests/**/*", "**/*.test.ts"]
 }

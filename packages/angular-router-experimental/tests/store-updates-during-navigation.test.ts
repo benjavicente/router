@@ -28,6 +28,7 @@ function setup(opts?: {
   @Angular.Component({
     imports: [Link, Outlet],
     template: `
+      <span class="sr-only">{{ state() }}</span>
       <a [link]="{ to: '/' }">Back</a>
       <a [link]="{ to: '/posts' }">Posts</a>
       <outlet />

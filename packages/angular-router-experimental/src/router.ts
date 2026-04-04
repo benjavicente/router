@@ -1,14 +1,13 @@
-import {
-  RouterCore
-} from '@tanstack/router-core'
-import type { EnvironmentInjector } from '@angular/core'
-import type { RouterHistory } from '@tanstack/history'
-import type { ErrorRouteComponent, RouteComponent } from './route'
+import { RouterCore } from '@tanstack/router-core'
 import { getStoreFactory } from './routerStores'
 import type {
   AnyRoute,
   RouterOptions,
-  TrailingSlashOption} from '@tanstack/router-core';
+  TrailingSlashOption,
+} from '@tanstack/router-core'
+import type { EnvironmentInjector } from '@angular/core'
+import type { RouterHistory } from '@tanstack/history'
+import type { ErrorRouteComponent, RouteComponent } from './route'
 
 export type AngularInjectFn = EnvironmentInjector['get']
 

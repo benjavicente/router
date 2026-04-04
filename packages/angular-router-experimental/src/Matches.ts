@@ -1,11 +1,11 @@
-import * as Angular from '@angular/core'
+import { Component } from '@angular/core'
 import { injectRouter } from './injectRouter'
 import { injectStore } from './injectStore'
 import { injectRender } from './renderer/injectRender'
 import { RouteMatch } from './Match'
 import { injectTransitionerSetup } from './transitioner'
 
-@Angular.Component({
+@Component({
   selector: 'router-matches',
   template: '',
   standalone: true,

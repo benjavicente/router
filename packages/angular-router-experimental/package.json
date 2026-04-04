@@ -34,11 +34,9 @@
     "test:types:ts58": "node ../../node_modules/typescript58/lib/tsc.js -p tsconfig.legacy.json",
     "test:types:ts59": "tsc -p tsconfig.legacy.json",
     "test:unit": "vitest",
-    "test:unit:dev": "pnpm run test:unit --watch --hideSkippedTests",
-    "test:perf": "vitest bench",
-    "test:perf:dev": "pnpm run test:perf --watch --hideSkippedTests",
+    "test:unit:dev": "vitest --watch",
     "test:build": "publint --strict && attw --ignore-rules no-resolution --pack .",
-    "build": "ng-packagr -p ng-package.json -c tsconfig.lib.json"
+    "build": "vite build --config vite.lib.config.ts"
   },
   "type": "module",
   "sideEffects": false,
@@ -73,19 +71,24 @@
     "tslib": "^2.3.0"
   },
   "devDependencies": {
-    "@analogjs/vite-plugin-angular": "^2.2.1",
     "@analogjs/vitest-angular": "^2.2.1",
     "@angular/common": "^21.2.6",
     "@angular/compiler": "^21.2.6",
     "@angular/compiler-cli": "^21.2.6",
+    "@angular/core": "^21.2.6",
     "@angular/platform-browser": "^21.2.6",
+    "@oxc-angular/vite": "^0.0.22",
     "@testing-library/angular": "^19.0.0",
+    "@tanstack/vite-config": "0.5.2",
     "@testing-library/jest-dom": "^6.6.3",
     "@types/node": ">=20",
     "combinate": "^1.1.11",
     "jsdom": "^27.4.0",
-    "ng-packagr": "^21.0.0",
+    "rxjs": "~7.8.0",
     "vibe-rules": "^0.2.57",
+    "vite": "^8.0.0",
+    "vite-plugin-dts": "^4.5.4",
+    "vitest": "^4.0.17",
     "zod": "^3.24.2"
   },
   "peerDependencies": {

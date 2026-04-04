@@ -3,10 +3,13 @@ import {
   createFileRoute,
   injectErrorState,
 } from '@tanstack/angular-router-experimental'
-import { fetchPost } from '../posts'
+import { PostsApiService } from '../posts-api.service'
 
 export const Route = createFileRoute('/posts/$postId')({
-  loader: ({ params }) => fetchPost(params.postId),
+  loader: ({ context, params }) => {
+    const api = context.inject(PostsApiService)
+    return context.queryClient.fetchQuery(api.postQueryOptions(params.postId))
+  },
   head: ({ loaderData, params }) => ({
     meta: [
       {

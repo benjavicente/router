@@ -12,7 +12,7 @@
     "moduleResolution": "bundler"
   },
   "angularCompilerOptions": {
-    "compilationMode": "partial",
+    "compilationMode": "full",
     "strictInjectionParameters": true,
     "strictInputAccessModifiers": false,
     "strictTemplates": true,

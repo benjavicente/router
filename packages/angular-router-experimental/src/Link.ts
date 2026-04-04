@@ -1,4 +1,16 @@
-import * as Angular from '@angular/core'
+import {
+  DestroyRef,
+  Directive,
+  ElementRef,
+  Renderer2,
+  afterNextRender,
+  computed,
+  effect,
+  inject,
+  input,
+  signal,
+  untracked,
+} from '@angular/core'
 import {
   AnyRouter,
   LinkOptions as CoreLinkOptions,
@@ -13,7 +25,7 @@ import { injectLocation } from './injectLocation'
 import { injectRouter } from './injectRouter'
 import { injectIntersectionObserver } from './injectIntersectionObserver'
 
-@Angular.Directive({
+@Directive({
   selector: 'a[link]',
   exportAs: 'link',
   standalone: true,
@@ -46,21 +58,21 @@ export class Link<
     touchstart: this.handleTouchStart,
   }))
 
-  options = Angular.input.required<
+  options = input.required<
     LinkOptions<TRouter, TFrom, TTo, TMaskFrom, TMaskTo>
   >({ alias: 'link' })
 
   protected router = injectRouter()
-  protected isTransitioning = Angular.signal(false)
+  protected isTransitioning = signal(false)
 
-  protected from = Angular.computed(() =>
-    Angular.untracked(() => this.options().from),
+  protected from = computed(() =>
+    untracked(() => this.options().from),
   )
 
-  protected disabled = Angular.computed(() => this._options().disabled ?? false)
-  protected target = Angular.computed(() => this._options().target)
+  protected disabled = computed(() => this._options().disabled ?? false)
+  protected target = computed(() => this._options().target)
 
-  protected _options = Angular.computed<
+  protected _options = computed<
     LinkOptions<TRouter, TFrom, TTo, TMaskFrom, TMaskTo>
   >(() => {
     return {
@@ -69,7 +81,7 @@ export class Link<
     }
   })
 
-  protected nextLocation = Angular.computed(() => {
+  protected nextLocation = computed(() => {
     const currentLocation = this.location()
     return this.router.buildLocation({
       _fromLocation: currentLocation,
@@ -77,7 +89,7 @@ export class Link<
     } as any)
   })
 
-  protected hrefOption = Angular.computed(() => {
+  protected hrefOption = computed(() => {
     if (this._options().disabled) {
       return undefined
     }
@@ -91,7 +103,7 @@ export class Link<
     return { href, external }
   })
 
-  protected externalLink = Angular.computed(() => {
+  protected externalLink = computed(() => {
     const hrefOption = this.hrefOption()
     if (hrefOption?.external) {
       return hrefOption.href
@@ -103,14 +115,14 @@ export class Link<
     return undefined
   })
 
-  protected preload = Angular.computed(() => {
+  protected preload = computed(() => {
     if (this.options()['reloadDocument']) {
       return false
     }
     return this.options()['preload'] ?? this.router.options.defaultPreload
   })
 
-  protected preloadDelay = Angular.computed(() => {
+  protected preloadDelay = computed(() => {
     return (
       this.options()['preloadDelay'] ??
       this.router.options.defaultPreloadDelay ??
@@ -120,7 +132,7 @@ export class Link<
 
   protected location = injectLocation<TRouter>()
 
-  protected isActiveProps = Angular.computed(() => {
+  protected isActiveProps = computed(() => {
     const opts = this.options()
     const isActive = this.isActive()
     const props = isActive ? opts.activeProps : opts.inactiveProps
@@ -128,7 +140,7 @@ export class Link<
     return props
   })
 
-  protected isActive = Angular.computed(() => {
+  protected isActive = computed(() => {
     if (this.externalLink()) return false
 
     const options = this.options()
@@ -205,7 +217,7 @@ export class Link<
   )
 
   private hasRenderFetched = false
-  private rendererPreloader = Angular.effect(() => {
+  private rendererPreloader = effect(() => {
     if (this.hasRenderFetched) return
 
     if (!this._options().disabled && this.preload() === 'render') {
@@ -318,12 +330,12 @@ type PassiveEvents = {
 }
 
 function injectPasiveEvents(passiveEvents: () => PassiveEvents) {
-  const element = Angular.inject(Angular.ElementRef).nativeElement
-  const destroyRef = Angular.inject(Angular.DestroyRef)
-  const renderer = Angular.inject(Angular.Renderer2)
+  const element = inject(ElementRef).nativeElement
+  const destroyRef = inject(DestroyRef)
+  const renderer = inject(Renderer2)
   const cleanups: Array<() => void> = []
 
-  Angular.afterNextRender(() => {
+  afterNextRender(() => {
     for (const [event, handler] of Object.entries(passiveEvents())) {
       const cleanup = renderer.listen(element, event, handler, {
         passive: true,

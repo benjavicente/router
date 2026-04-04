@@ -21,10 +21,10 @@
     "tslib": "^2.3.0"
   },
   "devDependencies": {
-    "@analogjs/vite-plugin-angular": "^2.2.1",
+    "@oxc-angular/vite": "^0.0.22",
     "@tanstack/router-cli": "workspace:*",
     "@tanstack/router-plugin": "workspace:*",
     "typescript": "~5.9.2",
-    "vite": "^7.1.7"
+    "vite": "^8.0.0"
   }
 }

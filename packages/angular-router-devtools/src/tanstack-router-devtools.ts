@@ -8,12 +8,12 @@ import {
   computed,
   effect,
   inject,
-  input, runInInjectionContext 
+  input,
+  runInInjectionContext,
 } from '@angular/core'
+import type { AnyRouter } from '@tanstack/angular-router-experimental'
+import { injectRouter, injectStore } from '@tanstack/angular-router-experimental'
 import { TanStackRouterDevtoolsCore } from '@tanstack/router-devtools-core'
-import { injectRouter } from '@tanstack/angular-router-experimental'
-import { injectStore } from '@tanstack/angular-router-experimental'
-import type { AnyRouter } from '@tanstack/router-core'
 
 export interface TanStackRouterDevtoolsOptions {
   /**
@@ -74,7 +74,7 @@ export class TanStackRouterDevtools implements OnInit {
 
   private contextRouter = injectRouter({ warn: false })
   private router = computed(() => this.inputRouter() ?? this.contextRouter)
-  private routerState = injectStore(() => this.router()?.stores.__store)
+  private routerState = injectStore(() => this.router().stores.__store)
 
   private injector = inject(EnvironmentInjector)
 

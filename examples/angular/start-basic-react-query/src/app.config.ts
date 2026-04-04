@@ -5,7 +5,6 @@ import {
   QueryClient,
   provideTanStackQuery,
 } from '@benjavicente/angular-query-experimental'
-import { withDevtools } from '@benjavicente/angular-query-devtools'
 
 export const QUERY_CLIENT = new InjectionToken<QueryClient>('TanStackQueryClient', {
   providedIn: 'root',
@@ -24,5 +23,5 @@ export const QUERY_CLIENT = new InjectionToken<QueryClient>('TanStackQueryClient
 })
 
 export const appConfig: ApplicationConfig = {
-  providers: [provideTanStackQuery(QUERY_CLIENT, withDevtools())],
+  providers: [provideTanStackQuery(QUERY_CLIENT)],
 }

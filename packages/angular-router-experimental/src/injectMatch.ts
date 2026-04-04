@@ -1,5 +1,5 @@
 import * as Angular from '@angular/core'
-import { replaceEqualDeep, invariant, deepEqual } from '@tanstack/router-core'
+import { deepEqual, invariant } from '@tanstack/router-core'
 import { MATCH_CONTEXT_INJECTOR_TOKEN } from './matchInjectorToken'
 import { injectRouter } from './injectRouter'
 import { injectStore } from './injectStore'
@@ -74,45 +74,49 @@ export function injectMatch<
   const nearestMatch = opts.from
     ? undefined
     : Angular.inject(MATCH_CONTEXT_INJECTOR_TOKEN)
-  
-    const match = () => {
-      if (opts.from) {
-        return router.stores.getMatchStoreByRouteId(opts.from).state
-      }
 
-      return nearestMatch?.match()
+  const pendingRouteIds = injectStore(
+    router.stores.pendingRouteIds,
+    (s) => s,
+  )
+  const isTransitioning = injectStore(
+    router.stores.isTransitioning,
+    (s) => s,
+  )
+
+  const match = () => {
+    if (opts.from) {
+      return router.stores.getMatchStoreByRouteId(opts.from).state
     }
 
-
-
-    Angular.effect(() => {
-      if (match() !== undefined) {
-        return
-      }
-
-      const hasPendingMatch = opts.from
-        ? Boolean(router.stores.pendingRouteIds.state[opts.from])
-        : nearestMatch?.hasPending() ?? false
-        
-        
-      if (
-        !hasPendingMatch &&
-        !router.stores.isTransitioning.state &&
-        (opts.shouldThrow ?? true)) {
-          if (process.env.NODE_ENV !== 'production') {
-            throw new Error(
-              `Invariant failed: Could not find ${opts.from ? `an active match from "${opts.from}"` : 'a nearest match!'}`,
-            )
-          }
-    
-          invariant()
-        }
-    })
+    return nearestMatch?.match()
+  }
 
   return Angular.computed(() => {
     const selectedMatch = match()
 
-    if (selectedMatch === undefined) return undefined
-    return opts.select ? opts.select(selectedMatch as any) : selectedMatch
+    if (selectedMatch !== undefined) {
+      return opts.select ? opts.select(selectedMatch as any) : selectedMatch
+    }
+
+    const hasPendingMatch = opts.from
+      ? Boolean(pendingRouteIds()[opts.from])
+      : nearestMatch?.hasPending() ?? false
+
+    if (
+      !hasPendingMatch &&
+      !isTransitioning() &&
+      (opts.shouldThrow ?? true)
+    ) {
+      if (process.env.NODE_ENV !== 'production') {
+        throw new Error(
+          `Invariant failed: Could not find ${opts.from ? `an active match from "${opts.from}"` : 'a nearest match!'}`,
+        )
+      }
+
+      invariant()
+    }
+
+    return undefined
   }, { equal: deepEqual }) as any
 }

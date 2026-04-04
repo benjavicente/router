@@ -4,7 +4,7 @@ import {
   Outlet,
   createFileRoute,
 } from '@tanstack/angular-router-experimental'
-import { fetchPosts } from '../posts'
+import { PostsApiService } from '../posts-api.service'
 
 export const Route = createFileRoute('/posts')({
   head: () => ({
@@ -18,7 +18,10 @@ export const Route = createFileRoute('/posts')({
       },
     ],
   }),
-  loader: fetchPosts,
+  loader: ({ context }) => {
+    const api = context.inject(PostsApiService)
+    return context.queryClient.fetchQuery(api.allPostsQueryOptions())
+  },
   component: () => PostsLayoutComponent,
 })
 
@@ -60,6 +63,6 @@ class PostsLayoutComponent {
   posts = Route.injectLoaderData()
   postsWithFake = computed(() => [
     ...this.posts(),
-    { id: 'missing-post', title: 'Missing post example', body: '' },
+    { id: 999_999, title: 'Missing post example', body: '' },
   ])
 }

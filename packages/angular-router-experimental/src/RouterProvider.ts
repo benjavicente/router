@@ -1,4 +1,13 @@
-import * as Angular from '@angular/core'
+import {
+  Component,
+  EnvironmentInjector,
+  InjectionToken,
+  computed,
+  effect,
+  inject,
+  input,
+  untracked,
+} from '@angular/core'
 import {
   AnyRouter,
   RegisteredRouter,
@@ -7,15 +16,16 @@ import {
 import { Matches } from './Matches'
 import { injectRender } from './renderer/injectRender'
 import { getRouterInjectionKey } from './routerInjectionToken'
+import type { InputSignal } from '@angular/core'
 
-const ROUTER_INPUT_INJECTION_KEY = new Angular.InjectionToken<AnyRouter>('ROUTER')
+const ROUTER_INPUT_INJECTION_KEY = new InjectionToken<AnyRouter>('ROUTER')
 
-const CONTEXT_INPUT_INJECTION_KEY = new Angular.InjectionToken<RouterInputs['context']>('CONTEXT', {
+const CONTEXT_INPUT_INJECTION_KEY = new InjectionToken<RouterInputs['context']>('CONTEXT', {
   providedIn: 'root',
   factory: () => ({}),
 })
 
-const OPTIONS_INPUT_INJECTION_KEY = new Angular.InjectionToken<Omit<RouterInputs, 'router' | 'context'>>('OPTIONS', {
+const OPTIONS_INPUT_INJECTION_KEY = new InjectionToken<Omit<RouterInputs, 'router' | 'context'>>('OPTIONS', {
   providedIn: 'root',
   factory: () => ({}),
 })
@@ -29,7 +39,7 @@ export type TanstackRouterProviderOptions = {
 function mergeContextWithInject(
   context: RouterInputs['context'],
 ): RouterInputs['context'] {
-  const environmentInjector = Angular.inject(Angular.EnvironmentInjector)
+  const environmentInjector = inject(EnvironmentInjector)
 
   return {
     inject: environmentInjector.get.bind(environmentInjector),
@@ -54,37 +64,33 @@ export function provideTanstackRouter({ router, context, options }: TanstackRout
   ]
 }
 
-@Angular.Component({
+@Component({
   selector: 'router-provider,[router-provider]',
   template: '',
   standalone: true,
 })
 export class RouterProvider<TRouter extends AnyRouter = RegisteredRouter> {
-  readonly injectedContext: RouterInputs<TRouter>['context'] = Angular.inject(
+  readonly injectedContext: RouterInputs<TRouter>['context'] = inject(
     CONTEXT_INPUT_INJECTION_KEY,
   )
   readonly injectedOptions: Omit<RouterInputs<TRouter>, 'router' | 'context'> =
-    Angular.inject(OPTIONS_INPUT_INJECTION_KEY)
-  readonly injectedRouter: AnyRouter | null = Angular.inject(
+    inject(OPTIONS_INPUT_INJECTION_KEY)
+  readonly injectedRouter: AnyRouter | null = inject(
     ROUTER_INPUT_INJECTION_KEY,
     { optional: true },
   )
 
-  readonly context: Angular.InputSignal<RouterInputs<TRouter>['context']> =
-    Angular.input<RouterInputs<TRouter>['context']>(
-    this.injectedContext as RouterInputs<TRouter>['context'],
-  )
-  readonly options: Angular.InputSignal<
+  readonly context: InputSignal<RouterInputs<TRouter>['context']> = input<
+    RouterInputs<TRouter>['context']
+  >(this.injectedContext)
+  readonly options: InputSignal<
     Omit<RouterInputs<TRouter>, 'router' | 'context'>
-  > = Angular.input<Omit<RouterInputs<TRouter>, 'router' | 'context'>>(
-    this.injectedOptions,
-  )
-  readonly routerInput: Angular.InputSignal<TRouter | undefined> =
-    Angular.input<TRouter | undefined>(undefined, {
-      alias: 'router',
-    })
+  > = input<Omit<RouterInputs<TRouter>, 'router' | 'context'>>(this.injectedOptions)
+  readonly routerInput = input<TRouter | undefined>(undefined, {
+    alias: 'router',
+  })
 
-  readonly router: Angular.Signal<TRouter> = Angular.computed(() => {
+  readonly router = computed(() => {
     const inputRouter = this.routerInput()
     if (inputRouter) return inputRouter
     if (this.injectedRouter) return this.injectedRouter as TRouter
@@ -93,7 +99,7 @@ export class RouterProvider<TRouter extends AnyRouter = RegisteredRouter> {
     )
   })
 
-  readonly updateRouter: Angular.EffectRef = Angular.effect(() => {
+  readonly updateRouter = effect(() => {
     const router = this.router()
     const context = this.context()
     const options = this.options()
@@ -109,7 +115,7 @@ export class RouterProvider<TRouter extends AnyRouter = RegisteredRouter> {
   })
 
   readonly render: ReturnType<typeof injectRender> = injectRender(() => {
-    const router = Angular.untracked(this.router)
+    const router = untracked(this.router)
     return {
       component: Matches,
       providers: [

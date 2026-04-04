@@ -1,4 +1,11 @@
-import * as Angular from '@angular/core'
+import {
+  Component,
+  computed,
+  effect,
+  inject,
+  input,
+  isDevMode,
+} from '@angular/core'
 import {
   AnyRoute,
   AnyRouter,
@@ -8,23 +15,17 @@ import {
 import { injectRouter } from './injectRouter'
 import { injectStore } from './injectStore'
 import { DefaultNotFoundComponent } from './DefaultNotFound'
-import {
-  MATCH_CONTEXT_INJECTOR_TOKEN,
-  type NearestMatchContextValue,
-} from './matchInjectorToken'
+import { MATCH_CONTEXT_INJECTOR_TOKEN } from './matchInjectorToken'
 import { injectRender } from './renderer/injectRender'
 import { ERROR_STATE_INJECTOR_TOKEN } from './injectErrorState'
 import { injectIsCatchingError } from './renderer/injectIsCatchingError'
+import type { Signal } from '@angular/core'
+import type { NearestMatchContextValue } from './matchInjectorToken'
 
-// In Angular, there is not concept of suspense or error boundaries,
-// so we dont' need to wrap the inner content of the match.
-// So in this adapter, we use derived state instead of state boundaries.
-
-// Equivalent to the OnRendered component.
 function injectOnRendered({
   parentRouteIsRoot,
 }: {
-  parentRouteIsRoot: Angular.Signal<boolean>
+  parentRouteIsRoot: Signal<boolean>
 }) {
   const router = injectRouter({ warn: false })
   const location = injectStore(
@@ -37,7 +38,7 @@ function injectOnRendered({
     (value) => value,
   )
 
-  Angular.effect(() => {
+  effect(() => {
     if (!parentRouteIsRoot()) return
     location() // Track location
 
@@ -51,7 +52,7 @@ function injectOnRendered({
   })
 }
 
-@Angular.Component({
+@Component({
   selector: 'router-match,[router-match]',
   template: '',
   standalone: true,
@@ -60,18 +61,18 @@ function injectOnRendered({
   },
 })
 export class RouteMatch {
-  matchId = Angular.input.required<string>()
+  matchId = input.required<string>()
 
   router = injectRouter()
 
-  match = Angular.computed(() => {
+  match = computed(() => {
     const matchId = this.matchId()
     return matchId
       ? this.router.stores.activeMatchStoresById.get(matchId)?.state
       : undefined
   })
 
-  matchData = Angular.computed(() => {
+  matchData = computed(() => {
     const match = this.match()
     if (!match) return null
 
@@ -97,42 +98,41 @@ export class RouteMatch {
     }
   })
 
-  isFistRouteInRouteTree = Angular.computed(
+  isFistRouteInRouteTree = computed(
     () => this.matchData()?.parentRouteId === rootRouteId,
   )
 
-  resolvedNoSsr = Angular.computed(() => {
+  resolvedNoSsr = computed(() => {
     const match = this.matchData()?.match
     if (!match) return true
     return match.ssr === false || match.ssr === 'data-only'
   })
 
-  shouldClientOnly = Angular.computed(() => {
+  shouldClientOnly = computed(() => {
     const match = this.matchData()?.match
     if (!match) return true
     return this.resolvedNoSsr() || !!match._displayPending
   })
 
-
-  parentRouteIdSignal = Angular.computed(
+  parentRouteIdSignal = computed(
     () => this.matchData()?.parentRouteId ?? '',
   )
-  rootRouteIdSignal = Angular.computed(() => rootRouteId)
+  rootRouteIdSignal = computed(() => rootRouteId)
 
   onRendered = injectOnRendered({
-    parentRouteIsRoot: Angular.computed(
+    parentRouteIsRoot: computed(
       () => this.parentRouteIdSignal() === rootRouteId,
     ),
   })
 
-  hasPendingMatch = Angular.computed(() => {
+  hasPendingMatch = computed(() => {
     const routeId = this.matchData()?.route.id
     return routeId ? Boolean(this.pendingRouteIds()[routeId]) : false
   })
   pendingRouteIds = injectStore(this.router.stores.pendingRouteIds, (ids) => ids)
   nearestMatchContext: NearestMatchContextValue = {
     matchId: this.matchId,
-    routeId: Angular.computed(() => this.matchData()?.route.id),
+    routeId: computed(() => this.matchData()?.route.id),
     match: this.match,
     hasPending: this.hasPendingMatch,
   }
@@ -190,7 +190,7 @@ export class RouteMatch {
         component: PendingComponent,
       }
     } else {
-      const Component =
+      const routeViewComponent =
         getComponent(route.options.component) ??
         getComponent(this.router.options.defaultComponent) ??
         Outlet
@@ -199,7 +199,7 @@ export class RouteMatch {
 
       return {
         key,
-        component: Component,
+        component: routeViewComponent,
         providers: [
           {
             provide: MATCH_CONTEXT_INJECTOR_TOKEN,
@@ -208,33 +208,32 @@ export class RouteMatch {
         ],
       }
     }
-
   })
 }
 
-@Angular.Component({
+@Component({
   selector: 'outlet,[outlet]',
   template: '',
   standalone: true,
 })
 export class Outlet {
   router = injectRouter()
-  nearestMatch = Angular.inject(MATCH_CONTEXT_INJECTOR_TOKEN)
+  nearestMatch = inject(MATCH_CONTEXT_INJECTOR_TOKEN)
 
-  currentMatch = Angular.computed(() => {
+  currentMatch = computed(() => {
     const matchId = this.nearestMatch.matchId()
     return matchId
       ? this.router.stores.activeMatchStoresById.get(matchId)?.state
       : undefined
   })
 
-  routeId = Angular.computed(() => this.currentMatch()?.routeId as string)
+  routeId = computed(() => this.currentMatch()?.routeId as string)
 
-  route = Angular.computed(
+  route = computed(
     () => this.router.routesById[this.routeId()] as AnyRoute,
   )
 
-  parentGlobalNotFound = Angular.computed(
+  parentGlobalNotFound = computed(
     () => this.currentMatch()?.globalNotFound ?? false,
   )
   childMatchIdByRouteId = injectStore(
@@ -242,7 +241,7 @@ export class Outlet {
     (value) => value,
   )
 
-  childMatchId = Angular.computed(() => {
+  childMatchId = computed(() => {
     const routeId = this.routeId()
     if (!routeId) return null
     return this.childMatchIdByRouteId()[routeId] ?? null
@@ -250,14 +249,12 @@ export class Outlet {
 
   render = injectRender(() => {
     if (this.parentGlobalNotFound()) {
-      // Render not found with warning
       const NotFoundComponent = getNotFoundComponent(this.router, this.route())
       return { component: NotFoundComponent }
     }
     const childMatchId = this.childMatchId()
 
     if (!childMatchId) {
-      // Do not render anything
       return null
     }
 
@@ -270,6 +267,15 @@ export class Outlet {
   })
 }
 
+type CalledIfFunction<T> = T extends (...args: Array<any>) => any ? ReturnType<T> : T
+
+function getComponent<T>(routeComponent: T): CalledIfFunction<T> {
+  if (typeof routeComponent === 'function') {
+    return routeComponent()
+  }
+  return routeComponent as any
+}
+
 function getNotFoundComponent(router: AnyRouter, route: AnyRoute) {
   const NotFoundComponent =
     getComponent(route.options.notFoundComponent) ??
@@ -279,20 +285,11 @@ function getNotFoundComponent(router: AnyRouter, route: AnyRoute) {
     return NotFoundComponent
   }
 
-  if (Angular.isDevMode() && !route.options.notFoundComponent) {
+  if (isDevMode() && !route.options.notFoundComponent) {
     console.warn(
       `A notFoundError was encountered on the route with ID "${route.id}", but a notFoundComponent option was not configured, nor was a router level defaultNotFoundComponent configured. Consider configuring at least one of these to avoid TanStack Router's overly generic defaultNotFoundComponent (<p>Page not found</p>)`,
     )
   }
 
   return DefaultNotFoundComponent
-}
-
-type CalledIfFunction<T> = T extends (...args: Array<any>) => any ? ReturnType<T> : T
-
-function getComponent<T>(routeComponent: T): CalledIfFunction<T> {
-  if (typeof routeComponent === 'function') {
-    return routeComponent()
-  }
-  return routeComponent as any
 }

@@ -1,12 +1,12 @@
-import { Provider, EnvironmentProviders, Type } from '@angular/core'
 import { bootstrapApplication } from '@angular/platform-browser'
 import {
-  provideHeadContent,
-  provideTanstackRouter,
-  AnyRouter,
   RouterProvider,
+  provideTanstackDocument,
+  provideTanstackRouter,
 } from '@tanstack/angular-router-experimental'
 import { hydrateStart } from './hydrateStart'
+import type { EnvironmentProviders, Provider, Type } from '@angular/core'
+import type { AnyRouter } from '@tanstack/angular-router-experimental'
 
 let hydrationPromise: Promise<AnyRouter> | undefined
 export async function bootstrapTanstackStartApplication(
@@ -20,7 +20,7 @@ export async function bootstrapTanstackStartApplication(
   return bootstrapApplication(rootComponent, {
     providers: [
       provideTanstackRouter({ router }),
-      provideHeadContent(router),
+      provideTanstackDocument(router),
       ...providers,
     ],
   })

@@ -1,5 +1,5 @@
 import * as Angular from '@angular/core'
-import { deepEqual, replaceEqualDeep } from '@tanstack/router-core'
+import { deepEqual } from '@tanstack/router-core'
 import { injectRouter } from './injectRouter'
 import { injectStore } from './injectStore'
 import { MATCH_CONTEXT_INJECTOR_TOKEN } from './matchInjectorToken'

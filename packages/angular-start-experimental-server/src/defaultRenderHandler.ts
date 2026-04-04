@@ -9,7 +9,7 @@ import {
 } from '@tanstack/start-server-core'
 import {
   type Register,
-  provideHeadContent,
+  provideTanstackDocument,
   provideTanstackRouter,
 } from '@tanstack/angular-router-experimental'
 import type { RequestHandler } from '@tanstack/start-server-core'
@@ -43,7 +43,7 @@ function createAngularRenderHandler(
               providers: [
                 provideServerRendering(),
                 provideTanstackRouter({ router }),
-                provideHeadContent(router),
+                provideTanstackDocument(router),
                 ...(appConfig.providers ?? []),
               ],
             },

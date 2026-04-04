@@ -1,5 +1,4 @@
 import '@angular/compiler'
-import '@testing-library/jest-dom/vitest'
 import { setupTestBed } from '@analogjs/vitest-angular/setup-testbed'
 import { TestBed } from '@angular/core/testing'
 import { afterEach, vi } from 'vitest'

@@ -1,5 +1,5 @@
+import { angular } from '@oxc-angular/vite'
 import { defineConfig } from 'vite'
-import angular from '@analogjs/vite-plugin-angular'
 import { tanstackRouter } from '@tanstack/router-plugin/vite'
 import tailwindcss from '@tailwindcss/vite'
 
@@ -11,8 +11,12 @@ export default defineConfig({
       routesDirectory: './src/routes',
       generatedRouteTree: './src/routeTree.gen.ts',
     }),
-    angular({
-      tsconfig: './tsconfig.json',
-    }),
+    angular(),
   ],
+  resolve: {
+    tsconfigPaths: true,
+  },
+  ssr: {
+    noExternal: ['@angular/compiler'],
+  },
 })
