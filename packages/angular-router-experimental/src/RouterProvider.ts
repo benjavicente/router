@@ -12,20 +12,23 @@ import {
   AnyRouter,
   RegisteredRouter,
   RouterOptions,
-} from '@tanstack/router-core'
+} from '@benjavicente/router-core'
 import { Matches } from './Matches'
 import { injectRender } from './renderer/injectRender'
 import { getRouterInjectionKey } from './routerInjectionToken'
 import type { InputSignal } from '@angular/core'
 
-const ROUTER_INPUT_INJECTION_KEY = new InjectionToken<AnyRouter>('ROUTER')
+const CONTEXT_INPUT_INJECTION_KEY = new InjectionToken<RouterInputs['context']>(
+  'CONTEXT',
+  {
+    providedIn: 'root',
+    factory: () => ({}),
+  },
+)
 
-const CONTEXT_INPUT_INJECTION_KEY = new InjectionToken<RouterInputs['context']>('CONTEXT', {
-  providedIn: 'root',
-  factory: () => ({}),
-})
-
-const OPTIONS_INPUT_INJECTION_KEY = new InjectionToken<Omit<RouterInputs, 'router' | 'context'>>('OPTIONS', {
+const OPTIONS_INPUT_INJECTION_KEY = new InjectionToken<
+  Omit<RouterInputs, 'router' | 'context'>
+>('OPTIONS', {
   providedIn: 'root',
   factory: () => ({}),
 })
@@ -47,10 +50,14 @@ function mergeContextWithInject(
   } as RouterInputs['context']
 }
 
-export function provideTanstackRouter({ router, context, options }: TanstackRouterProviderOptions) {
+export function provideTanstackRouter({
+  router,
+  context,
+  options,
+}: TanstackRouterProviderOptions) {
   return [
     {
-      provide: ROUTER_INPUT_INJECTION_KEY,
+      provide: getRouterInjectionKey(),
       useValue: router,
     },
     {
@@ -75,17 +82,18 @@ export class RouterProvider<TRouter extends AnyRouter = RegisteredRouter> {
   )
   readonly injectedOptions: Omit<RouterInputs<TRouter>, 'router' | 'context'> =
     inject(OPTIONS_INPUT_INJECTION_KEY)
-  readonly injectedRouter: AnyRouter | null = inject(
-    ROUTER_INPUT_INJECTION_KEY,
-    { optional: true },
-  )
+  readonly injectedRouter: AnyRouter | null = inject(getRouterInjectionKey(), {
+    optional: true,
+  })
 
   readonly context: InputSignal<RouterInputs<TRouter>['context']> = input<
     RouterInputs<TRouter>['context']
   >(this.injectedContext)
   readonly options: InputSignal<
     Omit<RouterInputs<TRouter>, 'router' | 'context'>
-  > = input<Omit<RouterInputs<TRouter>, 'router' | 'context'>>(this.injectedOptions)
+  > = input<Omit<RouterInputs<TRouter>, 'router' | 'context'>>(
+    this.injectedOptions,
+  )
   readonly routerInput = input<TRouter | undefined>(undefined, {
     alias: 'router',
   })

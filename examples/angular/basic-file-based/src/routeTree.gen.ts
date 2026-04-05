@@ -127,7 +127,7 @@ export interface RootRouteChildren {
   AnchorRoute: typeof AnchorRoute
 }
 
-declare module '@tanstack/angular-router-experimental' {
+declare module '@benjavicente/angular-router-experimental' {
   interface FileRoutesByPath {
     '/anchor': {
       id: '/anchor'

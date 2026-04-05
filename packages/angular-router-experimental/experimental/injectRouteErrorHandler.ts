@@ -1,6 +1,6 @@
 import { DestroyRef, inject, untracked } from '@angular/core'
-import { injectMatch, injectRouter } from '@tanstack/angular-router-experimental'
-import type { AnyRouter, FromPathOption, RegisteredRouter  } from '@tanstack/router-core'
+import { injectMatch, injectRouter } from '@benjavicente/angular-router-experimental'
+import type { AnyRouter, FromPathOption, RegisteredRouter  } from '@benjavicente/router-core'
 
 /**
  * EXPERIMENTAL

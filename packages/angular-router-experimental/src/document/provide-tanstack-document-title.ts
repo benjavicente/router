@@ -3,7 +3,7 @@ import * as Angular from '@angular/core'
 import { injectStore } from '../injectStore'
 import { buildMatchManagedDocumentContent } from './build-match-managed-document'
 import { TANSTACK_DOCUMENT_ROUTER } from './document-router-token'
-import type { AnyRouter } from '@tanstack/router-core'
+import type { AnyRouter } from '@benjavicente/router-core'
 
 /** Sync `document.title` from the router (call from an injection context). */
 export function installTanstackDocumentTitle(injectedRouter: AnyRouter) {

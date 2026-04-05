@@ -10,7 +10,7 @@ import {
   createRouter,
   injectErrorState,
 } from '../src'
-import type { RouterHistory } from '@tanstack/history'
+import type { RouterHistory } from '@benjavicente/history'
 
 @Angular.Component({
   selector: 'error-component-host',

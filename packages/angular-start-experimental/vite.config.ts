@@ -1,6 +1,6 @@
 import { defineConfig, mergeConfig } from 'vitest/config'
 import { tanstackViteConfig } from '@tanstack/vite-config'
-import { copyFilesPlugin } from '@tanstack/router-utils'
+import { copyFilesPlugin } from '@benjavicente/router-utils'
 import packageJson from './package.json'
 
 const config = defineConfig({
@@ -33,8 +33,8 @@ export default mergeConfig(
       './src/plugin/vite.ts',
     ],
     externalDeps: [
-      '@tanstack/angular-start-experimental-client',
-      '@tanstack/angular-start-experimental-server',
+      '@benjavicente/angular-start-experimental-client',
+      '@benjavicente/angular-start-experimental-server',
     ],
     cjs: false,
   }),

@@ -3,8 +3,8 @@ import {
   Link,
   Outlet,
   createFileRoute,
-} from '@tanstack/angular-router-experimental'
-import { PostsApiService } from '../posts-api.service'
+} from '@benjavicente/angular-router-experimental'
+import { allPostsQueryOptions } from '../postsQueries'
 
 export const Route = createFileRoute('/posts')({
   head: () => ({
@@ -19,8 +19,7 @@ export const Route = createFileRoute('/posts')({
     ],
   }),
   loader: ({ context }) => {
-    const api = context.inject(PostsApiService)
-    return context.queryClient.fetchQuery(api.allPostsQueryOptions())
+    return context.queryClient.ensureQueryData(allPostsQueryOptions())
   },
   component: () => PostsLayoutComponent,
 })
@@ -42,7 +41,9 @@ export const Route = createFileRoute('/posts')({
                 [link]="{
                   to: '/posts/$postId',
                   params: { postId: post.id },
-                  activeProps: { class: 'border-teal-500 bg-teal-50 dark:bg-teal-950/40' }
+                  activeProps: {
+                    class: 'border-teal-500 bg-teal-50 dark:bg-teal-950/40',
+                  },
                 }"
                 class="block rounded-xl border px-3 py-2 text-sm transition hover:opacity-80"
               >

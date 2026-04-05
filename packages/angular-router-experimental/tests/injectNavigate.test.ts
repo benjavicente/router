@@ -11,7 +11,7 @@ import {
   injectNavigate,
   injectParams,
 } from '../src'
-import type { RouterHistory } from '@tanstack/history'
+import type { RouterHistory } from '@benjavicente/history'
 
 let history: RouterHistory
 

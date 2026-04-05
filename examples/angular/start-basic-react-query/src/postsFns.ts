@@ -1,5 +1,5 @@
-import { notFound } from '@tanstack/angular-router-experimental'
-import { createServerFn } from '@tanstack/angular-start-experimental'
+import { createServerFn } from '@benjavicente/angular-start-experimental'
+import { notFound } from '@benjavicente/angular-router-experimental'
 
 export type PostType = {
   id: number

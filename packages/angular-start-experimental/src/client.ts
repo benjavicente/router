@@ -1,1 +1,1 @@
-export * from '@tanstack/angular-start-experimental-client'
+export * from '@benjavicente/angular-start-experimental-client'

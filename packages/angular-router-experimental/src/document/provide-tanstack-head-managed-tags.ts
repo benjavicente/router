@@ -5,7 +5,7 @@ import { buildMatchManagedDocumentContent } from './build-match-managed-document
 import { areManagedTagArraysEqual } from './document-equality'
 import { TANSTACK_DOCUMENT_ROUTER } from './document-router-token'
 import { createManagedTagCollection } from './managed-dom'
-import type { AnyRouter } from '@tanstack/router-core'
+import type { AnyRouter } from '@benjavicente/router-core'
 import type { ManagedTag } from './managed-document-types'
 
 /** Managed `<head>` tags from active matches (call from an injection context). */

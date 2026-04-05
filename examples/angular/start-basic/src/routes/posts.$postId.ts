@@ -2,7 +2,7 @@ import { Component } from '@angular/core'
 import {
   createFileRoute,
   injectErrorState,
-} from '@tanstack/angular-router-experimental'
+} from '@benjavicente/angular-router-experimental'
 import { fetchPost } from '../posts'
 
 export const Route = createFileRoute('/posts/$postId')({
@@ -34,7 +34,10 @@ export const Route = createFileRoute('/posts/$postId')({
       <p class="text-sm text-gray-600 dark:text-gray-300">
         {{ errorState().error.message }}
       </p>
-      <button class="rounded-lg border px-3 py-1.5 text-sm" (click)="errorState().reset()">
+      <button
+        class="rounded-lg border px-3 py-1.5 text-sm"
+        (click)="errorState().reset()"
+      >
         Reset
       </button>
     </div>
@@ -52,11 +55,13 @@ class PostErrorComponent {
 class PostNotFoundComponent {}
 
 @Component({
-  selector: 'route-component',
+  selector: 'post-route-component',
   standalone: true,
   template: `
     <div class="space-y-3">
-      <p class="text-xs font-semibold uppercase tracking-[0.25em] text-teal-600 dark:text-teal-300">
+      <p
+        class="text-xs font-semibold uppercase tracking-[0.25em] text-teal-600 dark:text-teal-300"
+      >
         Scaffolded loader route
       </p>
       <h3 class="text-xl font-semibold">{{ post().title }}</h3>

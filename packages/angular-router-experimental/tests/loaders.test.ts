@@ -12,7 +12,7 @@ import {
   createRouter,
 } from '../src'
 import { sleep } from './utils'
-import type { RouterHistory } from '@tanstack/history'
+import type { RouterHistory } from '@benjavicente/history'
 
 let history: RouterHistory
 

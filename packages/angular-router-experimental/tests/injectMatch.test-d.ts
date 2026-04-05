@@ -6,7 +6,7 @@ import {
   injectMatch,
 } from '../src'
 import type * as Angular from '@angular/core'
-import type { MakeRouteMatch, MakeRouteMatchUnion } from '@tanstack/router-core'
+import type { MakeRouteMatch, MakeRouteMatchUnion } from '@benjavicente/router-core'
 
 const rootRoute = createRootRoute()
 

@@ -1,6 +1,6 @@
 import * as Angular from '@angular/core'
 import { getRouterInjectionKey } from './routerInjectionToken'
-import type { AnyRouter, RegisteredRouter } from '@tanstack/router-core'
+import type { AnyRouter, RegisteredRouter } from '@benjavicente/router-core'
 
 export function injectRouter<
   TRouter extends AnyRouter = RegisteredRouter,

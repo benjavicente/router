@@ -8,7 +8,7 @@ import {
 } from './document-dehydration'
 import { areManagedDocumentContentsEqual } from './document-equality'
 import { createManagedTagCollection } from './managed-dom'
-import type { AnyRouter } from '@tanstack/router-core'
+import type { AnyRouter } from '@benjavicente/router-core'
 import type { ManagedDocumentContent, ManagedTagCollection } from './managed-document-types'
 
 function applyManagedDocumentContent({

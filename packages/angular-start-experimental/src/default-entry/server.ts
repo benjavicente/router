@@ -1,9 +1,9 @@
 import '@angular/compiler'
 import {
   createServerHandler,
-} from '@tanstack/angular-start-experimental/server'
-import type { Register } from '@tanstack/angular-router-experimental'
-import { TanStackStartRoot } from '@tanstack/angular-start-experimental-client'
+} from '@benjavicente/angular-start-experimental/server'
+import type { Register } from '@benjavicente/angular-router-experimental'
+import { TanStackStartRoot } from '@benjavicente/angular-start-experimental-client'
 
 export default {
   fetch: createServerHandler<Register>(TanStackStartRoot, { providers: [] }, {

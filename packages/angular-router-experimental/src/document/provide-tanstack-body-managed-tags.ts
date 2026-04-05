@@ -6,7 +6,7 @@ import { collectDehydrationScriptManagedTags } from './document-dehydration'
 import { areManagedTagArraysEqual } from './document-equality'
 import { TANSTACK_DOCUMENT_ROUTER } from './document-router-token'
 import { createManagedTagCollection, uniqManagedTags } from './managed-dom'
-import type { AnyRouter } from '@tanstack/router-core'
+import type { AnyRouter } from '@benjavicente/router-core'
 import type { ManagedTag } from './managed-document-types'
 
 /**

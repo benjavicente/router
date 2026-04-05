@@ -1,4 +1,4 @@
-import { createRouter } from '@tanstack/angular-router-experimental'
+import { createRouter } from '@benjavicente/angular-router-experimental'
 import { routeTree } from './routeTree.gen'
 
 export const router = createRouter({
@@ -6,7 +6,7 @@ export const router = createRouter({
   defaultPreload: 'intent',
 })
 
-declare module '@tanstack/angular-router-experimental' {
+declare module '@benjavicente/angular-router-experimental' {
   interface Register {
     router: typeof router
   }

@@ -2,7 +2,7 @@ import { Component } from '@angular/core'
 import {
   createFileRoute,
   injectErrorState,
-} from '@tanstack/angular-router-experimental'
+} from '@benjavicente/angular-router-experimental'
 import { fetchPost } from '../posts'
 
 export const Route = createFileRoute('/posts/$postId')({

@@ -29,7 +29,7 @@ export default defineConfig({
       formats: ['es'],
       fileName: (_format, name) => `fesm2022/${name}.mjs`,
     },
-    rollupOptions: {
+    rolldownOptions: {
       external: [
         /^@angular\//,
         /^@tanstack\//,

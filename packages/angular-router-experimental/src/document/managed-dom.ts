@@ -9,7 +9,7 @@ import {
 } from './managed-document-types'
 import type {ManagedBucket, ManagedTag, ManagedTagCollection, ManagedTagId, ManagedTagRecord} from './managed-document-types';
 import type * as Angular from '@angular/core'
-import type { RouterManagedTag } from '@tanstack/router-core'
+import type { RouterManagedTag } from '@benjavicente/router-core'
 
 export function normalizeManagedTag(
   tag: RouterManagedTag | undefined,

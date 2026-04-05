@@ -3,7 +3,7 @@ import {
   Link,
   Outlet,
   createFileRoute,
-} from '@tanstack/angular-router-experimental'
+} from '@benjavicente/angular-router-experimental'
 import { fetchPosts } from '../posts'
 
 export const Route = createFileRoute('/posts')({
@@ -23,7 +23,7 @@ export const Route = createFileRoute('/posts')({
 })
 
 @Component({
-  selector: 'route-component',
+  selector: 'posts-layout-component',
   standalone: true,
   imports: [Link, Outlet],
   template: `
@@ -39,7 +39,9 @@ export const Route = createFileRoute('/posts')({
                 [link]="{
                   to: '/posts/$postId',
                   params: { postId: post.id },
-                  activeProps: { class: 'border-teal-500 bg-teal-50 dark:bg-teal-950/40' }
+                  activeProps: {
+                    class: 'border-teal-500 bg-teal-50 dark:bg-teal-950/40',
+                  },
                 }"
                 class="block rounded-xl border px-3 py-2 text-sm transition hover:opacity-80"
               >

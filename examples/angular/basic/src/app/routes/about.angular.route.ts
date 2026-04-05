@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { createRoute } from '@tanstack/angular-router-experimental';
+import { createRoute } from '@benjavicente/angular-router-experimental';
 import { Route as AboutRoute } from './about.route';
 
 @Component({

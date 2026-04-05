@@ -3,7 +3,7 @@ import {
   createFileRoute,
   Link,
   Outlet,
-} from '@tanstack/angular-router-experimental'
+} from '@benjavicente/angular-router-experimental'
 import { fetchPosts } from '../posts'
 
 export const Route = createFileRoute('/posts')({

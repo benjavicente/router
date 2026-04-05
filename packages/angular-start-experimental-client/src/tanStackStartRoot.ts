@@ -1,5 +1,5 @@
 import { Component } from '@angular/core'
-import { RouterProvider } from '@tanstack/angular-router-experimental'
+import { RouterProvider } from '@benjavicente/angular-router-experimental'
 
 /**
  * Default app shell for TanStack Start Angular (matches the basic example’s `app-root` + `router-provider` layout).

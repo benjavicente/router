@@ -1,5 +1,5 @@
 import { Component } from '@angular/core'
-import { createFileRoute, Link } from '@tanstack/angular-router-experimental'
+import { createFileRoute, Link } from '@benjavicente/angular-router-experimental'
 
 export const Route = createFileRoute('/anchor')({
   component: () => AnchorComponent,

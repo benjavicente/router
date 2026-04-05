@@ -8,7 +8,7 @@ import type {
   ThrowConstraint,
   ThrowOrOptional,
   UseSearchResult,
-} from '@tanstack/router-core'
+} from '@benjavicente/router-core'
 
 export interface InjectSearchBaseOptions<
   TRouter extends AnyRouter,

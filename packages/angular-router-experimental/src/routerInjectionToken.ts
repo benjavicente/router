@@ -1,5 +1,5 @@
 import * as Angular from '@angular/core'
-import type { AnyRouter } from '@tanstack/router-core'
+import type { AnyRouter } from '@benjavicente/router-core'
 
 declare global {
   interface Window {

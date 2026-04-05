@@ -1,4 +1,4 @@
-import { createFileRoute } from '@tanstack/angular-router-experimental'
+import { createFileRoute } from '@benjavicente/angular-router-experimental'
 
 export const Route = createFileRoute('/lazy')({
   head: () => ({

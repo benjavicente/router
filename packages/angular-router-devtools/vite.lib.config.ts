@@ -25,9 +25,11 @@ export default defineConfig({
       formats: ['es'],
       fileName: (_format, name) => `fesm2022/${name}.mjs`,
     },
-    rollupOptions: {
+    // Peer must stay external — bundling it duplicates @Component metadata (NG0912).
+    rolldownOptions: {
       external: [
         /^@angular\//,
+        /^@benjavicente\/angular-router-experimental(\/.*)?$/,
         /^@tanstack\//,
         'rxjs',
         'tslib',

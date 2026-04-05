@@ -2,18 +2,21 @@ import {
   Component,
   DestroyRef,
   ElementRef,
-  EnvironmentInjector,
-  OnInit,
+  PLATFORM_ID,
   afterNextRender,
   computed,
   effect,
   inject,
   input,
-  runInInjectionContext,
+  untracked,
 } from '@angular/core'
-import type { AnyRouter } from '@tanstack/angular-router-experimental'
-import { injectRouter, injectStore } from '@tanstack/angular-router-experimental'
-import { TanStackRouterDevtoolsCore } from '@tanstack/router-devtools-core'
+import { isPlatformBrowser } from '@angular/common'
+import {
+  injectRouter,
+  injectStore,
+} from '@benjavicente/angular-router-experimental'
+import { TanStackRouterDevtoolsCore } from '@benjavicente/router-devtools-core'
+import type { AnyRouter } from '@benjavicente/angular-router-experimental'
 
 export interface TanStackRouterDevtoolsOptions {
   /**
@@ -57,7 +60,7 @@ export interface TanStackRouterDevtoolsOptions {
   selector: 'router-devtools',
   template: '',
 })
-export class TanStackRouterDevtools implements OnInit {
+export class TanStackRouterDevtools {
   initialIsOpen = input<TanStackRouterDevtoolsOptions['initialIsOpen']>()
   panelProps = input<TanStackRouterDevtoolsOptions['panelProps']>()
   closeButtonProps = input<TanStackRouterDevtoolsOptions['closeButtonProps']>()
@@ -72,38 +75,17 @@ export class TanStackRouterDevtools implements OnInit {
 
   private elementRef = inject(ElementRef<HTMLElement>)
 
-  private contextRouter = injectRouter({ warn: false })
-  private router = computed(() => this.inputRouter() ?? this.contextRouter)
-  private routerState = injectStore(() => this.router().stores.__store)
+  constructor() {
+    const platformId = inject(PLATFORM_ID)
+    if (!isPlatformBrowser(platformId)) return
 
-  private injector = inject(EnvironmentInjector)
+    const contextRouter = injectRouter({ warn: false })
+    const router = computed(() => this.inputRouter() ?? contextRouter)
+    const routerState = injectStore(() => router().stores.__store)
 
-  ngOnInit() {
-    // Since inputs are not available before component initialization,
-    // we attach every effect and derived signal to the ngOnInit lifecycle hook
-    runInInjectionContext(this.injector, () => {
-      const devtools = new TanStackRouterDevtoolsCore({
-        initialIsOpen: this.initialIsOpen(),
-        panelProps: this.panelProps(),
-        closeButtonProps: this.closeButtonProps(),
-        toggleButtonProps: this.toggleButtonProps(),
-        position: this.position(),
-        containerElement: this.containerElement(),
-        shadowDOMTarget: this.shadowDOMTarget(),
-        router: this.router(),
-        routerState: this.routerState(),
-      })
-
-      effect(() => {
-        devtools.setRouter(this.router())
-      })
-
-      effect(() => {
-        devtools.setRouterState(this.routerState())
-      })
-
-      effect(() => {
-        devtools.setOptions({
+    const devtoolsSignal = computed(() =>
+      untracked(() => {
+        return new TanStackRouterDevtoolsCore({
           initialIsOpen: this.initialIsOpen(),
           panelProps: this.panelProps(),
           closeButtonProps: this.closeButtonProps(),
@@ -111,15 +93,33 @@ export class TanStackRouterDevtools implements OnInit {
           position: this.position(),
           containerElement: this.containerElement(),
           shadowDOMTarget: this.shadowDOMTarget(),
+          router: router(),
+          routerState: routerState(),
         })
-      })
+      }),
+    )
 
-      const destroyRef = inject(DestroyRef)
-      afterNextRender(() => {
-        devtools.mount(this.elementRef.nativeElement)
-        destroyRef.onDestroy(() => {
-          devtools.unmount()
-        })
+    effect(() => {
+      devtoolsSignal().setRouter(router())
+    })
+
+    effect(() => {
+      devtoolsSignal().setOptions({
+        initialIsOpen: this.initialIsOpen(),
+        panelProps: this.panelProps(),
+        closeButtonProps: this.closeButtonProps(),
+        toggleButtonProps: this.toggleButtonProps(),
+        position: this.position(),
+        containerElement: this.containerElement(),
+        shadowDOMTarget: this.shadowDOMTarget(),
+      })
+    })
+
+    const destroyRef = inject(DestroyRef)
+    afterNextRender(() => {
+      devtoolsSignal().mount(this.elementRef.nativeElement)
+      destroyRef.onDestroy(() => {
+        devtoolsSignal().unmount()
       })
     })
   }

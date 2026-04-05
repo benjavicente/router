@@ -6,7 +6,7 @@ import {
   injectSearch,
 } from '../src'
 import type * as Angular from '@angular/core'
-import type { SearchSchemaInput } from '@tanstack/router-core'
+import type { SearchSchemaInput } from '@benjavicente/router-core'
 
 describe('injectSearch', () => {
   test('when there are no search params', () => {

@@ -1,5 +1,5 @@
 import * as Angular from '@angular/core'
-import { deepEqual, invariant } from '@tanstack/router-core'
+import { deepEqual, invariant } from '@benjavicente/router-core'
 import { MATCH_CONTEXT_INJECTOR_TOKEN } from './matchInjectorToken'
 import { injectRouter } from './injectRouter'
 import { injectStore } from './injectStore'
@@ -11,7 +11,7 @@ import type {
   StrictOrFrom,
   ThrowConstraint,
   ThrowOrOptional,
-} from '@tanstack/router-core'
+} from '@benjavicente/router-core'
 
 export interface InjectMatchBaseOptions<
   TRouter extends AnyRouter,

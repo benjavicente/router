@@ -10,9 +10,12 @@ import {
   input,
   runInInjectionContext,
 } from '@angular/core'
-import type { AnyRouter } from '@tanstack/angular-router-experimental'
-import { injectRouter, injectStore } from '@tanstack/angular-router-experimental'
-import { TanStackRouterDevtoolsPanelCore } from '@tanstack/router-devtools-core'
+import {
+  injectRouter,
+  injectStore,
+} from '@benjavicente/angular-router-experimental'
+import { TanStackRouterDevtoolsPanelCore } from '@benjavicente/router-devtools-core'
+import type { AnyRouter } from '@benjavicente/angular-router-experimental'
 
 export interface TanStackRouterDevtoolsPanelOptions {
   /**

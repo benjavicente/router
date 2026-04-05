@@ -1,6 +1,6 @@
 import { defineConfig } from 'vite'
 import { angular } from '@oxc-angular/vite'
-import { tanstackStart } from '@tanstack/angular-start-experimental/plugin/vite'
+import { tanstackStart } from '@benjavicente/angular-start-experimental/plugin/vite'
 import tailwindcss from '@tailwindcss/vite'
 import { nitro } from 'nitro/vite'
 

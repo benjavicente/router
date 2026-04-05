@@ -13,7 +13,7 @@ import type {
   RegisteredRouter,
   ResolveRoute,
   ToSubOptionsProps,
-} from '@tanstack/router-core'
+} from '@benjavicente/router-core'
 
 export type InjectMatchRouteOptions<
   TRouter extends AnyRouter = RegisteredRouter,

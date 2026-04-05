@@ -5,7 +5,7 @@ import {
   createRouter,
   injectRouterState,
 } from '../src'
-import type { RouterState } from '@tanstack/router-core'
+import type { RouterState } from '@benjavicente/router-core'
 
 const rootRoute = createRootRoute({
   validateSearch: () => ({

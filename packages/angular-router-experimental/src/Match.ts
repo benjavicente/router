@@ -1,5 +1,8 @@
 import {
   Component,
+  DestroyRef,
+  EnvironmentInjector,
+  afterNextRender,
   computed,
   effect,
   inject,
@@ -11,7 +14,7 @@ import {
   AnyRouter,
   getLocationChangeInfo,
   rootRouteId,
-} from '@tanstack/router-core'
+} from '@benjavicente/router-core'
 import { injectRouter } from './injectRouter'
 import { injectStore } from './injectStore'
 import { DefaultNotFoundComponent } from './DefaultNotFound'
@@ -28,27 +31,51 @@ function injectOnRendered({
   parentRouteIsRoot: Signal<boolean>
 }) {
   const router = injectRouter({ warn: false })
+  const envInjector = inject(EnvironmentInjector)
+  const destroyRef = inject(DestroyRef)
   const location = injectStore(
     router.stores.resolvedLocation,
     (resolvedLocation) => resolvedLocation?.state.__TSR_key,
   )
-  const currentLocation = injectStore(router.stores.location, (value) => value)
-  const resolvedLocation = injectStore(
-    router.stores.resolvedLocation,
-    (value) => value,
-  )
+  const loadedAt = injectStore(router.stores.loadedAt, (value) => value)
+
+  let prevHref: string | undefined
+  let renderGeneration = 0
+
+  destroyRef.onDestroy(() => {
+    renderGeneration++
+  })
 
   effect(() => {
     if (!parentRouteIsRoot()) return
-    location() // Track location
+    location()
+    loadedAt()
 
-    router.emit({
-      type: 'onRendered',
-      ...getLocationChangeInfo(
-        currentLocation(),
-        resolvedLocation(),
-      ),
-    })
+    const gen = ++renderGeneration
+    afterNextRender(
+      {
+        read: () => {
+          if (gen !== renderGeneration) return
+          if (!parentRouteIsRoot()) return
+          if (router.isServer) return
+
+          const currentHref = router.latestLocation.href
+          if (prevHref !== undefined && prevHref === currentHref) {
+            return
+          }
+          prevHref = currentHref
+
+          router.emit({
+            type: 'onRendered',
+            ...getLocationChangeInfo(
+              router.stores.location.state,
+              router.stores.resolvedLocation.state,
+            ),
+          })
+        },
+      },
+      { injector: envInjector },
+    )
   })
 }
 
@@ -119,12 +146,6 @@ export class RouteMatch {
   )
   rootRouteIdSignal = computed(() => rootRouteId)
 
-  onRendered = injectOnRendered({
-    parentRouteIsRoot: computed(
-      () => this.parentRouteIdSignal() === rootRouteId,
-    ),
-  })
-
   hasPendingMatch = computed(() => {
     const routeId = this.matchData()?.route.id
     return routeId ? Boolean(this.pendingRouteIds()[routeId]) : false
@@ -177,11 +198,27 @@ export class RouteMatch {
           },
         ],
       }
-    } else if (
-      match.status === 'redirected' ||
-      match.status === 'pending' ||
-      this.hasPendingMatch()
-    ) {
+    } else if (match.status === 'redirected' || match.status === 'pending') {
+      const rootShellComponent =
+        route.isRoot &&
+        (getComponent(route.options.component) ??
+          getComponent(this.router.options.defaultComponent))
+
+      if (rootShellComponent && rootShellComponent !== Outlet) {
+        const key = matchData.key
+
+        return {
+          key,
+          component: rootShellComponent,
+          providers: [
+            {
+              provide: MATCH_CONTEXT_INJECTOR_TOKEN,
+              useValue: this.nearestMatchContext,
+            },
+          ],
+        }
+      }
+
       const PendingComponent =
         getComponent(route.options.pendingComponent) ??
         getComponent(this.router.options.defaultPendingComponent)
@@ -208,6 +245,12 @@ export class RouteMatch {
         ],
       }
     }
+  })
+
+  onRendered = injectOnRendered({
+    parentRouteIsRoot: computed(
+      () => this.parentRouteIdSignal() === rootRouteId,
+    ),
   })
 }
 

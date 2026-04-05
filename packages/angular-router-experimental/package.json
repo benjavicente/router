@@ -1,5 +1,5 @@
 {
-  "name": "@tanstack/angular-router-experimental",
+  "name": "@benjavicente/angular-router-experimental",
   "version": "1.142.11",
   "description": "Modern and scalable routing for Angular applications",
   "author": "Tanner Linsley",
@@ -65,8 +65,8 @@
     "node": ">=20.19"
   },
   "dependencies": {
-    "@tanstack/history": "workspace:*",
-    "@tanstack/router-core": "workspace:*",
+    "@benjavicente/history": "workspace:*",
+    "@benjavicente/router-core": "workspace:*",
     "isbot": "^5.1.22",
     "tslib": "^2.3.0"
   },

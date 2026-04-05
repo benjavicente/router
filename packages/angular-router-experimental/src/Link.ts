@@ -20,7 +20,7 @@ import {
   exactPathTest,
   preloadWarning,
   removeTrailingSlash,
-} from '@tanstack/router-core'
+} from '@benjavicente/router-core'
 import { injectLocation } from './injectLocation'
 import { injectRouter } from './injectRouter'
 import { injectIntersectionObserver } from './injectIntersectionObserver'

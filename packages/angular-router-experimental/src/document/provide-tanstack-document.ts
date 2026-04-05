@@ -4,7 +4,7 @@ import { installUnifiedTanstackDocumentSync } from './install-unified-document-s
 import { installTanstackBodyManagedTags } from './provide-tanstack-body-managed-tags'
 import { installTanstackDocumentTitle } from './provide-tanstack-document-title'
 import { installTanstackHeadManagedTags } from './provide-tanstack-head-managed-tags'
-import type { AnyRouter } from '@tanstack/router-core'
+import type { AnyRouter } from '@benjavicente/router-core'
 
 export type TanstackDocumentFeatures = {
   /** Sync `document.title` from route meta (default: true). */

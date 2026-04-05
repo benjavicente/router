@@ -3,7 +3,7 @@ import { afterEach, beforeEach, describe, expect, test, vi } from 'vitest'
 import { fireEvent, render, screen, waitFor } from '@testing-library/angular'
 
 
-import { trailingSlashOptions } from '@tanstack/router-core'
+import { trailingSlashOptions } from '@benjavicente/router-core'
 import {
   Link,
   Outlet,

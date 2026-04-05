@@ -1,4 +1,4 @@
-import { notFound } from '@tanstack/angular-router-experimental'
+import { notFound } from '@benjavicente/angular-router-experimental'
 
 export type PostType = {
   id: string
@@ -24,6 +24,6 @@ export const fetchPosts = async () => {
   if (!res.ok) {
     throw new Error(await res.text())
   }
-  const data = (await res.json()) as PostType[]
+  const data = (await res.json()) as Array<PostType>
   return data.slice(0, 8)
 }

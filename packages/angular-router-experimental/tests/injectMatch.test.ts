@@ -11,7 +11,7 @@ import {
   createRouter,
   injectMatch,
 } from '../src'
-import type { RouterHistory } from '@tanstack/history'
+import type { RouterHistory } from '@benjavicente/history'
 
 afterEach(() => {
   window.history.replaceState(null, 'root', '/')

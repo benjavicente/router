@@ -5,8 +5,8 @@ import {
   injectNavigate,
   injectRouterState,
   Link,
-} from '@tanstack/angular-router-experimental';
-import { TanStackRouterDevtools } from '@tanstack/angular-router-devtools';
+} from '@benjavicente/angular-router-experimental';
+import { TanStackRouterDevtools } from '@benjavicente/angular-router-devtools';
 
 @Component({
   selector: 'app-root-layout',

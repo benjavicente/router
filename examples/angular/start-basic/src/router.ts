@@ -1,4 +1,4 @@
-import { createRouter } from '@tanstack/angular-router-experimental'
+import { createRouter } from '@benjavicente/angular-router-experimental'
 import { routeTree } from './routeTree.gen'
 
 export function getRouter() {
@@ -6,10 +6,12 @@ export function getRouter() {
     routeTree,
     defaultPreload: 'intent',
     scrollRestoration: true,
+    // Required in angular to be 0
+    defaultPendingMinMs: 0,
   })
 }
 
-declare module '@tanstack/angular-router-experimental' {
+declare module '@benjavicente/angular-router-experimental' {
   interface Register {
     router: ReturnType<typeof getRouter>
   }

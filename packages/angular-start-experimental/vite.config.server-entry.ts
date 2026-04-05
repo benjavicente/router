@@ -9,9 +9,9 @@ export default mergeConfig(
     exclude: ['./src/default-entry/client.ts'],
     entry: ['./src/default-entry/server.ts'],
     externalDeps: [
-      '@tanstack/angular-start-experimental/server',
-      '@tanstack/angular-start-experimental-client',
-      '@tanstack/angular-router-experimental',
+      '@benjavicente/angular-start-experimental/server',
+      '@benjavicente/angular-start-experimental-client',
+      '@benjavicente/angular-router-experimental',
       '@angular/compiler',
       '@angular/core',
       '@angular/common',

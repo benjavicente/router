@@ -28,7 +28,7 @@ import type {
   RouteIds,
   UpdatableRouteOptions,
   UseNavigateResult,
-} from '@tanstack/router-core'
+} from '@benjavicente/router-core'
 import type { InjectLoaderDepsRoute } from './injectLoaderDeps'
 import type { InjectLoaderDataRoute } from './injectLoaderData'
 import type { InjectRouteContextRoute } from './injectRouteContext'
@@ -143,7 +143,7 @@ class InternalFileRouteFactory<
   }
 }
 
-declare module '@tanstack/router-core' {
+declare module '@benjavicente/router-core' {
   export interface LazyRoute<in out TRoute extends AnyRoute> {
     injectMatch: InjectMatchRoute<TRoute['id']>
     injectRouteContext: InjectRouteContextRoute<TRoute['id']>

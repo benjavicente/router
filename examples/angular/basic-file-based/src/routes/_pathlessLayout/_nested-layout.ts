@@ -1,5 +1,5 @@
 import { Component } from '@angular/core'
-import { createFileRoute, Link, Outlet } from '@tanstack/angular-router-experimental'
+import { createFileRoute, Link, Outlet } from '@benjavicente/angular-router-experimental'
 
 export const Route = createFileRoute('/_pathlessLayout/_nested-layout')({
   component: () => NestedLayoutComponent,

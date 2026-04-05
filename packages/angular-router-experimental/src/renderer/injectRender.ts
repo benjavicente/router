@@ -8,20 +8,19 @@ import {
 } from '@angular/core'
 import type { Provider, Type } from '@angular/core'
 
-export type RenderValue = {
-  key?: string
-  component: Type<any> | null | undefined
-  inputs?: Record<string, () => unknown>
-  providers?: Array<Provider>
-} | null | undefined
+export type RenderValue =
+  | {
+      key?: string
+      component: Type<any> | null | undefined
+      inputs?: Record<string, () => unknown>
+      providers?: Array<Provider>
+    }
+  | null
+  | undefined
 
 export function injectRender(renderValueFn: () => RenderValue): void {
   const vcr = inject(ViewContainerRef)
   const parent = inject(Injector)
-
-  inject(DestroyRef).onDestroy(() => {
-    vcr.clear()
-  })
 
   let lastKey: Array<any> = []
 
@@ -40,11 +39,18 @@ export function injectRender(renderValueFn: () => RenderValue): void {
 
     const providers = renderValue.providers ?? []
     const childInjector = Injector.create({ providers, parent })
-    const bindings = Object.entries(renderValue.inputs ?? {}).map(([name, value]) =>
-      inputBinding(name, value),
+    const bindings = Object.entries(renderValue.inputs ?? {}).map(
+      ([name, value]) => inputBinding(name, value),
     )
-    const cmpRef = vcr.createComponent(component, { injector: childInjector, bindings })
+    const cmpRef = vcr.createComponent(component, {
+      injector: childInjector,
+      bindings,
+    })
     cmpRef.changeDetectorRef.markForCheck()
+  })
+
+  inject(DestroyRef).onDestroy(() => {
+    vcr.clear()
   })
 }
 

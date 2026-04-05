@@ -2,17 +2,17 @@ import * as Angular from '@angular/core'
 import {
   createNonReactiveMutableStore,
   createNonReactiveReadonlyStore,
-} from '@tanstack/router-core'
-import { isServer } from '@tanstack/router-core/isServer'
+} from '@benjavicente/router-core'
+import { isServer } from '@benjavicente/router-core/isServer'
 import type {
   AnyRoute,
   GetStoreConfig,
   RouterReadableStore,
   RouterStores,
   RouterWritableStore,
-} from '@tanstack/router-core'
+} from '@benjavicente/router-core'
 
-declare module '@tanstack/router-core' {
+declare module '@benjavicente/router-core' {
   // eslint-disable-next-line unused-imports/no-unused-vars -- generic must match upstream `RouterStores<TRouteTree>` for augmentation
   export interface RouterStores<in out TRouteTree extends AnyRoute> {
     childMatchIdByRouteId: RouterReadableStore<Record<string, string>>

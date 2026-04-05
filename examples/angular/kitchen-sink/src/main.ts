@@ -26,8 +26,8 @@ import {
   redirect,
   retainSearchParams,
   RouterContextOptions,
-} from '@tanstack/angular-router-experimental'
-import { TanStackRouterDevtoolsInProd } from '@tanstack/angular-router-devtools'
+} from '@benjavicente/angular-router-experimental'
+import { TanStackRouterDevtoolsInProd } from '@benjavicente/angular-router-devtools'
 import { z } from 'zod'
 import { injectMutation } from './injectMutation'
 import './styles.css'

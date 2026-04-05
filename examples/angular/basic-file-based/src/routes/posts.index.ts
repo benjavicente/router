@@ -1,5 +1,5 @@
 import { Component } from '@angular/core'
-import { createFileRoute } from '@tanstack/angular-router-experimental'
+import { createFileRoute } from '@benjavicente/angular-router-experimental'
 
 export const Route = createFileRoute('/posts/')({
   component: () => PostsIndexComponent,

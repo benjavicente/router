@@ -3,7 +3,7 @@ import {
   BaseRoute,
   BaseRouteApi,
   notFound,
-} from '@tanstack/router-core'
+} from '@benjavicente/router-core'
 import { injectLoaderData } from './injectLoaderData'
 import { injectLoaderDeps } from './injectLoaderDeps'
 import { injectMatch } from './injectMatch'
@@ -41,10 +41,10 @@ import type {
   RouterCore,
   ToMaskOptions,
   UseNavigateResult,
-} from '@tanstack/router-core'
+} from '@benjavicente/router-core'
 import type { InjectSearchRoute } from './injectSearch'
 
-declare module '@tanstack/router-core' {
+declare module '@benjavicente/router-core' {
   export interface UpdatableRouteOptionsExtensions {
     component?: RouteComponent
     errorComponent?: false | null | undefined | ErrorRouteComponent

@@ -6,7 +6,7 @@ import {
   injectLocation,
 } from '../src'
 import type * as Angular from '@angular/core'
-import type { ParsedLocation } from '@tanstack/router-core'
+import type { ParsedLocation } from '@benjavicente/router-core'
 
 const rootRoute = createRootRoute()
 

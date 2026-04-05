@@ -1,5 +1,5 @@
 import * as Angular from '@angular/core'
-import type { AnyRouteMatch } from '@tanstack/router-core'
+import type { AnyRouteMatch } from '@benjavicente/router-core'
 
 export type NearestMatchContextValue = {
   matchId: () => string | undefined,

@@ -76,7 +76,7 @@ export interface RootRouteChildren {
   PostsRouteRoute: typeof PostsRouteRouteWithChildren
 }
 
-declare module '@tanstack/angular-router-experimental' {
+declare module '@benjavicente/angular-router-experimental' {
   interface FileRoutesByPath {
     '/posts': {
       id: '/posts'
@@ -140,8 +140,8 @@ export const routeTree = rootRouteImport
   ._addFileTypes<FileRouteTypes>()
 
 import type { getRouter } from './router.ts'
-import type { createStart } from '@tanstack/angular-start-experimental'
-declare module '@tanstack/angular-start-experimental' {
+import type { createStart } from '@benjavicente/angular-start-experimental'
+declare module '@benjavicente/angular-start-experimental' {
   interface Register {
     ssr: true
     router: Awaited<ReturnType<typeof getRouter>>

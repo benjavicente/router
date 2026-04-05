@@ -1,5 +1,5 @@
 import { Component } from '@angular/core'
-import { createFileRoute, Outlet } from '@tanstack/angular-router-experimental'
+import { createFileRoute, Outlet } from '@benjavicente/angular-router-experimental'
 
 export const Route = createFileRoute('/_pathlessLayout')({
   component: () => PathlessLayoutComponent,

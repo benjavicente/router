@@ -3,8 +3,8 @@ import {
   Link,
   Outlet,
   createRootRoute,
-} from '@tanstack/angular-router-experimental'
-import { TanStackRouterDevtools } from '@tanstack/angular-router-devtools'
+} from '@benjavicente/angular-router-experimental'
+import { TanStackRouterDevtools } from '@benjavicente/angular-router-devtools'
 
 export const Route = createRootRoute({
   component: () => RootComponent,

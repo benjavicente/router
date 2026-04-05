@@ -1,5 +1,5 @@
+import { createLazyFileRoute } from '@benjavicente/angular-router-experimental'
 import { Component } from '@angular/core'
-import { createLazyFileRoute } from '@tanstack/angular-router-experimental'
 
 export const Route = createLazyFileRoute('/lazy')({
   component: () => LazyRouteComponent,

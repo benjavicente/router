@@ -1,5 +1,5 @@
 {
-  "name": "@tanstack/angular-router-devtools",
+  "name": "@benjavicente/angular-router-devtools",
   "version": "1.142.11",
   "description": "Modern and scalable routing for Angular applications",
   "author": "Tanner Linsley",
@@ -58,7 +58,7 @@
     "node": ">=20.19"
   },
   "dependencies": {
-    "@tanstack/router-devtools-core": "workspace:*",
+    "@benjavicente/router-devtools-core": "workspace:*",
     "tslib": "^2.3.0"
   },
   "devDependencies": {
@@ -78,6 +78,6 @@
   },
   "peerDependencies": {
     "@angular/core": "^21.2.6",
-    "@tanstack/angular-router-experimental": "workspace:^"
+    "@benjavicente/angular-router-experimental": "workspace:^"
   }
 }

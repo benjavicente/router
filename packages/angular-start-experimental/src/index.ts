@@ -1,2 +1,2 @@
 export { injectServerFn } from './injectServerFn'
-export * from '@tanstack/start-client-core'
+export * from '@benjavicente/start-client-core'

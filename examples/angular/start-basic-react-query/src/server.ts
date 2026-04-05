@@ -1,12 +1,10 @@
 import '@angular/compiler'
 import { mergeApplicationConfig } from '@angular/core'
-import {
-  createServerHandler,
-} from '@tanstack/angular-start-experimental/server'
-import type { Register } from '@tanstack/angular-router-experimental'
+import { createServerHandler } from '@benjavicente/angular-start-experimental/server'
 import { App } from './app'
 import { appConfig } from './app.config'
 import { appConfigServer } from './app.config.server'
+import type { Register } from '@benjavicente/angular-router-experimental'
 
 export default {
   fetch: createServerHandler<Register>(

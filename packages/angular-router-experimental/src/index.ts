@@ -46,6 +46,7 @@ export {
 // Components
 export { Outlet, RouteMatch } from './Match'
 export { Matches } from './Matches'
+export { injectSsrScrollRestorationScript } from './ssr-scroll-restoration'
 export {
   injectMatches,
   injectParentMatches,
@@ -137,7 +138,7 @@ export {
   isRedirect,
   retainSearchParams,
   createRouterConfig,
-} from '@tanstack/router-core'
+} from '@benjavicente/router-core'
 
 // History utilities
 export {
@@ -145,7 +146,7 @@ export {
   createBrowserHistory,
   createHashHistory,
   createMemoryHistory,
-} from '@tanstack/history'
+} from '@benjavicente/history'
 
 export type {
   BlockerFn,
@@ -153,9 +154,9 @@ export type {
   RouterHistory,
   ParsedPath,
   HistoryState,
-} from '@tanstack/history'
+} from '@benjavicente/history'
 
-// Re-export types from router-core that are commonly used (FileRoutesByPath augmented by routeTree.gen.ts via declare module '@tanstack/router-core')
+// Re-export types from router-core that are commonly used (FileRoutesByPath augmented by routeTree.gen.ts via declare module '@benjavicente/router-core')
 export type {
   AnyRouter,
   RegisteredRouter,
@@ -169,4 +170,4 @@ export type {
   FileRoutesByPath,
   CreateFileRoute,
   CreateLazyFileRoute,
-} from '@tanstack/router-core'
+} from '@benjavicente/router-core'

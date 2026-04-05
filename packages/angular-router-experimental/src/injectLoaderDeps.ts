@@ -6,7 +6,7 @@ import type {
   ResolveUseLoaderDeps,
   StrictOrFrom,
   UseLoaderDepsResult,
-} from '@tanstack/router-core'
+} from '@benjavicente/router-core'
 
 export interface InjectLoaderDepsBaseOptions<
   TRouter extends AnyRouter,

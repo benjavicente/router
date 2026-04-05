@@ -3,10 +3,10 @@ import {
   getLocationChangeInfo,
   handleHashScroll,
   trimPathRight,
-} from '@tanstack/router-core'
+} from '@benjavicente/router-core'
 import { injectRouter } from './injectRouter'
 import { injectStore } from './injectStore'
-import type { AnyRouter } from '@tanstack/router-core'
+import type { AnyRouter } from '@benjavicente/router-core'
 
 // Track mount state per router to avoid double-loading
 let mountLoadForRouter: { router: AnyRouter | null; mounted: boolean } = {

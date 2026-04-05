@@ -1,10 +1,10 @@
-import { escapeHtml } from '@tanstack/router-core'
+import { escapeHtml } from '@benjavicente/router-core'
 import {
   collectDehydrationScriptManagedTags,
   mergeDehydrationPrefixIntoDocument,
 } from './document-dehydration'
 import { normalizeManagedTag, uniqManagedTags } from './managed-dom'
-import type { AnyRouter, RouterManagedTag } from '@tanstack/router-core'
+import type { AnyRouter, RouterManagedTag } from '@benjavicente/router-core'
 import type { ManagedDocumentContent, RouteMetaEntry } from './managed-document-types'
 
 /**

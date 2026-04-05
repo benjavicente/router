@@ -1,13 +1,13 @@
-import { isServer } from '@tanstack/router-core/isServer'
+import { isServer } from '@benjavicente/router-core/isServer'
 import * as Angular from '@angular/core'
-import { deepEqual } from '@tanstack/router-core'
+import { deepEqual } from '@benjavicente/router-core'
 import { injectRouter } from './injectRouter'
 import { injectStore } from './injectStore'
 import type {
   AnyRouter,
   RegisteredRouter,
   RouterState,
-} from '@tanstack/router-core'
+} from '@benjavicente/router-core'
 
 export type InjectRouterStateOptions<TRouter extends AnyRouter, TSelected> = {
   router?: TRouter

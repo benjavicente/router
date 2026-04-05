@@ -1,6 +1,6 @@
 import { angular } from '@oxc-angular/vite'
 import { defineConfig } from 'vite'
-import { tanstackRouter } from '@tanstack/router-plugin/vite'
+import { tanstackRouter } from '@benjavicente/router-plugin/vite'
 import tailwindcss from '@tailwindcss/vite'
 
 export default defineConfig({

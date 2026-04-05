@@ -1,4 +1,4 @@
-import { injectRouter, isRedirect } from '@tanstack/angular-router-experimental'
+import { injectRouter, isRedirect } from '@benjavicente/angular-router-experimental'
 
 export function injectServerFn<T extends (...deps: Array<any>) => Promise<any>>(
   serverFn: T,

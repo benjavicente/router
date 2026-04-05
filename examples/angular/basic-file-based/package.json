@@ -13,8 +13,8 @@
     "@angular/compiler": "^21.2.6",
     "@angular/core": "^21.2.6",
     "@angular/platform-browser": "^21.2.6",
-    "@tanstack/angular-router-experimental": "workspace:^",
-    "@tanstack/angular-router-devtools": "workspace:^",
+    "@benjavicente/angular-router-experimental": "workspace:^",
+    "@benjavicente/angular-router-devtools": "workspace:^",
     "@tailwindcss/vite": "^4.1.18",
     "rxjs": "~7.8.0",
     "tailwindcss": "^4.1.18",
@@ -22,8 +22,8 @@
   },
   "devDependencies": {
     "@oxc-angular/vite": "^0.0.22",
-    "@tanstack/router-cli": "workspace:*",
-    "@tanstack/router-plugin": "workspace:*",
+    "@benjavicente/router-cli": "workspace:*",
+    "@benjavicente/router-plugin": "workspace:*",
     "typescript": "~5.9.2",
     "vite": "^8.0.0"
   }

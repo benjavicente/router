@@ -1,4 +1,4 @@
-import { notFound } from '@tanstack/angular-router-experimental'
+import { notFound } from '@benjavicente/angular-router-experimental'
 
 export type PostType = {
   id: string

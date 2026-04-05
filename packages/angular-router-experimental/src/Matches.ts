@@ -3,6 +3,7 @@ import { injectRouter } from './injectRouter'
 import { injectStore } from './injectStore'
 import { injectRender } from './renderer/injectRender'
 import { RouteMatch } from './Match'
+import { injectSsrScrollRestorationScript } from './ssr-scroll-restoration'
 import { injectTransitionerSetup } from './transitioner'
 
 @Component({
@@ -14,6 +15,8 @@ export class Matches {
   router = injectRouter()
 
   private matchId = injectStore(this.router.stores.firstMatchId, (id) => id)
+
+  private ssrScrollRestoration = injectSsrScrollRestorationScript()
 
   transitioner = injectTransitionerSetup()
 

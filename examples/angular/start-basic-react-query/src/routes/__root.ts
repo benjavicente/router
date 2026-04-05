@@ -1,16 +1,13 @@
 import { Component } from '@angular/core'
 import type { QueryClient } from '@benjavicente/angular-query-experimental'
-import type { AngularInjectFn } from '@tanstack/angular-router-experimental'
 import {
   Link,
   Outlet,
   createRootRouteWithContext,
-} from '@tanstack/angular-router-experimental'
-import { TanStackRouterDevtools } from '@tanstack/angular-router-devtools'
+} from '@benjavicente/angular-router-experimental'
 import stylesUrl from '../styles.css?url'
 
 export const Route = createRootRouteWithContext<{
-  inject: AngularInjectFn
   queryClient: QueryClient
 }>()({
   head: () => ({
@@ -20,7 +17,8 @@ export const Route = createRootRouteWithContext<{
       },
       {
         name: 'description',
-        content: 'An Angular Start scaffold wired through the current experimental adapter.',
+        content:
+          'An Angular Start scaffold wired through the current experimental adapter.',
       },
     ],
     scripts: [
@@ -29,9 +27,7 @@ export const Route = createRootRouteWithContext<{
         children: '{"adapter":"angular-start","scope":"head"}',
       },
     ],
-    links: [
-      { rel: 'stylesheet', href: stylesUrl },
-    ]
+    links: [{ rel: 'stylesheet', href: stylesUrl }],
   }),
   scripts: () => [
     {
@@ -46,32 +42,46 @@ export const Route = createRootRouteWithContext<{
 @Component({
   selector: 'root-route',
   standalone: true,
-  imports: [Outlet, Link, TanStackRouterDevtools],
+  imports: [Outlet, Link],
   template: `
     <div class="mx-auto flex min-h-screen max-w-5xl flex-col gap-6 px-4 py-6">
-      <header class="space-y-3 rounded-2xl border bg-white/80 p-5 shadow-sm dark:bg-gray-950/70">
+      <header
+        class="space-y-3 rounded-2xl border bg-white/80 p-5 shadow-sm dark:bg-gray-950/70"
+      >
         <div class="flex flex-wrap items-center justify-between gap-3">
           <div>
-            <p class="text-xs font-semibold uppercase tracking-[0.25em] text-teal-600 dark:text-teal-300">
+            <p
+              class="text-xs font-semibold uppercase tracking-[0.25em] text-teal-600 dark:text-teal-300"
+            >
               Angular Start Scaffold
             </p>
             <h1 class="text-2xl font-semibold">Adapter boilerplate only</h1>
           </div>
           <nav class="flex flex-wrap gap-2 text-sm">
             <a
-              [link]="{ to: '/', activeProps: { class: 'bg-teal-600 text-white' }, activeOptions: { exact: true } }"
+              [link]="{
+                to: '/',
+                activeProps: { class: 'bg-teal-600 text-white' },
+                activeOptions: { exact: true },
+              }"
               class="rounded-full border px-3 py-1.5 transition hover:opacity-80"
             >
               Home
             </a>
             <a
-              [link]="{ to: '/lazy', activeProps: { class: 'bg-teal-600 text-white' } }"
+              [link]="{
+                to: '/lazy',
+                activeProps: { class: 'bg-teal-600 text-white' },
+              }"
               class="rounded-full border px-3 py-1.5 transition hover:opacity-80"
             >
               Lazy
             </a>
             <a
-              [link]="{ to: '/posts', activeProps: { class: 'bg-teal-600 text-white' } }"
+              [link]="{
+                to: '/posts',
+                activeProps: { class: 'bg-teal-600 text-white' },
+              }"
               class="rounded-full border px-3 py-1.5 transition hover:opacity-80"
             >
               Posts
@@ -81,15 +91,16 @@ export const Route = createRootRouteWithContext<{
 
         <p class="max-w-3xl text-sm text-gray-600 dark:text-gray-300">
           This example now boots through the Angular Start adapter with document
-          head and script management wired through the current experimental setup.
+          head and script management wired through the current experimental
+          setup.
         </p>
       </header>
 
-      <main class="rounded-2xl border bg-white/80 p-5 shadow-sm dark:bg-gray-950/70">
+      <main
+        class="rounded-2xl border bg-white/80 p-5 shadow-sm dark:bg-gray-950/70"
+      >
         <outlet />
       </main>
-
-      <router-devtools />
     </div>
   `,
 })

@@ -2,9 +2,9 @@ import { fileURLToPath } from 'node:url'
 import {
   TanStackStartVitePluginCore,
   VITE_ENVIRONMENT_NAMES,
-} from '@tanstack/start-plugin-core'
+} from '@benjavicente/start-plugin-core'
 import path from 'pathe'
-import type { TanStackStartInputConfig } from '@tanstack/start-plugin-core'
+import type { TanStackStartInputConfig } from '@benjavicente/start-plugin-core'
 import type { PluginOption } from 'vite'
 
 const currentDir = path.dirname(fileURLToPath(import.meta.url))
@@ -35,9 +35,9 @@ export function tanstackStart(
               options.optimizeDeps?.noDiscovery === false)
               ? {
                   exclude: [
-                    '@tanstack/angular-start-experimental',
-                    '@tanstack/angular-router-experimental',
-                    '@tanstack/start-static-server-functions',
+                    '@benjavicente/angular-start-experimental',
+                    '@benjavicente/angular-router-experimental',
+                    '@benjavicente/start-static-server-functions',
                   ],
                 }
               : undefined,

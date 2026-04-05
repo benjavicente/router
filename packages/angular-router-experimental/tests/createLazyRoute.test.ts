@@ -11,7 +11,7 @@ import {
   createRouter,
   provideTanstackRouter,
 } from '../src'
-import type { RouterHistory } from '@tanstack/history'
+import type { RouterHistory } from '@benjavicente/history'
 
 beforeEach(() => {
   vi.useFakeTimers({ shouldAdvanceTime: true })

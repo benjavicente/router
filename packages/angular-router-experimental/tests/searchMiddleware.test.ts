@@ -1,7 +1,7 @@
 import * as Angular from '@angular/core'
 import { fireEvent, render, screen } from '@testing-library/angular'
 import { afterEach, beforeEach, describe, expect, test, vi } from 'vitest'
-import { stripSearchParams } from '@tanstack/router-core'
+import { stripSearchParams } from '@benjavicente/router-core'
 import {
   Link,
   RouterProvider,

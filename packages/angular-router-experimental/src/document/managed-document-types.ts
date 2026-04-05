@@ -1,4 +1,4 @@
-import type { RouterManagedTag } from '@tanstack/router-core'
+import type { RouterManagedTag } from '@benjavicente/router-core'
 
 export const TSR_MANAGED_ATTR = 'data-tsr-managed'
 export const TSR_ID_ATTR = 'data-tsr-id'

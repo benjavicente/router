@@ -1,24 +1,13 @@
-import { isPlatformServer } from '@angular/common'
+import { InjectionToken } from '@angular/core'
+import { provideTanStackQuery } from '@benjavicente/angular-query-experimental'
+import { injectRouter } from '@benjavicente/angular-router-experimental'
 import type { ApplicationConfig } from '@angular/core'
-import { InjectionToken, PLATFORM_ID, inject } from '@angular/core'
-import {
-  QueryClient,
-  provideTanStackQuery,
-} from '@benjavicente/angular-query-experimental'
 
-export const QUERY_CLIENT = new InjectionToken<QueryClient>('TanStackQueryClient', {
+export const QUERY_CLIENT = new InjectionToken('TanStackQueryClient', {
   providedIn: 'root',
   factory: () => {
-    const platformId = inject(PLATFORM_ID)
-    return new QueryClient({
-      defaultOptions: {
-        queries: {
-          staleTime: 1000 * 30,
-          gcTime: 1000 * 60 * 60 * 24,
-          retry: !isPlatformServer(platformId),
-        },
-      },
-    })
+    const router = injectRouter()
+    return router.options.context.queryClient
   },
 })
 

@@ -1,11 +1,11 @@
-import { deepEqual } from '@tanstack/router-core'
+import { deepEqual } from '@benjavicente/router-core'
 import { injectRouter } from './injectRouter'
 import { injectStore } from './injectStore'
 import type {
   AnyRouter,
   RegisteredRouter,
   RouterState,
-} from '@tanstack/router-core'
+} from '@benjavicente/router-core'
 import type * as Angular from '@angular/core'
 
 export interface InjectLocationOptions<TRouter extends AnyRouter, TSelected> {

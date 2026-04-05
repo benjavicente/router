@@ -12,7 +12,7 @@ const config = defineConfig({
   ],
   resolve: {
     tsconfigPaths: true,
-    // Resolve @tanstack/router-core/isServer for tests (development export)
+    // Resolve @benjavicente/router-core/isServer for tests (development export)
     ...(process.env.VITEST && { conditions: ['development'] }),
   },
   test: {

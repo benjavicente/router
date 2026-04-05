@@ -1,12 +1,12 @@
-import { RouterCore } from '@tanstack/router-core'
+import { RouterCore } from '@benjavicente/router-core'
 import { getStoreFactory } from './routerStores'
 import type {
   AnyRoute,
   RouterOptions,
   TrailingSlashOption,
-} from '@tanstack/router-core'
+} from '@benjavicente/router-core'
 import type { EnvironmentInjector } from '@angular/core'
-import type { RouterHistory } from '@tanstack/history'
+import type { RouterHistory } from '@benjavicente/history'
 import type { ErrorRouteComponent, RouteComponent } from './route'
 
 export type AngularInjectFn = EnvironmentInjector['get']
@@ -75,7 +75,7 @@ export type CreateRouterFn = <
   TDehydrated
 >
 
-declare module '@tanstack/router-core' {
+declare module '@benjavicente/router-core' {
   export interface RouterOptionsExtensions {
     /**
      * The default `component` a route should use if no component is provided.

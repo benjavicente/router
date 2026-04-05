@@ -1,5 +1,5 @@
 import { normalizeManagedTag, uniqManagedTags } from './managed-dom'
-import type { AnyRouter } from '@tanstack/router-core'
+import type { AnyRouter } from '@benjavicente/router-core'
 import type { ManagedDocumentContent, ManagedTag  } from './managed-document-types'
 
 export function collectDehydrationScriptManagedTags(

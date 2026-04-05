@@ -4,7 +4,7 @@ This example scaffolds the Angular Start package shape against the existing file
 
 What is included:
 
-- `@tanstack/angular-start-experimental/plugin/vite` wired into Vite
+- `@benjavicente/angular-start-experimental/plugin/vite` wired into Vite
 - file-based Angular routes under `src/routes`
 - a client entry that bootstraps the router without Angular hydration APIs
 - a server entry that returns `501 Not Implemented` until Angular Start SSR is added
