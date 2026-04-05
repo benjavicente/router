@@ -15,7 +15,7 @@ Keep component state in sync with URL search parameters:
 
 ```tsx
 import { useState, useEffect } from 'react'
-import { useNavigate, useSearch } from '@tanstack/react-router'
+import { useNavigate, useSearch } from '@benjavicente/react-router'
 
 function SynchronizedForm() {
   const navigate = useNavigate()

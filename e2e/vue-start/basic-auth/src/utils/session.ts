@@ -1,5 +1,5 @@
 // src/services/session.server.ts
-import { useSession } from '@tanstack/vue-start/server'
+import { useSession } from '@benjavicente/vue-start/server'
 import type { User } from '~/prisma-generated/client'
 
 type SessionUser = {

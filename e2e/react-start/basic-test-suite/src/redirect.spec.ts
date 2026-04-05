@@ -5,7 +5,7 @@ import {
   getDummyServerPort,
   getTestServerPort,
   test,
-} from '@tanstack/router-e2e-utils'
+} from '@benjavicente/router-e2e-utils'
 import { getPackageName } from './utils/getPackageName.ts'
 
 // somehow playwright does not correctly import default exports

@@ -32,7 +32,7 @@ The `useRouterState` hook accepts an optional `options` object.
 ## Examples
 
 ```tsx
-import { useRouterState } from '@tanstack/react-router'
+import { useRouterState } from '@benjavicente/react-router'
 
 function Component() {
   const state = useRouterState()

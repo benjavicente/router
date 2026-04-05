@@ -1,4 +1,4 @@
-import { createFileRoute, useNavigate } from '@tanstack/react-router'
+import { createFileRoute, useNavigate } from '@benjavicente/react-router'
 
 export const Route = createFileRoute('/relative/useNavigate/path/$path/')({
   component: RouteComponent,

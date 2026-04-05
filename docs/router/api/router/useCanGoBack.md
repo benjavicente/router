@@ -21,7 +21,7 @@ The router history index is reset after a navigation with [`reloadDocument`](./N
 ### Showing a back button
 
 ```tsx
-import { useRouter, useCanGoBack } from '@tanstack/react-router'
+import { useRouter, useCanGoBack } from '@benjavicente/react-router'
 
 function Component() {
   const router = useRouter()

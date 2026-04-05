@@ -1,5 +1,5 @@
-import { createFileRoute } from '@tanstack/react-router'
-import { createClientOnlyFn, createServerFn } from '@tanstack/react-start'
+import { createFileRoute } from '@benjavicente/react-router'
+import { createClientOnlyFn, createServerFn } from '@benjavicente/react-start'
 import { useState } from 'react'
 
 // Server function that should be callable from client-only function

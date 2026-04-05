@@ -1,6 +1,6 @@
-import { Outlet, createFileRoute } from '@tanstack/react-router'
-import { createServerFn } from '@tanstack/react-start'
-import { staticFunctionMiddleware } from '@tanstack/start-static-server-functions'
+import { Outlet, createFileRoute } from '@benjavicente/react-router'
+import { createServerFn } from '@benjavicente/react-start'
+import { staticFunctionMiddleware } from '@benjavicente/start-static-server-functions'
 
 type Post = {
   id: string

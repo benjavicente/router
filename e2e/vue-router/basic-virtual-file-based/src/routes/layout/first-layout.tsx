@@ -1,4 +1,4 @@
-import { Outlet } from '@tanstack/vue-router'
+import { Outlet } from '@benjavicente/vue-router'
 
 export const Route = createFileRoute({
   component: LayoutComponent,

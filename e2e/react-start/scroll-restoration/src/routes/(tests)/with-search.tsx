@@ -1,6 +1,6 @@
-import { createFileRoute } from '@tanstack/react-router'
+import { createFileRoute } from '@benjavicente/react-router'
 import { z } from 'zod'
-import { zodValidator } from '@tanstack/zod-adapter'
+import { zodValidator } from '@benjavicente/zod-adapter'
 import { ScrollBlock } from '../-components/scroll-block'
 
 export const Route = createFileRoute('/(tests)/with-search')({

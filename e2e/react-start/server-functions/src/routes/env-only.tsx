@@ -1,9 +1,9 @@
-import { createFileRoute } from '@tanstack/react-router'
+import { createFileRoute } from '@benjavicente/react-router'
 import {
   createClientOnlyFn,
   createServerFn,
   createServerOnlyFn,
-} from '@tanstack/react-start'
+} from '@benjavicente/react-start'
 import { useState } from 'react'
 
 const serverEcho = createServerOnlyFn((input: string) => 'server got: ' + input)

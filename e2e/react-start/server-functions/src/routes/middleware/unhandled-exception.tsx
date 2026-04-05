@@ -1,5 +1,5 @@
-import { createFileRoute } from '@tanstack/react-router'
-import { createMiddleware, createServerFn } from '@tanstack/react-start'
+import { createFileRoute } from '@benjavicente/react-router'
+import { createMiddleware, createServerFn } from '@benjavicente/react-start'
 
 // Middleware that throws an unhandled exception
 // Issue #5266: Server crashes when unhandled exception in server function or middleware

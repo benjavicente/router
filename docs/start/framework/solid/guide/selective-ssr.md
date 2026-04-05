@@ -27,7 +27,7 @@ You can control how a route is handled during the initial server request using t
 
 ```tsx
 // src/start.ts
-import { createStart } from '@tanstack/solid-start'
+import { createStart } from '@benjavicente/solid-start'
 
 export const startInstance = createStart(() => ({
   // Disable SSR by default
@@ -193,7 +193,7 @@ import {
   Outlet,
   Scripts,
   createRootRoute,
-} from '@tanstack/solid-router'
+} from '@benjavicente/solid-router'
 
 export const Route = createRootRoute({
   shellComponent: RootShell,

@@ -1,5 +1,5 @@
 /// <reference types="vite/client" />
-import { createFileRoute } from '@tanstack/react-router'
+import { createFileRoute } from '@benjavicente/react-router'
 import styles from '~/styles/card.module.css'
 
 export const Route = createFileRoute('/modules')({

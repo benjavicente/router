@@ -31,7 +31,7 @@ The `lazyRouteComponent` function accepts two arguments:
 ## Examples
 
 ```tsx
-import { lazyRouteComponent } from '@tanstack/react-router'
+import { lazyRouteComponent } from '@benjavicente/react-router'
 
 const route = createRoute({
   path: '/posts/$postId',

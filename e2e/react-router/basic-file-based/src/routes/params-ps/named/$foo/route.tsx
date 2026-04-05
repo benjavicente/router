@@ -1,4 +1,4 @@
-import { Link, Outlet, createFileRoute } from '@tanstack/react-router'
+import { Link, Outlet, createFileRoute } from '@benjavicente/react-router'
 import { RenderCounter } from '../../../../components/RenderCounter'
 
 export const Route = createFileRoute('/params-ps/named/$foo')({

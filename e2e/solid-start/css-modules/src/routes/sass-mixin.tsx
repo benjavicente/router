@@ -1,4 +1,4 @@
-import { createFileRoute } from '@tanstack/solid-router'
+import { createFileRoute } from '@benjavicente/solid-router'
 import '~/styles/app.scss'
 
 export const Route = createFileRoute('/sass-mixin')({

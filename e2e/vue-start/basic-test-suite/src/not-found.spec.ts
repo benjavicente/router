@@ -1,6 +1,6 @@
 import { expect } from '@playwright/test'
 import combinateImport from 'combinate'
-import { test } from '@tanstack/router-e2e-utils'
+import { test } from '@benjavicente/router-e2e-utils'
 import { isSpaMode } from './utils/isSpaMode'
 
 // somehow playwright does not correctly import default exports

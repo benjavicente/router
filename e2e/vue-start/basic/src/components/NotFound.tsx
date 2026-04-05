@@ -1,4 +1,4 @@
-import { Link } from '@tanstack/vue-router'
+import { Link } from '@benjavicente/vue-router'
 import { defineComponent } from 'vue'
 
 export const NotFound = defineComponent({

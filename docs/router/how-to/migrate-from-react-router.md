@@ -39,10 +39,10 @@ git push -u origin migrate-to-tanstack-router
 
 ```bash
 # Install TanStack Router
-npm install @tanstack/react-router
+npm install @benjavicente/react-router
 
 # Install development dependencies
-npm install -D @tanstack/router-plugin @tanstack/react-router-devtools
+npm install -D @benjavicente/router-plugin @benjavicente/react-router-devtools
 ```
 
 **1.3 Set up the router plugin for your bundler**
@@ -52,7 +52,7 @@ For **Vite** users, update your `vite.config.ts`:
 ```typescript
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
-import { tanstackRouter } from '@tanstack/router-plugin/vite'
+import { tanstackRouter } from '@benjavicente/router-plugin/vite'
 
 export default defineConfig({
   plugins: [
@@ -102,8 +102,8 @@ React Router v7 introduced several new patterns. Look for:
 Create `src/routes/__root.tsx`:
 
 ```typescript
-import { createRootRoute, Link, Outlet } from '@tanstack/react-router'
-import { TanStackRouterDevtools } from '@tanstack/react-router-devtools'
+import { createRootRoute, Link, Outlet } from '@benjavicente/react-router'
+import { TanStackRouterDevtools } from '@benjavicente/react-router-devtools'
 
 export const Route = createRootRoute({
   component: () => (
@@ -130,7 +130,7 @@ export const Route = createRootRoute({
 Create `src/routes/index.tsx` for your home page:
 
 ```typescript
-import { createFileRoute } from '@tanstack/react-router'
+import { createFileRoute } from '@benjavicente/react-router'
 
 export const Route = createFileRoute('/')({
   component: Index,
@@ -168,7 +168,7 @@ export default function Posts() {
 Create `src/routes/posts.tsx`:
 
 ```typescript
-import { createFileRoute } from '@tanstack/react-router'
+import { createFileRoute } from '@benjavicente/react-router'
 
 export const Route = createFileRoute('/posts')({
   loader: async () => {
@@ -205,7 +205,7 @@ export default function Post() {
 Create `src/routes/posts/$postId.tsx`:
 
 ```typescript
-import { createFileRoute } from '@tanstack/react-router'
+import { createFileRoute } from '@benjavicente/react-router'
 
 export const Route = createFileRoute('/posts/$postId')({
   loader: async ({ params }) => {
@@ -277,7 +277,7 @@ TanStack Router has built-in SSR capabilities. Set up your router for SSR:
 
 ```typescript
 // src/router.tsx
-import { createRouter } from '@tanstack/react-router'
+import { createRouter } from '@benjavicente/react-router'
 import { routeTree } from './routeTree.gen'
 
 const router = createRouter({
@@ -287,7 +287,7 @@ const router = createRouter({
   },
 })
 
-declare module '@tanstack/react-router' {
+declare module '@benjavicente/react-router' {
   interface Register {
     router: typeof router
   }
@@ -300,7 +300,7 @@ For server-side rendering, use TanStack Router's built-in SSR APIs:
 
 ```typescript
 // server.tsx
-import { createMemoryHistory } from '@tanstack/react-router'
+import { createMemoryHistory } from '@benjavicente/react-router'
 import { StartServer } from '@tanstack/start/server'
 
 export async function render(url: string) {
@@ -330,7 +330,7 @@ const LazyComponent = lazy(() => import('./LazyComponent'))
 **TanStack Router:**
 
 ```typescript
-import { createLazyFileRoute } from '@tanstack/react-router'
+import { createLazyFileRoute } from '@benjavicente/react-router'
 
 export const Route = createLazyFileRoute('/lazy-route')({
   component: LazyComponent,
@@ -357,7 +357,7 @@ import { Link } from 'react-router'
 **TanStack Router:**
 
 ```typescript
-import { Link } from '@tanstack/react-router'
+import { Link } from '@benjavicente/react-router'
 
 <Link to="/posts/$postId" params={{ postId: '123' }}>View Post</Link>
 <Link to="/posts" state={{ from: 'home' }}>Posts</Link>
@@ -382,7 +382,7 @@ function Component() {
 **TanStack Router:**
 
 ```typescript
-import { useNavigate } from '@tanstack/react-router'
+import { useNavigate } from '@benjavicente/react-router'
 
 function Component() {
   const navigate = useNavigate()
@@ -470,7 +470,7 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
 **After (TanStack Router):**
 
 ```typescript
-import { RouterProvider } from '@tanstack/react-router'
+import { RouterProvider } from '@benjavicente/react-router'
 import { router } from './router'
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
@@ -502,7 +502,7 @@ function Component() {
 **TanStack Router:**
 
 ```typescript
-import { createFileRoute } from '@tanstack/react-router'
+import { createFileRoute } from '@benjavicente/react-router'
 import { z } from 'zod'
 
 const searchSchema = z.object({
@@ -566,7 +566,7 @@ Update your `tsconfig.json`:
 For routes with search parameters, add validation schemas:
 
 ```typescript
-import { createFileRoute } from '@tanstack/react-router'
+import { createFileRoute } from '@benjavicente/react-router'
 import { z } from 'zod'
 
 const postsSearchSchema = z.object({
@@ -660,7 +660,7 @@ Before deploying your migrated application:
 
 1. Ensure your router is registered in the TypeScript module declaration:
    ```typescript
-   declare module '@tanstack/react-router' {
+   declare module '@benjavicente/react-router' {
      interface Register {
        router: typeof router
      }

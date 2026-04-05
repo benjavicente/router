@@ -1,4 +1,4 @@
-import { createSerializationAdapter } from '@tanstack/vue-router'
+import { createSerializationAdapter } from '@benjavicente/vue-router'
 
 export class Foo {
   constructor(public value: string) {}

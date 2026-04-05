@@ -1,4 +1,4 @@
-import { Link, Outlet } from '@tanstack/react-router'
+import { Link, Outlet } from '@benjavicente/react-router'
 
 export const Route = createFileRoute({
   component: () => (

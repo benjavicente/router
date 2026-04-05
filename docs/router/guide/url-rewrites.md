@@ -52,7 +52,7 @@ The router exposes two href properties on the location object:
 Configure rewrites when creating your router:
 
 ```tsx
-import { createRouter } from '@tanstack/react-router'
+import { createRouter } from '@benjavicente/react-router'
 
 const router = createRouter({
   routeTree,
@@ -249,7 +249,7 @@ const router = createRouter({
 When you need multiple independent rewrite transformations, use `composeRewrites` to combine them:
 
 ```tsx
-import { composeRewrites } from '@tanstack/react-router'
+import { composeRewrites } from '@benjavicente/react-router'
 
 const localeRewrite = {
   input: ({ url }) => {
@@ -467,7 +467,7 @@ type LocationRewriteFunction = (opts: { url: URL }) => undefined | string | URL
 ### composeRewrites function
 
 ```tsx
-import { composeRewrites } from '@tanstack/react-router'
+import { composeRewrites } from '@benjavicente/react-router'
 
 function composeRewrites(rewrites: Array<LocationRewrite>): LocationRewrite
 ```

@@ -4,7 +4,7 @@ import {
   Link,
   createFileRoute,
   type ErrorComponentProps,
-} from '@tanstack/vue-router'
+} from '@benjavicente/vue-router'
 import { postQueryOptions } from '~/utils/posts'
 
 export function PostErrorComponent(props: ErrorComponentProps) {

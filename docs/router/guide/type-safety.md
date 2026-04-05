@@ -37,7 +37,7 @@ const router = createRouter({
   // ...
 })
 
-declare module '@tanstack/react-router' {
+declare module '@benjavicente/react-router' {
   interface Register {
     router: typeof router
   }
@@ -51,7 +51,7 @@ const router = createRouter({
   // ...
 })
 
-declare module '@tanstack/solid-router' {
+declare module '@benjavicente/solid-router' {
   interface Register {
     router: typeof router
   }

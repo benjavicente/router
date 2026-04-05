@@ -8,8 +8,8 @@ import {
   createRoute,
   createRouter,
   useElementScrollRestoration,
-} from '@tanstack/vue-router'
-import { TanStackRouterDevtools } from '@tanstack/vue-router-devtools'
+} from '@benjavicente/vue-router'
+import { TanStackRouterDevtools } from '@benjavicente/vue-router-devtools'
 import { useVirtualizer } from '@tanstack/vue-virtual'
 import './styles.css'
 
@@ -296,7 +296,7 @@ router.subscribe('onResolved', (event) => {
   invokeOrders.push(event.type)
 })
 
-declare module '@tanstack/vue-router' {
+declare module '@benjavicente/vue-router' {
   interface Register {
     router: typeof router
   }

@@ -1,5 +1,5 @@
 import { expect, test } from '@playwright/test'
-import { linkOptions } from '@tanstack/react-router'
+import { linkOptions } from '@benjavicente/react-router'
 
 test('Smoke - Renders home', async ({ page }) => {
   await page.goto('/')

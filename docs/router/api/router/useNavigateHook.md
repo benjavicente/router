@@ -36,7 +36,7 @@ The `navigate` function accepts a single argument, an `options` object.
 ## Examples
 
 ```tsx
-import { useNavigate } from '@tanstack/react-router'
+import { useNavigate } from '@benjavicente/react-router'
 
 function PostsPage() {
   const navigate = useNavigate({ from: '/posts' })

@@ -18,7 +18,7 @@ The `createRouteMask` function is a helper function that can be used to create a
 ## Examples
 
 ```tsx
-import { createRouteMask, createRouter } from '@tanstack/react-router'
+import { createRouteMask, createRouter } from '@benjavicente/react-router'
 
 const photoModalToPhotoMask = createRouteMask({
   routeTree,

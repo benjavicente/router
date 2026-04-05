@@ -23,7 +23,7 @@ The `defer` function accepts a single argument, the `promise` to wrap with a def
 ## Examples
 
 ```tsx
-import { defer } from '@tanstack/react-router'
+import { defer } from '@benjavicente/react-router'
 
 const route = createRoute({
   loader: () => {

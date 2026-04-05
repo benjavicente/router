@@ -99,7 +99,7 @@ export interface RootRouteChildren {
   HowItWorksRoute: typeof HowItWorksRoute
 }
 
-declare module '@tanstack/solid-router' {
+declare module '@benjavicente/solid-router' {
   interface FileRoutesByPath {
     '/how-it-works': {
       id: '/how-it-works'

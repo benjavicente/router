@@ -1,4 +1,4 @@
-import { createMiddleware, createServerFn } from '@tanstack/react-start'
+import { createMiddleware, createServerFn } from '@benjavicente/react-start'
 import { createBarServerFn } from './createBarServerFn'
 import { createFooServerFn } from './createFooServerFn'
 import { createFakeFn } from './createFakeFn'

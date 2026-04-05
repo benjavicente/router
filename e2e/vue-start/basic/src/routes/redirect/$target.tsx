@@ -1,4 +1,4 @@
-import { retainSearchParams, createFileRoute } from '@tanstack/vue-router'
+import { retainSearchParams, createFileRoute } from '@benjavicente/vue-router'
 import z from 'zod'
 
 export const Route = createFileRoute('/redirect/$target')({

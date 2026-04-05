@@ -1,4 +1,4 @@
-import { createFileRoute } from '@tanstack/react-router'
+import { createFileRoute } from '@benjavicente/react-router'
 // This import triggers a file-based violation in the SSR env:
 //   client-only-violations.tsx -> violations/browser-api.client.ts (denied by **/*.client.*)
 import { getBrowserTitle } from '../violations/browser-api.client'

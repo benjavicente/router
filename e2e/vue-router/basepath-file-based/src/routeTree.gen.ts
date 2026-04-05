@@ -49,7 +49,7 @@ export interface RootRouteChildren {
   AboutRoute: typeof AboutRoute
 }
 
-declare module '@tanstack/vue-router' {
+declare module '@benjavicente/vue-router' {
   interface FileRoutesByPath {
     '/about': {
       id: '/about'

@@ -21,7 +21,7 @@ Here, you can configure everything from the default [preloading functionality](/
 
 ```tsx
 // src/router.tsx
-import { createRouter } from '@tanstack/solid-router'
+import { createRouter } from '@benjavicente/solid-router'
 import { routeTree } from './routeTree.gen'
 
 // You must export a getRouter function that
@@ -74,7 +74,7 @@ import {
   createRootRoute,
   HeadContent,
   Scripts,
-} from '@tanstack/solid-router'
+} from '@benjavicente/solid-router'
 import type { solidNode } from 'solid'
 
 export const Route = createRootRoute({
@@ -214,7 +214,7 @@ Then, define the route like this:
 
 ```tsx
 // src/routes/posts/$postId.tsx
-import { createFileRoute } from '@tanstack/solid-router'
+import { createFileRoute } from '@benjavicente/solid-router'
 
 export const Route = createFileRoute('/posts/$postId')({
   component: PostComponent,

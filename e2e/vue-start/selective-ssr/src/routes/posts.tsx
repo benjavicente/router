@@ -1,4 +1,4 @@
-import { Outlet, createFileRoute } from '@tanstack/vue-router'
+import { Outlet, createFileRoute } from '@benjavicente/vue-router'
 import z from 'zod'
 import { ssrSchema } from '~/search'
 

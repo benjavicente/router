@@ -22,7 +22,7 @@ Use `createIsomorphicFn()` to define functions that behave differently depending
 ### Complete Implementation
 
 ```tsx
-import { createIsomorphicFn } from '@tanstack/react-start'
+import { createIsomorphicFn } from '@benjavicente/react-start'
 
 const getEnv = createIsomorphicFn()
   .server(() => 'server')
@@ -38,7 +38,7 @@ const env = getEnv()
 Here is an example of `createIsomorphicFn()` with only server implementation:
 
 ```tsx
-import { createIsomorphicFn } from '@tanstack/react-start'
+import { createIsomorphicFn } from '@benjavicente/react-start'
 
 const serverImplementationOnly = createIsomorphicFn().server(() => 'server')
 
@@ -52,7 +52,7 @@ const server = serverImplementationOnly()
 Here is an example of `createIsomorphicFn()` with only client implementation:
 
 ```tsx
-import { createIsomorphicFn } from '@tanstack/react-start'
+import { createIsomorphicFn } from '@benjavicente/react-start'
 
 const clientImplementationOnly = createIsomorphicFn().client(() => 'client')
 
@@ -66,7 +66,7 @@ const client = clientImplementationOnly()
 Here is an example of `createIsomorphicFn()` without any environment specific implementation:
 
 ```tsx
-import { createIsomorphicFn } from '@tanstack/react-start'
+import { createIsomorphicFn } from '@benjavicente/react-start'
 
 const noImplementation = createIsomorphicFn()
 
@@ -92,7 +92,7 @@ The `createServerOnlyFn` and `createClientOnlyFn` helpers enforce strict environ
 ### `createServerOnlyFn`
 
 ```tsx
-import { createServerOnlyFn } from '@tanstack/react-start'
+import { createServerOnlyFn } from '@benjavicente/react-start'
 
 const foo = createServerOnlyFn(() => 'bar')
 
@@ -103,7 +103,7 @@ foo() // ✅ On server: returns "bar"
 ### `createClientOnlyFn`
 
 ```tsx
-import { createClientOnlyFn } from '@tanstack/react-start'
+import { createClientOnlyFn } from '@benjavicente/react-start'
 
 const foo = createClientOnlyFn(() => 'bar')
 

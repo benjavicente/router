@@ -1,4 +1,4 @@
-import { Outlet, createFileRoute } from '@tanstack/react-router'
+import { Outlet, createFileRoute } from '@benjavicente/react-router'
 
 export const Route = createFileRoute('/(group)/_layout')({
   component: () => (

@@ -1,4 +1,4 @@
-import { createFileRoute, getRouteApi, useParams } from '@tanstack/vue-router'
+import { createFileRoute, getRouteApi, useParams } from '@benjavicente/vue-router'
 
 export const Route = createFileRoute('/posts_/$postId/edit')({
   component: PostEditComponent,

@@ -173,7 +173,7 @@ The `RouterOptions` type accepts an object with the following properties and met
 import {
   createRouter,
   DEFAULT_PROTOCOL_ALLOWLIST,
-} from '@tanstack/react-router'
+} from '@benjavicente/react-router'
 
 // Use a custom allowlist (replaces the default)
 const router = createRouter({
@@ -247,7 +247,7 @@ type LocationRewriteFunction = (opts: { url: URL }) => undefined | string | URL
 **Example**
 
 ```tsx
-import { createRouter } from '@tanstack/react-router'
+import { createRouter } from '@benjavicente/react-router'
 
 const router = createRouter({
   routeTree,
@@ -310,7 +310,7 @@ When both `basepath` and `rewrite` are configured, they are automatically compos
 **Example**
 
 ```tsx
-import { createRouter } from '@tanstack/react-router'
+import { createRouter } from '@benjavicente/react-router'
 
 const router = createRouter({
   // ...
@@ -329,7 +329,7 @@ const router = createRouter({
 **Example**
 
 ```tsx
-import { createRouter } from '@tanstack/react-router'
+import { createRouter } from '@benjavicente/react-router'
 
 const router = createRouter({
   // ...

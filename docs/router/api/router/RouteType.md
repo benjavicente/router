@@ -36,7 +36,7 @@ An instance of the `Route` has the following properties and methods:
 #### Example
 
 ```tsx
-import { createFileRoute } from '@tanstack/react-router'
+import { createFileRoute } from '@benjavicente/react-router'
 
 export const Route = createFileRoute('/dashboard/settings')({
   beforeLoad: ({ context }) => {

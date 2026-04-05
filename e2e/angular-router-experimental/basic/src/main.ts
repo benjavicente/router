@@ -12,8 +12,8 @@ import {
   injectRouter,
   injectRouterState,
   redirect,
-} from '@tanstack/angular-router-experimental'
-import { TanStackRouterDevtools } from '@tanstack/angular-router-devtools'
+} from '@benjavicente/angular-router-experimental'
+import { TanStackRouterDevtools } from '@benjavicente/angular-router-devtools'
 import { NotFoundError, fetchPost, fetchPosts } from './posts'
 import './styles.css'
 
@@ -568,7 +568,7 @@ const router = createRouter({
 })
 
 // Register things for typesafety
-declare module '@tanstack/angular-router-experimental' {
+declare module '@benjavicente/angular-router-experimental' {
   interface Register {
     router: typeof router
   }

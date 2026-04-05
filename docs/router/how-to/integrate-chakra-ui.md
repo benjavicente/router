@@ -90,8 +90,8 @@ export function ChakraAppProvider({ children }: ChakraAppProviderProps) {
 
 ```tsx
 // src/routes/__root.tsx
-import { createRootRoute, Outlet } from '@tanstack/react-router'
-import { TanStackRouterDevtools } from '@tanstack/router-devtools'
+import { createRootRoute, Outlet } from '@benjavicente/react-router'
+import { TanStackRouterDevtools } from '@benjavicente/router-devtools'
 import { ChakraAppProvider } from '@/components/chakra-provider'
 
 export const Route = createRootRoute({
@@ -112,7 +112,7 @@ export const Route = createRootRoute({
 
 ```tsx
 // src/components/ui/chakra-router-link.tsx
-import { createLink } from '@tanstack/react-router'
+import { createLink } from '@benjavicente/react-router'
 import { Link as ChakraLink, Button, IconButton } from '@chakra-ui/react'
 import { forwardRef } from 'react'
 
@@ -142,7 +142,7 @@ export const RouterIconButton = createLink(
 
 ```tsx
 // src/components/navigation/chakra-nav.tsx
-import { useMatchRoute } from '@tanstack/react-router'
+import { useMatchRoute } from '@benjavicente/react-router'
 import {
   Box,
   Flex,
@@ -297,7 +297,7 @@ function MobileNav({ items }: { items: NavItem[] }) {
 
 ```tsx
 // src/components/navigation/chakra-breadcrumb.tsx
-import { useRouter } from '@tanstack/react-router'
+import { useRouter } from '@benjavicente/react-router'
 import {
   Breadcrumb,
   BreadcrumbItem,
@@ -465,7 +465,7 @@ export function ChakraCardGrid({
 
 ```tsx
 // src/routes/posts/index.tsx
-import { createFileRoute } from '@tanstack/react-router'
+import { createFileRoute } from '@benjavicente/react-router'
 import {
   Box,
   Card,
@@ -591,7 +591,7 @@ function PostCard({ post }: { post: any }) {
 
 ```tsx
 // src/routes/posts/$postId.tsx
-import { createFileRoute } from '@tanstack/react-router'
+import { createFileRoute } from '@benjavicente/react-router'
 import {
   Box,
   Heading,
@@ -726,7 +726,7 @@ export const Route = createRootRoute({
 **Solution:** Use proper typing with `createLink`:
 
 ```tsx
-import { createLink } from '@tanstack/react-router'
+import { createLink } from '@benjavicente/react-router'
 import { Button, type ButtonProps } from '@chakra-ui/react'
 import { forwardRef } from 'react'
 

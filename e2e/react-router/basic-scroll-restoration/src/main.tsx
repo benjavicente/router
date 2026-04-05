@@ -8,8 +8,8 @@ import {
   createRoute,
   createRouter,
   useElementScrollRestoration,
-} from '@tanstack/react-router'
-import { TanStackRouterDevtools } from '@tanstack/react-router-devtools'
+} from '@benjavicente/react-router'
+import { TanStackRouterDevtools } from '@benjavicente/react-router-devtools'
 import { useVirtualizer } from '@tanstack/react-virtual'
 import './styles.css'
 
@@ -284,7 +284,7 @@ router.subscribe('onResolved', (event) => {
   window.invokeOrders.push(event.type)
 })
 
-declare module '@tanstack/react-router' {
+declare module '@benjavicente/react-router' {
   interface Register {
     router: typeof router
   }

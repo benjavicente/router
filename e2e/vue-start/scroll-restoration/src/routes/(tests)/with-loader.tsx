@@ -1,4 +1,4 @@
-import { createFileRoute } from '@tanstack/vue-router'
+import { createFileRoute } from '@benjavicente/vue-router'
 import { sleep } from '../../utils/posts'
 import { ScrollBlock } from '../-components/scroll-block'
 

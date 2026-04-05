@@ -5,7 +5,7 @@ import {
   getDummyServerPort,
   getTestServerPort,
   localDummyServer,
-} from '@tanstack/router-e2e-utils'
+} from '@benjavicente/router-e2e-utils'
 import packageJson from '../package.json' with { type: 'json' }
 import type { Server } from 'node:http'
 

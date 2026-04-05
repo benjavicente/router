@@ -11,7 +11,7 @@ When you're ready to start using your router, you'll need to create a new `Route
 # React
 
 ```tsx title="src/router.tsx"
-import { createRouter } from '@tanstack/react-router'
+import { createRouter } from '@benjavicente/react-router'
 
 const router = createRouter({
   // ...
@@ -21,7 +21,7 @@ const router = createRouter({
 # Solid
 
 ```tsx title="src/router.tsx"
-import { createRouter } from '@tanstack/solid-router'
+import { createRouter } from '@benjavicente/solid-router'
 
 const router = createRouter({
   // ...
@@ -59,14 +59,14 @@ const routeTree = rootRoute.addChildren([
 > [!IMPORTANT]
 > DO NOT SKIP THIS SECTION! ⚠️
 
-TanStack Router provides amazing support for TypeScript, even for things you wouldn't expect like bare imports straight from the library! To make this possible, you must register your router's types using TypeScripts' [Declaration Merging](https://www.typescriptlang.org/docs/handbook/declaration-merging.html) feature. This is done by extending the `Register` interface on `@tanstack/react-router` with a `router` property that has the type of your `router` instance:
+TanStack Router provides amazing support for TypeScript, even for things you wouldn't expect like bare imports straight from the library! To make this possible, you must register your router's types using TypeScripts' [Declaration Merging](https://www.typescriptlang.org/docs/handbook/declaration-merging.html) feature. This is done by extending the `Register` interface on `@benjavicente/react-router` with a `router` property that has the type of your `router` instance:
 
 <!-- ::start:framework -->
 
 # React
 
 ```tsx title="src/router.tsx"
-declare module '@tanstack/react-router' {
+declare module '@benjavicente/react-router' {
   interface Register {
     // This infers the type of our router and registers it across your entire project
     router: typeof router
@@ -77,7 +77,7 @@ declare module '@tanstack/react-router' {
 # Solid
 
 ```tsx title="src/router.tsx"
-declare module '@tanstack/solid-router' {
+declare module '@benjavicente/solid-router' {
   interface Register {
     // This infers the type of our router and registers it across your entire project
     router: typeof router

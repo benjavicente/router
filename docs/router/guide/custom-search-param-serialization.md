@@ -31,7 +31,7 @@ import {
   createRouter,
   parseSearchWith,
   stringifySearchWith,
-} from '@tanstack/react-router'
+} from '@benjavicente/react-router'
 
 const router = createRouter({
   // ...
@@ -47,7 +47,7 @@ import {
   createRouter,
   parseSearchWith,
   stringifySearchWith,
-} from '@tanstack/solid-router'
+} from '@benjavicente/solid-router'
 
 const router = createRouter({
   // ...
@@ -82,7 +82,7 @@ import {
   Router,
   parseSearchWith,
   stringifySearchWith,
-} from '@tanstack/react-router'
+} from '@benjavicente/react-router'
 
 const router = createRouter({
   parseSearch: parseSearchWith((value) => JSON.parse(decodeFromBinary(value))),
@@ -117,7 +117,7 @@ import {
   Router,
   parseSearchWith,
   stringifySearchWith,
-} from '@tanstack/solid-router'
+} from '@benjavicente/solid-router'
 
 const router = createRouter({
   parseSearch: parseSearchWith((value) => JSON.parse(decodeFromBinary(value))),
@@ -167,7 +167,7 @@ The [query-string](https://github.com/sindresorhus/query-string) library is a po
 # React
 
 ```tsx
-import { createRouter } from '@tanstack/react-router'
+import { createRouter } from '@benjavicente/react-router'
 import qs from 'query-string'
 
 const router = createRouter({
@@ -188,7 +188,7 @@ const router = createRouter({
 # Solid
 
 ```tsx
-import { createRouter } from '@tanstack/solid-router'
+import { createRouter } from '@benjavicente/solid-router'
 import qs from 'query-string'
 
 const router = createRouter({
@@ -227,7 +227,7 @@ import {
   Router,
   parseSearchWith,
   stringifySearchWith,
-} from '@tanstack/react-router'
+} from '@benjavicente/react-router'
 import { parse, stringify } from 'jsurl2'
 
 const router = createRouter({
@@ -244,7 +244,7 @@ import {
   Router,
   parseSearchWith,
   stringifySearchWith,
-} from '@tanstack/solid-router'
+} from '@benjavicente/solid-router'
 import { parse, stringify } from 'jsurl2'
 
 const router = createRouter({
@@ -275,7 +275,7 @@ import {
   Router,
   parseSearchWith,
   stringifySearchWith,
-} from '@tanstack/react-router'
+} from '@benjavicente/react-router'
 import { stringify, parse } from 'zipson'
 
 const router = createRouter({
@@ -311,7 +311,7 @@ import {
   Router,
   parseSearchWith,
   stringifySearchWith,
-} from '@tanstack/solid-router'
+} from '@benjavicente/solid-router'
 import { stringify, parse } from 'zipson'
 
 const router = createRouter({

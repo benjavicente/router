@@ -7,8 +7,8 @@ import {
   Outlet,
   Scripts,
   createRootRouteWithContext,
-} from '@tanstack/vue-router'
-import { TanStackRouterDevtoolsInProd } from '@tanstack/vue-router-devtools'
+} from '@benjavicente/vue-router'
+import { TanStackRouterDevtoolsInProd } from '@benjavicente/vue-router-devtools'
 import type { QueryClient } from '@tanstack/vue-query'
 import { DefaultCatchBoundary } from '~/components/DefaultCatchBoundary'
 import { NotFound } from '~/components/NotFound'

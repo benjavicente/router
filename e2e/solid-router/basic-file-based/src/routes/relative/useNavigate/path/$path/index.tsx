@@ -1,4 +1,4 @@
-import { createFileRoute, useNavigate } from '@tanstack/solid-router'
+import { createFileRoute, useNavigate } from '@benjavicente/solid-router'
 
 export const Route = createFileRoute('/relative/useNavigate/path/$path/')({
   component: RouteComponent,

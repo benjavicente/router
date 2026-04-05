@@ -15,7 +15,7 @@ To defer slow or non-critical data, return an **unawaited/unresolved** promise a
 
 ```tsx
 // src/routes/posts.$postId.tsx
-import { createFileRoute, defer } from '@tanstack/react-router'
+import { createFileRoute, defer } from '@benjavicente/react-router'
 
 export const Route = createFileRoute('/posts/$postId')({
   loader: async () => {
@@ -39,7 +39,7 @@ In the component, deferred promises can be resolved and utilized using the `Awai
 
 ```tsx
 // src/routes/posts.$postId.tsx
-import { createFileRoute, Await } from '@tanstack/react-router'
+import { createFileRoute, Await } from '@benjavicente/react-router'
 
 export const Route = createFileRoute('/posts/$postId')({
   // ...
@@ -89,7 +89,7 @@ So, instead of using `defer` and `Await`, you'll instead want to use the Route's
 
 ```tsx
 // src/routes/posts.$postId.tsx
-import { createFileRoute } from '@tanstack/react-router'
+import { createFileRoute } from '@benjavicente/react-router'
 import { slowDataOptions, fastDataOptions } from '~/api/query-options'
 
 export const Route = createFileRoute('/posts/$postId')({
@@ -107,7 +107,7 @@ export const Route = createFileRoute('/posts/$postId')({
 
 ```tsx
 // src/routes/posts.$postId.tsx
-import { createFileRoute } from '@tanstack/solid-router'
+import { createFileRoute } from '@benjavicente/solid-router'
 import { slowDataOptions, fastDataOptions } from '~/api/query-options'
 
 export const Route = createFileRoute('/posts/$postId')({
@@ -131,7 +131,7 @@ Then in your component, you can use the library's hooks to access the data:
 
 ```tsx
 // src/routes/posts.$postId.tsx
-import { createFileRoute } from '@tanstack/react-router'
+import { createFileRoute } from '@benjavicente/react-router'
 import { useSuspenseQuery } from '@tanstack/react-query'
 import { slowDataOptions, fastDataOptions } from '~/api/query-options'
 
@@ -163,7 +163,7 @@ function SlowDataComponent() {
 
 ```tsx
 // src/routes/posts.$postId.tsx
-import { createFileRoute } from '@tanstack/solid-router'
+import { createFileRoute } from '@benjavicente/solid-router'
 import { useSuspenseQuery } from '@tanstack/solid-query'
 import { slowDataOptions, fastDataOptions } from '~/api/query-options'
 

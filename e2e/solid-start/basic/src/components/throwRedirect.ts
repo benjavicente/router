@@ -1,5 +1,5 @@
-import { redirect } from '@tanstack/solid-router'
-import { createServerFn } from '@tanstack/solid-start'
+import { redirect } from '@benjavicente/solid-router'
+import { createServerFn } from '@benjavicente/solid-start'
 
 export const throwRedirect = createServerFn()
   .inputValidator(

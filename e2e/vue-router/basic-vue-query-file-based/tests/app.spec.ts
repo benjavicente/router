@@ -1,5 +1,5 @@
 import { expect, test } from '@playwright/test'
-import { getDummyServerPort } from '@tanstack/router-e2e-utils'
+import { getDummyServerPort } from '@benjavicente/router-e2e-utils'
 import packageJson from '../package.json' with { type: 'json' }
 
 test.beforeEach(async ({ page }) => {

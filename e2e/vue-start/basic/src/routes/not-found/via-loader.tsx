@@ -1,4 +1,4 @@
-import { notFound, createFileRoute } from '@tanstack/vue-router'
+import { notFound, createFileRoute } from '@benjavicente/vue-router'
 
 export const Route = createFileRoute('/not-found/via-loader')({
   loader: () => {

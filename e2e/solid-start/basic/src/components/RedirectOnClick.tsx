@@ -1,4 +1,4 @@
-import { useServerFn } from '@tanstack/solid-start'
+import { useServerFn } from '@benjavicente/solid-start'
 import { throwRedirect } from './throwRedirect'
 
 interface RedirectOnClickProps {

@@ -1,4 +1,4 @@
-import { createServerFn } from '@tanstack/react-start'
+import { createServerFn } from '@benjavicente/react-start'
 import { getServerFn, postServerFn } from './normalServerFn'
 
 export const getServerFnCallingServerFn = createServerFn().handler(

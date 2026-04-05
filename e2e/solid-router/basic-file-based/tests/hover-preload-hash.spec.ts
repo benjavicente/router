@@ -1,5 +1,5 @@
 import { expect, test } from '@playwright/test'
-import { toRuntimePath } from '@tanstack/router-e2e-utils'
+import { toRuntimePath } from '@benjavicente/router-e2e-utils'
 
 test('clicking hash link then hovering another link does not scroll back to hash', async ({
   page,

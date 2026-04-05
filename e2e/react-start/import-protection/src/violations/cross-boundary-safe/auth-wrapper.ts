@@ -1,4 +1,4 @@
-import { createMiddleware, createServerFn } from '@tanstack/react-start'
+import { createMiddleware, createServerFn } from '@benjavicente/react-start'
 import { getSessionData } from './session-util'
 
 // This middleware uses the session utility inside a compiler boundary.

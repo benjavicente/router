@@ -4,7 +4,7 @@ import combinateImport from 'combinate'
 import {
   getDummyServerPort,
   getTestServerPort,
-} from '@tanstack/router-e2e-utils'
+} from '@benjavicente/router-e2e-utils'
 import packageJson from '../package.json' with { type: 'json' }
 
 // somehow playwright does not correctly import default exports

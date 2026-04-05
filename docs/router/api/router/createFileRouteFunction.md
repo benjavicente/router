@@ -24,7 +24,7 @@ A new function that accepts a single argument of type [`RouteOptions`](./RouteOp
 ## Examples
 
 ```tsx
-import { createFileRoute } from '@tanstack/react-router'
+import { createFileRoute } from '@benjavicente/react-router'
 
 export const Route = createFileRoute('/')({
   loader: () => {

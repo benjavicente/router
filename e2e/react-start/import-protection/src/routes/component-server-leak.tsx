@@ -1,4 +1,4 @@
-import { createFileRoute } from '@tanstack/react-router'
+import { createFileRoute } from '@benjavicente/react-router'
 // This import is used ONLY inside the route component.
 // The router plugin code-splits the component into a lazy chunk,
 // moving this import into the split module.

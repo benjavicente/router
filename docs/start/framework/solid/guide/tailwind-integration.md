@@ -27,7 +27,7 @@ Add the `@tailwindcss/vite` plugin to your Vite configuration.
 // vite.config.ts
 import { defineConfig } from 'vite'
 import tsConfigPaths from 'vite-tsconfig-paths'
-import { tanstackStart } from '@tanstack/solid-start/plugin/vite'
+import { tanstackStart } from '@benjavicente/solid-start/plugin/vite'
 import tailwindcss from '@tailwindcss/vite'
 import viteSolid from 'vite-plugin-solid'
 
@@ -82,7 +82,7 @@ You can now use Tailwind CSS anywhere in your project.
 
 ```tsx
 // src/routes/index.tsx
-import { createFileRoute } from '@tanstack/solid-router'
+import { createFileRoute } from '@benjavicente/solid-router'
 
 export const Route = createFileRoute('/')({
   component: Home,

@@ -1,4 +1,4 @@
-import { createFileRoute } from '@tanstack/react-router'
+import { createFileRoute } from '@benjavicente/react-router'
 // This import triggers a file-based violation in the SERVER (SSR) env:
 //   frontend-leak.tsx -> lib/browser-api.frontend.ts
 // The custom deny pattern `**/*.frontend.*` should catch this.

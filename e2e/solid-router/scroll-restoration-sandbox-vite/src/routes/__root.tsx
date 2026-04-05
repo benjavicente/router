@@ -4,9 +4,9 @@ import {
   Outlet,
   createRootRoute,
   linkOptions,
-} from '@tanstack/solid-router'
+} from '@benjavicente/solid-router'
 import { Dynamic } from 'solid-js/web'
-import { TanStackRouterDevtools } from '@tanstack/solid-router-devtools'
+import { TanStackRouterDevtools } from '@benjavicente/solid-router-devtools'
 
 export const Route = createRootRoute({
   component: RootComponent,

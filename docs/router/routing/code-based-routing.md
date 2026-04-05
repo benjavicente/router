@@ -45,7 +45,7 @@ And here is a summarized code-based version:
 # React
 
 ```tsx
-import { createRootRoute, createRoute } from '@tanstack/react-router'
+import { createRootRoute, createRoute } from '@benjavicente/react-router'
 
 const rootRoute = createRootRoute()
 
@@ -118,7 +118,7 @@ const filesRoute = createRoute({
 # Solid
 
 ```tsx
-import { createRootRoute, createRoute } from '@tanstack/solid-router'
+import { createRootRoute, createRoute } from '@benjavicente/solid-router'
 
 const rootRoute = createRootRoute()
 
@@ -283,12 +283,12 @@ Unlike file-based routing however, you do not need to export the root route if y
 
 ```tsx
 // Standard root route
-import { createRootRoute } from '@tanstack/react-router'
+import { createRootRoute } from '@benjavicente/react-router'
 
 const rootRoute = createRootRoute()
 
 // Root route with Context
-import { createRootRouteWithContext } from '@tanstack/react-router'
+import { createRootRouteWithContext } from '@benjavicente/react-router'
 import type { QueryClient } from '@tanstack/react-query'
 
 export interface MyRouterContext {
@@ -301,12 +301,12 @@ const rootRoute = createRootRouteWithContext<MyRouterContext>()
 
 ```tsx
 // Standard root route
-import { createRootRoute } from '@tanstack/solid-router'
+import { createRootRoute } from '@benjavicente/solid-router'
 
 const rootRoute = createRootRoute()
 
 // Root route with Context
-import { createRootRouteWithContext } from '@tanstack/solid-router'
+import { createRootRouteWithContext } from '@benjavicente/solid-router'
 import type { QueryClient } from '@tanstack/solid-query'
 
 export interface MyRouterContext {

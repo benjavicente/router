@@ -1,4 +1,4 @@
-import { createFileRoute } from '@tanstack/react-router'
+import { createFileRoute } from '@benjavicente/react-router'
 
 // This file uses blog[_] escaping to create a literal /blog_ path
 // with the trailing underscore preserved in the URL

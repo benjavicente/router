@@ -1,5 +1,5 @@
-import { createFileRoute } from '@tanstack/vue-router'
-import { createMiddleware } from '@tanstack/vue-start'
+import { createFileRoute } from '@benjavicente/vue-router'
+import { createMiddleware } from '@benjavicente/vue-start'
 
 const testParentMiddleware = createMiddleware().server(async ({ next }) => {
   const result = await next({ context: { testParent: true } })

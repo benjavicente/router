@@ -7,9 +7,9 @@ import {
   Outlet,
   Scripts,
   createRootRouteWithContext,
-} from '@tanstack/vue-router'
+} from '@benjavicente/vue-router'
 import { VueQueryDevtools } from '@tanstack/vue-query-devtools'
-import { TanStackRouterDevtoolsInProd } from '@tanstack/vue-router-devtools'
+import { TanStackRouterDevtoolsInProd } from '@benjavicente/vue-router-devtools'
 import type { QueryClient } from '@tanstack/vue-query'
 import appCss from '~/styles/app.css?url'
 

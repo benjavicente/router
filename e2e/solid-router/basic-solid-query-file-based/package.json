@@ -12,11 +12,11 @@
   },
   "dependencies": {
     "@tailwindcss/vite": "^4.2.2",
-    "@tanstack/router-plugin": "workspace:^",
+    "@benjavicente/router-plugin": "workspace:^",
     "@tanstack/solid-query": "^5.90.9",
     "@tanstack/solid-query-devtools": "^5.90.0",
-    "@tanstack/solid-router": "workspace:^",
-    "@tanstack/solid-router-devtools": "workspace:^",
+    "@benjavicente/solid-router": "workspace:^",
+    "@benjavicente/solid-router-devtools": "workspace:^",
     "redaxios": "^0.5.1",
     "solid-js": "^1.9.10",
     "tailwindcss": "^4.2.2",
@@ -24,7 +24,7 @@
   },
   "devDependencies": {
     "@playwright/test": "^1.50.1",
-    "@tanstack/router-e2e-utils": "workspace:^",
+    "@benjavicente/router-e2e-utils": "workspace:^",
     "vite": "^8.0.0",
     "vite-plugin-solid": "^2.11.11"
   }

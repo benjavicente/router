@@ -1,4 +1,4 @@
-import { createFileRoute } from '@tanstack/solid-router'
+import { createFileRoute } from '@benjavicente/solid-router'
 
 export const Route = createFileRoute('/대한민국/🚀/$id')({
   component: RouteComponent,

@@ -1,7 +1,7 @@
-import { createFileRoute } from '@tanstack/react-router'
-import { getRouteApi, useSearch } from '@tanstack/react-router'
+import { createFileRoute } from '@benjavicente/react-router'
+import { getRouteApi, useSearch } from '@benjavicente/react-router'
 import { z } from 'zod'
-import { zodValidator } from '@tanstack/zod-adapter'
+import { zodValidator } from '@benjavicente/zod-adapter'
 
 const routeApi = getRouteApi('/(group)/inside')
 

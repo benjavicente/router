@@ -1,5 +1,5 @@
 import { expect, Page } from '@playwright/test'
-import { test } from '@tanstack/router-e2e-utils'
+import { test } from '@benjavicente/router-e2e-utils'
 
 type NavigationMethod = 'direct' | 'client-side'
 

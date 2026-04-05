@@ -1,4 +1,4 @@
-import { createFileRoute } from '@tanstack/react-router'
+import { createFileRoute } from '@benjavicente/react-router'
 
 // This file uses [index] escaping to create a literal /index route
 // instead of being treated as an index route for the parent

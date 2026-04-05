@@ -322,8 +322,8 @@ While Next.js's production performance is excellent, the development experience 
 - **React Router**: Production-ready, powers millions of apps, v7 Framework Mode is the evolution of Remix
 - **TanStack Start**: Release Candidate stage, feature-complete, rapidly stabilizing toward v1
 
-[bp-tanstack-router]: https://badgen.net/bundlephobia/minzip/@tanstack/react-router
-[bpl-tanstack-router]: https://bundlephobia.com/result?p=@tanstack/react-router
+[bp-tanstack-router]: https://badgen.net/bundlephobia/minzip/@benjavicente/react-router
+[bpl-tanstack-router]: https://bundlephobia.com/result?p=@benjavicente/react-router
 [gh-tanstack-router]: https://github.com/tanstack/router
 [stars-tanstack-router]: https://img.shields.io/github/stars/tanstack/router?label=%F0%9F%8C%9F
 [router-comparison]: /router/latest/docs/framework/react/comparison

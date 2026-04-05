@@ -1,7 +1,7 @@
-import { createFileRoute } from '@tanstack/solid-router'
-import { ErrorComponent } from '@tanstack/solid-router'
+import { createFileRoute } from '@benjavicente/solid-router'
+import { ErrorComponent } from '@benjavicente/solid-router'
 import { fetchPost } from '../posts'
-import type { ErrorComponentProps } from '@tanstack/solid-router'
+import type { ErrorComponentProps } from '@benjavicente/solid-router'
 
 export function PostErrorComponent({ error }: ErrorComponentProps) {
   return <ErrorComponent error={error} />

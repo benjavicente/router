@@ -32,7 +32,7 @@ The simplest way to preload routes for your application is to set the `defaultPr
 # React
 
 ```tsx
-import { createRouter } from '@tanstack/react-router'
+import { createRouter } from '@benjavicente/react-router'
 
 const router = createRouter({
   // ...
@@ -43,7 +43,7 @@ const router = createRouter({
 # Solid
 
 ```tsx
-import { createRouter } from '@tanstack/solid-router'
+import { createRouter } from '@benjavicente/solid-router'
 
 const router = createRouter({
   // ...
@@ -64,7 +64,7 @@ By default, preloading will start after **50ms** of the user hovering or touchin
 # React
 
 ```tsx
-import { createRouter } from '@tanstack/react-router'
+import { createRouter } from '@benjavicente/react-router'
 
 const router = createRouter({
   // ...
@@ -75,7 +75,7 @@ const router = createRouter({
 # Solid
 
 ```tsx
-import { createRouter } from '@tanstack/solid-router'
+import { createRouter } from '@benjavicente/solid-router'
 
 const router = createRouter({
   // ...
@@ -98,7 +98,7 @@ To change this, you can set the `defaultPreloadStaleTime` option on your router:
 # React
 
 ```tsx
-import { createRouter } from '@tanstack/react-router'
+import { createRouter } from '@benjavicente/react-router'
 
 const router = createRouter({
   // ...
@@ -109,7 +109,7 @@ const router = createRouter({
 # Solid
 
 ```tsx
-import { createRouter } from '@tanstack/solid-router'
+import { createRouter } from '@benjavicente/solid-router'
 
 const router = createRouter({
   // ...
@@ -143,7 +143,7 @@ For example:
 # React
 
 ```tsx
-import { createRouter } from '@tanstack/react-router'
+import { createRouter } from '@benjavicente/react-router'
 
 const router = createRouter({
   // ...
@@ -154,7 +154,7 @@ const router = createRouter({
 # Solid
 
 ```tsx
-import { createRouter } from '@tanstack/solid-router'
+import { createRouter } from '@benjavicente/solid-router'
 
 const router = createRouter({
   // ...

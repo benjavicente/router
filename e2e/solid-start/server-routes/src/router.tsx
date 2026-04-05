@@ -1,5 +1,5 @@
-import { createRouter } from '@tanstack/solid-router'
-import { setupRouterSsrQueryIntegration } from '@tanstack/solid-router-ssr-query'
+import { createRouter } from '@benjavicente/solid-router'
+import { setupRouterSsrQueryIntegration } from '@benjavicente/solid-router-ssr-query'
 import { QueryClient } from '@tanstack/solid-query'
 import { routeTree } from './routeTree.gen'
 import { DefaultCatchBoundary } from './components/DefaultCatchBoundary'

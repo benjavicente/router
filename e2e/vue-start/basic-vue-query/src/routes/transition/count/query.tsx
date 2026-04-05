@@ -1,4 +1,4 @@
-import { Link, createFileRoute } from '@tanstack/vue-router'
+import { Link, createFileRoute } from '@benjavicente/vue-router'
 import { queryOptions, useQuery } from '@tanstack/vue-query'
 import { z } from 'zod'
 

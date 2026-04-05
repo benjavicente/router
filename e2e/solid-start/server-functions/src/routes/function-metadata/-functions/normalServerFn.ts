@@ -1,4 +1,4 @@
-import { createServerFn } from '@tanstack/solid-start'
+import { createServerFn } from '@benjavicente/solid-start'
 
 export const getServerFn = createServerFn().handler(({ serverFnMeta }) => {
   return serverFnMeta

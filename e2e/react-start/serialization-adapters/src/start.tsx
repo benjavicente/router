@@ -1,4 +1,4 @@
-import { createStart } from '@tanstack/react-start'
+import { createStart } from '@benjavicente/react-start'
 import { carAdapter, fooAdapter, nestedOuterAdapter } from './data'
 import { customErrorAdapter } from './CustomError'
 

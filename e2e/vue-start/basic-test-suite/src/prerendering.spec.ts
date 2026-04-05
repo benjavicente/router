@@ -1,7 +1,7 @@
 import { existsSync, readFileSync } from 'node:fs'
 import { join } from 'node:path'
 import { expect } from '@playwright/test'
-import { test } from '@tanstack/router-e2e-utils'
+import { test } from '@benjavicente/router-e2e-utils'
 import { isPrerender } from './utils/isPrerender'
 import { getBasicAppRoot } from './utils/getBasicAppRoot'
 

@@ -1,4 +1,4 @@
-import { Link, Outlet, createRootRoute, redirect } from '@tanstack/react-router'
+import { Link, Outlet, createRootRoute, redirect } from '@benjavicente/react-router'
 import {
   getLocale,
   locales,

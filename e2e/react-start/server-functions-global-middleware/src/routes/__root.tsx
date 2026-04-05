@@ -6,7 +6,7 @@ import {
   Outlet,
   Scripts,
   createRootRoute,
-} from '@tanstack/react-router'
+} from '@benjavicente/react-router'
 import appCss from '~/styles/app.css?url'
 
 export const Route = createRootRoute({

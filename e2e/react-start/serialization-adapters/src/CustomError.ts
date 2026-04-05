@@ -1,4 +1,4 @@
-import { createSerializationAdapter } from '@tanstack/react-router'
+import { createSerializationAdapter } from '@benjavicente/react-router'
 
 export class CustomError extends Error {
   public foo: string

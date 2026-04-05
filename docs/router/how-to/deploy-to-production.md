@@ -189,7 +189,7 @@ cp dist/index.html dist/404.html
 ```js
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
-import { tanstackRouter } from '@tanstack/router-plugin/vite'
+import { tanstackRouter } from '@benjavicente/router-plugin/vite'
 
 export default defineConfig({
   base: '/your-repo-name/', // Replace with your repository name

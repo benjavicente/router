@@ -1,4 +1,4 @@
-import { createServerFn } from '@tanstack/solid-start'
+import { createServerFn } from '@benjavicente/solid-start'
 
 const postServerFn = createServerFn({ method: 'POST' }).handler(
   ({ method }) => {

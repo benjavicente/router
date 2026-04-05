@@ -8,7 +8,7 @@
 // You should NOT make any changes in this file as it will be overwritten.
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
-import type { CreateFileRoute, FileRoutesByPath } from '@tanstack/vue-router'
+import type { CreateFileRoute, FileRoutesByPath } from '@benjavicente/vue-router'
 
 import { Route as rootRouteImport } from './routes/root'
 import { Route as postsPostsRouteImport } from './routes/posts/posts'
@@ -166,7 +166,7 @@ export interface RootRouteChildren {
   ClassicHelloRouteRoute: typeof ClassicHelloRouteRouteWithChildren
 }
 
-declare module '@tanstack/vue-router' {
+declare module '@benjavicente/vue-router' {
   interface FileRoutesByPath {
     '/posts': {
       id: '/posts'

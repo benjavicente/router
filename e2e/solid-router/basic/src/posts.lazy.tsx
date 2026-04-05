@@ -1,4 +1,4 @@
-import { Link, Outlet, createLazyRoute } from '@tanstack/solid-router'
+import { Link, Outlet, createLazyRoute } from '@benjavicente/solid-router'
 
 export const Route = createLazyRoute('/posts')({
   component: PostsComponent,

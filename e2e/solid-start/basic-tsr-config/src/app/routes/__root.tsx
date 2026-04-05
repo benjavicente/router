@@ -3,8 +3,8 @@ import {
   Outlet,
   Scripts,
   createRootRoute,
-} from '@tanstack/solid-router'
-import { TanStackRouterDevtools } from '@tanstack/solid-router-devtools'
+} from '@benjavicente/solid-router'
+import { TanStackRouterDevtools } from '@benjavicente/solid-router-devtools'
 import { HydrationScript } from 'solid-js/web'
 
 export const Route = createRootRoute({

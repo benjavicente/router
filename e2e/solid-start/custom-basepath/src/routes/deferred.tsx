@@ -1,5 +1,5 @@
-import { Await, createFileRoute } from '@tanstack/solid-router'
-import { createServerFn } from '@tanstack/solid-start'
+import { Await, createFileRoute } from '@benjavicente/solid-router'
+import { createServerFn } from '@benjavicente/solid-start'
 import { Suspense, createSignal } from 'solid-js'
 
 const personServerFn = createServerFn({ method: 'GET' })

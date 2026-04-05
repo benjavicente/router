@@ -1,4 +1,4 @@
-import { createFileRoute } from '@tanstack/vue-router'
+import { createFileRoute } from '@benjavicente/vue-router'
 import { Login } from '~/components/Login'
 
 export const Route = createFileRoute('/login')({

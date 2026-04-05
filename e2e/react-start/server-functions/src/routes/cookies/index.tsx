@@ -1,4 +1,4 @@
-import { Link, createFileRoute } from '@tanstack/react-router'
+import { Link, createFileRoute } from '@benjavicente/react-router'
 import { z } from 'zod'
 
 const cookieSchema = z

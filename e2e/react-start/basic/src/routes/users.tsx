@@ -1,5 +1,5 @@
-import { Link, Outlet, createFileRoute } from '@tanstack/react-router'
-import { getRouterInstance } from '@tanstack/react-start'
+import { Link, Outlet, createFileRoute } from '@benjavicente/react-router'
+import { getRouterInstance } from '@benjavicente/react-start'
 import axios from 'redaxios'
 
 import type { User } from '~/utils/users'

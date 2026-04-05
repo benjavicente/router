@@ -1,4 +1,4 @@
-import { createFileRoute } from '@tanstack/vue-router'
+import { createFileRoute } from '@benjavicente/vue-router'
 import Cookies from 'js-cookie'
 import { defineComponent, onMounted, ref } from 'vue'
 

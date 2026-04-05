@@ -7,7 +7,7 @@
 # Triggers: new release published, or manual workflow_dispatch.
 #
 # Template variables (replaced by `intent setup`):
-#   @tanstack/react-router  — e.g. @tanstack/query
+#   @benjavicente/react-router  — e.g. @tanstack/query
 #
 # Adapted for TanStack Router monorepo: loops over all packages with skills.
 

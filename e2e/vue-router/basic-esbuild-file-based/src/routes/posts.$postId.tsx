@@ -1,4 +1,4 @@
-import { createFileRoute } from '@tanstack/vue-router'
+import { createFileRoute } from '@benjavicente/vue-router'
 import PostErrorComponent from '../components/PostErrorComponent.vue'
 import { fetchPost } from '../posts'
 import type { PostType } from '../posts'

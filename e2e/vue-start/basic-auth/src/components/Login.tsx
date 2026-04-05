@@ -1,5 +1,5 @@
-import { useRouter } from '@tanstack/vue-router'
-import { useServerFn } from '@tanstack/vue-start'
+import { useRouter } from '@benjavicente/vue-router'
+import { useServerFn } from '@benjavicente/vue-start'
 import { useMutation } from '../hooks/useMutation'
 import { loginFn } from '../routes/_authed'
 import { Auth } from './Auth'

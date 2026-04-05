@@ -1,4 +1,4 @@
-import { createFileRoute } from '@tanstack/vue-router'
+import { createFileRoute } from '@benjavicente/vue-router'
 import { throwRedirect } from '~/components/throwRedirect'
 
 export const Route = createFileRoute('/redirect/$target/serverFn/via-loader')({

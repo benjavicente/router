@@ -1,4 +1,4 @@
-import { createFileRoute } from '@tanstack/vue-router'
+import { createFileRoute } from '@benjavicente/vue-router'
 
 function PostsIndexComponent() {
   return <div>Select a post.</div>

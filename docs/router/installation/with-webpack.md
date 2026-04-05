@@ -2,12 +2,12 @@
 title: Installation with Webpack
 ---
 
-To use file-based routing with **Webpack**, you'll need to install the `@tanstack/router-plugin` package.
+To use file-based routing with **Webpack**, you'll need to install the `@benjavicente/router-plugin` package.
 
 <!-- ::start:tabs variant="package-manager" mode="dev-install" -->
 
-react: @tanstack/router-plugin
-solid: @tanstack/router-plugin
+react: @benjavicente/router-plugin
+solid: @benjavicente/router-plugin
 
 <!-- ::end:tabs -->
 
@@ -18,7 +18,7 @@ Once installed, you'll need to add the plugin to your configuration.
 # React
 
 ```ts title="webpack.config.ts"
-import { tanstackRouter } from '@tanstack/router-plugin/webpack'
+import { tanstackRouter } from '@benjavicente/router-plugin/webpack'
 
 export default {
   plugins: [
@@ -35,7 +35,7 @@ Or, you can clone our [Quickstart Webpack example](https://github.com/TanStack/r
 # Solid
 
 ```ts title="webpack.config.ts"
-import { tanstackRouter } from '@tanstack/router-plugin/webpack'
+import { tanstackRouter } from '@benjavicente/router-plugin/webpack'
 
 export default {
   plugins: [

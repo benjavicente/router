@@ -4,7 +4,7 @@
  *
  * Chain: nestedReexportA -> nestedReexportB -> nestedReexportC (this file)
  */
-import { createMiddleware, createServerFn } from '@tanstack/react-start'
+import { createMiddleware, createServerFn } from '@benjavicente/react-start'
 
 const nestedMiddleware = createMiddleware({ type: 'function' }).server(
   ({ next }) => {

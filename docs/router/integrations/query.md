@@ -19,8 +19,8 @@ The TanStack query integration is a separate package that you need to install:
 
 <!-- ::start:tabs variant="package-manager" mode="dev-install" -->
 
-react: @tanstack/react-router-ssr-query
-solid: @tanstack/solid-router-ssr-query
+react: @benjavicente/react-router-ssr-query
+solid: @benjavicente/solid-router-ssr-query
 
 <!-- ::end:tabs -->
 
@@ -34,8 +34,8 @@ Create your router and wire up the integration. Ensure a fresh `QueryClient` is 
 
 ```tsx title="src/router.tsx"
 import { QueryClient } from '@tanstack/react-query'
-import { createRouter } from '@tanstack/react-router'
-import { setupRouterSsrQueryIntegration } from '@tanstack/react-router-ssr-query'
+import { createRouter } from '@benjavicente/react-router'
+import { setupRouterSsrQueryIntegration } from '@benjavicente/react-router-ssr-query'
 import { routeTree } from './routeTree.gen'
 
 export function getRouter() {
@@ -109,7 +109,7 @@ Preload critical data in the route `loader` to avoid waterfalls and loading flas
 
 ```tsx title="src/routes/posts.tsx"
 import { queryOptions, useSuspenseQuery, useQuery } from '@tanstack/react-query'
-import { createFileRoute } from '@tanstack/react-router'
+import { createFileRoute } from '@benjavicente/react-router'
 
 const postsQuery = queryOptions({
   queryKey: ['posts'],
@@ -140,7 +140,7 @@ You can also prefetch with `fetchQuery` or `ensureQueryData` in a loader without
 # React
 
 ```tsx title="src/routes/users.$id.tsx"
-import { createFileRoute } from '@tanstack/react-router'
+import { createFileRoute } from '@benjavicente/react-router'
 import { queryOptions, useQuery } from '@tanstack/react-query'
 
 const userQuery = (id: string) =>

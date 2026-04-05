@@ -1,4 +1,4 @@
-import { createFileRoute } from '@tanstack/solid-router'
+import { createFileRoute } from '@benjavicente/solid-router'
 
 export const Route = createFileRoute('/params-ps/wildcard/prefix@대{$}')({
   component: RouteComponent,

@@ -20,7 +20,7 @@ Let's create a post route file that uses a path param to match the post ID:
 # React
 
 ```tsx title="src/routes/posts.$postId.tsx"
-import { createFileRoute } from '@tanstack/react-router'
+import { createFileRoute } from '@benjavicente/react-router'
 
 export const Route = createFileRoute('/posts/$postId')({
   loader: async ({ params }) => {
@@ -32,7 +32,7 @@ export const Route = createFileRoute('/posts/$postId')({
 # Solid
 
 ```tsx title="src/routes/posts.$postId.tsx"
-import { createFileRoute } from '@tanstack/solid-router'
+import { createFileRoute } from '@benjavicente/solid-router'
 
 export const Route = createFileRoute('/posts/$postId')({
   loader: async ({ params }) => {

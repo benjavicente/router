@@ -35,7 +35,7 @@ The `useLoaderDepsHook` hook accepts an `options` object.
 ## Examples
 
 ```tsx
-import { useLoaderDeps } from '@tanstack/react-router'
+import { useLoaderDeps } from '@benjavicente/react-router'
 
 const routeApi = getRouteApi('/posts/$postId')
 

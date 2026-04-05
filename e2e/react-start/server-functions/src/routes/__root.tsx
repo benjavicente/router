@@ -6,7 +6,7 @@ import {
   Outlet,
   Scripts,
   createRootRouteWithContext,
-} from '@tanstack/react-router'
+} from '@benjavicente/react-router'
 
 import { DefaultCatchBoundary } from '~/components/DefaultCatchBoundary'
 import { NotFound } from '~/components/NotFound'
@@ -49,7 +49,7 @@ const RouterDevtools =
     ? () => null // Render nothing in production
     : React.lazy(() =>
         // Lazy load in development
-        import('@tanstack/react-router-devtools').then((res) => ({
+        import('@benjavicente/react-router-devtools').then((res) => ({
           default: res.TanStackRouterDevtools,
         })),
       )

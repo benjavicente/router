@@ -3,7 +3,7 @@ import {
   Outlet,
   createFileRoute,
   useParams,
-} from '@tanstack/react-router'
+} from '@benjavicente/react-router'
 import { RenderCounter } from '../../../../components/RenderCounter'
 
 export const Route = createFileRoute('/params-ps/named/$foo/$bar')({

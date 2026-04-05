@@ -1,4 +1,4 @@
-import { createServerFn } from '@tanstack/vue-start'
+import { createServerFn } from '@benjavicente/vue-start'
 
 export const getServerFn = createServerFn().handler(({ serverFnMeta }) => {
   return serverFnMeta

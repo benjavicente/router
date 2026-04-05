@@ -3,7 +3,7 @@ import {
   Outlet,
   useLocation,
   createFileRoute,
-} from '@tanstack/react-router'
+} from '@benjavicente/react-router'
 import { getDocumentHeads } from '~/server/document'
 import { getProject } from '~/server/projects'
 

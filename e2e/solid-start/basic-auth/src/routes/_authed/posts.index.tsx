@@ -1,4 +1,4 @@
-import { createFileRoute } from '@tanstack/solid-router'
+import { createFileRoute } from '@benjavicente/solid-router'
 
 function PostsIndexComponent() {
   return <div>Select a post.</div>

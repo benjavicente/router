@@ -1,4 +1,4 @@
-import { createFileRoute } from '@tanstack/react-router'
+import { createFileRoute } from '@benjavicente/react-router'
 import { RenderNestedData, makeNested } from '~/data'
 
 export const Route = createFileRoute('/ssr/nested')({

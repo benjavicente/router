@@ -1,7 +1,7 @@
-import { createFileRoute } from '@tanstack/vue-router'
+import { createFileRoute } from '@benjavicente/vue-router'
 import axios from 'redaxios'
 
-import { getRouterInstance } from '@tanstack/vue-start'
+import { getRouterInstance } from '@benjavicente/vue-start'
 import type { User } from '~/utils/users'
 import { NotFound } from '~/components/NotFound'
 import { UserErrorComponent } from '~/components/UserErrorComponent'

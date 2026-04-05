@@ -1,4 +1,4 @@
-import { createFileRoute, useNavigate } from '@tanstack/solid-router'
+import { createFileRoute, useNavigate } from '@benjavicente/solid-router'
 import { z } from 'zod'
 
 export const Route = createFileRoute('/relative/useNavigate/with-search/')({

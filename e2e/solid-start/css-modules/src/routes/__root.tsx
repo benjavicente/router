@@ -4,7 +4,7 @@ import {
   Outlet,
   Scripts,
   createRootRoute,
-} from '@tanstack/solid-router'
+} from '@benjavicente/solid-router'
 import { HydrationScript } from 'solid-js/web'
 
 export const Route = createRootRoute({

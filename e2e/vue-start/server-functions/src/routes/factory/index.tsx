@@ -1,6 +1,6 @@
-import { createFileRoute, deepEqual } from '@tanstack/vue-router'
+import { createFileRoute, deepEqual } from '@benjavicente/vue-router'
 
-import { createServerFn } from '@tanstack/vue-start'
+import { createServerFn } from '@benjavicente/vue-start'
 import { fooFnInsideFactoryFile } from './-functions/createFooServerFn'
 import {
   barFn,

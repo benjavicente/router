@@ -1,4 +1,4 @@
-import { Await, createFileRoute } from '@tanstack/vue-router'
+import { Await, createFileRoute } from '@benjavicente/vue-router'
 import { Suspense } from 'vue'
 import { RenderData, makeData } from '~/data'
 

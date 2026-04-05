@@ -1,5 +1,5 @@
 import * as React from 'react'
-import { Link, createFileRoute, useRouter } from '@tanstack/react-router'
+import { Link, createFileRoute, useRouter } from '@benjavicente/react-router'
 import { sleep } from '~/utils/posts'
 
 export const Route = createFileRoute('/(tests)/hash-scroll-repro')({

@@ -1,5 +1,5 @@
 import { expect } from '@playwright/test'
-import { test } from '@tanstack/router-e2e-utils'
+import { test } from '@benjavicente/router-e2e-utils'
 
 // Whitelist errors that can occur in CI:
 // - net::ERR_NAME_NOT_RESOLVED: transient network issues

@@ -22,7 +22,7 @@ The `redirect` function accepts a single argument, the `options` to determine th
 ### Using the standalone `redirect` function
 
 ```tsx
-import { redirect } from '@tanstack/react-router'
+import { redirect } from '@benjavicente/react-router'
 
 const route = createRoute({
   // throwing an internal redirect object using 'to' property
@@ -60,7 +60,7 @@ When using file-based routing with `createFileRoute`, you can use the `Route.red
 
 ```tsx
 // In routes/dashboard/settings.tsx
-import { createFileRoute } from '@tanstack/react-router'
+import { createFileRoute } from '@benjavicente/react-router'
 
 export const Route = createFileRoute('/dashboard/settings')({
   beforeLoad: ({ context }) => {
@@ -87,7 +87,7 @@ export const Route = createFileRoute('/dashboard/settings')({
 For accessing the redirect method outside of the route definition file, you can use `getRouteApi`:
 
 ```tsx
-import { getRouteApi } from '@tanstack/react-router'
+import { getRouteApi } from '@benjavicente/react-router'
 
 const routeApi = getRouteApi('/dashboard/settings')
 

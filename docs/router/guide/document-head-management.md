@@ -93,7 +93,7 @@ or a callback return value), `assetCrossOrigin` wins.
 # React
 
 ```tsx
-import { HeadContent } from '@tanstack/react-router'
+import { HeadContent } from '@benjavicente/react-router'
 
 export const Route = createRootRoute({
   component: () => (
@@ -112,7 +112,7 @@ export const Route = createRootRoute({
 # Solid
 
 ```tsx
-import { HeadContent } from '@tanstack/solid-router'
+import { HeadContent } from '@benjavicente/solid-router'
 
 export const Route = createRootRoute({
   component: () => (
@@ -139,7 +139,7 @@ First, remove the `<title>` tag from the index.html if you have set any.
 # React
 
 ```tsx
-import { HeadContent } from '@tanstack/react-router'
+import { HeadContent } from '@benjavicente/react-router'
 
 const rootRoute = createRootRoute({
   component: () => (
@@ -154,7 +154,7 @@ const rootRoute = createRootRoute({
 # Solid
 
 ```tsx
-import { HeadContent } from '@tanstack/solid-router'
+import { HeadContent } from '@benjavicente/solid-router'
 
 const rootRoute = createRootRoute({
   component: () => (
@@ -198,7 +198,7 @@ The `<Scripts />` component is **required** to render the body scripts of a docu
 # React
 
 ```tsx
-import { createRootRoute, Scripts } from '@tanstack/react-router'
+import { createRootRoute, Scripts } from '@benjavicente/react-router'
 export const Route = createFileRoute('/')({
   component: () => (
     <html>
@@ -215,7 +215,7 @@ export const Route = createFileRoute('/')({
 # Solid
 
 ```tsx
-import { createFileRoute, Scripts } from '@tanstack/solid-router'
+import { createFileRoute, Scripts } from '@benjavicente/solid-router'
 export const Route = createRootRoute('/')({
   component: () => (
     <html>
@@ -240,7 +240,7 @@ For scripts that must run before React hydrates (like theme detection), use `Scr
 # React
 
 ```tsx
-import { ScriptOnce } from '@tanstack/react-router'
+import { ScriptOnce } from '@benjavicente/react-router'
 
 const themeScript = `(function() {
   try {
@@ -265,7 +265,7 @@ function ThemeProvider({ children }) {
 # Solid
 
 ```tsx
-import { ScriptOnce } from '@tanstack/solid-router'
+import { ScriptOnce } from '@benjavicente/solid-router'
 
 const themeScript = `(function() {
   try {

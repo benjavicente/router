@@ -87,7 +87,7 @@ Two common use cases for the `useBlocker` hook are:
 ### Basic usage
 
 ```tsx
-import { useBlocker } from '@tanstack/react-router'
+import { useBlocker } from '@benjavicente/react-router'
 
 function MyComponent() {
   const [formIsDirty, setFormIsDirty] = useState(false)
@@ -103,7 +103,7 @@ function MyComponent() {
 ### Custom UI
 
 ```tsx
-import { useBlocker } from '@tanstack/react-router'
+import { useBlocker } from '@benjavicente/react-router'
 
 function MyComponent() {
   const [formIsDirty, setFormIsDirty] = useState(false)
@@ -133,7 +133,7 @@ function MyComponent() {
 ### Conditional blocking
 
 ```tsx
-import { useBlocker } from '@tanstack/react-router'
+import { useBlocker } from '@benjavicente/react-router'
 
 function MyComponent() {
   const { proceed, reset, status } = useBlocker({
@@ -163,7 +163,7 @@ function MyComponent() {
 ### Without resolver
 
 ```tsx
-import { useBlocker } from '@tanstack/react-router'
+import { useBlocker } from '@benjavicente/react-router'
 
 function MyComponent() {
   const [formIsDirty, setFormIsDirty] = useState(false)
@@ -186,7 +186,7 @@ function MyComponent() {
 ### Type narrowing
 
 ```tsx
-import { useBlocker } from '@tanstack/react-router'
+import { useBlocker } from '@benjavicente/react-router'
 
 function MyComponent() {
   const [formIsDirty, setFormIsDirty] = useState(false)

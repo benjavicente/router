@@ -1,7 +1,7 @@
-import { createFileRoute } from '@tanstack/solid-router'
+import { createFileRoute } from '@benjavicente/solid-router'
 import axios from 'redaxios'
 
-import { getRouterInstance } from '@tanstack/solid-start'
+import { getRouterInstance } from '@benjavicente/solid-start'
 import type { User } from '~/utils/users'
 import { NotFound } from '~/components/NotFound'
 import { UserErrorComponent } from '~/components/UserErrorComponent'

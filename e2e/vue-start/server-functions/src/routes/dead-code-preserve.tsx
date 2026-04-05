@@ -1,7 +1,7 @@
-import { createFileRoute } from '@tanstack/vue-router'
+import { createFileRoute } from '@benjavicente/vue-router'
 import * as fs from 'node:fs'
-import { createServerFn } from '@tanstack/vue-start'
-import { getRequestHeader } from '@tanstack/vue-start/server'
+import { createServerFn } from '@benjavicente/vue-start'
+import { getRequestHeader } from '@benjavicente/vue-start/server'
 import { defineComponent, ref } from 'vue'
 
 // by using this we make sure DCE still works - this errors when imported on the client

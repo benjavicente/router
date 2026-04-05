@@ -40,7 +40,7 @@ Arrays are commonly used for filters, tags, categories, and multi-select options
 
 ```tsx
 // routes/products.tsx
-import { createFileRoute } from '@tanstack/react-router'
+import { createFileRoute } from '@benjavicente/react-router'
 import { z } from 'zod'
 
 const searchSchema = z.object({
@@ -74,7 +74,7 @@ function ProductsComponent() {
 ### Navigating with Arrays
 
 ```tsx
-import { Link } from '@tanstack/react-router'
+import { Link } from '@benjavicente/react-router'
 
 function FilterControls() {
   return (

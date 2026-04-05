@@ -1,5 +1,5 @@
 import { defineConfig } from 'vite'
-import { tanstackStart } from '@tanstack/vue-start/plugin/vite'
+import { tanstackStart } from '@benjavicente/vue-start/plugin/vite'
 import vueJsx from '@vitejs/plugin-vue-jsx'
 
 export default defineConfig({

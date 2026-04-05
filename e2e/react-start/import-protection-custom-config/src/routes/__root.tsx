@@ -5,7 +5,7 @@ import {
   linkOptions,
   Outlet,
   Scripts,
-} from '@tanstack/react-router'
+} from '@benjavicente/react-router'
 
 export const Route = createRootRoute({
   head: () => ({

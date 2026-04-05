@@ -214,7 +214,7 @@ That file shape is now in place. The remaining work is to replace the placeholde
 
 ## Recommended next implementation steps
 
-1. Fix the shared Start core build/type issues so Angular Start can import `@tanstack/start-plugin-core` normally instead of from source.
+1. Fix the shared Start core build/type issues so Angular Start can import `@benjavicente/start-plugin-core` normally instead of from source.
 2. Decide the Angular public bootstrap model: component-based, bootstrap-helper-based, or both.
 3. Define provider composition for client and server separately.
 4. Replace the `501` server placeholders with real Angular SSR handling.

@@ -1,6 +1,6 @@
 import * as fs from 'node:fs'
 import { expect } from '@playwright/test'
-import { getTestServerPort, test } from '@tanstack/router-e2e-utils'
+import { getTestServerPort, test } from '@benjavicente/router-e2e-utils'
 import packageJson from '../package.json' with { type: 'json' }
 import type { Page } from '@playwright/test'
 
@@ -672,7 +672,7 @@ test('nested star re-exported server function factory middleware executes correc
 test('server-only imports in middleware.server() are stripped from client build', async ({
   page,
 }) => {
-  // This test verifies that server-only imports (like getRequestHeaders from @tanstack/react-start/server)
+  // This test verifies that server-only imports (like getRequestHeaders from @benjavicente/react-start/server)
   // inside createMiddleware().server() are properly stripped from the client build.
   // If the .server() part is not removed, the build would fail with node:async_hooks externalization errors.
   // The fact that this page loads at all proves the server code was stripped correctly.

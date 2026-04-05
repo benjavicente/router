@@ -1,5 +1,5 @@
-import { createFileRoute } from '@tanstack/vue-router'
-import { createMiddleware } from '@tanstack/vue-start'
+import { createFileRoute } from '@benjavicente/vue-router'
+import { createMiddleware } from '@benjavicente/vue-start'
 import type { User } from '~/utils/users'
 
 const userLoggerMiddleware = createMiddleware().server(

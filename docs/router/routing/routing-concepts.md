@@ -15,7 +15,7 @@ All other routes, other than the [Root Route](#the-root-route), are configured u
 # React
 
 ```tsx title="src/routes/index.tsx"
-import { createFileRoute } from '@tanstack/react-router'
+import { createFileRoute } from '@benjavicente/react-router'
 
 export const Route = createFileRoute('/')({
   component: PostsComponent,
@@ -25,7 +25,7 @@ export const Route = createFileRoute('/')({
 # Solid
 
 ```tsx title="src/routes/index.tsx"
-import { createFileRoute } from '@tanstack/solid-router'
+import { createFileRoute } from '@benjavicente/solid-router'
 
 export const Route = createFileRoute('/')({
   component: PostsComponent,
@@ -65,12 +65,12 @@ To create a root route, call the `createRootRoute()` function and export it as t
 
 ```tsx
 // Standard root route
-import { createRootRoute } from '@tanstack/react-router'
+import { createRootRoute } from '@benjavicente/react-router'
 
 export const Route = createRootRoute()
 
 // Root route with Context
-import { createRootRouteWithContext } from '@tanstack/react-router'
+import { createRootRouteWithContext } from '@benjavicente/react-router'
 import type { QueryClient } from '@tanstack/react-query'
 
 export interface MyRouterContext {
@@ -83,12 +83,12 @@ export const Route = createRootRouteWithContext<MyRouterContext>()
 
 ```tsx
 // Standard root route
-import { createRootRoute } from '@tanstack/solid-router'
+import { createRootRoute } from '@benjavicente/solid-router'
 
 export const Route = createRootRoute()
 
 // Root route with Context
-import { createRootRouteWithContext } from '@tanstack/solid-router'
+import { createRootRouteWithContext } from '@benjavicente/solid-router'
 import type { QueryClient } from '@tanstack/solid-query'
 
 export interface MyRouterContext {
@@ -112,7 +112,7 @@ Let's take a look at an `/about` route:
 # React
 
 ```tsx title="src/routes/about.tsx"
-import { createFileRoute } from '@tanstack/react-router'
+import { createFileRoute } from '@benjavicente/react-router'
 
 export const Route = createFileRoute('/about')({
   component: AboutComponent,
@@ -126,7 +126,7 @@ function AboutComponent() {
 # Solid
 
 ```tsx title="src/routes/about.tsx"
-import { createFileRoute } from '@tanstack/solid-router'
+import { createFileRoute } from '@benjavicente/solid-router'
 
 export const Route = createFileRoute('/about')({
   component: AboutComponent,
@@ -152,7 +152,7 @@ Let's take a look at an index route for a `/posts` URL:
 # React
 
 ```tsx title="src/routes/posts.index.tsx"
-import { createFileRoute } from '@tanstack/react-router'
+import { createFileRoute } from '@benjavicente/react-router'
 
 // Note the trailing slash, which is used to target index routes
 export const Route = createFileRoute('/posts/')({
@@ -167,7 +167,7 @@ function PostsIndexComponent() {
 # Solid
 
 ```tsx title="src/routes/posts.index.tsx"
-import { createFileRoute } from '@tanstack/solid-router'
+import { createFileRoute } from '@benjavicente/solid-router'
 
 // Note the trailing slash, which is used to target index routes
 export const Route = createFileRoute('/posts/')({
@@ -194,7 +194,7 @@ These params are then usable in your route's configuration and components! Let's
 # React
 
 ```tsx title="src/routes/posts/$postId.tsx"
-import { createFileRoute } from '@tanstack/react-router'
+import { createFileRoute } from '@benjavicente/react-router'
 
 export const Route = createFileRoute('/posts/$postId')({
   // In a loader
@@ -213,7 +213,7 @@ function PostComponent() {
 # Solid
 
 ```tsx title="src/routes/posts.tsx"
-import { createFileRoute } from '@tanstack/solid-router'
+import { createFileRoute } from '@benjavicente/solid-router'
 
 export const Route = createFileRoute('/posts/$postId')({
   // In a loader
@@ -259,7 +259,7 @@ Optional path parameters allow you to define route segments that may or may not 
 
 ```tsx title="src/routes/posts.{-$category}.tsx"
 // The `-$category` segment is optional, so this route matches both `/posts` and `/posts/tech`
-import { createFileRoute } from '@tanstack/react-router'
+import { createFileRoute } from '@benjavicente/react-router'
 
 export const Route = createFileRoute('/posts/{-$category}')({
   component: PostsComponent,
@@ -276,7 +276,7 @@ function PostsComponent() {
 
 ```tsx title="src/routes/posts.{-$category}.tsx"
 // The `-$category` segment is optional, so this route matches both `/posts` and `/posts/tech`
-import { createFileRoute } from '@tanstack/solid-router'
+import { createFileRoute } from '@benjavicente/solid-router'
 
 export const Route = createFileRoute('/posts/{-$category}')({
   component: PostsComponent,
@@ -301,7 +301,7 @@ You can also define multiple optional parameters in a single route:
 
 ```tsx title="src/routes/posts.{-$category}.${-$slug}.tsx"
 // The `-$category` segment is optional, so this route matches both `/posts` and `/posts/tech`
-import { createFileRoute } from '@tanstack/react-router'
+import { createFileRoute } from '@benjavicente/react-router'
 
 export const Route = createFileRoute('/posts/{-$category}/{-$slug}')({
   component: PostsComponent,
@@ -312,7 +312,7 @@ export const Route = createFileRoute('/posts/{-$category}/{-$slug}')({
 
 ```tsx title="src/routes/posts.{-$category}.${-$slug}.tsx"
 // The `-$category` segment is optional, so this route matches both `/posts` and `/posts/tech`
-import { createFileRoute } from '@tanstack/solid-router'
+import { createFileRoute } from '@benjavicente/solid-router'
 
 export const Route = createFileRoute('/posts/{-$category}/{-$slug}')({
   component: PostsComponent,
@@ -354,7 +354,7 @@ This tree structure is used to wrap the child routes with a layout component:
 # React
 
 ```tsx title="src/routes/app.tsx"
-import { Outlet, createFileRoute } from '@tanstack/react-router'
+import { Outlet, createFileRoute } from '@benjavicente/react-router'
 
 export const Route = createFileRoute('/app')({
   component: AppLayoutComponent,
@@ -373,7 +373,7 @@ function AppLayoutComponent() {
 # Solid
 
 ```tsx title="src/routes/app.tsx"
-import { Outlet, createFileRoute } from '@tanstack/solid-router'
+import { Outlet, createFileRoute } from '@benjavicente/solid-router'
 
 export const Route = createFileRoute('/app')({
   component: AppLayoutComponent,
@@ -450,7 +450,7 @@ The `_pathlessLayout.tsx` route is used to wrap the child routes with a Pathless
 # React
 
 ```tsx title="src/routes/_pathlessLayout.tsx"
-import { Outlet, createFileRoute } from '@tanstack/react-router'
+import { Outlet, createFileRoute } from '@benjavicente/react-router'
 
 export const Route = createFileRoute('/_pathlessLayout')({
   component: PathlessLayoutComponent,
@@ -469,7 +469,7 @@ function PathlessLayoutComponent() {
 # Solid
 
 ```tsx title="src/routes/_pathlessLayout.tsx"
-import { Outlet, createFileRoute } from '@tanstack/solid-router'
+import { Outlet, createFileRoute } from '@benjavicente/solid-router'
 
 export const Route = createFileRoute('/_pathlessLayout')({
   component: PathlessLayoutComponent,
@@ -571,7 +571,7 @@ We can import from the excluded files into our posts route
 # React
 
 ```tsx title="src/routes/posts.tsx"
-import { createFileRoute } from '@tanstack/react-router'
+import { createFileRoute } from '@benjavicente/react-router'
 import { PostsTable } from './-posts-table'
 import { PostsHeader } from './-components/header'
 import { PostsFooter } from './-components/footer'
@@ -597,7 +597,7 @@ function PostComponent() {
 # Solid
 
 ```tsx title="src/routes/posts.tsx"
-import { createFileRoute } from '@tanstack/solid-router'
+import { createFileRoute } from '@benjavicente/solid-router'
 import { PostsTable } from './-posts-table'
 import { PostsHeader } from './-components/header'
 import { PostsFooter } from './-components/footer'

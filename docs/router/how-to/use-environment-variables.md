@@ -16,7 +16,7 @@ VITE_ENABLE_DEVTOOLS=true
 
 ```typescript
 // Route configuration
-import { createFileRoute } from '@tanstack/react-router'
+import { createFileRoute } from '@benjavicente/react-router'
 
 export const Route = createFileRoute('/posts')({
   loader: async () => {
@@ -141,7 +141,7 @@ await build({
 
 ```typescript
 // src/routes/posts/index.tsx
-import { createFileRoute } from '@tanstack/react-router'
+import { createFileRoute } from '@benjavicente/react-router'
 
 const fetchPosts = async () => {
   const baseUrl = import.meta.env.VITE_API_URL
@@ -173,8 +173,8 @@ export const Route = createFileRoute('/posts/')({
 
 ```typescript
 // src/routes/__root.tsx
-import { createRootRoute, Outlet } from '@tanstack/react-router'
-import { TanStackRouterDevtools } from '@tanstack/react-router-devtools'
+import { createRootRoute, Outlet } from '@benjavicente/react-router'
+import { TanStackRouterDevtools } from '@benjavicente/react-router-devtools'
 
 export const Route = createRootRoute({
   component: () => (
@@ -198,7 +198,7 @@ export const features = {
 }
 
 // src/routes/dashboard/index.tsx
-import { createFileRoute, redirect } from '@tanstack/react-router'
+import { createFileRoute, redirect } from '@benjavicente/react-router'
 import { features } from '../../lib/features'
 
 export const Route = createFileRoute('/dashboard/')({
@@ -223,7 +223,7 @@ export const authConfig = {
 }
 
 // src/routes/_authenticated.tsx
-import { createFileRoute, redirect } from '@tanstack/react-router'
+import { createFileRoute, redirect } from '@benjavicente/react-router'
 import { authConfig } from '../lib/auth'
 
 export const Route = createFileRoute('/_authenticated')({
@@ -244,7 +244,7 @@ export const Route = createFileRoute('/_authenticated')({
 
 ```typescript
 // src/routes/search.tsx
-import { createFileRoute } from '@tanstack/react-router'
+import { createFileRoute } from '@benjavicente/react-router'
 import { z } from 'zod'
 
 const searchSchema = z.object({
@@ -408,7 +408,7 @@ export const getBooleanEnv = (
 
 ```typescript
 // src/routes/api-data.tsx
-import { createFileRoute } from '@tanstack/react-router'
+import { createFileRoute } from '@benjavicente/react-router'
 import { env, isFeatureEnabled } from '../config/env'
 
 export const Route = createFileRoute('/api-data')({
@@ -436,7 +436,7 @@ export const Route = createFileRoute('/api-data')({
 // vite.config.ts
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
-import { tanstackRouter } from '@tanstack/router-plugin/vite'
+import { tanstackRouter } from '@benjavicente/router-plugin/vite'
 
 export default defineConfig({
   plugins: [

@@ -99,8 +99,8 @@ Wrap your application with the MUI theme provider:
 
 ```tsx
 // src/routes/__root.tsx
-import { createRootRoute, Outlet } from '@tanstack/react-router'
-import { TanStackRouterDevtools } from '@tanstack/router-devtools'
+import { createRootRoute, Outlet } from '@benjavicente/react-router'
+import { TanStackRouterDevtools } from '@benjavicente/router-devtools'
 import { MuiThemeProvider } from '@/components/theme-provider'
 
 export const Route = createRootRoute({
@@ -123,7 +123,7 @@ MUI Link components require special handling for TanStack Router's type system:
 
 ```tsx
 // src/components/ui/mui-router-link.tsx
-import { createLink } from '@tanstack/react-router'
+import { createLink } from '@benjavicente/react-router'
 import { Link as MuiLink, type LinkProps } from '@mui/material/Link'
 import { forwardRef } from 'react'
 
@@ -139,7 +139,7 @@ export const RouterLink = createLink(
 
 ```tsx
 // src/components/ui/mui-router-button.tsx
-import { createLink } from '@tanstack/react-router'
+import { createLink } from '@benjavicente/react-router'
 import { Button, type ButtonProps } from '@mui/material/Button'
 import { forwardRef } from 'react'
 
@@ -155,7 +155,7 @@ export const RouterButton = createLink(
 
 ```tsx
 // src/components/ui/mui-router-fab.tsx
-import { createLink } from '@tanstack/react-router'
+import { createLink } from '@benjavicente/react-router'
 import { Fab, type FabProps } from '@mui/material/Fab'
 import { forwardRef } from 'react'
 
@@ -175,7 +175,7 @@ export const RouterFab = createLink(
 
 ```tsx
 // src/components/navigation/mui-nav-tabs.tsx
-import { useMatchRoute } from '@tanstack/react-router'
+import { useMatchRoute } from '@benjavicente/react-router'
 import { Tabs, Tab, type TabsProps } from '@mui/material'
 import { RouterLink } from '@/components/ui/mui-router-link'
 
@@ -223,7 +223,7 @@ export function MuiNavTabs({ tabs, ...tabsProps }: MuiNavTabsProps) {
 
 ```tsx
 // src/components/navigation/mui-nav-drawer.tsx
-import { useMatchRoute } from '@tanstack/react-router'
+import { useMatchRoute } from '@benjavicente/react-router'
 import {
   Drawer,
   List,
@@ -427,7 +427,7 @@ export function MuiAppBar({
 
 ```tsx
 // src/routes/posts/$postId.tsx
-import { createFileRoute } from '@tanstack/react-router'
+import { createFileRoute } from '@benjavicente/react-router'
 import {
   Container,
   Typography,
@@ -512,7 +512,7 @@ function PostPage() {
 
 ```tsx
 // src/routes/_layout.tsx
-import { createFileRoute, Outlet } from '@tanstack/react-router'
+import { createFileRoute, Outlet } from '@benjavicente/react-router'
 import { Box } from '@mui/material'
 import { Home, Article, Info, Contact } from '@mui/icons-material'
 import { MuiAppBar } from '@/components/navigation/mui-app-bar'
