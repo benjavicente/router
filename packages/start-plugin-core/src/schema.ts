@@ -1,6 +1,6 @@
 import path from 'node:path'
 import { z } from 'zod'
-import { configSchema, getConfig } from '@tanstack/router-plugin'
+import { configSchema, getConfig } from '@benjavicente/router-plugin'
 import type { TanStackStartVitePluginCoreOptions } from './types'
 
 const tsrConfig = configSchema

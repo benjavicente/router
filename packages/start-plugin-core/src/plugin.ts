@@ -1,4 +1,4 @@
-import { joinPaths } from '@tanstack/router-core'
+import { joinPaths } from '@benjavicente/router-core'
 import * as vite from 'vite'
 import { crawlFrameworkPkgs } from 'vitefu'
 import { join } from 'pathe'
@@ -227,7 +227,7 @@ export function TanStackStartVitePluginCore(
             if (peerDependencies) {
               if (
                 startPackageName in peerDependencies ||
-                '@tanstack/start-client-core' in peerDependencies
+                '@benjavicente/start-client-core' in peerDependencies
               ) {
                 return true
               }
@@ -306,8 +306,8 @@ export function TanStackStartVitePluginCore(
           resolve: {
             noExternal: [
               // ENTRY_POINTS.start,
-              '@tanstack/start**',
-              `@tanstack/${corePluginOpts.framework}-start**`,
+              '@benjavicente/start**',
+              `@benjavicente/${corePluginOpts.framework}-start**`,
               ...crawlFrameworkPkgsResult.ssr.noExternal.sort(),
             ],
             alias: {

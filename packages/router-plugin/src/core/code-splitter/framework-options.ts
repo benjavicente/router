@@ -12,13 +12,16 @@ type FrameworkOptions = {
   }
 }
 
-export function getFrameworkOptions(framework: string): FrameworkOptions {
+export function getFrameworkOptions(
+  framework: string,
+  angular?: { angularRouterPackage?: string },
+): FrameworkOptions {
   let frameworkOptions: FrameworkOptions
 
   switch (framework) {
     case 'react':
       frameworkOptions = {
-        package: '@tanstack/react-router',
+        package: '@benjavicente/react-router',
         supportsLazyRouteComponent: true,
         defaultCodeSplitGroupings,
         idents: {
@@ -30,7 +33,7 @@ export function getFrameworkOptions(framework: string): FrameworkOptions {
       break
     case 'solid':
       frameworkOptions = {
-        package: '@tanstack/solid-router',
+        package: '@benjavicente/solid-router',
         supportsLazyRouteComponent: true,
         defaultCodeSplitGroupings,
         idents: {
@@ -42,7 +45,9 @@ export function getFrameworkOptions(framework: string): FrameworkOptions {
       break
     case 'angular':
       frameworkOptions = {
-        package: '@tanstack/angular-router-experimental',
+        package:
+          angular?.angularRouterPackage ??
+          '@benjavicente/angular-router-experimental',
         supportsLazyRouteComponent: false,
         defaultCodeSplitGroupings: [],
         idents: {
@@ -54,7 +59,7 @@ export function getFrameworkOptions(framework: string): FrameworkOptions {
       break
     case 'vue':
       frameworkOptions = {
-        package: '@tanstack/vue-router',
+        package: '@benjavicente/vue-router',
         supportsLazyRouteComponent: true,
         defaultCodeSplitGroupings,
         idents: {

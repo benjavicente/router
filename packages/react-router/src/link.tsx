@@ -8,8 +8,8 @@ import {
   isDangerousProtocol,
   preloadWarning,
   removeTrailingSlash,
-} from '@tanstack/router-core'
-import { isServer } from '@tanstack/router-core/isServer'
+} from '@benjavicente/router-core'
+import { isServer } from '@benjavicente/router-core/isServer'
 import { useRouter } from './useRouter'
 
 import { useForwardedRef, useIntersectionObserver } from './utils'
@@ -21,7 +21,7 @@ import type {
   LinkOptions,
   RegisteredRouter,
   RoutePaths,
-} from '@tanstack/router-core'
+} from '@benjavicente/router-core'
 import type { ReactNode } from 'react'
 import type {
   ValidateLinkOptions,

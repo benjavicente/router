@@ -1,10 +1,10 @@
-import { TanStackRouterDevtools } from '@tanstack/solid-router-devtools'
+import { TanStackRouterDevtools } from '@benjavicente/solid-router-devtools'
 
 import {
   Link,
   Outlet,
   createRootRouteWithContext,
-} from '@tanstack/solid-router'
+} from '@benjavicente/solid-router'
 import type { RouterContext } from '../routerContext'
 
 export const Route = createRootRouteWithContext<RouterContext>()({

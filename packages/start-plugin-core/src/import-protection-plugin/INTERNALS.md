@@ -49,7 +49,7 @@ for a detailed walkthrough with code examples.
 | Type        | Trigger                                                                                 | Example                                                 |
 | ----------- | --------------------------------------------------------------------------------------- | ------------------------------------------------------- |
 | `file`      | Resolved path matches a deny glob (e.g. `**/*.server.*`)                                | `import './db.server'` in client env                    |
-| `specifier` | Import specifier matches a deny pattern                                                 | `import '@tanstack/react-start/server'` in client env   |
+| `specifier` | Import specifier matches a deny pattern                                                 | `import '@benjavicente/react-start/server'` in client env   |
 | `marker`    | File imports `'server-only'` or `'client-only'` marker, then is loaded in the wrong env | File with `import 'server-only'` resolved in client env |
 
 ## The False-Positive Problem
@@ -649,7 +649,7 @@ browser, it logs a console warning or error with this metadata.
 
 Self-denial only applies to **file-based** violations.
 
-- **Specifier violations** (e.g. `import '@tanstack/react-start/server'`):
+- **Specifier violations** (e.g. `import '@benjavicente/react-start/server'`):
   These are bare specifiers, not file paths. They use virtual mock-edge module
   IDs because the specifier doesn't resolve to a physical file that could be
   "self-denied."
@@ -697,4 +697,4 @@ plugin.ts             ← main plugin, imports everything above
 
 The `SERVER_FN_LOOKUP` constant lives in the shared parent `constants.ts`
 (not in `start-compiler-plugin/plugin.ts`) to avoid pulling in
-`@tanstack/start-server-core` when unit-testing import-protection modules.
+`@benjavicente/start-server-core` when unit-testing import-protection modules.

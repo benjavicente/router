@@ -1,4 +1,4 @@
-import { Link } from '@tanstack/solid-router'
+import { Link } from '@benjavicente/solid-router'
 import { expectTypeOf, test } from 'vitest'
 import { Route as ValibotRoute } from '../src/routes/users/valibot.index'
 import type { router } from '../src/main'

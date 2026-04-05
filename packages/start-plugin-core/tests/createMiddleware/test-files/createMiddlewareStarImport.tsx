@@ -1,4 +1,4 @@
-import * as TanStackStart from '@tanstack/react-start'
+import * as TanStackStart from '@benjavicente/react-start'
 import { z } from 'zod'
 
 export const withUseServer = TanStackStart.createMiddleware({

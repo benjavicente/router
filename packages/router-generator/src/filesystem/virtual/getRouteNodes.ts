@@ -14,7 +14,7 @@ import { loadConfigFile } from './loadConfigFile'
 import type {
   VirtualRootRoute,
   VirtualRouteNode,
-} from '@tanstack/virtual-file-routes'
+} from '@benjavicente/virtual-file-routes'
 import type { GetRouteNodesResult, RouteNode } from '../../types'
 import type { Config } from '../../config'
 import type { TokenRegexBundle } from '../physical/getRouteNodes'
@@ -93,7 +93,7 @@ export async function getRouteNodes(
  * @example
  * ```ts
  * // routes.ts
- * import { rootRoute } from '@tanstack/virtual-file-routes'
+ * import { rootRoute } from '@benjavicente/virtual-file-routes'
  *
  * export const routes = rootRoute({ ... })
  * // or

@@ -4,7 +4,7 @@ import {
   MatchRoute,
   Outlet,
   createFileRoute,
-} from '@tanstack/react-router'
+} from '@benjavicente/react-router'
 import { useQuery } from '@tanstack/react-query'
 import { trpc } from '../router'
 import { Spinner } from './-components/spinner'

@@ -1,6 +1,6 @@
-import { createFileRoute } from '@tanstack/solid-router'
-import { getRequestHeaders } from '@tanstack/solid-start/server'
-import { createMiddleware } from '@tanstack/solid-start'
+import { createFileRoute } from '@benjavicente/solid-router'
+import { getRequestHeaders } from '@benjavicente/solid-start/server'
+import { createMiddleware } from '@benjavicente/solid-start'
 import type { User } from '~/utils/users'
 
 const userLoggerMiddleware = createMiddleware().server(async ({ next }) => {

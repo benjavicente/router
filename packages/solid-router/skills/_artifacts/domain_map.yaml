@@ -1,11 +1,11 @@
 # domain_map.yaml
-# Library: @tanstack/solid-router
+# Library: @benjavicente/solid-router
 # Version: 1.166.2
 # Date: 2026-03-08
 # Status: reviewed
 
 library:
-  name: '@tanstack/solid-router'
+  name: '@benjavicente/solid-router'
   version: '1.166.2'
   repository: 'https://github.com/TanStack/router'
   description: >-
@@ -30,7 +30,7 @@ skills:
       Solid primitives, createLink, @solidjs/meta head management.
     type: framework
     packages:
-      - '@tanstack/solid-router'
+      - '@benjavicente/solid-router'
     covers:
       - Solid-specific router components
       - Accessor<T> return types

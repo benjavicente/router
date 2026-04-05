@@ -1,6 +1,6 @@
 const $$splitComponentImporter = () => import('random-number.tsx?tsr-split=component');
-import { lazyRouteComponent } from '@tanstack/react-router';
-import { Await, Link, createFileRoute, defer } from '@tanstack/react-router';
+import { lazyRouteComponent } from '@benjavicente/react-router';
+import { Await, Link, createFileRoute, defer } from '@benjavicente/react-router';
 import { Carbon } from '~/components/Carbon';
 import { twMerge } from 'tailwind-merge';
 import { FaDiscord, FaGithub, FaTshirt } from 'react-icons/fa';

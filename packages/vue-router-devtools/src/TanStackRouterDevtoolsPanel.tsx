@@ -1,7 +1,7 @@
-import { TanStackRouterDevtoolsPanelCore } from '@tanstack/router-devtools-core'
+import { TanStackRouterDevtoolsPanelCore } from '@benjavicente/router-devtools-core'
 import { defineComponent, h, onMounted, onUnmounted, ref, watch } from 'vue'
-import { useRouter, useRouterState } from '@tanstack/vue-router'
-import type { AnyRouter } from '@tanstack/vue-router'
+import { useRouter, useRouterState } from '@benjavicente/vue-router'
+import type { AnyRouter } from '@benjavicente/vue-router'
 
 export interface TanStackRouterDevtoolsPanelOptions {
   /**

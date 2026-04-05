@@ -50,7 +50,7 @@ export function getTargetTemplate(config: Config): TargetTemplate {
   switch (target) {
     case 'react':
       return {
-        fullPkg: '@tanstack/react-router',
+        fullPkg: '@benjavicente/react-router',
         subPkg: 'react-router',
         supportsLazyRouteComponent: true,
         rootRoute: {
@@ -64,7 +64,7 @@ export function getTargetTemplate(config: Config): TargetTemplate {
             ].join(''),
           imports: {
             tsrImports: () =>
-              "import { Outlet, createRootRoute } from '@tanstack/react-router';",
+              "import { Outlet, createRootRoute } from '@benjavicente/react-router';",
             tsrExportStart: () => 'export const Route = createRootRoute(',
             tsrExportEnd: () => ');',
           },
@@ -81,7 +81,7 @@ export function getTargetTemplate(config: Config): TargetTemplate {
             tsrImports: () =>
               config.verboseFileRoutes === false
                 ? ''
-                : "import { createFileRoute } from '@tanstack/react-router';",
+                : "import { createFileRoute } from '@benjavicente/react-router';",
             tsrExportStart: (routePath) =>
               config.verboseFileRoutes === false
                 ? 'export const Route = createFileRoute('
@@ -101,7 +101,7 @@ export function getTargetTemplate(config: Config): TargetTemplate {
             tsrImports: () =>
               config.verboseFileRoutes === false
                 ? ''
-                : "import { createLazyFileRoute } from '@tanstack/react-router';",
+                : "import { createLazyFileRoute } from '@benjavicente/react-router';",
             tsrExportStart: (routePath) =>
               config.verboseFileRoutes === false
                 ? 'export const Route = createLazyFileRoute('
@@ -112,7 +112,7 @@ export function getTargetTemplate(config: Config): TargetTemplate {
       }
     case 'solid':
       return {
-        fullPkg: '@tanstack/solid-router',
+        fullPkg: '@benjavicente/solid-router',
         subPkg: 'solid-router',
         supportsLazyRouteComponent: true,
         rootRoute: {
@@ -126,7 +126,7 @@ export function getTargetTemplate(config: Config): TargetTemplate {
             ].join(''),
           imports: {
             tsrImports: () =>
-              "import { Outlet, createRootRoute } from '@tanstack/solid-router';",
+              "import { Outlet, createRootRoute } from '@benjavicente/solid-router';",
             tsrExportStart: () => 'export const Route = createRootRoute(',
             tsrExportEnd: () => ');',
           },
@@ -143,7 +143,7 @@ export function getTargetTemplate(config: Config): TargetTemplate {
             tsrImports: () =>
               config.verboseFileRoutes === false
                 ? ''
-                : "import { createFileRoute } from '@tanstack/solid-router';",
+                : "import { createFileRoute } from '@benjavicente/solid-router';",
             tsrExportStart: (routePath) =>
               config.verboseFileRoutes === false
                 ? 'export const Route = createFileRoute('
@@ -163,7 +163,7 @@ export function getTargetTemplate(config: Config): TargetTemplate {
             tsrImports: () =>
               config.verboseFileRoutes === false
                 ? ''
-                : "import { createLazyFileRoute } from '@tanstack/solid-router';",
+                : "import { createLazyFileRoute } from '@benjavicente/solid-router';",
 
             tsrExportStart: (routePath) =>
               config.verboseFileRoutes === false
@@ -174,9 +174,11 @@ export function getTargetTemplate(config: Config): TargetTemplate {
           },
         },
       }
-    case 'angular':
+    case 'angular': {
+      const angularPkg =
+        config.angularRouterPackage ?? '@benjavicente/angular-router-experimental'
       return {
-        fullPkg: '@tanstack/angular-router-experimental',
+        fullPkg: angularPkg,
         subPkg: 'angular-router-experimental',
         supportsLazyRouteComponent: false,
         rootRoute: {
@@ -190,7 +192,7 @@ export function getTargetTemplate(config: Config): TargetTemplate {
             ].join(''),
           imports: {
             tsrImports: () =>
-              "import { Outlet, createRootRoute } from '@tanstack/angular-router-experimental';",
+              `import { Outlet, createRootRoute } from '${angularPkg}';`,
             tsrExportStart: () => 'export const Route = createRootRoute(',
             tsrExportEnd: () => ');',
           },
@@ -208,7 +210,7 @@ export function getTargetTemplate(config: Config): TargetTemplate {
             tsrImports: () =>
               config.verboseFileRoutes === false
                 ? ''
-                : "import { createFileRoute } from '@tanstack/angular-router-experimental';",
+                : `import { createFileRoute } from '${angularPkg}';`,
             tsrExportStart: (routePath) =>
               config.verboseFileRoutes === false
                 ? 'export const Route = createFileRoute('
@@ -229,7 +231,7 @@ export function getTargetTemplate(config: Config): TargetTemplate {
             tsrImports: () =>
               config.verboseFileRoutes === false
                 ? ''
-                : "import { createLazyFileRoute } from '@tanstack/angular-router-experimental';",
+                : `import { createLazyFileRoute } from '${angularPkg}';`,
             tsrExportStart: (routePath) =>
               config.verboseFileRoutes === false
                 ? 'export const Route = createLazyFileRoute('
@@ -238,9 +240,10 @@ export function getTargetTemplate(config: Config): TargetTemplate {
           },
         },
       }
+    }
     case 'vue':
       return {
-        fullPkg: '@tanstack/vue-router',
+        fullPkg: '@benjavicente/vue-router',
         subPkg: 'vue-router',
         supportsLazyRouteComponent: true,
         rootRoute: {
@@ -254,7 +257,7 @@ export function getTargetTemplate(config: Config): TargetTemplate {
             ].join(''),
           imports: {
             tsrImports: () =>
-              "import { Outlet, createRootRoute } from '@tanstack/vue-router';",
+              "import { Outlet, createRootRoute } from '@benjavicente/vue-router';",
             tsrExportStart: () => 'export const Route = createRootRoute(',
             tsrExportEnd: () => ');',
           },
@@ -272,7 +275,7 @@ export function getTargetTemplate(config: Config): TargetTemplate {
             tsrImports: () =>
               config.verboseFileRoutes === false
                 ? ''
-                : "import { createFileRoute } from '@tanstack/vue-router';",
+                : "import { createFileRoute } from '@benjavicente/vue-router';",
             tsrExportStart: (routePath) =>
               config.verboseFileRoutes === false
                 ? 'export const Route = createFileRoute('
@@ -293,7 +296,7 @@ export function getTargetTemplate(config: Config): TargetTemplate {
             tsrImports: () =>
               config.verboseFileRoutes === false
                 ? ''
-                : "import { createLazyFileRoute } from '@tanstack/vue-router';",
+                : "import { createLazyFileRoute } from '@benjavicente/vue-router';",
 
             tsrExportStart: (routePath) =>
               config.verboseFileRoutes === false

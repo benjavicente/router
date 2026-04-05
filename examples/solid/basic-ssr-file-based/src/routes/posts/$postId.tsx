@@ -1,4 +1,4 @@
-import { Await, createFileRoute, notFound } from '@tanstack/solid-router'
+import { Await, createFileRoute, notFound } from '@benjavicente/solid-router'
 import type { PostType } from './route'
 
 async function fetchPostById(postId: string) {

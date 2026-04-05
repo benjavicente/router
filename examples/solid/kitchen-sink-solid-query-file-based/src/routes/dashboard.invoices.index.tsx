@@ -1,4 +1,4 @@
-import { createFileRoute } from '@tanstack/solid-router'
+import { createFileRoute } from '@benjavicente/solid-router'
 import { InvoiceFields } from '../components/InvoiceFields'
 import { Spinner } from '../components/Spinner'
 import { useCreateInvoiceMutation } from '../utils/queryOptions'

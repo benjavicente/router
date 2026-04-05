@@ -7,8 +7,8 @@ import {
   isNotFound,
   isRedirect,
   rootRouteId,
-} from '@tanstack/router-core'
-import { isServer } from '@tanstack/router-core/isServer'
+} from '@benjavicente/router-core'
+import { isServer } from '@benjavicente/router-core/isServer'
 import { CatchBoundary, ErrorComponent } from './CatchBoundary'
 import { useRouter } from './useRouter'
 import { CatchNotFound } from './not-found'
@@ -18,7 +18,7 @@ import { renderRouteNotFound } from './renderRouteNotFound'
 import { ScrollRestoration } from './scroll-restoration'
 import { ClientOnly } from './ClientOnly'
 import { useLayoutEffect } from './utils'
-import type { AnyRoute, RootRouteOptions } from '@tanstack/router-core'
+import type { AnyRoute, RootRouteOptions } from '@benjavicente/router-core'
 
 export const Match = React.memo(function MatchImpl({
   matchId,

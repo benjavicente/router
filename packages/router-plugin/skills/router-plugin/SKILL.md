@@ -14,7 +14,7 @@ sources:
   - TanStack/router:docs/router/guide/code-splitting.md
 ---
 
-# Router Plugin (`@tanstack/router-plugin`)
+# Router Plugin (`@benjavicente/router-plugin`)
 
 Bundler plugin that powers TanStack Router's file-based routing and automatic code splitting. Works with Vite, Webpack, Rspack, and esbuild via unplugin.
 
@@ -23,7 +23,7 @@ Bundler plugin that powers TanStack Router's file-based routing and automatic co
 ## Install
 
 ```bash
-npm install -D @tanstack/router-plugin
+npm install -D @benjavicente/router-plugin
 ```
 
 ## Bundler Setup
@@ -34,7 +34,7 @@ npm install -D @tanstack/router-plugin
 // vite.config.ts
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
-import { tanstackRouter } from '@tanstack/router-plugin/vite'
+import { tanstackRouter } from '@benjavicente/router-plugin/vite'
 
 export default defineConfig({
   plugins: [
@@ -52,7 +52,7 @@ export default defineConfig({
 
 ```ts
 // webpack.config.js
-const { tanstackRouter } = require('@tanstack/router-plugin/webpack')
+const { tanstackRouter } = require('@benjavicente/router-plugin/webpack')
 
 module.exports = {
   plugins: [
@@ -68,7 +68,7 @@ module.exports = {
 
 ```ts
 // rspack.config.js
-const { tanstackRouter } = require('@tanstack/router-plugin/rspack')
+const { tanstackRouter } = require('@benjavicente/router-plugin/rspack')
 
 module.exports = {
   plugins: [
@@ -83,7 +83,7 @@ module.exports = {
 ### esbuild
 
 ```ts
-import { tanstackRouter } from '@tanstack/router-plugin/esbuild'
+import { tanstackRouter } from '@benjavicente/router-plugin/esbuild'
 import esbuild from 'esbuild'
 
 esbuild.build({
@@ -182,7 +182,7 @@ import {
   tanstackRouterGenerator, // Generator only
   tanStackRouterCodeSplitter, // Code splitter only
   tanstackRouterAutoImport, // Auto-import only
-} from '@tanstack/router-plugin/vite'
+} from '@benjavicente/router-plugin/vite'
 ```
 
 ## Common Mistakes

@@ -1,9 +1,9 @@
 import {
   makeSerovalPlugin,
   defaultSerovalPlugins as routerDefaultSerovalPlugins,
-} from '@tanstack/router-core'
+} from '@benjavicente/router-core'
 import { getStartOptions } from './getStartOptions'
-import type { AnySerializationAdapter } from '@tanstack/router-core'
+import type { AnySerializationAdapter } from '@benjavicente/router-core'
 
 export function getDefaultSerovalPlugins() {
   const start = getStartOptions()

@@ -1,4 +1,4 @@
-# @tanstack/router-devtools-core
+# @benjavicente/router-devtools-core
 
 ## 1.167.1
 
@@ -7,7 +7,7 @@
 - Replace tiny-invariant and tiny-warning with in-house solution for bundle-size ([#7007](https://github.com/TanStack/router/pull/7007))
 
 - Updated dependencies [[`c9e1855`](https://github.com/TanStack/router/commit/c9e18555f3a5531e96de8f574cfca9edcdb18e5c)]:
-  - @tanstack/router-core@1.168.2
+  - @benjavicente/router-core@1.168.2
 
 ## 1.167.0
 
@@ -20,7 +20,7 @@
 ### Patch Changes
 
 - Updated dependencies [[`0545239`](https://github.com/TanStack/router/commit/054523900b2ee19308e5a88417dadfc6923afe30)]:
-  - @tanstack/router-core@1.168.0
+  - @benjavicente/router-core@1.168.0
 
 ## 1.166.9
 
@@ -29,7 +29,7 @@
 - build: update to vite-config 5.x (rolldown) ([#6926](https://github.com/TanStack/router/pull/6926))
 
 - Updated dependencies [[`838b0eb`](https://github.com/TanStack/router/commit/838b0eb9a8bbbb987a0a6972c1446e01423bbd7b)]:
-  - @tanstack/router-core@1.167.2
+  - @benjavicente/router-core@1.167.2
 
 ## 1.166.8
 
@@ -38,4 +38,4 @@
 - fix: build with @tanstack/vite-config 0.4.3 ([#6923](https://github.com/TanStack/router/pull/6923))
 
 - Updated dependencies [[`ef9b241`](https://github.com/TanStack/router/commit/ef9b241f3cfe95cee40daa96da669f0ffd4a971a)]:
-  - @tanstack/router-core@1.167.1
+  - @benjavicente/router-core@1.167.1

@@ -57,7 +57,7 @@ export interface RootRouteChildren {
   FeatureRouteRoute: typeof FeatureRouteRouteWithChildren
 }
 
-declare module '@tanstack/react-router' {
+declare module '@benjavicente/react-router' {
   interface FileRoutesByPath {
     '/feature': {
       id: '/feature'

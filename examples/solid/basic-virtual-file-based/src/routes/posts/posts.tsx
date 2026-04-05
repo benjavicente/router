@@ -1,4 +1,4 @@
-import { Link, Outlet } from '@tanstack/solid-router'
+import { Link, Outlet } from '@benjavicente/solid-router'
 import { fetchPosts } from '../../posts'
 
 export const Route = createFileRoute({

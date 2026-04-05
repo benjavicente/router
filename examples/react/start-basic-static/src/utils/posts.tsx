@@ -1,8 +1,8 @@
-import { createServerFn } from '@tanstack/react-start'
+import { createServerFn } from '@benjavicente/react-start'
 import axios from 'redaxios'
-import { notFound } from '@tanstack/react-router'
+import { notFound } from '@benjavicente/react-router'
 import { logMiddleware } from './loggingMiddleware'
-import { staticFunctionMiddleware } from '@tanstack/start-static-server-functions'
+import { staticFunctionMiddleware } from '@benjavicente/start-static-server-functions'
 
 export type PostType = {
   id: string

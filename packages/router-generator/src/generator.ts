@@ -2,7 +2,7 @@ import path from 'node:path'
 import * as fsp from 'node:fs/promises'
 import { existsSync, mkdirSync } from 'node:fs'
 import crypto from 'node:crypto'
-import { rootRouteId } from '@tanstack/router-core'
+import { rootRouteId } from '@benjavicente/router-core'
 import { logging } from './logger'
 import {
   isVirtualConfigFile,
@@ -1151,6 +1151,11 @@ ${acc.routeTree.map((child) => `${child.variableName}Route: typeof ${getResolved
           routeId: escapedRoutePath,
           lazy: node._fsRouteType === 'lazy',
           verboseFileRoutes: !(this.config.verboseFileRoutes === false),
+          angularRouterPackage:
+            this.config.target === 'angular'
+              ? (this.config.angularRouterPackage ??
+                '@benjavicente/angular-router-experimental')
+              : undefined,
         },
         node,
       })

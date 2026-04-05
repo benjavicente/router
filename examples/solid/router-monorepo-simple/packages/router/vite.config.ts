@@ -2,7 +2,7 @@ import { defineConfig } from 'vite'
 import dts from 'vite-plugin-dts'
 import * as path from 'node:path'
 import { fileURLToPath } from 'node:url'
-import { tanstackRouter } from '@tanstack/router-plugin/vite'
+import { tanstackRouter } from '@benjavicente/router-plugin/vite'
 import solid from 'vite-plugin-solid'
 
 const __filename = fileURLToPath(import.meta.url)
@@ -31,7 +31,7 @@ export default defineConfig({
     },
     rolldownOptions: {
       // External packages that should not be bundled into your library.
-      external: ['solid-js', 'solid-js/web', '@tanstack/solid-router'],
+      external: ['solid-js', 'solid-js/web', '@benjavicente/solid-router'],
     },
   },
 })

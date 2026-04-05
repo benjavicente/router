@@ -3,7 +3,7 @@ import {
   BaseRoute,
   BaseRouteApi,
   notFound,
-} from '@tanstack/router-core'
+} from '@benjavicente/router-core'
 import * as Vue from 'vue'
 import { Link } from './link'
 import { useLoaderData } from './useLoaderData'
@@ -39,7 +39,7 @@ import type {
   RouterCore,
   ToMaskOptions,
   UseNavigateResult,
-} from '@tanstack/router-core'
+} from '@benjavicente/router-core'
 import type { UseLoaderDataRoute } from './useLoaderData'
 import type { UseMatchRoute } from './useMatch'
 import type { UseLoaderDepsRoute } from './useLoaderDeps'
@@ -57,7 +57,7 @@ type VueSFC = {
   render?: Function
 }
 
-declare module '@tanstack/router-core' {
+declare module '@benjavicente/router-core' {
   export interface UpdatableRouteOptionsExtensions {
     component?: RouteComponent | VueSFC
     errorComponent?: false | null | undefined | ErrorRouteComponent | VueSFC

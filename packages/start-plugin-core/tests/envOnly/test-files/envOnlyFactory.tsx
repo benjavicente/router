@@ -1,4 +1,4 @@
-import { createServerOnlyFn, createClientOnlyFn } from '@tanstack/react-start'
+import { createServerOnlyFn, createClientOnlyFn } from '@benjavicente/react-start'
 
 // Server-only function factory
 export function createServerFactory(name: string) {

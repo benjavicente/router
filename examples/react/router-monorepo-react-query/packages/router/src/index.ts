@@ -3,7 +3,7 @@ import { queryClient, router } from './router'
 export type { RouterType, RouterIds } from './router'
 
 // Register the router instance for type safety
-declare module '@tanstack/react-router' {
+declare module '@benjavicente/react-router' {
   interface Register {
     router: typeof router
   }
@@ -21,5 +21,5 @@ export {
   RouterProvider,
   getRouteApi,
   ErrorComponent,
-} from '@tanstack/react-router'
-export type { ErrorComponentProps } from '@tanstack/react-router'
+} from '@benjavicente/react-router'
+export type { ErrorComponentProps } from '@benjavicente/react-router'

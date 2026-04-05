@@ -78,6 +78,16 @@ export const configSchema = baseConfigSchema.extend({
     })
     .optional(),
   plugins: z.array(z.custom<GeneratorPlugin>()).optional(),
+  /**
+   * When `target` is `angular`, use this package in generated route imports and
+   * `FileRoutesByPath` augmentation (default `@benjavicente/angular-router-experimental`).
+   */
+  angularRouterPackage: z.string().optional(),
+  /**
+   * When `target` is `angular`, use this package in the Start `declare module` block
+   * appended to the route tree (default `@benjavicente/angular-start-experimental`).
+   */
+  angularStartPackage: z.string().optional(),
   tmpDir: z.string().optional().default(''),
   importRoutesUsingAbsolutePaths: z.boolean().optional().default(false),
 })

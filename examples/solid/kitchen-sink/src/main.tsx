@@ -16,8 +16,8 @@ import {
   useRouter,
   useRouterState,
   useSearch,
-} from '@tanstack/solid-router'
-import { TanStackRouterDevtools } from '@tanstack/solid-router-devtools'
+} from '@benjavicente/solid-router'
+import { TanStackRouterDevtools } from '@benjavicente/solid-router-devtools'
 import {
   createEffect,
   createMemo,
@@ -841,7 +841,7 @@ const router = createRouter({
   scrollRestoration: true,
 })
 
-declare module '@tanstack/solid-router' {
+declare module '@benjavicente/solid-router' {
   interface Register {
     router: typeof router
   }

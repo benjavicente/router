@@ -273,7 +273,7 @@ export interface RootRouteChildren {
   NestedLayoutB2Route: typeof NestedLayoutB2RouteWithChildren
 }
 
-declare module '@tanstack/react-router' {
+declare module '@benjavicente/react-router' {
   interface FileRoutesByPath {
     '/_layout-a2': {
       id: '/_layout-a2'

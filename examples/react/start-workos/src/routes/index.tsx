@@ -1,5 +1,5 @@
 import { Button, Flex, Heading, Text } from '@radix-ui/themes';
-import { Link, createFileRoute } from '@tanstack/react-router';
+import { Link, createFileRoute } from '@benjavicente/react-router';
 import { getAuth, getSignInUrl } from '@workos/authkit-tanstack-react-start';
 import SignInButton from '../components/sign-in-button';
 

@@ -2,12 +2,12 @@ import { batch, createStore } from '@tanstack/react-store'
 import {
   createNonReactiveMutableStore,
   createNonReactiveReadonlyStore,
-} from '@tanstack/router-core'
-import { isServer } from '@tanstack/router-core/isServer'
+} from '@benjavicente/router-core'
+import { isServer } from '@benjavicente/router-core/isServer'
 import type { Readable } from '@tanstack/react-store'
-import type { GetStoreConfig } from '@tanstack/router-core'
+import type { GetStoreConfig } from '@benjavicente/router-core'
 
-declare module '@tanstack/router-core' {
+declare module '@benjavicente/router-core' {
   export interface RouterReadableStore<TValue> extends Readable<TValue> {}
 }
 export const getStoreFactory: GetStoreConfig = (opts) => {

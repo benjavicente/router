@@ -56,7 +56,7 @@ export interface RootRouteChildren {
   layoutRoute: typeof layoutRouteWithChildren
 }
 
-declare module '@tanstack/react-router' {
+declare module '@benjavicente/react-router' {
   interface FileRoutesByPath {
     '/_main': {
       id: '/_main'

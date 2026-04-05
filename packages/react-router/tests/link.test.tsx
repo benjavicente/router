@@ -12,7 +12,7 @@ import {
 } from '@testing-library/react'
 
 import { z } from 'zod'
-import { trailingSlashOptions } from '@tanstack/router-core'
+import { trailingSlashOptions } from '@benjavicente/router-core'
 import {
   Link,
   Outlet,

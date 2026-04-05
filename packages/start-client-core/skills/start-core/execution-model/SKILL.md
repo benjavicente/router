@@ -43,7 +43,7 @@ The primary way to run server-only code. On the client, calls become fetch reque
 
 ```tsx
 // Use @tanstack/<framework>-start for your framework (react, solid, vue)
-import { createServerFn } from '@tanstack/react-start'
+import { createServerFn } from '@benjavicente/react-start'
 
 const fetchUser = createServerFn().handler(async () => {
   const secret = process.env.API_SECRET // safe — server only
@@ -60,7 +60,7 @@ For utility functions that must never run on client:
 
 ```tsx
 // Use @tanstack/<framework>-start for your framework (react, solid, vue)
-import { createServerOnlyFn } from '@tanstack/react-start'
+import { createServerOnlyFn } from '@benjavicente/react-start'
 
 const getSecret = createServerOnlyFn(() => process.env.DATABASE_URL)
 
@@ -74,7 +74,7 @@ const getSecret = createServerOnlyFn(() => process.env.DATABASE_URL)
 
 ```tsx
 // Use @tanstack/<framework>-start for your framework (react, solid, vue)
-import { createClientOnlyFn } from '@tanstack/react-start'
+import { createClientOnlyFn } from '@benjavicente/react-start'
 
 const saveToStorage = createClientOnlyFn((key: string, value: string) => {
   localStorage.setItem(key, value)
@@ -85,7 +85,7 @@ const saveToStorage = createClientOnlyFn((key: string, value: string) => {
 
 ```tsx
 // Use @tanstack/<framework>-router for your framework (react, solid, vue)
-import { ClientOnly } from '@tanstack/react-router'
+import { ClientOnly } from '@benjavicente/react-router'
 
 function Analytics() {
   return (
@@ -100,7 +100,7 @@ function Analytics() {
 
 ```tsx
 // Use @tanstack/<framework>-router for your framework (react, solid, vue)
-import { useHydrated } from '@tanstack/react-router'
+import { useHydrated } from '@benjavicente/react-router'
 
 function TimeZoneDisplay() {
   const hydrated = useHydrated()
@@ -118,7 +118,7 @@ Behavior: SSR → `false`, first client render → `false`, after hydration → 
 
 ```tsx
 // Use @tanstack/<framework>-start for your framework (react, solid, vue)
-import { createIsomorphicFn } from '@tanstack/react-start'
+import { createIsomorphicFn } from '@benjavicente/react-start'
 
 const getDeviceInfo = createIsomorphicFn()
   .server(() => ({ type: 'server', platform: process.platform }))

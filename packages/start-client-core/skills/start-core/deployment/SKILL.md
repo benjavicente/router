@@ -32,7 +32,7 @@ pnpm add -D @cloudflare/vite-plugin wrangler
 ```ts
 // vite.config.ts
 import { defineConfig } from 'vite'
-import { tanstackStart } from '@tanstack/react-start/plugin/vite'
+import { tanstackStart } from '@benjavicente/react-start/plugin/vite'
 import { cloudflare } from '@cloudflare/vite-plugin'
 import viteReact from '@vitejs/plugin-react'
 
@@ -51,7 +51,7 @@ export default defineConfig({
   "name": "my-app",
   "compatibility_date": "2025-09-02",
   "compatibility_flags": ["nodejs_compat"],
-  "main": "@tanstack/react-start/server-entry",
+  "main": "@benjavicente/react-start/server-entry",
 }
 ```
 
@@ -66,7 +66,7 @@ pnpm add -D @netlify/vite-plugin-tanstack-start
 ```ts
 // vite.config.ts
 import { defineConfig } from 'vite'
-import { tanstackStart } from '@tanstack/react-start/plugin/vite'
+import { tanstackStart } from '@benjavicente/react-start/plugin/vite'
 import netlify from '@netlify/vite-plugin-tanstack-start'
 import viteReact from '@vitejs/plugin-react'
 
@@ -86,7 +86,7 @@ npm install nitro@npm:nitro-nightly@latest
 ```ts
 // vite.config.ts
 import { defineConfig } from 'vite'
-import { tanstackStart } from '@tanstack/react-start/plugin/vite'
+import { tanstackStart } from '@benjavicente/react-start/plugin/vite'
 import { nitro } from 'nitro/vite'
 import viteReact from '@vitejs/plugin-react'
 
@@ -172,7 +172,7 @@ Children inherit parent SSR config and can only be MORE restrictive:
 Change the default for all routes in `src/start.ts`:
 
 ```tsx
-import { createStart } from '@tanstack/react-start'
+import { createStart } from '@benjavicente/react-start'
 
 export const startInstance = createStart(() => ({
   defaultSsr: false,

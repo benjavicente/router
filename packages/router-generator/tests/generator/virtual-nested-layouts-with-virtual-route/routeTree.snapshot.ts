@@ -79,7 +79,7 @@ export interface RootRouteChildren {
   layoutFirstLayoutRoute: typeof layoutFirstLayoutRouteWithChildren
 }
 
-declare module '@tanstack/react-router' {
+declare module '@benjavicente/react-router' {
   interface FileRoutesByPath {
     '/_first': {
       id: '/_first'

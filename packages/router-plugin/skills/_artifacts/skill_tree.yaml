@@ -1,5 +1,5 @@
 library:
-  name: '@tanstack/router-plugin'
+  name: '@benjavicente/router-plugin'
   version: '1.166.2'
   repository: 'https://github.com/TanStack/router'
   description: >-

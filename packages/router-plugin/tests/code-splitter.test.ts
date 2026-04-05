@@ -1,7 +1,7 @@
 import { readFile, readdir } from 'node:fs/promises'
 import path from 'node:path'
 import { describe, expect, it } from 'vitest'
-import { parseAst } from '@tanstack/router-utils'
+import { parseAst } from '@benjavicente/router-utils'
 
 import {
   buildDeclarationMap,
@@ -168,7 +168,7 @@ describe('code-splitter works', () => {
 describe('computeSharedBindings fast paths', () => {
   it('returns empty when only one split group is present (default groupings)', () => {
     const code = `
-import { createFileRoute } from '@tanstack/react-router'
+import { createFileRoute } from '@benjavicente/react-router'
 const shared = 42
 export const Route = createFileRoute('/')({
   component: () => shared,
@@ -183,7 +183,7 @@ export const Route = createFileRoute('/')({
 
   it('returns empty when all split props are in the same group', () => {
     const code = `
-import { createFileRoute } from '@tanstack/react-router'
+import { createFileRoute } from '@benjavicente/react-router'
 const shared = 42
 export const Route = createFileRoute('/')({
   component: () => shared,
@@ -199,7 +199,7 @@ export const Route = createFileRoute('/')({
 
   it('returns empty when all route option values are undefined', () => {
     const code = `
-import { createFileRoute } from '@tanstack/react-router'
+import { createFileRoute } from '@benjavicente/react-router'
 export const Route = createFileRoute('/')({
   component: undefined,
   errorComponent: undefined,
@@ -215,7 +215,7 @@ export const Route = createFileRoute('/')({
 
   it('returns empty when no local bindings exist (only imports + Route)', () => {
     const code = `
-import { createFileRoute } from '@tanstack/react-router'
+import { createFileRoute } from '@benjavicente/react-router'
 export const Route = createFileRoute('/')({
   component: () => <div>hello</div>,
   errorComponent: () => <div>error</div>,
@@ -230,7 +230,7 @@ export const Route = createFileRoute('/')({
 
   it('does not fast-path when there is a non-split and a split group', () => {
     const code = `
-import { createFileRoute } from '@tanstack/react-router'
+import { createFileRoute } from '@benjavicente/react-router'
 const shared = 42
 export const Route = createFileRoute('/')({
   component: () => shared,
@@ -520,7 +520,7 @@ describe('computeSharedBindings invariants', () => {
 
   it('INVARIANT: Route is never in the shared set', () => {
     const code = `
-import { createFileRoute } from '@tanstack/react-router'
+import { createFileRoute } from '@benjavicente/react-router'
 const shared = 42
 export const Route = createFileRoute('/')({
   component: () => shared,
@@ -536,7 +536,7 @@ export const Route = createFileRoute('/')({
 
   it('INVARIANT: all results are actual local bindings from the source', () => {
     const code = `
-import { createFileRoute } from '@tanstack/react-router'
+import { createFileRoute } from '@benjavicente/react-router'
 import { external } from 'somewhere'
 const config = { url: external, timeout: 5000 }
 const fetcher = (path) => fetch(config.url + path)
@@ -558,7 +558,7 @@ export const Route = createFileRoute('/')({
 
   it('INVARIANT: imports are never in the shared set', () => {
     const code = `
-import { createFileRoute } from '@tanstack/react-router'
+import { createFileRoute } from '@benjavicente/react-router'
 import { helper } from './utils'
 export const Route = createFileRoute('/')({
   loader: () => helper(),
@@ -574,7 +574,7 @@ export const Route = createFileRoute('/')({
 
   it('INVARIANT: destructured siblings are either all shared or none shared', () => {
     const code = `
-import { createFileRoute } from '@tanstack/react-router'
+import { createFileRoute } from '@benjavicente/react-router'
 const { a, b, c } = createHelpers()
 export const Route = createFileRoute('/')({
   loader: () => a,
@@ -596,7 +596,7 @@ export const Route = createFileRoute('/')({
 
   it('INVARIANT: transitive dependencies of shared bindings are also shared', () => {
     const code = `
-import { createFileRoute } from '@tanstack/react-router'
+import { createFileRoute } from '@benjavicente/react-router'
 const BASE = 'https://api.example.com'
 const config = { url: BASE }
 const fetcher = () => fetch(config.url)
@@ -619,7 +619,7 @@ export const Route = createFileRoute('/')({
 
   it('INVARIANT: bindings depending on Route are excluded from shared', () => {
     const code = `
-import { createFileRoute } from '@tanstack/react-router'
+import { createFileRoute } from '@benjavicente/react-router'
 const HEADER = 'Page'
 function usePageTitle() {
   return HEADER + ' - ' + Route.fullPath
@@ -642,7 +642,7 @@ export const Route = createFileRoute('/about')({
 
   it('INVARIANT: single-group-only bindings are never shared', () => {
     const code = `
-import { createFileRoute } from '@tanstack/react-router'
+import { createFileRoute } from '@benjavicente/react-router'
 const loaderOnly = () => fetch('/api')
 const componentOnly = () => <span>hi</span>
 const shared = 42
@@ -666,7 +666,7 @@ export const Route = createFileRoute('/')({
 
   it('INVARIANT: empty result for unsplittable routes (createRootRoute)', () => {
     const code = `
-import { createRootRoute } from '@tanstack/react-router'
+import { createRootRoute } from '@benjavicente/react-router'
 const shared = 42
 export const Route = createRootRoute({
   component: () => <div>{shared}</div>,
@@ -682,7 +682,7 @@ export const Route = createRootRoute({
 
   it('INVARIANT: result is stable across multiple calls with same input', () => {
     const code = `
-import { createFileRoute } from '@tanstack/react-router'
+import { createFileRoute } from '@benjavicente/react-router'
 const shared = { name: 'test' }
 export const Route = createFileRoute('/')({
   loader: () => shared.name,
@@ -763,7 +763,7 @@ describe('small-scope exhaustive: computeSharedBindings', () => {
     }
 
     return `
-import { createFileRoute } from '@tanstack/react-router'
+import { createFileRoute } from '@benjavicente/react-router'
 ${bindingDecls}
 export const Route = createFileRoute('/')({
 ${props.join(',\n')}
@@ -937,7 +937,7 @@ ${props.join(',\n')}
   describe('transitive dependency chains', () => {
     it('A depends on B, both used by different groups → both shared', () => {
       const code = `
-import { createFileRoute } from '@tanstack/react-router'
+import { createFileRoute } from '@benjavicente/react-router'
 const BASE = 'https://api.example.com'
 const config = { url: BASE }
 export const Route = createFileRoute('/')({
@@ -957,7 +957,7 @@ export const Route = createFileRoute('/')({
 
     it('A depends on B depends on C, A used cross-group → all three shared', () => {
       const code = `
-import { createFileRoute } from '@tanstack/react-router'
+import { createFileRoute } from '@benjavicente/react-router'
 const c = 'deep'
 const b = c + '-value'
 const a = b + '-final'
@@ -977,7 +977,7 @@ export const Route = createFileRoute('/')({
 
     it('diamond dependency: A→B, A→C, B→D, C→D → all shared when A is cross-group', () => {
       const code = `
-import { createFileRoute } from '@tanstack/react-router'
+import { createFileRoute } from '@benjavicente/react-router'
 const D = 42
 const B = D + 1
 const C = D + 2

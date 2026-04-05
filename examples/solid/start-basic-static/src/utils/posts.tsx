@@ -1,8 +1,8 @@
-import { createServerFn } from '@tanstack/solid-start'
+import { createServerFn } from '@benjavicente/solid-start'
 import axios from 'redaxios'
-import { notFound } from '@tanstack/solid-router'
+import { notFound } from '@benjavicente/solid-router'
 import { logMiddleware } from './loggingMiddleware'
-import { staticFunctionMiddleware } from '@tanstack/start-static-server-functions'
+import { staticFunctionMiddleware } from '@benjavicente/start-static-server-functions'
 
 export type PostType = {
   id: string

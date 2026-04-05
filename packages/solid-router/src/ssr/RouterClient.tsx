@@ -1,8 +1,8 @@
-import { hydrate } from '@tanstack/router-core/ssr/client'
+import { hydrate } from '@benjavicente/router-core/ssr/client'
 import { Await } from '../awaited'
 import { HeadContent } from '../HeadContent'
 import { RouterProvider } from '../RouterProvider'
-import type { AnyRouter } from '@tanstack/router-core'
+import type { AnyRouter } from '@benjavicente/router-core'
 import type { JSXElement } from 'solid-js'
 
 let hydrationPromise: Promise<void | Array<Array<void>>> | undefined

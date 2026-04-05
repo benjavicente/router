@@ -1,5 +1,5 @@
 import * as t from '@babel/types'
-import { generateFromAst } from '@tanstack/router-utils'
+import { generateFromAst } from '@benjavicente/router-utils'
 
 import { MOCK_MODULE_ID } from './virtualModules'
 import { getOrCreate } from './utils'

@@ -1,8 +1,8 @@
-import { Await, RouterProvider } from '@tanstack/react-router'
+import { Await, RouterProvider } from '@benjavicente/react-router'
 
 import { hydrateStart } from './hydrateStart'
 
-import type { AnyRouter } from '@tanstack/router-core'
+import type { AnyRouter } from '@benjavicente/router-core'
 
 let hydrationPromise: Promise<AnyRouter> | undefined
 export function StartClient() {

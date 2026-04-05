@@ -200,8 +200,8 @@ describe('formatViolation', () => {
       envType: 'client',
       type: 'specifier',
       behavior: 'error',
-      pattern: '@tanstack/react-start/server',
-      specifier: '@tanstack/react-start/server',
+      pattern: '@benjavicente/react-start/server',
+      specifier: '@benjavicente/react-start/server',
       importer: '/project/src/routes/index.tsx',
       trace: [
         { file: '/project/src/main.tsx' },
@@ -214,7 +214,7 @@ describe('formatViolation', () => {
 
     expect(formatted).toContain('Import denied in client environment')
     expect(formatted).toContain('specifier pattern')
-    expect(formatted).toContain('@tanstack/react-start/server')
+    expect(formatted).toContain('@benjavicente/react-start/server')
     expect(formatted).toContain('src/routes/index.tsx')
     expect(formatted).toContain('Trace:')
     expect(formatted).toContain('(entry)')
@@ -252,7 +252,7 @@ describe('formatViolation', () => {
       envType: 'client',
       type: 'marker',
       behavior: 'error',
-      specifier: '@tanstack/react-start/server-only',
+      specifier: '@benjavicente/react-start/server-only',
       importer: '/project/src/routes/index.tsx',
       trace: [],
       message: 'Module is server-only',
@@ -347,8 +347,8 @@ describe('formatViolation', () => {
       envType: 'client',
       type: 'specifier',
       behavior: 'error',
-      pattern: '@tanstack/react-start/server',
-      specifier: '@tanstack/react-start/server',
+      pattern: '@benjavicente/react-start/server',
+      specifier: '@benjavicente/react-start/server',
       importer: '/project/src/routes/index.tsx',
       trace: [],
       message: 'Import denied',
@@ -368,7 +368,7 @@ describe('formatViolation', () => {
       envType: 'server',
       type: 'marker',
       behavior: 'error',
-      specifier: '@tanstack/react-start/client-only',
+      specifier: '@benjavicente/react-start/client-only',
       importer: '/project/src/routes/page.tsx',
       trace: [],
       message: 'Module is client-only',
@@ -419,8 +419,8 @@ describe('formatViolation', () => {
       envType: 'client',
       type: 'specifier',
       behavior: 'error',
-      pattern: '@tanstack/react-start/server',
-      specifier: '@tanstack/react-start/server',
+      pattern: '@benjavicente/react-start/server',
+      specifier: '@benjavicente/react-start/server',
       importer: '/project/src/routes/index.tsx',
       trace: [
         {
@@ -433,7 +433,7 @@ describe('formatViolation', () => {
 
     const formatted = formatViolation(info, '/project')
 
-    expect(formatted).toContain('Import: "@tanstack/react-start/server"')
+    expect(formatted).toContain('Import: "@benjavicente/react-start/server"')
     expect(formatted).toContain('(import "./secret.server")')
   })
 })

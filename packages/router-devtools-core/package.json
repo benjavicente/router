@@ -1,5 +1,5 @@
 {
-  "name": "@tanstack/router-devtools-core",
+  "name": "@benjavicente/router-devtools-core",
   "version": "1.167.1",
   "description": "Modern and scalable routing for Web applications",
   "author": "Tanner Linsley",
@@ -71,7 +71,7 @@
     "vite-plugin-solid": "^2.11.10"
   },
   "peerDependencies": {
-    "@tanstack/router-core": "workspace:^",
+    "@benjavicente/router-core": "workspace:^",
     "csstype": "^3.0.10"
   },
   "peerDependenciesMeta": {

@@ -1,8 +1,8 @@
 const $$splitLoaderImporter = () => import('boolean-null-literals.tsx?tsr-split=loader');
-import { lazyFn } from '@tanstack/react-router';
+import { lazyFn } from '@benjavicente/react-router';
 const $$splitComponentImporter = () => import('boolean-null-literals.tsx?tsr-split=component---errorComponent---notFoundComponent---pendingComponent');
-import { lazyRouteComponent } from '@tanstack/react-router';
-import { createFileRoute } from '@tanstack/router';
+import { lazyRouteComponent } from '@benjavicente/react-router';
+import { createFileRoute } from '@benjavicente/react-router';
 
 // Test errorComponent with false literal
 export const Route = createFileRoute('/test')({

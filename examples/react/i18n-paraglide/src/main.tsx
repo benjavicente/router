@@ -1,6 +1,6 @@
 import { StrictMode } from 'react'
 import ReactDOM from 'react-dom/client'
-import { RouterProvider, createRouter } from '@tanstack/react-router'
+import { RouterProvider, createRouter } from '@benjavicente/react-router'
 import './styles.css'
 // Import the generated route tree
 import { routeTree } from './routeTree.gen'
@@ -22,7 +22,7 @@ const router = createRouter({
 })
 
 // Register the router instance for type safety
-declare module '@tanstack/react-router' {
+declare module '@benjavicente/react-router' {
   interface Register {
     router: typeof router
   }

@@ -1,5 +1,5 @@
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest'
-import { createMemoryHistory } from '@tanstack/history'
+import { createMemoryHistory } from '@benjavicente/history'
 import { BaseRootRoute, BaseRoute, notFound } from '../src'
 import { hydrate } from '../src/ssr/client'
 import { createTestRouter } from './routerTestUtils'

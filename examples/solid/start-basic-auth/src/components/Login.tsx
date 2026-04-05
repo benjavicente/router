@@ -1,5 +1,5 @@
-import { useRouter } from '@tanstack/solid-router'
-import { useServerFn } from '@tanstack/solid-start'
+import { useRouter } from '@benjavicente/solid-router'
+import { useServerFn } from '@benjavicente/solid-start'
 import { useMutation } from '../hooks/useMutation'
 import { loginFn } from '../routes/_authed'
 import { Auth } from './Auth'

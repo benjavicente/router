@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { createRootRoute } from '@tanstack/react-router';
+import { createRootRoute } from '@benjavicente/react-router';
 const TSRComponent = () => <div>root hmr</div>;
 export const Route = createRootRoute({
   component: TSRComponent

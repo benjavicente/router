@@ -1,5 +1,5 @@
 import { AsyncLocalStorage } from 'node:async_hooks'
-import type { Awaitable, RegisteredRouter } from '@tanstack/router-core'
+import type { Awaitable, RegisteredRouter } from '@benjavicente/router-core'
 
 export interface StartStorageContext {
   getRouter: () => Awaitable<RegisteredRouter>

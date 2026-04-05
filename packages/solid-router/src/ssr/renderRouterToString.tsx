@@ -1,6 +1,6 @@
 import * as Solid from 'solid-js/web'
-import { makeSsrSerovalPlugin } from '@tanstack/router-core'
-import type { AnyRouter } from '@tanstack/router-core'
+import { makeSsrSerovalPlugin } from '@benjavicente/router-core'
+import type { AnyRouter } from '@benjavicente/router-core'
 import type { JSXElement } from 'solid-js'
 
 export const renderRouterToString = ({

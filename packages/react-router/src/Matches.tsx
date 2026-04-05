@@ -1,7 +1,7 @@
 import * as React from 'react'
 import { useStore } from '@tanstack/react-store'
-import { replaceEqualDeep, rootRouteId } from '@tanstack/router-core'
-import { isServer } from '@tanstack/router-core/isServer'
+import { replaceEqualDeep, rootRouteId } from '@benjavicente/router-core'
+import { isServer } from '@benjavicente/router-core/isServer'
 import { CatchBoundary, ErrorComponent } from './CatchBoundary'
 import { useRouter } from './useRouter'
 import { Transitioner } from './Transitioner'
@@ -28,9 +28,9 @@ import type {
   ResolveRoute,
   RouteByPath,
   ToSubOptionsProps,
-} from '@tanstack/router-core'
+} from '@benjavicente/router-core'
 
-declare module '@tanstack/router-core' {
+declare module '@benjavicente/router-core' {
   export interface RouteMatchExtensions {
     meta?: Array<React.JSX.IntrinsicElements['meta'] | undefined>
     links?: Array<React.JSX.IntrinsicElements['link'] | undefined>

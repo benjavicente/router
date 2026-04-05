@@ -9,7 +9,7 @@ import {
   createRouter,
   useParams,
   useSearch,
-} from '@tanstack/vue-router'
+} from '@benjavicente/vue-router'
 
 function runPerfSelectorComputation(seed: number) {
   let value = Math.trunc(seed) | 0

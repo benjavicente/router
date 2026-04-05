@@ -34,4 +34,6 @@ export interface TransformContext {
   lazy: boolean
   verboseFileRoutes: boolean
   preferredQuote?: '"' | "'"
+  /** Set when `target` is `angular`; drives `createFileRoute` import source. */
+  angularRouterPackage?: string
 }

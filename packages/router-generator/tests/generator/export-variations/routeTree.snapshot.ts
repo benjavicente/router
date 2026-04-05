@@ -50,7 +50,7 @@ export interface RootRouteChildren {
   ExportWithAsRoute: typeof ExportWithAsRoute
 }
 
-declare module '@tanstack/react-router' {
+declare module '@benjavicente/react-router' {
   interface FileRoutesByPath {
     '/export-with-as': {
       id: '/export-with-as'

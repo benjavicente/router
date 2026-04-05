@@ -5,7 +5,7 @@ import type {
   AnyRouter,
   RegisteredRouter,
   RouterOptions,
-} from '@tanstack/router-core'
+} from '@benjavicente/router-core'
 
 /**
  * Low-level provider that places the router into React context and optionally

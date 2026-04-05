@@ -1,5 +1,5 @@
 import * as React from 'react'
-import { isModuleNotFoundError } from '@tanstack/router-core'
+import { isModuleNotFoundError } from '@benjavicente/router-core'
 import { reactUse } from './utils'
 import type { AsyncRouteComponent } from './route'
 

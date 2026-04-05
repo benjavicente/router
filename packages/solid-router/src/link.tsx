@@ -9,9 +9,9 @@ import {
   isDangerousProtocol,
   preloadWarning,
   removeTrailingSlash,
-} from '@tanstack/router-core'
+} from '@benjavicente/router-core'
 
-import { isServer } from '@tanstack/router-core/isServer'
+import { isServer } from '@benjavicente/router-core/isServer'
 import { Dynamic } from 'solid-js/web'
 import { useRouter } from './useRouter'
 
@@ -24,7 +24,7 @@ import type {
   LinkOptions,
   RegisteredRouter,
   RoutePaths,
-} from '@tanstack/router-core'
+} from '@benjavicente/router-core'
 import type {
   ValidateLinkOptions,
   ValidateLinkOptionsArray,

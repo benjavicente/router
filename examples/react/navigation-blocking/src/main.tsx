@@ -6,8 +6,8 @@ import {
   createRoute,
   createRouter,
   useBlocker,
-} from '@tanstack/react-router'
-import { TanStackRouterDevtools } from '@tanstack/react-router-devtools'
+} from '@benjavicente/react-router'
+import { TanStackRouterDevtools } from '@benjavicente/react-router-devtools'
 import React from 'react'
 import ReactDOM from 'react-dom/client'
 import './styles.css'

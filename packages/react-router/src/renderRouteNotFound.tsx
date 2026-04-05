@@ -1,6 +1,6 @@
 import * as React from 'react'
 import { DefaultGlobalNotFound } from './not-found'
-import type { AnyRoute, AnyRouter } from '@tanstack/router-core'
+import type { AnyRoute, AnyRouter } from '@benjavicente/router-core'
 
 /**
  * Renders a not found component for a route when no matching route is found.

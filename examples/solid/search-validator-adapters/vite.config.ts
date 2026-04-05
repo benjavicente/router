@@ -1,6 +1,6 @@
 import { defineConfig } from 'vitest/config'
 import solid from 'vite-plugin-solid'
-import { tanstackRouter } from '@tanstack/router-plugin/vite'
+import { tanstackRouter } from '@benjavicente/router-plugin/vite'
 import packageJson from './package.json'
 import tailwindcss from '@tailwindcss/vite'
 

@@ -1,6 +1,6 @@
 import { useQuery } from '@tanstack/solid-query'
-import { ErrorComponent, createFileRoute } from '@tanstack/solid-router'
-import type { ErrorComponentProps } from '@tanstack/solid-router'
+import { ErrorComponent, createFileRoute } from '@benjavicente/solid-router'
+import type { ErrorComponentProps } from '@benjavicente/solid-router'
 import { NotFound } from '~/components/NotFound'
 import { userQueryOptions } from '~/utils/users'
 

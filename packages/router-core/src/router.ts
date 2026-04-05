@@ -1,5 +1,5 @@
-import { createBrowserHistory, parseHref } from '@tanstack/history'
-import { isServer } from '@tanstack/router-core/isServer'
+import { createBrowserHistory, parseHref } from '@benjavicente/history'
+import { isServer } from '@benjavicente/router-core/isServer'
 import {
   DEFAULT_PROTOCOL_ALLOWLIST,
   createControlledPromise,
@@ -54,7 +54,7 @@ import type {
   HistoryState,
   ParsedHistoryState,
   RouterHistory,
-} from '@tanstack/history'
+} from '@benjavicente/history'
 
 import type {
   Awaitable,

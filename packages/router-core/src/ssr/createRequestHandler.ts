@@ -1,4 +1,4 @@
-import { createMemoryHistory } from '@tanstack/history'
+import { createMemoryHistory } from '@benjavicente/history'
 import { mergeHeaders } from './headers'
 import {
   attachRouterServerSsrUtils,

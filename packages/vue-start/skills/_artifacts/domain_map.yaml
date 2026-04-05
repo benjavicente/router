@@ -1,11 +1,11 @@
 # domain_map.yaml
-# Library: @tanstack/vue-start
+# Library: @benjavicente/vue-start
 # Version: 1.166.2
 # Date: 2026-03-08
 # Status: reviewed
 
 library:
-  name: '@tanstack/vue-start'
+  name: '@benjavicente/vue-start'
   version: '1.166.2'
   repository: 'https://github.com/TanStack/router'
   description: >-
@@ -32,7 +32,7 @@ skills:
       Vue-specific setup.
     type: framework
     packages:
-      - '@tanstack/vue-start'
+      - '@benjavicente/vue-start'
     covers:
       - useServerFn hook
       - tanstackStart Vite plugin
@@ -47,7 +47,7 @@ skills:
       - mistake: 'Using react-start APIs in Vue context'
         mechanism: >-
           vue-start has its own useServerFn and tanstackStart
-          exports. Importing from @tanstack/react-start or
+          exports. Importing from @benjavicente/react-start or
           @tanstack/start causes type errors and runtime failures.
         priority: HIGH
         status: active

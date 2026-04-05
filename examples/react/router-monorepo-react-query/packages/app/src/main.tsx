@@ -1,6 +1,6 @@
 import React, { StrictMode } from 'react'
 import ReactDOM from 'react-dom/client'
-import { RouterProvider } from '@tanstack/react-router'
+import { RouterProvider } from '@benjavicente/react-router'
 import { QueryClientProvider } from '@tanstack/react-query'
 import { queryClient, router } from '@router-mono-react-query/router'
 import {

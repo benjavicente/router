@@ -1,8 +1,8 @@
 import React from 'react'
-import { createRouter } from '@tanstack/react-router'
+import { createRouter } from '@benjavicente/react-router'
 // Import the generated route tree
 import { routeTree } from './routeTree.gen'
-import type { RouteIds } from '@tanstack/react-router'
+import type { RouteIds } from '@benjavicente/react-router'
 
 // Set up a Router instance
 export const router = createRouter({

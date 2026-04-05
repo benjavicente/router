@@ -115,7 +115,7 @@ export interface RootRouteChildren {
   PostsRoute: typeof PostsRouteWithChildren
 }
 
-declare module '@tanstack/solid-router' {
+declare module '@benjavicente/solid-router' {
   interface FileRoutesByPath {
     '/posts': {
       id: '/posts'

@@ -72,7 +72,7 @@ describe('add-hmr works', () => {
   it('initializes import.meta.hot.data before storing stable split components', () => {
     const code = `
 import * as React from 'react'
-import { createFileRoute } from '@tanstack/react-router'
+import { createFileRoute } from '@benjavicente/react-router'
 
 export const Route = createFileRoute('/posts')({
   component: component,

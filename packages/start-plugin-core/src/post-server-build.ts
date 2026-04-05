@@ -1,4 +1,4 @@
-import { HEADERS } from '@tanstack/start-server-core'
+import { HEADERS } from '@benjavicente/start-server-core'
 import { buildSitemap } from './build-sitemap'
 import { VITE_ENVIRONMENT_NAMES } from './constants'
 import { prerender } from './prerender'

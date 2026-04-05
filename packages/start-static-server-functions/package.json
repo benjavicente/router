@@ -1,5 +1,5 @@
 {
-  "name": "@tanstack/start-static-server-functions",
+  "name": "@benjavicente/start-static-server-functions",
   "version": "1.166.25",
   "description": "Modern and scalable routing for React applications",
   "author": "Tanner Linsley",
@@ -59,7 +59,7 @@
     "node": ">=22.12.0"
   },
   "dependencies": {
-    "@tanstack/start-client-core": "workspace:*",
+    "@benjavicente/start-client-core": "workspace:*",
     "seroval": "^1.4.2"
   },
   "devDependencies": {
@@ -67,14 +67,14 @@
     "@types/node": ">=20"
   },
   "peerDependencies": {
-    "@tanstack/react-start": "workspace:^",
-    "@tanstack/solid-start": "workspace:^"
+    "@benjavicente/react-start": "workspace:^",
+    "@benjavicente/solid-start": "workspace:^"
   },
   "peerDependenciesMeta": {
-    "@tanstack/react-start": {
+    "@benjavicente/react-start": {
       "optional": true
     },
-    "@tanstack/solid-start": {
+    "@benjavicente/solid-start": {
       "optional": true
     }
   }

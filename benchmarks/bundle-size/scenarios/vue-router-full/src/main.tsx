@@ -1,5 +1,5 @@
 import { createApp } from 'vue'
-import { RouterProvider, createRouter } from '@tanstack/vue-router'
+import { RouterProvider, createRouter } from '@benjavicente/vue-router'
 import { routeTree } from './routeTree.gen'
 
 const router = createRouter({
@@ -7,7 +7,7 @@ const router = createRouter({
   scrollRestoration: true,
 })
 
-declare module '@tanstack/vue-router' {
+declare module '@benjavicente/vue-router' {
   interface Register {
     router: typeof router
   }

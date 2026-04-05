@@ -1,5 +1,5 @@
-import { createFileRoute } from '@tanstack/react-router'
-import { redirect, useRouter } from '@tanstack/react-router'
+import { createFileRoute } from '@benjavicente/react-router'
+import { redirect, useRouter } from '@benjavicente/react-router'
 import { z } from 'zod'
 
 import { useAuth } from '../auth'

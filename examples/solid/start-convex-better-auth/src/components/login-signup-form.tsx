@@ -1,4 +1,4 @@
-import { useNavigate } from '@tanstack/solid-router'
+import { useNavigate } from '@benjavicente/solid-router'
 import { createSignal } from 'solid-js'
 import { authClient } from '~/library/auth-client'
 import { refreshAuth } from '~/library/convex-client'

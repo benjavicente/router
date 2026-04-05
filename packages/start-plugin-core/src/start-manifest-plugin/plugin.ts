@@ -1,5 +1,5 @@
 import { joinURL } from 'ufo'
-import { VIRTUAL_MODULES } from '@tanstack/start-server-core'
+import { VIRTUAL_MODULES } from '@benjavicente/start-server-core'
 import { resolveViteId } from '../utils'
 import { ENTRY_POINTS } from '../constants'
 import { buildStartManifest } from './manifestBuilder'

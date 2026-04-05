@@ -4,8 +4,8 @@
 
 This package is not meant to be used directly. It is a dependency of the TanStack Start framework-specific packages:
 
-- [`@tanstack/react-start`](https://www.npmjs.com/package/@tanstack/react-start)
-- [`@tanstack/solid-start`](https://www.npmjs.com/package/@tanstack/solid-start).
+- [`@benjavicente/react-start`](https://www.npmjs.com/package/@benjavicente/react-start)
+- [`@benjavicente/solid-start`](https://www.npmjs.com/package/@benjavicente/solid-start).
 
 It provides the core functionality for TanStack Start, which is a fullstack-framework made for SSR, Streaming, Server Functions, API Routes, bundling and more powered by [TanStack Router](https://tanstack.com/router).
 

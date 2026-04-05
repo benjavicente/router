@@ -1,4 +1,4 @@
-# @tanstack/router-ssr-query-core
+# @benjavicente/router-ssr-query-core
 
 ## 1.167.0
 

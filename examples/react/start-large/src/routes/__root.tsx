@@ -4,10 +4,10 @@ import {
   Outlet,
   Scripts,
   createRootRouteWithContext,
-} from '@tanstack/react-router'
+} from '@benjavicente/react-router'
 import type { QueryClient } from '@tanstack/react-query'
 import type { ReactNode } from 'react'
-import { TanStackRouterDevtools } from '@tanstack/react-router-devtools'
+import { TanStackRouterDevtools } from '@benjavicente/react-router-devtools'
 export interface Context {
   queryClient: QueryClient
 }

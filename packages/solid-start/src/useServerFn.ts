@@ -1,4 +1,4 @@
-import { isRedirect, useRouter } from '@tanstack/solid-router'
+import { isRedirect, useRouter } from '@benjavicente/solid-router'
 
 export function useServerFn<T extends (...deps: Array<any>) => Promise<any>>(
   serverFn: T,

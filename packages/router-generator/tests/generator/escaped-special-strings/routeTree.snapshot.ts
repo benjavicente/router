@@ -173,7 +173,7 @@ export interface RootRouteChildren {
   NestedChar91indexChar93Route: typeof NestedChar91indexChar93Route
 }
 
-declare module '@tanstack/react-router' {
+declare module '@benjavicente/react-router' {
   interface FileRoutesByPath {
     '/index': {
       id: '/index'

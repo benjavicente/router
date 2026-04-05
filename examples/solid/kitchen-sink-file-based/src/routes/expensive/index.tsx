@@ -1,4 +1,4 @@
-import { createFileRoute } from '@tanstack/solid-router'
+import { createFileRoute } from '@benjavicente/solid-router'
 import Expensive from './-components/Expensive'
 
 export const Route = createFileRoute('/expensive/')({

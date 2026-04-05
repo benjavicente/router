@@ -8,7 +8,7 @@
 // You should NOT make any changes in this file as it will be overwritten.
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
-import type { CreateFileRoute, FileRoutesByPath } from '@tanstack/solid-router'
+import type { CreateFileRoute, FileRoutesByPath } from '@benjavicente/solid-router'
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
@@ -71,7 +71,7 @@ export interface RootRouteChildren {
   UsersZodIndexRoute: typeof UsersZodIndexRoute
 }
 
-declare module '@tanstack/solid-router' {
+declare module '@benjavicente/solid-router' {
   interface FileRoutesByPath {
     '/': {
       id: '/'

@@ -12,9 +12,9 @@ const config = defineConfig({
   plugins: [vueJsx()],
   resolve: {
     alias: {
-      '@tanstack/vue-router': resolve(__dirname, 'src'),
+      '@benjavicente/vue-router': resolve(__dirname, 'src'),
     },
-    // Add 'development' condition for tests to resolve @tanstack/router-core/isServer
+    // Add 'development' condition for tests to resolve @benjavicente/router-core/isServer
     // to the development export (isServer = undefined) instead of node (isServer = true)
     ...(process.env.VITEST && { conditions: ['development'] }),
   },

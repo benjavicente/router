@@ -6,13 +6,13 @@ import type {
   Expand,
   ResolveAllParamsFromParent,
   UnionToIntersection,
-} from '@tanstack/router-core'
+} from '@benjavicente/router-core'
 import type {
   AnyRequestMiddleware,
   AssignAllServerRequestContext,
 } from './createMiddleware'
 
-declare module '@tanstack/router-core' {
+declare module '@benjavicente/router-core' {
   interface FilebaseRouteOptionsInterface<
     TRegister,
     TParentRoute extends AnyRoute = AnyRoute,

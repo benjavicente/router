@@ -1,6 +1,6 @@
 const $$splitComponentImporter = () => import('destructured-export-multiple.tsx?tsr-split=component---errorComponent---notFoundComponent---pendingComponent');
-import { lazyRouteComponent } from '@tanstack/react-router';
-import { createFileRoute } from '@tanstack/react-router';
+import { lazyRouteComponent } from '@benjavicente/react-router';
+import { createFileRoute } from '@benjavicente/react-router';
 export const getConfig = () => ({
   baseUrl: 'https://api.example.com',
   timeout: 5000

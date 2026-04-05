@@ -1,4 +1,4 @@
-import { createRouter as createReactRouter } from '@tanstack/react-router'
+import { createRouter as createReactRouter } from '@benjavicente/react-router'
 
 import { routeTree } from './routeTree.gen'
 
@@ -13,7 +13,7 @@ export function createRouter() {
   })
 }
 
-declare module '@tanstack/react-router' {
+declare module '@benjavicente/react-router' {
   interface Register {
     router: ReturnType<typeof createRouter>
   }

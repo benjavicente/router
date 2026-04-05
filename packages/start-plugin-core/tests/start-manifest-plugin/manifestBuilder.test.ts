@@ -9,7 +9,7 @@ import {
   getRouteFilePathsFromModuleIds,
   scanClientChunks,
 } from '../../src/start-manifest-plugin/manifestBuilder'
-import type { Manifest } from '@tanstack/router-core'
+import type { Manifest } from '@benjavicente/router-core'
 import type { Rollup } from 'vite'
 
 function makeChunk(options: {

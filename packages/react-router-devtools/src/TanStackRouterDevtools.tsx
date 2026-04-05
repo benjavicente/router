@@ -1,8 +1,8 @@
-import { TanStackRouterDevtoolsCore } from '@tanstack/router-devtools-core'
+import { TanStackRouterDevtoolsCore } from '@benjavicente/router-devtools-core'
 import { Fragment, useEffect, useRef, useState } from 'react'
-import { useRouter, useRouterState } from '@tanstack/react-router'
+import { useRouter, useRouterState } from '@benjavicente/react-router'
 import type { ButtonHTMLAttributes, HTMLAttributes } from 'react'
-import type { AnyRouter } from '@tanstack/react-router'
+import type { AnyRouter } from '@benjavicente/react-router'
 import type React from 'react'
 
 export interface TanStackRouterDevtoolsOptions {

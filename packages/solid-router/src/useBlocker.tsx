@@ -4,14 +4,14 @@ import type {
   BlockerFnArgs,
   HistoryAction,
   HistoryLocation,
-} from '@tanstack/history'
+} from '@benjavicente/history'
 import type { SolidNode } from './route'
 import type {
   AnyRoute,
   AnyRouter,
   ParseRoute,
   RegisteredRouter,
-} from '@tanstack/router-core'
+} from '@benjavicente/router-core'
 
 type ShouldBlockFnLocation<
   out TRouteId,

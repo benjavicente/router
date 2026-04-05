@@ -1,4 +1,4 @@
-# @tanstack/start-server-core — Skill Spec
+# @benjavicente/start-server-core — Skill Spec
 
 Server-side runtime for TanStack Start: createStartHandler, request/response utilities, cookie/session management, three-phase request handling, AsyncLocalStorage context.
 

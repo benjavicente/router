@@ -28,7 +28,7 @@ const IndexRoute = IndexImport.update({
 
 // Populate the FileRoutesByPath interface
 
-declare module '@tanstack/react-router' {
+declare module '@benjavicente/react-router' {
   interface FileRoutesByPath {
     '/': {
       id: '/'

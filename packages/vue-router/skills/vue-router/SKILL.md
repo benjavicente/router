@@ -18,7 +18,7 @@ sources:
   - TanStack/router:packages/vue-router/src
 ---
 
-# Vue Router (`@tanstack/vue-router`)
+# Vue Router (`@benjavicente/vue-router`)
 
 This skill builds on router-core. Read [router-core](../../../router-core/skills/router-core/SKILL.md) first for foundational concepts.
 
@@ -30,15 +30,15 @@ This skill covers the Vue-specific bindings, components, composables, and setup 
 
 > **CRITICAL**: Most composables return `Ref<T>` — access via `.value` in script, auto-unwrapped in templates. This is the #1 difference from the React version.
 
-> **CRITICAL**: Do not confuse `@tanstack/vue-router` with `vue-router` (the official Vue router). They are completely different libraries with different APIs.
+> **CRITICAL**: Do not confuse `@benjavicente/vue-router` with `vue-router` (the official Vue router). They are completely different libraries with different APIs.
 
 ## Full Setup: File-Based Routing with Vite
 
 ### 1. Install Dependencies
 
 ```bash
-npm install @tanstack/vue-router
-npm install -D @tanstack/router-plugin @vitejs/plugin-vue-jsx
+npm install @benjavicente/vue-router
+npm install -D @benjavicente/router-plugin @vitejs/plugin-vue-jsx
 ```
 
 ### 2. Configure Vite Plugin
@@ -48,7 +48,7 @@ npm install -D @tanstack/router-plugin @vitejs/plugin-vue-jsx
 import { defineConfig } from 'vite'
 import vue from '@vitejs/plugin-vue'
 import vueJsx from '@vitejs/plugin-vue-jsx'
-import { tanstackRouter } from '@tanstack/router-plugin/vite'
+import { tanstackRouter } from '@benjavicente/router-plugin/vite'
 
 export default defineConfig({
   plugins: [
@@ -67,7 +67,7 @@ export default defineConfig({
 
 ```tsx
 // src/routes/__root.tsx
-import { createRootRoute, Link, Outlet } from '@tanstack/vue-router'
+import { createRootRoute, Link, Outlet } from '@benjavicente/vue-router'
 
 export const Route = createRootRoute({
   component: RootLayout,
@@ -95,7 +95,7 @@ function RootLayout() {
 
 ```tsx
 // src/routes/index.tsx
-import { createFileRoute } from '@tanstack/vue-router'
+import { createFileRoute } from '@benjavicente/vue-router'
 
 export const Route = createFileRoute('/')({
   component: HomePage,
@@ -111,13 +111,13 @@ function HomePage() {
 ```tsx
 // src/main.tsx
 import { createApp } from 'vue'
-import { RouterProvider, createRouter } from '@tanstack/vue-router'
+import { RouterProvider, createRouter } from '@benjavicente/vue-router'
 import { routeTree } from './routeTree.gen'
 
 const router = createRouter({ routeTree })
 
 // REQUIRED — without this, Link/useNavigate/useSearch have no type safety
-declare module '@tanstack/vue-router' {
+declare module '@benjavicente/vue-router' {
   interface Register {
     router: typeof router
   }
@@ -129,12 +129,12 @@ app.mount('#root')
 
 ## Composables Reference
 
-All composables imported from `@tanstack/vue-router`. Most return `Ref<T>` — access via `.value` in script or auto-unwrap in templates.
+All composables imported from `@benjavicente/vue-router`. Most return `Ref<T>` — access via `.value` in script or auto-unwrap in templates.
 
 ### `useRouter()` — returns `TRouter` (NOT a Ref)
 
 ```tsx
-import { useRouter } from '@tanstack/vue-router'
+import { useRouter } from '@benjavicente/vue-router'
 
 const router = useRouter()
 router.invalidate()
@@ -146,7 +146,7 @@ Subscribe to router state changes. Exposes the entire state and thus incurs
 a performance cost. For matches or location favor `useMatches` and `useLocation`.
 
 ```tsx
-import { useRouterState } from '@tanstack/vue-router'
+import { useRouterState } from '@benjavicente/vue-router'
 
 const isLoading = useRouterState({ select: (s) => s.isLoading })
 // Access: isLoading.value
@@ -155,7 +155,7 @@ const isLoading = useRouterState({ select: (s) => s.isLoading })
 ### `useNavigate()` — returns a function (NOT a Ref)
 
 ```tsx
-import { useNavigate } from '@tanstack/vue-router'
+import { useNavigate } from '@benjavicente/vue-router'
 
 const navigate = useNavigate()
 
@@ -168,7 +168,7 @@ async function handleSubmit() {
 ### `useSearch({ from })` — returns `Ref<T>`
 
 ```tsx
-import { useSearch } from '@tanstack/vue-router'
+import { useSearch } from '@benjavicente/vue-router'
 
 const search = useSearch({ from: '/products' })
 // Access: search.value.page
@@ -177,7 +177,7 @@ const search = useSearch({ from: '/products' })
 ### `useParams({ from })` — returns `Ref<T>`
 
 ```tsx
-import { useParams } from '@tanstack/vue-router'
+import { useParams } from '@benjavicente/vue-router'
 
 const params = useParams({ from: '/posts/$postId' })
 // Access: params.value.postId
@@ -186,7 +186,7 @@ const params = useParams({ from: '/posts/$postId' })
 ### `useLoaderData({ from })` — returns `Ref<T>`
 
 ```tsx
-import { useLoaderData } from '@tanstack/vue-router'
+import { useLoaderData } from '@benjavicente/vue-router'
 
 const data = useLoaderData({ from: '/posts/$postId' })
 // Access: data.value.post.content
@@ -195,7 +195,7 @@ const data = useLoaderData({ from: '/posts/$postId' })
 ### `useMatch({ from })` — returns `Ref<T>`
 
 ```tsx
-import { useMatch } from '@tanstack/vue-router'
+import { useMatch } from '@benjavicente/vue-router'
 
 const match = useMatch({ from: '/posts/$postId' })
 // Access: match.value.loaderData.post.title
@@ -217,7 +217,7 @@ const match = useMatch({ from: '/posts/$postId' })
 ### `RouterProvider`
 
 ```tsx
-import { RouterProvider } from '@tanstack/vue-router'
+import { RouterProvider } from '@benjavicente/vue-router'
 // In createApp or template
 <RouterProvider :router="router" />
 ```
@@ -290,7 +290,7 @@ Renders children only after `onMounted` (hydration complete):
 ### Custom Link Component with `createLink`
 
 ```tsx
-import { createLink } from '@tanstack/vue-router'
+import { createLink } from '@benjavicente/vue-router'
 import { defineComponent, h } from 'vue'
 
 const StyledLinkComponent = defineComponent({
@@ -304,7 +304,7 @@ const StyledLink = createLink(StyledLinkComponent)
 
 ### Render Functions (h())
 
-All components in `@tanstack/vue-router` use `h()` render functions internally. Route components can use either SFC templates or render functions:
+All components in `@benjavicente/vue-router` use `h()` render functions internally. Route components can use either SFC templates or render functions:
 
 SFC template (most common for user code) in `MyRoute.component.vue`:
 
@@ -314,7 +314,7 @@ SFC template (most common for user code) in `MyRoute.component.vue`:
 </template>
 
 <script setup>
-import { useLoaderData } from '@tanstack/vue-router'
+import { useLoaderData } from '@benjavicente/vue-router'
 const data = useLoaderData({ from: '/posts/$postId' })
 </script>
 ```
@@ -322,7 +322,7 @@ const data = useLoaderData({ from: '/posts/$postId' })
 ### Auth with Router Context
 
 ```tsx
-import { createRootRouteWithContext } from '@tanstack/vue-router'
+import { createRootRouteWithContext } from '@benjavicente/vue-router'
 
 const rootRoute = createRootRouteWithContext<{ auth: AuthState }>()({
   component: RootComponent,
@@ -369,14 +369,14 @@ console.log(params.value.postId)
 
 ### 2. HIGH: Confusing with vue-router (official)
 
-`@tanstack/vue-router` is NOT `vue-router`. Do not use `<router-view>`, `<router-link>`, `useRoute()`, `useRouter()` from `vue-router`.
+`@benjavicente/vue-router` is NOT `vue-router`. Do not use `<router-view>`, `<router-link>`, `useRoute()`, `useRouter()` from `vue-router`.
 
 ```ts
 // WRONG — official vue-router imports
 import { useRoute, useRouter } from 'vue-router'
 
 // CORRECT — TanStack Vue Router imports
-import { useMatch, useRouter } from '@tanstack/vue-router'
+import { useMatch, useRouter } from '@benjavicente/vue-router'
 ```
 
 ### 3. HIGH: Using Vue hooks in beforeLoad or loader

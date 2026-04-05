@@ -16,7 +16,7 @@ const config = defineConfig({
     alias: {
       // For tests only, resolve to development.ts which returns undefined
       // so that router.isServer fallback is used
-      '@tanstack/router-core/isServer': path.resolve(
+      '@benjavicente/router-core/isServer': path.resolve(
         __dirname,
         'src/isServer/development.ts',
       ),
@@ -38,7 +38,7 @@ export default mergeConfig(
       './src/isServer/development.ts',
     ],
     srcDir: './src',
-    externalDeps: ['@tanstack/router-core/isServer'],
+    externalDeps: ['@benjavicente/router-core/isServer'],
     tsconfigPath: './tsconfig.build.json',
   }),
 )

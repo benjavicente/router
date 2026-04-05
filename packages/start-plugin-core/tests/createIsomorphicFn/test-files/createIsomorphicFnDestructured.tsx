@@ -1,4 +1,4 @@
-import { createIsomorphicFn } from '@tanstack/react-start'
+import { createIsomorphicFn } from '@benjavicente/react-start'
 
 const noImpl = createIsomorphicFn()
 

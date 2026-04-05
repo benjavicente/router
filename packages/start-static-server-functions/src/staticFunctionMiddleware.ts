@@ -3,7 +3,7 @@ import path from 'node:path'
 import {
   createMiddleware,
   getDefaultSerovalPlugins,
-} from '@tanstack/start-client-core'
+} from '@benjavicente/start-client-core'
 import { fromJSON, toJSONAsync } from 'seroval'
 
 type StaticCachedResult = {

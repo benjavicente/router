@@ -2,7 +2,7 @@
  * Side-effect-only marker import.
  *
  * Usage:
- *   import '@tanstack/react-start/server-only'
+ *   import '@benjavicente/react-start/server-only'
  *
  * When this import appears in a module, the import-protection plugin marks
  * that module as server-only. Importing a server-only module from the client

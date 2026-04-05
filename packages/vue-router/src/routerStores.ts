@@ -3,10 +3,10 @@ import type {
   AnyRoute,
   GetStoreConfig,
   RouterStores,
-} from '@tanstack/router-core'
+} from '@benjavicente/router-core'
 import type { Readable } from '@tanstack/vue-store'
 
-declare module '@tanstack/router-core' {
+declare module '@benjavicente/router-core' {
   export interface RouterReadableStore<TValue> extends Readable<TValue> {}
   export interface RouterStores<in out TRouteTree extends AnyRoute> {
     /** Maps each active routeId to the matchId of its child in the match tree. */

@@ -1,8 +1,8 @@
-import { hydrate } from '@tanstack/router-core/ssr/client'
+import { hydrate } from '@benjavicente/router-core/ssr/client'
 
 import { ServerFunctionSerializationAdapter } from './ServerFunctionSerializationAdapter'
 import type { AnyStartInstanceOptions } from '../createStart'
-import type { AnyRouter, AnySerializationAdapter } from '@tanstack/router-core'
+import type { AnyRouter, AnySerializationAdapter } from '@benjavicente/router-core'
 // eslint-disable-next-line import/no-duplicates,import/order
 import { getRouter } from '#tanstack-router-entry'
 // eslint-disable-next-line import/no-duplicates,import/order

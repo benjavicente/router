@@ -132,7 +132,7 @@ export interface RootRouteChildren {
   RelativeRoute: typeof RelativeRoute
 }
 
-declare module '@tanstack/solid-router' {
+declare module '@benjavicente/solid-router' {
   interface FileRoutesByPath {
     '/relative': {
       id: '/relative'

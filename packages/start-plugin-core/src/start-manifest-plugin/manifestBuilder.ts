@@ -1,8 +1,8 @@
 /* eslint-disable @typescript-eslint/prefer-for-of */
 import { joinURL } from 'ufo'
-import { resolveManifestAssetLink, rootRouteId } from '@tanstack/router-core'
-import { tsrSplit } from '@tanstack/router-plugin'
-import type { ManifestAssetLink, RouterManagedTag } from '@tanstack/router-core'
+import { resolveManifestAssetLink, rootRouteId } from '@benjavicente/router-core'
+import { tsrSplit } from '@benjavicente/router-plugin'
+import type { ManifestAssetLink, RouterManagedTag } from '@benjavicente/router-core'
 import type { Rollup } from 'vite'
 
 const ROUTER_MANAGED_MODE = 1

@@ -4,5 +4,5 @@ export { defaultRenderHandler } from './defaultRenderHandler'
 export type {
   RequestHandler,
   RequestOptions,
-} from '@tanstack/start-server-core'
-export * from '@tanstack/start-server-core'
+} from '@benjavicente/start-server-core'
+export * from '@benjavicente/start-server-core'

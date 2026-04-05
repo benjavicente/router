@@ -4,7 +4,7 @@ import {
   physical,
   rootRoute,
   route,
-} from '@tanstack/virtual-file-routes'
+} from '@benjavicente/virtual-file-routes'
 
 export default rootRoute('root.tsx', [
   index('index.tsx'),

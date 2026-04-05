@@ -1,12 +1,12 @@
 import * as Vue from 'vue'
-import { isServer } from '@tanstack/router-core/isServer'
+import { isServer } from '@benjavicente/router-core/isServer'
 import { useStore } from '@tanstack/vue-store'
 import { useRouter } from './useRouter'
 import type {
   AnyRouter,
   RegisteredRouter,
   RouterState,
-} from '@tanstack/router-core'
+} from '@benjavicente/router-core'
 
 export type UseRouterStateOptions<TRouter extends AnyRouter, TSelected> = {
   router?: TRouter

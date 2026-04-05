@@ -6,8 +6,8 @@ import {
   isNotFound,
   isRedirect,
   rootRouteId,
-} from '@tanstack/router-core'
-import { isServer } from '@tanstack/router-core/isServer'
+} from '@benjavicente/router-core'
+import { isServer } from '@benjavicente/router-core/isServer'
 import { useStore } from '@tanstack/vue-store'
 import { CatchBoundary, ErrorComponent } from './CatchBoundary'
 import { ClientOnly } from './ClientOnly'
@@ -21,7 +21,7 @@ import {
 import { renderRouteNotFound } from './renderRouteNotFound'
 import { ScrollRestoration } from './scroll-restoration'
 import type { VNode } from 'vue'
-import type { AnyRoute, RootRouteOptions } from '@tanstack/router-core'
+import type { AnyRoute, RootRouteOptions } from '@benjavicente/router-core'
 
 export const Match = Vue.defineComponent({
   name: 'Match',

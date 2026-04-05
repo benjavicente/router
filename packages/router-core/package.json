@@ -1,5 +1,5 @@
 {
-  "name": "@tanstack/router-core",
+  "name": "@benjavicente/router-core",
   "version": "1.168.9",
   "description": "Modern and scalable routing for React applications",
   "author": "Tanner Linsley",
@@ -182,7 +182,7 @@
     "node": ">=20.19"
   },
   "dependencies": {
-    "@tanstack/history": "workspace:*",
+    "@benjavicente/history": "workspace:*",
     "cookie-es": "^2.0.0",
     "seroval": "^1.4.2",
     "seroval-plugins": "^1.4.2"

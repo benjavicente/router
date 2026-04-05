@@ -1,6 +1,6 @@
-import { rootRouteId } from '@tanstack/router-core'
+import { rootRouteId } from '@benjavicente/router-core'
 
-import type { GeneratorPlugin } from '@tanstack/router-generator'
+import type { GeneratorPlugin } from '@benjavicente/router-generator'
 
 /**
  * this plugin builds the routes manifest and stores it on globalThis

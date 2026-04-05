@@ -1,4 +1,4 @@
-import { Link } from '@tanstack/solid-router'
+import { Link } from '@benjavicente/solid-router'
 import { expectTypeOf, test } from 'vitest'
 import { Route as ArkTypeRoute } from '../src/routes/users/arktype.index'
 import type { router } from '../src/main'

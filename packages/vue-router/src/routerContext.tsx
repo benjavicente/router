@@ -1,5 +1,5 @@
 import * as Vue from 'vue'
-import type { AnyRouter } from '@tanstack/router-core'
+import type { AnyRouter } from '@benjavicente/router-core'
 
 export const routerContext = Symbol(
   'TanStackRouter',

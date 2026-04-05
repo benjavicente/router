@@ -1,5 +1,5 @@
 import { isRunnableDevEnvironment } from 'vite'
-import { VIRTUAL_MODULES } from '@tanstack/start-server-core'
+import { VIRTUAL_MODULES } from '@benjavicente/start-server-core'
 import { NodeRequest, sendNodeResponse } from 'srvx/node'
 import { ENTRY_POINTS, VITE_ENVIRONMENT_NAMES } from '../constants'
 import { resolveViteId } from '../utils'

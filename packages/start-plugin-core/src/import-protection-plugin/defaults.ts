@@ -12,11 +12,11 @@ const frameworks = ['react', 'solid', 'vue'] as const
  * Returns the default import protection rules.
  *
  * All three framework variants are always included so that, e.g., a React
- * project also denies `@tanstack/solid-start/server` imports.
+ * project also denies `@benjavicente/solid-start/server` imports.
  */
 export function getDefaultImportProtectionRules(): DefaultImportProtectionRules {
   const clientSpecifiers: Array<Pattern> = frameworks.map(
-    (fw) => `@tanstack/${fw}-start/server`,
+    (fw) => `@benjavicente/${fw}-start/server`,
   )
 
   return {
@@ -41,7 +41,7 @@ export function getMarkerSpecifiers(): {
   clientOnly: Array<string>
 } {
   return {
-    serverOnly: frameworks.map((fw) => `@tanstack/${fw}-start/server-only`),
-    clientOnly: frameworks.map((fw) => `@tanstack/${fw}-start/client-only`),
+    serverOnly: frameworks.map((fw) => `@benjavicente/${fw}-start/server-only`),
+    clientOnly: frameworks.map((fw) => `@benjavicente/${fw}-start/client-only`),
   }
 }

@@ -1,9 +1,9 @@
 import { useStore } from '@tanstack/react-store'
-import { deepEqual } from '@tanstack/router-core'
-import { isServer } from '@tanstack/router-core/isServer'
+import { deepEqual } from '@benjavicente/router-core'
+import { isServer } from '@benjavicente/router-core/isServer'
 import { Asset } from './Asset'
 import { useRouter } from './useRouter'
-import type { RouterManagedTag } from '@tanstack/router-core'
+import type { RouterManagedTag } from '@benjavicente/router-core'
 
 /**
  * Render body script tags collected from route matches and SSR manifests.

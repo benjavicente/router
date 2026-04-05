@@ -1,5 +1,5 @@
 import Auth0 from '@auth/core/providers/auth0'
-import { setCookie } from '@tanstack/solid-start/server'
+import { setCookie } from '@benjavicente/solid-start/server'
 import type { Profile } from '@auth/core/types'
 import type { StartAuthJSConfig } from 'start-authjs'
 

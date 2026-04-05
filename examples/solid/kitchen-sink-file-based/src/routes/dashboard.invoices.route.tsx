@@ -1,6 +1,6 @@
-import { createFileRoute } from '@tanstack/solid-router'
+import { createFileRoute } from '@benjavicente/solid-router'
 import * as Solid from 'solid-js'
-import { Link, MatchRoute, Outlet } from '@tanstack/solid-router'
+import { Link, MatchRoute, Outlet } from '@benjavicente/solid-router'
 import { Spinner } from '../components/Spinner'
 import { fetchInvoices } from '../utils/mockTodos'
 

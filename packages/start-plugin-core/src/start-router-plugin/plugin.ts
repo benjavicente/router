@@ -2,7 +2,7 @@ import {
   tanStackRouterCodeSplitter,
   tanstackRouterAutoImport,
   tanstackRouterGenerator,
-} from '@tanstack/router-plugin/vite'
+} from '@benjavicente/router-plugin/vite'
 import { normalizePath } from 'vite'
 import path from 'pathe'
 import { getStartPackageName } from '../frameworkPackages'
@@ -16,7 +16,7 @@ import type {
   Generator,
   GeneratorPlugin,
   RouteNode,
-} from '@tanstack/router-generator'
+} from '@benjavicente/router-generator'
 import type { DevEnvironment, Plugin, PluginOption } from 'vite'
 import type { TanStackStartInputConfig } from '../schema'
 
@@ -35,13 +35,18 @@ function moduleDeclaration({
   routerFilePath,
   corePluginOpts,
   generatedRouteTreePath,
+  angularStartPackage,
 }: {
   startFilePath: string | undefined
   routerFilePath: string
   corePluginOpts: TanStackStartVitePluginCoreOptions
   generatedRouteTreePath: string
+  angularStartPackage?: string
 }): string {
-  const startPackageName = getStartPackageName(corePluginOpts.framework)
+  const startPackageName =
+    corePluginOpts.framework === 'angular' && angularStartPackage != null
+      ? angularStartPackage
+      : getStartPackageName(corePluginOpts.framework)
 
   function getImportPath(absolutePath: string) {
     let relativePath = path.relative(
@@ -147,6 +152,7 @@ export function tanStackStartRouter(
         corePluginOpts,
         startFilePath: resolvedStartConfig.startFilePath,
         routerFilePath: resolvedStartConfig.routerFilePath,
+        angularStartPackage: startConfig.router.angularStartPackage,
       }),
       ...(routeTreeFileFooter ?? []),
     ]

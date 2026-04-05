@@ -1,4 +1,4 @@
-# @tanstack/router-utils
+# @benjavicente/router-utils
 
 ## 1.161.6
 

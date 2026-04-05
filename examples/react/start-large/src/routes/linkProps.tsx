@@ -1,5 +1,5 @@
 import * as React from 'react'
-import { Link, linkOptions, createFileRoute } from '@tanstack/react-router'
+import { Link, linkOptions, createFileRoute } from '@benjavicente/react-router'
 import {
   customRedirect,
   ListItems,

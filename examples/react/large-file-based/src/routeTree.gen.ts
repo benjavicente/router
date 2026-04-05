@@ -132,7 +132,7 @@ export interface RootRouteChildren {
   RelativeRoute: typeof RelativeRoute
 }
 
-declare module '@tanstack/react-router' {
+declare module '@benjavicente/react-router' {
   interface FileRoutesByPath {
     '/relative': {
       id: '/relative'

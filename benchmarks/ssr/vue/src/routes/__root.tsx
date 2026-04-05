@@ -5,7 +5,7 @@ import {
   Outlet,
   Scripts,
   createRootRoute,
-} from '@tanstack/vue-router'
+} from '@benjavicente/vue-router'
 
 export const Route = createRootRoute({
   component: RootComponent,

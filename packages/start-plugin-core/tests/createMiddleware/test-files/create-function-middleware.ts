@@ -1,4 +1,4 @@
-import { createMiddleware } from '@tanstack/react-start'
+import { createMiddleware } from '@benjavicente/react-start'
 
 import { foo } from '@some/lib'
 

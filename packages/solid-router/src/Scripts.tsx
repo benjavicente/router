@@ -1,7 +1,7 @@
 import * as Solid from 'solid-js'
 import { Asset } from './Asset'
 import { useRouter } from './useRouter'
-import type { RouterManagedTag } from '@tanstack/router-core'
+import type { RouterManagedTag } from '@benjavicente/router-core'
 
 export const Scripts = () => {
   const router = useRouter()

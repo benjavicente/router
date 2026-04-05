@@ -1,5 +1,5 @@
 import * as Solid from 'solid-js'
-import { invariant, replaceEqualDeep } from '@tanstack/router-core'
+import { invariant, replaceEqualDeep } from '@benjavicente/router-core'
 import { nearestMatchContext } from './matchContext'
 import { useRouter } from './useRouter'
 import type {
@@ -10,7 +10,7 @@ import type {
   StrictOrFrom,
   ThrowConstraint,
   ThrowOrOptional,
-} from '@tanstack/router-core'
+} from '@benjavicente/router-core'
 
 export interface UseMatchBaseOptions<
   TRouter extends AnyRouter,

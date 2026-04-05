@@ -2,7 +2,7 @@ import * as Vue from 'vue'
 
 import { Asset } from './Asset'
 import { useTags } from './headContentUtils'
-import type { AssetCrossOriginConfig } from '@tanstack/router-core'
+import type { AssetCrossOriginConfig } from '@benjavicente/router-core'
 
 export interface HeadContentProps {
   assetCrossOrigin?: AssetCrossOriginConfig

@@ -49,7 +49,7 @@ export interface RootRouteChildren {
   PostIdRoute: typeof PostIdRoute
 }
 
-declare module '@tanstack/solid-router' {
+declare module '@benjavicente/solid-router' {
   interface FileRoutesByPath {
     '/$postId': {
       id: '/$postId'

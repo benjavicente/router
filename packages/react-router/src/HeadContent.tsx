@@ -2,7 +2,7 @@ import * as React from 'react'
 import { Asset } from './Asset'
 import { useRouter } from './useRouter'
 import { useTags } from './headContentUtils'
-import type { AssetCrossOriginConfig } from '@tanstack/router-core'
+import type { AssetCrossOriginConfig } from '@benjavicente/router-core'
 
 export interface HeadContentProps {
   assetCrossOrigin?: AssetCrossOriginConfig

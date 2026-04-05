@@ -3,8 +3,8 @@ import {
   Link,
   Scripts,
   createRootRoute,
-} from '@tanstack/solid-router'
-import { TanStackRouterDevtoolsPanel } from '@tanstack/solid-router-devtools'
+} from '@benjavicente/solid-router'
+import { TanStackRouterDevtoolsPanel } from '@benjavicente/solid-router-devtools'
 import { TanStackDevtools } from '@tanstack/solid-devtools'
 import { HydrationScript } from 'solid-js/web'
 import styles from '../styles.css?url'

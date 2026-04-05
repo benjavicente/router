@@ -1,4 +1,4 @@
-import { Link, useParams, useSearch } from '@tanstack/react-router'
+import { Link, useParams, useSearch } from '@benjavicente/react-router'
 
 const probes = Array.from({ length: 10 }, (_, index) => index)
 

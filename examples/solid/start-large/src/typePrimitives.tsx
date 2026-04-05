@@ -1,4 +1,4 @@
-import { Link, redirect, useNavigate } from '@tanstack/solid-router'
+import { Link, redirect, useNavigate } from '@benjavicente/solid-router'
 import { onMount } from 'solid-js'
 import type {
   RegisteredRouter,
@@ -7,7 +7,7 @@ import type {
   ValidateLinkOptionsArray,
   ValidateNavigateOptions,
   ValidateRedirectOptions,
-} from '@tanstack/solid-router'
+} from '@benjavicente/solid-router'
 import type { JSX } from 'solid-js'
 
 export function customRedirect<TRouter extends RegisteredRouter, TOptions>(

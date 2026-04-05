@@ -1,4 +1,4 @@
-# @tanstack/solid-router — Skill Spec
+# @benjavicente/solid-router — Skill Spec
 
 Solid bindings for TanStack Router. Accessor<T> returns, Solid primitives, createLink, @solidjs/meta head management.
 

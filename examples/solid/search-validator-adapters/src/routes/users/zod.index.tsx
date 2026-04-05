@@ -1,5 +1,5 @@
-import { useNavigate } from '@tanstack/solid-router'
-import { fallback, zodValidator } from '@tanstack/zod-adapter'
+import { useNavigate } from '@benjavicente/solid-router'
+import { fallback, zodValidator } from '@benjavicente/zod-adapter'
 import { z } from 'zod'
 import { Suspense } from 'solid-js'
 import { Header } from '../../components/Header'

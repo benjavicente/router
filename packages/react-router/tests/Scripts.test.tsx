@@ -22,7 +22,7 @@ import {
   createRouter,
 } from '../src'
 import { Scripts } from '../src/Scripts'
-import type { Manifest } from '@tanstack/router-core'
+import type { Manifest } from '@benjavicente/router-core'
 
 const createTestManifest = (routeId: string) =>
   ({

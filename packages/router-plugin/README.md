@@ -7,7 +7,7 @@ See https://tanstack.com/router/latest/docs/framework/react/routing/file-based-r
 ## Installation
 
 ```bash
-npm install -D @tanstack/router-plugin
+npm install -D @benjavicente/router-plugin
 ```
 
 See https://tanstack.com/router/latest/docs/framework/react/routing/installation/with-router-cli for usage instructions.

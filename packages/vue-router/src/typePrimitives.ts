@@ -12,7 +12,7 @@ import type {
   InferStrict,
   InferTo,
   RegisteredRouter,
-} from '@tanstack/router-core'
+} from '@benjavicente/router-core'
 
 export type ValidateLinkOptions<
   TRouter extends AnyRouter = RegisteredRouter,

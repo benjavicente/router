@@ -6,7 +6,7 @@ import type {
   ResolveUseLoaderData,
   StrictOrFrom,
   UseLoaderDataResult,
-} from '@tanstack/router-core'
+} from '@benjavicente/router-core'
 
 export interface UseLoaderDataBaseOptions<
   TRouter extends AnyRouter,

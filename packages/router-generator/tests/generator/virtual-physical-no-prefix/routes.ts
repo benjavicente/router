@@ -1,4 +1,4 @@
-import { physical, rootRoute, route } from '@tanstack/virtual-file-routes'
+import { physical, rootRoute, route } from '@benjavicente/virtual-file-routes'
 
 // This test verifies the single-argument physical() overload
 // which uses an empty path prefix (merges at current level)

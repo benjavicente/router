@@ -1,4 +1,4 @@
-# @tanstack/virtual-file-routes — Skill Spec
+# @benjavicente/virtual-file-routes — Skill Spec
 
 Programmatic route tree building as an alternative to filesystem conventions. Provides helper functions for explicit route control.
 

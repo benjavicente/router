@@ -1,4 +1,4 @@
-import { createMiddleware } from '@tanstack/solid-start'
+import { createMiddleware } from '@benjavicente/solid-start'
 
 const preLogMiddleware = createMiddleware({ type: 'function' })
   .client(async (ctx) => {

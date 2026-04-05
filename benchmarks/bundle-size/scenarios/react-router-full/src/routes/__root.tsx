@@ -42,7 +42,7 @@ import {
   useRouterState,
   useSearch,
   useTags,
-} from '@tanstack/react-router'
+} from '@benjavicente/react-router'
 
 export const Route = createRootRoute({
   component: RootComponent,

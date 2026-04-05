@@ -1,4 +1,4 @@
-# @tanstack/valibot-adapter
+# @benjavicente/valibot-adapter
 
 ## 1.166.9
 

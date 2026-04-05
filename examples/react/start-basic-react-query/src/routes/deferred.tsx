@@ -1,6 +1,6 @@
-import { createFileRoute } from '@tanstack/react-router'
+import { createFileRoute } from '@benjavicente/react-router'
 import { queryOptions, useSuspenseQuery } from '@tanstack/react-query'
-import {} from '@tanstack/react-router'
+import {} from '@benjavicente/react-router'
 import { Suspense, useState } from 'react'
 
 const deferredQueryOptions = () =>

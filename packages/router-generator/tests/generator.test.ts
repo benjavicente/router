@@ -9,7 +9,7 @@ import {
   physical,
   rootRoute,
   route,
-} from '@tanstack/virtual-file-routes'
+} from '@benjavicente/virtual-file-routes'
 import { Generator, getConfig, virtualGetRouteNodes } from '../src'
 import type { Config } from '../src'
 

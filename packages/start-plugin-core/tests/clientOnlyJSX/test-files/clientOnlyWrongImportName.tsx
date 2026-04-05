@@ -1,6 +1,6 @@
 // Test: A different component imported from TanStack should NOT be transformed
 // even if aliased to "ClientOnly" - we check the original import name
-import { Link as ClientOnly } from '@tanstack/react-router'
+import { Link as ClientOnly } from '@benjavicente/react-router'
 
 export function MyComponent() {
   return (

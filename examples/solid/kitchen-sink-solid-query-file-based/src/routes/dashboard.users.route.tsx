@@ -7,7 +7,7 @@ import {
   createFileRoute,
   retainSearchParams,
   useNavigate,
-} from '@tanstack/solid-router'
+} from '@benjavicente/solid-router'
 import { useQuery } from '@tanstack/solid-query'
 import { z } from 'zod'
 import { Spinner } from '../components/Spinner'

@@ -1,5 +1,5 @@
 {
-  "name": "@tanstack/router-devtools",
+  "name": "@benjavicente/router-devtools",
   "version": "1.166.11",
   "description": "Modern and scalable routing for React applications",
   "author": "Tanner Linsley",
@@ -62,7 +62,7 @@
     "node": ">=20.19"
   },
   "dependencies": {
-    "@tanstack/react-router-devtools": "workspace:*",
+    "@benjavicente/react-router-devtools": "workspace:*",
     "clsx": "^2.1.1",
     "goober": "^2.1.16"
   },
@@ -73,7 +73,7 @@
     "vite": "*"
   },
   "peerDependencies": {
-    "@tanstack/react-router": "workspace:^",
+    "@benjavicente/react-router": "workspace:^",
     "csstype": "^3.0.10",
     "react": ">=18.0.0 || >=19.0.0",
     "react-dom": ">=18.0.0 || >=19.0.0"

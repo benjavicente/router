@@ -6,10 +6,10 @@ import {
   Outlet,
   Scripts,
   createRootRouteWithContext,
-} from '@tanstack/solid-router'
-import { TanStackRouterDevtools } from '@tanstack/solid-router-devtools'
-import { createServerFn } from '@tanstack/solid-start'
-import { getRequest } from '@tanstack/solid-start/server'
+} from '@benjavicente/solid-router'
+import { TanStackRouterDevtools } from '@benjavicente/solid-router-devtools'
+import { createServerFn } from '@benjavicente/solid-start'
+import { getRequest } from '@benjavicente/solid-start/server'
 import { HydrationScript } from 'solid-js/web'
 import { Show } from 'solid-js'
 import { getSession } from 'start-authjs'

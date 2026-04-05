@@ -30,7 +30,7 @@ A segment prefixed with `$` captures text until the next `/`.
 
 ```tsx
 // src/routes/posts.$postId.tsx
-import { createFileRoute } from '@tanstack/react-router'
+import { createFileRoute } from '@benjavicente/react-router'
 
 export const Route = createFileRoute('/posts/$postId')({
   loader: async ({ params }) => {
@@ -75,7 +75,7 @@ A route with a path ending in `$` (bare dollar sign) captures everything after i
 
 ```tsx
 // src/routes/files.$.tsx
-import { createFileRoute } from '@tanstack/react-router'
+import { createFileRoute } from '@benjavicente/react-router'
 
 export const Route = createFileRoute('/files/$')({
   component: FileViewer,
@@ -94,7 +94,7 @@ Optional params use `{-$paramName}` syntax. The segment may or may not be presen
 
 ```tsx
 // src/routes/posts.{-$category}.tsx
-import { createFileRoute } from '@tanstack/react-router'
+import { createFileRoute } from '@benjavicente/react-router'
 
 export const Route = createFileRoute('/posts/{-$category}')({
   component: PostsComponent,
@@ -121,7 +121,7 @@ export const Route = createFileRoute('/posts/{-$category}/{-$slug}')({
 
 ```tsx
 // src/routes/{-$locale}/about.tsx
-import { createFileRoute } from '@tanstack/react-router'
+import { createFileRoute } from '@benjavicente/react-router'
 
 export const Route = createFileRoute('/{-$locale}/about')({
   component: AboutComponent,
@@ -143,7 +143,7 @@ Curly braces `{}` around `$paramName` allow text before or after the dynamic par
 
 ```tsx
 // src/routes/posts/post-{$postId}.tsx
-import { createFileRoute } from '@tanstack/react-router'
+import { createFileRoute } from '@benjavicente/react-router'
 
 export const Route = createFileRoute('/posts/post-{$postId}')({
   component: PostComponent,
@@ -160,7 +160,7 @@ function PostComponent() {
 
 ```tsx
 // src/routes/files/{$fileName}[.]txt.tsx
-import { createFileRoute } from '@tanstack/react-router'
+import { createFileRoute } from '@benjavicente/react-router'
 
 export const Route = createFileRoute('/files/{$fileName}.txt')({
   component: FileComponent,
@@ -192,7 +192,7 @@ function UserComponent() {
 ### Object Form
 
 ```tsx
-import { Link } from '@tanstack/react-router'
+import { Link } from '@benjavicente/react-router'
 
 function PostLink({ postId }: { postId: string }) {
   return (
@@ -218,7 +218,7 @@ function PostLink({ postId }: { postId: string }) {
 ### Programmatic Navigation
 
 ```tsx
-import { useNavigate } from '@tanstack/react-router'
+import { useNavigate } from '@benjavicente/react-router'
 
 function GoToPost({ postId }: { postId: string }) {
   const navigate = useNavigate()
@@ -254,7 +254,7 @@ function GoToPost({ postId }: { postId: string }) {
 ### `useParams` with `from`
 
 ```tsx
-import { useParams } from '@tanstack/react-router'
+import { useParams } from '@benjavicente/react-router'
 
 function PostHeader() {
   const { postId } = useParams({ from: '/posts/$postId' })
@@ -292,7 +292,7 @@ export const Route = createFileRoute('/posts/$postId')({
 By default, params are encoded with `encodeURIComponent`. Allow extra characters via router config:
 
 ```tsx
-import { createRouter } from '@tanstack/react-router'
+import { createRouter } from '@benjavicente/react-router'
 
 const router = createRouter({
   routeTree,

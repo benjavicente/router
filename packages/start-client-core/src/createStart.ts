@@ -10,7 +10,7 @@ import type {
   AnySerializationAdapter,
   Register,
   SSROption,
-} from '@tanstack/router-core'
+} from '@benjavicente/router-core'
 
 export interface StartInstanceOptions<
   in out TSerializationAdapters,
@@ -159,7 +159,7 @@ export const createStart = <
 export type AnyStartInstance = StartInstance<any, any, any, any>
 export type AnyStartInstanceOptions = StartInstanceOptions<any, any, any, any>
 
-declare module '@tanstack/router-core' {
+declare module '@benjavicente/router-core' {
   interface SerializableExtensions {
     serverFn: { [TSS_SERVER_FUNCTION]: true }
   }

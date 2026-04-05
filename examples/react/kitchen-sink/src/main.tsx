@@ -18,8 +18,8 @@ import {
   useRouter,
   useRouterState,
   useSearch,
-} from '@tanstack/react-router'
-import { TanStackRouterDevtools } from '@tanstack/react-router-devtools'
+} from '@benjavicente/react-router'
+import { TanStackRouterDevtools } from '@benjavicente/react-router-devtools'
 import { z } from 'zod'
 import {
   fetchInvoiceById,
@@ -30,7 +30,7 @@ import {
   postInvoice,
 } from './mockTodos'
 import { useMutation } from './useMutation'
-import type { NotFoundRouteProps } from '@tanstack/react-router'
+import type { NotFoundRouteProps } from '@benjavicente/react-router'
 import type { Invoice } from './mockTodos'
 import './styles.css'
 
@@ -885,7 +885,7 @@ const router = createRouter({
   scrollRestoration: true,
 })
 
-declare module '@tanstack/react-router' {
+declare module '@benjavicente/react-router' {
   interface Register {
     router: typeof router
   }

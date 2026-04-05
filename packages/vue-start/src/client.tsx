@@ -1,1 +1,1 @@
-export * from '@tanstack/vue-start-client'
+export * from '@benjavicente/vue-start-client'

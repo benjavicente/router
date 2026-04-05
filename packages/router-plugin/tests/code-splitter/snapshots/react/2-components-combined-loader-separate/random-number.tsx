@@ -1,8 +1,8 @@
 const $$splitComponentImporter = () => import('random-number.tsx?tsr-split=component---errorComponent---notFoundComponent---pendingComponent');
-import { lazyRouteComponent } from '@tanstack/react-router';
+import { lazyRouteComponent } from '@benjavicente/react-router';
 const $$splitLoaderImporter = () => import('random-number.tsx?tsr-split=loader');
-import { lazyFn } from '@tanstack/react-router';
-import { Await, Link, createFileRoute } from '@tanstack/react-router';
+import { lazyFn } from '@benjavicente/react-router';
+import { Await, Link, createFileRoute } from '@benjavicente/react-router';
 import { Carbon } from '~/components/Carbon';
 import { twMerge } from 'tailwind-merge';
 import { FaDiscord, FaGithub, FaTshirt } from 'react-icons/fa';

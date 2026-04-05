@@ -1,5 +1,5 @@
 {
-  "name": "@tanstack/start-server-core",
+  "name": "@benjavicente/start-server-core",
   "version": "1.167.9",
   "description": "Modern and scalable routing for React applications",
   "author": "Tanner Linsley",
@@ -78,10 +78,10 @@
     "node": ">=22.12.0"
   },
   "dependencies": {
-    "@tanstack/history": "workspace:*",
-    "@tanstack/router-core": "workspace:*",
-    "@tanstack/start-client-core": "workspace:*",
-    "@tanstack/start-storage-context": "workspace:*",
+    "@benjavicente/history": "workspace:*",
+    "@benjavicente/router-core": "workspace:*",
+    "@benjavicente/start-client-core": "workspace:*",
+    "@benjavicente/start-storage-context": "workspace:*",
     "h3-v2": "npm:h3@2.0.1-rc.16",
     "seroval": "^1.4.2"
   },
