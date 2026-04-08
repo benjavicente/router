@@ -96,7 +96,7 @@ export interface RootRouteChildren {
   DashboardRoute: typeof DashboardRouteWithChildren
 }
 
-declare module '@tanstack/solid-router' {
+declare module '@benjavicente/solid-router' {
   interface FileRoutesByPath {
     '/dashboard': {
       id: '/dashboard'

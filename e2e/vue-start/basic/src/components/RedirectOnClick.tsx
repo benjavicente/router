@@ -1,4 +1,4 @@
-import { useServerFn } from '@tanstack/vue-start'
+import { useServerFn } from '@benjavicente/vue-start'
 import { throwRedirect } from './throwRedirect'
 import { defineComponent } from 'vue'
 

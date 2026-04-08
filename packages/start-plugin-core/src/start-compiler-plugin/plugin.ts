@@ -1,11 +1,15 @@
 import assert from 'node:assert'
-import { VIRTUAL_MODULES } from '@tanstack/start-server-core'
+import { VIRTUAL_MODULES } from '@benjavicente/start-server-core'
 import { resolve as resolvePath } from 'pathe'
 import {
   SERVER_FN_LOOKUP,
   TRANSFORM_ID_REGEX,
   VITE_ENVIRONMENT_NAMES,
 } from '../constants'
+import {
+  getRouterPackageName,
+  getStartPackageName,
+} from '../frameworkPackages'
 import {
   KindDetectionPatterns,
   LookupKindsPerEnv,
@@ -36,25 +40,28 @@ const getLookupConfigurationsForEnv = (
   env: 'client' | 'server',
   framework: CompileStartFrameworkOptions,
 ): Array<LookupConfig> => {
+  const startPackageName = getStartPackageName(framework)
+  const routerPackageName = getRouterPackageName(framework)
+
   // Common configs for all environments
   const commonConfigs: Array<LookupConfig> = [
     {
-      libName: `@tanstack/${framework}-start`,
+      libName: startPackageName,
       rootExport: 'createServerFn',
       kind: 'Root',
     },
     {
-      libName: `@tanstack/${framework}-start`,
+      libName: startPackageName,
       rootExport: 'createIsomorphicFn',
       kind: 'IsomorphicFn',
     },
     {
-      libName: `@tanstack/${framework}-start`,
+      libName: startPackageName,
       rootExport: 'createServerOnlyFn',
       kind: 'ServerOnlyFn',
     },
     {
-      libName: `@tanstack/${framework}-start`,
+      libName: startPackageName,
       rootExport: 'createClientOnlyFn',
       kind: 'ClientOnlyFn',
     },
@@ -63,12 +70,12 @@ const getLookupConfigurationsForEnv = (
   if (env === 'client') {
     return [
       {
-        libName: `@tanstack/${framework}-start`,
+        libName: startPackageName,
         rootExport: 'createMiddleware',
         kind: 'Root',
       },
       {
-        libName: `@tanstack/${framework}-start`,
+        libName: startPackageName,
         rootExport: 'createStart',
         kind: 'Root',
       },
@@ -79,7 +86,7 @@ const getLookupConfigurationsForEnv = (
     return [
       ...commonConfigs,
       {
-        libName: `@tanstack/${framework}-router`,
+        libName: routerPackageName,
         rootExport: 'ClientOnly',
         kind: 'ClientOnlyJSX',
       },
@@ -444,7 +451,7 @@ export function startCompilerPlugin(
           if (this.environment.name !== opts.providerEnvName) {
             // SSR caller: use HTTP-based getServerFnById
             // This re-exports from the start-server-core package which handles HTTP calls
-            return `export { getServerFnById } from '@tanstack/start-server-core/server-fn-ssr-caller'`
+            return `export { getServerFnById } from '@benjavicente/start-server-core/server-fn-ssr-caller'`
           }
 
           if (this.environment.mode !== 'build') {

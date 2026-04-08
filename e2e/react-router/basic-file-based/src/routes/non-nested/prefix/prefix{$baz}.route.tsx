@@ -1,4 +1,4 @@
-import { Outlet, createFileRoute } from '@tanstack/react-router'
+import { Outlet, createFileRoute } from '@benjavicente/react-router'
 
 export const Route = createFileRoute('/non-nested/prefix/prefix{$baz}')({
   component: RouteComponent,

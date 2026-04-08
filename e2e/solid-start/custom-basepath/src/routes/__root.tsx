@@ -4,9 +4,9 @@ import {
   Outlet,
   Scripts,
   createRootRoute,
-} from '@tanstack/solid-router'
+} from '@benjavicente/solid-router'
 
-import { TanStackRouterDevtoolsInProd } from '@tanstack/solid-router-devtools'
+import { TanStackRouterDevtoolsInProd } from '@benjavicente/solid-router-devtools'
 import { HydrationScript } from 'solid-js/web'
 import { NotFound } from '~/components/NotFound'
 import appCss from '~/styles/app.css?url'

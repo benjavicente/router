@@ -43,8 +43,8 @@ TanStack Start provides the tools for both through server functions, sessions, a
 Server functions handle sensitive authentication logic securely on the server:
 
 ```tsx
-import { createServerFn } from '@tanstack/react-start'
-import { redirect } from '@tanstack/react-router'
+import { createServerFn } from '@benjavicente/react-start'
+import { redirect } from '@benjavicente/react-router'
 
 // Login server function
 export const loginFn = createServerFn({ method: 'POST' })
@@ -96,7 +96,7 @@ TanStack Start provides secure HTTP-only cookie sessions:
 
 ```tsx
 // utils/session.ts
-import { useSession } from '@tanstack/react-start/server'
+import { useSession } from '@benjavicente/react-start/server'
 
 type SessionData = {
   userId?: string
@@ -126,7 +126,7 @@ Share authentication state across your application:
 ```tsx
 // contexts/auth.tsx
 import { createContext, useContext, ReactNode } from 'react'
-import { useServerFn } from '@tanstack/react-start'
+import { useServerFn } from '@benjavicente/react-start'
 import { getCurrentUserFn } from '../server/auth'
 
 type User = {
@@ -168,7 +168,7 @@ Protect routes using `beforeLoad`:
 
 ```tsx
 // routes/_authed.tsx - Layout route for protected pages
-import { createFileRoute, redirect } from '@tanstack/react-router'
+import { createFileRoute, redirect } from '@benjavicente/react-router'
 import { getCurrentUserFn } from '../server/auth'
 
 export const Route = createFileRoute('/_authed')({
@@ -190,7 +190,7 @@ export const Route = createFileRoute('/_authed')({
 
 ```tsx
 // routes/_authed/dashboard.tsx - Protected route
-import { createFileRoute } from '@tanstack/react-router'
+import { createFileRoute } from '@benjavicente/react-router'
 
 export const Route = createFileRoute('/_authed/dashboard')({
   component: DashboardComponent,
@@ -215,7 +215,7 @@ function DashboardComponent() {
 ```tsx
 // server/auth.ts
 import bcrypt from 'bcryptjs'
-import { createServerFn } from '@tanstack/react-start'
+import { createServerFn } from '@benjavicente/react-start'
 
 // User registration
 export const registerFn = createServerFn({ method: 'POST' })
@@ -468,7 +468,7 @@ describe('Authentication', () => {
 ```tsx
 // __tests__/auth-flow.test.tsx
 import { render, screen, fireEvent, waitFor } from '@testing-library/react'
-import { RouterProvider, createMemoryHistory } from '@tanstack/react-router'
+import { RouterProvider, createMemoryHistory } from '@benjavicente/react-router'
 import { router } from '../router'
 
 describe('Authentication Flow', () => {

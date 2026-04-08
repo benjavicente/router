@@ -1,5 +1,5 @@
 import { useQuery } from '@tanstack/vue-query'
-import { Link, Outlet, createFileRoute } from '@tanstack/vue-router'
+import { Link, Outlet, createFileRoute } from '@benjavicente/vue-router'
 import { Suspense, defineComponent } from 'vue'
 import { postsQueryOptions } from '~/utils/posts'
 

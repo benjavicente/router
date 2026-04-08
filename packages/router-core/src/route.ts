@@ -1158,6 +1158,40 @@ export interface SsrContextOptions<
   matches: Array<MakePreValidationErrorHandlingRouteMatchUnion>
 }
 
+export interface DefaultBeforeLoadContextOptionsExtensions<
+  in out TRegister,
+  in out TParentRoute extends AnyRoute,
+  in out TSearchValidator,
+  in out TParams,
+  in out TRouterContext,
+  in out TRouteContextFn,
+  in out TRouteId,
+  in out TServerMiddlewares,
+  in out THandlers,
+> {}
+
+export interface BeforeLoadContextOptionsExtensions<
+  in out TRegister,
+  in out TParentRoute extends AnyRoute,
+  in out TSearchValidator,
+  in out TParams,
+  in out TRouterContext,
+  in out TRouteContextFn,
+  in out TRouteId,
+  in out TServerMiddlewares,
+  in out THandlers,
+> extends DefaultBeforeLoadContextOptionsExtensions<
+    TRegister,
+    TParentRoute,
+    TSearchValidator,
+    TParams,
+    TRouterContext,
+    TRouteContextFn,
+    TRouteId,
+    TServerMiddlewares,
+    THandlers
+  > {}
+
 export interface BeforeLoadContextOptions<
   in out TRegister,
   in out TParentRoute extends AnyRoute,
@@ -1171,7 +1205,18 @@ export interface BeforeLoadContextOptions<
 >
   extends
     ContextOptions<TParentRoute, TParams, TRouteId>,
-    FullSearchSchemaOption<TParentRoute, TSearchValidator> {
+    FullSearchSchemaOption<TParentRoute, TSearchValidator>,
+    BeforeLoadContextOptionsExtensions<
+      TRegister,
+      TParentRoute,
+      TSearchValidator,
+      TParams,
+      TRouterContext,
+      TRouteContextFn,
+      TRouteId,
+      TServerMiddlewares,
+      THandlers
+    > {
   context: Expand<
     BeforeLoadContextParameter<TParentRoute, TRouterContext, TRouteContextFn>
   >
@@ -1503,7 +1548,18 @@ export interface LoaderFnContext<
   in out TBeforeLoadFn = AnyContext,
   in out TServerMiddlewares = unknown,
   in out THandlers = undefined,
-> {
+> extends LoaderFnContextExtensions<
+    TRegister,
+    TParentRoute,
+    TId,
+    TParams,
+    TLoaderDeps,
+    TRouterContext,
+    TRouteContextFn,
+    TBeforeLoadFn,
+    TServerMiddlewares,
+    THandlers
+  > {
   abortController: AbortController
   preload: boolean
   params: Expand<ResolveAllParamsFromParent<TParentRoute, TParams>>
@@ -1528,6 +1584,43 @@ export interface LoaderFnContext<
   cause: 'preload' | 'enter' | 'stay'
   route: AnyRoute
 }
+
+export interface DefaultLoaderFnContextExtensions<
+  in out TRegister = unknown,
+  in out TParentRoute extends AnyRoute = AnyRoute,
+  in out TId extends string = string,
+  in out TParams = {},
+  in out TLoaderDeps = {},
+  in out TRouterContext = {},
+  in out TRouteContextFn = AnyContext,
+  in out TBeforeLoadFn = AnyContext,
+  in out TServerMiddlewares = unknown,
+  in out THandlers = undefined,
+> {}
+
+export interface LoaderFnContextExtensions<
+  in out TRegister = unknown,
+  in out TParentRoute extends AnyRoute = AnyRoute,
+  in out TId extends string = string,
+  in out TParams = {},
+  in out TLoaderDeps = {},
+  in out TRouterContext = {},
+  in out TRouteContextFn = AnyContext,
+  in out TBeforeLoadFn = AnyContext,
+  in out TServerMiddlewares = unknown,
+  in out THandlers = undefined,
+> extends DefaultLoaderFnContextExtensions<
+    TRegister,
+    TParentRoute,
+    TId,
+    TParams,
+    TLoaderDeps,
+    TRouterContext,
+    TRouteContextFn,
+    TBeforeLoadFn,
+    TServerMiddlewares,
+    THandlers
+  > {}
 
 export interface DefaultRootRouteOptionsExtensions {
   shellComponent?: unknown

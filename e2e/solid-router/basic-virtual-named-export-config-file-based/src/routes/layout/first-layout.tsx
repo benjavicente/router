@@ -1,4 +1,4 @@
-import { Outlet } from '@tanstack/solid-router'
+import { Outlet } from '@benjavicente/solid-router'
 
 export const Route = createFileRoute({
   component: LayoutComponent,

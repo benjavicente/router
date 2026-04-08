@@ -12,8 +12,8 @@ Install the necessary core dependencies:
 
 <!-- ::start:tabs variant="package-managers" -->
 
-react: @tanstack/react-router @tanstack/react-router-devtools
-solid: @tanstack/solid-router @tanstack/solid-router-devtools
+react: @benjavicente/react-router @benjavicente/react-router-devtools
+solid: @benjavicente/solid-router @benjavicente/solid-router-devtools
 
 <!-- ::end:tabs -->
 
@@ -21,8 +21,8 @@ Install the necessary development dependencies:
 
 <!-- ::start:tabs variant="package-managers" mode="dev-install" -->
 
-react: @tanstack/router-plugin
-solid: @tanstack/router-plugin
+react: @benjavicente/router-plugin
+solid: @benjavicente/router-plugin
 
 <!-- ::end:tabs -->
 
@@ -32,12 +32,12 @@ solid: @tanstack/router-plugin
 // vite.config.ts
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
-import { tanstackRouter } from '@tanstack/router-plugin/vite'
+import { tanstackRouter } from '@benjavicente/router-plugin/vite'
 
 // https://vitejs.dev/config/
 export default defineConfig({
   plugins: [
-    // Please make sure that '@tanstack/router-plugin' is passed before '@vitejs/plugin-react'
+    // Please make sure that '@benjavicente/router-plugin' is passed before '@vitejs/plugin-react'
     tanstackRouter({
       target: 'react',
       autoCodeSplitting: true,
@@ -65,8 +65,8 @@ Create the following files:
 <!-- ::start:tabs variant="files" -->
 
 ```tsx title="src/routes/__root.tsx"
-import { createRootRoute, Link, Outlet } from '@tanstack/react-router'
-import { TanStackRouterDevtools } from '@tanstack/react-router-devtools'
+import { createRootRoute, Link, Outlet } from '@benjavicente/react-router'
+import { TanStackRouterDevtools } from '@benjavicente/react-router-devtools'
 
 const RootLayout = () => (
   <>
@@ -88,7 +88,7 @@ export const Route = createRootRoute({ component: RootLayout })
 ```
 
 ```tsx title="src/routes/index.tsx"
-import { createFileRoute } from '@tanstack/react-router'
+import { createFileRoute } from '@benjavicente/react-router'
 
 export const Route = createFileRoute('/')({
   component: Index,
@@ -104,7 +104,7 @@ function Index() {
 ```
 
 ```tsx title="src/routes/about.tsx"
-import { createFileRoute } from '@tanstack/react-router'
+import { createFileRoute } from '@benjavicente/react-router'
 
 export const Route = createFileRoute('/about')({
   component: About,
@@ -118,7 +118,7 @@ function About() {
 ```tsx title="src/main.tsx"
 import { StrictMode } from 'react'
 import ReactDOM from 'react-dom/client'
-import { RouterProvider, createRouter } from '@tanstack/react-router'
+import { RouterProvider, createRouter } from '@benjavicente/react-router'
 
 // Import the generated route tree
 import { routeTree } from './routeTree.gen'
@@ -127,7 +127,7 @@ import { routeTree } from './routeTree.gen'
 const router = createRouter({ routeTree })
 
 // Register the router instance for type safety
-declare module '@tanstack/react-router' {
+declare module '@benjavicente/react-router' {
   interface Register {
     router: typeof router
   }
@@ -152,8 +152,8 @@ if (!rootElement.innerHTML) {
 <!-- ::start:tabs variant="files" -->
 
 ```tsx title="src/routes/__root.tsx"
-import { createRootRoute, Link, Outlet } from '@tanstack/solid-router'
-import { TanStackRouterDevtools } from '@tanstack/solid-router-devtools'
+import { createRootRoute, Link, Outlet } from '@benjavicente/solid-router'
+import { TanStackRouterDevtools } from '@benjavicente/solid-router-devtools'
 
 const RootLayout = () => (
   <>
@@ -175,7 +175,7 @@ export const Route = createRootRoute({ component: RootLayout })
 ```
 
 ```tsx title="src/routes/index.tsx"
-import { createFileRoute } from '@tanstack/solid-router'
+import { createFileRoute } from '@benjavicente/solid-router'
 
 export const Route = createFileRoute('/')({
   component: Index,
@@ -191,7 +191,7 @@ function Index() {
 ```
 
 ```tsx title="src/routes/about.tsx"
-import { createFileRoute } from '@tanstack/solid-router'
+import { createFileRoute } from '@benjavicente/solid-router'
 
 export const Route = createFileRoute('/about')({
   component: About,
@@ -205,7 +205,7 @@ function About() {
 ```tsx title="src/main.tsx"
 /* @refresh reload */
 import { render } from 'solid-js/web'
-import { RouterProvider, createRouter } from '@tanstack/solid-router'
+import { RouterProvider, createRouter } from '@benjavicente/solid-router'
 
 // Import the generated route tree
 import { routeTree } from './routeTree.gen'
@@ -214,7 +214,7 @@ import { routeTree } from './routeTree.gen'
 const router = createRouter({ routeTree })
 
 // Register the router instance for type safety
-declare module '@tanstack/solid-router' {
+declare module '@benjavicente/solid-router' {
   interface Register {
     router: typeof router
   }
@@ -230,7 +230,7 @@ render(() => <RouterProvider router={router} />, rootElement)
 
 <!-- ::end:framework -->
 
-Regardless of whether you are using the `@tanstack/router-plugin` package and running the `npm run dev`/`npm run build` scripts, or manually running the `tsr watch`/`tsr generate` commands from your package scripts, the route tree file will be generated at `src/routeTree.gen.ts`.
+Regardless of whether you are using the `@benjavicente/router-plugin` package and running the `npm run dev`/`npm run build` scripts, or manually running the `tsr watch`/`tsr generate` commands from your package scripts, the route tree file will be generated at `src/routeTree.gen.ts`.
 
 If you are working with this pattern you should change the `id` of the root `<div>` on your `index.html` file to `<div id='root'></div>`
 
@@ -253,8 +253,8 @@ import {
   createRouter,
   createRoute,
   createRootRoute,
-} from '@tanstack/react-router'
-import { TanStackRouterDevtools } from '@tanstack/react-router-devtools'
+} from '@benjavicente/react-router'
+import { TanStackRouterDevtools } from '@benjavicente/react-router-devtools'
 
 const rootRoute = createRootRoute({
   component: () => (
@@ -298,7 +298,7 @@ const routeTree = rootRoute.addChildren([indexRoute, aboutRoute])
 
 const router = createRouter({ routeTree })
 
-declare module '@tanstack/react-router' {
+declare module '@benjavicente/react-router' {
   interface Register {
     router: typeof router
   }
@@ -327,8 +327,8 @@ import {
   createRouter,
   createRoute,
   createRootRoute,
-} from '@tanstack/solid-router'
-import { TanStackRouterDevtools } from '@tanstack/solid-router-devtools'
+} from '@benjavicente/solid-router'
+import { TanStackRouterDevtools } from '@benjavicente/solid-router-devtools'
 
 const rootRoute = createRootRoute({
   component: () => (
@@ -372,7 +372,7 @@ const routeTree = rootRoute.addChildren([indexRoute, aboutRoute])
 
 const router = createRouter({ routeTree })
 
-declare module '@tanstack/solid-router' {
+declare module '@benjavicente/solid-router' {
   interface Register {
     router: typeof router
   }

@@ -1,6 +1,6 @@
 import { expect, test } from '@playwright/test'
-import { linkOptions } from '@tanstack/react-router'
-import { toRuntimePath } from '@tanstack/router-e2e-utils'
+import { linkOptions } from '@benjavicente/react-router'
+import { toRuntimePath } from '@benjavicente/router-e2e-utils'
 
 test('Smoke - Renders home', async ({ page }) => {
   await page.goto(toRuntimePath('/'))

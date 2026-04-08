@@ -8,14 +8,14 @@ import {
   createRootRoute,
   createRoute,
   createRouter,
-} from '@tanstack/react-router'
-import { TanStackRouterDevtools } from '@tanstack/react-router-devtools'
+} from '@benjavicente/react-router'
+import { TanStackRouterDevtools } from '@benjavicente/react-router-devtools'
 import axios from 'redaxios'
 import { z } from 'zod'
 import type {
   ErrorComponentProps,
   SearchSchemaInput,
-} from '@tanstack/react-router'
+} from '@benjavicente/react-router'
 import './styles.css'
 
 type PostType = {
@@ -210,7 +210,7 @@ const router = createRouter({
 })
 
 // Register things for typesafety
-declare module '@tanstack/react-router' {
+declare module '@benjavicente/react-router' {
   interface Register {
     router: typeof router
   }

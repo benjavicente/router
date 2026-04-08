@@ -1,7 +1,7 @@
-import { createFileRoute, deepEqual } from '@tanstack/react-router'
+import { createFileRoute, deepEqual } from '@benjavicente/react-router'
 
 import React from 'react'
-import { createServerFn } from '@tanstack/react-start'
+import { createServerFn } from '@benjavicente/react-start'
 import { fooFnInsideFactoryFile } from './-functions/createFooServerFn'
 import {
   barFn,

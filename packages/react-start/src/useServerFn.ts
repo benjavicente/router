@@ -1,5 +1,5 @@
 import * as React from 'react'
-import { isRedirect, useRouter } from '@tanstack/react-router'
+import { isRedirect, useRouter } from '@benjavicente/react-router'
 
 export function useServerFn<T extends (...deps: Array<any>) => Promise<any>>(
   serverFn: T,

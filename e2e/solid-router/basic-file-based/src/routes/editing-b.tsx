@@ -1,5 +1,5 @@
-import { createFileRoute } from '@tanstack/solid-router'
-import { useBlocker } from '@tanstack/solid-router'
+import { createFileRoute } from '@benjavicente/solid-router'
+import { useBlocker } from '@benjavicente/solid-router'
 import { createEffect, createSignal, createMemo } from 'solid-js'
 
 export const Route = createFileRoute('/editing-b')({

@@ -1,10 +1,10 @@
-import { createFileRoute } from '@tanstack/vue-router'
-import { createServerFn } from '@tanstack/vue-start'
+import { createFileRoute } from '@benjavicente/vue-router'
+import { createServerFn } from '@benjavicente/vue-start'
 import {
   getRequestHeaders,
   setResponseHeader,
-} from '@tanstack/vue-start/server'
-import type { RequestHeaderName } from '@tanstack/vue-start/server'
+} from '@benjavicente/vue-start/server'
+import type { RequestHeaderName } from '@benjavicente/vue-start/server'
 import { defineComponent, ref } from 'vue'
 
 export const getTestHeaders = createServerFn().handler(() => {

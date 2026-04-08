@@ -1,5 +1,5 @@
 {
-  "name": "@tanstack/solid-start",
+  "name": "@benjavicente/solid-start",
   "version": "1.167.15",
   "description": "Modern and scalable routing for Solid applications",
   "author": "Tanner Linsley",
@@ -106,17 +106,17 @@
     "node": ">=22.12.0"
   },
   "dependencies": {
-    "@tanstack/solid-start-client": "workspace:*",
-    "@tanstack/solid-start-server": "workspace:*",
-    "@tanstack/start-plugin-core": "workspace:*",
-    "@tanstack/solid-router": "workspace:*",
-    "@tanstack/start-client-core": "workspace:*",
-    "@tanstack/start-server-core": "workspace:*",
+    "@benjavicente/solid-start-client": "workspace:*",
+    "@benjavicente/solid-start-server": "workspace:*",
+    "@benjavicente/start-plugin-core": "workspace:*",
+    "@benjavicente/solid-router": "workspace:*",
+    "@benjavicente/start-client-core": "workspace:*",
+    "@benjavicente/start-server-core": "workspace:*",
     "pathe": "^2.0.3"
   },
   "devDependencies": {
     "@tanstack/intent": "^0.0.14",
-    "@tanstack/router-utils": "workspace:*",
+    "@benjavicente/router-utils": "workspace:*",
     "vite": "*",
     "@types/node": ">=20"
   },

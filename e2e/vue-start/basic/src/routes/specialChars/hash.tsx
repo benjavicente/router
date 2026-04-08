@@ -1,4 +1,4 @@
-import { createFileRoute, useLocation } from '@tanstack/vue-router'
+import { createFileRoute, useLocation } from '@benjavicente/vue-router'
 import { defineComponent, ref } from 'vue'
 
 const RouteComponent = defineComponent({

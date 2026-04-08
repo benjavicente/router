@@ -8,7 +8,7 @@ title: Server Functions
 Server functions let you define server-only logic that can be called from anywhere in your application - loaders, components, hooks, or other server functions. They run on the server but can be invoked from client code seamlessly.
 
 ```tsx
-import { createServerFn } from '@tanstack/react-start'
+import { createServerFn } from '@benjavicente/react-start'
 
 export const getServerTime = createServerFn().handler(async () => {
   // This runs only on the server
@@ -26,7 +26,7 @@ Server functions provide server capabilities (database access, environment varia
 Server functions are created with `createServerFn()` and can specify HTTP method:
 
 ```tsx
-import { createServerFn } from '@tanstack/react-start'
+import { createServerFn } from '@benjavicente/react-start'
 
 // GET request (default)
 export const getData = createServerFn().handler(async () => {
@@ -94,7 +94,7 @@ export async function findUserById(id: string) {
 
 ```tsx
 // users.functions.ts - Server functions
-import { createServerFn } from '@tanstack/react-start'
+import { createServerFn } from '@benjavicente/react-start'
 import { findUserById } from './users.server'
 
 export const getUser = createServerFn({ method: 'GET' })
@@ -137,7 +137,7 @@ Server functions accept a single `data` parameter. Since they cross the network 
 ### Basic Parameters
 
 ```tsx
-import { createServerFn } from '@tanstack/react-start'
+import { createServerFn } from '@benjavicente/react-start'
 
 export const greetUser = createServerFn({ method: 'GET' })
   .inputValidator((data: { name: string }) => data)
@@ -153,7 +153,7 @@ await greetUser({ data: { name: 'John' } })
 For robust validation, use schema libraries like Zod:
 
 ```tsx
-import { createServerFn } from '@tanstack/react-start'
+import { createServerFn } from '@benjavicente/react-start'
 import { z } from 'zod'
 
 const UserSchema = z.object({
@@ -198,7 +198,7 @@ Server functions can throw errors, redirects, and not-found responses that are h
 ### Basic Errors
 
 ```tsx
-import { createServerFn } from '@tanstack/react-start'
+import { createServerFn } from '@benjavicente/react-start'
 
 export const riskyFunction = createServerFn().handler(async () => {
   if (Math.random() > 0.5) {
@@ -220,8 +220,8 @@ try {
 Use redirects for authentication, navigation, etc:
 
 ```tsx
-import { createServerFn } from '@tanstack/react-start'
-import { redirect } from '@tanstack/react-router'
+import { createServerFn } from '@benjavicente/react-start'
+import { redirect } from '@benjavicente/react-router'
 
 export const requireAuth = createServerFn().handler(async () => {
   const user = await getCurrentUser()
@@ -239,8 +239,8 @@ export const requireAuth = createServerFn().handler(async () => {
 Throw not-found errors for missing resources:
 
 ```tsx
-import { createServerFn } from '@tanstack/react-start'
-import { notFound } from '@tanstack/react-router'
+import { createServerFn } from '@benjavicente/react-start'
+import { notFound } from '@benjavicente/react-router'
 
 export const getPost = createServerFn()
   .inputValidator((data: { id: string }) => data)
@@ -264,13 +264,13 @@ For more advanced server function patterns and features, see these dedicated gui
 Access request headers, cookies, and customize responses:
 
 ```tsx
-import { createServerFn } from '@tanstack/react-start'
+import { createServerFn } from '@benjavicente/react-start'
 import {
   getRequest,
   getRequestHeader,
   setResponseHeaders,
   setResponseStatus,
-} from '@tanstack/react-start/server'
+} from '@benjavicente/react-start/server'
 
 export const getCachedData = createServerFn({ method: 'GET' }).handler(
   async () => {
@@ -347,7 +347,7 @@ Example:
 // vite.config.ts
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
-import { tanstackStart } from '@tanstack/react-start/plugin/vite'
+import { tanstackStart } from '@benjavicente/react-start/plugin/vite'
 
 export default defineConfig({
   plugins: [

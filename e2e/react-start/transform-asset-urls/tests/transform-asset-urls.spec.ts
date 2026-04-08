@@ -1,5 +1,5 @@
 import { expect, type Page } from '@playwright/test'
-import { test } from '@tanstack/router-e2e-utils'
+import { test } from '@benjavicente/router-e2e-utils'
 
 /**
  * Helper: fetch the SSR HTML for the given path using Playwright's

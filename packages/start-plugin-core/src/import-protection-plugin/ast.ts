@@ -1,4 +1,4 @@
-import { parseAst } from '@tanstack/router-utils'
+import { parseAst } from '@benjavicente/router-utils'
 
 export type ParsedAst = ReturnType<typeof parseAst>
 

@@ -4,12 +4,12 @@ import {
   getAssetCrossOrigin,
   replaceEqualDeep,
   resolveManifestAssetLink,
-} from '@tanstack/router-core'
+} from '@benjavicente/router-core'
 import { useRouter } from './useRouter'
 import type {
   AssetCrossOriginConfig,
   RouterManagedTag,
-} from '@tanstack/router-core'
+} from '@benjavicente/router-core'
 
 /**
  * Build the list of head/link/meta/script tags to render for active matches.

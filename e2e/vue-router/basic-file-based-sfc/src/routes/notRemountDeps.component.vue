@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { ref, onMounted } from 'vue'
-import { useSearch, useNavigate } from '@tanstack/vue-router'
+import { useSearch, useNavigate } from '@benjavicente/vue-router'
 
 const mounts = ref(0)
 const search = useSearch({ from: '/notRemountDeps' })

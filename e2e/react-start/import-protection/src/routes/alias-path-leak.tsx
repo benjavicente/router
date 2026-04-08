@@ -1,4 +1,4 @@
-import { ClientOnly, createFileRoute } from '@tanstack/react-router'
+import { ClientOnly, createFileRoute } from '@benjavicente/react-router'
 import { getSecret } from '~/violations/secret.server'
 
 export const Route = createFileRoute('/alias-path-leak')({

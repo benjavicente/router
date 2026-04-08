@@ -423,7 +423,7 @@ export interface RootRouteChildren {
   FormdataRedirectTargetNameRoute: typeof FormdataRedirectTargetNameRoute
 }
 
-declare module '@tanstack/solid-router' {
+declare module '@benjavicente/solid-router' {
   interface FileRoutesByPath {
     '/submit-post-formdata': {
       id: '/submit-post-formdata'
@@ -675,8 +675,8 @@ export const routeTree = rootRouteImport
   ._addFileTypes<FileRouteTypes>()
 
 import type { getRouter } from './router.tsx'
-import type { createStart } from '@tanstack/solid-start'
-declare module '@tanstack/solid-start' {
+import type { createStart } from '@benjavicente/solid-start'
+declare module '@benjavicente/solid-start' {
   interface Register {
     ssr: true
     router: Awaited<ReturnType<typeof getRouter>>

@@ -1,9 +1,9 @@
-export type { JsonResponse } from '@tanstack/router-core/ssr/client'
+export type { JsonResponse } from '@benjavicente/router-core/ssr/client'
 
-export { hydrate, json, mergeHeaders } from '@tanstack/router-core/ssr/client'
+export { hydrate, json, mergeHeaders } from '@benjavicente/router-core/ssr/client'
 
-export { RawStream } from '@tanstack/router-core'
-export type { OnRawStreamCallback } from '@tanstack/router-core'
+export { RawStream } from '@benjavicente/router-core'
+export type { OnRawStreamCallback } from '@benjavicente/router-core'
 
 export {
   createIsomorphicFn,
@@ -13,7 +13,7 @@ export {
   type ServerOnlyFn,
   type ClientOnlyFn,
   type IsomorphicFnBase,
-} from '@tanstack/start-fn-stubs'
+} from '@benjavicente/start-fn-stubs'
 export { createServerFn } from './createServerFn'
 export {
   createMiddleware,
@@ -111,7 +111,7 @@ export type {
   StartInstance,
   StartInstanceOptions,
 } from './createStart'
-export type { Register } from '@tanstack/router-core'
+export type { Register } from '@benjavicente/router-core'
 
 export { getRouterInstance } from './getRouterInstance'
 export { getDefaultSerovalPlugins } from './getDefaultSerovalPlugins'

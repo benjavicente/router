@@ -2,11 +2,11 @@
 
 This workspace contains deterministic bundle-size fixtures for:
 
-- `@tanstack/react-router`
-- `@tanstack/solid-router`
-- `@tanstack/vue-router`
-- `@tanstack/react-start`
-- `@tanstack/solid-start`
+- `@benjavicente/react-router`
+- `@benjavicente/solid-router`
+- `@benjavicente/vue-router`
+- `@benjavicente/react-start`
+- `@benjavicente/solid-start`
 
 Each package has two scenarios:
 
@@ -17,7 +17,7 @@ Each package has two scenarios:
 ## Design Notes
 
 - Scenarios use file-based routing as the default app style.
-- Router scenarios use `@tanstack/router-plugin/vite` with `autoCodeSplitting: true`.
+- Router scenarios use `@benjavicente/router-plugin/vite` with `autoCodeSplitting: true`.
 - Start scenarios use `@tanstack/<framework>-start/plugin/vite` with router code-splitting enabled.
 - Full-surface coverage is manually maintained (no strict export-coverage gate).
 - Metrics are measured from initial-load JS graph only and reported as raw/gzip/brotli bytes.

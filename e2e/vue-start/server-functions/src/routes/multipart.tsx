@@ -1,5 +1,5 @@
-import { createFileRoute } from '@tanstack/vue-router'
-import { createServerFn } from '@tanstack/vue-start'
+import { createFileRoute } from '@benjavicente/vue-router'
+import { createServerFn } from '@benjavicente/vue-start'
 import { defineComponent, ref } from 'vue'
 
 const multipartFormDataServerFn = createServerFn({ method: 'POST' })

@@ -1,5 +1,5 @@
-import { createMiddleware, createServerFn } from '@tanstack/vue-start'
-import { getRequest } from '@tanstack/vue-start/server'
+import { createMiddleware, createServerFn } from '@benjavicente/vue-start'
+import { getRequest } from '@benjavicente/vue-start/server'
 
 const fooMiddleware = createMiddleware({ type: 'function' }).server(
   ({ next }) => {

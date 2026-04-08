@@ -1,4 +1,4 @@
-import { createFileRoute } from '@tanstack/react-router'
+import { createFileRoute } from '@benjavicente/react-router'
 import { Login } from '~/components/Login'
 
 export const Route = createFileRoute('/login')({

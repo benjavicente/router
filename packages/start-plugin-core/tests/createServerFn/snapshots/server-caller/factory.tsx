@@ -1,5 +1,5 @@
-import { createSsrRpc } from '@tanstack/react-start/ssr-rpc';
-import { createServerFn, createMiddleware } from '@tanstack/react-start';
+import { createSsrRpc } from '@benjavicente/react-start/ssr-rpc';
+import { createServerFn, createMiddleware } from '@benjavicente/react-start';
 const authMiddleware = createMiddleware({
   type: 'function'
 }).server(({

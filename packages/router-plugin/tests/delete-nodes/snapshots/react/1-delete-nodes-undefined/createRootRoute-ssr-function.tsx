@@ -1,4 +1,4 @@
-import { createRootRoute } from '@tanstack/react-router'
+import { createRootRoute } from '@benjavicente/react-router'
 import crypto from 'node:crypto'
 
 export const Route = createRootRoute({

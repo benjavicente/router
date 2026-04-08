@@ -1,5 +1,5 @@
 import * as template from '@babel/template'
-import type { AnyRoute, AnyRouteMatch, AnyRouter } from '@tanstack/router-core'
+import type { AnyRoute, AnyRouteMatch, AnyRouter } from '@benjavicente/router-core'
 
 type AnyRouteWithPrivateProps = AnyRoute & {
   options: Record<string, unknown>

@@ -18,7 +18,7 @@ If you want to create a basic custom link component, you can do so with the foll
 
 ```tsx
 import * as React from 'react'
-import { createLink, LinkComponent } from '@tanstack/react-router'
+import { createLink, LinkComponent } from '@benjavicente/react-router'
 
 interface BasicLinkProps extends React.AnchorHTMLAttributes<HTMLAnchorElement> {
   // Add any additional props you want to pass to the anchor element
@@ -43,7 +43,7 @@ export const CustomLink: LinkComponent<typeof BasicLinkComponent> = (props) => {
 
 ```tsx
 import * as Solid from 'solid-js'
-import { createLink, LinkComponent } from '@tanstack/solid-router'
+import { createLink, LinkComponent } from '@benjavicente/solid-router'
 
 export const Route = createRootRoute({
   component: RootComponent,
@@ -89,7 +89,7 @@ React Aria Components v1.11.0 and later works with TanStack Router's `preload (i
 <!-- ::start:tabs variant="files" -->
 
 ```tsx title="RACLink.tsx"
-import { createLink } from '@tanstack/react-router'
+import { createLink } from '@benjavicente/react-router'
 import { Link as RACLink, MenuItem } from 'react-aria-components'
 
 export const Link = createLink(RACLink)
@@ -97,7 +97,7 @@ export const MenuItemLink = createLink(MenuItem)
 ```
 
 ```tsx title="CustomRACLink.tsx"
-import { createLink } from '@tanstack/react-router'
+import { createLink } from '@benjavicente/react-router'
 import { Link as RACLink, type LinkProps } from 'react-aria-components'
 
 interface MyLinkProps extends LinkProps {
@@ -132,7 +132,7 @@ To use React Aria's render props, including the `className`, `style`, and `child
 
 ```tsx title="ChakraLinkComponent.tsx"
 import * as React from 'react'
-import { createLink, LinkComponent } from '@tanstack/react-router'
+import { createLink, LinkComponent } from '@benjavicente/react-router'
 import { Link } from '@chakra-ui/react'
 
 interface ChakraLinkProps extends Omit<
@@ -183,7 +183,7 @@ If the MUI `Link` should simply behave like the router `Link`, it can be just wr
 <!-- ::start:tabs variant="files" -->
 
 ```tsx title="CustomLink.tsx"
-import { createLink } from '@tanstack/react-router'
+import { createLink } from '@benjavicente/react-router'
 import { Link } from '@mui/material'
 
 export const CustomLink = createLink(Link)
@@ -197,10 +197,10 @@ If the `Link` should be customized this approach can be used:
 
 ```tsx title="CustomLink.tsx"
 import React from 'react'
-import { createLink } from '@tanstack/react-router'
+import { createLink } from '@benjavicente/react-router'
 import { Link } from '@mui/material'
 import type { LinkProps } from '@mui/material'
-import type { LinkComponent } from '@tanstack/react-router'
+import type { LinkComponent } from '@benjavicente/react-router'
 
 interface MUILinkProps extends LinkProps {
   // Add any additional props you want to pass to the Link
@@ -229,10 +229,10 @@ If a `Button` should be used as a router `Link`, the `component` should be set a
 
 ```tsx title="CustomButtonLink.tsx"
 import React from 'react'
-import { createLink } from '@tanstack/react-router'
+import { createLink } from '@benjavicente/react-router'
 import { Button } from '@mui/material'
 import type { ButtonProps } from '@mui/material'
-import type { LinkComponent } from '@tanstack/react-router'
+import type { LinkComponent } from '@benjavicente/react-router'
 
 interface MUIButtonLinkProps extends ButtonProps<'a'> {
   // Add any additional props you want to pass to the Button
@@ -285,7 +285,7 @@ const StyledCustomLink = styled(CustomLink)(
 
 ```tsx title="CustomLink.tsx"
 import * as React from 'react'
-import { createLink, LinkComponent } from '@tanstack/react-router'
+import { createLink, LinkComponent } from '@benjavicente/react-router'
 import { Anchor, AnchorProps } from '@mantine/core'
 
 interface MantineAnchorProps extends Omit<AnchorProps, 'href'> {

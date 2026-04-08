@@ -4,7 +4,7 @@ import type {
   PhysicalSubtree,
   Route,
   VirtualRootRoute,
-} from '@tanstack/virtual-file-routes'
+} from '@benjavicente/virtual-file-routes'
 
 const indexRouteSchema = z.object({
   type: z.literal('index'),

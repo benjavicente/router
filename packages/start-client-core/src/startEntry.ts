@@ -1,4 +1,4 @@
-import type { AnyRouter, Awaitable } from '@tanstack/router-core'
+import type { AnyRouter, Awaitable } from '@benjavicente/router-core'
 import type { AnyStartInstance } from './createStart.js'
 
 export interface StartEntry {

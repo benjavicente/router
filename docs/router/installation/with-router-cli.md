@@ -5,12 +5,12 @@ title: Installation with Router CLI
 > [!WARNING]
 > You should only use the TanStack Router CLI if you are not using a supported bundler. The CLI only supports the generation of the route tree file and does not provide any other features.
 
-To use file-based routing with the TanStack Router CLI, you'll need to install the `@tanstack/router-cli` package.
+To use file-based routing with the TanStack Router CLI, you'll need to install the `@benjavicente/router-cli` package.
 
 <!-- ::start:tabs variant="package-manager" mode="dev-install" -->
 
-react: @tanstack/router-cli
-solid: @tanstack/router-cli
+react: @benjavicente/router-cli
+solid: @benjavicente/router-cli
 
 <!-- ::end:tabs -->
 

@@ -1,5 +1,5 @@
-import { createRouter } from '@tanstack/solid-router'
-import { createIsomorphicFn } from '@tanstack/solid-start'
+import { createRouter } from '@benjavicente/solid-router'
+import { createIsomorphicFn } from '@benjavicente/solid-start'
 import { routeTree } from './routeTree.gen'
 
 const getSSROptions = createIsomorphicFn().server(() => {

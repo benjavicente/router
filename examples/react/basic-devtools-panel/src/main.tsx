@@ -10,8 +10,8 @@ import {
   createRouter,
   createRoute,
   createRootRoute,
-} from '@tanstack/react-router'
-import { TanStackRouterDevtoolsPanel } from '@tanstack/react-router-devtools'
+} from '@benjavicente/react-router'
+import { TanStackRouterDevtoolsPanel } from '@benjavicente/react-router-devtools'
 import './styles.css'
 
 const rootRoute = createRootRoute({
@@ -51,7 +51,7 @@ const routeTree = rootRoute.addChildren([indexRoute, aboutRoute])
 
 const router = createRouter({ routeTree })
 
-declare module '@tanstack/react-router' {
+declare module '@benjavicente/react-router' {
   interface Register {
     router: typeof router
   }

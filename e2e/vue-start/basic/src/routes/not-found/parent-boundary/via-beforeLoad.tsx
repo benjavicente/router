@@ -1,4 +1,4 @@
-import { createFileRoute, notFound } from '@tanstack/vue-router'
+import { createFileRoute, notFound } from '@benjavicente/vue-router'
 import { Route as ParentBoundaryRoute } from './route'
 
 export const Route = createFileRoute(

@@ -16,7 +16,7 @@ import { rootPathId } from './rootPathId'
 import type {
   VirtualRootRoute,
   VirtualRouteSubtreeConfig,
-} from '@tanstack/virtual-file-routes'
+} from '@benjavicente/virtual-file-routes'
 import type { FsRouteType, GetRouteNodesResult, RouteNode } from '../../types'
 import type { Config } from '../../config'
 

@@ -1,8 +1,8 @@
-import { isNotFound } from '@tanstack/router-core'
+import { isNotFound } from '@benjavicente/router-core'
 import * as Solid from 'solid-js'
 import { CatchBoundary } from './CatchBoundary'
 import { useRouter } from './useRouter'
-import type { NotFoundError } from '@tanstack/router-core'
+import type { NotFoundError } from '@benjavicente/router-core'
 
 // Solid wraps non-Error throws in an Error and stores the original thrown value
 // on `cause`, so component-thrown `notFound()` needs one extra unwrapping step.

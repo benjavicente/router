@@ -166,7 +166,7 @@ The `RouteApi` has the following properties and methods:
 #### Example
 
 ```tsx
-import { getRouteApi } from '@tanstack/react-router'
+import { getRouteApi } from '@benjavicente/react-router'
 
 const routeApi = getRouteApi('/dashboard/settings')
 

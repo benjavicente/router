@@ -1,5 +1,5 @@
 // Test: ClientOnly imported with an alias should still be transformed
-import { ClientOnly as CO } from '@tanstack/react-router'
+import { ClientOnly as CO } from '@benjavicente/react-router'
 import { WindowSize } from './WindowSize'
 
 export function MyComponent() {

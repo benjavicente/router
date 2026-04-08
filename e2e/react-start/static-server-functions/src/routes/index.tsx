@@ -1,6 +1,6 @@
-import { Link, createFileRoute } from '@tanstack/react-router'
-import { createServerFn } from '@tanstack/react-start'
-import { staticFunctionMiddleware } from '@tanstack/start-static-server-functions'
+import { Link, createFileRoute } from '@benjavicente/react-router'
+import { createServerFn } from '@benjavicente/react-start'
+import { staticFunctionMiddleware } from '@benjavicente/start-static-server-functions'
 
 const fetchIndexData = createServerFn({ method: 'GET' })
   .middleware([staticFunctionMiddleware])

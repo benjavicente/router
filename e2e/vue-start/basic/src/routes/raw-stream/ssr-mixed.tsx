@@ -1,5 +1,5 @@
-import { Await, createFileRoute, useRouter } from '@tanstack/vue-router'
-import { RawStream } from '@tanstack/vue-start'
+import { Await, createFileRoute, useRouter } from '@benjavicente/vue-router'
+import { RawStream } from '@benjavicente/vue-start'
 import {
   Suspense,
   defineComponent,

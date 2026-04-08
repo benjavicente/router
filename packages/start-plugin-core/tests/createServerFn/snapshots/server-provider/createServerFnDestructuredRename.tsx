@@ -1,5 +1,5 @@
-import { createServerRpc } from '@tanstack/react-start/server-rpc';
-import { createServerFn as serverFn } from '@tanstack/react-start';
+import { createServerRpc } from '@benjavicente/react-start/server-rpc';
+import { createServerFn as serverFn } from '@benjavicente/react-start';
 import { z } from 'zod';
 const withUseServer_createServerFn_handler = createServerRpc({
   id: "eyJmaWxlIjoiL0BpZC9zcmMvdGVzdC50cz90c3Mtc2VydmVyZm4tc3BsaXQiLCJleHBvcnQiOiJ3aXRoVXNlU2VydmVyX2NyZWF0ZVNlcnZlckZuX2hhbmRsZXIifQ",

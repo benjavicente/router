@@ -1,5 +1,5 @@
 {
-  "name": "@tanstack/solid-start-server",
+  "name": "@benjavicente/solid-start-server",
   "version": "1.166.23",
   "description": "Modern and scalable routing for Solid applications",
   "author": "Tanner Linsley",
@@ -59,11 +59,11 @@
   },
   "dependencies": {
     "@solidjs/meta": "^0.29.4",
-    "@tanstack/history": "workspace:*",
-    "@tanstack/router-core": "workspace:*",
-    "@tanstack/solid-router": "workspace:*",
-    "@tanstack/start-client-core": "workspace:*",
-    "@tanstack/start-server-core": "workspace:*"
+    "@benjavicente/history": "workspace:*",
+    "@benjavicente/router-core": "workspace:*",
+    "@benjavicente/solid-router": "workspace:*",
+    "@benjavicente/start-client-core": "workspace:*",
+    "@benjavicente/start-server-core": "workspace:*"
   },
   "devDependencies": {
     "solid-js": "^1.9.10",

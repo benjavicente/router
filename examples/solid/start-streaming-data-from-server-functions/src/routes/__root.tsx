@@ -1,11 +1,11 @@
 /// <reference types="vite/client" />
-import { TanStackRouterDevtools } from '@tanstack/solid-router-devtools'
+import { TanStackRouterDevtools } from '@benjavicente/solid-router-devtools'
 import {
   HeadContent,
   Outlet,
   Scripts,
   createRootRoute,
-} from '@tanstack/solid-router'
+} from '@benjavicente/solid-router'
 import { HydrationScript } from 'solid-js/web'
 import type { JSX } from 'solid-js'
 import appCss from '~/styles/app.css?url'

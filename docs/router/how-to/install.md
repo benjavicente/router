@@ -15,23 +15,23 @@ title: How to Install TanStack Router
    Choose your package manager:
 
    ```sh
-   npm install @tanstack/react-router
+   npm install @benjavicente/react-router
    ```
 
    ```sh
-   pnpm add @tanstack/react-router
+   pnpm add @benjavicente/react-router
    ```
 
    ```sh
-   yarn add @tanstack/react-router
+   yarn add @benjavicente/react-router
    ```
 
    ```sh
-   bun add @tanstack/react-router
+   bun add @benjavicente/react-router
    ```
 
    ```sh
-   deno add npm:@tanstack/react-router
+   deno add npm:@benjavicente/react-router
    ```
 
 2. **Verify installation**
@@ -41,7 +41,7 @@ title: How to Install TanStack Router
    ```json
    {
      "dependencies": {
-       "@tanstack/react-router": "^x.x.x"
+       "@benjavicente/react-router": "^x.x.x"
      }
    }
    ```

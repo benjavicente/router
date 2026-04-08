@@ -83,8 +83,8 @@ Feature/Capability Key:
 | React Server Components                        | 🛑                                               | 🟡 (Experimental)                                     | ✅                                                    |
 | `<Form>` API                                   | 🛑                                               | ✅                                                    | ✅                                                    |
 
-[bp-tanstack-router]: https://badgen.net/bundlephobia/minzip/@tanstack/react-router
-[bpl-tanstack-router]: https://bundlephobia.com/result?p=@tanstack/react-router
+[bp-tanstack-router]: https://badgen.net/bundlephobia/minzip/@benjavicente/react-router
+[bpl-tanstack-router]: https://bundlephobia.com/result?p=@benjavicente/react-router
 [gh-tanstack-router]: https://github.com/tanstack/router
 [stars-tanstack-router]: https://img.shields.io/github/stars/tanstack/router?label=%F0%9F%8C%9F
 [_]: _

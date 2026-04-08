@@ -1,4 +1,4 @@
-import { createFileRoute } from '@tanstack/react-router'
+import { createFileRoute } from '@benjavicente/react-router'
 import * as React from 'react'
 import {
   Link,
@@ -6,7 +6,7 @@ import {
   Outlet,
   retainSearchParams,
   useNavigate,
-} from '@tanstack/react-router'
+} from '@benjavicente/react-router'
 import { z } from 'zod'
 import { Spinner } from '../components/Spinner'
 import { fetchUsers } from '../utils/mockTodos'

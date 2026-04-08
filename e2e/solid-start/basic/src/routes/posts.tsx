@@ -1,4 +1,4 @@
-import { Link, Outlet, createFileRoute } from '@tanstack/solid-router'
+import { Link, Outlet, createFileRoute } from '@benjavicente/solid-router'
 import { For } from 'solid-js'
 
 import { fetchPosts } from '~/utils/posts'

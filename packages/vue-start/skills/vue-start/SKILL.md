@@ -3,7 +3,7 @@ name: vue-start
 description: >-
   Vue bindings for TanStack Start: useServerFn hook, tanstackStart
   Vite plugin, StartClient, StartServer, Vue-specific setup,
-  re-exports from @tanstack/start-client-core. Full project setup
+  re-exports from @benjavicente/start-client-core. Full project setup
   with Vue.
 type: framework
 library: tanstack-start
@@ -15,7 +15,7 @@ sources:
   - TanStack/router:packages/vue-start/src
 ---
 
-# Vue Start (`@tanstack/vue-start`)
+# Vue Start (`@benjavicente/vue-start`)
 
 This skill builds on start-core. Read [start-core](../../../start-client-core/skills/start-core/SKILL.md) first for foundational concepts.
 
@@ -23,26 +23,26 @@ This skill covers the Vue-specific bindings, setup, and patterns for TanStack St
 
 > **CRITICAL**: All code is ISOMORPHIC by default. Loaders run on BOTH server and client. Use `createServerFn` for server-only logic.
 
-> **CRITICAL**: Do not confuse `@tanstack/vue-start` with Nuxt. They are completely different frameworks with different APIs.
+> **CRITICAL**: Do not confuse `@benjavicente/vue-start` with Nuxt. They are completely different frameworks with different APIs.
 
 > **CRITICAL**: Types are FULLY INFERRED. Never cast, never annotate inferred values.
 
 ## Package API Surface
 
-`@tanstack/vue-start` re-exports everything from `@tanstack/start-client-core` plus:
+`@benjavicente/vue-start` re-exports everything from `@benjavicente/start-client-core` plus:
 
 - `useServerFn` — Vue composable for calling server functions from components
 
-All core APIs (`createServerFn`, `createMiddleware`, `createStart`, `createIsomorphicFn`, `createServerOnlyFn`, `createClientOnlyFn`) are available from `@tanstack/vue-start`.
+All core APIs (`createServerFn`, `createMiddleware`, `createStart`, `createIsomorphicFn`, `createServerOnlyFn`, `createClientOnlyFn`) are available from `@benjavicente/vue-start`.
 
-Server utilities (`getRequest`, `getRequestHeader`, `setResponseHeader`, `setCookie`, `getCookie`, `useSession`) are imported from `@tanstack/vue-start/server`.
+Server utilities (`getRequest`, `getRequestHeader`, `setResponseHeader`, `setCookie`, `getCookie`, `useSession`) are imported from `@benjavicente/vue-start/server`.
 
 ## Full Project Setup
 
 ### 1. Install Dependencies
 
 ```bash
-npm i @tanstack/vue-start @tanstack/vue-router vue
+npm i @benjavicente/vue-start @benjavicente/vue-router vue
 npm i -D vite @vitejs/plugin-vue @vitejs/plugin-vue-jsx typescript
 ```
 
@@ -79,7 +79,7 @@ npm i -D vite @vitejs/plugin-vue @vitejs/plugin-vue-jsx typescript
 
 ```ts
 import { defineConfig } from 'vite'
-import { tanstackStart } from '@tanstack/vue-start/plugin/vite'
+import { tanstackStart } from '@benjavicente/vue-start/plugin/vite'
 import vuePlugin from '@vitejs/plugin-vue'
 import vueJsx from '@vitejs/plugin-vue-jsx'
 
@@ -95,7 +95,7 @@ export default defineConfig({
 ### 5. Router Factory (src/router.tsx)
 
 ```tsx
-import { createRouter } from '@tanstack/vue-router'
+import { createRouter } from '@benjavicente/vue-router'
 import { routeTree } from './routeTree.gen'
 
 export function getRouter() {
@@ -117,7 +117,7 @@ import {
   Scripts,
   Html,
   Body,
-} from '@tanstack/vue-router'
+} from '@benjavicente/vue-router'
 
 export const Route = createRootRoute({
   head: () => ({
@@ -148,8 +148,8 @@ function RootComponent() {
 ### 7. Index Route (src/routes/index.tsx)
 
 ```tsx
-import { createFileRoute } from '@tanstack/vue-router'
-import { createServerFn } from '@tanstack/vue-start'
+import { createFileRoute } from '@benjavicente/vue-router'
+import { createServerFn } from '@benjavicente/vue-start'
 
 const getGreeting = createServerFn({ method: 'GET' }).handler(async () => {
   return 'Hello from TanStack Start!'
@@ -171,7 +171,7 @@ function HomePage() {
 Use `useServerFn` to call server functions from Vue components with automatic redirect handling:
 
 ```tsx
-import { createServerFn, useServerFn } from '@tanstack/vue-start'
+import { createServerFn, useServerFn } from '@benjavicente/vue-start'
 import { ref } from 'vue'
 
 const updatePost = createServerFn({ method: 'POST' })
@@ -194,7 +194,7 @@ Unlike the React version, `useServerFn` does NOT wrap the returned function in `
 
 ## Vue-Specific Components
 
-All routing components from `@tanstack/vue-router` work in Start:
+All routing components from `@benjavicente/vue-router` work in Start:
 
 - `<Outlet>` — renders matched child route
 - `<Link>` — type-safe navigation with scoped slots
@@ -209,7 +209,7 @@ All routing components from `@tanstack/vue-router` work in Start:
 
 ## Composables Reference
 
-All composables from `@tanstack/vue-router` work in Start. Most return `Ref<T>` — access via `.value`:
+All composables from `@benjavicente/vue-router` work in Start. Most return `Ref<T>` — access via `.value`:
 
 - `useRouter()` — router instance (NOT a Ref)
 - `useRouterState()` — `Ref<T>`, subscribe to router state
@@ -228,13 +228,13 @@ All composables from `@tanstack/vue-router` work in Start. Most return `Ref<T>` 
 
 ```tsx
 // WRONG — this is the SPA router, NOT Start
-import { createServerFn } from '@tanstack/vue-router'
+import { createServerFn } from '@benjavicente/vue-router'
 
 // CORRECT — server functions come from vue-start
-import { createServerFn } from '@tanstack/vue-start'
+import { createServerFn } from '@benjavicente/vue-start'
 
 // CORRECT — routing APIs come from vue-router
-import { createFileRoute, Link } from '@tanstack/vue-router'
+import { createFileRoute, Link } from '@benjavicente/vue-router'
 ```
 
 ### 2. CRITICAL: Forgetting .value in script blocks

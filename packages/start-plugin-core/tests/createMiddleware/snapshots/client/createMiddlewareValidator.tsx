@@ -1,4 +1,4 @@
-import { createMiddleware } from '@tanstack/react-start';
+import { createMiddleware } from '@benjavicente/react-start';
 export const withUseServer = createMiddleware({
   id: 'test'
 });

@@ -1,4 +1,4 @@
-import { createFileRoute } from '@tanstack/solid-router'
+import { createFileRoute } from '@benjavicente/solid-router'
 import { z } from 'zod'
 
 export const Route = createFileRoute('/foo/bar')({

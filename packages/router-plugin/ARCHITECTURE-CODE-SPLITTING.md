@@ -32,7 +32,7 @@ Given a route file like:
 
 ```tsx
 // src/routes/about.tsx
-import { createFileRoute } from '@tanstack/react-router'
+import { createFileRoute } from '@benjavicente/react-router'
 
 export const Route = createFileRoute('/about')({
   loader: () => fetchAboutData(),
@@ -341,7 +341,7 @@ split modules import from, ensuring a single shared instance.
 **Input** (`shared-function.tsx`):
 
 ```tsx
-import { createFileRoute } from '@tanstack/react-router'
+import { createFileRoute } from '@benjavicente/react-router'
 
 const cache = new Map()
 function getCached(key: string) {
@@ -374,8 +374,8 @@ export const Route = createFileRoute('/cached')({
 import { getCached, cache } from 'shared-function.tsx?tsr-shared=1'
 const $$splitComponentImporter = () =>
   import('shared-function.tsx?tsr-split=component')
-import { lazyRouteComponent } from '@tanstack/react-router'
-import { createFileRoute } from '@tanstack/react-router'
+import { lazyRouteComponent } from '@benjavicente/react-router'
+import { createFileRoute } from '@benjavicente/react-router'
 function setCached(key: string, val: unknown) {
   cache.set(key, val)
 }
@@ -645,7 +645,7 @@ If found, extracts the array-of-arrays value and returns it.
 ## Dead Code Elimination
 
 After each compiler transforms the AST, it runs `deadCodeElimination()` from
-`@tanstack/router-utils`. This is critical because:
+`@benjavicente/router-utils`. This is critical because:
 
 - The reference file no longer uses the component implementation (it was
   replaced with a lazy wrapper), so the original component code and its
@@ -722,9 +722,9 @@ Framework differences are confined to `framework-options.ts`:
 
 | Framework | Package                  | `createFileRoute` | `lazyFn` | `lazyRouteComponent` |
 | --------- | ------------------------ | ----------------- | -------- | -------------------- |
-| React     | `@tanstack/react-router` | `createFileRoute` | `lazyFn` | `lazyRouteComponent` |
-| Solid     | `@tanstack/solid-router` | `createFileRoute` | `lazyFn` | `lazyRouteComponent` |
-| Vue       | `@tanstack/vue-router`   | `createFileRoute` | `lazyFn` | `lazyRouteComponent` |
+| React     | `@benjavicente/react-router` | `createFileRoute` | `lazyFn` | `lazyRouteComponent` |
+| Solid     | `@benjavicente/solid-router` | `createFileRoute` | `lazyFn` | `lazyRouteComponent` |
+| Vue       | `@benjavicente/vue-router`   | `createFileRoute` | `lazyFn` | `lazyRouteComponent` |
 
 Currently all frameworks use the same identifier names. The framework option
 is used to determine which package to import `lazyRouteComponent` and `lazyFn`

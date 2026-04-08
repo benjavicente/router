@@ -2,9 +2,9 @@ import {
   fetchSession,
   getCookieName,
 } from '@convex-dev/better-auth/react-start'
-import { createServerFn } from '@tanstack/solid-start'
-import { redirect } from '@tanstack/solid-router'
-import { getCookie, getRequest } from '@tanstack/solid-start/server'
+import { createServerFn } from '@benjavicente/solid-start'
+import { redirect } from '@benjavicente/solid-router'
+import { getCookie, getRequest } from '@benjavicente/solid-start/server'
 import { api } from 'convex/_generated/api'
 import { fetchMutation, fetchQuery } from './auth-server'
 

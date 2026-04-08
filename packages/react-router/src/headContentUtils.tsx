@@ -5,13 +5,13 @@ import {
   escapeHtml,
   getAssetCrossOrigin,
   resolveManifestAssetLink,
-} from '@tanstack/router-core'
-import { isServer } from '@tanstack/router-core/isServer'
+} from '@benjavicente/router-core'
+import { isServer } from '@benjavicente/router-core/isServer'
 import { useRouter } from './useRouter'
 import type {
   AssetCrossOriginConfig,
   RouterManagedTag,
-} from '@tanstack/router-core'
+} from '@benjavicente/router-core'
 
 function buildTagsFromMatches(
   router: ReturnType<typeof useRouter>,

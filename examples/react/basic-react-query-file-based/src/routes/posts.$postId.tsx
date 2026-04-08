@@ -1,13 +1,13 @@
-import { createFileRoute } from '@tanstack/react-router'
+import { createFileRoute } from '@benjavicente/react-router'
 import * as React from 'react'
-import { ErrorComponent, useRouter } from '@tanstack/react-router'
+import { ErrorComponent, useRouter } from '@benjavicente/react-router'
 import {
   useQueryErrorResetBoundary,
   useSuspenseQuery,
 } from '@tanstack/react-query'
 import { PostNotFoundError } from '../posts'
 import { postQueryOptions } from '../postQueryOptions'
-import type { ErrorComponentProps } from '@tanstack/react-router'
+import type { ErrorComponentProps } from '@benjavicente/react-router'
 
 export const Route = createFileRoute('/posts/$postId')({
   loader: ({ context: { queryClient }, params: { postId } }) => {

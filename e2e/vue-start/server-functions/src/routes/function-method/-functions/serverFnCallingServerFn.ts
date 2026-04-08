@@ -1,4 +1,4 @@
-import { createServerFn } from '@tanstack/vue-start'
+import { createServerFn } from '@benjavicente/vue-start'
 
 const postServerFn = createServerFn({ method: 'POST' }).handler(
   ({ method }) => {

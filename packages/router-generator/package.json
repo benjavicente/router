@@ -1,5 +1,5 @@
 {
-  "name": "@tanstack/router-generator",
+  "name": "@benjavicente/router-generator",
   "version": "1.166.24",
   "description": "Modern and scalable routing for React applications",
   "author": "Tanner Linsley",
@@ -65,9 +65,9 @@
     "node": ">=20.19"
   },
   "dependencies": {
-    "@tanstack/router-core": "workspace:*",
-    "@tanstack/router-utils": "workspace:*",
-    "@tanstack/virtual-file-routes": "workspace:*",
+    "@benjavicente/router-core": "workspace:*",
+    "@benjavicente/router-utils": "workspace:*",
+    "@benjavicente/virtual-file-routes": "workspace:*",
     "prettier": "^3.5.0",
     "recast": "^0.23.11",
     "source-map": "^0.7.4",
@@ -75,7 +75,7 @@
     "zod": "^3.24.2"
   },
   "devDependencies": {
-    "@tanstack/react-router": "workspace:*",
+    "@benjavicente/react-router": "workspace:*",
     "vite": "*",
     "@types/node": ">=20"
   }

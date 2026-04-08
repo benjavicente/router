@@ -1,6 +1,6 @@
 const $$splitComponentImporter = () => import('destructured-export-nested.tsx?tsr-split=component');
-import { lazyRouteComponent } from '@tanstack/react-router';
-import { createFileRoute } from '@tanstack/react-router';
+import { lazyRouteComponent } from '@benjavicente/react-router';
+import { createFileRoute } from '@benjavicente/react-router';
 const getConfig = () => ({
   api: {
     baseUrl: 'https://api.example.com'

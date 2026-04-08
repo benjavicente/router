@@ -3,9 +3,9 @@ import {
   RouterProvider,
   createHashHistory,
   createRouter,
-} from '@tanstack/vue-router'
+} from '@benjavicente/vue-router'
 import { routeTree } from './routeTree.gen'
-import type { RouterHistory } from '@tanstack/vue-router'
+import type { RouterHistory } from '@benjavicente/vue-router'
 import './styles.css'
 
 let history: RouterHistory | undefined
@@ -22,7 +22,7 @@ const router = createRouter({
 })
 
 // Register things for typesafety
-declare module '@tanstack/vue-router' {
+declare module '@benjavicente/vue-router' {
   interface Register {
     router: typeof router
   }

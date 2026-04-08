@@ -1,5 +1,5 @@
 import * as Vue from 'vue'
-import { isServer } from '@tanstack/router-core/isServer'
+import { isServer } from '@benjavicente/router-core/isServer'
 import { useStore } from '@tanstack/vue-store'
 import { CatchBoundary } from './CatchBoundary'
 import { useRouter } from './useRouter'
@@ -21,12 +21,12 @@ import type {
   ResolveRoute,
   RouteByPath,
   ToSubOptionsProps,
-} from '@tanstack/router-core'
+} from '@benjavicente/router-core'
 
 // Define a type for the error component function
 type ErrorRouteComponentType = (props: ErrorComponentProps) => Vue.VNode
 
-declare module '@tanstack/router-core' {
+declare module '@benjavicente/router-core' {
   export interface RouteMatchExtensions {
     meta?: Array<Vue.ComponentOptions['meta'] | undefined>
     links?: Array<Vue.ComponentOptions['link'] | undefined>

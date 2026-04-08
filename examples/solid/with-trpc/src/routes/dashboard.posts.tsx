@@ -4,7 +4,7 @@ import {
   MatchRoute,
   Outlet,
   createFileRoute,
-} from '@tanstack/solid-router'
+} from '@benjavicente/solid-router'
 
 import { Spinner } from './-components/spinner'
 

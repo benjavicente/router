@@ -1,5 +1,5 @@
 import { isRunnableDevEnvironment } from 'vite'
-import { VIRTUAL_MODULES } from '@tanstack/start-server-core'
+import { VIRTUAL_MODULES } from '@benjavicente/start-server-core'
 import { NodeRequest, sendNodeResponse } from 'srvx/node'
 import { ENTRY_POINTS, VITE_ENVIRONMENT_NAMES } from '../constants'
 import { resolveViteId } from '../utils'
@@ -11,6 +11,21 @@ import {
 } from './dev-styles'
 import type { Connect, DevEnvironment, PluginOption } from 'vite'
 import type { GetConfigFn } from '../types'
+
+/** True when SSR dev can `runner.import` the server entry (duck-types duplicate `vite` installs where `instanceof RunnableDevEnvironment` fails). */
+function canSsrDevEnvironmentRunModuleImports(
+  env: DevEnvironment | undefined,
+): boolean {
+  if (!env) return false
+  if (isRunnableDevEnvironment(env)) return true
+  const runner = (env as DevEnvironment & { runner?: { import?: unknown } })
+    .runner
+  return typeof runner?.import === 'function'
+}
+
+type TanStackServerEntryModule = {
+  default: { fetch: (req: unknown) => Promise<Response> }
+}
 
 export function devServerPlugin({
   getConfig,
@@ -145,7 +160,7 @@ export function devServerPlugin({
 
             // do not install middleware if SSR env in case another plugin already did
             if (
-              !isRunnableDevEnvironment(serverEnv) ||
+              !canSsrDevEnvironmentRunModuleImports(serverEnv) ||
               // do not check via `isFetchableDevEnvironment` since nitro does implement the `FetchableDevEnvironment` interface but not via inheritance (which this helper checks)
               'dispatchFetch' in serverEnv
             ) {
@@ -153,9 +168,9 @@ export function devServerPlugin({
             }
           }
 
-          if (!isRunnableDevEnvironment(serverEnv)) {
+          if (!canSsrDevEnvironmentRunModuleImports(serverEnv)) {
             throw new Error(
-              'cannot install vite dev server middleware for TanStack Start since the SSR environment is not a RunnableDevEnvironment',
+              'cannot install vite dev server middleware for TanStack Start since the SSR environment cannot run module imports (expected a runnable SSR dev environment)',
             )
           }
 
@@ -175,10 +190,16 @@ export function devServerPlugin({
                *  fetch(req: Request): Promise<Response>
                * }
                */
-              const serverEntry = await serverEnv.runner.import(
-                ENTRY_POINTS.server,
-              )
-              const webRes = await serverEntry['default'].fetch(webReq)
+              const serverEntry = await (
+                serverEnv as DevEnvironment & {
+                  runner: {
+                    import: (
+                      id: string,
+                    ) => Promise<TanStackServerEntryModule>
+                  }
+                }
+              ).runner.import(ENTRY_POINTS.server)
+              const webRes = await serverEntry.default.fetch(webReq)
 
               return sendNodeResponse(res, webRes)
             } catch (e) {

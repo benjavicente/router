@@ -1,4 +1,4 @@
-import { Await, createFileRoute } from '@tanstack/react-router'
+import { Await, createFileRoute } from '@benjavicente/react-router'
 import { Suspense } from 'react'
 
 /**

@@ -1,5 +1,5 @@
 import Auth0 from '@auth/core/providers/auth0'
-import { setCookie } from '@tanstack/react-start/server'
+import { setCookie } from '@benjavicente/react-start/server'
 import type { Profile } from '@auth/core/types'
 import type { StartAuthJSConfig } from 'start-authjs'
 

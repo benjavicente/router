@@ -1,6 +1,6 @@
 import { useQuery } from '@tanstack/solid-query'
-import { createFileRoute } from '@tanstack/solid-router'
-import { createServerFn } from '@tanstack/solid-start'
+import { createFileRoute } from '@benjavicente/solid-router'
+import { createServerFn } from '@benjavicente/solid-start'
 import { For, Show } from 'solid-js'
 import { z } from 'zod'
 export const Route = createFileRoute('/primitives/')({

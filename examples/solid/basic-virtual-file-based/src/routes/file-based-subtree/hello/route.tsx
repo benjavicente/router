@@ -1,4 +1,4 @@
-import { Link, Outlet } from '@tanstack/solid-router'
+import { Link, Outlet } from '@benjavicente/solid-router'
 
 export const Route = createFileRoute({
   component: () => (

@@ -1,12 +1,12 @@
-import { isServer } from '@tanstack/router-core/isServer'
+import { isServer } from '@benjavicente/router-core/isServer'
 import * as Solid from 'solid-js'
-import { replaceEqualDeep } from '@tanstack/router-core'
+import { replaceEqualDeep } from '@benjavicente/router-core'
 import { useRouter } from './useRouter'
 import type {
   AnyRouter,
   RegisteredRouter,
   RouterState,
-} from '@tanstack/router-core'
+} from '@benjavicente/router-core'
 import type { Accessor } from 'solid-js'
 
 export type UseRouterStateOptions<TRouter extends AnyRouter, TSelected> = {

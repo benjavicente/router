@@ -46,14 +46,14 @@ The router must be created identically on server and client. Export a factory fu
 
 ```tsx
 // src/router.tsx
-import { createRouter as createTanstackRouter } from '@tanstack/react-router'
+import { createRouter as createTanstackRouter } from '@benjavicente/react-router'
 import { routeTree } from './routeTree.gen'
 
 export function createRouter() {
   return createTanstackRouter({ routeTree })
 }
 
-declare module '@tanstack/react-router' {
+declare module '@benjavicente/react-router' {
   interface Register {
     router: ReturnType<typeof createRouter>
   }
@@ -69,7 +69,7 @@ declare module '@tanstack/react-router' {
 import {
   createRequestHandler,
   defaultRenderHandler,
-} from '@tanstack/react-router/ssr/server'
+} from '@benjavicente/react-router/ssr/server'
 import { createRouter } from './router'
 
 export async function render({ request }: { request: Request }) {
@@ -86,7 +86,7 @@ import {
   createRequestHandler,
   renderRouterToString,
   RouterServer,
-} from '@tanstack/react-router/ssr/server'
+} from '@benjavicente/react-router/ssr/server'
 import { createRouter } from './router'
 
 export function render({ request }: { request: Request }) {
@@ -107,7 +107,7 @@ export function render({ request }: { request: Request }) {
 ```tsx
 // src/entry-client.tsx
 import { hydrateRoot } from 'react-dom/client'
-import { RouterClient } from '@tanstack/react-router/ssr/client'
+import { RouterClient } from '@benjavicente/react-router/ssr/client'
 import { createRouter } from './router'
 
 const router = createRouter()
@@ -124,7 +124,7 @@ hydrateRoot(document, <RouterClient router={router} />)
 import {
   createRequestHandler,
   defaultStreamHandler,
-} from '@tanstack/react-router/ssr/server'
+} from '@benjavicente/react-router/ssr/server'
 import { createRouter } from './router'
 
 export async function render({ request }: { request: Request }) {
@@ -141,7 +141,7 @@ import {
   createRequestHandler,
   renderRouterToStream,
   RouterServer,
-} from '@tanstack/react-router/ssr/server'
+} from '@benjavicente/react-router/ssr/server'
 import { createRouter } from './router'
 
 export function render({ request }: { request: Request }) {
@@ -173,7 +173,7 @@ import {
   HeadContent,
   Outlet,
   Scripts,
-} from '@tanstack/react-router'
+} from '@benjavicente/react-router'
 
 export const Route = createRootRoute({
   head: () => ({
@@ -208,7 +208,7 @@ Child route `title` and `meta` tags override parent tags with the same `name`/`p
 
 ```tsx
 // src/routes/posts/$postId.tsx
-import { createFileRoute } from '@tanstack/react-router'
+import { createFileRoute } from '@benjavicente/react-router'
 
 export const Route = createFileRoute('/posts/$postId')({
   loader: async ({ params }) => {
@@ -235,7 +235,7 @@ function PostPage() {
 For SPAs without server-rendered HTML, render `<HeadContent />` at the top of the component tree:
 
 ```tsx
-import { createRootRoute, HeadContent, Outlet } from '@tanstack/react-router'
+import { createRootRoute, HeadContent, Outlet } from '@benjavicente/react-router'
 
 const rootRoute = createRootRoute({
   head: () => ({
@@ -267,7 +267,7 @@ The `<Scripts />` component renders these. Place it at the end of `<body>`.
 `ScriptOnce` renders a `<script>` during SSR that executes immediately and self-removes. On client navigation, it does nothing (no duplicate execution).
 
 ```tsx
-import { ScriptOnce } from '@tanstack/react-router'
+import { ScriptOnce } from '@benjavicente/react-router'
 
 const themeScript = `(function() {
   try {
@@ -306,7 +306,7 @@ import {
   RouterServer,
   createRequestHandler,
   renderRouterToString,
-} from '@tanstack/react-router/ssr/server'
+} from '@benjavicente/react-router/ssr/server'
 import { createRouter } from './router'
 import type express from 'express'
 

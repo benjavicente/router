@@ -41,7 +41,7 @@ async function compile(opts: {
     lookupKinds: new Set(['ServerFn']),
     lookupConfigurations: [
       {
-        libName: `@tanstack/react-start`,
+        libName: `@benjavicente/react-start`,
         rootExport: 'createServerFn',
         kind: 'Root',
       },
@@ -91,7 +91,7 @@ describe('createServerFn compiles correctly', async () => {
 
   test('should work with identifiers of functions', async () => {
     const code = `
-        import { createServerFn } from '@tanstack/react-start'
+        import { createServerFn } from '@benjavicente/react-start'
         const myFunc = () => {
           return 'hello from the server'
         }
@@ -120,22 +120,22 @@ describe('createServerFn compiles correctly', async () => {
     })
 
     expect(compiledResultClient!.code).toMatchInlineSnapshot(`
-      "import { createClientRpc } from '@tanstack/react-start/client-rpc';
-      import { createServerFn } from '@tanstack/react-start';
+      "import { createClientRpc } from '@benjavicente/react-start/client-rpc';
+      import { createServerFn } from '@benjavicente/react-start';
       const myServerFn = createServerFn().handler(createClientRpc("eyJmaWxlIjoiL0BpZC9zcmMvdGVzdC50cz90c3Mtc2VydmVyZm4tc3BsaXQiLCJleHBvcnQiOiJteVNlcnZlckZuX2NyZWF0ZVNlcnZlckZuX2hhbmRsZXIifQ"));"
     `)
 
     // Server caller: no second argument (implementation from extracted chunk)
     expect(compiledResultServerCaller!.code).toMatchInlineSnapshot(`
-      "import { createSsrRpc } from '@tanstack/react-start/ssr-rpc';
-      import { createServerFn } from '@tanstack/react-start';
+      "import { createSsrRpc } from '@benjavicente/react-start/ssr-rpc';
+      import { createServerFn } from '@benjavicente/react-start';
       const myServerFn = createServerFn().handler(createSsrRpc("eyJmaWxlIjoiL0BpZC9zcmMvdGVzdC50cz90c3Mtc2VydmVyZm4tc3BsaXQiLCJleHBvcnQiOiJteVNlcnZlckZuX2NyZWF0ZVNlcnZlckZuX2hhbmRsZXIifQ", () => import("/test/src/test.ts?tss-serverfn-split").then(m => m["myServerFn_createServerFn_handler"])));"
     `)
 
     // Server provider: has second argument (this is the implementation file)
     expect(compiledResultServerProvider!.code).toMatchInlineSnapshot(`
-      "import { createServerRpc } from '@tanstack/react-start/server-rpc';
-      import { createServerFn } from '@tanstack/react-start';
+      "import { createServerRpc } from '@benjavicente/react-start/server-rpc';
+      import { createServerFn } from '@benjavicente/react-start';
       const myFunc = () => {
         return 'hello from the server';
       };
@@ -151,7 +151,7 @@ describe('createServerFn compiles correctly', async () => {
 
   test('should use dce by default', async () => {
     const code = `
-      import { createServerFn } from '@tanstack/react-start'
+      import { createServerFn } from '@benjavicente/react-start'
       const exportedVar = 'exported'
       export const exportedFn = createServerFn().handler(async () => {
         return exportedVar
@@ -169,8 +169,8 @@ describe('createServerFn compiles correctly', async () => {
     })
 
     expect(compiledResult!.code).toMatchInlineSnapshot(`
-      "import { createClientRpc } from '@tanstack/react-start/client-rpc';
-      import { createServerFn } from '@tanstack/react-start';
+      "import { createClientRpc } from '@benjavicente/react-start/client-rpc';
+      import { createServerFn } from '@benjavicente/react-start';
       export const exportedFn = createServerFn().handler(createClientRpc("eyJmaWxlIjoiL0BpZC9zcmMvdGVzdC50cz90c3Mtc2VydmVyZm4tc3BsaXQiLCJleHBvcnQiOiJleHBvcnRlZEZuX2NyZWF0ZVNlcnZlckZuX2hhbmRsZXIifQ"));
       const nonExportedFn = createServerFn().handler(createClientRpc("eyJmaWxlIjoiL0BpZC9zcmMvdGVzdC50cz90c3Mtc2VydmVyZm4tc3BsaXQiLCJleHBvcnQiOiJub25FeHBvcnRlZEZuX2NyZWF0ZVNlcnZlckZuX2hhbmRsZXIifQ"));"
     `)
@@ -183,8 +183,8 @@ describe('createServerFn compiles correctly', async () => {
     })
 
     expect(compiledResultServerCaller!.code).toMatchInlineSnapshot(`
-      "import { createSsrRpc } from '@tanstack/react-start/ssr-rpc';
-      import { createServerFn } from '@tanstack/react-start';
+      "import { createSsrRpc } from '@benjavicente/react-start/ssr-rpc';
+      import { createServerFn } from '@benjavicente/react-start';
       export const exportedFn = createServerFn().handler(createSsrRpc("eyJmaWxlIjoiL0BpZC9zcmMvdGVzdC50cz90c3Mtc2VydmVyZm4tc3BsaXQiLCJleHBvcnQiOiJleHBvcnRlZEZuX2NyZWF0ZVNlcnZlckZuX2hhbmRsZXIifQ", () => import("/test/src/test.ts?tss-serverfn-split").then(m => m["exportedFn_createServerFn_handler"])));
       const nonExportedFn = createServerFn().handler(createSsrRpc("eyJmaWxlIjoiL0BpZC9zcmMvdGVzdC50cz90c3Mtc2VydmVyZm4tc3BsaXQiLCJleHBvcnQiOiJub25FeHBvcnRlZEZuX2NyZWF0ZVNlcnZlckZuX2hhbmRsZXIifQ", () => import("/test/src/test.ts?tss-serverfn-split").then(m => m["nonExportedFn_createServerFn_handler"])));"
     `)
@@ -197,8 +197,8 @@ describe('createServerFn compiles correctly', async () => {
     })
 
     expect(compiledResultServerProvider!.code).toMatchInlineSnapshot(`
-      "import { createServerRpc } from '@tanstack/react-start/server-rpc';
-      import { createServerFn } from '@tanstack/react-start';
+      "import { createServerRpc } from '@benjavicente/react-start/server-rpc';
+      import { createServerFn } from '@benjavicente/react-start';
       const exportedVar = 'exported';
       const exportedFn_createServerFn_handler = createServerRpc({
         id: "eyJmaWxlIjoiL0BpZC9zcmMvdGVzdC50cz90c3Mtc2VydmVyZm4tc3BsaXQiLCJleHBvcnQiOiJleHBvcnRlZEZuX2NyZWF0ZVNlcnZlckZuX2hhbmRsZXIifQ",
@@ -223,7 +223,7 @@ describe('createServerFn compiles correctly', async () => {
 
   test('should use fast path for direct imports from known library (no extra resolveId calls)', async () => {
     const code = `
-      import { createServerFn } from '@tanstack/react-start'
+      import { createServerFn } from '@benjavicente/react-start'
       const myServerFn = createServerFn().handler(async () => {
         return 'hello'
       })`
@@ -237,7 +237,7 @@ describe('createServerFn compiles correctly', async () => {
       lookupKinds: new Set(['ServerFn']),
       lookupConfigurations: [
         {
-          libName: '@tanstack/react-start',
+          libName: '@benjavicente/react-start',
           rootExport: 'createServerFn',
           kind: 'Root',
         },
@@ -255,7 +255,7 @@ describe('createServerFn compiles correctly', async () => {
     // the fast path uses knownRootImports map for O(1) lookup
     expect(resolveIdMock).toHaveBeenCalledTimes(1)
     expect(resolveIdMock).toHaveBeenCalledWith(
-      '@tanstack/react-start',
+      '@benjavicente/react-start',
       undefined,
     )
   })
@@ -278,7 +278,7 @@ describe('createServerFn compiles correctly', async () => {
         if (id === './factory') {
           compiler.ingestModule({
             code: `
-              import { createServerFn } from '@tanstack/react-start'
+              import { createServerFn } from '@benjavicente/react-start'
               export const createFooServerFn = createServerFn
             `,
             id: './factory',
@@ -288,7 +288,7 @@ describe('createServerFn compiles correctly', async () => {
       lookupKinds: new Set(['ServerFn']),
       lookupConfigurations: [
         {
-          libName: '@tanstack/react-start',
+          libName: '@benjavicente/react-start',
           rootExport: 'createServerFn',
           kind: 'Root',
         },
@@ -302,15 +302,15 @@ describe('createServerFn compiles correctly', async () => {
     })
 
     // resolveId should be called exactly twice:
-    // 1. Once during init() for '@tanstack/react-start'
+    // 1. Once during init() for '@benjavicente/react-start'
     // 2. Once to resolve './factory' import (slow path - not in knownRootImports)
     //
-    // Note: The factory module's import from '@tanstack/react-start' ALSO uses
+    // Note: The factory module's import from '@benjavicente/react-start' ALSO uses
     // the fast path (knownRootImports), so no additional resolveId call is needed there.
     expect(resolveIdMock).toHaveBeenCalledTimes(2)
     expect(resolveIdMock).toHaveBeenNthCalledWith(
       1,
-      '@tanstack/react-start',
+      '@benjavicente/react-start',
       undefined,
     )
     expect(resolveIdMock).toHaveBeenNthCalledWith(

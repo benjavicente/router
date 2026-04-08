@@ -1,8 +1,8 @@
-import { createFileRoute } from '@tanstack/react-router'
+import { createFileRoute } from '@benjavicente/react-router'
 import * as React from 'react'
-import { createMiddleware, createServerFn } from '@tanstack/react-start'
-import { getRequestHeaders } from '@tanstack/react-start/server'
-import type { CustomFetch } from '@tanstack/react-start'
+import { createMiddleware, createServerFn } from '@benjavicente/react-start'
+import { getRequestHeaders } from '@benjavicente/react-start/server'
+import type { CustomFetch } from '@benjavicente/react-start'
 
 /**
  * Custom Fetch Implementation Tests

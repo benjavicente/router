@@ -11,7 +11,7 @@ Learn how to add robust schema validation to your search parameters using popula
 Add robust validation with custom error messages, complex types, and production-ready error handling:
 
 ```tsx
-import { createFileRoute, useRouter } from '@tanstack/react-router'
+import { createFileRoute, useRouter } from '@benjavicente/react-router'
 import { z } from 'zod'
 
 const productSearchSchema = z.object({
@@ -79,10 +79,10 @@ TanStack Router supports multiple validation libraries through adapters:
 
 ### Zod (Recommended)
 
-Most popular with excellent TypeScript integration. For Zod v3, use `@tanstack/zod-adapter` for validation:
+Most popular with excellent TypeScript integration. For Zod v3, use `@benjavicente/zod-adapter` for validation:
 
 ```tsx
-import { zodValidator, fallback } from '@tanstack/zod-adapter'
+import { zodValidator, fallback } from '@benjavicente/zod-adapter'
 import { z } from 'zod'
 
 const searchSchema = z.object({
@@ -121,7 +121,7 @@ export const Route = createFileRoute('/search')({
 Lightweight alternative with modular design:
 
 ```tsx
-import { valibotValidator } from '@tanstack/valibot-adapter'
+import { valibotValidator } from '@benjavicente/valibot-adapter'
 import * as v from 'valibot'
 
 const searchSchema = v.object({
@@ -285,8 +285,8 @@ const transformSchema = z.object({
 Handle validation errors through route error components:
 
 ```tsx
-import { createFileRoute, useRouter } from '@tanstack/react-router'
-import { zodValidator } from '@tanstack/zod-adapter'
+import { createFileRoute, useRouter } from '@benjavicente/react-router'
+import { zodValidator } from '@benjavicente/zod-adapter'
 import { z } from 'zod'
 
 const searchSchema = z.object({
@@ -482,7 +482,7 @@ import {
   createRouter,
   createMemoryHistory,
   RouterProvider,
-} from '@tanstack/react-router'
+} from '@benjavicente/react-router'
 
 describe('Search Validation Behavior', () => {
   it('should show error component when validation fails', async () => {

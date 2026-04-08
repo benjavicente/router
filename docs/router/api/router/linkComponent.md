@@ -21,7 +21,7 @@ An anchor element that can be used to navigate to a new location.
 ## Examples
 
 ```tsx
-import { Link } from '@tanstack/react-router'
+import { Link } from '@benjavicente/react-router'
 
 function Component() {
   return (
@@ -46,7 +46,7 @@ By default, param values with characters such as `@` will be encoded in the URL:
 To opt-out, update the [pathParamsAllowedCharacters](../router/RouterOptionsType#pathparamsallowedcharacters-property) config on the router
 
 ```tsx
-import { createRouter } from '@tanstack/react-router'
+import { createRouter } from '@benjavicente/react-router'
 
 const router = createRouter({
   routeTree,

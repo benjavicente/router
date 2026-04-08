@@ -1,7 +1,7 @@
 import path from 'node:path'
 import fs from 'node:fs'
 import { expect } from '@playwright/test'
-import { test } from '@tanstack/router-e2e-utils'
+import { test } from '@benjavicente/router-e2e-utils'
 import type { Violation } from './violations.utils'
 import type { Page } from '@playwright/test'
 
@@ -270,12 +270,12 @@ for (const mode of ['build', 'dev'] as const) {
 }
 
 for (const mode of ['build', 'dev'] as const) {
-  test(`leaky @tanstack/react-start/server import points to usage site in ${mode}`, async () => {
+  test(`leaky @benjavicente/react-start/server import points to usage site in ${mode}`, async () => {
     const violations = await readViolations(mode)
     const v = violations.find(
       (x) =>
         x.type === 'specifier' &&
-        x.specifier === '@tanstack/react-start/server' &&
+        x.specifier === '@benjavicente/react-start/server' &&
         x.importer.includes('leaky-server-import') &&
         /:\d+:\d+$/.test(x.importer),
     )
@@ -416,7 +416,7 @@ for (const mode of ['build', 'dev', 'dev.warm'] as const) {
   test(`no false positive for factory-safe middleware pattern in ${mode}`, async () => {
     const violations = await readViolations(mode)
 
-    // createSecretFactory.ts uses @tanstack/react-start/server and ../secret.server
+    // createSecretFactory.ts uses @benjavicente/react-start/server and ../secret.server
     // ONLY inside createMiddleware().server() callbacks.  The compiler strips these
     // on the client, so import-protection must not fire for them.
     const factoryHits = violations.filter(
@@ -439,7 +439,7 @@ for (const mode of ['build', 'dev', 'dev.warm'] as const) {
   test(`no false positive for cross-boundary-safe pattern in ${mode}`, async () => {
     const violations = await readViolations(mode)
 
-    // session-util.ts imports @tanstack/react-start/server, but it's only ever
+    // session-util.ts imports @benjavicente/react-start/server, but it's only ever
     // imported by usage.ts which uses it exclusively inside compiler boundaries
     // (createServerFn().handler, createMiddleware().server).  The compiler should
     // prune the import chain from the client build.
@@ -501,7 +501,7 @@ for (const mode of ['build', 'dev', 'dev.warm'] as const) {
       const specHit = hits.find(
         (v) =>
           v.type === 'specifier' &&
-          v.specifier === '@tanstack/react-start/server',
+          v.specifier === '@benjavicente/react-start/server',
       )
       expect(specHit).toBeDefined()
     }
@@ -515,7 +515,7 @@ test('beforeload-leak: violation trace includes the route file', async () => {
     (v) =>
       v.envType === 'client' &&
       v.type === 'specifier' &&
-      v.specifier === '@tanstack/react-start/server' &&
+      v.specifier === '@benjavicente/react-start/server' &&
       (v.importer.includes('beforeload-server-leak') ||
         v.trace.some((s) => s.file.includes('beforeload-server-leak'))),
   )
@@ -601,7 +601,7 @@ test('warm run traces include line numbers', async () => {
 //
 // The cross-boundary-safe pattern exercises both bugs:
 //   auth-wrapper.ts exports createAuthServerFn (factory with middleware)
-//   → session-util.ts wraps @tanstack/react-start/server
+//   → session-util.ts wraps @benjavicente/react-start/server
 //   → usage.ts calls createAuthServerFn().handler()
 // All server imports are inside compiler boundaries and must be pruned.
 
@@ -701,7 +701,7 @@ test('no false positive for barrel-reexport .server pattern in build', async () 
 test('no false positive for barrel-reexport marker pattern in build', async () => {
   const violations = await readViolations('build')
 
-  // foo.ts uses `import '@tanstack/react-start/server-only'` marker and is
+  // foo.ts uses `import '@benjavicente/react-start/server-only'` marker and is
   // re-exported through the barrel, but never imported by the route.
   // Tree-shaking should eliminate it — no marker violation should fire.
   const markerHits = violations.filter(

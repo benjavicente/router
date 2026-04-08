@@ -1,7 +1,7 @@
 import { describe, expectTypeOf, test } from 'vitest'
 import { createRootRoute, createRoute, createRouter, getRouteApi } from '../src'
 import type * as Vue from 'vue'
-import type { MakeRouteMatch, UseNavigateResult } from '@tanstack/router-core'
+import type { MakeRouteMatch, UseNavigateResult } from '@benjavicente/router-core'
 
 const rootRoute = createRootRoute()
 

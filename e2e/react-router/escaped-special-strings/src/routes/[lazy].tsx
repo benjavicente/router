@@ -1,4 +1,4 @@
-import { createFileRoute } from '@tanstack/react-router'
+import { createFileRoute } from '@benjavicente/react-router'
 
 // This file uses [lazy] escaping to create a literal /lazy path
 // instead of being treated as a lazy-loaded route

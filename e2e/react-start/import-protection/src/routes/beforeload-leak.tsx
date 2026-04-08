@@ -1,11 +1,11 @@
-import { createFileRoute } from '@tanstack/react-router'
+import { createFileRoute } from '@benjavicente/react-router'
 import { getSessionFromRequest } from '../violations/beforeload-server-leak'
 
 export const Route = createFileRoute('/beforeload-leak')({
   // beforeLoad is NOT stripped by the compiler on the client side.
   // It is not in splitRouteIdentNodes or deleteNodes, so this import
   // chain survives: beforeload-leak.tsx -> beforeload-server-leak.ts
-  //   -> @tanstack/react-start/server
+  //   -> @benjavicente/react-start/server
   // This is a TRUE POSITIVE violation in the client environment.
   beforeLoad: () => {
     const session = getSessionFromRequest()

@@ -1,5 +1,5 @@
-import { createSsrRpc } from '@tanstack/react-start/ssr-rpc';
-import { createServerFn as serverFn } from '@tanstack/react-start';
+import { createSsrRpc } from '@benjavicente/react-start/ssr-rpc';
+import { createServerFn as serverFn } from '@benjavicente/react-start';
 export const withUseServer = serverFn({
   method: 'GET'
 }).handler(createSsrRpc("eyJmaWxlIjoiL0BpZC9zcmMvdGVzdC50cz90c3Mtc2VydmVyZm4tc3BsaXQiLCJleHBvcnQiOiJ3aXRoVXNlU2VydmVyX2NyZWF0ZVNlcnZlckZuX2hhbmRsZXIifQ", () => import("/test/src/test.ts?tss-serverfn-split").then(m => m["withUseServer_createServerFn_handler"])));

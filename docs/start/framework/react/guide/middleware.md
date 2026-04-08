@@ -48,7 +48,7 @@ There are two types of middleware: **request middleware** and **server function 
 All middleware is composable, which means that one middleware can depend on another middleware.
 
 ```tsx
-import { createMiddleware } from '@tanstack/react-start'
+import { createMiddleware } from '@benjavicente/react-start'
 
 const loggingMiddleware = createMiddleware().server(() => {
   //...
@@ -71,7 +71,7 @@ Middleware is next-able, which means that you must call the `next` function in t
 - Pass context to the wrapping middleware
 
 ```tsx
-import { createMiddleware } from '@tanstack/react-start'
+import { createMiddleware } from '@benjavicente/react-start'
 
 const loggingMiddleware = createMiddleware().server(async ({ next }) => {
   const result = await next() // <-- This will execute the next middleware in the chain
@@ -86,7 +86,7 @@ Request middleware is used to customize the behavior of any server request that 
 To create a request middleware, call the `createMiddleware` function. You may call this function with the `type` property set to 'request', but this is the default value so you can omit it if you'd like.
 
 ```tsx
-import { createMiddleware } from '@tanstack/react-start'
+import { createMiddleware } from '@benjavicente/react-start'
 
 const loggingMiddleware = createMiddleware().server(() => {
   //...
@@ -105,7 +105,7 @@ Request middleware has the following methods:
 The `.server` method is used to define server-side logic that the middleware will execute before any nested middleware, and also provide the result to the next middleware. It receives the `next` method and other things like context and the request object:
 
 ```tsx
-import { createMiddleware } from '@tanstack/react-start'
+import { createMiddleware } from '@benjavicente/react-start'
 
 const loggingMiddleware = createMiddleware().server(
   ({ next, context, request }) => {
@@ -140,7 +140,7 @@ You can use request middleware with server routes in two ways:
 To have a server route use middleware for all methods, pass a middleware array to the `middleware` property of the method builder object.
 
 ```tsx
-import { createMiddleware } from '@tanstack/react-start'
+import { createMiddleware } from '@benjavicente/react-start'
 
 const loggingMiddleware = createMiddleware().server(() => {
   //...
@@ -166,7 +166,7 @@ export const Route = createFileRoute('/foo')({
 You can pass middleware to specific server route methods by using the `createHandlers` utility and passing a middleware array to the `middleware` property of the method object.
 
 ```tsx
-import { createMiddleware } from '@tanstack/react-start'
+import { createMiddleware } from '@benjavicente/react-start'
 
 const loggingMiddleware = createMiddleware().server(() => {
   //...
@@ -194,7 +194,7 @@ Server function middleware is a **subset** of request middleware that has extra 
 To create a server function middleware, call the `createMiddleware` function with the `type` property set to 'function'.
 
 ```tsx
-import { createMiddleware } from '@tanstack/react-start'
+import { createMiddleware } from '@benjavicente/react-start'
 
 const loggingMiddleware = createMiddleware({ type: 'function' })
   .client(() => {
@@ -222,7 +222,7 @@ Server function middleware has the following methods:
 The `.client` method is used to define client-side logic that the middleware will wrap the execution and result of the RPC call to the server.
 
 ```tsx
-import { createMiddleware } from '@tanstack/react-start'
+import { createMiddleware } from '@benjavicente/react-start'
 
 const loggingMiddleware = createMiddleware({ type: 'function' }).client(
   async ({ next, context, request }) => {
@@ -237,8 +237,8 @@ const loggingMiddleware = createMiddleware({ type: 'function' }).client(
 The `inputValidator` method is used to modify the data object before it is passed to this middleware, nested middleware, and ultimately the server function. This method should receive a function that takes the data object and returns a validated (and optionally modified) data object. It's common to use a validation library like `zod` to do this.
 
 ```tsx
-import { createMiddleware } from '@tanstack/react-start'
-import { zodValidator } from '@tanstack/zod-adapter'
+import { createMiddleware } from '@benjavicente/react-start'
+import { zodValidator } from '@benjavicente/zod-adapter'
 import { z } from 'zod'
 
 const mySchema = z.object({
@@ -258,7 +258,7 @@ const workspaceMiddleware = createMiddleware({ type: 'function' })
 To have a middleware wrap a specific server function, you can pass a middleware array to the `middleware` property of the `createServerFn` function.
 
 ```tsx
-import { createServerFn } from '@tanstack/react-start'
+import { createServerFn } from '@benjavicente/react-start'
 import { loggingMiddleware } from './middleware'
 
 const fn = createServerFn()
@@ -301,7 +301,7 @@ sequenceDiagram
 The `next` function can be optionally called with an object that has a `context` property with an object value. Whatever properties you pass to this `context` value will be merged into the parent `context` and provided to the next middleware.
 
 ```tsx
-import { createMiddleware } from '@tanstack/react-start'
+import { createMiddleware } from '@benjavicente/react-start'
 
 const awesomeMiddleware = createMiddleware({ type: 'function' }).server(
   ({ next }) => {
@@ -326,7 +326,7 @@ const loggingMiddleware = createMiddleware({ type: 'function' })
 **Client context is NOT sent to the server by default since this could end up unintentionally sending large payloads to the server.** If you need to send client context to the server, you must call the `next` function with a `sendContext` property and object to transmit any data to the server. Any properties passed to `sendContext` will be merged, serialized and sent to the server along with the data and will be available on the normal context object of any nested server middleware.
 
 ```tsx
-import { createMiddleware } from '@tanstack/react-start'
+import { createMiddleware } from '@benjavicente/react-start'
 
 const requestLogger = createMiddleware({ type: 'function' })
   .client(async ({ next, context }) => {
@@ -349,8 +349,8 @@ const requestLogger = createMiddleware({ type: 'function' })
 You may have noticed that in the example above while client-sent context is type-safe, it is not required to be validated at runtime. If you pass dynamic user-generated data via context, that could pose a security concern, so **if you are sending dynamic data from the client to the server via context, you should validate it in the server-side middleware before using it.**
 
 ```tsx
-import { createMiddleware } from '@tanstack/react-start'
-import { zodValidator } from '@tanstack/zod-adapter'
+import { createMiddleware } from '@benjavicente/react-start'
+import { zodValidator } from '@benjavicente/zod-adapter'
 import { z } from 'zod'
 
 const requestLogger = createMiddleware({ type: 'function' })
@@ -377,7 +377,7 @@ Similar to sending client context to the server, you can also send server contex
 > The return type of `next` in `client` can only be inferred from middleware known in the current middleware chain. Therefore the most accurate return type of `next` is in middleware at the end of the middleware chain
 
 ```tsx
-import { createMiddleware } from '@tanstack/react-start'
+import { createMiddleware } from '@benjavicente/react-start'
 
 const serverTimer = createMiddleware({ type: 'function' }).server(
   async ({ next }) => {
@@ -414,7 +414,7 @@ To have a middleware run for **every request handled by Start**, create a `src/s
 
 ```tsx
 // src/start.ts
-import { createStart, createMiddleware } from '@tanstack/react-start'
+import { createStart, createMiddleware } from '@benjavicente/react-start'
 
 const myGlobalMiddleware = createMiddleware().server(() => {
   //...
@@ -436,7 +436,7 @@ To have a middleware run for **every server function in your application**, add 
 
 ```tsx
 // src/start.ts
-import { createStart } from '@tanstack/react-start'
+import { createStart } from '@benjavicente/react-start'
 import { loggingMiddleware } from './middleware'
 
 export const startInstance = createStart(() => {
@@ -459,7 +459,7 @@ Middleware is executed dependency-first, starting with global middleware, follow
 - `fn`
 
 ```tsx
-import { createMiddleware, createServerFn } from '@tanstack/react-start'
+import { createMiddleware, createServerFn } from '@benjavicente/react-start'
 
 const globalMiddleware1 = createMiddleware({ type: 'function' }).server(
   async ({ next }) => {
@@ -522,7 +522,7 @@ Middleware that uses the `client` method executes in a **completely different cl
 You can add headers to the outgoing request by passing a `headers` object to `next`:
 
 ```tsx
-import { createMiddleware } from '@tanstack/react-start'
+import { createMiddleware } from '@benjavicente/react-start'
 import { getToken } from 'my-auth-library'
 
 const authMiddleware = createMiddleware({ type: 'function' }).client(
@@ -541,7 +541,7 @@ const authMiddleware = createMiddleware({ type: 'function' }).client(
 When multiple middlewares set headers, they are **merged together**. Later middlewares can add new headers or override headers set by earlier middlewares:
 
 ```tsx
-import { createMiddleware } from '@tanstack/react-start'
+import { createMiddleware } from '@benjavicente/react-start'
 
 const firstMiddleware = createMiddleware({ type: 'function' }).client(
   async ({ next }) => {
@@ -600,8 +600,8 @@ For advanced use cases, you can provide a custom `fetch` implementation to contr
 **Via Client Middleware:**
 
 ```tsx
-import { createMiddleware } from '@tanstack/react-start'
-import type { CustomFetch } from '@tanstack/react-start'
+import { createMiddleware } from '@benjavicente/react-start'
+import type { CustomFetch } from '@benjavicente/react-start'
 
 const customFetchMiddleware = createMiddleware({ type: 'function' }).client(
   async ({ next }) => {
@@ -623,7 +623,7 @@ const customFetchMiddleware = createMiddleware({ type: 'function' }).client(
 **Directly at Call Site:**
 
 ```tsx
-import type { CustomFetch } from '@tanstack/react-start'
+import type { CustomFetch } from '@benjavicente/react-start'
 
 const myFetch: CustomFetch = async (url, init) => {
   // Add custom logic here
@@ -651,8 +651,8 @@ When custom fetch implementations are provided at multiple levels, the following
 **Key principle:** The call site always wins. This allows you to override middleware behavior for specific calls when needed.
 
 ```tsx
-import { createMiddleware, createServerFn } from '@tanstack/react-start'
-import type { CustomFetch } from '@tanstack/react-start'
+import { createMiddleware, createServerFn } from '@benjavicente/react-start'
+import type { CustomFetch } from '@benjavicente/react-start'
 
 // Middleware sets a fetch that adds logging
 const loggingMiddleware = createMiddleware({ type: 'function' }).client(
@@ -687,8 +687,8 @@ await myServerFn({ fetch: testFetch }) // Uses testFetch, NOT loggingFetch
 When multiple middlewares provide fetch, the last one wins:
 
 ```tsx
-import { createMiddleware, createServerFn } from '@tanstack/react-start'
-import type { CustomFetch } from '@tanstack/react-start'
+import { createMiddleware, createServerFn } from '@benjavicente/react-start'
+import type { CustomFetch } from '@benjavicente/react-start'
 
 const firstMiddleware = createMiddleware({ type: 'function' }).client(
   async ({ next }) => {
@@ -727,8 +727,8 @@ You can set a default custom fetch for all server functions in your application 
 
 ```tsx
 // src/start.ts
-import { createStart } from '@tanstack/react-start'
-import type { CustomFetch } from '@tanstack/react-start'
+import { createStart } from '@benjavicente/react-start'
+import type { CustomFetch } from '@benjavicente/react-start'
 
 const globalFetch: CustomFetch = async (url, init) => {
   console.log('Global fetch:', url)
@@ -769,7 +769,7 @@ This middleware validates the session and injects it into `context` for downstre
 
 ```tsx
 // middleware.ts
-import { createMiddleware } from '@tanstack/react-start'
+import { createMiddleware } from '@benjavicente/react-start'
 import { auth } from './my-auth'
 
 export const authMiddleware = createMiddleware().server(
@@ -793,7 +793,7 @@ The middleware validates access based on the dynamic `permissions` parameter, co
 
 ```tsx
 // middleware.ts
-import { createMiddleware } from '@tanstack/react-start'
+import { createMiddleware } from '@benjavicente/react-start'
 import { auth } from './my-auth'
 
 export const authMiddleware = createMiddleware().server(
@@ -824,7 +824,7 @@ export function authorizationMiddleware(permissions: Permissions) {
 Access requirements are defined per server function, without duplicating any middleware logic.
 
 ```tsx
-import { createServerFn } from '@tanstack/react-start'
+import { createServerFn } from '@benjavicente/react-start'
 import { authorizationMiddleware } from './middleware'
 
 export const getClients = createServerFn()

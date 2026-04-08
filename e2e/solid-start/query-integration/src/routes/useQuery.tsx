@@ -1,4 +1,4 @@
-import { createFileRoute } from '@tanstack/solid-router'
+import { createFileRoute } from '@benjavicente/solid-router'
 import { useQuery } from '@tanstack/solid-query'
 import { makeQueryOptions } from '~/queryOptions'
 

@@ -1,4 +1,4 @@
-import { createMiddleware, createServerFn } from '@tanstack/solid-start'
+import { createMiddleware, createServerFn } from '@benjavicente/solid-start'
 import { createBarServerFn } from './createBarServerFn'
 import { createFooServerFn } from './createFooServerFn'
 import { createFakeFn } from './createFakeFn'

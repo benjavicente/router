@@ -1,4 +1,4 @@
-import { createFileRoute, useParams } from '@tanstack/solid-router'
+import { createFileRoute, useParams } from '@benjavicente/solid-router'
 
 export const Route = createFileRoute('/params-ps/non-nested/$foo_/$bar')({
   component: RouteComponent,

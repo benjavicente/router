@@ -1,4 +1,4 @@
-import { createFileRoute, notFound } from '@tanstack/solid-router'
+import { createFileRoute, notFound } from '@benjavicente/solid-router'
 import { Route as ParentBoundaryRoute } from './route'
 
 export const Route = createFileRoute(

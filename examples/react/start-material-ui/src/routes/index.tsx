@@ -1,4 +1,4 @@
-import { createFileRoute } from '@tanstack/react-router'
+import { createFileRoute } from '@benjavicente/react-router'
 import { Stack, Typography } from '@mui/material'
 import z from 'zod'
 import { Counter } from '~/components/Counter'

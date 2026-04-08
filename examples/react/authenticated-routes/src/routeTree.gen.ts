@@ -105,7 +105,7 @@ export interface RootRouteChildren {
   LoginRoute: typeof LoginRoute
 }
 
-declare module '@tanstack/react-router' {
+declare module '@benjavicente/react-router' {
   interface FileRoutesByPath {
     '/login': {
       id: '/login'

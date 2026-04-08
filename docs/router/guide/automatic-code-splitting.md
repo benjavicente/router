@@ -9,7 +9,7 @@ To turn this feature on, simply set the `autoCodeSplitting` option to `true` in 
 ```ts
 // vite.config.ts
 import { defineConfig } from 'vite'
-import { tanstackRouter } from '@tanstack/router-plugin/vite'
+import { tanstackRouter } from '@benjavicente/router-plugin/vite'
 
 export default defineConfig({
   plugins: [
@@ -116,7 +116,7 @@ For example, to bundle all UI-related components into a single chunk, you could 
 
 ```ts title="vite.config.ts"
 import { defineConfig } from 'vite'
-import { tanstackRouter } from '@tanstack/router-plugin/vite'
+import { tanstackRouter } from '@benjavicente/router-plugin/vite'
 
 export default defineConfig({
   plugins: [
@@ -143,7 +143,7 @@ For complex rulesets, you can use the `splitBehavior` function in your vite conf
 
 ```ts title="vite.config.ts"
 import { defineConfig } from 'vite'
-import { tanstackRouter } from '@tanstack/router-plugin/vite'
+import { tanstackRouter } from '@benjavicente/router-plugin/vite'
 
 export default defineConfig({
   plugins: [
@@ -205,7 +205,7 @@ The `loader` function is responsible for fetching data needed by the route. By d
 ```ts
 // vite.config.ts
 import { defineConfig } from 'vite'
-import { tanstackRouter } from '@tanstack/router-plugin/vite'
+import { tanstackRouter } from '@benjavicente/router-plugin/vite'
 
 export default defineConfig({
   plugins: [

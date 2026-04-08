@@ -5,8 +5,8 @@ import {
   isDangerousProtocol,
   preloadWarning,
   removeTrailingSlash,
-} from '@tanstack/router-core'
-import { isServer } from '@tanstack/router-core/isServer'
+} from '@benjavicente/router-core'
+import { isServer } from '@benjavicente/router-core/isServer'
 
 import { useStore } from '@tanstack/vue-store'
 import { useRouter } from './useRouter'
@@ -19,7 +19,7 @@ import type {
   ParsedLocation,
   RegisteredRouter,
   RoutePaths,
-} from '@tanstack/router-core'
+} from '@benjavicente/router-core'
 import type { AnchorHTMLAttributes, ReservedProps } from '@vue/runtime-dom'
 import type {
   ValidateLinkOptions,

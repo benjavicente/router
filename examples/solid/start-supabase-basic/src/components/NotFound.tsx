@@ -1,4 +1,4 @@
-import { Link } from '@tanstack/solid-router'
+import { Link } from '@benjavicente/solid-router'
 import type * as Solid from 'solid-js'
 
 export function NotFound({ children }: { children?: Solid.JSX.Element }) {

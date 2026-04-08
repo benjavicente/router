@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { useParams, getRouteApi } from '@tanstack/vue-router'
+import { useParams, getRouteApi } from '@benjavicente/vue-router'
 
 const api = getRouteApi('/posts_/$postId/edit')
 

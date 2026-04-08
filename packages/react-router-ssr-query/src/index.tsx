@@ -1,8 +1,8 @@
 import { Fragment } from 'react'
 import { QueryClientProvider } from '@tanstack/react-query'
-import { setupCoreRouterSsrQueryIntegration } from '@tanstack/router-ssr-query-core'
-import type { RouterSsrQueryOptions } from '@tanstack/router-ssr-query-core'
-import type { AnyRouter } from '@tanstack/react-router'
+import { setupCoreRouterSsrQueryIntegration } from '@benjavicente/router-ssr-query-core'
+import type { RouterSsrQueryOptions } from '@benjavicente/router-ssr-query-core'
+import type { AnyRouter } from '@benjavicente/react-router'
 
 export type Options<TRouter extends AnyRouter> =
   RouterSsrQueryOptions<TRouter> & {

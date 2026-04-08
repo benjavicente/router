@@ -1,7 +1,7 @@
 import { describe, expect, it, vi } from 'vitest'
 import { VITE_ENVIRONMENT_NAMES } from '../src/constants'
 
-vi.mock('@tanstack/start-server-core', () => ({
+vi.mock('@benjavicente/start-server-core', () => ({
   HEADERS: {
     TSS_SHELL: 'x-tss-shell',
   },

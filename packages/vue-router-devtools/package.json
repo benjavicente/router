@@ -1,5 +1,5 @@
 {
-  "name": "@tanstack/vue-router-devtools",
+  "name": "@benjavicente/vue-router-devtools",
   "version": "1.166.11",
   "description": "Modern and scalable routing for Vue applications",
   "author": "Tanner Linsley",
@@ -57,7 +57,7 @@
     "node": ">=20.19"
   },
   "dependencies": {
-    "@tanstack/router-devtools-core": "workspace:*",
+    "@benjavicente/router-devtools-core": "workspace:*",
     "vite": "*"
   },
   "devDependencies": {
@@ -66,12 +66,12 @@
     "@types/node": ">=20"
   },
   "peerDependencies": {
-    "@tanstack/vue-router": "workspace:^",
-    "@tanstack/router-core": "workspace:^",
+    "@benjavicente/vue-router": "workspace:^",
+    "@benjavicente/router-core": "workspace:^",
     "vue": "^3.5.13"
   },
   "peerDependenciesMeta": {
-    "@tanstack/router-core": {
+    "@benjavicente/router-core": {
       "optional": true
     }
   }

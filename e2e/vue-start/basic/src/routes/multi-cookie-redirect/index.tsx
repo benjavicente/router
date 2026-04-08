@@ -1,6 +1,6 @@
-import { createFileRoute, redirect } from '@tanstack/vue-router'
-import { createServerFn } from '@tanstack/vue-start'
-import { setCookie } from '@tanstack/vue-start/server'
+import { createFileRoute, redirect } from '@benjavicente/vue-router'
+import { createServerFn } from '@benjavicente/vue-start'
+import { setCookie } from '@benjavicente/vue-start/server'
 
 const setMultipleCookiesAndRedirect = createServerFn().handler(() => {
   // Set multiple cookies before redirecting

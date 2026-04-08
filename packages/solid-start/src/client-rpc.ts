@@ -1,1 +1,1 @@
-export * from '@tanstack/start-client-core/client-rpc'
+export * from '@benjavicente/start-client-core/client-rpc'

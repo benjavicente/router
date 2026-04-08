@@ -52,7 +52,7 @@ Add the cloudflare plugin to your `vite.config.ts` file.
 ```ts
 // vite.config.ts
 import { defineConfig } from 'vite'
-import { tanstackStart } from '@tanstack/solid-start/plugin/vite'
+import { tanstackStart } from '@benjavicente/solid-start/plugin/vite'
 import { cloudflare } from '@cloudflare/vite-plugin'
 import viteSolid from 'vite-plugin-solid'
 
@@ -79,7 +79,7 @@ pnpm add wrangler -D
   "name": "tanstack-start-app",
   "compatibility_date": "2025-09-02",
   "compatibility_flags": ["nodejs_compat"],
-  "main": "@tanstack/solid-start/server-entry",
+  "main": "@benjavicente/solid-start/server-entry",
   "vars": {
     "MY_VAR": "Hello from Cloudflare"
   }
@@ -130,7 +130,7 @@ pnpm add --save-dev @netlify/vite-plugin-tanstack-start
 ```ts
 // vite.config.ts
 import { defineConfig } from 'vite'
-import { tanstackStart } from '@tanstack/solid-start/plugin/vite'
+import { tanstackStart } from '@benjavicente/solid-start/plugin/vite'
 import netlify from '@netlify/vite-plugin-tanstack-start' // ← add this
 import viteSolid from 'vite-plugin-solid'
 
@@ -222,7 +222,7 @@ npm install nitro
 2. Add the `nitro/vite` plugin to your `vite.config.ts` file:
 
 ```tsx
-import { tanstackStart } from '@tanstack/solid-start/plugin/vite'
+import { tanstackStart } from '@benjavicente/solid-start/plugin/vite'
 import { defineConfig } from 'vite'
 import { nitro } from 'nitro/vite'
 import viteSolid from 'vite-plugin-solid'
@@ -287,7 +287,7 @@ Depending on how you invoke the build, you might need to set the `'bun'` preset 
 
 ```ts
 // vite.config.ts
-import { tanstackStart } from '@tanstack/solid-start/plugin/vite'
+import { tanstackStart } from '@benjavicente/solid-start/plugin/vite'
 import { defineConfig } from 'vite'
 import viteSolid from 'vite-plugin-solid'
 import { nitro } from 'nitro/vite'

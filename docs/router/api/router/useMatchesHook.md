@@ -33,7 +33,7 @@ The `useMatches` hook accepts a single _optional_ argument, an `options` object.
 ## Examples
 
 ```tsx
-import { useMatches } from '@tanstack/react-router'
+import { useMatches } from '@benjavicente/react-router'
 
 function Component() {
   const matches = useMatches()

@@ -1,5 +1,5 @@
 import * as Solid from 'solid-js'
-import { createFileRoute, Link, Outlet } from '@tanstack/solid-router'
+import { createFileRoute, Link, Outlet } from '@benjavicente/solid-router'
 import { fetchPosts } from '../posts'
 
 export const Route = createFileRoute('/posts')({

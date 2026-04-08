@@ -2,8 +2,8 @@ import {
   ErrorComponent,
   useLocation,
   createFileRoute,
-} from '@tanstack/react-router'
-import type { ErrorComponentProps } from '@tanstack/react-router'
+} from '@benjavicente/react-router'
+import type { ErrorComponentProps } from '@benjavicente/react-router'
 import { NotFound } from '~/components/NotFound'
 import { getDocument } from '~/server/document'
 import { capitalize, seo } from '~/utils/seo'

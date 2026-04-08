@@ -2,12 +2,12 @@
 title: Installation with Rspack
 ---
 
-To use file-based routing with **Rspack** or **Rsbuild**, you'll need to install the `@tanstack/router-plugin` package.
+To use file-based routing with **Rspack** or **Rsbuild**, you'll need to install the `@benjavicente/router-plugin` package.
 
 <!-- ::start:tabs variant="package-manager" mode="dev-install" -->
 
-react: @tanstack/router-plugin
-solid: @tanstack/router-plugin
+react: @benjavicente/router-plugin
+solid: @benjavicente/router-plugin
 
 <!-- ::end:tabs -->
 
@@ -20,7 +20,7 @@ Once installed, you'll need to add the plugin to your configuration.
 ```ts title="rsbuild.config.ts"
 import { defineConfig } from '@rsbuild/core'
 import { pluginReact } from '@rsbuild/plugin-react'
-import { tanstackRouter } from '@tanstack/router-plugin/rspack'
+import { tanstackRouter } from '@benjavicente/router-plugin/rspack'
 
 export default defineConfig({
   plugins: [pluginReact()],
@@ -45,7 +45,7 @@ Or, you can clone our [Quickstart Rspack/Rsbuild example](https://github.com/Tan
 import { defineConfig } from '@rsbuild/core'
 import { pluginBabel } from '@rsbuild/plugin-babel'
 import { pluginSolid } from '@rsbuild/plugin-solid'
-import { tanstackRouter } from '@tanstack/router-plugin/rspack'
+import { tanstackRouter } from '@benjavicente/router-plugin/rspack'
 
 export default defineConfig({
   plugins: [

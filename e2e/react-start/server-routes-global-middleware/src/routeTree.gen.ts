@@ -50,7 +50,7 @@ export interface RootRouteChildren {
   ServerRouteWithMiddlewareRoute: typeof ServerRouteWithMiddlewareRoute
 }
 
-declare module '@tanstack/react-router' {
+declare module '@benjavicente/react-router' {
   interface FileRoutesByPath {
     '/server-route-with-middleware': {
       id: '/server-route-with-middleware'
@@ -79,7 +79,7 @@ export const routeTree = rootRouteImport
 
 import type { getRouter } from './router.tsx'
 import type { startInstance } from './start.ts'
-declare module '@tanstack/react-start' {
+declare module '@benjavicente/react-start' {
   interface Register {
     ssr: true
     router: Awaited<ReturnType<typeof getRouter>>

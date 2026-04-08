@@ -1,4 +1,4 @@
-# @tanstack/arktype-adapter
+# @benjavicente/arktype-adapter
 
 ## 1.166.9
 

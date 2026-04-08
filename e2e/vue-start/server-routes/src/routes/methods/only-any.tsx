@@ -1,4 +1,4 @@
-import { createFileRoute } from '@tanstack/vue-router'
+import { createFileRoute } from '@benjavicente/vue-router'
 import { useQuery } from '@tanstack/vue-query'
 import { defineComponent } from 'vue'
 

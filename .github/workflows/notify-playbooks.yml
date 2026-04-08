@@ -9,7 +9,7 @@
 #     as the INTENT_NOTIFY_TOKEN repository secret.
 #
 # Template variables (replaced by `intent setup`):
-#   @tanstack/react-router  — e.g. @tanstack/query
+#   @benjavicente/react-router  — e.g. @tanstack/query
 #   docs/**     — e.g. docs/**
 #   packages/*/src/**      — e.g. packages/query-core/src/**
 #

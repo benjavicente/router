@@ -6,7 +6,7 @@
 # Status: reviewed
 
 library:
-  name: '@tanstack/react-router'
+  name: '@benjavicente/react-router'
   version: '1.166.2'
   repository: 'https://github.com/TanStack/router'
   description: >-
@@ -78,13 +78,13 @@ skills:
       register types.
     type: core
     packages:
-      - '@tanstack/react-router'
-      - '@tanstack/router-core'
-      - '@tanstack/router-plugin'
-      - '@tanstack/router-generator'
-      - '@tanstack/router-cli'
-      - '@tanstack/virtual-file-routes'
-      - '@tanstack/eslint-plugin-router'
+      - '@benjavicente/react-router'
+      - '@benjavicente/router-core'
+      - '@benjavicente/router-plugin'
+      - '@benjavicente/router-generator'
+      - '@benjavicente/router-cli'
+      - '@benjavicente/virtual-file-routes'
+      - '@benjavicente/eslint-plugin-router'
     covers:
       - createRouter
       - createRootRoute
@@ -121,7 +121,7 @@ skills:
           // no declare module — Link to="" has no autocomplete
         correct_pattern: |
           const router = createRouter({ routeTree })
-          declare module '@tanstack/react-router' {
+          declare module '@benjavicente/react-router' {
             interface Register {
               router: typeof router
             }
@@ -182,7 +182,7 @@ skills:
         status: active
 
     compositions:
-      - library: '@tanstack/eslint-plugin-router'
+      - library: '@benjavicente/eslint-plugin-router'
         skill: null
 
   # ── Navigating ───────────────────────────────────────────────────
@@ -195,8 +195,8 @@ skills:
       link states, and navigation blocking.
     type: core
     packages:
-      - '@tanstack/react-router'
-      - '@tanstack/router-core'
+      - '@benjavicente/react-router'
+      - '@benjavicente/router-core'
     covers:
       - Link component
       - useNavigate hook
@@ -281,11 +281,11 @@ skills:
       serialization.
     type: core
     packages:
-      - '@tanstack/react-router'
-      - '@tanstack/router-core'
-      - '@tanstack/zod-adapter'
-      - '@tanstack/valibot-adapter'
-      - '@tanstack/arktype-adapter'
+      - '@benjavicente/react-router'
+      - '@benjavicente/router-core'
+      - '@benjavicente/zod-adapter'
+      - '@benjavicente/valibot-adapter'
+      - '@benjavicente/arktype-adapter'
     covers:
       - validateSearch
       - useSearch hook
@@ -308,13 +308,13 @@ skills:
       - 'Handle arrays, objects, and dates in search params'
     subsystems:
       - name: 'Zod adapter'
-        package: '@tanstack/zod-adapter'
+        package: '@benjavicente/zod-adapter'
         config_surface: 'zodValidator, fallback() wrapper for .catch/.default type correctness'
       - name: 'Valibot adapter'
-        package: '@tanstack/valibot-adapter'
+        package: '@benjavicente/valibot-adapter'
         config_surface: 'Standard Schema compliant, requires valibot 1.0'
       - name: 'ArkType adapter'
-        package: '@tanstack/arktype-adapter'
+        package: '@benjavicente/arktype-adapter'
         config_surface: 'Standard Schema compliant, requires arktype 2.0-rc, pass directly to validateSearch'
     reference_candidates:
       - topic: 'search param validation patterns'
@@ -323,12 +323,12 @@ skills:
       - mistake: 'Using zod .catch() instead of adapter fallback()'
         mechanism: >-
           Zod .catch() makes the output type unknown, losing type
-          safety. The @tanstack/zod-adapter fallback() preserves
+          safety. The @benjavicente/zod-adapter fallback() preserves
           the correct inferred type.
         wrong_pattern: |
           z.object({ page: z.number().catch(1) })
         correct_pattern: |
-          import { fallback } from '@tanstack/zod-adapter'
+          import { fallback } from '@benjavicente/zod-adapter'
           z.object({ page: fallback(z.number(), 1) })
         source: 'docs/router/guide/search-params.md'
         priority: HIGH
@@ -377,8 +377,8 @@ skills:
       optional params, and prefix/suffix patterns.
     type: core
     packages:
-      - '@tanstack/react-router'
-      - '@tanstack/router-core'
+      - '@benjavicente/react-router'
+      - '@benjavicente/router-core'
     covers:
       - '$paramName dynamic segments'
       - '$ splat / _splat'
@@ -432,8 +432,8 @@ skills:
       via router context.
     type: core
     packages:
-      - '@tanstack/react-router'
-      - '@tanstack/router-core'
+      - '@benjavicente/react-router'
+      - '@benjavicente/router-core'
     covers:
       - loader option
       - loaderDeps
@@ -532,8 +532,8 @@ skills:
       and streaming.
     type: composition
     packages:
-      - '@tanstack/react-router'
-      - '@tanstack/react-router-ssr-query'
+      - '@benjavicente/react-router'
+      - '@benjavicente/react-router-ssr-query'
     covers:
       - External cache coordination pattern
       - queryClient.ensureQueryData in loader
@@ -598,8 +598,8 @@ skills:
       layout routes.
     type: core
     packages:
-      - '@tanstack/react-router'
-      - '@tanstack/router-core'
+      - '@benjavicente/react-router'
+      - '@benjavicente/router-core'
     covers:
       - beforeLoad for auth checks
       - redirect() / throw redirect()
@@ -682,8 +682,8 @@ skills:
       code splitting, .lazy.tsx files, or code-based lazy loading.
     type: core
     packages:
-      - '@tanstack/react-router'
-      - '@tanstack/router-plugin'
+      - '@benjavicente/react-router'
+      - '@benjavicente/router-plugin'
     covers:
       - autoCodeSplitting plugin option
       - .lazy.tsx file convention
@@ -740,7 +740,7 @@ skills:
           import { Route } from './posts.tsx'
           const data = Route.useLoaderData()
         correct_pattern: |
-          import { getRouteApi } from '@tanstack/react-router'
+          import { getRouteApi } from '@benjavicente/react-router'
           const route = getRouteApi('/posts')
           const data = route.useLoaderData()
         source: 'docs/router/guide/code-splitting.md'
@@ -756,8 +756,8 @@ skills:
       and CatchBoundary.
     type: core
     packages:
-      - '@tanstack/react-router'
-      - '@tanstack/router-core'
+      - '@benjavicente/react-router'
+      - '@benjavicente/router-core'
     covers:
       - notFound() function
       - notFoundComponent
@@ -809,8 +809,8 @@ skills:
       route, with configurable unmask behavior.
     type: core
     packages:
-      - '@tanstack/react-router'
-      - '@tanstack/router-core'
+      - '@benjavicente/react-router'
+      - '@benjavicente/router-core'
     covers:
       - mask option on Link / navigate
       - createRouteMask
@@ -842,8 +842,8 @@ skills:
       and optimize TypeScript performance.
     type: core
     packages:
-      - '@tanstack/react-router'
-      - '@tanstack/router-core'
+      - '@benjavicente/react-router'
+      - '@benjavicente/router-core'
     covers:
       - Full type inference philosophy
       - Register module declaration
@@ -910,8 +910,8 @@ skills:
       approaches, manage hydration, and handle document head.
     type: core
     packages:
-      - '@tanstack/react-router'
-      - '@tanstack/router-core'
+      - '@benjavicente/react-router'
+      - '@benjavicente/router-core'
     covers:
       - RouterClient / RouterServer
       - renderRouterToString / renderRouterToStream
@@ -969,8 +969,8 @@ skills:
       data loading.
     type: lifecycle
     packages:
-      - '@tanstack/react-router'
-      - '@tanstack/router-plugin'
+      - '@benjavicente/react-router'
+      - '@benjavicente/router-plugin'
     covers:
       - Migration checklist
       - Route definition conversion

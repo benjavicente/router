@@ -1,5 +1,5 @@
-import { redirect, createFileRoute } from '@tanstack/vue-router'
-import { createServerFn } from '@tanstack/vue-start'
+import { redirect, createFileRoute } from '@benjavicente/vue-router'
+import { createServerFn } from '@benjavicente/vue-start'
 
 import { useAppSession } from '~/utils/session'
 

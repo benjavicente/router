@@ -1,4 +1,4 @@
-import { Link, createRootRouteWithContext } from '@tanstack/solid-router'
+import { Link, createRootRouteWithContext } from '@benjavicente/solid-router'
 import type { QueryClient } from '@tanstack/solid-query'
 
 export const Route = createRootRouteWithContext<{

@@ -1,4 +1,4 @@
-import { createFileRoute } from '@tanstack/vue-router'
+import { createFileRoute } from '@benjavicente/vue-router'
 import { NotFound } from '~/components/NotFound'
 import { capitalize, seo } from '~/utils/seo'
 

@@ -1,4 +1,4 @@
-import { getScrollRestorationScriptForRouter } from '@tanstack/router-core/scroll-restoration-script'
+import { getScrollRestorationScriptForRouter } from '@benjavicente/router-core/scroll-restoration-script'
 import { useRouter } from './useRouter'
 import { ScriptOnce } from './ScriptOnce'
 

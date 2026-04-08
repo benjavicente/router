@@ -3,7 +3,7 @@ import {
   Outlet,
   createFileRoute,
   useNavigate,
-} from '@tanstack/react-router'
+} from '@benjavicente/react-router'
 import { useEffect } from 'react'
 
 export const Route = createFileRoute('/relative/link')({

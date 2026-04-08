@@ -105,7 +105,7 @@ export interface RootRouteChildren {
   LoginRoute: typeof LoginRoute
 }
 
-declare module '@tanstack/solid-router' {
+declare module '@benjavicente/solid-router' {
   interface FileRoutesByPath {
     '/login': {
       id: '/login'

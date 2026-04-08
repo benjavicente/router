@@ -1,7 +1,7 @@
 import * as Vue from 'vue'
-import { invariant } from '@tanstack/router-core'
+import { invariant } from '@benjavicente/router-core'
 import { useStore } from '@tanstack/vue-store'
-import { isServer } from '@tanstack/router-core/isServer'
+import { isServer } from '@benjavicente/router-core/isServer'
 import {
   injectDummyPendingMatch,
   injectPendingMatch,
@@ -16,7 +16,7 @@ import type {
   StrictOrFrom,
   ThrowConstraint,
   ThrowOrOptional,
-} from '@tanstack/router-core'
+} from '@benjavicente/router-core'
 
 export interface UseMatchBaseOptions<
   TRouter extends AnyRouter,

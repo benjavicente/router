@@ -8,11 +8,11 @@ import {
   Scripts,
   createRootRoute,
   useRouterState,
-} from '@tanstack/react-router'
+} from '@benjavicente/react-router'
 import { z } from 'zod'
 import { ssrSchema } from '~/search'
 import appCss from '~/styles/app.css?url'
-import { TanStackRouterDevtools } from '@tanstack/react-router-devtools'
+import { TanStackRouterDevtools } from '@benjavicente/react-router-devtools'
 
 export const Route = createRootRoute({
   head: () => ({

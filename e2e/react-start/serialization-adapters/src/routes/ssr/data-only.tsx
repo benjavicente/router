@@ -1,4 +1,4 @@
-import { Outlet, createFileRoute } from '@tanstack/react-router'
+import { Outlet, createFileRoute } from '@benjavicente/react-router'
 import { RenderData, makeData } from '~/data'
 
 export const Route = createFileRoute('/ssr/data-only')({

@@ -1,4 +1,4 @@
-import { Link, createFileRoute } from '@tanstack/solid-router'
+import { Link, createFileRoute } from '@benjavicente/solid-router'
 import { PostErrorComponent } from '~/components/PostErrorComponent'
 
 import { fetchPost } from '~/utils/posts'

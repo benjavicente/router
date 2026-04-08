@@ -1,5 +1,5 @@
 import * as React from 'react'
-import { createFileRoute } from '@tanstack/react-router'
+import { createFileRoute } from '@benjavicente/react-router'
 import { sleep } from '../../posts'
 
 export const Route = createFileRoute('/(tests)/issue-7040-target')({

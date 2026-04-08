@@ -1,11 +1,11 @@
 # domain_map.yaml
-# Library: @tanstack/solid-start
+# Library: @benjavicente/solid-start
 # Version: 1.166.2
 # Date: 2026-03-08
 # Status: reviewed
 
 library:
-  name: '@tanstack/solid-start'
+  name: '@benjavicente/solid-start'
   version: '1.166.2'
   repository: 'https://github.com/TanStack/router'
   description: >-
@@ -30,7 +30,7 @@ skills:
       tanstackStart Vite plugin, Solid-specific setup.
     type: framework
     packages:
-      - '@tanstack/solid-start'
+      - '@benjavicente/solid-start'
     covers:
       - useServerFn hook
       - tanstackStart Vite plugin
@@ -44,7 +44,7 @@ skills:
       - mistake: 'Using react-start APIs in Solid context'
         mechanism: >-
           solid-start has its own useServerFn and tanstackStart
-          exports. Importing from @tanstack/react-start or
+          exports. Importing from @benjavicente/react-start or
           @tanstack/start causes type errors and runtime failures.
         priority: HIGH
         status: active

@@ -1,5 +1,5 @@
-import { hydrateStart as coreHydrateStart } from '@tanstack/start-client-core/client'
-import type { AnyRouter } from '@tanstack/router-core'
+import { hydrateStart as coreHydrateStart } from '@benjavicente/start-client-core/client'
+import type { AnyRouter } from '@benjavicente/router-core'
 
 /**
  * Solid-specific wrapper for hydrateStart that signals hydration completion

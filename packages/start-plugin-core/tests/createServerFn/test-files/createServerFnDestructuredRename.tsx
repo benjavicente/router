@@ -1,4 +1,4 @@
-import { createServerFn as serverFn } from '@tanstack/react-start'
+import { createServerFn as serverFn } from '@benjavicente/react-start'
 import { z } from 'zod'
 
 export const withUseServer = serverFn({

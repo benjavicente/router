@@ -1,4 +1,4 @@
-import { generateFromAst, logDiff, parseAst } from '@tanstack/router-utils'
+import { generateFromAst, logDiff, parseAst } from '@benjavicente/router-utils'
 import { compileCodeSplitReferenceRoute } from './code-splitter/compilers'
 import { getReferenceRouteCompilerPlugins } from './code-splitter/plugins/framework-plugins'
 import { createRouteHmrStatement } from './route-hmr-statement'

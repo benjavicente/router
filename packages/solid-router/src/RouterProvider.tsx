@@ -5,7 +5,7 @@ import type {
   AnyRouter,
   RegisteredRouter,
   RouterOptions,
-} from '@tanstack/router-core'
+} from '@benjavicente/router-core'
 import type * as Solid from 'solid-js'
 
 export function RouterContextProvider<

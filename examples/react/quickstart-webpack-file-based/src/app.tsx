@@ -1,4 +1,4 @@
-import { createRouter, RouterProvider } from '@tanstack/react-router'
+import { createRouter, RouterProvider } from '@benjavicente/react-router'
 
 import { routeTree } from './routeTree.gen'
 
@@ -10,7 +10,7 @@ const router = createRouter({
 })
 
 // Register things for typesafety
-declare module '@tanstack/react-router' {
+declare module '@benjavicente/react-router' {
   interface Register {
     router: typeof router
   }

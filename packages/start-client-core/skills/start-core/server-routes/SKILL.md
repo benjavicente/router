@@ -23,7 +23,7 @@ Server routes are API endpoints defined alongside app routes in the `src/routes`
 
 ```ts
 // src/routes/api/hello.ts
-import { createFileRoute } from '@tanstack/react-router'
+import { createFileRoute } from '@benjavicente/react-router'
 
 export const Route = createFileRoute('/api/hello')({
   server: {
@@ -42,7 +42,7 @@ The same file can define both a server route and a UI route:
 
 ```tsx
 // src/routes/hello.tsx
-import { createFileRoute } from '@tanstack/react-router'
+import { createFileRoute } from '@benjavicente/react-router'
 import { useState } from 'react'
 
 export const Route = createFileRoute('/hello')({
@@ -111,7 +111,7 @@ Each handler receives:
 
 ```ts
 // routes/users/$id.ts
-import { createFileRoute } from '@tanstack/react-router'
+import { createFileRoute } from '@benjavicente/react-router'
 
 export const Route = createFileRoute('/users/$id')({
   server: {
@@ -128,7 +128,7 @@ export const Route = createFileRoute('/users/$id')({
 
 ```ts
 // routes/file/$.ts
-import { createFileRoute } from '@tanstack/react-router'
+import { createFileRoute } from '@benjavicente/react-router'
 
 export const Route = createFileRoute('/file/$')({
   server: {

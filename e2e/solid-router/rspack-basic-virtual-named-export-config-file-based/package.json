@@ -10,8 +10,8 @@
     "test:e2e": "rm -rf port*.txt; playwright test --project=chromium"
   },
   "dependencies": {
-    "@tanstack/solid-router": "workspace:^",
-    "@tanstack/solid-router-devtools": "workspace:^",
+    "@benjavicente/solid-router": "workspace:^",
+    "@benjavicente/solid-router-devtools": "workspace:^",
     "redaxios": "^0.5.1",
     "solid-js": "^1.9.10"
   },
@@ -21,9 +21,9 @@
     "@rsbuild/plugin-babel": "^1.0.3",
     "@rsbuild/plugin-solid": "^1.0.6",
     "@tailwindcss/postcss": "^4.2.2",
-    "@tanstack/router-e2e-utils": "workspace:^",
-    "@tanstack/router-plugin": "workspace:^",
-    "@tanstack/virtual-file-routes": "workspace:^",
+    "@benjavicente/router-e2e-utils": "workspace:^",
+    "@benjavicente/router-plugin": "workspace:^",
+    "@benjavicente/virtual-file-routes": "workspace:^",
     "postcss": "^8.5.1",
     "tailwindcss": "^4.2.2",
     "typescript": "^6.0.2"

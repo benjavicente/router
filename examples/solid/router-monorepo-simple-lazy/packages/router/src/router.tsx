@@ -1,7 +1,7 @@
-import { createRouter } from '@tanstack/solid-router'
+import { createRouter } from '@benjavicente/solid-router'
 // Import the generated route tree
 import { routeTree } from './routeTree.gen'
-import type { RouteIds } from '@tanstack/solid-router'
+import type { RouteIds } from '@benjavicente/solid-router'
 
 // Set up a Router instance
 export const router = createRouter({

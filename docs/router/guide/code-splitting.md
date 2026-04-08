@@ -72,7 +72,7 @@ When using the `autoCodeSplitting` feature, TanStack Router will automatically c
 
 > [!IMPORTANT]
 > The automatic code-splitting feature is **ONLY** available when you are using file-based routing with one of our [supported bundlers](../routing/file-based-routing.md#getting-started-with-file-based-routing).
-> This will **NOT** work if you are **only** using the CLI (`@tanstack/router-cli`).
+> This will **NOT** work if you are **only** using the CLI (`@benjavicente/router-cli`).
 
 To enable automatic code-splitting, you just need to add the following to the configuration of your TanStack Router Bundler Plugin:
 
@@ -80,7 +80,7 @@ To enable automatic code-splitting, you just need to add the following to the co
 // vite.config.ts
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
-import { tanstackRouter } from '@tanstack/router-plugin/vite'
+import { tanstackRouter } from '@benjavicente/router-plugin/vite'
 
 export default defineConfig({
   plugins: [
@@ -124,7 +124,7 @@ When you are using `.lazy.tsx` you can split your route into two files to enable
 # React
 
 ```tsx title="src/routes/posts.tsx"
-import { createFileRoute } from '@tanstack/react-router'
+import { createFileRoute } from '@benjavicente/react-router'
 import { fetchPosts } from './api'
 
 export const Route = createFileRoute('/posts')({
@@ -140,7 +140,7 @@ function Posts() {
 # Solid
 
 ```tsx title="src/routes/posts.tsx"
-import { createFileRoute } from '@tanstack/solid-router'
+import { createFileRoute } from '@benjavicente/solid-router'
 import { fetchPosts } from './api'
 
 export const Route = createFileRoute('/posts')({
@@ -164,7 +164,7 @@ This file would contain the critical route configuration:
 # React
 
 ```tsx title="src/routes/posts.tsx"
-import { createFileRoute } from '@tanstack/react-router'
+import { createFileRoute } from '@benjavicente/react-router'
 import { fetchPosts } from './api'
 
 export const Route = createFileRoute('/posts')({
@@ -175,7 +175,7 @@ export const Route = createFileRoute('/posts')({
 # Solid
 
 ```tsx title="src/routes/posts.tsx"
-import { createFileRoute } from '@tanstack/solid-router'
+import { createFileRoute } from '@benjavicente/solid-router'
 import { fetchPosts } from './api'
 
 export const Route = createFileRoute('/posts')({
@@ -192,7 +192,7 @@ With the non-critical route configuration going into the file with the `.lazy.ts
 # React
 
 ```tsx title="src/routes/posts.lazy.tsx"
-import { createLazyFileRoute } from '@tanstack/react-router'
+import { createLazyFileRoute } from '@benjavicente/react-router'
 
 export const Route = createLazyFileRoute('/posts')({
   component: Posts,
@@ -206,7 +206,7 @@ function Posts() {
 # Solid
 
 ```tsx title="src/routes/posts.lazy.tsx"
-import { createLazyFileRoute } from '@tanstack/solid-router'
+import { createLazyFileRoute } from '@benjavicente/solid-router'
 
 export const Route = createLazyFileRoute('/posts')({
   component: Posts,
@@ -232,7 +232,7 @@ You might run into a situation where you end up splitting out everything from a 
 <!-- ::start:tabs variant="files" -->
 
 ```tsx title="src/routes/posts.tsx"
-import { createFileRoute } from '@tanstack/react-router'
+import { createFileRoute } from '@benjavicente/react-router'
 
 export const Route = createFileRoute('/posts')({
   // Hello?
@@ -240,7 +240,7 @@ export const Route = createFileRoute('/posts')({
 ```
 
 ```tsx title="src/routes/posts.lazy.tsx"
-import { createLazyFileRoute } from '@tanstack/react-router'
+import { createLazyFileRoute } from '@benjavicente/react-router'
 
 export const Route = createLazyFileRoute('/posts')({
   component: Posts,
@@ -258,7 +258,7 @@ function Posts() {
 <!-- ::start:tabs variant="files" -->
 
 ```tsx title="src/routes/posts.tsx"
-import { createFileRoute } from '@tanstack/solid-router'
+import { createFileRoute } from '@benjavicente/solid-router'
 
 export const Route = createFileRoute('/posts')({
   // Hello?
@@ -266,7 +266,7 @@ export const Route = createFileRoute('/posts')({
 ```
 
 ```tsx title="src/routes/posts.lazy.tsx"
-import { createLazyFileRoute } from '@tanstack/solid-router'
+import { createLazyFileRoute } from '@benjavicente/solid-router'
 
 export const Route = createLazyFileRoute('/posts')({
   component: Posts,
@@ -288,7 +288,7 @@ function Posts() {
 # React
 
 ```tsx title="src/routes/posts.lazy.tsx"
-import { createLazyFileRoute } from '@tanstack/react-router'
+import { createLazyFileRoute } from '@benjavicente/react-router'
 
 export const Route = createLazyFileRoute('/posts')({
   component: Posts,
@@ -302,7 +302,7 @@ function Posts() {
 # Solid
 
 ```tsx title="src/routes/posts.lazy.tsx"
-import { createLazyFileRoute } from '@tanstack/solid-router'
+import { createLazyFileRoute } from '@benjavicente/solid-router'
 
 export const Route = createLazyFileRoute('/posts')({
   component: Posts,
@@ -355,7 +355,7 @@ You can code split your data loading logic using the Route's `loader` option. Wh
 # React
 
 ```tsx
-import { lazyFn } from '@tanstack/react-router'
+import { lazyFn } from '@benjavicente/react-router'
 
 const route = createRoute({
   path: '/my-route',
@@ -372,7 +372,7 @@ export const loader = async (context: LoaderContext) => {
 # Solid
 
 ```tsx
-import { lazyFn } from '@tanstack/solid-router'
+import { lazyFn } from '@benjavicente/solid-router'
 
 const route = createRoute({
   path: '/my-route',
@@ -401,7 +401,7 @@ As you might have guessed, placing your component code in a separate file than y
 <!-- ::start:tabs variant="files" -->
 
 ```tsx title="src/my-route.tsx"
-import { createRoute } from '@tanstack/react-router'
+import { createRoute } from '@benjavicente/react-router'
 import { MyComponent } from './MyComponent'
 
 const route = createRoute({
@@ -414,7 +414,7 @@ const route = createRoute({
 ```
 
 ```tsx title="src/MyComponent.tsx"
-import { getRouteApi } from '@tanstack/react-router'
+import { getRouteApi } from '@benjavicente/react-router'
 
 const route = getRouteApi('/my-route')
 
@@ -433,7 +433,7 @@ export function MyComponent() {
 <!-- ::start:tabs variant="files" -->
 
 ```tsx title="src/my-route.tsx"
-import { createRoute } from '@tanstack/solid-router'
+import { createRoute } from '@benjavicente/solid-router'
 import { MyComponent } from './MyComponent'
 
 const route = createRoute({
@@ -446,7 +446,7 @@ const route = createRoute({
 ```
 
 ```tsx title="src/MyComponent.tsx"
-import { getRouteApi } from '@tanstack/solid-router'
+import { getRouteApi } from '@benjavicente/solid-router'
 
 const route = getRouteApi('/my-route')
 

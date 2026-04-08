@@ -16,7 +16,7 @@ Using a database with TanStack Start is as simple as calling into your database'
 Here's an abstract example of how you might connect with a database and read/write to it:
 
 ```tsx
-import { createServerFn } from '@tanstack/react-start'
+import { createServerFn } from '@benjavicente/react-start'
 
 const db = createMyDatabaseClient()
 

@@ -32,12 +32,12 @@ async function compile(opts: {
     lookupKinds: new Set(['Middleware']),
     lookupConfigurations: [
       {
-        libName: `@tanstack/react-start`,
+        libName: `@benjavicente/react-start`,
         rootExport: 'createMiddleware',
         kind: 'Root',
       },
       {
-        libName: `@tanstack/react-start`,
+        libName: `@benjavicente/react-start`,
         rootExport: 'createStart',
         kind: 'Root',
       },
@@ -74,7 +74,7 @@ describe('createMiddleware compiles correctly', async () => {
 
   test('should use fast path for direct imports from known library (no extra resolveId calls)', async () => {
     const code = `
-      import { createMiddleware } from '@tanstack/react-start'
+      import { createMiddleware } from '@benjavicente/react-start'
       const myMiddleware = createMiddleware().server(async ({ next }) => {
         return next()
       })`
@@ -88,7 +88,7 @@ describe('createMiddleware compiles correctly', async () => {
       lookupKinds: new Set(['Middleware']),
       lookupConfigurations: [
         {
-          libName: '@tanstack/react-start',
+          libName: '@benjavicente/react-start',
           rootExport: 'createMiddleware',
           kind: 'Root',
         },
@@ -107,7 +107,7 @@ describe('createMiddleware compiles correctly', async () => {
     // Note: init() now resolves from project root, not from a specific file
     expect(resolveIdMock).toHaveBeenCalledTimes(1)
     expect(resolveIdMock).toHaveBeenCalledWith(
-      '@tanstack/react-start',
+      '@benjavicente/react-start',
       undefined,
     )
   })
@@ -130,7 +130,7 @@ describe('createMiddleware compiles correctly', async () => {
         if (id === './factory') {
           compiler.ingestModule({
             code: `
-              import { createMiddleware } from '@tanstack/react-start'
+              import { createMiddleware } from '@benjavicente/react-start'
               export const createFooMiddleware = createMiddleware
             `,
             id: './factory',
@@ -140,7 +140,7 @@ describe('createMiddleware compiles correctly', async () => {
       lookupKinds: new Set(['Middleware']),
       lookupConfigurations: [
         {
-          libName: '@tanstack/react-start',
+          libName: '@benjavicente/react-start',
           rootExport: 'createMiddleware',
           kind: 'Root',
         },
@@ -154,15 +154,15 @@ describe('createMiddleware compiles correctly', async () => {
     })
 
     // resolveId should be called exactly twice:
-    // 1. Once during init() for '@tanstack/react-start' (no importer - resolved from project root)
+    // 1. Once during init() for '@benjavicente/react-start' (no importer - resolved from project root)
     // 2. Once to resolve './factory' import (slow path - not in knownRootImports)
     //
-    // Note: The factory module's import from '@tanstack/react-start' ALSO uses
+    // Note: The factory module's import from '@benjavicente/react-start' ALSO uses
     // the fast path (knownRootImports), so no additional resolveId call is needed there.
     expect(resolveIdMock).toHaveBeenCalledTimes(2)
     expect(resolveIdMock).toHaveBeenNthCalledWith(
       1,
-      '@tanstack/react-start',
+      '@benjavicente/react-start',
       undefined,
     )
     expect(resolveIdMock).toHaveBeenNthCalledWith(2, './factory', 'test.ts')

@@ -42,7 +42,7 @@ The `useParams` hook accepts an optional `options` object.
 ## Examples
 
 ```tsx
-import { useParams } from '@tanstack/react-router'
+import { useParams } from '@benjavicente/react-router'
 
 const routeApi = getRouteApi('/posts/$postId')
 

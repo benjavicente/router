@@ -8,7 +8,7 @@ import {
   createRootRoute,
   isMatch,
   useMatches,
-} from '@tanstack/react-router'
+} from '@benjavicente/react-router'
 import type { ReactNode } from 'react'
 import appCss from '~/styles/app.css?url'
 

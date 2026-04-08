@@ -3,8 +3,8 @@ import {
   Outlet,
   createRootRouteWithContext,
   useRouterState,
-} from '@tanstack/solid-router'
-import { TanStackRouterDevtools } from '@tanstack/solid-router-devtools'
+} from '@benjavicente/solid-router'
+import { TanStackRouterDevtools } from '@benjavicente/solid-router-devtools'
 
 import { Spinner } from './-components/spinner'
 import type { trpc } from '../trpc'

@@ -3,7 +3,7 @@ id: RegisterType
 title: Register type
 ---
 
-This type is used to register a route tree with a router instance. Doing so unlocks the full type safety of TanStack Router, including top-level exports from the `@tanstack/react-router` package.
+This type is used to register a route tree with a router instance. Doing so unlocks the full type safety of TanStack Router, including top-level exports from the `@benjavicente/react-router` package.
 
 ```tsx
 export type Register = {
@@ -20,7 +20,7 @@ const router = createRouter({
   // ...
 })
 
-declare module '@tanstack/react-router' {
+declare module '@benjavicente/react-router' {
   interface Register {
     router: typeof router
   }

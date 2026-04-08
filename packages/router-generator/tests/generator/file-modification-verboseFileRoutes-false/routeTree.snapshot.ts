@@ -8,12 +8,12 @@
 // You should NOT make any changes in this file as it will be overwritten.
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
-import { createFileRoute } from '@tanstack/react-router'
+import { createFileRoute } from '@benjavicente/react-router'
 import type {
   CreateFileRoute,
   CreateLazyFileRoute,
   FileRoutesByPath,
-} from '@tanstack/react-router'
+} from '@benjavicente/react-router'
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as testInitiallyLazyRouteImport } from './routes/(test)/initiallyLazy'
@@ -98,7 +98,7 @@ export interface RootRouteChildren {
   testBarLazyRoute: typeof testBarLazyRoute
 }
 
-declare module '@tanstack/react-router' {
+declare module '@benjavicente/react-router' {
   interface FileRoutesByPath {
     '/(test)/bar': {
       id: '/(test)/bar'

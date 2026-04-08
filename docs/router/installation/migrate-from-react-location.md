@@ -25,7 +25,7 @@ In this guide we'll go over the process of migrating the [React Location Basic e
 First, we need to install the dependencies for TanStack Router. For detailed installation instructions, see our [How to Install TanStack Router](../how-to/install.md) guide.
 
 ```sh
-npm install @tanstack/react-router @tanstack/router-devtools
+npm install @benjavicente/react-router @benjavicente/router-devtools
 ```
 
 And remove the React Location dependencies.
@@ -41,7 +41,7 @@ If your project uses Vite (or one of the supported bundlers), you can use the Ta
 Installation of the Vite plugin:
 
 ```sh
-npm install -D @tanstack/router-plugin
+npm install -D @benjavicente/router-plugin
 ```
 
 And add it to your `vite.config.js`:
@@ -49,7 +49,7 @@ And add it to your `vite.config.js`:
 ```js
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
-import { tanstackRouter } from '@tanstack/router-plugin/vite'
+import { tanstackRouter } from '@benjavicente/router-plugin/vite'
 
 export default defineConfig({
   // ...
@@ -57,7 +57,7 @@ export default defineConfig({
 })
 ```
 
-However, if your application does not use Vite, you use one of our other [supported bundlers](../routing/file-based-routing.md#getting-started-with-file-based-routing), or you can use the `@tanstack/router-cli` package to watch for changes in your routes files and automatically update the routes configuration.
+However, if your application does not use Vite, you use one of our other [supported bundlers](../routing/file-based-routing.md#getting-started-with-file-based-routing), or you can use the `@benjavicente/router-cli` package to watch for changes in your routes files and automatically update the routes configuration.
 
 ### Step 3: Add the file-based configuration file to your project
 
@@ -84,8 +84,8 @@ mkdir src/routes
 
 ```tsx
 // src/routes/__root.tsx
-import { createRootRoute, Outlet, Link } from '@tanstack/react-router'
-import { TanStackRouterDevtools } from '@tanstack/router-devtools'
+import { createRootRoute, Outlet, Link } from '@benjavicente/react-router'
+import { TanStackRouterDevtools } from '@benjavicente/router-devtools'
 
 export const Route = createRootRoute({
   component: () => {
@@ -110,7 +110,7 @@ export const Route = createRootRoute({
 
 ```tsx
 // src/routes/index.tsx
-import { createFileRoute } from '@tanstack/react-router'
+import { createFileRoute } from '@benjavicente/react-router'
 
 export const Route = createFileRoute('/')({
   component: Index,
@@ -123,7 +123,7 @@ export const Route = createFileRoute('/')({
 
 ```tsx
 // src/routes/posts.tsx
-import { createFileRoute, Link, Outlet } from '@tanstack/react-router'
+import { createFileRoute, Link, Outlet } from '@benjavicente/react-router'
 
 export const Route = createFileRoute('/posts')({
   component: Posts,
@@ -162,7 +162,7 @@ function Posts() {
 
 ```tsx
 // src/routes/posts.index.tsx
-import { createFileRoute } from '@tanstack/react-router'
+import { createFileRoute } from '@benjavicente/react-router'
 
 export const Route = createFileRoute('/posts/')({
   component: PostsIndex,
@@ -175,7 +175,7 @@ export const Route = createFileRoute('/posts/')({
 
 ```tsx
 // src/routes/posts.$postId.tsx
-import { createFileRoute } from '@tanstack/react-router'
+import { createFileRoute } from '@benjavicente/react-router'
 
 export const Route = createFileRoute('/posts/$postId')({
   component: PostsId,
@@ -213,7 +213,7 @@ Once you've generated the route-tree, you can then update the `src/index.tsx` fi
 // src/index.tsx
 import React from 'react'
 import ReactDOM from 'react-dom'
-import { createRouter, RouterProvider } from '@tanstack/react-router'
+import { createRouter, RouterProvider } from '@benjavicente/react-router'
 
 // Import the generated route tree
 import { routeTree } from './routeTree.gen'
@@ -222,7 +222,7 @@ import { routeTree } from './routeTree.gen'
 const router = createRouter({ routeTree })
 
 // Register the router instance for type safety
-declare module '@tanstack/react-router' {
+declare module '@benjavicente/react-router' {
   interface Register {
     router: typeof router
   }

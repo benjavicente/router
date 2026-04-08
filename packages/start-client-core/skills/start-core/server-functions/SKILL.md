@@ -25,7 +25,7 @@ Server functions are type-safe RPCs created with `createServerFn`. They run excl
 ## Basic Usage
 
 ```tsx
-import { createServerFn } from '@tanstack/react-start'
+import { createServerFn } from '@benjavicente/react-start'
 
 // GET (default)
 const getData = createServerFn().handler(async () => {
@@ -41,8 +41,8 @@ const saveData = createServerFn({ method: 'POST' }).handler(async () => {
 ## Calling from Loaders
 
 ```tsx
-import { createFileRoute } from '@tanstack/react-router'
-import { createServerFn } from '@tanstack/react-start'
+import { createFileRoute } from '@benjavicente/react-router'
+import { createServerFn } from '@benjavicente/react-start'
 
 const getPosts = createServerFn({ method: 'GET' }).handler(async () => {
   const posts = await db.query('SELECT * FROM posts')
@@ -71,7 +71,7 @@ function PostList() {
 Use the `useServerFn` hook to call server functions from event handlers:
 
 ```tsx
-import { useServerFn } from '@tanstack/react-start'
+import { useServerFn } from '@benjavicente/react-start'
 
 const deletePost = createServerFn({ method: 'POST' })
   .inputValidator((data: { id: string }) => data)
@@ -159,7 +159,7 @@ try {
 ### Redirects
 
 ```tsx
-import { redirect } from '@tanstack/react-router'
+import { redirect } from '@benjavicente/react-router'
 
 const requireAuth = createServerFn().handler(async () => {
   const user = await getCurrentUser()
@@ -173,7 +173,7 @@ const requireAuth = createServerFn().handler(async () => {
 ### Not Found
 
 ```tsx
-import { notFound } from '@tanstack/react-router'
+import { notFound } from '@benjavicente/react-router'
 
 const getPost = createServerFn()
   .inputValidator((data: { id: string }) => data)
@@ -191,13 +191,13 @@ const getPost = createServerFn()
 Access request/response details inside server function handlers:
 
 ```tsx
-import { createServerFn } from '@tanstack/react-start'
+import { createServerFn } from '@benjavicente/react-start'
 import {
   getRequest,
   getRequestHeader,
   setResponseHeaders,
   setResponseStatus,
-} from '@tanstack/react-start/server'
+} from '@benjavicente/react-start/server'
 
 const getCachedData = createServerFn({ method: 'GET' }).handler(async () => {
   const request = getRequest()
@@ -240,7 +240,7 @@ export async function findUserById(id: string) {
 
 ```tsx
 // users.functions.ts — server functions
-import { createServerFn } from '@tanstack/react-start'
+import { createServerFn } from '@benjavicente/react-start'
 import { findUserById } from './users.server'
 
 export const getUser = createServerFn({ method: 'GET' })

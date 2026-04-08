@@ -2,12 +2,12 @@
 title: Installation with Vite
 ---
 
-To use file-based routing with **Vite**, you'll need to install the `@tanstack/router-plugin` package.
+To use file-based routing with **Vite**, you'll need to install the `@benjavicente/router-plugin` package.
 
 <!-- ::start:tabs variant="package-manager" mode="dev-install" -->
 
-react: @tanstack/router-plugin
-solid: @tanstack/router-plugin
+react: @benjavicente/router-plugin
+solid: @benjavicente/router-plugin
 
 <!-- ::end:tabs -->
 
@@ -20,12 +20,12 @@ Once installed, you'll need to add the plugin to your Vite configuration.
 ```ts title="vite.config.ts"
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
-import { tanstackRouter } from '@tanstack/router-plugin/vite'
+import { tanstackRouter } from '@benjavicente/router-plugin/vite'
 
 // https://vitejs.dev/config/
 export default defineConfig({
   plugins: [
-    // Please make sure that '@tanstack/router-plugin' is passed before '@vitejs/plugin-react'
+    // Please make sure that '@benjavicente/router-plugin' is passed before '@vitejs/plugin-react'
     tanstackRouter({
       target: 'react',
       autoCodeSplitting: true,
@@ -43,7 +43,7 @@ Or, you can clone our [Quickstart Vite example](https://github.com/TanStack/rout
 ```ts title="vite.config.ts"
 import { defineConfig } from 'vite'
 import solid from 'vite-plugin-solid'
-import { tanstackRouter } from '@tanstack/router-plugin/vite'
+import { tanstackRouter } from '@benjavicente/router-plugin/vite'
 
 // https://vitejs.dev/config/
 export default defineConfig({

@@ -1,5 +1,5 @@
 import * as Vue from 'vue'
-import { Link, useParams, useSearch } from '@tanstack/vue-router'
+import { Link, useParams, useSearch } from '@benjavicente/vue-router'
 
 const probes = Array.from({ length: 10 }, (_, index) => index)
 

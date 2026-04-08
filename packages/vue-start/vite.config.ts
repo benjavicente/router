@@ -1,6 +1,6 @@
 import { defineConfig, mergeConfig } from 'vitest/config'
 import { tanstackViteConfig } from '@tanstack/vite-config'
-import { copyFilesPlugin } from '@tanstack/router-utils'
+import { copyFilesPlugin } from '@benjavicente/router-utils'
 import vueJsx from '@vitejs/plugin-vue-jsx'
 import packageJson from './package.json'
 
@@ -37,7 +37,7 @@ export default mergeConfig(
       './src/server-only.ts',
       './src/client-only.ts',
     ],
-    externalDeps: ['@tanstack/vue-start-client', '@tanstack/vue-start-server'],
+    externalDeps: ['@benjavicente/vue-start-client', '@benjavicente/vue-start-server'],
     cjs: false,
   }),
 )

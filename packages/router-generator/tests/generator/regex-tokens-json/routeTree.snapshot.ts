@@ -66,7 +66,7 @@ export interface RootRouteChildren {
   DashboardMainLayoutRoute: typeof DashboardMainLayoutRouteWithChildren
 }
 
-declare module '@tanstack/react-router' {
+declare module '@benjavicente/react-router' {
   interface FileRoutesByPath {
     '/dashboard': {
       id: '/dashboard'

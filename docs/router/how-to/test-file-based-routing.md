@@ -38,7 +38,7 @@ Create `vitest.config.ts` with file-based routing support:
 ```ts
 import { defineConfig } from 'vitest/config'
 import react from '@vitejs/plugin-react'
-import { tanstackRouter } from '@tanstack/router-plugin/vite'
+import { tanstackRouter } from '@benjavicente/router-plugin/vite'
 
 export default defineConfig({
   plugins: [
@@ -72,7 +72,7 @@ import {
   createRouter,
   RouterProvider,
   createMemoryHistory,
-} from '@tanstack/react-router'
+} from '@benjavicente/react-router'
 
 // Import the generated route tree
 import { routeTree } from '../routeTree.gen'
@@ -250,7 +250,7 @@ describe('File Route Conventions', () => {
 ```tsx
 import { describe, it, expect } from 'vitest'
 import { screen } from '@testing-library/react'
-import { createFileRoute } from '@tanstack/react-router'
+import { createFileRoute } from '@benjavicente/react-router'
 import { renderWithFileRoutes } from '../test/file-route-utils'
 
 describe('Individual Route Components', () => {
@@ -622,7 +622,7 @@ describe('File Route Error Handling', () => {
 
 ```tsx
 import { describe, it, expect } from 'vitest'
-import { useNavigate } from '@tanstack/react-router'
+import { useNavigate } from '@benjavicente/react-router'
 import { renderWithFileRoutes } from '../test/file-route-utils'
 
 describe('Generated Route Types', () => {
@@ -758,7 +758,7 @@ test.describe('File-Based Route E2E', () => {
 
 ```tsx
 // src/test/mock-file-routes.tsx
-import { createFileRoute } from '@tanstack/react-router'
+import { createFileRoute } from '@benjavicente/react-router'
 
 // Mock individual route for isolated testing
 export const createMockFileRoute = (

@@ -1,6 +1,6 @@
 import * as Vue from 'vue'
-import { RouterProvider } from '@tanstack/vue-router'
-import type { AnyRouter } from '@tanstack/router-core'
+import { RouterProvider } from '@benjavicente/vue-router'
+import type { AnyRouter } from '@benjavicente/router-core'
 
 export const StartServer = Vue.defineComponent({
   name: 'StartServer',

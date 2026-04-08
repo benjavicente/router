@@ -1,7 +1,7 @@
-import { useRouter, useRouterState } from '@tanstack/react-router'
-import { TanStackRouterDevtoolsPanelCore } from '@tanstack/router-devtools-core'
+import { useRouter, useRouterState } from '@benjavicente/react-router'
+import { TanStackRouterDevtoolsPanelCore } from '@benjavicente/router-devtools-core'
 import React, { useEffect, useRef, useState } from 'react'
-import type { AnyRouter } from '@tanstack/react-router'
+import type { AnyRouter } from '@benjavicente/react-router'
 
 export interface TanStackRouterDevtoolsPanelOptions {
   /**

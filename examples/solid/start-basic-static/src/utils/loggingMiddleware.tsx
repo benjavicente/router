@@ -1,4 +1,4 @@
-import { createMiddleware } from '@tanstack/solid-start'
+import { createMiddleware } from '@benjavicente/solid-start'
 
 export const logMiddleware = createMiddleware({ type: 'function' })
   .middleware([

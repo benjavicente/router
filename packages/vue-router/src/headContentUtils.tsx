@@ -3,13 +3,13 @@ import {
   escapeHtml,
   getAssetCrossOrigin,
   resolveManifestAssetLink,
-} from '@tanstack/router-core'
+} from '@benjavicente/router-core'
 import { useStore } from '@tanstack/vue-store'
 import { useRouter } from './useRouter'
 import type {
   AssetCrossOriginConfig,
   RouterManagedTag,
-} from '@tanstack/router-core'
+} from '@benjavicente/router-core'
 
 export const useTags = (assetCrossOrigin?: AssetCrossOriginConfig) => {
   const router = useRouter()

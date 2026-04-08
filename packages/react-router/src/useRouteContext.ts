@@ -5,7 +5,7 @@ import type {
   UseRouteContextBaseOptions,
   UseRouteContextOptions,
   UseRouteContextResult,
-} from '@tanstack/router-core'
+} from '@benjavicente/router-core'
 
 export type UseRouteContextRoute<out TFrom> = <
   TRouter extends AnyRouter = RegisteredRouter,

@@ -1,4 +1,4 @@
-import { Link, Outlet, createFileRoute } from '@tanstack/react-router'
+import { Link, Outlet, createFileRoute } from '@benjavicente/react-router'
 import axios from 'redaxios'
 import type { User } from '~/utils/users'
 import { basepath } from '~/utils/basepath'

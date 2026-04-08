@@ -1,5 +1,5 @@
 import * as React from 'react'
-import { RouterProvider, createRouter } from '@tanstack/react-router'
+import { RouterProvider, createRouter } from '@benjavicente/react-router'
 
 import { routeTree } from './routeTree.gen'
 import './styles.css'
@@ -12,7 +12,7 @@ const router = createRouter({
 })
 
 // Register things for typesafety
-declare module '@tanstack/react-router' {
+declare module '@benjavicente/react-router' {
   interface Register {
     router: typeof router
   }

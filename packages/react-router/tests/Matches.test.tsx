@@ -1,6 +1,6 @@
 import { afterEach, describe, expect, test } from 'vitest'
 import { act, cleanup, fireEvent, render, screen } from '@testing-library/react'
-import { createMemoryHistory } from '@tanstack/history'
+import { createMemoryHistory } from '@benjavicente/history'
 import {
   Link,
   Outlet,

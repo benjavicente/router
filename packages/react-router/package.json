@@ -1,5 +1,5 @@
 {
-  "name": "@tanstack/react-router",
+  "name": "@benjavicente/react-router",
   "version": "1.168.10",
   "description": "Modern and scalable routing for React applications",
   "author": "Tanner Linsley",
@@ -96,9 +96,9 @@
     "node": ">=20.19"
   },
   "dependencies": {
-    "@tanstack/history": "workspace:*",
+    "@benjavicente/history": "workspace:*",
     "@tanstack/react-store": "^0.9.3",
-    "@tanstack/router-core": "workspace:*",
+    "@benjavicente/router-core": "workspace:*",
     "isbot": "^5.1.22"
   },
   "devDependencies": {

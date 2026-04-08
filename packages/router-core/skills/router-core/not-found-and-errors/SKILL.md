@@ -28,7 +28,7 @@ TanStack Router handles two categories of "not found": unmatched URL paths (auto
 
 ```tsx
 // src/routes/__root.tsx
-import { createRootRoute, Outlet, Link } from '@tanstack/react-router'
+import { createRootRoute, Outlet, Link } from '@benjavicente/react-router'
 
 export const Route = createRootRoute({
   component: () => <Outlet />,
@@ -47,7 +47,7 @@ export const Route = createRootRoute({
 
 ```tsx
 // src/router.tsx
-import { createRouter } from '@tanstack/react-router'
+import { createRouter } from '@benjavicente/react-router'
 import { routeTree } from './routeTree.gen'
 
 const router = createRouter({
@@ -69,7 +69,7 @@ Throw `notFound()` in `loader` or `beforeLoad` when a resource doesn't exist. It
 
 ```tsx
 // src/routes/posts.$postId.tsx
-import { createFileRoute, notFound } from '@tanstack/react-router'
+import { createFileRoute, notFound } from '@benjavicente/react-router'
 import { getPost } from '../api'
 
 export const Route = createFileRoute('/posts/$postId')({
@@ -97,7 +97,7 @@ You can force a specific parent route to handle the not-found error:
 
 ```tsx
 // src/routes/_layout/posts.$postId.tsx
-import { createFileRoute, notFound } from '@tanstack/react-router'
+import { createFileRoute, notFound } from '@benjavicente/react-router'
 
 export const Route = createFileRoute('/_layout/posts/$postId')({
   loader: async ({ params: { postId } }) => {
@@ -111,7 +111,7 @@ export const Route = createFileRoute('/_layout/posts/$postId')({
 ### Targeting Root Route with `rootRouteId`
 
 ```tsx
-import { createFileRoute, notFound, rootRouteId } from '@tanstack/react-router'
+import { createFileRoute, notFound, rootRouteId } from '@benjavicente/react-router'
 
 export const Route = createFileRoute('/posts/$postId')({
   loader: async ({ params: { postId } }) => {
@@ -153,7 +153,7 @@ const router = createRouter({
 
 ```tsx
 // src/routes/posts.$postId.tsx
-import { createFileRoute, useRouter } from '@tanstack/react-router'
+import { createFileRoute, useRouter } from '@benjavicente/react-router'
 
 export const Route = createFileRoute('/posts/$postId')({
   loader: async ({ params: { postId } }) => {
@@ -260,7 +260,7 @@ Route masking shows a different URL in the browser bar than the actual route bei
 ### Imperative Masking on `<Link>`
 
 ```tsx
-import { Link } from '@tanstack/react-router'
+import { Link } from '@benjavicente/react-router'
 
 function PhotoGrid({ photoId }: { photoId: string }) {
   return (
@@ -281,7 +281,7 @@ function PhotoGrid({ photoId }: { photoId: string }) {
 ### Imperative Masking with `useNavigate`
 
 ```tsx
-import { useNavigate } from '@tanstack/react-router'
+import { useNavigate } from '@benjavicente/react-router'
 
 function OpenPhotoButton({ photoId }: { photoId: string }) {
   const navigate = useNavigate()
@@ -308,7 +308,7 @@ function OpenPhotoButton({ photoId }: { photoId: string }) {
 ### Declarative Masking with `createRouteMask`
 
 ```tsx
-import { createRouter, createRouteMask } from '@tanstack/react-router'
+import { createRouter, createRouteMask } from '@benjavicente/react-router'
 import { routeTree } from './routeTree.gen'
 
 const photoModalMask = createRouteMask({
@@ -361,7 +361,7 @@ const router = createRouter({
 
 ```tsx
 // WRONG — NotFoundRoute blocks notFound() and notFoundComponent from working
-import { NotFoundRoute } from '@tanstack/react-router'
+import { NotFoundRoute } from '@benjavicente/react-router'
 const notFoundRoute = new NotFoundRoute({ component: () => <p>404</p> })
 const router = createRouter({ routeTree, notFoundRoute })
 

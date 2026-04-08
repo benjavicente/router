@@ -1,5 +1,5 @@
 import { createEffect, createSignal } from 'solid-js'
-import { createFileRoute } from '@tanstack/solid-router'
+import { createFileRoute } from '@benjavicente/solid-router'
 
 function getNames() {
   return fetch('/api/demo-names').then((res) => res.json())

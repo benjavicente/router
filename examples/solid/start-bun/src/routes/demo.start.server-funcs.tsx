@@ -1,7 +1,7 @@
 import fs from 'node:fs'
 import { createSignal } from 'solid-js'
-import { createFileRoute, useRouter } from '@tanstack/solid-router'
-import { createServerFn } from '@tanstack/solid-start'
+import { createFileRoute, useRouter } from '@benjavicente/solid-router'
+import { createServerFn } from '@benjavicente/solid-start'
 
 const filePath = 'todos.json'
 

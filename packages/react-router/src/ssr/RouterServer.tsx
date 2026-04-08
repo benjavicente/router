@@ -1,6 +1,6 @@
 import * as React from 'react'
 import { RouterProvider } from '../RouterProvider'
-import type { AnyRouter } from '@tanstack/router-core'
+import type { AnyRouter } from '@benjavicente/router-core'
 
 export function RouterServer<TRouter extends AnyRouter>(props: {
   router: TRouter

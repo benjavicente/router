@@ -1,4 +1,4 @@
-import { createFileRoute } from '@tanstack/vue-router'
+import { createFileRoute } from '@benjavicente/vue-router'
 import { CustomMessage } from '~/components/CustomMessage'
 
 export const Route = createFileRoute('/')({

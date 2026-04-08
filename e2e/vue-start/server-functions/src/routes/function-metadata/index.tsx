@@ -1,4 +1,4 @@
-import { createFileRoute } from '@tanstack/vue-router'
+import { createFileRoute } from '@benjavicente/vue-router'
 import { defineComponent } from 'vue'
 import { getServerFn, postServerFn } from './-functions/normalServerFn'
 import {

@@ -28,7 +28,7 @@ npm install --save-dev @types/express
 
 ```tsx
 // src/router.tsx
-import { createRouter as createTanstackRouter } from '@tanstack/react-router'
+import { createRouter as createTanstackRouter } from '@benjavicente/react-router'
 import { routeTree } from './routeTree.gen'
 
 export function createRouter() {
@@ -41,7 +41,7 @@ export function createRouter() {
   })
 }
 
-declare module '@tanstack/react-router' {
+declare module '@benjavicente/react-router' {
   interface Register {
     router: ReturnType<typeof createRouter>
   }
@@ -57,7 +57,7 @@ import {
   RouterServer,
   createRequestHandler,
   renderRouterToString,
-} from '@tanstack/react-router/ssr/server'
+} from '@benjavicente/react-router/ssr/server'
 import { createRouter } from './router'
 import type express from 'express'
 
@@ -128,7 +128,7 @@ export async function render({
 ```tsx
 // src/entry-client.tsx
 import { hydrateRoot } from 'react-dom/client'
-import { RouterClient } from '@tanstack/react-router/ssr/client'
+import { RouterClient } from '@benjavicente/react-router/ssr/client'
 import { createRouter } from './router'
 
 const router = createRouter()
@@ -142,7 +142,7 @@ hydrateRoot(document, <RouterClient router={router} />)
 // vite.config.ts
 import path from 'node:path'
 import url from 'node:url'
-import { tanstackRouter } from '@tanstack/router-plugin/vite'
+import { tanstackRouter } from '@benjavicente/router-plugin/vite'
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
 
@@ -197,8 +197,8 @@ import {
   HeadContent,
   Outlet,
   createRootRouteWithContext,
-} from '@tanstack/react-router'
-import { TanStackRouterDevtools } from '@tanstack/react-router-devtools'
+} from '@benjavicente/react-router'
+import { TanStackRouterDevtools } from '@benjavicente/react-router-devtools'
 
 interface RouterContext {
   head: string
@@ -386,7 +386,7 @@ For better performance, enable streaming SSR by replacing `renderRouterToString`
 
 ```tsx
 // src/entry-server.tsx
-import { renderRouterToStream } from '@tanstack/react-router/ssr/server'
+import { renderRouterToStream } from '@benjavicente/react-router/ssr/server'
 
 // Replace renderRouterToString with:
 const response = await handler(({ request, responseHeaders, router }) =>
@@ -416,7 +416,7 @@ export default defineConfig(({ isSsrBuild }) => ({
   // ... rest of config
   ssr: {
     optimizeDeps: {
-      include: ['@tanstack/react-router/ssr/server'],
+      include: ['@benjavicente/react-router/ssr/server'],
     },
   },
 }))
@@ -436,7 +436,7 @@ export default defineConfig(({ isSsrBuild }) => ({
 ```tsx
 // In your route components
 import React from 'react' // Add explicit import
-import { createFileRoute } from '@tanstack/react-router'
+import { createFileRoute } from '@benjavicente/react-router'
 
 export const Route = createFileRoute('/')({
   component: () => <div>Hello World</div>, // React is now available
@@ -489,7 +489,7 @@ export default defineConfig({
   ssr: {
     noExternal: [
       // Packages that need to be bundled for SSR
-      '@tanstack/react-router',
+      '@benjavicente/react-router',
     ],
     external: [
       // Packages that should remain external
@@ -512,7 +512,7 @@ export default defineConfig({
     'process.env.STREAMING_SSR': JSON.stringify(true),
   },
   optimizeDeps: {
-    include: ['@tanstack/react-router/ssr/server'],
+    include: ['@benjavicente/react-router/ssr/server'],
   },
 })
 ```

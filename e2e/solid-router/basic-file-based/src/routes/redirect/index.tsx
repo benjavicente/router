@@ -1,5 +1,5 @@
-import { createFileRoute } from '@tanstack/solid-router'
-import { Link } from '@tanstack/solid-router'
+import { createFileRoute } from '@benjavicente/solid-router'
+import { Link } from '@benjavicente/solid-router'
 
 export const Route = createFileRoute('/redirect/')({
   component: () => (

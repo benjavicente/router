@@ -2,7 +2,7 @@ import {
   createLazyFileRoute,
   getRouteApi,
   useSearch,
-} from '@tanstack/solid-router'
+} from '@benjavicente/solid-router'
 
 const routeApi = getRouteApi('/(group)/lazyinside')
 

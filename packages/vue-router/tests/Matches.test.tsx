@@ -6,7 +6,7 @@ import {
   screen,
   waitFor,
 } from '@testing-library/vue'
-import { createMemoryHistory } from '@tanstack/history'
+import { createMemoryHistory } from '@benjavicente/history'
 import {
   Link,
   Outlet,

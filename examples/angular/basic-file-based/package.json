@@ -1,0 +1,30 @@
+{
+  "name": "tanstack-router-angular-example-basic-file-based",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "vite --port 3001",
+    "build": "vite build",
+    "preview": "vite preview",
+    "generate": "tsr generate"
+  },
+  "dependencies": {
+    "@angular/common": "^21.2.6",
+    "@angular/compiler": "^21.2.6",
+    "@angular/core": "^21.2.6",
+    "@angular/platform-browser": "^21.2.6",
+    "@benjavicente/angular-router-experimental": "workspace:^",
+    "@benjavicente/angular-router-devtools": "workspace:^",
+    "@tailwindcss/vite": "^4.1.18",
+    "rxjs": "~7.8.0",
+    "tailwindcss": "^4.1.18",
+    "tslib": "^2.3.0"
+  },
+  "devDependencies": {
+    "@oxc-angular/vite": "^0.0.22",
+    "@benjavicente/router-cli": "workspace:*",
+    "@benjavicente/router-plugin": "workspace:*",
+    "typescript": "~5.9.2",
+    "vite": "^8.0.0"
+  }
+}

@@ -1,6 +1,6 @@
 // TODO: RSCs
 import { isValidElement } from 'react'
-import { invariant } from '@tanstack/router-core'
+import { invariant } from '@benjavicente/router-core'
 import type React from 'react'
 
 export function renderRsc(input: any): React.JSX.Element {

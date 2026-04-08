@@ -4,7 +4,7 @@
  */
 
 import { fileURLToPath, pathToFileURL } from 'node:url'
-import { logDiff } from '@tanstack/router-utils'
+import { logDiff } from '@benjavicente/router-utils'
 import { getConfig, splitGroupingsSchema } from './config'
 import {
   compileCodeSplitReferenceRoute,
@@ -15,15 +15,15 @@ import {
 } from './code-splitter/compilers'
 import { getReferenceRouteCompilerPlugins } from './code-splitter/plugins/framework-plugins'
 import {
-  defaultCodeSplitGroupings,
   splitRouteIdentNodes,
   tsrShared,
   tsrSplit,
 } from './constants'
 import { decodeIdentifier } from './code-splitter/path-ids'
+import { getFrameworkOptions } from './code-splitter/framework-options'
 import { debug, normalizePath } from './utils'
 import type { CodeSplitGroupings, SplitRouteIdentNodes } from './constants'
-import type { GetRoutesByFileMapResultValue } from '@tanstack/router-generator'
+import type { GetRoutesByFileMapResultValue } from '@benjavicente/router-generator'
 import type { Config } from './config'
 import type {
   UnpluginFactory,
@@ -96,9 +96,16 @@ export const unpluginRouterCodeSplitterFactory: UnpluginFactory<
   const sharedBindingsMap = new Map<string, Set<string>>()
 
   const getGlobalCodeSplitGroupings = () => {
+    const frameworkDefaultCodeSplitGroupings = getFrameworkOptions(
+      userConfig.target,
+      userConfig.target === 'angular'
+        ? { angularRouterPackage: userConfig.angularRouterPackage }
+        : undefined,
+    ).defaultCodeSplitGroupings
+
     return (
       userConfig.codeSplittingOptions?.defaultBehavior ||
-      defaultCodeSplitGroupings
+      frameworkDefaultCodeSplitGroupings
     )
   }
   const getShouldSplitFn = () => {
@@ -163,6 +170,7 @@ export const unpluginRouterCodeSplitterFactory: UnpluginFactory<
       code,
       codeSplitGroupings: splitGroupings,
       targetFramework: userConfig.target,
+      angularRouterPackage: userConfig.angularRouterPackage,
       filename: id,
       id,
       deleteNodes: userConfig.codeSplittingOptions?.deleteNodes
@@ -298,7 +306,7 @@ export const unpluginRouterCodeSplitterFactory: UnpluginFactory<
               transformPluginIndex < routerPluginIndex
             ) {
               throw new Error(
-                `Plugin order error: '${transformPlugin.pkg}' is placed before '@tanstack/router-plugin'.\n\n` +
+                `Plugin order error: '${transformPlugin.pkg}' is placed before '@benjavicente/router-plugin'.\n\n` +
                   `The TanStack Router plugin must come BEFORE JSX transformation plugins.\n\n` +
                   `Please update your Vite config:\n\n` +
                   `  plugins: [\n` +

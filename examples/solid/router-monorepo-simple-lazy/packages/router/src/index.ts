@@ -3,7 +3,7 @@ import { router } from './router'
 export type { RouterType, RouterIds } from './router'
 
 // Register the router instance for type safety
-declare module '@tanstack/solid-router' {
+declare module '@benjavicente/solid-router' {
   interface Register {
     router: typeof router
   }
@@ -24,9 +24,9 @@ export {
   getRouteApi,
   ErrorComponent,
   createLazyRoute,
-} from '@tanstack/solid-router'
+} from '@benjavicente/solid-router'
 export type {
   ErrorComponentProps,
   RouteById,
   RegisteredRouter,
-} from '@tanstack/solid-router'
+} from '@benjavicente/solid-router'

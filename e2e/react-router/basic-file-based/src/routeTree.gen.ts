@@ -1519,7 +1519,7 @@ export interface RootRouteChildren {
   ParamsPsWildcardIndexRoute: typeof ParamsPsWildcardIndexRoute
 }
 
-declare module '@tanstack/react-router' {
+declare module '@benjavicente/react-router' {
   interface FileRoutesByPath {
     '/remountDeps': {
       id: '/remountDeps'

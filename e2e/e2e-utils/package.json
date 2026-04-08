@@ -1,5 +1,5 @@
 {
-  "name": "@tanstack/router-e2e-utils",
+  "name": "@benjavicente/router-e2e-utils",
   "private": true,
   "scripts": {
     "clean": "rimraf ./dist && rimraf ./coverage",

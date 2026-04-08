@@ -2,9 +2,9 @@
 
 Cross-framework SSR request-loop benchmarks for:
 
-- `@tanstack/react-start`
-- `@tanstack/solid-start`
-- `@tanstack/vue-start`
+- `@benjavicente/react-start`
+- `@benjavicente/solid-start`
+- `@benjavicente/vue-start`
 
 Each benchmark builds a Start app with file-based routes and runs Vitest benches against the built server handler.
 

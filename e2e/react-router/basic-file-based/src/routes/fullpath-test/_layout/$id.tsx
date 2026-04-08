@@ -1,4 +1,4 @@
-import { createFileRoute, useMatches } from '@tanstack/react-router'
+import { createFileRoute, useMatches } from '@benjavicente/react-router'
 
 export const Route = createFileRoute('/fullpath-test/_layout/$id')({
   component: IdComponent,

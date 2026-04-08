@@ -1,5 +1,5 @@
-import { Await, createFileRoute } from '@tanstack/vue-router'
-import { createServerFn } from '@tanstack/vue-start'
+import { Await, createFileRoute } from '@benjavicente/vue-router'
+import { createServerFn } from '@benjavicente/vue-start'
 import { Suspense, defineComponent, ref } from 'vue'
 
 const personServerFn = createServerFn({ method: 'GET' })

@@ -11,7 +11,7 @@ import {
   stripSearchParams,
 } from '../src'
 import { getSearchParamsFromURI } from './utils'
-import type { AnyRouter, SearchMiddleware } from '@tanstack/router-core'
+import type { AnyRouter, SearchMiddleware } from '@benjavicente/router-core'
 
 afterEach(() => {
   vi.resetAllMocks()

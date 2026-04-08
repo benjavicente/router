@@ -1,4 +1,4 @@
-import { getConfig } from '@tanstack/router-generator'
+import { getConfig } from '@benjavicente/router-generator'
 import { unpluginRouterGeneratorFactory } from './router-generator-plugin'
 import { unpluginRouterCodeSplitterFactory } from './router-code-splitter-plugin'
 import { unpluginRouterHmrFactory } from './router-hmr-plugin'

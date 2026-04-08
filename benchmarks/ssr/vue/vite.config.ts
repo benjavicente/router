@@ -1,7 +1,7 @@
 import { fileURLToPath } from 'node:url'
 import { defineConfig } from 'vitest/config'
 import codspeedPlugin from '@codspeed/vitest-plugin'
-import { tanstackStart } from '@tanstack/vue-start/plugin/vite'
+import { tanstackStart } from '@benjavicente/vue-start/plugin/vite'
 import vueJsx from '@vitejs/plugin-vue-jsx'
 
 const rootDir = fileURLToPath(new URL('.', import.meta.url))

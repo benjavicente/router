@@ -1,7 +1,7 @@
 import {
   createServerOnlyFn as serverFn,
   createClientOnlyFn as clientFn,
-} from '@tanstack/react-start'
+} from '@benjavicente/react-start'
 
 const serverFunc = serverFn(() => 'server')
 

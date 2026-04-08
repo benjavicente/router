@@ -1,5 +1,5 @@
-import { createBrowserHistory, parseHref } from '@tanstack/history'
-import { isServer } from '@tanstack/router-core/isServer'
+import { createBrowserHistory, parseHref } from '@benjavicente/history'
+import { isServer } from '@benjavicente/router-core/isServer'
 import {
   DEFAULT_PROTOCOL_ALLOWLIST,
   createControlledPromise,
@@ -54,7 +54,7 @@ import type {
   HistoryState,
   ParsedHistoryState,
   RouterHistory,
-} from '@tanstack/history'
+} from '@benjavicente/history'
 
 import type {
   Awaitable,
@@ -1060,7 +1060,8 @@ export class RouterCore<
       (this.options.history && this.options.history !== this.history)
     ) {
       if (!this.options.history) {
-        if (!(isServer ?? this.isServer)) {
+        // Gate on real `window` (not `document` alone): SSR may shim `document` without `window`.
+        if (typeof window !== 'undefined') {
           this.history = createBrowserHistory() as TRouterHistory
         }
       } else {
@@ -1070,12 +1071,9 @@ export class RouterCore<
 
     this.origin = this.options.origin
     if (!this.origin) {
-      if (
-        !(isServer ?? this.isServer) &&
-        window?.origin &&
-        window.origin !== 'null'
-      ) {
-        this.origin = window.origin
+      const win = globalThis.window
+      if (win && win.origin && win.origin !== 'null') {
+        this.origin = win.origin
       } else {
         // fallback for the server, can be overridden by calling router.update({origin}) on the server
         this.origin = 'http://localhost'

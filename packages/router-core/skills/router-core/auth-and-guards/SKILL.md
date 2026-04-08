@@ -27,7 +27,7 @@ Protect routes with `beforeLoad` + `redirect()` in a pathless layout route (`_au
 
 ```tsx
 // src/routes/_authenticated.tsx
-import { createFileRoute, redirect } from '@tanstack/react-router'
+import { createFileRoute, redirect } from '@benjavicente/react-router'
 
 export const Route = createFileRoute('/_authenticated')({
   beforeLoad: ({ context, location }) => {
@@ -48,7 +48,7 @@ Any route file placed under `src/routes/_authenticated/` is automatically protec
 
 ```tsx
 // src/routes/_authenticated/dashboard.tsx
-import { createFileRoute } from '@tanstack/react-router'
+import { createFileRoute } from '@benjavicente/react-router'
 
 export const Route = createFileRoute('/_authenticated/dashboard')({
   component: DashboardComponent,
@@ -68,7 +68,7 @@ Auth state flows into the router via `createRootRouteWithContext` and `RouterPro
 
 ```tsx
 // src/routes/__root.tsx
-import { createRootRouteWithContext, Outlet } from '@tanstack/react-router'
+import { createRootRouteWithContext, Outlet } from '@benjavicente/react-router'
 
 interface AuthState {
   isAuthenticated: boolean
@@ -88,7 +88,7 @@ export const Route = createRootRouteWithContext<MyRouterContext>()({
 
 ```tsx
 // src/router.tsx
-import { createRouter } from '@tanstack/react-router'
+import { createRouter } from '@benjavicente/react-router'
 import { routeTree } from './routeTree.gen'
 
 export const router = createRouter({
@@ -98,7 +98,7 @@ export const router = createRouter({
   },
 })
 
-declare module '@tanstack/react-router' {
+declare module '@benjavicente/react-router' {
   interface Register {
     router: typeof router
   }
@@ -107,7 +107,7 @@ declare module '@tanstack/react-router' {
 
 ```tsx
 // src/App.tsx
-import { RouterProvider } from '@tanstack/react-router'
+import { RouterProvider } from '@benjavicente/react-router'
 import { AuthProvider, useAuth } from './auth'
 import { router } from './router'
 
@@ -134,7 +134,7 @@ Save the current location in search params so you can redirect back after login:
 
 ```tsx
 // src/routes/_authenticated.tsx
-import { createFileRoute, redirect } from '@tanstack/react-router'
+import { createFileRoute, redirect } from '@benjavicente/react-router'
 
 export const Route = createFileRoute('/_authenticated')({
   beforeLoad: ({ context, location }) => {
@@ -150,7 +150,7 @@ export const Route = createFileRoute('/_authenticated')({
 
 ```tsx
 // src/routes/login.tsx
-import { createFileRoute, redirect } from '@tanstack/react-router'
+import { createFileRoute, redirect } from '@benjavicente/react-router'
 import { useState, type FormEvent } from 'react'
 
 // Validate redirect target to prevent open redirect attacks
@@ -212,7 +212,7 @@ Instead of redirecting, show a login form in place of the `Outlet`:
 
 ```tsx
 // src/routes/_authenticated.tsx
-import { createFileRoute, Outlet } from '@tanstack/react-router'
+import { createFileRoute, Outlet } from '@benjavicente/react-router'
 
 export const Route = createFileRoute('/_authenticated')({
   component: AuthenticatedLayout,
@@ -261,7 +261,7 @@ Admin-only layout route:
 
 ```tsx
 // src/routes/_authenticated/_admin.tsx
-import { createFileRoute, redirect } from '@tanstack/react-router'
+import { createFileRoute, redirect } from '@benjavicente/react-router'
 
 export const Route = createFileRoute('/_authenticated/_admin')({
   beforeLoad: ({ context, location }) => {
@@ -279,7 +279,7 @@ Multi-role access:
 
 ```tsx
 // src/routes/_authenticated/_moderator.tsx
-import { createFileRoute, redirect } from '@tanstack/react-router'
+import { createFileRoute, redirect } from '@benjavicente/react-router'
 
 export const Route = createFileRoute('/_authenticated/_moderator')({
   beforeLoad: ({ context, location }) => {
@@ -297,7 +297,7 @@ Permission-based:
 
 ```tsx
 // src/routes/_authenticated/_users.tsx
-import { createFileRoute, redirect } from '@tanstack/react-router'
+import { createFileRoute, redirect } from '@benjavicente/react-router'
 
 export const Route = createFileRoute('/_authenticated/_users')({
   beforeLoad: ({ context, location }) => {
@@ -315,7 +315,7 @@ Page-level permission check (nested under an already-role-protected layout):
 
 ```tsx
 // src/routes/_authenticated/_users/manage.tsx
-import { createFileRoute } from '@tanstack/react-router'
+import { createFileRoute } from '@benjavicente/react-router'
 
 export const Route = createFileRoute('/_authenticated/_users/manage')({
   beforeLoad: ({ context }) => {
@@ -344,7 +344,7 @@ function UserManagement() {
 When `beforeLoad` has a try/catch, redirects (which work by throwing) can get swallowed. Use `isRedirect` to re-throw:
 
 ```tsx
-import { createFileRoute, redirect, isRedirect } from '@tanstack/react-router'
+import { createFileRoute, redirect, isRedirect } from '@benjavicente/react-router'
 
 export const Route = createFileRoute('/_authenticated')({
   beforeLoad: async ({ context, location }) => {
@@ -413,7 +413,7 @@ beforeLoad: async ({ context }) => {
 }
 
 // CORRECT — use isRedirect to distinguish intentional redirects from errors
-import { isRedirect } from '@tanstack/react-router'
+import { isRedirect } from '@benjavicente/react-router'
 
 beforeLoad: async ({ context }) => {
   try {

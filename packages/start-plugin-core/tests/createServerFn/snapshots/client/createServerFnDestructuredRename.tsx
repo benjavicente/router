@@ -1,5 +1,5 @@
-import { createClientRpc } from '@tanstack/react-start/client-rpc';
-import { createServerFn as serverFn } from '@tanstack/react-start';
+import { createClientRpc } from '@benjavicente/react-start/client-rpc';
+import { createServerFn as serverFn } from '@benjavicente/react-start';
 export const withUseServer = serverFn({
   method: 'GET'
 }).handler(createClientRpc("eyJmaWxlIjoiL0BpZC9zcmMvdGVzdC50cz90c3Mtc2VydmVyZm4tc3BsaXQiLCJleHBvcnQiOiJ3aXRoVXNlU2VydmVyX2NyZWF0ZVNlcnZlckZuX2hhbmRsZXIifQ"));

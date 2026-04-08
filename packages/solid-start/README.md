@@ -12,11 +12,11 @@ SSR, Streaming, Server Functions, API Routes, bundling and more powered by [TanS
 <a href="https://discord.com/invite/WrRKjPJ" target="\_parent">
   <img alt="" src="https://img.shields.io/badge/Discord-TanStack-%235865F2" />
 </a>
-<a href="https://npmjs.com/package/@tanstack/solid-start" target="\_parent">
-  <img alt="" src="https://img.shields.io/npm/dm/@tanstack/solid-start.svg" />
+<a href="https://npmjs.com/package/@benjavicente/solid-start" target="\_parent">
+  <img alt="" src="https://img.shields.io/npm/dm/@benjavicente/solid-start.svg" />
 </a>
-<a href="https://bundlephobia.com/result?p=@tanstack/solid-start" target="\_parent">
-  <img alt="" src="https://badgen.net/bundlephobia/minzip/@tanstack/solid-start" />
+<a href="https://bundlephobia.com/result?p=@benjavicente/solid-start" target="\_parent">
+  <img alt="" src="https://badgen.net/bundlephobia/minzip/@benjavicente/solid-start" />
 </a>
 <a href="#badge">
   <img alt="semantic-release" src="https://img.shields.io/badge/%20%20%F0%9F%93%A6%F0%9F%9A%80-semantic--release-e10079.svg">

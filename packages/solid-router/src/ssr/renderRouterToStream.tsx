@@ -1,10 +1,10 @@
 import * as Solid from 'solid-js/web'
 import { isbot } from 'isbot'
-import { transformReadableStreamWithRouter } from '@tanstack/router-core/ssr/server'
-import { makeSsrSerovalPlugin } from '@tanstack/router-core'
+import { transformReadableStreamWithRouter } from '@benjavicente/router-core/ssr/server'
+import { makeSsrSerovalPlugin } from '@benjavicente/router-core'
 import type { JSXElement } from 'solid-js'
 import type { ReadableStream } from 'node:stream/web'
-import type { AnyRouter } from '@tanstack/router-core'
+import type { AnyRouter } from '@benjavicente/router-core'
 
 export const renderRouterToStream = async ({
   request,

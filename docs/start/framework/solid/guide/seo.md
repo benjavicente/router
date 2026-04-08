@@ -31,7 +31,7 @@ The `head` property on routes is your primary tool for SEO. It allows you to set
 
 ```tsx
 // src/routes/index.tsx
-import { createFileRoute } from '@tanstack/solid-router'
+import { createFileRoute } from '@benjavicente/solid-router'
 
 export const Route = createFileRoute('/')({
   head: () => ({
@@ -53,7 +53,7 @@ Use loader data to generate dynamic meta tags for content pages:
 
 ```tsx
 // src/routes/posts/$postId.tsx
-import { createFileRoute } from '@tanstack/solid-router'
+import { createFileRoute } from '@benjavicente/solid-router'
 
 export const Route = createFileRoute('/posts/$postId')({
   loader: async ({ params }) => {
@@ -181,7 +181,7 @@ For content that doesn't change frequently, static prerendering generates HTML a
 
 ```ts
 // vite.config.ts
-import { tanstackStart } from '@tanstack/solid-start/plugin/vite'
+import { tanstackStart } from '@benjavicente/solid-start/plugin/vite'
 
 export default defineConfig({
   plugins: [
@@ -205,7 +205,7 @@ TanStack Start can automatically generate a sitemap when you enable prerendering
 
 ```ts
 // vite.config.ts
-import { tanstackStart } from '@tanstack/solid-start/plugin/vite'
+import { tanstackStart } from '@benjavicente/solid-start/plugin/vite'
 
 export default defineConfig({
   plugins: [
@@ -253,7 +253,7 @@ For sites with dynamic content that can't be discovered at build time, you can c
 
 ```ts
 // src/routes/sitemap[.]xml.ts
-import { createFileRoute } from '@tanstack/solid-router'
+import { createFileRoute } from '@benjavicente/solid-router'
 
 export const Route = createFileRoute('/sitemap.xml')({
   server: {
@@ -313,7 +313,7 @@ For more complex scenarios (e.g., different rules per environment), you can crea
 
 ```ts
 // src/routes/robots[.]txt.ts
-import { createFileRoute } from '@tanstack/solid-router'
+import { createFileRoute } from '@benjavicente/solid-router'
 
 export const Route = createFileRoute('/robots.txt')({
   server: {

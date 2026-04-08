@@ -4,7 +4,7 @@ import {
   RouterProvider,
   createRouteMask,
   createRouter,
-} from '@tanstack/react-router'
+} from '@benjavicente/react-router'
 import { routeTree } from './routeTree.gen'
 import './styles.css'
 
@@ -27,7 +27,7 @@ const router = createRouter({
 })
 
 // Register things for typesafety
-declare module '@tanstack/react-router' {
+declare module '@benjavicente/react-router' {
   interface Register {
     router: typeof router
   }

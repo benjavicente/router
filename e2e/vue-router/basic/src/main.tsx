@@ -9,11 +9,11 @@ import {
   createRoute,
   createRouter,
   redirect,
-} from '@tanstack/vue-router'
-import { TanStackRouterDevtools } from '@tanstack/vue-router-devtools'
+} from '@benjavicente/vue-router'
+import { TanStackRouterDevtools } from '@benjavicente/vue-router-devtools'
 import { NotFoundError, fetchPost, fetchPosts } from './posts'
 import './styles.css'
-import type { ErrorComponentProps } from '@tanstack/vue-router'
+import type { ErrorComponentProps } from '@benjavicente/vue-router'
 
 const rootRoute = createRootRoute({
   component: RootComponent,
@@ -444,7 +444,7 @@ const router = createRouter({
 })
 
 // Register things for typesafety
-declare module '@tanstack/vue-router' {
+declare module '@benjavicente/vue-router' {
   interface Register {
     router: typeof router
   }

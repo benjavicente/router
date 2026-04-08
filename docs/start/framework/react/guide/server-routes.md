@@ -11,7 +11,7 @@ Here's what a simple server route looks like:
 
 ```ts
 // routes/hello.ts
-import { createFileRoute } from '@tanstack/react-router'
+import { createFileRoute } from '@benjavicente/react-router'
 
 export const Route = createFileRoute('/hello')({
   server: {
@@ -30,7 +30,7 @@ Because server routes can be defined in the same directory as your app routes, y
 
 ```tsx
 // routes/hello.tsx
-import { createFileRoute } from '@tanstack/react-router'
+import { createFileRoute } from '@benjavicente/react-router'
 
 export const Route = createFileRoute('/hello')({
   server: {
@@ -121,7 +121,7 @@ Server routes are created by adding a `server` property to your `createFileRoute
 
 ```ts
 // routes/hello.ts
-import { createFileRoute } from '@tanstack/react-router'
+import { createFileRoute } from '@benjavicente/react-router'
 
 export const Route = createFileRoute('/hello')({
   server: {
@@ -147,7 +147,7 @@ For simple use cases, you can provide handler functions directly in a handlers o
 
 ```ts
 // routes/hello.ts
-import { createFileRoute } from '@tanstack/react-router'
+import { createFileRoute } from '@benjavicente/react-router'
 
 export const Route = createFileRoute('/hello')({
   server: {
@@ -166,7 +166,7 @@ For more complex use cases, you can add middleware to specific handlers. This re
 
 ```tsx
 // routes/hello.ts
-import { createFileRoute } from '@tanstack/react-router'
+import { createFileRoute } from '@benjavicente/react-router'
 
 export const Route = createFileRoute('/hello')({
   server: {
@@ -189,7 +189,7 @@ You can also add middleware that applies to all handlers in a route by using the
 
 ```tsx
 // routes/hello.ts
-import { createFileRoute } from '@tanstack/react-router'
+import { createFileRoute } from '@benjavicente/react-router'
 
 export const Route = createFileRoute('/hello')({
   server: {
@@ -213,7 +213,7 @@ You can combine both approaches - route-level middleware will run first, followe
 
 ```tsx
 // routes/hello.ts
-import { createFileRoute } from '@tanstack/react-router'
+import { createFileRoute } from '@benjavicente/react-router'
 
 export const Route = createFileRoute('/hello')({
   server: {
@@ -243,7 +243,7 @@ Each HTTP method handler receives an object with the following properties:
 - `params`: An object containing the dynamic path parameters of the route. For example, if the route path is `/users/$id`, and the request is made to `/users/123`, then `params` will be `{ id: '123' }`. We'll cover dynamic path parameters and wildcard parameters later in this guide.
 - `context`: An object containing the context of the request. This is useful for passing data between middleware.
 
-Once you've processed the request, you can return a `Response` object or `Promise<Response>` or even use any of the helpers from `@tanstack/react-start` to manipulate the response.
+Once you've processed the request, you can return a `Response` object or `Promise<Response>` or even use any of the helpers from `@benjavicente/react-start` to manipulate the response.
 
 ## Dynamic Path Params
 
@@ -251,7 +251,7 @@ Server routes support dynamic path parameters in the same way as TanStack Router
 
 ```ts
 // routes/users/$id.ts
-import { createFileRoute } from '@tanstack/react-router'
+import { createFileRoute } from '@benjavicente/react-router'
 
 export const Route = createFileRoute('/users/$id')({
   server: {
@@ -272,7 +272,7 @@ You can also have multiple dynamic path parameters in a single route. For exampl
 
 ```ts
 // routes/users/$id/posts/$postId.ts
-import { createFileRoute } from '@tanstack/react-router'
+import { createFileRoute } from '@benjavicente/react-router'
 
 export const Route = createFileRoute('/users/$id/posts/$postId')({
   server: {
@@ -295,7 +295,7 @@ Server routes also support wildcard parameters at the end of the path, which are
 
 ```ts
 // routes/file/$.ts
-import { createFileRoute } from '@tanstack/react-router'
+import { createFileRoute } from '@benjavicente/react-router'
 
 export const Route = createFileRoute('/file/$')({
   server: {
@@ -318,7 +318,7 @@ To handle POST requests,you can add a `POST` handler to the route object. The ha
 
 ```ts
 // routes/hello.ts
-import { createFileRoute } from '@tanstack/react-router'
+import { createFileRoute } from '@benjavicente/react-router'
 
 export const Route = createFileRoute('/hello')({
   server: {
@@ -347,7 +347,7 @@ When returning JSON using a Response object, this is a common pattern:
 
 ```ts
 // routes/hello.ts
-import { createFileRoute } from '@tanstack/react-router'
+import { createFileRoute } from '@benjavicente/react-router'
 
 export const Route = createFileRoute('/hello')({
   server: {
@@ -373,7 +373,7 @@ Or you can use the [`Response.json`](https://developer.mozilla.org/en-US/docs/We
 
 ```ts
 // routes/hello.ts
-import { createFileRoute } from '@tanstack/react-router'
+import { createFileRoute } from '@benjavicente/react-router'
 
 export const Route = createFileRoute('/hello')({
   server: {
@@ -395,7 +395,7 @@ You can set the status code of the response by passing it as a property of the s
 
 ```ts
 // routes/hello.ts
-import { createFileRoute } from '@tanstack/react-router'
+import { createFileRoute } from '@benjavicente/react-router'
 
 export const Route = createFileRoute('/hello')({
   server: {
@@ -422,7 +422,7 @@ Sometimes you may need to set headers in the response. You can do this by passin
 
 ```ts
 // routes/hello.ts
-import { createFileRoute } from '@tanstack/react-router'
+import { createFileRoute } from '@benjavicente/react-router'
 export const Route = createFileRoute('/hello')({
   server: {
     handlers: {

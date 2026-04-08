@@ -35,7 +35,7 @@ Ensure you're using compatible versions:
 ```json
 {
   "dependencies": {
-    "@tanstack/react-router": "^1.0.0",
+    "@benjavicente/react-router": "^1.0.0",
     "framer-motion": "^11.0.0",
     "react": "^18.0.0"
   }
@@ -111,7 +111,7 @@ export function AnimatedRoute({
 
 ```tsx
 // src/components/route-animation-container.tsx
-import { useRouter } from '@tanstack/react-router'
+import { useRouter } from '@benjavicente/react-router'
 import { AnimatePresence } from 'framer-motion'
 import { ReactNode } from 'react'
 
@@ -136,8 +136,8 @@ export function RouteAnimationContainer({
 
 ```tsx
 // src/routes/__root.tsx
-import { createRootRoute, Outlet } from '@tanstack/react-router'
-import { TanStackRouterDevtools } from '@tanstack/router-devtools'
+import { createRootRoute, Outlet } from '@benjavicente/react-router'
+import { TanStackRouterDevtools } from '@benjavicente/router-devtools'
 import { RouteAnimationContainer } from '@/components/route-animation-container'
 
 export const Route = createRootRoute({
@@ -156,7 +156,7 @@ export const Route = createRootRoute({
 
 ```tsx
 // src/routes/posts/index.tsx
-import { createFileRoute } from '@tanstack/react-router'
+import { createFileRoute } from '@benjavicente/react-router'
 import { motion } from 'framer-motion'
 import { AnimatedRoute } from '@/components/animated-route'
 
@@ -211,7 +211,7 @@ function PostsPage() {
 
 ```tsx
 // src/components/navigation/animated-tabs.tsx
-import { Link, useMatchRoute } from '@tanstack/react-router'
+import { Link, useMatchRoute } from '@benjavicente/react-router'
 import { motion } from 'framer-motion'
 
 interface TabItem {
@@ -267,7 +267,7 @@ export function AnimatedTabs({ items, className }: AnimatedTabsProps) {
 ```tsx
 // src/components/navigation/animated-mobile-menu.tsx
 import { useState } from 'react'
-import { Link } from '@tanstack/react-router'
+import { Link } from '@benjavicente/react-router'
 import { motion, AnimatePresence } from 'framer-motion'
 
 interface MenuItem {
@@ -369,7 +369,7 @@ export function AnimatedMobileMenu({
 
 ```tsx
 // src/components/navigation/animated-fab.tsx
-import { Link } from '@tanstack/react-router'
+import { Link } from '@benjavicente/react-router'
 import { motion } from 'framer-motion'
 import { Plus } from 'lucide-react'
 
@@ -479,7 +479,7 @@ function PostDetail({ post }: { post: Post }) {
 ```tsx
 // src/components/animations/route-variants.tsx
 import { motion } from 'framer-motion'
-import { useRouter } from '@tanstack/react-router'
+import { useRouter } from '@benjavicente/react-router'
 import { ReactNode } from 'react'
 
 interface RouteVariantsProps {
@@ -587,7 +587,7 @@ export const Route = createFileRoute('/posts/$postId')({
 
 ```tsx
 // src/routes/posts/index.tsx
-import { createFileRoute } from '@tanstack/react-router'
+import { createFileRoute } from '@benjavicente/react-router'
 import { motion } from 'framer-motion'
 import { AnimatedRoute } from '@/components/animated-route'
 import { AnimatedTabs } from '@/components/navigation/animated-tabs'

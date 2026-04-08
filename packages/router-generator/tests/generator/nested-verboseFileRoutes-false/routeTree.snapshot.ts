@@ -8,7 +8,7 @@
 // You should NOT make any changes in this file as it will be overwritten.
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
-import type { CreateFileRoute, FileRoutesByPath } from '@tanstack/react-router'
+import type { CreateFileRoute, FileRoutesByPath } from '@benjavicente/react-router'
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as PathlessLayoutRouteImport } from './routes/_pathlessLayout'
@@ -210,7 +210,7 @@ export interface RootRouteChildren {
   BlogBlogIdEditRoute: typeof BlogBlogIdEditRoute
 }
 
-declare module '@tanstack/react-router' {
+declare module '@benjavicente/react-router' {
   interface FileRoutesByPath {
     '/_pathlessLayout': {
       id: '/_pathlessLayout'

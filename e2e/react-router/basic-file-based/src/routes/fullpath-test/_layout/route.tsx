@@ -1,4 +1,4 @@
-import { Outlet, createFileRoute, useMatches } from '@tanstack/react-router'
+import { Outlet, createFileRoute, useMatches } from '@benjavicente/react-router'
 
 export const Route = createFileRoute('/fullpath-test/_layout')({
   component: LayoutComponent,

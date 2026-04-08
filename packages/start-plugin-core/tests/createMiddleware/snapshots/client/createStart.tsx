@@ -1,4 +1,4 @@
-import { createStart } from '@tanstack/react-start';
+import { createStart } from '@benjavicente/react-start';
 export const startInstance = createStart(() => {});
 export const serverFnMw = startInstance.createMiddleware({
   type: 'function'

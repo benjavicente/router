@@ -1,7 +1,7 @@
 import * as React from 'react'
 import { useStore } from '@tanstack/react-store'
-import { invariant, replaceEqualDeep } from '@tanstack/router-core'
-import { isServer } from '@tanstack/router-core/isServer'
+import { invariant, replaceEqualDeep } from '@benjavicente/router-core'
+import { isServer } from '@benjavicente/router-core/isServer'
 import { dummyMatchContext, matchContext } from './matchContext'
 import { useRouter } from './useRouter'
 import type {
@@ -16,7 +16,7 @@ import type {
   StrictOrFrom,
   ThrowConstraint,
   ThrowOrOptional,
-} from '@tanstack/router-core'
+} from '@benjavicente/router-core'
 
 const dummyStore = {
   state: undefined,

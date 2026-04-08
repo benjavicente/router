@@ -1,6 +1,6 @@
-import { createFileRoute } from '@tanstack/react-router'
+import { createFileRoute } from '@benjavicente/react-router'
 import * as React from 'react'
-import { Link, MatchRoute, Outlet } from '@tanstack/react-router'
+import { Link, MatchRoute, Outlet } from '@benjavicente/react-router'
 import { Spinner } from '../components/Spinner'
 import { fetchInvoices } from '../utils/mockTodos'
 

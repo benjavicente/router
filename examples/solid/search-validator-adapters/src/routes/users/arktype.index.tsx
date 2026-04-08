@@ -1,4 +1,4 @@
-import { useNavigate } from '@tanstack/solid-router'
+import { useNavigate } from '@benjavicente/solid-router'
 import { type } from 'arktype'
 import { Suspense } from 'solid-js'
 import { Header } from '../../components/Header'

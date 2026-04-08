@@ -85,7 +85,7 @@ export interface RootRouteChildren {
   WildcardChar123Char125suffixRoute: typeof WildcardChar123Char125suffixRoute
 }
 
-declare module '@tanstack/react-router' {
+declare module '@benjavicente/react-router' {
   interface FileRoutesByPath {
     '/wildcard/{$}suffix': {
       id: '/wildcard/{$}suffix'

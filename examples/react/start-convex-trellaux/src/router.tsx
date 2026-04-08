@@ -1,10 +1,10 @@
-import { createRouter } from '@tanstack/react-router'
+import { createRouter } from '@benjavicente/react-router'
 import {
   MutationCache,
   QueryClient,
   notifyManager,
 } from '@tanstack/react-query'
-import { setupRouterSsrQueryIntegration } from '@tanstack/react-router-ssr-query'
+import { setupRouterSsrQueryIntegration } from '@benjavicente/react-router-ssr-query'
 import toast from 'react-hot-toast'
 import { ConvexQueryClient } from '@convex-dev/react-query'
 import { ConvexProvider } from 'convex/react'
@@ -59,7 +59,7 @@ export function getRouter() {
   return router
 }
 
-declare module '@tanstack/react-router' {
+declare module '@benjavicente/react-router' {
   interface Register {
     router: ReturnType<typeof getRouter>
   }

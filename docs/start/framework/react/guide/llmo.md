@@ -40,7 +40,7 @@ Structured data using schema.org vocabulary helps AI systems understand your con
 
 ```tsx
 // src/routes/posts/$postId.tsx
-import { createFileRoute } from '@tanstack/react-router'
+import { createFileRoute } from '@benjavicente/react-router'
 
 export const Route = createFileRoute('/posts/$postId')({
   loader: async ({ params }) => {
@@ -207,7 +207,7 @@ Create API endpoints that AI systems and developers can consume directly:
 
 ```ts
 // src/routes/api/products.ts
-import { createFileRoute } from '@tanstack/react-router'
+import { createFileRoute } from '@benjavicente/react-router'
 
 export const Route = createFileRoute('/api/products')({
   server: {
@@ -318,7 +318,7 @@ Some sites are adopting a `llms.txt` file (similar to `robots.txt`) to provide g
 
 ```ts
 // src/routes/llms[.]txt.ts
-import { createFileRoute } from '@tanstack/react-router'
+import { createFileRoute } from '@benjavicente/react-router'
 
 export const Route = createFileRoute('/llms.txt')({
   server: {

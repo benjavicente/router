@@ -57,7 +57,8 @@ export function detectTanstackRouterImports(create: EnhancedCreate): Create {
           node.specifiers.length > 0 &&
           // `importKind` is parser-dependent and can be undefined (eg. Espree)
           node.importKind !== 'type' &&
-          node.source.value.startsWith('@tanstack/') &&
+          (node.source.value.startsWith('@benjavicente/') ||
+            node.source.value.startsWith('@tanstack/')) &&
           node.source.value.endsWith('-router')
         ) {
           tanstackRouterImportSpecifiers.push(...node.specifiers)

@@ -1,4 +1,4 @@
-import { parseAst } from '@tanstack/router-utils'
+import { parseAst } from '@benjavicente/router-utils'
 import { parse, print, types, visit } from 'recast'
 import { SourceMapConsumer } from 'source-map'
 import { mergeImportDeclarations } from '../utils'
@@ -171,7 +171,12 @@ export async function transform({
     banned: [],
   }
 
-  const targetModule = `@tanstack/${ctx.target}-router`
+  const targetModule =
+    ctx.target === 'angular'
+      ? (ctx.angularRouterPackage ??
+        '@benjavicente/angular-router-experimental')
+      : `@benjavicente/${ctx.target}-router`
+
   if (ctx.verboseFileRoutes === false) {
     imports.banned = [
       {
@@ -262,13 +267,13 @@ export async function transform({
                 // import is already present, remove it from requiredImports
                 requiredImports.specifiers.splice(requiredImportIndex, 1)
                 if (requiredImports.specifiers.length === 0) {
-                  imports.required = imports.required.splice(
-                    imports.required.indexOf(requiredImports),
-                    1,
-                  )
+                  const reqIdx = imports.required.indexOf(requiredImports)
+                  if (reqIdx !== -1) {
+                    imports.required.splice(reqIdx, 1)
+                  }
                   requiredImports = undefined
                 }
-              } else {
+              } else if (requiredImports.specifiers.length > 0) {
                 // add the import statement to the candidates
                 importStatementCandidates.push(n)
               }

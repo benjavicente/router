@@ -1,4 +1,4 @@
-import { createServerFn } from '@tanstack/react-start'
+import { createServerFn } from '@benjavicente/react-start'
 import { getSharedData } from './shared-util'
 
 // Safe: uses the shared utility ONLY inside a compiler boundary.

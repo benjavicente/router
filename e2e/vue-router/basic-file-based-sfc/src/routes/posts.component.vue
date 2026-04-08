@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { Link, Outlet, useLoaderData } from '@tanstack/vue-router'
+import { Link, Outlet, useLoaderData } from '@benjavicente/vue-router'
 import type { PostType } from '../posts'
 
 const posts = useLoaderData({ from: '/posts' }) as unknown as Array<PostType>

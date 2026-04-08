@@ -2,7 +2,7 @@ import * as Vue from 'vue'
 import { useStore } from '@tanstack/vue-store'
 import { Asset } from './Asset'
 import { useRouter } from './useRouter'
-import type { RouterManagedTag } from '@tanstack/router-core'
+import type { RouterManagedTag } from '@benjavicente/router-core'
 
 export const Scripts = Vue.defineComponent({
   name: 'Scripts',

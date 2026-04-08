@@ -1,4 +1,4 @@
-import { createFileRoute } from '@tanstack/solid-router'
+import { createFileRoute } from '@benjavicente/solid-router'
 import * as Solid from 'solid-js'
 import {
   Link,
@@ -7,7 +7,7 @@ import {
   retainSearchParams,
   useNavigate,
   useRouterState,
-} from '@tanstack/solid-router'
+} from '@benjavicente/solid-router'
 import { z } from 'zod'
 import { createMemo } from 'solid-js'
 import { Spinner } from '../components/Spinner'

@@ -21,7 +21,7 @@ import {
   index,
   layout,
   physical,
-} from '@tanstack/virtual-file-routes'
+} from '@benjavicente/virtual-file-routes'
 
 export const routes = rootRoute('root.tsx', [
   index('index.tsx'),
@@ -56,7 +56,7 @@ If you're using the `TanStackRouter` plugin for Vite/Rspack/Webpack, you can con
 ```tsx title="vite.config.ts"
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
-import { tanstackRouter } from '@tanstack/router-plugin/vite'
+import { tanstackRouter } from '@benjavicente/router-plugin/vite'
 
 export default defineConfig({
   plugins: [
@@ -74,7 +74,7 @@ export default defineConfig({
 ```tsx title="vite.config.ts"
 import { defineConfig } from 'vite'
 import solid from 'vite-plugin-solid'
-import { tanstackRouter } from '@tanstack/router-plugin/vite'
+import { tanstackRouter } from '@benjavicente/router-plugin/vite'
 
 export default defineConfig({
   plugins: [
@@ -95,8 +95,8 @@ Or, you choose to define the virtual routes directly in the configuration:
 // vite.config.ts
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
-import { tanstackRouter } from '@tanstack/router-plugin/vite'
-import { rootRoute } from '@tanstack/virtual-file-routes'
+import { tanstackRouter } from '@benjavicente/router-plugin/vite'
+import { rootRoute } from '@benjavicente/virtual-file-routes'
 
 const routes = rootRoute('root.tsx', [
   // ... the rest of your virtual route tree
@@ -114,7 +114,7 @@ export default defineConfig({
 ```tsx title="vite.config.ts"
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
-import { tanstackRouter } from '@tanstack/router-plugin/vite'
+import { tanstackRouter } from '@benjavicente/router-plugin/vite'
 
 const routes = rootRoute('root.tsx', [
   // ... the rest of your virtual route tree
@@ -133,7 +133,7 @@ export default defineConfig({
 ```tsx title="vite.config.ts"
 import { defineConfig } from 'vite'
 import solid from 'vite-plugin-solid'
-import { tanstackRouter } from '@tanstack/router-plugin/vite'
+import { tanstackRouter } from '@benjavicente/router-plugin/vite'
 
 const routes = rootRoute('root.tsx', [
   // ... the rest of your virtual route tree
@@ -151,7 +151,7 @@ export default defineConfig({
 
 ## Creating Virtual File Routes
 
-To create virtual file routes, you'll need to import the `@tanstack/virtual-file-routes` package. This package provides a set of functions that allow you to create virtual routes that reference real files in your project. A few utility functions are exported from the package:
+To create virtual file routes, you'll need to import the `@benjavicente/virtual-file-routes` package. This package provides a set of functions that allow you to create virtual routes that reference real files in your project. A few utility functions are exported from the package:
 
 - `rootRoute` - Creates a virtual root route.
 - `route` - Creates a virtual route.
@@ -165,7 +165,7 @@ The `rootRoute` function is used to create a virtual root route. It takes a file
 
 ```tsx
 // routes.ts
-import { rootRoute } from '@tanstack/virtual-file-routes'
+import { rootRoute } from '@benjavicente/virtual-file-routes'
 
 export const routes = rootRoute('root.tsx', [
   // ... children routes
@@ -178,7 +178,7 @@ The `route` function is used to create a virtual route. It takes a path, a file 
 
 ```tsx
 // routes.ts
-import { route } from '@tanstack/virtual-file-routes'
+import { route } from '@benjavicente/virtual-file-routes'
 
 export const routes = rootRoute('root.tsx', [
   route('/about', 'about.tsx', [
@@ -191,7 +191,7 @@ You can also define a virtual route without a file name. This allows to set a co
 
 ```tsx
 // routes.ts
-import { route } from '@tanstack/virtual-file-routes'
+import { route } from '@benjavicente/virtual-file-routes'
 
 export const routes = rootRoute('root.tsx', [
   route('/hello', [
@@ -206,7 +206,7 @@ export const routes = rootRoute('root.tsx', [
 The `index` function is used to create a virtual index route. It takes a file name. Here's an example of a virtual index route:
 
 ```tsx
-import { index } from '@tanstack/virtual-file-routes'
+import { index } from '@benjavicente/virtual-file-routes'
 
 const routes = rootRoute('root.tsx', [index('index.tsx')])
 ```
@@ -217,7 +217,7 @@ The `layout` function is used to create a virtual pathless route. It takes a fil
 
 ```tsx
 // routes.ts
-import { layout } from '@tanstack/virtual-file-routes'
+import { layout } from '@benjavicente/virtual-file-routes'
 
 export const routes = rootRoute('root.tsx', [
   layout('pathlessLayout.tsx', [
@@ -230,7 +230,7 @@ You can also specify a pathless ID to give the route a unique identifier that is
 
 ```tsx
 // routes.ts
-import { layout } from '@tanstack/virtual-file-routes'
+import { layout } from '@benjavicente/virtual-file-routes'
 
 export const routes = rootRoute('root.tsx', [
   layout('my-pathless-layout-id', 'pathlessLayout.tsx', [
@@ -308,7 +308,7 @@ You can merge the `features` directory routes at the root level:
 
 ```tsx
 // routes.ts
-import { physical, rootRoute, route } from '@tanstack/virtual-file-routes'
+import { physical, rootRoute, route } from '@benjavicente/virtual-file-routes'
 
 export const routes = rootRoute('__root.tsx', [
   route('/about', 'about.tsx'),
@@ -357,7 +357,7 @@ import {
   defineVirtualSubtreeConfig,
   index,
   route,
-} from '@tanstack/virtual-file-routes'
+} from '@benjavicente/virtual-file-routes'
 
 export default defineVirtualSubtreeConfig([
   index('home.tsx'),
@@ -403,7 +403,7 @@ If you're using the TanStack Router CLI, you can configure virtual file routes b
 }
 ```
 
-Or you can define the virtual routes directly in the configuration, while much less common allows you to configure them via the TanStack Router CLI by adding a `virtualRouteConfig` object to your `tsr.config.json` file and defining your virtual routes and passing the resulting JSON that is generated by calling the actual `rootRoute`/`route`/`index`/etc functions from the `@tanstack/virtual-file-routes` package:
+Or you can define the virtual routes directly in the configuration, while much less common allows you to configure them via the TanStack Router CLI by adding a `virtualRouteConfig` object to your `tsr.config.json` file and defining your virtual routes and passing the resulting JSON that is generated by calling the actual `rootRoute`/`route`/`index`/etc functions from the `@benjavicente/virtual-file-routes` package:
 
 ```json
 // tsr.config.json

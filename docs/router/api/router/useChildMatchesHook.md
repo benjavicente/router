@@ -33,7 +33,7 @@ The `useChildMatches` hook accepts a single _optional_ argument, an `options` ob
 ## Examples
 
 ```tsx
-import { useChildMatches } from '@tanstack/react-router'
+import { useChildMatches } from '@benjavicente/react-router'
 
 function Component() {
   const childMatches = useChildMatches()

@@ -18,7 +18,7 @@ sources:
   - TanStack/router:packages/solid-router/src
 ---
 
-# Solid Router (`@tanstack/solid-router`)
+# Solid Router (`@benjavicente/solid-router`)
 
 This skill builds on router-core. Read [router-core](../../../router-core/skills/router-core/SKILL.md) first for foundational concepts.
 
@@ -27,15 +27,15 @@ This skill covers the Solid-specific bindings, components, hooks, and setup for 
 > **CRITICAL**: TanStack Router types are FULLY INFERRED. Never cast, never annotate inferred values.
 > **CRITICAL**: TanStack Router is CLIENT-FIRST. Loaders run on the client by default, not on the server.
 > **CRITICAL**: Most hooks return `Accessor<T>` — you MUST call the accessor (`value()`) to read the reactive value. This is the #1 difference from the React version.
-> **CRITICAL**: Do not confuse `@tanstack/solid-router` with `@solidjs/router`. They are completely different libraries with different APIs.
+> **CRITICAL**: Do not confuse `@benjavicente/solid-router` with `@solidjs/router`. They are completely different libraries with different APIs.
 
 ## Full Setup: File-Based Routing with Vite
 
 ### 1. Install Dependencies
 
 ```bash
-npm install @tanstack/solid-router
-npm install -D @tanstack/router-plugin @tanstack/solid-router-devtools
+npm install @benjavicente/solid-router
+npm install -D @benjavicente/router-plugin @benjavicente/solid-router-devtools
 ```
 
 ### 2. Configure Vite Plugin
@@ -44,7 +44,7 @@ npm install -D @tanstack/router-plugin @tanstack/solid-router-devtools
 // vite.config.ts
 import { defineConfig } from 'vite'
 import solidPlugin from 'vite-plugin-solid'
-import { tanstackRouter } from '@tanstack/router-plugin/vite'
+import { tanstackRouter } from '@benjavicente/router-plugin/vite'
 
 export default defineConfig({
   plugins: [
@@ -62,7 +62,7 @@ export default defineConfig({
 
 ```tsx
 // src/routes/__root.tsx
-import { createRootRoute, Link, Outlet } from '@tanstack/solid-router'
+import { createRootRoute, Link, Outlet } from '@benjavicente/solid-router'
 
 export const Route = createRootRoute({
   component: RootLayout,
@@ -90,7 +90,7 @@ function RootLayout() {
 
 ```tsx
 // src/routes/index.tsx
-import { createFileRoute } from '@tanstack/solid-router'
+import { createFileRoute } from '@benjavicente/solid-router'
 
 export const Route = createFileRoute('/')({
   component: HomePage,
@@ -106,13 +106,13 @@ function HomePage() {
 ```tsx
 // src/main.tsx
 import { render } from 'solid-js/web'
-import { RouterProvider, createRouter } from '@tanstack/solid-router'
+import { RouterProvider, createRouter } from '@benjavicente/solid-router'
 import { routeTree } from './routeTree.gen'
 
 const router = createRouter({ routeTree })
 
 // REQUIRED — without this, Link/useNavigate/useSearch have no type safety
-declare module '@tanstack/solid-router' {
+declare module '@benjavicente/solid-router' {
   interface Register {
     router: typeof router
   }
@@ -126,12 +126,12 @@ render(
 
 ## Hooks Reference
 
-All hooks imported from `@tanstack/solid-router`. Most return `Accessor<T>` — call the result to read the value.
+All hooks imported from `@benjavicente/solid-router`. Most return `Accessor<T>` — call the result to read the value.
 
 ### `useRouter()` — returns `TRouter` (NOT an Accessor)
 
 ```tsx
-import { useRouter } from '@tanstack/solid-router'
+import { useRouter } from '@benjavicente/solid-router'
 
 function InvalidateButton() {
   const router = useRouter()
@@ -144,7 +144,7 @@ function InvalidateButton() {
 Exposes the entire state and thus incurs a performance cost. For matches or location favor `useMatches` and `useLocation`.
 
 ```tsx
-import { useRouterState } from '@tanstack/solid-router'
+import { useRouterState } from '@benjavicente/solid-router'
 
 function LoadingIndicator() {
   const isLoading = useRouterState({ select: (s) => s.isLoading })
@@ -159,7 +159,7 @@ function LoadingIndicator() {
 ### `useNavigate()` — returns a function (NOT an Accessor)
 
 ```tsx
-import { useNavigate } from '@tanstack/solid-router'
+import { useNavigate } from '@benjavicente/solid-router'
 
 function AfterSubmit() {
   const navigate = useNavigate()
@@ -176,7 +176,7 @@ function AfterSubmit() {
 ### `useSearch({ from })` — returns `Accessor<T>`
 
 ```tsx
-import { useSearch } from '@tanstack/solid-router'
+import { useSearch } from '@benjavicente/solid-router'
 
 function Pagination() {
   const search = useSearch({ from: '/products' })
@@ -187,7 +187,7 @@ function Pagination() {
 ### `useParams({ from })` — returns `Accessor<T>`
 
 ```tsx
-import { useParams } from '@tanstack/solid-router'
+import { useParams } from '@benjavicente/solid-router'
 
 function PostHeader() {
   const params = useParams({ from: '/posts/$postId' })
@@ -198,7 +198,7 @@ function PostHeader() {
 ### `useLoaderData({ from })` — returns `Accessor<T>`
 
 ```tsx
-import { useLoaderData } from '@tanstack/solid-router'
+import { useLoaderData } from '@benjavicente/solid-router'
 
 function PostContent() {
   const data = useLoaderData({ from: '/posts/$postId' })
@@ -209,7 +209,7 @@ function PostContent() {
 ### `useMatch({ from })` — returns `Accessor<T>`
 
 ```tsx
-import { useMatch } from '@tanstack/solid-router'
+import { useMatch } from '@benjavicente/solid-router'
 
 function PostDetails() {
   const match = useMatch({ from: '/posts/$postId' })
@@ -219,7 +219,7 @@ function PostDetails() {
 
 ### Other Hooks
 
-All imported from `@tanstack/solid-router`:
+All imported from `@benjavicente/solid-router`:
 
 - **`useMatches()`** — `Accessor<Array<Match>>`, all active route matches
 - **`useParentMatches()`** — `Accessor<Array<Match>>`, parent route matches
@@ -280,7 +280,7 @@ function Layout() {
 Declarative redirect (triggers navigation in `onMount`):
 
 ```tsx
-import { Navigate } from '@tanstack/solid-router'
+import { Navigate } from '@benjavicente/solid-router'
 
 function OldPage() {
   return <Navigate to="/new-page" />
@@ -292,7 +292,7 @@ function OldPage() {
 Renders deferred data with Solid's `Suspense`:
 
 ```tsx
-import { Await } from '@tanstack/solid-router'
+import { Await } from '@benjavicente/solid-router'
 import { Suspense } from 'solid-js'
 
 function PostWithComments() {
@@ -312,7 +312,7 @@ function PostWithComments() {
 Error boundary wrapping `Solid.ErrorBoundary`:
 
 ```tsx
-import { CatchBoundary } from '@tanstack/solid-router'
+import { CatchBoundary } from '@benjavicente/solid-router'
 ;<CatchBoundary
   getResetKey={() => 'widget'}
   errorComponent={({ error }) => <div>Error: {error.message}</div>}
@@ -333,7 +333,7 @@ import { CatchBoundary } from '@tanstack/solid-router'
 Declarative navigation blocker component:
 
 ```tsx
-import { Block } from '@tanstack/solid-router'
+import { Block } from '@benjavicente/solid-router'
 ;<Block shouldBlockFn={() => formIsDirty()} withResolver>
   {({ status, proceed, reset }) => (
     <Show when={status === 'blocked'}>
@@ -352,7 +352,7 @@ import { Block } from '@tanstack/solid-router'
 Restores scroll position on navigation:
 
 ```tsx
-import { ScrollRestoration } from '@tanstack/solid-router'
+import { ScrollRestoration } from '@benjavicente/solid-router'
 // In root route component
 ;<ScrollRestoration />
 ```
@@ -362,7 +362,7 @@ import { ScrollRestoration } from '@tanstack/solid-router'
 Renders children only after hydration:
 
 ```tsx
-import { ClientOnly } from '@tanstack/solid-router'
+import { ClientOnly } from '@benjavicente/solid-router'
 ;<ClientOnly fallback={<div>Loading...</div>}>
   <BrowserOnlyWidget />
 </ClientOnly>
@@ -373,7 +373,7 @@ import { ClientOnly } from '@tanstack/solid-router'
 Uses `@solidjs/meta` under the hood:
 
 ```tsx
-import { HeadContent, Scripts } from '@tanstack/solid-router'
+import { HeadContent, Scripts } from '@benjavicente/solid-router'
 
 function RootDocument(props) {
   return (
@@ -395,7 +395,7 @@ function RootDocument(props) {
 ### Custom Link Component with `createLink`
 
 ```tsx
-import { createLink } from '@tanstack/solid-router'
+import { createLink } from '@benjavicente/solid-router'
 
 const StyledLinkComponent = (props) => (
   <a {...props} class={`styled-link ${props.class ?? ''}`} />
@@ -416,7 +416,7 @@ function Nav() {
 
 ```tsx
 import { createMemo, Show, For } from 'solid-js'
-import { useRouterState } from '@tanstack/solid-router'
+import { useRouterState } from '@benjavicente/solid-router'
 
 function Breadcrumbs() {
   const matches = useRouterState({ select: (s) => s.matches })
@@ -437,7 +437,7 @@ function Breadcrumbs() {
 ### Auth with Router Context
 
 ```tsx
-import { createRootRouteWithContext } from '@tanstack/solid-router'
+import { createRootRouteWithContext } from '@benjavicente/solid-router'
 
 const rootRoute = createRootRouteWithContext<{ auth: AuthState }>()({
   component: RootComponent,

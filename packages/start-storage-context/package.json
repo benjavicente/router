@@ -1,5 +1,5 @@
 {
-  "name": "@tanstack/start-storage-context",
+  "name": "@benjavicente/start-storage-context",
   "version": "1.166.23",
   "description": "Modern and scalable routing for React applications",
   "author": "Tanner Linsley",
@@ -59,7 +59,7 @@
     "node": ">=22.12.0"
   },
   "dependencies": {
-    "@tanstack/router-core": "workspace:*"
+    "@benjavicente/router-core": "workspace:*"
   },
   "devDependencies": {
     "vite": "*",

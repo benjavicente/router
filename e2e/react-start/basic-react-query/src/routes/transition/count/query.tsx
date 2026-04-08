@@ -1,4 +1,4 @@
-import { Link, createFileRoute } from '@tanstack/react-router'
+import { Link, createFileRoute } from '@benjavicente/react-router'
 import { Suspense } from 'react'
 import { queryOptions, useQuery } from '@tanstack/react-query'
 import { z } from 'zod'

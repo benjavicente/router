@@ -1,5 +1,5 @@
 import { For, createSignal } from 'solid-js'
-import { Link, createFileRoute, deepEqual } from '@tanstack/solid-router'
+import { Link, createFileRoute, deepEqual } from '@benjavicente/solid-router'
 import {
   getServerFnCallingPost,
   postServerFnCallingGet,

@@ -1,5 +1,5 @@
-import { createFileRoute } from '@tanstack/react-router'
-import { Link } from '@tanstack/react-router'
+import { createFileRoute } from '@benjavicente/react-router'
+import { Link } from '@benjavicente/react-router'
 
 export const Route = createFileRoute('/how-it-works')({
   component: RouteComponent,

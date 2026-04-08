@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 import * as esbuild from 'esbuild'
 import { solidPlugin } from 'esbuild-plugin-solid'
-import { tanstackRouter } from '@tanstack/router-plugin/esbuild'
+import { tanstackRouter } from '@benjavicente/router-plugin/esbuild'
 
 const isDev = process.argv.includes('--dev')
 

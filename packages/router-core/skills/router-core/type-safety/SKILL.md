@@ -30,13 +30,13 @@ Without this, top-level exports like `Link`, `useNavigate`, `useSearch` have no 
 
 ```tsx
 // src/router.tsx
-import { createRouter } from '@tanstack/react-router'
+import { createRouter } from '@benjavicente/react-router'
 import { routeTree } from './routeTree.gen'
 
 const router = createRouter({ routeTree })
 
 // THIS IS REQUIRED — the single type registration for the entire app
-declare module '@tanstack/react-router' {
+declare module '@benjavicente/react-router' {
   interface Register {
     router: typeof router
   }
@@ -53,7 +53,7 @@ After registration, every `Link`, `useNavigate`, `useSearch`, `useParams` across
 
 ```tsx
 // src/routes/posts.$postId.tsx
-import { createFileRoute } from '@tanstack/react-router'
+import { createFileRoute } from '@benjavicente/react-router'
 
 export const Route = createFileRoute('/posts/$postId')({
   validateSearch: (search: Record<string, unknown>) => ({
@@ -91,7 +91,7 @@ function PostComponent() {
 
 ```tsx
 // src/routes/__root.tsx
-import { createRootRouteWithContext, Outlet } from '@tanstack/react-router'
+import { createRootRouteWithContext, Outlet } from '@benjavicente/react-router'
 
 interface RouterContext {
   auth: { userId: string; role: 'admin' | 'user' } | null
@@ -105,7 +105,7 @@ export const Route = createRootRouteWithContext<RouterContext>()({
 
 ```tsx
 // src/routes/dashboard.tsx
-import { createFileRoute, redirect } from '@tanstack/react-router'
+import { createFileRoute, redirect } from '@benjavicente/react-router'
 
 export const Route = createFileRoute('/dashboard')({
   beforeLoad: ({ context }) => {
@@ -136,7 +136,7 @@ Without `from`, hooks return a union of ALL routes' types — slow for TypeScrip
 ### On Hooks
 
 ```tsx
-import { useSearch, useParams, useNavigate } from '@tanstack/react-router'
+import { useSearch, useParams, useNavigate } from '@benjavicente/react-router'
 
 function PostSidebar() {
   // WRONG — search is a union of ALL routes' search params
@@ -157,7 +157,7 @@ function PostSidebar() {
 ### On `Link`
 
 ```tsx
-import { Link } from '@tanstack/react-router'
+import { Link } from '@benjavicente/react-router'
 
 // WRONG — search resolves to union of ALL routes' search params, slow TS check
 <Link to=".." search={{ page: 0 }} />
@@ -174,7 +174,7 @@ import { Link } from '@tanstack/react-router'
 When a component is used across multiple routes, use `strict: false` instead of `from`:
 
 ```tsx
-import { useSearch } from '@tanstack/react-router'
+import { useSearch } from '@benjavicente/react-router'
 
 function GlobalSearch() {
   // Returns union of all routes' search params — no runtime error if route doesn't match
@@ -189,7 +189,7 @@ Use `getRouteApi` instead of importing `Route` to avoid pulling route config int
 
 ```tsx
 // src/routes/posts.lazy.tsx
-import { createLazyFileRoute, getRouteApi } from '@tanstack/react-router'
+import { createLazyFileRoute, getRouteApi } from '@benjavicente/react-router'
 
 const routeApi = getRouteApi('/posts')
 
@@ -250,7 +250,7 @@ export const Route = createFileRoute('/posts/$postId')({
 Never use `LinkProps` as a variable type — it's an enormous union:
 
 ```tsx
-import type { LinkProps, RegisteredRouter } from '@tanstack/react-router'
+import type { LinkProps, RegisteredRouter } from '@benjavicente/react-router'
 
 // WRONG — LinkProps is a massive union, extremely slow TS check
 const wrongProps: LinkProps = { to: '/posts' }
@@ -267,7 +267,7 @@ const narrowedProps = {
 ### Type-Safe Link Option Arrays
 
 ```tsx
-import type { LinkProps } from '@tanstack/react-router'
+import type { LinkProps } from '@benjavicente/react-router'
 
 export const navLinks = [
   { to: '/posts' },
@@ -287,7 +287,7 @@ import {
   Link,
   type RegisteredRouter,
   type ValidateLinkOptions,
-} from '@tanstack/react-router'
+} from '@benjavicente/react-router'
 
 interface NavItemProps<
   TRouter extends RegisteredRouter = RegisteredRouter,
@@ -320,7 +320,7 @@ import {
   useNavigate,
   type RegisteredRouter,
   type ValidateNavigateOptions,
-} from '@tanstack/react-router'
+} from '@benjavicente/react-router'
 
 export function useDelayedNavigate<
   TRouter extends RegisteredRouter = RegisteredRouter,
@@ -353,7 +353,7 @@ import {
   redirect,
   type RegisteredRouter,
   type ValidateRedirectOptions,
-} from '@tanstack/react-router'
+} from '@benjavicente/react-router'
 
 export async function fetchOrRedirect<
   TRouter extends RegisteredRouter = RegisteredRouter,
@@ -470,7 +470,7 @@ const router = createRouter({ routeTree })
 
 // CORRECT — always register
 const router = createRouter({ routeTree })
-declare module '@tanstack/react-router' {
+declare module '@benjavicente/react-router' {
   interface Register {
     router: typeof router
   }

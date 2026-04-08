@@ -1,6 +1,6 @@
-import { createFileRoute } from '@tanstack/vue-router'
+import { createFileRoute } from '@benjavicente/vue-router'
 import { z } from 'zod'
-import { zodValidator } from '@tanstack/zod-adapter'
+import { zodValidator } from '@benjavicente/zod-adapter'
 
 export const Route = createFileRoute('/(group)/inside')({
   validateSearch: zodValidator(z.object({ hello: z.string().optional() })),

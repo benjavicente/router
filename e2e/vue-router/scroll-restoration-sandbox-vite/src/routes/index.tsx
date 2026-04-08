@@ -1,5 +1,5 @@
-import { createFileRoute } from '@tanstack/vue-router'
-import { Link, linkOptions } from '@tanstack/vue-router'
+import { createFileRoute } from '@benjavicente/vue-router'
+import { Link, linkOptions } from '@benjavicente/vue-router'
 
 export const Route = createFileRoute('/')({
   component: HomeComponent,

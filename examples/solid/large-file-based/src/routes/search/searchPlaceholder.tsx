@@ -1,4 +1,4 @@
-import { Link, createFileRoute } from '@tanstack/solid-router'
+import { Link, createFileRoute } from '@benjavicente/solid-router'
 
 import { z } from 'zod'
 import { queryOptions } from '@tanstack/solid-query'

@@ -13,7 +13,7 @@ import {
 } from '../src'
 import { getSearchParamsFromURI } from './utils'
 import type { AnyRouter, RouterHistory } from '../src'
-import type { SearchMiddleware } from '@tanstack/router-core'
+import type { SearchMiddleware } from '@benjavicente/router-core'
 
 let history: RouterHistory
 

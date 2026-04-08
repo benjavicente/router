@@ -9,7 +9,7 @@ import type {
   TsrSerializable,
   ValidateSerializableInput,
   Validator,
-} from '@tanstack/router-core'
+} from '@benjavicente/router-core'
 import type {
   ConstrainValidator,
   CustomFetch,

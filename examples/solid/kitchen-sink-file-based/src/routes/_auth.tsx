@@ -1,5 +1,5 @@
-import { createFileRoute } from '@tanstack/solid-router'
-import { redirect } from '@tanstack/solid-router'
+import { createFileRoute } from '@benjavicente/solid-router'
+import { redirect } from '@benjavicente/solid-router'
 import { auth } from '../utils/auth'
 
 export const Route = createFileRoute('/_auth')({

@@ -85,7 +85,7 @@ export interface RootRouteChildren {
   ScrollErrorRoute: typeof ScrollErrorRoute
 }
 
-declare module '@tanstack/react-router' {
+declare module '@benjavicente/react-router' {
   interface FileRoutesByPath {
     '/scroll-error': {
       id: '/scroll-error'

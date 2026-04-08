@@ -1,5 +1,5 @@
-import { createServerFn } from '@tanstack/react-start'
-import { notFound } from '@tanstack/react-router'
+import { createServerFn } from '@benjavicente/react-start'
+import { notFound } from '@benjavicente/react-router'
 import { capitalize } from '~/utils/seo'
 
 const projects = ['router', 'table', 'query', 'form', 'ranger']

@@ -1,4 +1,4 @@
-import { Link, Outlet, createFileRoute } from '@tanstack/vue-router'
+import { Link, Outlet, createFileRoute } from '@benjavicente/vue-router'
 
 export const Route = createFileRoute('/_pathlessLayout/_nested-layout')({
   component: LayoutComponent,

@@ -1,5 +1,5 @@
-import { createFileRoute } from '@tanstack/solid-router'
-import { Link, useLocation, useNavigate } from '@tanstack/solid-router'
+import { createFileRoute } from '@benjavicente/solid-router'
+import { Link, useLocation, useNavigate } from '@benjavicente/solid-router'
 import {
   createEffect,
   createRenderEffect,

@@ -1,4 +1,4 @@
-import { createFileRoute, redirect } from '@tanstack/react-router'
+import { createFileRoute, redirect } from '@benjavicente/react-router'
 
 export const Route = createFileRoute('/redirect/throw-it')({
   beforeLoad: () => {

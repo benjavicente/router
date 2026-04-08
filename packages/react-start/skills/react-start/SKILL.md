@@ -3,7 +3,7 @@ name: react-start
 description: >-
   React bindings for TanStack Start: createStart, StartClient,
   StartServer, React-specific imports, re-exports from
-  @tanstack/react-router, full project setup with React, useServerFn
+  @benjavicente/react-router, full project setup with React, useServerFn
   hook.
 type: framework
 library: tanstack-start
@@ -16,7 +16,7 @@ sources:
   - TanStack/router:docs/start/framework/react/build-from-scratch.md
 ---
 
-# React Start (`@tanstack/react-start`)
+# React Start (`@benjavicente/react-start`)
 
 This skill builds on start-core. Read [start-core](../../../start-client-core/skills/start-core/SKILL.md) first for foundational concepts.
 
@@ -24,26 +24,26 @@ This skill covers the React-specific bindings, setup, and patterns for TanStack 
 
 > **CRITICAL**: All code is ISOMORPHIC by default. Loaders run on BOTH server and client. Use `createServerFn` for server-only logic.
 
-> **CRITICAL**: Do not confuse `@tanstack/react-start` with Next.js or Remix. They are completely different frameworks with different APIs.
+> **CRITICAL**: Do not confuse `@benjavicente/react-start` with Next.js or Remix. They are completely different frameworks with different APIs.
 
 > **CRITICAL**: Types are FULLY INFERRED. Never cast, never annotate inferred values.
 
 ## Package API Surface
 
-`@tanstack/react-start` re-exports everything from `@tanstack/start-client-core` plus:
+`@benjavicente/react-start` re-exports everything from `@benjavicente/start-client-core` plus:
 
 - `useServerFn` — React hook for calling server functions from components
 
-All core APIs (`createServerFn`, `createMiddleware`, `createStart`, `createIsomorphicFn`, `createServerOnlyFn`, `createClientOnlyFn`) are available from `@tanstack/react-start`.
+All core APIs (`createServerFn`, `createMiddleware`, `createStart`, `createIsomorphicFn`, `createServerOnlyFn`, `createClientOnlyFn`) are available from `@benjavicente/react-start`.
 
-Server utilities (`getRequest`, `getRequestHeader`, `setResponseHeader`, `setResponseHeaders`, `setResponseStatus`) are imported from `@tanstack/react-start/server`.
+Server utilities (`getRequest`, `getRequestHeader`, `setResponseHeader`, `setResponseHeaders`, `setResponseStatus`) are imported from `@benjavicente/react-start/server`.
 
 ## Full Project Setup
 
 ### 1. Install Dependencies
 
 ```bash
-npm i @tanstack/react-start @tanstack/react-router react react-dom
+npm i @benjavicente/react-start @benjavicente/react-router react react-dom
 npm i -D vite @vitejs/plugin-react typescript @types/react @types/react-dom
 ```
 
@@ -79,7 +79,7 @@ npm i -D vite @vitejs/plugin-react typescript @types/react @types/react-dom
 
 ```ts
 import { defineConfig } from 'vite'
-import { tanstackStart } from '@tanstack/react-start/plugin/vite'
+import { tanstackStart } from '@benjavicente/react-start/plugin/vite'
 import viteReact from '@vitejs/plugin-react'
 
 export default defineConfig({
@@ -93,7 +93,7 @@ export default defineConfig({
 ### 5. Router Factory (src/router.tsx)
 
 ```tsx
-import { createRouter } from '@tanstack/react-router'
+import { createRouter } from '@benjavicente/react-router'
 import { routeTree } from './routeTree.gen'
 
 export function getRouter() {
@@ -114,7 +114,7 @@ import {
   createRootRoute,
   HeadContent,
   Scripts,
-} from '@tanstack/react-router'
+} from '@benjavicente/react-router'
 
 export const Route = createRootRoute({
   head: () => ({
@@ -153,8 +153,8 @@ function RootDocument({ children }: Readonly<{ children: ReactNode }>) {
 ### 7. Index Route (src/routes/index.tsx)
 
 ```tsx
-import { createFileRoute } from '@tanstack/react-router'
-import { createServerFn } from '@tanstack/react-start'
+import { createFileRoute } from '@benjavicente/react-router'
+import { createServerFn } from '@benjavicente/react-start'
 
 const getGreeting = createServerFn({ method: 'GET' }).handler(async () => {
   return 'Hello from TanStack Start!'
@@ -176,7 +176,7 @@ function HomePage() {
 Use `useServerFn` to call server functions from React components with proper integration:
 
 ```tsx
-import { createServerFn, useServerFn } from '@tanstack/react-start'
+import { createServerFn, useServerFn } from '@benjavicente/react-start'
 
 const updatePost = createServerFn({ method: 'POST' })
   .inputValidator((data: { id: string; title: string }) => data)
@@ -206,7 +206,7 @@ function EditPostForm({ postId }: { postId: string }) {
 ## Global Start Configuration (src/start.ts)
 
 ```tsx
-import { createStart, createMiddleware } from '@tanstack/react-start'
+import { createStart, createMiddleware } from '@benjavicente/react-start'
 
 const requestLogger = createMiddleware().server(async ({ next, request }) => {
   console.log(`${request.method} ${request.url}`)
@@ -220,7 +220,7 @@ export const startInstance = createStart(() => ({
 
 ## React-Specific Components
 
-All routing components from `@tanstack/react-router` work in Start:
+All routing components from `@benjavicente/react-router` work in Start:
 
 - `<RouterProvider>` — not needed in Start (handled automatically)
 - `<Outlet>` — renders matched child route
@@ -234,7 +234,7 @@ All routing components from `@tanstack/react-router` work in Start:
 
 ## Hooks Reference
 
-All hooks from `@tanstack/react-router` work in Start:
+All hooks from `@benjavicente/react-router` work in Start:
 
 - `useRouter()` — router instance
 - `useRouterState()` — subscribe to router state
@@ -253,13 +253,13 @@ All hooks from `@tanstack/react-router` work in Start:
 
 ```tsx
 // WRONG — this is the SPA router, NOT Start
-import { createServerFn } from '@tanstack/react-router'
+import { createServerFn } from '@benjavicente/react-router'
 
 // CORRECT — server functions come from react-start
-import { createServerFn } from '@tanstack/react-start'
+import { createServerFn } from '@benjavicente/react-start'
 
 // CORRECT — routing APIs come from react-router (re-exported by Start too)
-import { createFileRoute, Link } from '@tanstack/react-router'
+import { createFileRoute, Link } from '@benjavicente/react-router'
 ```
 
 ### 2. HIGH: Using React hooks in beforeLoad or loader

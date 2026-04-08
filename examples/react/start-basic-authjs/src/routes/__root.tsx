@@ -7,10 +7,10 @@ import {
   Outlet,
   Scripts,
   createRootRouteWithContext,
-} from '@tanstack/react-router'
-import { TanStackRouterDevtools } from '@tanstack/react-router-devtools'
-import { createServerFn } from '@tanstack/react-start'
-import { getRequest } from '@tanstack/react-start/server'
+} from '@benjavicente/react-router'
+import { TanStackRouterDevtools } from '@benjavicente/react-router-devtools'
+import { createServerFn } from '@benjavicente/react-start'
+import { getRequest } from '@benjavicente/react-start/server'
 import { getSession } from 'start-authjs'
 import { authConfig } from '~/utils/auth'
 import appCss from '~/styles/app.css?url'

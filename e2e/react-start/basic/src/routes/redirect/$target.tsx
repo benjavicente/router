@@ -1,4 +1,4 @@
-import { createFileRoute, retainSearchParams } from '@tanstack/react-router'
+import { createFileRoute, retainSearchParams } from '@benjavicente/react-router'
 import z from 'zod'
 
 export const Route = createFileRoute('/redirect/$target')({

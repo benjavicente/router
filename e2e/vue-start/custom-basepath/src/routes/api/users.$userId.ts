@@ -1,4 +1,4 @@
-import { createFileRoute } from '@tanstack/vue-router'
+import { createFileRoute } from '@benjavicente/vue-router'
 import type { User } from '~/utils/users'
 
 let queryURL = 'https://jsonplaceholder.typicode.com'

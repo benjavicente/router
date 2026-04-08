@@ -1,11 +1,11 @@
 import { batch, createStore } from '@tanstack/store'
-import { isServer } from '@tanstack/router-core/isServer'
+import { isServer } from '@benjavicente/router-core/isServer'
 import {
   RouterCore,
   createNonReactiveMutableStore,
   createNonReactiveReadonlyStore,
 } from '../src'
-import type { RouterHistory } from '@tanstack/history'
+import type { RouterHistory } from '@benjavicente/history'
 import type {
   AnyRoute,
   GetStoreConfig,

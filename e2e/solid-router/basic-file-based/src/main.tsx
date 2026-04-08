@@ -2,7 +2,7 @@ import {
   RouterProvider,
   createRouteMask,
   createRouter,
-} from '@tanstack/solid-router'
+} from '@benjavicente/solid-router'
 import { render } from 'solid-js/web'
 import { routeTree } from './routeTree.gen'
 import './styles.css'
@@ -26,7 +26,7 @@ const router = createRouter({
 })
 
 // Register things for typesafety
-declare module '@tanstack/solid-router' {
+declare module '@benjavicente/solid-router' {
   interface Register {
     router: typeof router
   }

@@ -1,4 +1,4 @@
-import { generateFromAst, logDiff, parseAst } from '@tanstack/router-utils'
+import { generateFromAst, logDiff, parseAst } from '@benjavicente/router-utils'
 import * as babel from '@babel/core'
 import * as template from '@babel/template'
 import { getConfig } from './config'
@@ -46,29 +46,37 @@ export const unpluginRouteAutoImportFactory: UnpluginFactory<
           return null
         }
 
-        const routerImportPath = `@tanstack/${userConfig.target}-router`
+        // Angular route files get `createFileRoute` imports from the generator; injecting
+        // here as well can duplicate bindings (plugin order vs. code-splitter).
+        if ((userConfig.target as string) === 'angular') {
+          return null
+        }
+
+        const routerImportPath = `@benjavicente/${userConfig.target}-router`
 
         const ast = parseAst({ code })
 
         let isCreateRouteFunctionImported = false as boolean
 
         babel.traverse(ast, {
-          Program: {
-            enter(programPath) {
-              programPath.traverse({
-                ImportDeclaration(path) {
-                  const importedSpecifiers = path.node.specifiers.map(
-                    (specifier) => specifier.local.name,
-                  )
-                  if (
-                    importedSpecifiers.includes(routeType) &&
-                    path.node.source.value === routerImportPath
-                  ) {
+          Program(programPath) {
+            programPath.traverse({
+              ImportDeclaration(path) {
+                const source = path.node.source.value
+                for (const spec of path.node.specifiers ?? []) {
+                  if (spec.type !== 'ImportSpecifier') continue
+                  const importedName =
+                    spec.imported.type === 'Identifier'
+                      ? spec.imported.name
+                      : null
+                  if (importedName !== routeType) continue
+
+                  if (source === routerImportPath) {
                     isCreateRouteFunctionImported = true
                   }
-                },
-              })
-            },
+                }
+              },
+            })
           },
         })
 

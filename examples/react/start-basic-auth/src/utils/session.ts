@@ -1,5 +1,5 @@
 // src/services/session.server.ts
-import { useSession } from '@tanstack/react-start/server'
+import { useSession } from '@benjavicente/react-start/server'
 import type { User } from '@prisma/client'
 
 type SessionUser = {

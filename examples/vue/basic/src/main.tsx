@@ -7,11 +7,11 @@ import {
   createRootRoute,
   createRoute,
   createRouter,
-} from '@tanstack/vue-router'
-import { TanStackRouterDevtools } from '@tanstack/vue-router-devtools'
+} from '@benjavicente/vue-router'
+import { TanStackRouterDevtools } from '@benjavicente/vue-router-devtools'
 import { NotFoundError, fetchPost, fetchPosts } from './posts'
 import VueLogo from './components/VueLogo.vue'
-import type { ErrorComponentProps } from '@tanstack/vue-router'
+import type { ErrorComponentProps } from '@benjavicente/vue-router'
 import './styles.css'
 
 const rootRoute = createRootRoute({
@@ -222,7 +222,7 @@ const router = createRouter({
 })
 
 // Register things for typesafety
-declare module '@tanstack/vue-router' {
+declare module '@benjavicente/vue-router' {
   interface Register {
     router: typeof router
   }

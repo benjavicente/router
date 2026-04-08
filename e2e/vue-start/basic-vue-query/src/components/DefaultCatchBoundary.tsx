@@ -1,4 +1,4 @@
-import { ErrorComponent, type ErrorComponentProps } from '@tanstack/vue-router'
+import { ErrorComponent, type ErrorComponentProps } from '@benjavicente/vue-router'
 
 export function DefaultCatchBoundary(props: ErrorComponentProps) {
   return <ErrorComponent {...props} />

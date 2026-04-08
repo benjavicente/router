@@ -17,12 +17,12 @@ Use TanStack Router DevTools for real-time debugging, add strategic console logg
 Install and configure the DevTools for the best debugging experience:
 
 ```bash
-npm install @tanstack/router-devtools
+npm install @benjavicente/router-devtools
 ```
 
 ```tsx
 // src/App.tsx
-import { TanStackRouterDevtools } from '@tanstack/router-devtools'
+import { TanStackRouterDevtools } from '@benjavicente/router-devtools'
 
 function App() {
   return (
@@ -550,7 +550,7 @@ function DebuggableComponent() {
 
 ```tsx
 // Ensure this declaration exists
-declare module '@tanstack/react-router' {
+declare module '@benjavicente/react-router' {
   interface Register {
     router: typeof router
   }
@@ -564,7 +564,7 @@ declare module '@tanstack/react-router' {
 ls src/routeTree.gen.ts
 
 # Regenerate route types if needed
-npx @tanstack/router-cli generate
+npx @benjavicente/router-cli generate
 ```
 
 3. **Use Type Assertions for Debugging**

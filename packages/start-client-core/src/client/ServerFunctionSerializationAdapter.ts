@@ -1,4 +1,4 @@
-import { createSerializationAdapter } from '@tanstack/router-core'
+import { createSerializationAdapter } from '@benjavicente/router-core'
 import { TSS_SERVER_FUNCTION } from '../constants'
 import { createClientRpc } from '../client-rpc/createClientRpc'
 

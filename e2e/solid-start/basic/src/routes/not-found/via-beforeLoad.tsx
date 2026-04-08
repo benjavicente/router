@@ -1,4 +1,4 @@
-import { notFound, createFileRoute } from '@tanstack/solid-router'
+import { notFound, createFileRoute } from '@benjavicente/solid-router'
 
 export const Route = createFileRoute('/not-found/via-beforeLoad')({
   beforeLoad: () => {

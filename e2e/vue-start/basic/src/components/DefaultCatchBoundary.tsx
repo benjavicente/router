@@ -4,8 +4,8 @@ import {
   rootRouteId,
   useMatch,
   useRouter,
-} from '@tanstack/vue-router'
-import type { ErrorComponentProps } from '@tanstack/vue-router'
+} from '@benjavicente/vue-router'
+import type { ErrorComponentProps } from '@benjavicente/vue-router'
 import { defineComponent } from 'vue'
 
 export const DefaultCatchBoundary = defineComponent({

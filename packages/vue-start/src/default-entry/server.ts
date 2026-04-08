@@ -1,13 +1,13 @@
 import {
   createStartHandler,
   defaultStreamHandler,
-} from '@tanstack/vue-start/server'
-import type { Register } from '@tanstack/vue-router'
-import type { RequestHandler } from '@tanstack/vue-start/server'
+} from '@benjavicente/vue-start/server'
+import type { Register } from '@benjavicente/vue-router'
+import type { RequestHandler } from '@benjavicente/vue-start/server'
 
 const fetch = createStartHandler(defaultStreamHandler)
 
-// Providing `RequestHandler` from `@tanstack/vue-start/server` is required so that the output types don't import it from `@tanstack/start-server-core`
+// Providing `RequestHandler` from `@benjavicente/vue-start/server` is required so that the output types don't import it from `@benjavicente/start-server-core`
 export type ServerEntry = { fetch: RequestHandler<Register> }
 
 export function createServerEntry(entry: ServerEntry): ServerEntry {

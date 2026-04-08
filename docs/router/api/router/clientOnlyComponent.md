@@ -26,7 +26,7 @@ The component to render if the JS is loaded in the client.
 
 ```tsx
 // src/routes/dashboard.tsx
-import { ClientOnly, createFileRoute } from '@tanstack/react-router'
+import { ClientOnly, createFileRoute } from '@benjavicente/react-router'
 import {
   Charts,
   FallbackCharts,

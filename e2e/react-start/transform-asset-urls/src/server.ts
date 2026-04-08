@@ -1,9 +1,9 @@
 import {
   createStartHandler,
   defaultStreamHandler,
-} from '@tanstack/react-start/server'
-import { createServerEntry } from '@tanstack/react-start/server-entry'
-import type { TransformAssetUrls } from '@tanstack/react-start/server'
+} from '@benjavicente/react-start/server'
+import { createServerEntry } from '@benjavicente/react-start/server-entry'
+import type { TransformAssetUrls } from '@benjavicente/react-start/server'
 
 type TransformAssetsFn = (ctx: {
   kind: 'modulepreload' | 'stylesheet' | 'clientEntry'

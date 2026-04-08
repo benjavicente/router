@@ -1,5 +1,5 @@
-import { createFileRoute } from '@tanstack/solid-router'
-import { Link, Outlet } from '@tanstack/solid-router'
+import { createFileRoute } from '@benjavicente/solid-router'
+import { Link, Outlet } from '@benjavicente/solid-router'
 import { useQuery } from '@tanstack/solid-query'
 import { postsQueryOptions } from '../postsQueryOptions'
 import { createMemo } from 'solid-js'

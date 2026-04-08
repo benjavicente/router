@@ -1,4 +1,4 @@
-import { RouterProvider, createRouter } from '@tanstack/vue-router'
+import { RouterProvider, createRouter } from '@benjavicente/vue-router'
 
 import { routeTree } from './routeTree.gen'
 import './styles.css'
@@ -11,7 +11,7 @@ const router = createRouter({
 })
 
 // Register things for typesafety
-declare module '@tanstack/vue-router' {
+declare module '@benjavicente/vue-router' {
   interface Register {
     router: typeof router
   }

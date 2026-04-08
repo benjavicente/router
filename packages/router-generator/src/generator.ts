@@ -2,7 +2,7 @@ import path from 'node:path'
 import * as fsp from 'node:fs/promises'
 import { existsSync, mkdirSync } from 'node:fs'
 import crypto from 'node:crypto'
-import { rootRouteId } from '@tanstack/router-core'
+import { rootRouteId } from '@benjavicente/router-core'
 import { logging } from './logger'
 import {
   isVirtualConfigFile,
@@ -384,7 +384,13 @@ export class Generator {
     if (rootRouteNode === undefined) {
       let errorMessage = `rootRouteNode must not be undefined. Make sure you've added your root route into the route-tree.`
       if (!this.config.virtualRouteConfig) {
-        errorMessage += `\nMake sure that you add a "${rootPathId}.${this.config.disableTypes ? 'js' : 'tsx'}" file to your routes directory.\nAdd the file in: "${this.config.routesDirectory}/${rootPathId}.${this.config.disableTypes ? 'js' : 'tsx'}"`
+        const ext =
+          this.config.target === 'angular'
+            ? 'ts'
+            : this.config.disableTypes
+              ? 'js'
+              : 'tsx'
+        errorMessage += `\nMake sure that you add a "${rootPathId}.${ext}" file to your routes directory.\nAdd the file in: "${this.config.routesDirectory}/${rootPathId}.${ext}"`
       }
       throw new Error(errorMessage)
     }
@@ -646,6 +652,12 @@ export class Generator {
       }
     }
     if (hasComponentPieces || hasLoaderPieces) {
+      if (hasComponentPieces && !this.targetTemplate.supportsLazyRouteComponent) {
+        throw new Error(
+          `The '${this.config.target}' target does not support code-splitting route component exports with lazyRouteComponent. Remove route component pieces such as '.component', '.pendingComponent', '.errorComponent', and '.notFoundComponent', or switch to route-level lazy loading.`,
+        )
+      }
+
       const runtimeImport: ImportDeclaration = {
         specifiers: [],
         source: this.targetTemplate.fullPkg,
@@ -1139,6 +1151,11 @@ ${acc.routeTree.map((child) => `${child.variableName}Route: typeof ${getResolved
           routeId: escapedRoutePath,
           lazy: node._fsRouteType === 'lazy',
           verboseFileRoutes: !(this.config.verboseFileRoutes === false),
+          angularRouterPackage:
+            this.config.target === 'angular'
+              ? (this.config.angularRouterPackage ??
+                '@benjavicente/angular-router-experimental')
+              : undefined,
         },
         node,
       })

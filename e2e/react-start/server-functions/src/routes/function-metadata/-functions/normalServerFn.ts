@@ -1,4 +1,4 @@
-import { createServerFn } from '@tanstack/react-start'
+import { createServerFn } from '@benjavicente/react-start'
 
 export const getServerFn = createServerFn().handler(({ serverFnMeta }) => {
   return serverFnMeta

@@ -1,4 +1,4 @@
-# @tanstack/history
+# @benjavicente/history
 
 ## 1.161.6
 

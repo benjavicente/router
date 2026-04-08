@@ -1,4 +1,4 @@
-import { createFileRoute } from '@tanstack/vue-router'
+import { createFileRoute } from '@benjavicente/vue-router'
 import { fetchPosts } from '../posts'
 
 export const Route = createFileRoute('/posts')({

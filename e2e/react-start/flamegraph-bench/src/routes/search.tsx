@@ -2,7 +2,7 @@ import {
   createFileRoute,
   useLoaderData,
   useSearch,
-} from '@tanstack/react-router'
+} from '@benjavicente/react-router'
 
 export const Route = createFileRoute('/search')({
   validateSearch: (search: Record<string, any>) => ({

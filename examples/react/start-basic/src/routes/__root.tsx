@@ -4,8 +4,8 @@ import {
   Link,
   Scripts,
   createRootRoute,
-} from '@tanstack/react-router'
-import { TanStackRouterDevtools } from '@tanstack/react-router-devtools'
+} from '@benjavicente/react-router'
+import { TanStackRouterDevtools } from '@benjavicente/react-router-devtools'
 import * as React from 'react'
 import { DefaultCatchBoundary } from '~/components/DefaultCatchBoundary'
 import { NotFound } from '~/components/NotFound'
@@ -110,6 +110,14 @@ function RootDocument({ children }: { children: React.ReactNode }) {
             }}
           >
             Deferred
+          </Link>{' '}
+          <Link
+            to="/lazy"
+            activeProps={{
+              className: 'font-bold',
+            }}
+          >
+            Lazy
           </Link>{' '}
           <Link
             // @ts-expect-error

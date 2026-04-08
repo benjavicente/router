@@ -1,4 +1,4 @@
-# @tanstack/eslint-plugin-router
+# @benjavicente/eslint-plugin-router
 
 ## 1.161.6
 

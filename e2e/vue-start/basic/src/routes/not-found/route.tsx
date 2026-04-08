@@ -1,4 +1,4 @@
-import { createFileRoute } from '@tanstack/vue-router'
+import { createFileRoute } from '@benjavicente/vue-router'
 import z from 'zod'
 
 export const Route = createFileRoute('/not-found')({

@@ -33,7 +33,7 @@ async function compile(opts: {
     lookupConfigurations: [
       // ClientOnly JSX component from TanStack router packages
       {
-        libName: '@tanstack/react-router',
+        libName: '@benjavicente/react-router',
         rootExport: 'ClientOnly',
         kind: 'ClientOnlyJSX',
       },
@@ -85,7 +85,7 @@ describe('ClientOnlyJSX compiles correctly', async () => {
 
   test('ClientOnlyJSX should not be detected on client', () => {
     const code = `
-      import { ClientOnly } from '@tanstack/react-router'
+      import { ClientOnly } from '@benjavicente/react-router'
       <ClientOnly>test</ClientOnly>
     `
     const detectedKinds = detectKindsInCode(code, 'client')
@@ -94,7 +94,7 @@ describe('ClientOnlyJSX compiles correctly', async () => {
 
   test('ClientOnlyJSX should be detected on server', () => {
     const code = `
-      import { ClientOnly } from '@tanstack/react-router'
+      import { ClientOnly } from '@benjavicente/react-router'
       <ClientOnly>test</ClientOnly>
     `
     const detectedKinds = detectKindsInCode(code, 'server')

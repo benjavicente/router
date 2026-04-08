@@ -1,5 +1,5 @@
-import { ErrorComponent, createFileRoute } from '@tanstack/vue-router'
-import type { ErrorComponentProps } from '@tanstack/vue-router'
+import { ErrorComponent, createFileRoute } from '@benjavicente/vue-router'
+import type { ErrorComponentProps } from '@benjavicente/vue-router'
 
 import { NotFound } from '~/components/NotFound.js'
 import { fetchPost } from '~/utils/posts.js'

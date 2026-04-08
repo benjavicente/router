@@ -1,5 +1,5 @@
 import { Link, Outlet } from '@router-solid-mono-solid-query/router'
-import { TanStackRouterDevtools } from '@tanstack/solid-router-devtools'
+import { TanStackRouterDevtools } from '@benjavicente/solid-router-devtools'
 import { SolidQueryDevtools } from '@tanstack/solid-query-devtools'
 
 export function RootComponent() {

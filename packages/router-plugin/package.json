@@ -1,5 +1,5 @@
 {
-  "name": "@tanstack/router-plugin",
+  "name": "@benjavicente/router-plugin",
   "version": "1.167.12",
   "description": "Modern and scalable routing for React applications",
   "author": "Tanner Linsley",
@@ -113,10 +113,10 @@
     "@babel/template": "^7.27.2",
     "@babel/traverse": "^7.28.5",
     "@babel/types": "^7.28.5",
-    "@tanstack/router-core": "workspace:*",
-    "@tanstack/router-generator": "workspace:*",
-    "@tanstack/router-utils": "workspace:*",
-    "@tanstack/virtual-file-routes": "workspace:*",
+    "@benjavicente/router-core": "workspace:*",
+    "@benjavicente/router-generator": "workspace:*",
+    "@benjavicente/router-utils": "workspace:*",
+    "@benjavicente/virtual-file-routes": "workspace:*",
     "chokidar": "^3.6.0",
     "unplugin": "^2.1.2",
     "zod": "^3.24.2"
@@ -130,7 +130,7 @@
   },
   "peerDependencies": {
     "@rsbuild/core": ">=1.0.2",
-    "@tanstack/react-router": "workspace:^",
+    "@benjavicente/react-router": "workspace:^",
     "vite": ">=5.0.0 || >=6.0.0 || >=7.0.0",
     "vite-plugin-solid": "^2.11.10",
     "webpack": ">=5.92.0"
@@ -139,7 +139,7 @@
     "@rsbuild/core": {
       "optional": true
     },
-    "@tanstack/react-router": {
+    "@benjavicente/react-router": {
       "optional": true
     },
     "vite": {

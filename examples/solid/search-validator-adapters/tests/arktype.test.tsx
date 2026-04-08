@@ -6,7 +6,7 @@ import {
   createRootRoute,
   createRoute,
   createRouter,
-} from '@tanstack/solid-router'
+} from '@benjavicente/solid-router'
 
 import '@testing-library/jest-dom/vitest'
 import { type } from 'arktype'

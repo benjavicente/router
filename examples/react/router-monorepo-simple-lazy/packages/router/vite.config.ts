@@ -2,7 +2,7 @@ import { defineConfig } from 'vite'
 import dts from 'vite-plugin-dts'
 import * as path from 'node:path'
 import { fileURLToPath } from 'node:url'
-import { tanstackRouter } from '@tanstack/router-plugin/vite'
+import { tanstackRouter } from '@benjavicente/router-plugin/vite'
 import react from '@vitejs/plugin-react'
 
 const __filename = fileURLToPath(import.meta.url)
@@ -35,7 +35,7 @@ export default defineConfig({
         'react',
         'react-dom',
         'react/jsx-runtime',
-        '@tanstack/react-router',
+        '@benjavicente/react-router',
       ],
     },
   },

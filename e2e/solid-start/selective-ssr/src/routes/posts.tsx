@@ -1,4 +1,4 @@
-import { Outlet, createFileRoute } from '@tanstack/solid-router'
+import { Outlet, createFileRoute } from '@benjavicente/solid-router'
 import z from 'zod'
 import { ssrSchema } from '~/search'
 

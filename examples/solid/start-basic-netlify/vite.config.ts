@@ -1,6 +1,6 @@
 import { defineConfig } from 'vite'
 import netlify from '@netlify/vite-plugin-tanstack-start'
-import { tanstackStart } from '@tanstack/solid-start/plugin/vite'
+import { tanstackStart } from '@benjavicente/solid-start/plugin/vite'
 import viteSolid from 'vite-plugin-solid'
 import tailwindcss from '@tailwindcss/vite'
 

@@ -30,7 +30,7 @@ import type {
   RouteLoaderEntry,
   UpdatableRouteOptions,
   UseNavigateResult,
-} from '@tanstack/router-core'
+} from '@benjavicente/router-core'
 import type { UseLoaderDepsRoute } from './useLoaderDeps'
 import type { UseLoaderDataRoute } from './useLoaderData'
 import type { UseRouteContextRoute } from './useRouteContext'
@@ -184,7 +184,7 @@ export function FileRouteLoader<
   return (loaderFn) => loaderFn as any
 }
 
-declare module '@tanstack/router-core' {
+declare module '@benjavicente/router-core' {
   export interface LazyRoute<in out TRoute extends AnyRoute> {
     useMatch: UseMatchRoute<TRoute['id']>
     useRouteContext: UseRouteContextRoute<TRoute['id']>

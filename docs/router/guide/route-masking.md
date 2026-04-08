@@ -98,7 +98,7 @@ In addition to the imperative API, you can also use the Router's `routeMasks` op
 # React
 
 ```tsx
-import { createRouteMask } from '@tanstack/react-router'
+import { createRouteMask } from '@benjavicente/react-router'
 
 const photoModalToPhotoMask = createRouteMask({
   routeTree,
@@ -118,7 +118,7 @@ const router = createRouter({
 # Solid
 
 ```tsx
-import { createRouteMask } from '@tanstack/solid-router'
+import { createRouteMask } from '@benjavicente/solid-router'
 
 const photoModalToPhotoMask = createRouteMask({
   routeTree,

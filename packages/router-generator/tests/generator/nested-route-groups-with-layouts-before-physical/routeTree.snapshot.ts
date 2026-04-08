@@ -94,7 +94,7 @@ export interface RootRouteChildren {
   groupCLayoutCRoute: typeof groupCLayoutCRouteWithChildren
 }
 
-declare module '@tanstack/react-router' {
+declare module '@benjavicente/react-router' {
   interface FileRoutesByPath {
     '/(group-c)/_layout-c': {
       id: '/(group-c)/_layout-c'

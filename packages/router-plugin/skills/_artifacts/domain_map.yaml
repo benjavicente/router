@@ -1,11 +1,11 @@
 # domain_map.yaml
-# Library: @tanstack/router-plugin
+# Library: @benjavicente/router-plugin
 # Version: 1.166.2
 # Date: 2026-03-08
 # Status: reviewed
 
 library:
-  name: '@tanstack/router-plugin'
+  name: '@benjavicente/router-plugin'
   version: '1.166.2'
   repository: 'https://github.com/TanStack/router'
   description: >-
@@ -29,7 +29,7 @@ skills:
       Supports Vite, Webpack, Rspack, and esbuild via unplugin.
     type: core
     packages:
-      - '@tanstack/router-plugin'
+      - '@benjavicente/router-plugin'
     covers:
       - TanStackRouterVite plugin
       - TanStackRouterWebpack plugin

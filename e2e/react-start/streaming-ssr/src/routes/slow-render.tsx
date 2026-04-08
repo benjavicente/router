@@ -1,5 +1,5 @@
-import { Await, createFileRoute } from '@tanstack/react-router'
-import { createServerFn } from '@tanstack/react-start'
+import { Await, createFileRoute } from '@benjavicente/react-router'
+import { createServerFn } from '@benjavicente/react-start'
 import { Suspense } from 'react'
 
 // Server function that completes quickly

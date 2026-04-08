@@ -1,5 +1,5 @@
-import { createFileRoute, useRouter } from '@tanstack/vue-router'
-import { RawStream } from '@tanstack/vue-start'
+import { createFileRoute, useRouter } from '@benjavicente/vue-router'
+import { RawStream } from '@benjavicente/vue-start'
 import { defineComponent, onBeforeUnmount, onMounted, ref, watch } from 'vue'
 import {
   createDelayedStream,

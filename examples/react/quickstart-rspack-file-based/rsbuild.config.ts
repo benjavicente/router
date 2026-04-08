@@ -1,6 +1,6 @@
 import { defineConfig } from '@rsbuild/core'
 import { pluginReact } from '@rsbuild/plugin-react'
-import { tanstackRouter } from '@tanstack/router-plugin/rspack'
+import { tanstackRouter } from '@benjavicente/router-plugin/rspack'
 
 export default defineConfig({
   plugins: [pluginReact()],

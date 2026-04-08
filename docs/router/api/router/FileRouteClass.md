@@ -47,7 +47,7 @@ A [`Route`](./RouteType.md) instance that can be used to configure the route to 
 ### Examples
 
 ```tsx
-import { FileRoute } from '@tanstack/react-router'
+import { FileRoute } from '@benjavicente/react-router'
 
 export const Route = new FileRoute('/').createRoute({
   loader: () => {

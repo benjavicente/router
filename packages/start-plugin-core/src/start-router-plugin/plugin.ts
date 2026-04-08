@@ -2,9 +2,10 @@ import {
   tanStackRouterCodeSplitter,
   tanstackRouterAutoImport,
   tanstackRouterGenerator,
-} from '@tanstack/router-plugin/vite'
+} from '@benjavicente/router-plugin/vite'
 import { normalizePath } from 'vite'
 import path from 'pathe'
+import { getStartPackageName } from '../frameworkPackages'
 import { VITE_ENVIRONMENT_NAMES } from '../constants'
 import { routesManifestPlugin } from './generator-plugins/routes-manifest-plugin'
 import { prerenderRoutesPlugin } from './generator-plugins/prerender-routes-plugin'
@@ -15,7 +16,7 @@ import type {
   Generator,
   GeneratorPlugin,
   RouteNode,
-} from '@tanstack/router-generator'
+} from '@benjavicente/router-generator'
 import type { DevEnvironment, Plugin, PluginOption } from 'vite'
 import type { TanStackStartInputConfig } from '../schema'
 
@@ -34,12 +35,19 @@ function moduleDeclaration({
   routerFilePath,
   corePluginOpts,
   generatedRouteTreePath,
+  angularStartPackage,
 }: {
   startFilePath: string | undefined
   routerFilePath: string
   corePluginOpts: TanStackStartVitePluginCoreOptions
   generatedRouteTreePath: string
+  angularStartPackage?: string
 }): string {
+  const startPackageName =
+    corePluginOpts.framework === 'angular' && angularStartPackage != null
+      ? angularStartPackage
+      : getStartPackageName(corePluginOpts.framework)
+
   function getImportPath(absolutePath: string) {
     let relativePath = path.relative(
       path.dirname(generatedRouteTreePath),
@@ -65,12 +73,10 @@ function moduleDeclaration({
   }
   // make sure we import something from start to get the server route declaration merge
   else {
-    result.push(
-      `import type { createStart } from '@tanstack/${corePluginOpts.framework}-start'`,
-    )
+    result.push(`import type { createStart } from '${startPackageName}'`)
   }
   result.push(
-    `declare module '@tanstack/${corePluginOpts.framework}-start' {
+    `declare module '${startPackageName}' {
   interface Register {
     ssr: true
     router: Awaited<ReturnType<typeof getRouter>>`,
@@ -146,6 +152,7 @@ export function tanStackStartRouter(
         corePluginOpts,
         startFilePath: resolvedStartConfig.startFilePath,
         routerFilePath: resolvedStartConfig.routerFilePath,
+        angularStartPackage: startConfig.router.angularStartPackage,
       }),
       ...(routeTreeFileFooter ?? []),
     ]
@@ -221,33 +228,35 @@ export function tanStackStartRouter(
         plugins,
       }
     }),
-    tanStackRouterCodeSplitter(() => {
-      const routerConfig = getConfig().startConfig.router
-      return {
-        ...routerConfig,
-        codeSplittingOptions: {
-          ...routerConfig.codeSplittingOptions,
-          deleteNodes: ['ssr', 'server', 'headers'],
-          addHmr: true,
-        },
-        plugin: {
-          vite: { environmentName: VITE_ENVIRONMENT_NAMES.client },
-        },
-      }
-    }),
-    tanStackRouterCodeSplitter(() => {
-      const routerConfig = getConfig().startConfig.router
-      return {
-        ...routerConfig,
-        codeSplittingOptions: {
-          ...routerConfig.codeSplittingOptions,
-          addHmr: false,
-        },
-        plugin: {
-          vite: { environmentName: VITE_ENVIRONMENT_NAMES.server },
-        },
-      }
-    }),
+    ...[
+      tanStackRouterCodeSplitter(() => {
+        const routerConfig = getConfig().startConfig.router
+        return {
+          ...routerConfig,
+          codeSplittingOptions: {
+            ...routerConfig.codeSplittingOptions,
+            deleteNodes: ['ssr', 'server', 'headers'],
+            addHmr: true,
+          },
+          plugin: {
+            vite: { environmentName: VITE_ENVIRONMENT_NAMES.client },
+          },
+        }
+      }),
+      tanStackRouterCodeSplitter(() => {
+        const routerConfig = getConfig().startConfig.router
+        return {
+          ...routerConfig,
+          codeSplittingOptions: {
+            ...routerConfig.codeSplittingOptions,
+            addHmr: false,
+          },
+          plugin: {
+            vite: { environmentName: VITE_ENVIRONMENT_NAMES.server },
+          },
+        }
+      }),
+    ],
     tanstackRouterAutoImport(startPluginOpts?.router),
   ]
 }

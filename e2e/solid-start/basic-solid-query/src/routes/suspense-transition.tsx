@@ -1,5 +1,5 @@
 import { queryOptions, useQuery } from '@tanstack/solid-query'
-import { Link, createFileRoute } from '@tanstack/solid-router'
+import { Link, createFileRoute } from '@benjavicente/solid-router'
 import { Suspense } from 'solid-js'
 
 const doubleQueryOptions = (n: number) =>

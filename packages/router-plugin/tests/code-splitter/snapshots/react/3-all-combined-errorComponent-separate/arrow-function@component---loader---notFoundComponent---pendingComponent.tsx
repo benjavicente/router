@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Link, Outlet } from '@tanstack/react-router';
+import { Link, Outlet } from '@benjavicente/react-router';
 import { fetchPosts } from '../posts';
 import { Route } from "arrow-function.tsx";
 const PostsComponent = () => {

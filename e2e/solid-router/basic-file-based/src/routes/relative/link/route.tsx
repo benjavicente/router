@@ -3,7 +3,7 @@ import {
   Outlet,
   createFileRoute,
   useNavigate,
-} from '@tanstack/solid-router'
+} from '@benjavicente/solid-router'
 import { createEffect } from 'solid-js'
 
 export const Route = createFileRoute('/relative/link')({

@@ -1,4 +1,4 @@
-import { createFileRoute } from '@tanstack/react-router'
+import { createFileRoute } from '@benjavicente/react-router'
 import type { User } from '~/utils/users'
 
 export const Route = createFileRoute('/api/users/$userId')({

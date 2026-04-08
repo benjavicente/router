@@ -1,6 +1,6 @@
 import * as babel from '@babel/core'
 import * as t from '@babel/types'
-import { parseAst } from '@tanstack/router-utils'
+import { parseAst } from '@benjavicente/router-utils'
 import { describe, expect, it } from 'vitest'
 import {
   getObjectPropertyKeyName,

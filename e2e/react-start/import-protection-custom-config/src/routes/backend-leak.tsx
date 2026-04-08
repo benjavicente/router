@@ -1,4 +1,4 @@
-import { createFileRoute } from '@tanstack/react-router'
+import { createFileRoute } from '@benjavicente/react-router'
 // This import triggers a file-based violation in the CLIENT env:
 //   backend-leak.tsx -> lib/credentials.backend.ts
 // The custom deny pattern `**/*.backend.*` should catch this.

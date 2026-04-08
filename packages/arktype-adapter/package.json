@@ -1,5 +1,5 @@
 {
-  "name": "@tanstack/arktype-adapter",
+  "name": "@benjavicente/arktype-adapter",
   "version": "1.166.9",
   "description": "Modern and scalable routing for React applications",
   "author": "Tanner Linsley",
@@ -64,7 +64,7 @@
     "node": ">=20.19"
   },
   "devDependencies": {
-    "@tanstack/react-router": "workspace:*",
+    "@benjavicente/react-router": "workspace:*",
     "arktype": "^2.1.7",
     "@testing-library/jest-dom": "^6.6.3",
     "@testing-library/react": "^16.2.0",
@@ -74,6 +74,6 @@
   },
   "peerDependencies": {
     "arktype": ">=2.0.0-rc <3",
-    "@tanstack/react-router": ">=1.43.2"
+    "@benjavicente/react-router": ">=1.43.2"
   }
 }

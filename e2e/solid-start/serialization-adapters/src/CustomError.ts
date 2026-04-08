@@ -1,4 +1,4 @@
-import { createSerializationAdapter } from '@tanstack/solid-router'
+import { createSerializationAdapter } from '@benjavicente/solid-router'
 
 export class CustomError extends Error {
   public foo: string

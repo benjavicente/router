@@ -8,7 +8,7 @@
 // You should NOT make any changes in this file as it will be overwritten.
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
-import { createFileRoute } from '@tanstack/react-router'
+import { createFileRoute } from '@benjavicente/react-router'
 
 import { Route as rootRouteImport } from './routes/__root'
 
@@ -60,7 +60,7 @@ export interface RootRouteChildren {
   SubRouteLazyRoute: typeof SubRouteLazyRouteWithChildren
 }
 
-declare module '@tanstack/react-router' {
+declare module '@benjavicente/react-router' {
   interface FileRoutesByPath {
     '/sub': {
       id: '/sub'

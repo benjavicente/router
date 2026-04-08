@@ -1,5 +1,5 @@
-import { notFound } from '@tanstack/react-router'
-import { createServerFn } from '@tanstack/react-start'
+import { notFound } from '@benjavicente/react-router'
+import { createServerFn } from '@benjavicente/react-start'
 
 const documents: Array<{ id: string; title: string; content: string }> = [
   {

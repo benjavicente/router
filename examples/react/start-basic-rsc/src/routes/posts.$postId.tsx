@@ -1,7 +1,7 @@
-import { ErrorComponent, Link, createFileRoute } from '@tanstack/react-router'
-import { createServerFn } from '@tanstack/react-start'
+import { ErrorComponent, Link, createFileRoute } from '@benjavicente/react-router'
+import { createServerFn } from '@benjavicente/react-start'
 import { fetchPost } from '../utils/posts'
-import type { ErrorComponentProps } from '@tanstack/react-router'
+import type { ErrorComponentProps } from '@benjavicente/react-router'
 import { NotFound } from '~/components/NotFound'
 
 const renderPost = createServerFn({ method: 'GET' })

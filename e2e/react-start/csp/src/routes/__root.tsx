@@ -3,7 +3,7 @@ import {
   HeadContent,
   Outlet,
   Scripts,
-} from '@tanstack/react-router'
+} from '@benjavicente/react-router'
 
 export const Route = createRootRoute({
   headers: ({ ssr }) => {

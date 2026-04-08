@@ -11,7 +11,7 @@ import type {
   ThrowConstraint,
   ThrowOrOptional,
   UseParamsResult,
-} from '@tanstack/router-core'
+} from '@benjavicente/router-core'
 
 export interface UseParamsBaseOptions<
   TRouter extends AnyRouter,
