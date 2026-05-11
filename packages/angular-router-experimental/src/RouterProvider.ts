@@ -75,6 +75,9 @@ export function provideTanstackRouter({
   selector: 'router-provider,[router-provider]',
   template: '',
   standalone: true,
+  host: {
+    hidden: '',
+  },
 })
 export class RouterProvider<TRouter extends AnyRouter = RegisteredRouter> {
   readonly injectedContext: RouterInputs<TRouter>['context'] = inject(

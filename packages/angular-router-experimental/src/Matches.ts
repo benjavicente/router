@@ -10,6 +10,9 @@ import { injectTransitionerSetup } from './transitioner'
   selector: 'router-matches',
   template: '',
   standalone: true,
+  host: {
+    hidden: '',
+  },
 })
 export class Matches {
   router = injectRouter()

@@ -84,6 +84,7 @@ function injectOnRendered({
   template: '',
   standalone: true,
   host: {
+    hidden: '',
     '[attr.data-matchId]': 'matchId()',
   },
 })
@@ -258,6 +259,9 @@ export class RouteMatch {
   selector: 'outlet,[outlet]',
   template: '',
   standalone: true,
+  host: {
+    hidden: '',
+  },
 })
 export class Outlet {
   router = injectRouter()
