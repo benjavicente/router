@@ -1,5 +1,192 @@
 # @benjavicente/react-start-client
 
+## 1.166.48
+
+### Patch Changes
+
+- Updated dependencies [[`35e88f0`](https://github.com/TanStack/router/commit/35e88f04996d71019a1868b7b06ecb4ddbc9df9e)]:
+  - @benjavicente/router-core@1.169.2
+  - @benjavicente/start-client-core@1.168.2
+  - @benjavicente/react-router@1.169.2
+
+## 1.166.47
+
+### Patch Changes
+
+- Updated dependencies [[`4a1e63f`](https://github.com/TanStack/router/commit/4a1e63f1d1230b1ed8234609acad4639d8982c13)]:
+  - @benjavicente/router-core@1.169.1
+  - @benjavicente/react-router@1.169.1
+  - @benjavicente/start-client-core@1.168.1
+
+## 1.166.46
+
+### Patch Changes
+
+- Updated dependencies [[`82b0613`](https://github.com/TanStack/router/commit/82b06132af776f74603ab27977cc277d6219a845)]:
+  - @benjavicente/start-client-core@1.168.0
+
+## 1.166.45
+
+### Patch Changes
+
+- Updated dependencies [[`c992495`](https://github.com/TanStack/router/commit/c992495bf4010ff4c3597bb1f3b1ba02594e857e)]:
+  - @benjavicente/router-core@1.169.0
+  - @benjavicente/react-router@1.169.0
+  - @benjavicente/start-client-core@1.167.22
+
+## 1.166.44
+
+### Patch Changes
+
+- Updated dependencies [[`b5c4183`](https://github.com/TanStack/router/commit/b5c4183ab8b44be8a75647b7f7b588ad7c146ece)]:
+  - @benjavicente/router-core@1.168.18
+  - @benjavicente/react-router@1.168.26
+  - @benjavicente/start-client-core@1.167.21
+
+## 1.166.43
+
+### Patch Changes
+
+- Updated dependencies [[`493148b`](https://github.com/TanStack/router/commit/493148bc5378b7f9de1544d87f6aaa425c12eb34)]:
+  - @benjavicente/router-core@1.168.17
+  - @benjavicente/react-router@1.168.25
+  - @benjavicente/start-client-core@1.167.20
+
+## 1.166.42
+
+### Patch Changes
+
+- Updated dependencies [[`8b97002`](https://github.com/TanStack/router/commit/8b97002af3f6d15204e60c55d3f5735b78bd7efe)]:
+  - @benjavicente/start-client-core@1.167.19
+
+## 1.166.41
+
+### Patch Changes
+
+- Updated dependencies [[`4d864ee`](https://github.com/TanStack/router/commit/4d864eebbd184265eabb563d326ab409c93feb17)]:
+  - @benjavicente/react-router@1.168.24
+  - @benjavicente/router-core@1.168.16
+  - @benjavicente/start-client-core@1.167.18
+
+## 1.166.40
+
+### Patch Changes
+
+- Updated dependencies [[`cd91cee`](https://github.com/TanStack/router/commit/cd91ceebb84b7b752b5ee09ac14e89ad2beb2259)]:
+  - @benjavicente/react-router@1.168.23
+
+## 1.166.39
+
+### Patch Changes
+
+- Updated dependencies [[`e30814d`](https://github.com/TanStack/router/commit/e30814d949110ff25829de44d729ead47555940a)]:
+  - @benjavicente/react-router@1.168.22
+
+## 1.166.38
+
+### Patch Changes
+
+- Updated dependencies [[`16f6892`](https://github.com/TanStack/router/commit/16f6892d6b7ceadf606677c5a40e743f29163aa6)]:
+  - @benjavicente/router-core@1.168.15
+  - @benjavicente/react-router@1.168.21
+  - @benjavicente/start-client-core@1.167.17
+
+## 1.166.37
+
+### Patch Changes
+
+- Updated dependencies [[`c5ad329`](https://github.com/TanStack/router/commit/c5ad32936f6adcca0c56474677b73b212498443b)]:
+  - @benjavicente/react-router@1.168.20
+
+## 1.166.36
+
+### Patch Changes
+
+- Updated dependencies [[`105d056`](https://github.com/TanStack/router/commit/105d05691a247779a63e7b688aa1207cce619339)]:
+  - @benjavicente/react-router@1.168.19
+
+## 1.166.35
+
+### Patch Changes
+
+- Updated dependencies [[`0e2c900`](https://github.com/TanStack/router/commit/0e2c9003c18ae07c09969189c028f277ea562a7a)]:
+  - @benjavicente/router-core@1.168.14
+  - @benjavicente/react-router@1.168.18
+  - @benjavicente/start-client-core@1.167.16
+
+## 1.166.34
+
+### Patch Changes
+
+- Updated dependencies [[`812792f`](https://github.com/TanStack/router/commit/812792fbda3caf97b300770855cf5641252f413b)]:
+  - @benjavicente/router-core@1.168.13
+  - @benjavicente/react-router@1.168.17
+  - @benjavicente/start-client-core@1.167.15
+
+## 1.166.33
+
+### Patch Changes
+
+- Updated dependencies [[`8ec9ca9`](https://github.com/TanStack/router/commit/8ec9ca97b472779de878c2a6510f21deb24d386c)]:
+  - @benjavicente/router-core@1.168.12
+  - @benjavicente/react-router@1.168.16
+  - @benjavicente/start-client-core@1.167.14
+
+## 1.166.32
+
+### Patch Changes
+
+- Updated dependencies [[`6355bb7`](https://github.com/TanStack/router/commit/6355bb75f7637ba77f06a923c18fdaf37720bb48)]:
+  - @benjavicente/react-router@1.168.15
+  - @benjavicente/router-core@1.168.11
+  - @benjavicente/start-client-core@1.167.13
+
+## 1.166.31
+
+### Patch Changes
+
+- Updated dependencies [[`459057c`](https://github.com/TanStack/router/commit/459057cd2d90cff20d20e51d4964b0a8c950555e)]:
+  - @benjavicente/start-client-core@1.167.12
+  - @benjavicente/react-router@1.168.14
+  - @benjavicente/router-core@1.168.10
+
+## 1.166.30
+
+### Patch Changes
+
+- fix publishing ([`f8ac427`](https://github.com/TanStack/router/commit/f8ac427000c3fec99225926e72f9f2fc7a37231f))
+
+- Updated dependencies [[`f8ac427`](https://github.com/TanStack/router/commit/f8ac427000c3fec99225926e72f9f2fc7a37231f)]:
+  - @benjavicente/start-client-core@1.167.11
+
+## 1.166.29
+
+### Patch Changes
+
+- Updated dependencies [[`540d221`](https://github.com/TanStack/router/commit/540d22100d33415a1ddc9eb193f6aeb8184da77f), [`70ec1da`](https://github.com/TanStack/router/commit/70ec1da1ed8aa252fae67716f69fe8520ecf91b0)]:
+  - @benjavicente/react-router@1.168.13
+
+## 1.166.28
+
+### Patch Changes
+
+- Updated dependencies [[`b29d64d`](https://github.com/TanStack/router/commit/b29d64de0c400183114c12f82183f80e37d9ea5c)]:
+  - @benjavicente/react-router@1.168.12
+
+## 1.166.27
+
+### Patch Changes
+
+- Updated dependencies [[`4b9ed6c`](https://github.com/TanStack/router/commit/4b9ed6c5cb5437df8607c605728c8338dd2eb02c)]:
+  - @benjavicente/react-router@1.168.11
+
+## 1.166.26
+
+### Patch Changes
+
+- Updated dependencies [[`f7e9c5e`](https://github.com/TanStack/router/commit/f7e9c5e323793d1b28c96871819c265fd28ae397)]:
+  - @benjavicente/start-client-core@1.167.10
+
 ## 1.166.25
 
 ### Patch Changes

@@ -43,7 +43,7 @@ const internalNames = new Set()
 for (const pj of packageJsonPaths) {
   try {
     const j = JSON.parse(fs.readFileSync(pj, 'utf8'))
-    if (typeof j.name === 'string' && j.name.startsWith('@tanstack/')) {
+    if (typeof j.name === 'string' && j.name.startsWith('@benjavicente/')) {
       internalNames.add(j.name)
     }
   } catch {

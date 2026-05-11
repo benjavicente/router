@@ -1,6 +1,6 @@
 import { DOCUMENT } from '@angular/common'
 import * as Angular from '@angular/core'
-import { injectStore } from '../injectStore'
+import { injectStore } from '../store/injectStore'
 import { buildMatchManagedDocumentContent } from './build-match-managed-document'
 import {
   collectDehydrationScriptManagedTags,
@@ -9,7 +9,10 @@ import {
 import { areManagedDocumentContentsEqual } from './document-equality'
 import { createManagedTagCollection } from './managed-dom'
 import type { AnyRouter } from '@benjavicente/router-core'
-import type { ManagedDocumentContent, ManagedTagCollection } from './managed-document-types'
+import type {
+  ManagedDocumentContent,
+  ManagedTagCollection,
+} from './managed-document-types'
 
 function applyManagedDocumentContent({
   document,
@@ -45,7 +48,7 @@ export function installUnifiedTanstackDocumentSync(injectedRouter: AnyRouter) {
   })
   const destroyRef = Angular.inject(Angular.DestroyRef)
   const activeMatches = injectStore(
-    injectedRouter.stores.activeMatchesSnapshot,
+    injectedRouter.stores.matches,
     (matches) => matches,
   )
 

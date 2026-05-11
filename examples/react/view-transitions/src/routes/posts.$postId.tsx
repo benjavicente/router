@@ -1,6 +1,5 @@
-import { createFileRoute } from '@benjavicente/react-router'
 import * as React from 'react'
-import { ErrorComponent } from '@benjavicente/react-router'
+import { ErrorComponent, createFileRoute } from '@benjavicente/react-router'
 import { fetchPost } from '../posts'
 import type { ErrorComponentProps } from '@benjavicente/react-router'
 

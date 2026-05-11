@@ -1,5 +1,504 @@
 # @benjavicente/react-start
 
+## 1.167.65
+
+### Patch Changes
+
+- Updated dependencies []:
+  - @benjavicente/start-plugin-core@1.169.20
+  - @benjavicente/react-start-rsc@0.0.44
+
+## 1.167.64
+
+### Patch Changes
+
+- Updated dependencies [[`35e88f0`](https://github.com/TanStack/router/commit/35e88f04996d71019a1868b7b06ecb4ddbc9df9e)]:
+  - @benjavicente/start-client-core@1.168.2
+  - @benjavicente/start-plugin-core@1.169.19
+  - @benjavicente/start-server-core@1.167.30
+  - @benjavicente/react-router@1.169.2
+  - @benjavicente/react-start-client@1.166.48
+  - @benjavicente/react-start-rsc@0.0.43
+  - @benjavicente/react-start-server@1.166.52
+
+## 1.167.63
+
+### Patch Changes
+
+- Updated dependencies [[`056337e`](https://github.com/TanStack/router/commit/056337ef02ccbeaf45ec8533a227761be869e8f3)]:
+  - @benjavicente/router-utils@1.161.8
+  - @benjavicente/start-plugin-core@1.169.18
+  - @benjavicente/react-start-rsc@0.0.42
+
+## 1.167.62
+
+### Patch Changes
+
+- Updated dependencies [[`afa40ef`](https://github.com/TanStack/router/commit/afa40ef46c273c53646ba33f607fc618a07ffede)]:
+  - @benjavicente/start-server-core@1.167.29
+  - @benjavicente/react-start-rsc@0.0.41
+  - @benjavicente/react-start-server@1.166.51
+  - @benjavicente/start-plugin-core@1.169.17
+
+## 1.167.61
+
+### Patch Changes
+
+- Updated dependencies [[`709627f`](https://github.com/TanStack/router/commit/709627f3dbc6d97daa547a1401ef42a53bc4be32)]:
+  - @benjavicente/start-server-core@1.167.28
+  - @benjavicente/react-start-server@1.166.50
+  - @benjavicente/react-start-rsc@0.0.40
+  - @benjavicente/start-plugin-core@1.169.16
+
+## 1.167.60
+
+### Patch Changes
+
+- Add experimental HTTP 103 Early Hints support to Start server handlers. ([#7324](https://github.com/TanStack/router/pull/7324))
+
+- Updated dependencies [[`238ea4a`](https://github.com/TanStack/router/commit/238ea4a4998ab3a7fd528b317e1935766ac65df8)]:
+  - @benjavicente/start-server-core@1.167.27
+  - @benjavicente/react-start-server@1.166.49
+  - @benjavicente/react-start-rsc@0.0.39
+  - @benjavicente/start-plugin-core@1.169.15
+
+## 1.167.59
+
+### Patch Changes
+
+- Updated dependencies [[`96818b8`](https://github.com/TanStack/router/commit/96818b8ba5ead6f1f027094841330182aff415b2)]:
+  - @benjavicente/start-plugin-core@1.169.14
+  - @benjavicente/react-start-rsc@0.0.38
+
+## 1.167.58
+
+### Patch Changes
+
+- Add compiler-driven RSC CSS auto-injection for Start RSC render APIs and wire it into the React Start Vite and Rsbuild adapters. This ensures same-file CSS module dependencies are discovered for `renderServerComponent`, `createCompositeComponent`, and JSX-based `renderToReadableStream` calls. ([#7310](https://github.com/TanStack/router/pull/7310))
+
+  Also add a configurable server function provider module directive hook used by the React Rsbuild RSC adapter to emit `"use server-entry"` only for extracted provider files.
+
+- Updated dependencies [[`ae453b7`](https://github.com/TanStack/router/commit/ae453b78624cac1b574f0d1efbfbf6ca03922c6c)]:
+  - @benjavicente/react-start-rsc@0.0.37
+  - @benjavicente/start-plugin-core@1.169.13
+
+## 1.167.57
+
+### Patch Changes
+
+- Updated dependencies []:
+  - @benjavicente/react-router@1.169.1
+  - @benjavicente/react-start-client@1.166.47
+  - @benjavicente/react-start-rsc@0.0.36
+  - @benjavicente/react-start-server@1.166.48
+  - @benjavicente/start-client-core@1.168.1
+  - @benjavicente/start-plugin-core@1.169.12
+  - @benjavicente/start-server-core@1.167.26
+
+## 1.167.56
+
+### Patch Changes
+
+- Updated dependencies [[`82b0613`](https://github.com/TanStack/router/commit/82b06132af776f74603ab27977cc277d6219a845)]:
+  - @benjavicente/start-client-core@1.168.0
+  - @benjavicente/react-start-client@1.166.46
+  - @benjavicente/react-start-rsc@0.0.35
+  - @benjavicente/react-start-server@1.166.47
+  - @benjavicente/start-plugin-core@1.169.11
+  - @benjavicente/start-server-core@1.167.25
+
+## 1.167.55
+
+### Patch Changes
+
+- Updated dependencies [[`c4256c2`](https://github.com/TanStack/router/commit/c4256c2c857f392d2031cf87821e4c36a92d0382)]:
+  - @benjavicente/start-plugin-core@1.169.10
+  - @benjavicente/react-start-rsc@0.0.34
+
+## 1.167.54
+
+### Patch Changes
+
+- Updated dependencies [[`761fcc0`](https://github.com/TanStack/router/commit/761fcc0c96dd96721b533a1fd9e2c972f222ef94)]:
+  - @benjavicente/start-plugin-core@1.169.9
+  - @benjavicente/react-start-rsc@0.0.33
+
+## 1.167.53
+
+### Patch Changes
+
+- fix exports for react-start so useServerFn is available with RSC ([#7292](https://github.com/TanStack/router/pull/7292))
+
+- Updated dependencies [[`c992495`](https://github.com/TanStack/router/commit/c992495bf4010ff4c3597bb1f3b1ba02594e857e)]:
+  - @benjavicente/react-router@1.169.0
+  - @benjavicente/react-start-client@1.166.45
+  - @benjavicente/react-start-rsc@0.0.32
+  - @benjavicente/react-start-server@1.166.46
+  - @benjavicente/start-client-core@1.167.22
+  - @benjavicente/start-plugin-core@1.169.8
+  - @benjavicente/start-server-core@1.167.24
+
+## 1.167.52
+
+### Patch Changes
+
+- Updated dependencies []:
+  - @benjavicente/react-router@1.168.26
+  - @benjavicente/react-start-client@1.166.44
+  - @benjavicente/react-start-rsc@0.0.31
+  - @benjavicente/react-start-server@1.166.45
+  - @benjavicente/start-client-core@1.167.21
+  - @benjavicente/start-plugin-core@1.169.7
+  - @benjavicente/start-server-core@1.167.23
+
+## 1.167.51
+
+### Patch Changes
+
+- Updated dependencies [[`d6decca`](https://github.com/TanStack/router/commit/d6decca41807e9ca28279e2db6640e7a8bdc1229)]:
+  - @benjavicente/react-start-rsc@0.0.30
+
+## 1.167.50
+
+### Patch Changes
+
+- Updated dependencies []:
+  - @benjavicente/react-router@1.168.25
+  - @benjavicente/react-start-client@1.166.43
+  - @benjavicente/react-start-rsc@0.0.29
+  - @benjavicente/react-start-server@1.166.44
+  - @benjavicente/start-client-core@1.167.20
+  - @benjavicente/start-plugin-core@1.169.6
+  - @benjavicente/start-server-core@1.167.22
+
+## 1.167.49
+
+### Patch Changes
+
+- Updated dependencies []:
+  - @benjavicente/start-plugin-core@1.169.5
+  - @benjavicente/react-start-rsc@0.0.28
+
+## 1.167.48
+
+### Patch Changes
+
+- Updated dependencies [[`8b97002`](https://github.com/TanStack/router/commit/8b97002af3f6d15204e60c55d3f5735b78bd7efe)]:
+  - @benjavicente/start-client-core@1.167.19
+  - @benjavicente/react-start-client@1.166.42
+  - @benjavicente/react-start-rsc@0.0.27
+  - @benjavicente/react-start-server@1.166.43
+  - @benjavicente/start-plugin-core@1.169.4
+  - @benjavicente/start-server-core@1.167.21
+
+## 1.167.47
+
+### Patch Changes
+
+- Updated dependencies []:
+  - @benjavicente/start-plugin-core@1.169.3
+  - @benjavicente/react-start-rsc@0.0.26
+
+## 1.167.46
+
+### Patch Changes
+
+- Updated dependencies [[`4d864ee`](https://github.com/TanStack/router/commit/4d864eebbd184265eabb563d326ab409c93feb17)]:
+  - @benjavicente/react-router@1.168.24
+  - @benjavicente/start-plugin-core@1.169.2
+  - @benjavicente/start-server-core@1.167.20
+  - @benjavicente/react-start-client@1.166.41
+  - @benjavicente/react-start-rsc@0.0.25
+  - @benjavicente/react-start-server@1.166.42
+  - @benjavicente/start-client-core@1.167.18
+
+## 1.167.45
+
+### Patch Changes
+
+- Updated dependencies [[`9252206`](https://github.com/TanStack/router/commit/9252206e5aeafe53e31eb7baa491d07a597c4dc6)]:
+  - @benjavicente/start-plugin-core@1.169.1
+  - @benjavicente/react-start-rsc@0.0.24
+
+## 1.167.44
+
+### Patch Changes
+
+- Split Start plugin core bundler APIs into explicit Vite and Rsbuild subpaths so projects only need the bundler they use. Mark both `vite` and `@rsbuild/core` peers as optional where Start exposes both integrations. ([#7249](https://github.com/TanStack/router/pull/7249))
+
+- Updated dependencies [[`dda463c`](https://github.com/TanStack/router/commit/dda463c8b571519165d3adbc337db7a0b8be1072)]:
+  - @benjavicente/start-plugin-core@1.169.0
+  - @benjavicente/react-start-rsc@0.0.23
+
+## 1.167.43
+
+### Patch Changes
+
+- rsbuild ([#7228](https://github.com/TanStack/router/pull/7228))
+
+- Updated dependencies [[`91a7089`](https://github.com/TanStack/router/commit/91a708989d00537a21911e74ff60bbfec8266295)]:
+  - @benjavicente/start-plugin-core@1.168.0
+  - @benjavicente/react-start-rsc@0.0.22
+  - @benjavicente/router-utils@1.161.7
+
+## 1.167.42
+
+### Patch Changes
+
+- Updated dependencies [[`cd91cee`](https://github.com/TanStack/router/commit/cd91ceebb84b7b752b5ee09ac14e89ad2beb2259)]:
+  - @benjavicente/react-router@1.168.23
+  - @benjavicente/react-start-client@1.166.40
+  - @benjavicente/react-start-rsc@0.0.21
+  - @benjavicente/react-start-server@1.166.41
+
+## 1.167.41
+
+### Patch Changes
+
+- Updated dependencies [[`f7f0025`](https://github.com/TanStack/router/commit/f7f00250f39cf0276a984558e5d427e9270d9635)]:
+  - @benjavicente/start-plugin-core@1.167.35
+  - @benjavicente/react-start-rsc@0.0.20
+
+## 1.167.40
+
+### Patch Changes
+
+- Updated dependencies [[`e30814d`](https://github.com/TanStack/router/commit/e30814d949110ff25829de44d729ead47555940a)]:
+  - @benjavicente/react-router@1.168.22
+  - @benjavicente/react-start-client@1.166.39
+  - @benjavicente/react-start-rsc@0.0.19
+  - @benjavicente/react-start-server@1.166.40
+
+## 1.167.39
+
+### Patch Changes
+
+- Updated dependencies []:
+  - @benjavicente/react-router@1.168.21
+  - @benjavicente/react-start-client@1.166.38
+  - @benjavicente/react-start-rsc@0.0.18
+  - @benjavicente/react-start-server@1.166.39
+  - @benjavicente/start-client-core@1.167.17
+  - @benjavicente/start-plugin-core@1.167.34
+  - @benjavicente/start-server-core@1.167.19
+
+## 1.167.38
+
+### Patch Changes
+
+- Updated dependencies [[`c5ad329`](https://github.com/TanStack/router/commit/c5ad32936f6adcca0c56474677b73b212498443b)]:
+  - @benjavicente/react-router@1.168.20
+  - @benjavicente/react-start-client@1.166.37
+  - @benjavicente/react-start-rsc@0.0.17
+  - @benjavicente/react-start-server@1.166.38
+
+## 1.167.37
+
+### Patch Changes
+
+- Fix `@benjavicente/react-start/server` imports inside React Server Components by adding a `react-server` export condition that resolves to the request/response APIs without pulling in the SSR renderer entrypoints. ([#7180](https://github.com/TanStack/router/pull/7180))
+
+  This fixes RSC routes that call `createServerFn` loaders and read request headers in dev with `@vitejs/plugin-rsc` enabled.
+
+## 1.167.36
+
+### Patch Changes
+
+- Updated dependencies [[`a581680`](https://github.com/TanStack/router/commit/a581680a27530469751b8ab419ada9ce66da4ffe)]:
+  - @benjavicente/start-plugin-core@1.167.33
+  - @benjavicente/react-start-rsc@0.0.16
+
+## 1.167.35
+
+### Patch Changes
+
+- Updated dependencies []:
+  - @benjavicente/start-plugin-core@1.167.32
+  - @benjavicente/react-start-rsc@0.0.15
+
+## 1.167.34
+
+### Patch Changes
+
+- Updated dependencies []:
+  - @benjavicente/start-plugin-core@1.167.31
+  - @benjavicente/react-start-rsc@0.0.14
+
+## 1.167.33
+
+### Patch Changes
+
+- Updated dependencies [[`105d056`](https://github.com/TanStack/router/commit/105d05691a247779a63e7b688aa1207cce619339)]:
+  - @benjavicente/react-router@1.168.19
+  - @benjavicente/start-plugin-core@1.167.30
+  - @benjavicente/react-start-client@1.166.36
+  - @benjavicente/react-start-rsc@0.0.13
+  - @benjavicente/react-start-server@1.166.37
+
+## 1.167.32
+
+### Patch Changes
+
+- Updated dependencies []:
+  - @benjavicente/start-plugin-core@1.167.29
+  - @benjavicente/react-start-rsc@0.0.12
+
+## 1.167.31
+
+### Patch Changes
+
+- Updated dependencies [[`0e2c900`](https://github.com/TanStack/router/commit/0e2c9003c18ae07c09969189c028f277ea562a7a)]:
+  - @benjavicente/start-server-core@1.167.18
+  - @benjavicente/react-start-rsc@0.0.11
+  - @benjavicente/react-start-server@1.166.36
+  - @benjavicente/start-plugin-core@1.167.28
+  - @benjavicente/react-router@1.168.18
+  - @benjavicente/react-start-client@1.166.35
+  - @benjavicente/start-client-core@1.167.16
+
+## 1.167.30
+
+### Patch Changes
+
+- Updated dependencies [[`812792f`](https://github.com/TanStack/router/commit/812792fbda3caf97b300770855cf5641252f413b)]:
+  - @benjavicente/start-plugin-core@1.167.27
+  - @benjavicente/start-server-core@1.167.17
+  - @benjavicente/react-router@1.168.17
+  - @benjavicente/react-start-client@1.166.34
+  - @benjavicente/react-start-rsc@0.0.10
+  - @benjavicente/react-start-server@1.166.35
+  - @benjavicente/start-client-core@1.167.15
+
+## 1.167.29
+
+### Patch Changes
+
+- Updated dependencies []:
+  - @benjavicente/react-router@1.168.16
+  - @benjavicente/react-start-client@1.166.33
+  - @benjavicente/react-start-rsc@0.0.9
+  - @benjavicente/react-start-server@1.166.34
+  - @benjavicente/start-client-core@1.167.14
+  - @benjavicente/start-plugin-core@1.167.26
+  - @benjavicente/start-server-core@1.167.16
+
+## 1.167.28
+
+### Patch Changes
+
+- Updated dependencies [[`d3f20fb`](https://github.com/TanStack/router/commit/d3f20fbe7acf69c3bd108c5ddc9748ad47690b04)]:
+  - @benjavicente/start-plugin-core@1.167.25
+  - @benjavicente/react-start-rsc@0.0.8
+
+## 1.167.27
+
+### Patch Changes
+
+- Updated dependencies [[`6355bb7`](https://github.com/TanStack/router/commit/6355bb75f7637ba77f06a923c18fdaf37720bb48)]:
+  - @benjavicente/start-server-core@1.167.15
+  - @benjavicente/react-router@1.168.15
+  - @benjavicente/react-start-rsc@0.0.7
+  - @benjavicente/react-start-server@1.166.33
+  - @benjavicente/start-plugin-core@1.167.24
+  - @benjavicente/react-start-client@1.166.32
+  - @benjavicente/start-client-core@1.167.13
+
+## 1.167.26
+
+### Patch Changes
+
+- migrate createStore > createAtom for simpler API ([#7150](https://github.com/TanStack/router/pull/7150))
+
+- Updated dependencies [[`459057c`](https://github.com/TanStack/router/commit/459057cd2d90cff20d20e51d4964b0a8c950555e)]:
+  - @benjavicente/start-client-core@1.167.12
+  - @benjavicente/start-server-core@1.167.14
+  - @benjavicente/react-router@1.168.14
+  - @benjavicente/react-start-client@1.166.31
+  - @benjavicente/react-start-rsc@0.0.6
+  - @benjavicente/react-start-server@1.166.32
+  - @benjavicente/start-plugin-core@1.167.23
+
+## 1.167.25
+
+### Patch Changes
+
+- fix publishing ([`f8ac427`](https://github.com/TanStack/router/commit/f8ac427000c3fec99225926e72f9f2fc7a37231f))
+
+- Updated dependencies [[`f8ac427`](https://github.com/TanStack/router/commit/f8ac427000c3fec99225926e72f9f2fc7a37231f)]:
+  - @benjavicente/start-server-core@1.167.13
+  - @benjavicente/start-client-core@1.167.11
+  - @benjavicente/react-start-client@1.166.30
+  - @benjavicente/react-start-server@1.166.31
+  - @benjavicente/react-start-rsc@0.0.5
+  - @benjavicente/start-plugin-core@1.167.22
+
+## 1.167.24
+
+### Patch Changes
+
+- fix publishing ([`2d53c05`](https://github.com/TanStack/router/commit/2d53c056ef0b203de8a28bc92c24e8e604205d52))
+
+- Updated dependencies [[`2d53c05`](https://github.com/TanStack/router/commit/2d53c056ef0b203de8a28bc92c24e8e604205d52)]:
+  - @benjavicente/start-server-core@1.167.12
+  - @benjavicente/start-plugin-core@1.167.21
+  - @benjavicente/react-start-server@1.166.30
+  - @benjavicente/react-start-rsc@0.0.4
+
+## 1.167.22
+
+### Patch Changes
+
+- Republish the React Start RSC package chain so fresh installs resolve a `start-plugin-core` build that exports the subpaths used by `react-start-rsc`. ([`3384abc`](https://github.com/TanStack/router/commit/3384abcffd98a68eb254b11221834bcbcdebec31))
+
+- Updated dependencies [[`3384abc`](https://github.com/TanStack/router/commit/3384abcffd98a68eb254b11221834bcbcdebec31)]:
+  - @benjavicente/start-plugin-core@1.167.19
+  - @benjavicente/react-start-rsc@0.0.2
+
+## 1.167.21
+
+### Patch Changes
+
+- Updated dependencies [[`f920527`](https://github.com/TanStack/router/commit/f920527e8d5a2124f0c8a1b2c9889c9d1bf29d90)]:
+  - @benjavicente/react-start-rsc@0.0.1
+
+## 1.167.20
+
+### Patch Changes
+
+- Updated dependencies [[`540d221`](https://github.com/TanStack/router/commit/540d22100d33415a1ddc9eb193f6aeb8184da77f), [`70ec1da`](https://github.com/TanStack/router/commit/70ec1da1ed8aa252fae67716f69fe8520ecf91b0)]:
+  - @benjavicente/react-router@1.168.13
+  - @benjavicente/react-start-client@1.166.29
+  - @benjavicente/react-start-server@1.166.29
+
+## 1.167.19
+
+### Patch Changes
+
+- Updated dependencies [[`b29d64d`](https://github.com/TanStack/router/commit/b29d64de0c400183114c12f82183f80e37d9ea5c)]:
+  - @benjavicente/react-router@1.168.12
+  - @benjavicente/react-start-client@1.166.28
+  - @benjavicente/react-start-server@1.166.28
+
+## 1.167.18
+
+### Patch Changes
+
+- Updated dependencies [[`4b9ed6c`](https://github.com/TanStack/router/commit/4b9ed6c5cb5437df8607c605728c8338dd2eb02c)]:
+  - @benjavicente/react-router@1.168.11
+  - @benjavicente/react-start-client@1.166.27
+  - @benjavicente/react-start-server@1.166.27
+
+## 1.167.17
+
+### Patch Changes
+
+- Updated dependencies [[`f7e9c5e`](https://github.com/TanStack/router/commit/f7e9c5e323793d1b28c96871819c265fd28ae397)]:
+  - @benjavicente/start-client-core@1.167.10
+  - @benjavicente/start-server-core@1.167.10
+  - @benjavicente/react-start-client@1.166.26
+  - @benjavicente/react-start-server@1.166.26
+  - @benjavicente/start-plugin-core@1.167.18
+
 ## 1.167.16
 
 ### Patch Changes

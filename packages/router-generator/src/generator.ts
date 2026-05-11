@@ -25,10 +25,8 @@ import {
   findParent,
   format,
   getImportForRouteNode,
-  getImportPath,
   getResolvedRouteNodeVariableName,
   hasParentRoute,
-  isRouteNodeValidForAugmentation,
   isSegmentPathless,
   mergeImportDeclarations,
   multiSortBy,
@@ -272,7 +270,7 @@ export class Generator {
     return new Map(
       [...this.routeNodeCache.entries()].map(([filePath, cacheEntry]) => [
         filePath,
-        { routePath: cacheEntry.routeId },
+        { routeId: cacheEntry.routeId },
       ]),
     )
   }
@@ -384,13 +382,7 @@ export class Generator {
     if (rootRouteNode === undefined) {
       let errorMessage = `rootRouteNode must not be undefined. Make sure you've added your root route into the route-tree.`
       if (!this.config.virtualRouteConfig) {
-        const ext =
-          this.config.target === 'angular'
-            ? 'ts'
-            : this.config.disableTypes
-              ? 'js'
-              : 'tsx'
-        errorMessage += `\nMake sure that you add a "${rootPathId}.${ext}" file to your routes directory.\nAdd the file in: "${this.config.routesDirectory}/${rootPathId}.${ext}"`
+        errorMessage += `\nMake sure that you add a "${rootPathId}.${this.config.disableTypes ? 'js' : 'tsx'}" file to your routes directory.\nAdd the file in: "${this.config.routesDirectory}/${rootPathId}.${this.config.disableTypes ? 'js' : 'tsx'}"`
       }
       throw new Error(errorMessage)
     }
@@ -652,12 +644,6 @@ export class Generator {
       }
     }
     if (hasComponentPieces || hasLoaderPieces) {
-      if (hasComponentPieces && !this.targetTemplate.supportsLazyRouteComponent) {
-        throw new Error(
-          `The '${this.config.target}' target does not support code-splitting route component exports with lazyRouteComponent. Remove route component pieces such as '.component', '.pendingComponent', '.errorComponent', and '.notFoundComponent', or switch to route-level lazy loading.`,
-        )
-      }
-
       const runtimeImport: ImportDeclaration = {
         specifiers: [],
         source: this.targetTemplate.fullPkg,
@@ -670,38 +656,6 @@ export class Generator {
       }
       imports.push(runtimeImport)
     }
-    if (config.verboseFileRoutes === false) {
-      const typeImport: ImportDeclaration = {
-        specifiers: [],
-        source: this.targetTemplate.fullPkg,
-        importKind: 'type',
-      }
-      let needsCreateFileRoute = false
-      let needsCreateLazyFileRoute = false
-      for (const node of sortedRouteNodes) {
-        if (isRouteNodeValidForAugmentation(node)) {
-          if (node._fsRouteType !== 'lazy') {
-            needsCreateFileRoute = true
-          }
-          if (acc.routePiecesByPath[node.routePath!]?.lazy) {
-            needsCreateLazyFileRoute = true
-          }
-        }
-        if (needsCreateFileRoute && needsCreateLazyFileRoute) break
-      }
-      if (needsCreateFileRoute) {
-        typeImport.specifiers.push({ imported: 'CreateFileRoute' })
-      }
-      if (needsCreateLazyFileRoute) {
-        typeImport.specifiers.push({ imported: 'CreateLazyFileRoute' })
-      }
-
-      if (typeImport.specifiers.length > 0) {
-        typeImport.specifiers.push({ imported: 'FileRoutesByPath' })
-        imports.push(typeImport)
-      }
-    }
-
     const routeTreeConfig = buildRouteTreeConfig(
       acc.routeTree,
       config.disableTypes,
@@ -975,36 +929,6 @@ ${acc.routeTree.map((child) => `${child.variableName}Route: typeof ${getResolved
 
     const importStatements = mergedImports.map(buildImportString)
 
-    let moduleAugmentation = ''
-    if (config.verboseFileRoutes === false && !config.disableTypes) {
-      moduleAugmentation = opts.routeFileResult
-        .map((node) => {
-          const getModuleDeclaration = (routeNode?: RouteNode) => {
-            if (!isRouteNodeValidForAugmentation(routeNode)) {
-              return ''
-            }
-            let moduleAugmentation = ''
-            if (routeNode._fsRouteType === 'lazy') {
-              moduleAugmentation = `const createLazyFileRoute: CreateLazyFileRoute<FileRoutesByPath['${routeNode.routePath}']['preLoaderRoute']>`
-            } else {
-              moduleAugmentation = `const createFileRoute: CreateFileRoute<'${routeNode.routePath}',
-                  FileRoutesByPath['${routeNode.routePath}']['parentRoute'],
-                  FileRoutesByPath['${routeNode.routePath}']['id'],
-                  FileRoutesByPath['${routeNode.routePath}']['path'],
-                  FileRoutesByPath['${routeNode.routePath}']['fullPath']
-                >
-              `
-            }
-
-            return `declare module './${getImportPath(routeNode, config, this.generatedRouteTreePath)}' {
-                      ${moduleAugmentation}
-                    }`
-          }
-          return getModuleDeclaration(node)
-        })
-        .join('\n')
-    }
-
     const rootRouteImport = getImportForRouteNode(
       rootRouteNode,
       config,
@@ -1032,7 +956,6 @@ ${acc.routeTree.map((child) => `${child.variableName}Route: typeof ${getResolved
       createUpdateRoutes.join('\n'),
       fileRoutesByFullPath,
       fileRoutesByPathInterface,
-      moduleAugmentation,
       routeTreeConfig.join('\n'),
       routeTree,
       ...footer,
@@ -1146,16 +1069,11 @@ ${acc.routeTree.map((child) => `${child.variableName}Route: typeof ${getResolved
       // transform the file
       const transformResult = await transform({
         source: updatedCacheEntry.fileContent,
+        filename: node.fullPath,
         ctx: {
           target: this.config.target,
           routeId: escapedRoutePath,
           lazy: node._fsRouteType === 'lazy',
-          verboseFileRoutes: !(this.config.verboseFileRoutes === false),
-          angularRouterPackage:
-            this.config.target === 'angular'
-              ? (this.config.angularRouterPackage ??
-                '@benjavicente/angular-router-experimental')
-              : undefined,
         },
         node,
       })

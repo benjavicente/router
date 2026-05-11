@@ -1,5 +1,5 @@
 import { injectRouter } from './injectRouter'
-import { injectStore } from './injectStore'
+import { injectStore } from './store/injectStore'
 
 export function injectCanGoBack() {
   const router = injectRouter()

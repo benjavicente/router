@@ -48,7 +48,7 @@ skills:
         mechanism: >-
           vue-start has its own useServerFn and tanstackStart
           exports. Importing from @benjavicente/react-start or
-          @tanstack/start causes type errors and runtime failures.
+          @benjavicente/start causes type errors and runtime failures.
         priority: HIGH
         status: active
 

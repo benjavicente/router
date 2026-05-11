@@ -1,7 +1,7 @@
 import * as Angular from '@angular/core'
 import { deepEqual } from '@benjavicente/router-core'
 import { injectRouter } from './injectRouter'
-import { injectStore } from './injectStore'
+import { injectStore } from './store/injectStore'
 import { MATCH_CONTEXT_INJECTOR_TOKEN } from './matchInjectorToken'
 import type {
   AnyRouter,
@@ -28,15 +28,15 @@ export function injectMatches<
   opts?: InjectMatchesBaseOptions<TRouter, TSelected>,
 ): Angular.Signal<InjectMatchesResult<TRouter, TSelected>> {
   const router = injectRouter<TRouter>()
-  const matches = injectStore(router.stores.activeMatchesSnapshot, (value) => {
-    return value as Array<MakeRouteMatchUnion<TRouter>>
-  })
 
-  return Angular.computed(() => {
-    const currentMatches = matches()
-    const result = opts?.select ? opts.select(currentMatches) : currentMatches
-    return result as InjectMatchesResult<TRouter, TSelected>
-  }, { equal: deepEqual }) as any
+  return injectStore(
+    router.stores.matches,
+    (currentMatches) => {
+      const matches = currentMatches as Array<MakeRouteMatchUnion<TRouter>>
+      return opts?.select ? opts.select(matches) : matches
+    },
+    { equal: deepEqual },
+  ) as Angular.Signal<InjectMatchesResult<TRouter, TSelected>>
 }
 
 export function injectParentMatches<

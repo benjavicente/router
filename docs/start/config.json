@@ -22,10 +22,6 @@
               "to": "framework/react/getting-started"
             },
             {
-              "label": "Quick Start",
-              "to": "framework/react/quick-start"
-            },
-            {
               "label": "Build from Scratch",
               "to": "framework/react/build-from-scratch"
             },
@@ -53,10 +49,6 @@
             {
               "label": "Getting Started",
               "to": "framework/solid/getting-started"
-            },
-            {
-              "label": "Quick Start",
-              "to": "framework/solid/quick-start"
             },
             {
               "label": "Build from Scratch",
@@ -96,6 +88,10 @@
             {
               "label": "Server Functions",
               "to": "framework/react/guide/server-functions"
+            },
+            {
+              "label": "Server Components",
+              "to": "framework/react/guide/server-components"
             },
             {
               "label": "Static Server Functions",
@@ -140,6 +136,10 @@
             {
               "label": "Server Entry Point",
               "to": "framework/react/guide/server-entry-point"
+            },
+            {
+              "label": "Early Hints",
+              "to": "framework/react/guide/early-hints"
             },
             {
               "label": "CDN Asset URLs",
@@ -257,6 +257,10 @@
             {
               "label": "Server Entry Point",
               "to": "framework/solid/guide/server-entry-point"
+            },
+            {
+              "label": "Early Hints",
+              "to": "framework/solid/guide/early-hints"
             },
             {
               "label": "Client Entry Point",

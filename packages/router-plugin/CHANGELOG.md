@@ -1,5 +1,196 @@
 # @benjavicente/router-plugin
 
+## 1.167.35
+
+### Patch Changes
+
+- Updated dependencies [[`c5811aa`](https://github.com/TanStack/router/commit/c5811aacb59b69a8179f14cd9529a51b2206d504)]:
+  - @benjavicente/router-generator@1.166.42
+
+## 1.167.34
+
+### Patch Changes
+
+- Updated dependencies [[`35e88f0`](https://github.com/TanStack/router/commit/35e88f04996d71019a1868b7b06ecb4ddbc9df9e)]:
+  - @benjavicente/router-core@1.169.2
+  - @benjavicente/react-router@1.169.2
+  - @benjavicente/router-generator@1.166.41
+
+## 1.167.33
+
+### Patch Changes
+
+- Parse plain TypeScript files without JSX when a filename is available, preventing angle-bracket type assertions from being interpreted as JSX during route and Start import-protection transforms. ([#7342](https://github.com/TanStack/router/pull/7342))
+
+- Updated dependencies [[`056337e`](https://github.com/TanStack/router/commit/056337ef02ccbeaf45ec8533a227761be869e8f3)]:
+  - @benjavicente/router-generator@1.166.40
+  - @benjavicente/router-utils@1.161.8
+
+## 1.167.32
+
+### Patch Changes
+
+- Replace global route metadata with explicit router plugin contexts so multiple router plugin instances cannot cross-transform route files. ([#7313](https://github.com/TanStack/router/pull/7313))
+
+## 1.167.31
+
+### Patch Changes
+
+- Updated dependencies [[`4a1e63f`](https://github.com/TanStack/router/commit/4a1e63f1d1230b1ed8234609acad4639d8982c13)]:
+  - @benjavicente/router-core@1.169.1
+  - @benjavicente/react-router@1.169.1
+  - @benjavicente/router-generator@1.166.39
+
+## 1.167.30
+
+### Patch Changes
+
+- Updated dependencies [[`c992495`](https://github.com/TanStack/router/commit/c992495bf4010ff4c3597bb1f3b1ba02594e857e)]:
+  - @benjavicente/router-core@1.169.0
+  - @benjavicente/react-router@1.169.0
+  - @benjavicente/router-generator@1.166.38
+
+## 1.167.29
+
+### Patch Changes
+
+- Updated dependencies [[`b5c4183`](https://github.com/TanStack/router/commit/b5c4183ab8b44be8a75647b7f7b588ad7c146ece)]:
+  - @benjavicente/router-core@1.168.18
+  - @benjavicente/react-router@1.168.26
+  - @benjavicente/router-generator@1.166.37
+
+## 1.167.28
+
+### Patch Changes
+
+- Updated dependencies [[`493148b`](https://github.com/TanStack/router/commit/493148bc5378b7f9de1544d87f6aaa425c12eb34)]:
+  - @benjavicente/router-core@1.168.17
+  - @benjavicente/react-router@1.168.25
+  - @benjavicente/router-generator@1.166.36
+
+## 1.167.27
+
+### Patch Changes
+
+- Updated dependencies [[`a2ad394`](https://github.com/TanStack/router/commit/a2ad394598e2079ab4050ebb16bb03b31d69c32a)]:
+  - @benjavicente/router-generator@1.166.35
+
+## 1.167.26
+
+### Patch Changes
+
+- refactor(router-plugin): upgrade unplugin to `v3` ([#7258](https://github.com/TanStack/router/pull/7258))
+
+## 1.167.25
+
+### Patch Changes
+
+- Fix React route HMR for webpack and rspack so it no longer imports `react-refresh/runtime`, avoiding failures when that optional dependency is not installed. ([#7255](https://github.com/TanStack/router/pull/7255))
+
+## 1.167.24
+
+### Patch Changes
+
+- Updated dependencies [[`4d864ee`](https://github.com/TanStack/router/commit/4d864eebbd184265eabb563d326ab409c93feb17)]:
+  - @benjavicente/react-router@1.168.24
+  - @benjavicente/router-core@1.168.16
+  - @benjavicente/router-generator@1.166.34
+
+## 1.167.23
+
+### Patch Changes
+
+- rsbuild ([#7228](https://github.com/TanStack/router/pull/7228))
+
+- Updated dependencies [[`91a7089`](https://github.com/TanStack/router/commit/91a708989d00537a21911e74ff60bbfec8266295)]:
+  - @benjavicente/router-utils@1.161.7
+  - @benjavicente/router-generator@1.166.33
+
+## 1.167.22
+
+### Patch Changes
+
+- Updated dependencies [[`16f6892`](https://github.com/TanStack/router/commit/16f6892d6b7ceadf606677c5a40e743f29163aa6)]:
+  - @benjavicente/router-core@1.168.15
+  - @benjavicente/react-router@1.168.21
+  - @benjavicente/router-generator@1.166.32
+
+## 1.167.21
+
+### Patch Changes
+
+- Updated dependencies [[`328d7e5`](https://github.com/TanStack/router/commit/328d7e5ebc6b8074242a07d68ccafafb83e37a0e)]:
+  - @benjavicente/router-generator@1.166.31
+
+## 1.167.20
+
+### Patch Changes
+
+- fix: update vite-plugin-solid peer dependency to support version 3.0.0-0 ([#7170](https://github.com/TanStack/router/pull/7170))
+
+## 1.167.19
+
+### Patch Changes
+
+- Updated dependencies [[`105d056`](https://github.com/TanStack/router/commit/105d05691a247779a63e7b688aa1207cce619339)]:
+  - @benjavicente/router-generator@1.166.30
+  - @benjavicente/react-router@1.168.19
+
+## 1.167.18
+
+### Patch Changes
+
+- add vite 8 to peer deps ([#7160](https://github.com/TanStack/router/pull/7160))
+
+## 1.167.17
+
+### Patch Changes
+
+- Updated dependencies [[`0e2c900`](https://github.com/TanStack/router/commit/0e2c9003c18ae07c09969189c028f277ea562a7a)]:
+  - @benjavicente/router-core@1.168.14
+  - @benjavicente/react-router@1.168.18
+  - @benjavicente/router-generator@1.166.29
+
+## 1.167.16
+
+### Patch Changes
+
+- Updated dependencies [[`812792f`](https://github.com/TanStack/router/commit/812792fbda3caf97b300770855cf5641252f413b)]:
+  - @benjavicente/router-core@1.168.13
+  - @benjavicente/react-router@1.168.17
+  - @benjavicente/router-generator@1.166.28
+
+## 1.167.15
+
+### Patch Changes
+
+- Updated dependencies [[`8ec9ca9`](https://github.com/TanStack/router/commit/8ec9ca97b472779de878c2a6510f21deb24d386c)]:
+  - @benjavicente/router-core@1.168.12
+  - @benjavicente/react-router@1.168.16
+  - @benjavicente/router-generator@1.166.27
+
+## 1.167.14
+
+### Patch Changes
+
+- shorten internal non-minifiable store names for byte shaving ([#7152](https://github.com/TanStack/router/pull/7152))
+
+- Updated dependencies [[`6355bb7`](https://github.com/TanStack/router/commit/6355bb75f7637ba77f06a923c18fdaf37720bb48)]:
+  - @benjavicente/react-router@1.168.15
+  - @benjavicente/router-core@1.168.11
+  - @benjavicente/router-generator@1.166.26
+
+## 1.167.13
+
+### Patch Changes
+
+- migrate createStore > createAtom for simpler API ([#7150](https://github.com/TanStack/router/pull/7150))
+
+- Updated dependencies [[`459057c`](https://github.com/TanStack/router/commit/459057cd2d90cff20d20e51d4964b0a8c950555e)]:
+  - @benjavicente/react-router@1.168.14
+  - @benjavicente/router-core@1.168.10
+  - @benjavicente/router-generator@1.166.25
+
 ## 1.167.12
 
 ### Patch Changes

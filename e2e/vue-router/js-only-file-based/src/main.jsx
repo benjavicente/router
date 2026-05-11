@@ -1,4 +1,4 @@
-import { RouterProvider, createRouter } from '@tanstack/vue-router'
+import { RouterProvider, createRouter } from '@benjavicente/vue-router'
 import { routeTree } from './routeTree.gen'
 import { createApp } from 'vue'
 import './styles.css'

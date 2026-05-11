@@ -1,12 +1,12 @@
 import { deepEqual } from '@benjavicente/router-core'
 import { injectRouter } from './injectRouter'
-import { injectStore } from './injectStore'
+import { injectStore } from './store/injectStore'
+import type * as Angular from '@angular/core'
 import type {
   AnyRouter,
   RegisteredRouter,
   RouterState,
 } from '@benjavicente/router-core'
-import type * as Angular from '@angular/core'
 
 export interface InjectLocationOptions<TRouter extends AnyRouter, TSelected> {
   select?: (
@@ -29,10 +29,13 @@ export function injectLocation<
 ): Angular.Signal<InjectLocationResult<TRouter, TSelected>> {
   const router = injectRouter<TRouter>()
 
-  return injectStore(
-    router.stores.location,
-    (location) =>
-      (opts?.select ? opts.select(location as any) : location) as any,
-    { equal: deepEqual }
-  ) as Angular.Signal<InjectLocationResult<TRouter, TSelected>>
+  if (!opts?.select) {
+    return injectStore(router.stores.location) as Angular.Signal<
+      InjectLocationResult<TRouter, TSelected>
+    >
+  }
+
+  return injectStore(router.stores.location, opts.select, {
+    equal: deepEqual,
+  }) as Angular.Signal<InjectLocationResult<TRouter, TSelected>>
 }

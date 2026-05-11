@@ -8,7 +8,7 @@ import {
   parseAst,
 } from '@benjavicente/router-utils'
 import { tsrShared, tsrSplit } from '../constants'
-import { createRouteHmrStatement } from '../route-hmr-statement'
+import { createRouteHmrStatement } from '../hmr'
 import { getObjectPropertyKeyName } from '../utils'
 import { createIdentifier } from './path-ids'
 import { getFrameworkOptions } from './framework-options'
@@ -18,7 +18,6 @@ import type {
 } from './plugins'
 import type { GeneratorResult, ParseAstOptions } from '@benjavicente/router-utils'
 import type { CodeSplitGroupings, SplitRouteIdentNodes } from '../constants'
-import type { Config, DeletableNodes } from '../config'
 import type { SplitNodeMeta } from './types'
 
 const SPLIT_NODES_CONFIG = new Map<SplitRouteIdentNodes, SplitNodeMeta>([
@@ -238,6 +237,7 @@ export function buildDependencyGraph(
  */
 export function computeSharedBindings(opts: {
   code: string
+  filename?: string
   codeSplitGroupings: CodeSplitGroupings
 }): Set<string> {
   const ast = parseAst(opts)
@@ -637,17 +637,10 @@ function removeSharedDeclarations(ast: t.File, sharedBindings: Set<string>) {
 }
 
 export function compileCodeSplitReferenceRoute(
-  opts: ParseAstOptions & {
-    codeSplitGroupings: CodeSplitGroupings
-    deleteNodes?: Set<DeletableNodes>
-    targetFramework: Config['target']
-    angularRouterPackage?: string
-    filename: string
-    id: string
-    addHmr?: boolean
-    sharedBindings?: Set<string>
-    compilerPlugins?: Array<ReferenceRouteCompilerPlugin>
-  },
+  opts: ParseAstOptions &
+    CompileCodeSplitReferenceRouteOptions & {
+      compilerPlugins?: Array<ReferenceRouteCompilerPlugin>
+    },
 ): GeneratorResult | null {
   const ast = parseAst(opts)
 
@@ -661,12 +654,7 @@ export function compileCodeSplitReferenceRoute(
     )
   }
 
-  const frameworkOptions = getFrameworkOptions(
-    opts.targetFramework,
-    opts.targetFramework === 'angular'
-      ? { angularRouterPackage: opts.angularRouterPackage }
-      : undefined,
-  )
+  const frameworkOptions = getFrameworkOptions(opts.targetFramework)
   const PACKAGE = frameworkOptions.package
   const LAZY_ROUTE_COMPONENT_IDENT = frameworkOptions.idents.lazyRouteComponent
   const LAZY_FN_IDENT = frameworkOptions.idents.lazyFn
@@ -739,7 +727,11 @@ export function compileCodeSplitReferenceRoute(
 
                 programPath.pushContainer(
                   'body',
-                  createRouteHmrStatement(stableRouteOptionKeys),
+                  createRouteHmrStatement(stableRouteOptionKeys, {
+                    hmrStyle: opts.hmrStyle ?? 'vite',
+                    targetFramework: opts.targetFramework,
+                    routeId: opts.hmrRouteId,
+                  }),
                 )
                 modified = true
                 hmrAdded = true
@@ -833,12 +825,6 @@ export function compileCodeSplitReferenceRoute(
                       if (
                         splitNodeMeta.splitStrategy === 'lazyRouteComponent'
                       ) {
-                        if (!frameworkOptions.supportsLazyRouteComponent) {
-                          throw new Error(
-                            `[compileCodeSplitReferenceRoute] The '${opts.targetFramework}' target does not support code-splitting route component exports with lazyRouteComponent. Unsupported export: '${key}' in '${opts.filename}'.`,
-                          )
-                        }
-
                         const value = prop.value
 
                         let shouldSplit = true
@@ -916,6 +902,7 @@ export function compileCodeSplitReferenceRoute(
                               splitNodeMeta,
                               lazyRouteComponentIdent:
                                 LAZY_ROUTE_COMPONENT_IDENT,
+                              opts,
                             },
                           )
 

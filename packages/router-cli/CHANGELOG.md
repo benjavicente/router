@@ -1,5 +1,131 @@
 # @benjavicente/router-cli
 
+## 1.166.43
+
+### Patch Changes
+
+- Updated dependencies [[`c5811aa`](https://github.com/TanStack/router/commit/c5811aacb59b69a8179f14cd9529a51b2206d504)]:
+  - @benjavicente/router-generator@1.166.42
+
+## 1.166.42
+
+### Patch Changes
+
+- Updated dependencies []:
+  - @benjavicente/router-generator@1.166.41
+
+## 1.166.41
+
+### Patch Changes
+
+- Updated dependencies [[`056337e`](https://github.com/TanStack/router/commit/056337ef02ccbeaf45ec8533a227761be869e8f3)]:
+  - @benjavicente/router-generator@1.166.40
+
+## 1.166.40
+
+### Patch Changes
+
+- Updated dependencies []:
+  - @benjavicente/router-generator@1.166.39
+
+## 1.166.39
+
+### Patch Changes
+
+- Updated dependencies []:
+  - @benjavicente/router-generator@1.166.38
+
+## 1.166.38
+
+### Patch Changes
+
+- Updated dependencies []:
+  - @benjavicente/router-generator@1.166.37
+
+## 1.166.37
+
+### Patch Changes
+
+- Updated dependencies []:
+  - @benjavicente/router-generator@1.166.36
+
+## 1.166.36
+
+### Patch Changes
+
+- Updated dependencies [[`a2ad394`](https://github.com/TanStack/router/commit/a2ad394598e2079ab4050ebb16bb03b31d69c32a)]:
+  - @benjavicente/router-generator@1.166.35
+
+## 1.166.35
+
+### Patch Changes
+
+- Updated dependencies []:
+  - @benjavicente/router-generator@1.166.34
+
+## 1.166.34
+
+### Patch Changes
+
+- Updated dependencies []:
+  - @benjavicente/router-generator@1.166.33
+
+## 1.166.33
+
+### Patch Changes
+
+- Updated dependencies []:
+  - @benjavicente/router-generator@1.166.32
+
+## 1.166.32
+
+### Patch Changes
+
+- Updated dependencies [[`328d7e5`](https://github.com/TanStack/router/commit/328d7e5ebc6b8074242a07d68ccafafb83e37a0e)]:
+  - @benjavicente/router-generator@1.166.31
+
+## 1.166.31
+
+### Patch Changes
+
+- Updated dependencies [[`105d056`](https://github.com/TanStack/router/commit/105d05691a247779a63e7b688aa1207cce619339)]:
+  - @benjavicente/router-generator@1.166.30
+
+## 1.166.30
+
+### Patch Changes
+
+- Updated dependencies []:
+  - @benjavicente/router-generator@1.166.29
+
+## 1.166.29
+
+### Patch Changes
+
+- Updated dependencies []:
+  - @benjavicente/router-generator@1.166.28
+
+## 1.166.28
+
+### Patch Changes
+
+- Updated dependencies []:
+  - @benjavicente/router-generator@1.166.27
+
+## 1.166.27
+
+### Patch Changes
+
+- Updated dependencies []:
+  - @benjavicente/router-generator@1.166.26
+
+## 1.166.26
+
+### Patch Changes
+
+- Updated dependencies []:
+  - @benjavicente/router-generator@1.166.25
+
 ## 1.166.25
 
 ### Patch Changes

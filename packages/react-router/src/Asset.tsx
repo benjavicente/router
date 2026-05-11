@@ -1,8 +1,12 @@
+'use client'
+
 import * as React from 'react'
 import { isServer } from '@benjavicente/router-core/isServer'
 import { useRouter } from './useRouter'
 import { useHydrated } from './ClientOnly'
 import type { RouterManagedTag } from '@benjavicente/router-core'
+
+const INLINE_CSS_HYDRATION_ATTR = 'data-tsr-inline-css'
 
 interface ScriptAttrs {
   [key: string]: string | boolean | undefined
@@ -10,13 +14,12 @@ interface ScriptAttrs {
   suppressHydrationWarning?: boolean
 }
 
-export function Asset({
-  tag,
-  attrs,
-  children,
-  nonce,
-}: RouterManagedTag & { nonce?: string }): React.ReactElement | null {
-  switch (tag) {
+export function Asset(
+  asset: RouterManagedTag & { nonce?: string },
+): React.ReactElement | null {
+  const { attrs, children, nonce } = asset
+
+  switch (asset.tag) {
     case 'title':
       return (
         <title {...attrs} suppressHydrationWarning>
@@ -26,8 +29,30 @@ export function Asset({
     case 'meta':
       return <meta {...attrs} suppressHydrationWarning />
     case 'link':
-      return <link {...attrs} nonce={nonce} suppressHydrationWarning />
+      return (
+        <link
+          {...attrs}
+          precedence={
+            attrs?.precedence ??
+            (attrs?.rel === 'stylesheet' ? 'default' : undefined)
+          }
+          nonce={nonce}
+          suppressHydrationWarning
+        />
+      )
     case 'style':
+      if (
+        asset.inlineCss &&
+        (process.env.TSS_INLINE_CSS_ENABLED === 'true' ||
+          (process.env.TSS_INLINE_CSS_ENABLED === undefined && isServer))
+      ) {
+        return (
+          <InlineCssStyle attrs={attrs} nonce={nonce}>
+            {children}
+          </InlineCssStyle>
+        )
+      }
+
       return (
         <style
           {...attrs}
@@ -40,6 +65,42 @@ export function Asset({
     default:
       return null
   }
+}
+
+function InlineCssStyle({
+  attrs,
+  children,
+  nonce,
+}: {
+  attrs?: Record<string, any>
+  children?: RouterManagedTag['children']
+  nonce?: string
+}) {
+  const isInlineCssPlaceholder = children === undefined
+  const [hydratedInlineCss] = React.useState(() => {
+    if (!isInlineCssPlaceholder || typeof document === 'undefined') {
+      return undefined
+    }
+
+    return (
+      document.querySelector<HTMLStyleElement>(
+        `style[${INLINE_CSS_HYDRATION_ATTR}]`,
+      )?.textContent ?? undefined
+    )
+  })
+  const html = isInlineCssPlaceholder
+    ? (hydratedInlineCss ?? '')
+    : (children ?? '')
+
+  return (
+    <style
+      {...attrs}
+      {...{ [INLINE_CSS_HYDRATION_ATTR]: '' }}
+      dangerouslySetInnerHTML={{ __html: html }}
+      nonce={nonce}
+      suppressHydrationWarning
+    />
+  )
 }
 
 function Script({
@@ -204,6 +265,7 @@ function Script({
     if (attrs?.src) {
       return <script {...attrs} suppressHydrationWarning />
     }
+
     if (typeof children === 'string') {
       return (
         <script

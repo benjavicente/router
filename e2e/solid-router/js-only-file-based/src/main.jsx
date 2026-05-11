@@ -1,4 +1,4 @@
-import { RouterProvider, createRouter } from '@tanstack/solid-router'
+import { RouterProvider, createRouter } from '@benjavicente/solid-router'
 import { routeTree } from './routeTree.gen'
 import { render } from 'solid-js/web'
 import './styles.css'

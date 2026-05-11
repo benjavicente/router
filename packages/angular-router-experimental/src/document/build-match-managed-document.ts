@@ -16,7 +16,7 @@ export function buildMatchManagedDocumentContent(
   router: AnyRouter,
 ): ManagedDocumentContent {
   const nonce = router.options.ssr?.nonce
-  const matches = router.stores.activeMatchesSnapshot.state
+  const matches = router.stores.matches.get()
   const title = selectTitle(matches)
   const metaTags = selectMetaTags(matches, nonce)
   const links = selectConstructedLinks(matches, nonce)

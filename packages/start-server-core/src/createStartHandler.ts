@@ -1,6 +1,8 @@
 import { createMemoryHistory } from '@benjavicente/history'
 import {
+  createCsrfMiddleware,
   createNullProtoObject,
+  csrfSymbol,
   flattenMiddlewares,
   mergeHeaders,
   safeObjectMerge,
@@ -15,7 +17,10 @@ import {
   getNormalizedURL,
   getOrigin,
 } from '@benjavicente/router-core/ssr/server'
-import { runWithStartContext } from '@benjavicente/start-storage-context'
+import {
+  getStartContext,
+  runWithStartContext,
+} from '@benjavicente/start-storage-context'
 import { requestHandler } from './request-response'
 import { getStartManifest } from './router-manifest'
 import { handleServerAction } from './server-functions-handler'
@@ -25,6 +30,13 @@ import {
   resolveTransformAssetsConfig,
   transformManifestAssets,
 } from './transformAssetUrls'
+import {
+  collectDynamicHintsFromMatches,
+  collectStaticHintsFromManifest,
+  createEarlyHintsEvent,
+  createResponseLinkHeaderEntries,
+  getResponseLinkHeaderEntries,
+} from './early-hints'
 
 import { HEADERS } from './constants'
 import { ServerFunctionSerializationAdapter } from './serializer/ServerFunctionSerializationAdapter'
@@ -39,8 +51,18 @@ import type {
 } from '@benjavicente/start-client-core'
 import type { RequestHandler } from './request-handler'
 import type {
+  EarlyHint,
+  EarlyHintsEvent,
+  EarlyHintsPhase,
+  OnEarlyHints,
+  ResponseLinkHeaderEntry,
+  ResponseLinkHeaderFilter,
+  ResponseLinkHeaderOptions,
+} from './early-hints'
+import type {
   AnyRoute,
   AnyRouter,
+  AnySerializationAdapter,
   Manifest,
   Register,
 } from '@benjavicente/router-core'
@@ -198,22 +220,132 @@ function getStartResponseHeaders(opts: { router: AnyRouter }) {
     {
       'Content-Type': 'text/html; charset=utf-8',
     },
-    ...opts.router.stores.activeMatchesSnapshot.state.map((match) => {
+    ...opts.router.stores.matches.get().map((match) => {
       return match.headers
     }),
   )
   return headers
 }
 
+function notifyEarlyHints(
+  phase: EarlyHintsPhase,
+  event: EarlyHintsEvent,
+  onEarlyHints: OnEarlyHints,
+) {
+  try {
+    const result = onEarlyHints(event)
+    if (result) {
+      void Promise.resolve(result).catch((err) => {
+        console.error(`Error sending ${phase} early hints:`, err)
+      })
+    }
+  } catch (err) {
+    console.error(`Error sending ${phase} early hints:`, err)
+  }
+}
+
+function getResponseLinkHeaderFilter(
+  responseLinkHeader: boolean | ResponseLinkHeaderOptions | undefined,
+): ResponseLinkHeaderFilter | undefined {
+  if (typeof responseLinkHeader !== 'object') {
+    return undefined
+  }
+
+  return responseLinkHeader.filter
+}
+
+function appendResponseLinkHeaders(opts: {
+  responseHeaders: Headers
+  entries: ReadonlyArray<ResponseLinkHeaderEntry>
+  filter?: ResponseLinkHeaderFilter
+}) {
+  if (!opts.filter) {
+    for (const entry of opts.entries) {
+      opts.responseHeaders.append('Link', entry.link)
+    }
+    return
+  }
+
+  const links = getResponseLinkHeaderEntries(opts)
+
+  for (const link of links) {
+    opts.responseHeaders.append('Link', link)
+  }
+}
+
+function collectResponseLinkHeaderEntries(opts: {
+  phase: EarlyHintsPhase
+  event: EarlyHintsEvent
+  entries: Array<ResponseLinkHeaderEntry>
+}) {
+  for (let index = 0; index < opts.event.hints.length; index++) {
+    opts.entries.push({
+      phase: opts.phase,
+      hint: opts.event.hints[index]!,
+      link: opts.event.links[index]!,
+    })
+  }
+}
+
+function handleCollectedEarlyHints(opts: {
+  phase: EarlyHintsPhase
+  hints: ReadonlyArray<EarlyHint>
+  sentLinks: Set<string>
+  sentHints?: Array<EarlyHint>
+  onEarlyHints?: OnEarlyHints
+  responseLinkHeaderEntries?: Array<ResponseLinkHeaderEntry>
+}) {
+  const event = opts.onEarlyHints
+    ? createEarlyHintsEvent({
+        phase: opts.phase,
+        hints: opts.hints,
+        sentLinks: opts.sentLinks,
+        sentHints: opts.sentHints!,
+      })
+    : undefined
+
+  if (event) {
+    notifyEarlyHints(opts.phase, event, opts.onEarlyHints!)
+  }
+
+  if (!opts.responseLinkHeaderEntries) return
+
+  if (event) {
+    collectResponseLinkHeaderEntries({
+      phase: opts.phase,
+      event,
+      entries: opts.responseLinkHeaderEntries,
+    })
+    return
+  }
+
+  createResponseLinkHeaderEntries({
+    phase: opts.phase,
+    hints: opts.hints,
+    sentLinks: opts.sentLinks,
+    entries: opts.responseLinkHeaderEntries,
+  })
+}
+
+interface PluginAdaptersEntry {
+  hasPluginAdapters: boolean
+  pluginSerializationAdapters: Array<AnySerializationAdapter>
+}
+
+interface Entries {
+  startEntry: StartEntry
+  routerEntry: RouterEntry
+  pluginAdapters: PluginAdaptersEntry
+}
+
 // Cached entries - promises stored immediately to prevent concurrent imports
 // that can cause race conditions during module initialization
-let entriesPromise:
-  | Promise<{
-      startEntry: StartEntry
-      routerEntry: RouterEntry
-    }>
-  | undefined
+let entriesPromise: Promise<Entries> | undefined
 let baseManifestPromise: Promise<StartManifestWithClientEntry> | undefined
+let hasWarnedMissingCsrfMiddleware = false
+const defaultCsrfMiddleware = createCsrfMiddleware({
+  filter: (ctx) => ctx.handlerType === 'serverFn',
+})
 
 /**
  * Cached final manifest (with client entry script tag). In production,
@@ -221,12 +353,20 @@ let baseManifestPromise: Promise<StartManifestWithClientEntry> | undefined
  */
 let cachedFinalManifestPromise: Promise<Manifest> | undefined
 
-async function loadEntries() {
-  // @ts-ignore when building, we currently don't respect tsconfig.ts' `include` so we are not picking up the .d.ts from start-client-core
-  const routerEntry = (await import('#tanstack-router-entry')) as RouterEntry
-  // @ts-ignore when building, we currently don't respect tsconfig.ts' `include` so we are not picking up the .d.ts from start-client-core
-  const startEntry = (await import('#tanstack-start-entry')) as StartEntry
-  return { startEntry, routerEntry }
+async function loadEntries(): Promise<Entries> {
+  const [routerEntry, startEntry, pluginAdapters] = await Promise.all([
+    // @ts-ignore When building, we currently don't respect tsconfig.ts' `include` so we are not picking up the .d.ts from start-client-core
+    import('#tanstack-router-entry'),
+    // @ts-ignore When building, we currently don't respect tsconfig.ts' `include` so we are not picking up the .d.ts from start-client-core
+    import('#tanstack-start-entry'),
+    // @ts-ignore When building, we currently don't respect tsconfig.ts' `include` so we are not picking up the .d.ts from start-client-core
+    import('#tanstack-start-plugin-adapters'),
+  ])
+  return {
+    routerEntry: routerEntry as unknown as RouterEntry,
+    startEntry: startEntry as unknown as StartEntry,
+    pluginAdapters: pluginAdapters as unknown as PluginAdaptersEntry,
+  }
 }
 
 function getEntries() {
@@ -234,6 +374,39 @@ function getEntries() {
     entriesPromise = loadEntries()
   }
   return entriesPromise
+}
+
+function hasCsrfMiddleware(
+  middlewares: Array<AnyRequestMiddleware | AnyFunctionMiddleware>,
+): boolean {
+  return middlewares.some((middleware) => csrfSymbol in middleware)
+}
+
+function warnMissingCsrfMiddlewareOnce() {
+  if (hasWarnedMissingCsrfMiddleware) return
+  hasWarnedMissingCsrfMiddleware = true
+
+  console.warn(`TanStack Start server functions are not protected by the CSRF middleware.
+
+Server functions are same-origin RPC endpoints and should be protected from cross-site requests.
+
+Add the CSRF middleware in src/start.ts:
+
+  const csrfMiddleware = createCsrfMiddleware({
+    filter: (ctx) => ctx.handlerType === 'serverFn',
+  })
+
+  export const startInstance = createStart(() => ({
+    requestMiddleware: [csrfMiddleware],
+  }))
+
+If you intentionally handle CSRF another way, disable this warning:
+
+  tanstackStart({
+    serverFns: {
+      disableCsrfMiddlewareWarning: true,
+    },
+  })`)
 }
 
 /**
@@ -548,23 +721,31 @@ export function createStartHandler<TRegister = Register>(
       }
 
       const entries = await getEntries()
+      const hasStartInstance = !!entries.startEntry.startInstance
       const startOptions: AnyStartInstanceOptions =
         (await entries.startEntry.startInstance?.getOptions()) ||
         ({} as AnyStartInstanceOptions)
 
+      const { hasPluginAdapters, pluginSerializationAdapters } =
+        entries.pluginAdapters
+
       const serializationAdapters = [
         ...(startOptions.serializationAdapters || []),
+        ...(hasPluginAdapters ? pluginSerializationAdapters : []),
         ServerFunctionSerializationAdapter,
       ]
 
       const requestStartOptions = {
         ...startOptions,
+        requestMiddleware: hasStartInstance
+          ? startOptions.requestMiddleware
+          : [defaultCsrfMiddleware],
         serializationAdapters,
       }
 
       // Flatten request middlewares once
-      const flattenedRequestMiddlewares = startOptions.requestMiddleware
-        ? flattenMiddlewares(startOptions.requestMiddleware)
+      const flattenedRequestMiddlewares = requestStartOptions.requestMiddleware
+        ? flattenMiddlewares(requestStartOptions.requestMiddleware)
         : []
 
       // Create set for deduplication
@@ -607,6 +788,14 @@ export function createStartHandler<TRegister = Register>(
 
       // Check for server function requests first (early exit)
       if (SERVER_FN_BASE && url.pathname.startsWith(SERVER_FN_BASE)) {
+        if (
+          process.env.NODE_ENV !== 'production' &&
+          process.env.TSS_DISABLE_CSRF_MIDDLEWARE_WARNING !== 'true' &&
+          !hasCsrfMiddleware(flattenedRequestMiddlewares)
+        ) {
+          warnMissingCsrfMiddlewareOnce()
+        }
+
         const serverFnId = url.pathname
           .slice(SERVER_FN_BASE.length)
           .split('/')[0]
@@ -623,6 +812,7 @@ export function createStartHandler<TRegister = Register>(
               contextAfterGlobalMiddlewares: context,
               request,
               executedRequestMiddlewares,
+              handlerType: 'serverFn',
             },
             () =>
               handleServerAction({
@@ -639,6 +829,7 @@ export function createStartHandler<TRegister = Register>(
         const ctx = await executeMiddleware([...middlewares, serverFnHandler], {
           request,
           pathname: url.pathname,
+          handlerType: 'serverFn',
           context: createNullProtoObject(requestOpts?.context),
         })
 
@@ -670,11 +861,48 @@ export function createStartHandler<TRegister = Register>(
           await getTransformFn({ warmup: false, request }),
           cache,
         )
+
+        const onEarlyHints = requestOpts?.onEarlyHints
+        const responseLinkHeader = requestOpts?.responseLinkHeader
+        const shouldCollectEarlyHints =
+          process.env.TSS_DEV_SERVER !== 'true' &&
+          (!!onEarlyHints || !!responseLinkHeader)
+        const sentEarlyHintLinks = shouldCollectEarlyHints
+          ? new Set<string>()
+          : undefined
+        const sentEarlyHints = onEarlyHints ? new Array<EarlyHint>() : undefined
+        const responseLinkHeaderEntries =
+          shouldCollectEarlyHints && responseLinkHeader
+            ? new Array<ResponseLinkHeaderEntry>()
+            : undefined
+        const responseLinkHeaderFilter = shouldCollectEarlyHints
+          ? getResponseLinkHeaderFilter(responseLinkHeader)
+          : undefined
+
+        if (
+          shouldCollectEarlyHints &&
+          sentEarlyHintLinks &&
+          matchedRoutes?.length
+        ) {
+          const hints = collectStaticHintsFromManifest(manifest, matchedRoutes)
+          handleCollectedEarlyHints({
+            phase: 'static',
+            hints,
+            sentLinks: sentEarlyHintLinks,
+            sentHints: sentEarlyHints,
+            onEarlyHints,
+            responseLinkHeaderEntries,
+          })
+        }
+
         const routerInstance = await getRouter()
 
         attachRouterServerSsrUtils({
           router: routerInstance,
           manifest,
+          getRequestAssets: () =>
+            getStartContext({ throwIfNotFound: false })?.requestAssets,
+          includeUnmatchedRouteAssets: false,
         })
 
         routerInstance.update({ additionalContext: { serverContext } })
@@ -684,11 +912,35 @@ export function createStartHandler<TRegister = Register>(
           return routerInstance.state.redirect
         }
 
-        await routerInstance.serverSsr!.dehydrate()
+        if (shouldCollectEarlyHints && sentEarlyHintLinks) {
+          const loadedMatches = routerInstance.stores.matches.get()
+          const hints = collectDynamicHintsFromMatches(loadedMatches)
+          handleCollectedEarlyHints({
+            phase: 'dynamic',
+            hints,
+            sentLinks: sentEarlyHintLinks,
+            sentHints: sentEarlyHints,
+            onEarlyHints,
+            responseLinkHeaderEntries,
+          })
+        }
+
+        // Pass request-scoped assets to dehydrate for manifest injection
+        const ctx = getStartContext({ throwIfNotFound: false })
+        await routerInstance.serverSsr!.dehydrate({
+          requestAssets: ctx?.requestAssets,
+        })
 
         const responseHeaders = getStartResponseHeaders({
           router: routerInstance,
         })
+        if (responseLinkHeaderEntries?.length) {
+          appendResponseLinkHeaders({
+            responseHeaders,
+            entries: responseLinkHeaderEntries,
+            filter: responseLinkHeaderFilter,
+          })
+        }
         cbWillCleanup = true
 
         return cb({
@@ -707,6 +959,7 @@ export function createStartHandler<TRegister = Register>(
             contextAfterGlobalMiddlewares: context,
             request,
             executedRequestMiddlewares,
+            handlerType: 'router',
           },
           async () => {
             try {
@@ -736,6 +989,7 @@ export function createStartHandler<TRegister = Register>(
         {
           request,
           pathname: url.pathname,
+          handlerType: 'router',
           context: createNullProtoObject(requestOpts?.context),
         },
       )
@@ -860,6 +1114,7 @@ async function handleServerRoutes({
 
   // Add handler middleware if exact match
   const server = foundRoute?.options.server
+  let isHeadFallback = false
   if (server?.handlers && isExactMatch) {
     const handlers =
       typeof server.handlers === 'function'
@@ -867,7 +1122,14 @@ async function handleServerRoutes({
         : server.handlers
 
     const requestMethod = request.method.toUpperCase() as RouteMethod
-    const handler = handlers[requestMethod] ?? handlers['ANY']
+    // Per RFC 9110 §9.3.2, HEAD must return the same header fields as GET.
+    // Priority for HEAD: explicit HEAD handler → GET → ANY (last resort).
+    const handler =
+      requestMethod === 'HEAD'
+        ? (handlers['HEAD'] ?? handlers['GET'] ?? handlers['ANY'])
+        : (handlers[requestMethod] ?? handlers['ANY'])
+    isHeadFallback =
+      requestMethod === 'HEAD' && handler !== undefined && !handlers['HEAD']
 
     if (handler) {
       const mayDefer = !!foundRoute.options.component
@@ -898,7 +1160,23 @@ async function handleServerRoutes({
     context,
     params: routeParams,
     pathname,
+    handlerType: 'router',
   })
+
+  // RFC 9110 §9.3.2: HEAD must carry the same header fields as GET but no body.
+  // Resolve any redirect before stripping so the Location header survives.
+  if (isHeadFallback) {
+    if (!ctx.response) {
+      throwRouteHandlerError()
+    }
+
+    const resolved = await handleRedirectResponse(
+      ctx.response,
+      request,
+      getRouter,
+    )
+    return new Response(null, resolved)
+  }
 
   return ctx.response
 }

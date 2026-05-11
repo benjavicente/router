@@ -54,7 +54,10 @@ export {
   type InjectMatchesBaseOptions,
   type InjectMatchesResult,
 } from './injectMatches'
-export { injectMatchRoute, type InjectMatchRouteOptions } from './injectMatchRoute'
+export {
+  injectMatchRoute,
+  type InjectMatchRouteOptions,
+} from './injectMatchRoute'
 
 // Injection functions
 export { injectRouter } from './injectRouter'
@@ -125,7 +128,7 @@ export { injectCanGoBack } from './injectCanGoBack'
 
 export { injectErrorState } from './injectErrorState'
 
-export { injectStore } from './injectStore'
+export { injectStore } from './store/injectStore'
 
 // Link
 export { type LinkOptions as LinkInputOptions, Link } from './Link'

@@ -1,5 +1,166 @@
 # @benjavicente/router-vite-plugin
 
+## 1.166.50
+
+### Patch Changes
+
+- Updated dependencies []:
+  - @benjavicente/router-plugin@1.167.35
+
+## 1.166.49
+
+### Patch Changes
+
+- Updated dependencies []:
+  - @benjavicente/router-plugin@1.167.34
+
+## 1.166.48
+
+### Patch Changes
+
+- Updated dependencies [[`056337e`](https://github.com/TanStack/router/commit/056337ef02ccbeaf45ec8533a227761be869e8f3)]:
+  - @benjavicente/router-plugin@1.167.33
+
+## 1.166.47
+
+### Patch Changes
+
+- Updated dependencies [[`96818b8`](https://github.com/TanStack/router/commit/96818b8ba5ead6f1f027094841330182aff415b2)]:
+  - @benjavicente/router-plugin@1.167.32
+
+## 1.166.46
+
+### Patch Changes
+
+- Updated dependencies []:
+  - @benjavicente/router-plugin@1.167.31
+
+## 1.166.45
+
+### Patch Changes
+
+- Updated dependencies []:
+  - @benjavicente/router-plugin@1.167.30
+
+## 1.166.44
+
+### Patch Changes
+
+- Updated dependencies []:
+  - @benjavicente/router-plugin@1.167.29
+
+## 1.166.43
+
+### Patch Changes
+
+- Updated dependencies []:
+  - @benjavicente/router-plugin@1.167.28
+
+## 1.166.42
+
+### Patch Changes
+
+- Updated dependencies []:
+  - @benjavicente/router-plugin@1.167.27
+
+## 1.166.41
+
+### Patch Changes
+
+- Updated dependencies [[`8b97002`](https://github.com/TanStack/router/commit/8b97002af3f6d15204e60c55d3f5735b78bd7efe)]:
+  - @benjavicente/router-plugin@1.167.26
+
+## 1.166.40
+
+### Patch Changes
+
+- Updated dependencies [[`1e371b6`](https://github.com/TanStack/router/commit/1e371b60f1832c158ff4953a4ae6c5ccfe8460b3)]:
+  - @benjavicente/router-plugin@1.167.25
+
+## 1.166.39
+
+### Patch Changes
+
+- Updated dependencies []:
+  - @benjavicente/router-plugin@1.167.24
+
+## 1.166.38
+
+### Patch Changes
+
+- Updated dependencies [[`91a7089`](https://github.com/TanStack/router/commit/91a708989d00537a21911e74ff60bbfec8266295)]:
+  - @benjavicente/router-plugin@1.167.23
+
+## 1.166.37
+
+### Patch Changes
+
+- Updated dependencies []:
+  - @benjavicente/router-plugin@1.167.22
+
+## 1.166.36
+
+### Patch Changes
+
+- Updated dependencies []:
+  - @benjavicente/router-plugin@1.167.21
+
+## 1.166.35
+
+### Patch Changes
+
+- Updated dependencies [[`96ac2d8`](https://github.com/TanStack/router/commit/96ac2d8ed378340d63b88afeec3633e56e29b5f8)]:
+  - @benjavicente/router-plugin@1.167.20
+
+## 1.166.34
+
+### Patch Changes
+
+- Updated dependencies []:
+  - @benjavicente/router-plugin@1.167.19
+
+## 1.166.33
+
+### Patch Changes
+
+- Updated dependencies [[`656a2a0`](https://github.com/TanStack/router/commit/656a2a040e79df7721d776e3751c8d634666570b)]:
+  - @benjavicente/router-plugin@1.167.18
+
+## 1.166.32
+
+### Patch Changes
+
+- Updated dependencies []:
+  - @benjavicente/router-plugin@1.167.17
+
+## 1.166.31
+
+### Patch Changes
+
+- Updated dependencies []:
+  - @benjavicente/router-plugin@1.167.16
+
+## 1.166.30
+
+### Patch Changes
+
+- Updated dependencies []:
+  - @benjavicente/router-plugin@1.167.15
+
+## 1.166.29
+
+### Patch Changes
+
+- Updated dependencies [[`6355bb7`](https://github.com/TanStack/router/commit/6355bb75f7637ba77f06a923c18fdaf37720bb48)]:
+  - @benjavicente/router-plugin@1.167.14
+
+## 1.166.28
+
+### Patch Changes
+
+- Updated dependencies [[`459057c`](https://github.com/TanStack/router/commit/459057cd2d90cff20d20e51d4964b0a8c950555e)]:
+  - @benjavicente/router-plugin@1.167.13
+
 ## 1.166.27
 
 ### Patch Changes

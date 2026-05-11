@@ -1,4 +1,4 @@
-import { ErrorComponent } from '@benjavicente/solid-router'
+import { ErrorComponent, createFileRoute } from '@benjavicente/solid-router'
 import { fetchPost } from '../../posts'
 import type { ErrorComponentProps } from '@benjavicente/solid-router'
 
@@ -6,7 +6,7 @@ export function PostErrorComponent({ error }: ErrorComponentProps) {
   return <ErrorComponent error={error} />
 }
 
-export const Route = createFileRoute({
+export const Route = createFileRoute('/posts/$postId')({
   loader: async ({ params: { postId } }) => fetchPost(postId),
   errorComponent: PostErrorComponent as any,
   notFoundComponent: () => {

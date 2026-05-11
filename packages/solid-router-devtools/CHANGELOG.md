@@ -1,5 +1,23 @@
 # @benjavicente/solid-router-devtools
 
+## 1.166.13
+
+### Patch Changes
+
+- Updated dependencies [[`6355bb7`](https://github.com/TanStack/router/commit/6355bb75f7637ba77f06a923c18fdaf37720bb48)]:
+  - @benjavicente/router-devtools-core@1.167.3
+  - @benjavicente/solid-router@1.168.14
+  - @benjavicente/router-core@1.168.11
+
+## 1.166.12
+
+### Patch Changes
+
+- Updated dependencies [[`459057c`](https://github.com/TanStack/router/commit/459057cd2d90cff20d20e51d4964b0a8c950555e)]:
+  - @benjavicente/router-devtools-core@1.167.2
+  - @benjavicente/solid-router@1.168.13
+  - @benjavicente/router-core@1.168.10
+
 ## 1.166.11
 
 ### Patch Changes

@@ -15,11 +15,11 @@
   "dependencies": {
     "@tailwindcss/vite": "^4.2.2",
     "@tanstack/react-devtools": "^0.7.0",
-    "@benjavicente/react-router": "^1.168.10",
-    "@benjavicente/react-router-devtools": "^1.166.11",
-    "@benjavicente/react-router-ssr-query": "^1.166.10",
-    "@benjavicente/react-start": "^1.167.16",
-    "@benjavicente/router-plugin": "^1.167.12",
+    "@benjavicente/react-router": "^1.169.2",
+    "@benjavicente/react-router-devtools": "^1.166.13",
+    "@benjavicente/react-router-ssr-query": "^1.166.12",
+    "@benjavicente/react-start": "^1.167.65",
+    "@benjavicente/router-plugin": "^1.167.35",
     "react": "^19.1.1",
     "react-dom": "^19.1.1",
     "tailwindcss": "^4.2.2"
@@ -37,7 +37,7 @@
     "prettier": "^3.6.2",
     "typescript": "^6.0.2",
     "vite": "^8.0.0",
-    "vitest": "^3.2.4",
+    "vitest": "^4.1.4",
     "web-vitals": "^5.1.0"
   }
 }

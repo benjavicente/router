@@ -1,6 +1,6 @@
 {
   "name": "@benjavicente/vue-router-ssr-query",
-  "version": "1.166.10",
+  "version": "1.166.12",
   "description": "Modern and scalable routing for Vue applications",
   "author": "Tanner Linsley",
   "license": "MIT",

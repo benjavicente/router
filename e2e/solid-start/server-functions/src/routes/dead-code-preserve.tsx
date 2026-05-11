@@ -3,7 +3,6 @@ import * as fs from 'node:fs'
 import { createServerFn } from '@benjavicente/solid-start'
 import { getRequestHeader } from '@benjavicente/solid-start/server'
 import { createSignal } from 'solid-js'
-import {} from '@benjavicente/solid-router'
 
 export const Route = createFileRoute('/dead-code-preserve')({
   component: RouteComponent,

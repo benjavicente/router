@@ -301,7 +301,7 @@ For server-side rendering, use TanStack Router's built-in SSR APIs:
 ```typescript
 // server.tsx
 import { createMemoryHistory } from '@benjavicente/react-router'
-import { StartServer } from '@tanstack/start/server'
+import { StartServer } from '@benjavicente/start/server'
 
 export async function render(url: string) {
   const router = createRouter({

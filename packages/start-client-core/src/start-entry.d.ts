@@ -1,11 +1,18 @@
 declare module '#tanstack-start-entry' {
-  import type { StartEntry } from '@benjavicente/start-client-core'
+  import type { StartEntry } from './startEntry'
 
   export const startInstance: StartEntry['startInstance']
 }
 
 declare module '#tanstack-router-entry' {
-  import type { RouterEntry } from '@benjavicente/start-client-core'
+  import type { RouterEntry } from './startEntry'
 
   export const getRouter: RouterEntry['getRouter']
+}
+
+declare module '#tanstack-start-plugin-adapters' {
+  import type { AnySerializationAdapter } from '@benjavicente/router-core'
+
+  export const pluginSerializationAdapters: Array<AnySerializationAdapter>
+  export const hasPluginAdapters: boolean
 }

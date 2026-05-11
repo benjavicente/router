@@ -1,9 +1,10 @@
-import * as Angular from '@angular/core'
+import { batch, createAtom } from '@tanstack/store'
 import {
   createNonReactiveMutableStore,
   createNonReactiveReadonlyStore,
 } from '@benjavicente/router-core'
 import { isServer } from '@benjavicente/router-core/isServer'
+import type { Readable } from '@tanstack/store'
 import type {
   AnyRoute,
   GetStoreConfig,
@@ -13,9 +14,13 @@ import type {
 } from '@benjavicente/router-core'
 
 declare module '@benjavicente/router-core' {
+  export interface RouterReadableStore<TValue> extends Readable<TValue> {}
+
   // eslint-disable-next-line unused-imports/no-unused-vars -- generic must match upstream `RouterStores<TRouteTree>` for augmentation
   export interface RouterStores<in out TRouteTree extends AnyRoute> {
+    /** Maps each active routeId to the matchId of its child in the match tree. */
     childMatchIdByRouteId: RouterReadableStore<Record<string, string>>
+    /** Maps each pending routeId to true for quick lookup. */
     pendingRouteIds: RouterReadableStore<Record<string, boolean>>
   }
 }
@@ -27,68 +32,32 @@ function initRouterStores(
   ) => RouterReadableStore<TValue>,
 ) {
   stores.childMatchIdByRouteId = createReadonlyStore(() => {
-    const ids = stores.matchesId.state
-    const result: Record<string, string> = {}
-
+    const ids = stores.matchesId.get()
+    const obj: Record<string, string> = {}
     for (let i = 0; i < ids.length - 1; i++) {
-      const matchId = ids[i]
-      const childId = ids[i + 1]
-      if (matchId === undefined || childId === undefined) continue
-      const parentStore = stores.activeMatchStoresById.get(matchId)
+      const parentStore = stores.matchStores.get(ids[i]!)
       if (parentStore?.routeId) {
-        result[parentStore.routeId] = childId
+        obj[parentStore.routeId] = ids[i + 1]!
       }
     }
-
-    return result
+    return obj
   })
 
   stores.pendingRouteIds = createReadonlyStore(() => {
-    const ids = stores.pendingMatchesId.state
-    const result: Record<string, boolean> = {}
-
+    const ids = stores.pendingIds.get()
+    const obj: Record<string, boolean> = {}
     for (const id of ids) {
-      const store = stores.pendingMatchStoresById.get(id)
+      const store = stores.pendingMatchStores.get(id)
       if (store?.routeId) {
-        result[store.routeId] = true
+        obj[store.routeId] = true
       }
     }
-
-    return result
+    return obj
   })
 }
 
-function createAngularMutableStore<TValue>(
-  initialValue: TValue,
-): RouterWritableStore<TValue> {
-  const signal = Angular.signal(initialValue)
-
-  return {
-    get state() {
-      return signal()
-    },
-    setState(updater) {
-      signal.update(updater)
-    },
-  }
-}
-
-function createAngularReadonlyStore<TValue>(
-  read: () => TValue,
-): RouterReadableStore<TValue> {
-  const computed = Angular.computed(read)
-
-  return {
-    get state() {
-      return computed()
-    },
-  }
-}
-
 export const getStoreFactory: GetStoreConfig = (opts) => {
-  const useNonReactive =
-    typeof isServer === 'boolean' ? isServer : !!opts.isServer
-  if (useNonReactive) {
+  if (isServer ?? opts.isServer) {
     return {
       createMutableStore: createNonReactiveMutableStore,
       createReadonlyStore: createNonReactiveReadonlyStore,
@@ -99,9 +68,13 @@ export const getStoreFactory: GetStoreConfig = (opts) => {
   }
 
   return {
-    createMutableStore: createAngularMutableStore,
-    createReadonlyStore: createAngularReadonlyStore,
-    batch: (fn) => fn(),
-    init: (stores) => initRouterStores(stores, createAngularReadonlyStore),
+    createMutableStore: createAtom as <TValue>(
+      initialValue: TValue,
+    ) => RouterWritableStore<TValue>,
+    createReadonlyStore: createAtom as <TValue>(
+      read: () => TValue,
+    ) => RouterReadableStore<TValue>,
+    batch,
+    init: (stores) => initRouterStores(stores, createAtom),
   }
 }

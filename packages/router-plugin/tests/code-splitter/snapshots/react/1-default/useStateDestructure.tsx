@@ -472,9 +472,9 @@ Check it out at https://tanstack.com/start/`,
       {/* {[''].includes(framework) ? (
         <div className="px-2">
           <div className="p-8 text-center text-lg w-full max-w-screen-lg mx-auto bg-black text-white rounded-xl">
-            Looking for the <strong>@tanstack/{framework}-query</strong>{' '}
+            Looking for the <strong>@benjavicente/{framework}-query</strong>{' '}
             example? We could use your help to build the{' '}
-            <strong>@tanstack/{framework}-query</strong> adapter! Join the{' '}
+            <strong>@benjavicente/{framework}-query</strong> adapter! Join the{' '}
             <a
               href="https://tlinz.com/discord"
               className="text-teal-500 font-bold"

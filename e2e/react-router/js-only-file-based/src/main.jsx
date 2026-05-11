@@ -1,6 +1,6 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
-import { RouterProvider, createRouter } from '@tanstack/react-router'
+import { RouterProvider, createRouter } from '@benjavicente/react-router'
 import { routeTree } from './routeTree.gen'
 import './styles.css'
 

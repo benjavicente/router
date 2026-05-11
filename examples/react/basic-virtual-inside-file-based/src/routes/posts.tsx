@@ -1,8 +1,8 @@
 import * as React from 'react'
-import { Link, Outlet } from '@benjavicente/react-router'
+import { Link, Outlet, createFileRoute } from '@benjavicente/react-router'
 import { fetchPosts } from '../posts'
 
-export const Route = createFileRoute({
+export const Route = createFileRoute('/posts')({
   loader: fetchPosts,
   component: PostsComponent,
 })

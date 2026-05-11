@@ -11,7 +11,7 @@
 </a><a href="https://discord.com/invite/WrRKjPJ" target="\_parent">
   <img alt="" src="https://img.shields.io/badge/Discord-TanStack-%235865F2" />
 </a><a href="https://npmjs.com/package/@benjavicente/solid-router" target="\_parent">
-  <img alt="" src="https://img.shields.io/npm/dm/@tanstack/router.svg" />
+  <img alt="" src="https://img.shields.io/npm/dm/@benjavicente/router.svg" />
 </a><a href="https://bundlephobia.com/result?p=@benjavicente/solid-router" target="\_parent">
   <img alt="" src="https://badgen.net/bundlephobia/minzip/@benjavicente/solid-router" />
 </a><a href="#badge">

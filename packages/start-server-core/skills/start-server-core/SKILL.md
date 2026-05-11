@@ -17,7 +17,7 @@ sources:
 
 Server-side runtime for TanStack Start. Provides the request handler, request/response utilities, cookie management, and session management. All utilities are available anywhere in the call stack during a request via AsyncLocalStorage.
 
-> **CRITICAL**: These utilities are SERVER-ONLY. Import them from `@tanstack/<framework>-start/server`, not from the main entry point. They throw if called outside a server request context.
+> **CRITICAL**: These utilities are SERVER-ONLY. Import them from `@benjavicente/<framework>-start/server`, not from the main entry point. They throw if called outside a server request context.
 >
 > **CRITICAL**: Types are FULLY INFERRED. Never cast, never annotate inferred values.
 
@@ -27,7 +27,7 @@ Creates the main request handler that processes all incoming requests through th
 
 ```ts
 // src/server.ts
-// Use @tanstack/<framework>-start for your framework (react, solid, vue)
+// Use @benjavicente/<framework>-start for your framework (react, solid, vue)
 import { createStartHandler } from '@benjavicente/react-start/server'
 import { defaultStreamHandler } from '@benjavicente/react-start/server'
 
@@ -47,12 +47,12 @@ export default createStartHandler({
 
 ## Request Utilities
 
-All imported from `@tanstack/<framework>-start/server`. Available anywhere during request handling — no parameter passing needed.
+All imported from `@benjavicente/<framework>-start/server`. Available anywhere during request handling — no parameter passing needed.
 
 ### Reading Request Data
 
 ```ts
-// Use @tanstack/<framework>-start for your framework (react, solid, vue)
+// Use @benjavicente/<framework>-start for your framework (react, solid, vue)
 import { createServerFn } from '@benjavicente/react-start'
 import {
   getRequest,
@@ -80,7 +80,7 @@ const serverFn = createServerFn({ method: 'GET' }).handler(async () => {
 ### Setting Response Data
 
 ```ts
-// Use @tanstack/<framework>-start for your framework (react, solid, vue)
+// Use @benjavicente/<framework>-start for your framework (react, solid, vue)
 import { createServerFn } from '@benjavicente/react-start'
 import {
   setResponseHeader,
@@ -105,7 +105,7 @@ const serverFn = createServerFn({ method: 'POST' }).handler(async () => {
 ## Cookie Management
 
 ```ts
-// Use @tanstack/<framework>-start for your framework (react, solid, vue)
+// Use @benjavicente/<framework>-start for your framework (react, solid, vue)
 import { createServerFn } from '@benjavicente/react-start'
 import {
   getCookies,
@@ -134,7 +134,7 @@ const serverFn = createServerFn({ method: 'POST' }).handler(async () => {
 Encrypted sessions stored in cookies. Requires a password for encryption.
 
 ```ts
-// Use @tanstack/<framework>-start for your framework (react, solid, vue)
+// Use @benjavicente/<framework>-start for your framework (react, solid, vue)
 import { createServerFn } from '@benjavicente/react-start'
 import {
   useSession,
@@ -195,7 +195,7 @@ await session.clear() // Clear session data
 Validate query string parameters using a Standard Schema:
 
 ```ts
-// Use @tanstack/<framework>-start for your framework (react, solid, vue)
+// Use @benjavicente/<framework>-start for your framework (react, solid, vue)
 import { getValidatedQuery } from '@benjavicente/react-start/server'
 import { z } from 'zod'
 
@@ -238,7 +238,7 @@ function MyComponent() {
 }
 
 // CORRECT — use inside server functions only
-// Use @tanstack/<framework>-start for your framework (react, solid, vue)
+// Use @benjavicente/<framework>-start for your framework (react, solid, vue)
 import { createServerFn } from '@benjavicente/react-start'
 import { getCookie } from '@benjavicente/react-start/server'
 

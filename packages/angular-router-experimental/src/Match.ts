@@ -16,7 +16,7 @@ import {
   rootRouteId,
 } from '@benjavicente/router-core'
 import { injectRouter } from './injectRouter'
-import { injectStore } from './injectStore'
+import { injectStore } from './store/injectStore'
 import { DefaultNotFoundComponent } from './DefaultNotFound'
 import { MATCH_CONTEXT_INJECTOR_TOKEN } from './matchInjectorToken'
 import { injectRender } from './renderer/injectRender'
@@ -24,6 +24,12 @@ import { ERROR_STATE_INJECTOR_TOKEN } from './injectErrorState'
 import { injectIsCatchingError } from './renderer/injectIsCatchingError'
 import type { Signal } from '@angular/core'
 import type { NearestMatchContextValue } from './matchInjectorToken'
+import type { AnyRouteMatch } from '@benjavicente/router-core'
+
+const dummyMatchStore = {
+  get: () => undefined as AnyRouteMatch | undefined,
+  subscribe: () => ({ unsubscribe: () => {} }),
+}
 
 function injectOnRendered({
   parentRouteIsRoot,
@@ -68,8 +74,8 @@ function injectOnRendered({
           router.emit({
             type: 'onRendered',
             ...getLocationChangeInfo(
-              router.stores.location.state,
-              router.stores.resolvedLocation.state,
+              router.stores.location.get(),
+              router.stores.resolvedLocation.get(),
             ),
           })
         },
@@ -94,11 +100,12 @@ export class RouteMatch {
   router = injectRouter()
 
   match = computed(() => {
-    const matchId = this.matchId()
-    return matchId
-      ? this.router.stores.activeMatchStoresById.get(matchId)?.state
-      : undefined
+    return this.matchSignal()
   })
+  private matchSignal = injectStore(
+    () => this.router.stores.matchStores.get(this.matchId()) ?? dummyMatchStore,
+    (value) => value,
+  )
 
   matchData = computed(() => {
     const match = this.match()
@@ -142,16 +149,17 @@ export class RouteMatch {
     return this.resolvedNoSsr() || !!match._displayPending
   })
 
-  parentRouteIdSignal = computed(
-    () => this.matchData()?.parentRouteId ?? '',
-  )
+  parentRouteIdSignal = computed(() => this.matchData()?.parentRouteId ?? '')
   rootRouteIdSignal = computed(() => rootRouteId)
 
   hasPendingMatch = computed(() => {
     const routeId = this.matchData()?.route.id
     return routeId ? Boolean(this.pendingRouteIds()[routeId]) : false
   })
-  pendingRouteIds = injectStore(this.router.stores.pendingRouteIds, (ids) => ids)
+  pendingRouteIds = injectStore(
+    this.router.stores.pendingRouteIds,
+    (ids) => ids,
+  )
   nearestMatchContext: NearestMatchContextValue = {
     matchId: this.matchId,
     routeId: computed(() => this.matchData()?.route.id),
@@ -267,18 +275,19 @@ export class Outlet {
   router = injectRouter()
   nearestMatch = inject(MATCH_CONTEXT_INJECTOR_TOKEN)
 
-  currentMatch = computed(() => {
-    const matchId = this.nearestMatch.matchId()
-    return matchId
-      ? this.router.stores.activeMatchStoresById.get(matchId)?.state
-      : undefined
-  })
+  currentMatch = injectStore(
+    () => {
+      const matchId = this.nearestMatch.matchId()
+      return matchId
+        ? (this.router.stores.matchStores.get(matchId) ?? dummyMatchStore)
+        : dummyMatchStore
+    },
+    (value) => value,
+  )
 
   routeId = computed(() => this.currentMatch()?.routeId as string)
 
-  route = computed(
-    () => this.router.routesById[this.routeId()] as AnyRoute,
-  )
+  route = computed(() => this.router.routesById[this.routeId()] as AnyRoute)
 
   parentGlobalNotFound = computed(
     () => this.currentMatch()?.globalNotFound ?? false,
@@ -314,7 +323,9 @@ export class Outlet {
   })
 }
 
-type CalledIfFunction<T> = T extends (...args: Array<any>) => any ? ReturnType<T> : T
+type CalledIfFunction<T> = T extends (...args: Array<any>) => any
+  ? ReturnType<T>
+  : T
 
 function getComponent<T>(routeComponent: T): CalledIfFunction<T> {
   if (typeof routeComponent === 'function') {

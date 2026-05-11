@@ -1,6 +1,6 @@
-import { Link, Outlet } from '@benjavicente/react-router'
+import { Link, Outlet, createFileRoute } from '@benjavicente/react-router'
 
-export const Route = createFileRoute({
+export const Route = createFileRoute('/classic/hello')({
   component: () => (
     <div>
       Hello!

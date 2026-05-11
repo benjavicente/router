@@ -3,7 +3,10 @@ import { createFileRoute } from '@benjavicente/react-router';
 export const Route = createFileRoute('/')({
   component: undefined
 });
-if (import.meta.hot && typeof window !== 'undefined') {
+const hot = import.meta.hot;
+if (hot && typeof window !== 'undefined') {
+  ;
+  hot.data ??= {};
   const tsrReactRefresh = window.__TSR_REACT_REFRESH__ ??= (() => {
     const ignoredExportsById = new Map();
     const previousGetIgnoredExports = window.__getReactRefreshIgnoredExports;
@@ -22,11 +25,13 @@ export function TSRFastRefreshAnchor() {
   return null;
 }
 if (import.meta.hot) {
-  import.meta.hot.accept(newModule => {
+  const hot = import.meta.hot;
+  const hotData = hot.data ??= {};
+  hot.accept(newModule => {
     if (Route && newModule && newModule.Route) {
-      const routeId = import.meta.hot.data['tsr-route-id'] ?? Route.id;
+      const routeId = hotData['tsr-route-id'] ?? Route.id;
       if (routeId) {
-        import.meta.hot.data['tsr-route-id'] = routeId;
+        hotData['tsr-route-id'] = routeId;
       }
       (function handleRouteUpdate(routeId, newRoute) {
         const router = window.__TSR_ROUTER__;
@@ -42,12 +47,18 @@ if (import.meta.hot) {
             delete oldRoute.options[key];
           }
         });
+        const oldHasShellComponent = "shellComponent" in oldRoute.options;
+        const newHasShellComponent = "shellComponent" in newRoute.options;
+        const preserveComponentIdentity = oldHasShellComponent === newHasShellComponent;
         const componentKeys = ["component", "shellComponent", "pendingComponent", "errorComponent", "notFoundComponent"];
-        componentKeys.forEach(key => {
-          if (key in oldRoute.options && key in newRoute.options) {
-            newRoute.options[key] = oldRoute.options[key];
-          }
-        });
+        if (preserveComponentIdentity) {
+          componentKeys.forEach(key => {
+            if (key in oldRoute.options && key in newRoute.options) {
+              newRoute.options[key] = oldRoute.options[key];
+            }
+          });
+        }
+        ;
         oldRoute.options = newRoute.options;
         oldRoute.update(newRoute.options);
         oldRoute._componentsPromise = undefined;
@@ -60,17 +71,17 @@ if (import.meta.hot) {
         router.resolvePathCache.clear();
         walkReplaceSegmentTree(oldRoute, router.processedTree.segmentTree);
         const filter = m => m.routeId === oldRoute.id;
-        const activeMatch = router.stores.activeMatchesSnapshot.state.find(filter);
-        const pendingMatch = router.stores.pendingMatchesSnapshot.state.find(filter);
-        const cachedMatches = router.stores.cachedMatchesSnapshot.state.filter(filter);
+        const activeMatch = router.stores.matches.get().find(filter);
+        const pendingMatch = router.stores.pendingMatches.get().find(filter);
+        const cachedMatches = router.stores.cachedMatches.get().filter(filter);
         if (activeMatch || pendingMatch || cachedMatches.length > 0) {
           if (removedKeys.has("loader") || removedKeys.has("beforeLoad")) {
             const matchIds = [activeMatch?.id, pendingMatch?.id, ...cachedMatches.map(match => match.id)].filter(Boolean);
             router.batch(() => {
               for (const matchId of matchIds) {
-                const store = router.stores.pendingMatchStoresById.get(matchId) || router.stores.activeMatchStoresById.get(matchId) || router.stores.cachedMatchStoresById.get(matchId);
+                const store = router.stores.pendingMatchStores.get(matchId) || router.stores.matchStores.get(matchId) || router.stores.cachedMatchStores.get(matchId);
                 if (store) {
-                  store.setState(prev => {
+                  store.set(prev => {
                     const next = {
                       ...prev
                     };
@@ -80,6 +91,7 @@ if (import.meta.hot) {
                     ;
                     if (removedKeys.has("beforeLoad")) {
                       next.__beforeLoadContext = undefined;
+                      next.context = rebuildMatchContextWithoutBeforeLoad(next);
                     }
                     ;
                     return next;
@@ -103,6 +115,46 @@ if (import.meta.hot) {
           node.dynamic?.forEach(child => walkReplaceSegmentTree(route, child));
           node.optional?.forEach(child => walkReplaceSegmentTree(route, child));
           node.wildcard?.forEach(child => walkReplaceSegmentTree(route, child));
+        }
+        function getStoreMatch(matchId) {
+          return router.stores.pendingMatchStores.get(matchId)?.get() || router.stores.matchStores.get(matchId)?.get() || router.stores.cachedMatchStores.get(matchId)?.get();
+        }
+        function getMatchList(matchId) {
+          const pendingMatches = router.stores.pendingMatches.get();
+          if (pendingMatches.some(match => match.id === matchId)) {
+            return pendingMatches;
+          }
+          ;
+          const activeMatches = router.stores.matches.get();
+          if (activeMatches.some(match => match.id === matchId)) {
+            return activeMatches;
+          }
+          ;
+          const cachedMatches = router.stores.cachedMatches.get();
+          if (cachedMatches.some(match => match.id === matchId)) {
+            return cachedMatches;
+          }
+          ;
+          return [];
+        }
+        function getParentMatch(match) {
+          const matchList = getMatchList(match.id);
+          const matchIndex = matchList.findIndex(item => item.id === match.id);
+          if (matchIndex <= 0) {
+            return undefined;
+          }
+          ;
+          const parentMatch = matchList[matchIndex - 1];
+          return getStoreMatch(parentMatch.id) || parentMatch;
+        }
+        function rebuildMatchContextWithoutBeforeLoad(match) {
+          const parentMatch = getParentMatch(match);
+          const getParentContext = router.getParentContext;
+          const parentContext = getParentContext ? getParentContext.call(router, parentMatch) : parentMatch?.context ?? router.options.context;
+          return {
+            ...(parentContext ?? {}),
+            ...(match.__routeContext ?? {})
+          };
         }
       })(routeId, newModule.Route);
     }

@@ -1,3 +1,4 @@
+import { createFileRoute } from '@benjavicente/solid-router'
 import { Header } from '../components/Header'
 import { Content } from '../components/Content'
 
@@ -10,6 +11,6 @@ export const Index = () => {
   )
 }
 
-export const Route = createFileRoute({
+export const Route = createFileRoute('/')({
   component: Index,
 })

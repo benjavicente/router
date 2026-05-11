@@ -1,4 +1,5 @@
-export const Route = createFileRoute({
+import { createFileRoute } from '@benjavicente/vue-router'
+export const Route = createFileRoute('/_first/_second/layout-a')({
   component: LayoutAComponent,
 })
 

@@ -1,7 +1,7 @@
-import { Link, Outlet } from '@benjavicente/vue-router'
+import { Link, Outlet, createFileRoute } from '@benjavicente/vue-router'
 import { fetchPosts } from '../../posts'
 
-export const Route = createFileRoute({
+export const Route = createFileRoute('/posts')({
   loader: fetchPosts,
   component: PostsComponent,
 })

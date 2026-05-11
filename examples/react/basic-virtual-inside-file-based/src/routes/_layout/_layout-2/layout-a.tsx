@@ -1,4 +1,5 @@
-export const Route = createFileRoute({
+import { createFileRoute } from '@benjavicente/react-router'
+export const Route = createFileRoute('/_layout/_layout-2/layout-a')({
   component: LayoutAComponent,
 })
 

@@ -22,15 +22,16 @@ import {
 import { decodeIdentifier } from './code-splitter/path-ids'
 import { getFrameworkOptions } from './code-splitter/framework-options'
 import { debug, normalizePath } from './utils'
+import { createRouterPluginContext } from './router-plugin-context'
 import type { CodeSplitGroupings, SplitRouteIdentNodes } from './constants'
 import type { GetRoutesByFileMapResultValue } from '@benjavicente/router-generator'
 import type { Config } from './config'
+import type { RouterPluginContext } from './router-plugin-context'
 import type {
   UnpluginFactory,
   TransformResult as UnpluginTransformResult,
 } from 'unplugin'
 
-const PLUGIN_NAME = 'unplugin:router-code-splitter'
 const CODE_SPLITTER_PLUGIN_NAME =
   'tanstack-router:code-splitter:compile-reference-file'
 
@@ -77,9 +78,10 @@ const TRANSFORMATION_PLUGINS_BY_FRAMEWORK: Record<
   ],
 }
 
-export const unpluginRouterCodeSplitterFactory: UnpluginFactory<
-  Partial<Config | (() => Config)> | undefined
-> = (options = {}, { framework: _framework }) => {
+export function createRouterCodeSplitterPlugin(
+  options: Partial<Config | (() => Config)> | undefined = {},
+  routerPluginContext: RouterPluginContext,
+): ReturnType<UnpluginFactory<Partial<Config | (() => Config)> | undefined>> {
   let ROOT: string = process.cwd()
   let userConfig: Config
 
@@ -121,6 +123,7 @@ export const unpluginRouterCodeSplitterFactory: UnpluginFactory<
 
     const fromCode = detectCodeSplitGroupingsFromRoute({
       code,
+      filename: id,
     })
 
     if (fromCode.groupings !== undefined) {
@@ -136,7 +139,7 @@ export const unpluginRouterCodeSplitterFactory: UnpluginFactory<
     const userShouldSplitFn = getShouldSplitFn()
 
     const pluginSplitBehavior = userShouldSplitFn?.({
-      routeId: generatorNodeInfo.routePath,
+      routeId: generatorNodeInfo.routeId,
     }) as CodeSplitGroupings | undefined
 
     if (pluginSplitBehavior) {
@@ -155,6 +158,7 @@ export const unpluginRouterCodeSplitterFactory: UnpluginFactory<
     // Compute shared bindings before compiling the reference route
     const sharedBindings = computeSharedBindings({
       code,
+      filename: id,
       codeSplitGroupings: splitGroupings,
     })
     if (sharedBindings.size > 0) {
@@ -165,6 +169,7 @@ export const unpluginRouterCodeSplitterFactory: UnpluginFactory<
 
     const addHmr =
       (userConfig.codeSplittingOptions?.addHmr ?? true) && !isProduction
+    const hmrStyle = userConfig.plugin?.hmr?.style ?? 'vite'
 
     const compiledReferenceRoute = compileCodeSplitReferenceRoute({
       code,
@@ -177,10 +182,13 @@ export const unpluginRouterCodeSplitterFactory: UnpluginFactory<
         ? new Set(userConfig.codeSplittingOptions.deleteNodes)
         : undefined,
       addHmr,
+      hmrStyle,
+      hmrRouteId: generatorNodeInfo.routeId,
       sharedBindings: sharedBindings.size > 0 ? sharedBindings : undefined,
       compilerPlugins: getReferenceRouteCompilerPlugins({
         targetFramework: userConfig.target,
         addHmr,
+        hmrStyle,
       }),
     })
 
@@ -264,7 +272,7 @@ export const unpluginRouterCodeSplitterFactory: UnpluginFactory<
         handler(code, id) {
           const normalizedId = normalizePath(id)
           const generatorFileInfo =
-            globalThis.TSR_ROUTES_BY_ID_MAP?.get(normalizedId)
+            routerPluginContext.routesByFile.get(normalizedId)
           if (
             generatorFileInfo &&
             includedCode.some((included) => code.includes(included))
@@ -325,26 +333,14 @@ export const unpluginRouterCodeSplitterFactory: UnpluginFactory<
         },
       },
 
-      rspack(compiler) {
+      rspack() {
         ROOT = process.cwd()
         initUserConfig()
-
-        if (compiler.options.mode === 'production') {
-          compiler.hooks.done.tap(PLUGIN_NAME, () => {
-            console.info('✅ ' + PLUGIN_NAME + ': code-splitting done!')
-          })
-        }
       },
 
-      webpack(compiler) {
+      webpack() {
         ROOT = process.cwd()
         initUserConfig()
-
-        if (compiler.options.mode === 'production') {
-          compiler.hooks.done.tap(PLUGIN_NAME, () => {
-            console.info('✅ ' + PLUGIN_NAME + ': code-splitting done!')
-          })
-        }
       },
     },
     {
@@ -418,4 +414,10 @@ export const unpluginRouterCodeSplitterFactory: UnpluginFactory<
       },
     },
   ]
+}
+
+export const unpluginRouterCodeSplitterFactory: UnpluginFactory<
+  Partial<Config | (() => Config)> | undefined
+> = (options = {}) => {
+  return createRouterCodeSplitterPlugin(options, createRouterPluginContext())
 }

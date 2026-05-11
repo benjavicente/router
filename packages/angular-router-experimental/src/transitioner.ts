@@ -5,7 +5,7 @@ import {
   trimPathRight,
 } from '@benjavicente/router-core'
 import { injectRouter } from './injectRouter'
-import { injectStore } from './injectStore'
+import { injectStore } from './store/injectStore'
 import type { AnyRouter } from '@benjavicente/router-core'
 
 // Track mount state per router to avoid double-loading
@@ -46,7 +46,7 @@ export function injectTransitionerSetup() {
 
   // Track pending state changes
   const hasPendingMatches = injectStore(
-    router.stores.hasPendingMatches,
+    router.stores.hasPending,
     (value) => value,
   )
   const status = injectStore(router.stores.status, (value) => value)
@@ -72,7 +72,7 @@ export function injectTransitionerSetup() {
   // Implement startTransition similar to React/Solid
   // Angular doesn't have a native startTransition like React 18, so we simulate it
   router.startTransition = (fn: () => void | Promise<void>) => {
-    router.stores.isTransitioning.setState(() => true)
+    router.stores.isTransitioning.set(true)
 
     // Helper to end the transition
     const endTransition = () => {
@@ -84,7 +84,7 @@ export function injectTransitionerSetup() {
         {
           read: () => {
             try {
-              router.stores.isTransitioning.setState(() => false)
+              router.stores.isTransitioning.set(false)
             } catch {
               // Ignore errors if component is unmounted
             }
@@ -133,8 +133,8 @@ export function injectTransitionerSetup() {
     isMounted.set(true)
     if (!isAnyPending()) {
       if (status() === 'pending') {
-        router.stores.status.setState(() => 'idle')
-        router.stores.resolvedLocation.setState(() => location())
+        router.stores.status.set('idle')
+        router.stores.resolvedLocation.set(location())
       }
     }
   })
@@ -176,10 +176,7 @@ export function injectTransitionerSetup() {
       if (prevIsLoading() && !isLoading()) {
         router.emit({
           type: 'onLoad',
-          ...getLocationChangeInfo(
-            location(),
-            resolvedLocation(),
-          ),
+          ...getLocationChangeInfo(location(), resolvedLocation()),
         })
       }
     } catch {
@@ -194,10 +191,7 @@ export function injectTransitionerSetup() {
       if (prevIsPagePending() && !isPagePending()) {
         router.emit({
           type: 'onBeforeRouteMount',
-          ...getLocationChangeInfo(
-            location(),
-            resolvedLocation(),
-          ),
+          ...getLocationChangeInfo(location(), resolvedLocation()),
         })
       }
     } catch {
@@ -209,21 +203,14 @@ export function injectTransitionerSetup() {
   Angular.effect(() => {
     if (!isMounted()) return
     try {
-      if (
-        prevIsAnyPending() &&
-        !isAnyPending() &&
-        status() === 'pending'
-      ) {
-        router.stores.status.setState(() => 'idle')
-        router.stores.resolvedLocation.setState(() => location())
+      if (prevIsAnyPending() && !isAnyPending() && status() === 'pending') {
+        router.stores.status.set('idle')
+        router.stores.resolvedLocation.set(location())
       }
 
       // The router was pending and now it's not
       if (prevIsAnyPending() && !isAnyPending()) {
-        const changeInfo = getLocationChangeInfo(
-          location(),
-          resolvedLocation(),
-        )
+        const changeInfo = getLocationChangeInfo(location(), resolvedLocation())
         router.emit({
           type: 'onResolved',
           ...changeInfo,

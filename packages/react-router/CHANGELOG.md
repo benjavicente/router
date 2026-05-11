@@ -1,5 +1,147 @@
 # @benjavicente/react-router
 
+## 1.169.2
+
+### Patch Changes
+
+- Updated dependencies [[`35e88f0`](https://github.com/TanStack/router/commit/35e88f04996d71019a1868b7b06ecb4ddbc9df9e)]:
+  - @benjavicente/router-core@1.169.2
+
+## 1.169.1
+
+### Patch Changes
+
+- Updated dependencies [[`4a1e63f`](https://github.com/TanStack/router/commit/4a1e63f1d1230b1ed8234609acad4639d8982c13)]:
+  - @benjavicente/router-core@1.169.1
+
+## 1.169.0
+
+### Minor Changes
+
+- Allow `params.parse` to experimentally return `false` to skip an incoming route candidate during path matching. Thrown parse errors still surface on the selected match instead of falling through, and outgoing typed route-template links continue to use exact route lookup followed by `params.stringify` for URL generation. ([#7263](https://github.com/TanStack/router/pull/7263))
+
+### Patch Changes
+
+- Updated dependencies [[`c992495`](https://github.com/TanStack/router/commit/c992495bf4010ff4c3597bb1f3b1ba02594e857e)]:
+  - @benjavicente/router-core@1.169.0
+
+## 1.168.26
+
+### Patch Changes
+
+- Updated dependencies [[`b5c4183`](https://github.com/TanStack/router/commit/b5c4183ab8b44be8a75647b7f7b588ad7c146ece)]:
+  - @benjavicente/router-core@1.168.18
+
+## 1.168.25
+
+### Patch Changes
+
+- Updated dependencies [[`493148b`](https://github.com/TanStack/router/commit/493148bc5378b7f9de1544d87f6aaa425c12eb34)]:
+  - @benjavicente/router-core@1.168.17
+
+## 1.168.24
+
+### Patch Changes
+
+- Add TanStack Start inline CSS manifest support for SSR so route styles can be embedded in the HTML response and hydrated without duplicate stylesheet links. ([#7253](https://github.com/TanStack/router/pull/7253))
+
+- Updated dependencies [[`4d864ee`](https://github.com/TanStack/router/commit/4d864eebbd184265eabb563d326ab409c93feb17)]:
+  - @benjavicente/router-core@1.168.16
+
+## 1.168.23
+
+### Patch Changes
+
+- fix(react-router): prevent webpack static analysis of `React.use` with let binding ([#7182](https://github.com/TanStack/router/pull/7182))
+
+## 1.168.22
+
+### Patch Changes
+
+- Preserve shared route stylesheet links across client navigation by rendering route CSS assets with React stylesheet precedence. ([#7186](https://github.com/TanStack/router/pull/7186))
+
+## 1.168.21
+
+### Patch Changes
+
+- Updated dependencies [[`16f6892`](https://github.com/TanStack/router/commit/16f6892d6b7ceadf606677c5a40e743f29163aa6)]:
+  - @benjavicente/router-core@1.168.15
+
+## 1.168.20
+
+### Patch Changes
+
+- Fix React Server Component imports from `@benjavicente/react-router` by adding a `react-server` root export that preserves the normal API surface while resolving `notFound` and `redirect` from a server-safe entry. ([#7183](https://github.com/TanStack/router/pull/7183))
+
+  This fixes RSC routes that throw `notFound()` or `redirect()` from server functions so they behave correctly during SSR and client navigation.
+
+## 1.168.19
+
+### Patch Changes
+
+- Fix route file transforms to preserve route ID quoting, handle more exported `Route` patterns, and avoid incorrect import rewrites in edge cases. ([#7167](https://github.com/TanStack/router/pull/7167))
+
+  Improve transform robustness with clearer route-call detection, safer import removal, and expanded test coverage for quote preservation, constructor swaps, and unsupported route definitions.
+
+## 1.168.18
+
+### Patch Changes
+
+- Updated dependencies [[`0e2c900`](https://github.com/TanStack/router/commit/0e2c9003c18ae07c09969189c028f277ea562a7a)]:
+  - @benjavicente/router-core@1.168.14
+
+## 1.168.17
+
+### Patch Changes
+
+- Updated dependencies [[`812792f`](https://github.com/TanStack/router/commit/812792fbda3caf97b300770855cf5641252f413b)]:
+  - @benjavicente/router-core@1.168.13
+
+## 1.168.16
+
+### Patch Changes
+
+- Updated dependencies [[`8ec9ca9`](https://github.com/TanStack/router/commit/8ec9ca97b472779de878c2a6510f21deb24d386c)]:
+  - @benjavicente/router-core@1.168.12
+
+## 1.168.15
+
+### Patch Changes
+
+- shorten internal non-minifiable store names for byte shaving ([#7152](https://github.com/TanStack/router/pull/7152))
+
+- Updated dependencies [[`6355bb7`](https://github.com/TanStack/router/commit/6355bb75f7637ba77f06a923c18fdaf37720bb48)]:
+  - @benjavicente/router-core@1.168.11
+
+## 1.168.14
+
+### Patch Changes
+
+- migrate createStore > createAtom for simpler API ([#7150](https://github.com/TanStack/router/pull/7150))
+
+- Updated dependencies [[`459057c`](https://github.com/TanStack/router/commit/459057cd2d90cff20d20e51d4964b0a8c950555e)]:
+  - @benjavicente/router-core@1.168.10
+
+## 1.168.13
+
+### Patch Changes
+
+- Fix `MatchRoute` child callback param inference to resolve params from the target `to` route instead of the route path key across React, Solid, and Vue adapters. ([#7139](https://github.com/TanStack/router/pull/7139))
+
+- Fix a stale route error boundary state issue that could briefly render the next route's `errorComponent` after navigating away from a failed route. ([#7136](https://github.com/TanStack/router/pull/7136))
+
+## 1.168.12
+
+### Patch Changes
+
+- Fix redirected pending route transitions so lazy target routes can finish loading without stale redirected matches causing render errors. ([#7137](https://github.com/TanStack/router/pull/7137))
+
+## 1.168.11
+
+### Patch Changes
+
+- Fix `Link` to keep internal routing props like `preloadIntentProximity`, `from`, and `unsafeRelative` from leaking to rendered DOM elements across React, Solid, and Vue. ([#7138](https://github.com/TanStack/router/pull/7138))
+
 ## 1.168.10
 
 ### Patch Changes

@@ -1,5 +1,5 @@
-import { createFileRoute } from '@benjavicente/react-router'
 import * as React from 'react'
+import { createFileRoute } from '@benjavicente/react-router'
 
 export const Route = createFileRoute('/posts/')({
   component: PostsIndexComponent,

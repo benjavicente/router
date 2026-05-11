@@ -1,6 +1,6 @@
 import * as Angular from '@angular/core'
 import { injectRouter } from './injectRouter'
-import { injectStore } from './injectStore'
+import { injectStore } from './store/injectStore'
 import type {
   AnyRouter,
   DeepPartial,
@@ -9,7 +9,6 @@ import type {
   MakeOptionalSearchParams,
   MaskOptions,
   MatchRouteOptions,
-  NoInfer,
   RegisteredRouter,
   ResolveRoute,
   ToSubOptionsProps,
@@ -31,7 +30,7 @@ export function injectMatchRoute<
   TRouter extends AnyRouter = RegisteredRouter,
 >() {
   const router = injectRouter<TRouter>()
-  const reactivity = injectStore(router.stores.matchRouteReactivity, (d) => d)
+  const reactivity = injectStore(router.stores.matchRouteDeps, (d) => d)
 
   return <
     const TFrom extends string = string,
@@ -41,12 +40,12 @@ export function injectMatchRoute<
   >(
     opts: InjectMatchRouteOptions<TRouter, TFrom, TTo, TMaskFrom, TMaskTo>,
   ): Angular.Signal<
-    false | Expand<ResolveRoute<TRouter, TFrom, NoInfer<TTo>>['types']['allParams']>
+    false | Expand<ResolveRoute<TRouter, TFrom, TTo>['types']['allParams']>
   > => {
     return Angular.computed(() => {
-      reactivity()
       const { pending, caseSensitive, fuzzy, includeSearch, ...rest } = opts
 
+      reactivity()
       return router.matchRoute(rest as any, {
         pending,
         caseSensitive,

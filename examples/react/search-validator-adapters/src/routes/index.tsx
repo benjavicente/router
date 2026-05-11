@@ -1,3 +1,4 @@
+import { createFileRoute } from '@benjavicente/react-router'
 import * as React from 'react'
 
 import { Header } from '../components/Header'
@@ -12,6 +13,6 @@ export const Index: React.FunctionComponent = () => {
   )
 }
 
-export const Route = createFileRoute({
+export const Route = createFileRoute('/')({
   component: Index,
 })

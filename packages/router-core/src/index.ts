@@ -75,7 +75,13 @@ export type {
   AssetCrossOriginConfig,
   ManifestAssetLink,
 } from './manifest'
-export { getAssetCrossOrigin, resolveManifestAssetLink } from './manifest'
+export {
+  createInlineCssStyleAsset,
+  getAssetCrossOrigin,
+  getStylesheetHref,
+  isInlinableStylesheet,
+  resolveManifestAssetLink,
+} from './manifest'
 export { isMatch } from './Matches'
 export type {
   AnyMatchAndValue,
@@ -285,6 +291,7 @@ export type { OptionalStructuralSharing } from './structuralSharing'
 
 export {
   functionalUpdate,
+  hasKeys,
   replaceEqualDeep,
   isPlainObject,
   isPlainArray,
@@ -437,7 +444,6 @@ export type {
   AnySerializationAdapter,
   SerializationAdapter,
   ValidateSerializableInput,
-  ValidateSerializableInputResult,
   SerializerExtensions,
   ValidateSerializable,
   RegisteredSerializableInput,
@@ -446,6 +452,7 @@ export type {
   Serializable,
   TSR_SERIALIZABLE,
   TsrSerializable,
+  SerializationError,
 } from './ssr/serializer/transformer'
 
 export {

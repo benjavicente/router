@@ -410,7 +410,7 @@ export async function transformManifestAssets(
       )
     }
 
-    if (route.assets) {
+    if (route.assets && !source.manifest.inlineCss) {
       for (const asset of route.assets) {
         if (asset.tag === 'link' && asset.attrs?.href) {
           const rel = asset.attrs.rel
@@ -445,16 +445,15 @@ export async function transformManifestAssets(
     }),
   )
 
-  const rootRoute = manifest.routes[rootRouteId]
-  if (rootRoute) {
-    rootRoute.assets = rootRoute.assets || []
-    rootRoute.assets.push(
-      buildClientEntryScriptTag(
-        transformedClientEntry.href,
-        source.injectedHeadScripts,
-      ),
-    )
-  }
+  const rootRoute = (manifest.routes[rootRouteId] =
+    manifest.routes[rootRouteId] || {})
+  rootRoute.assets = rootRoute.assets || []
+  rootRoute.assets.push(
+    buildClientEntryScriptTag(
+      transformedClientEntry.href,
+      source.injectedHeadScripts,
+    ),
+  )
 
   return manifest
 }
@@ -476,15 +475,11 @@ export function buildManifestWithClientEntry(
   const baseRootRoute = source.manifest.routes[rootRouteId]
   const routes = {
     ...source.manifest.routes,
-    ...(baseRootRoute
-      ? {
-          [rootRouteId]: {
-            ...baseRootRoute,
-            assets: [...(baseRootRoute.assets || []), scriptTag],
-          },
-        }
-      : {}),
+    [rootRouteId]: {
+      ...baseRootRoute,
+      assets: [...(baseRootRoute?.assets || []), scriptTag],
+    },
   }
 
-  return { routes }
+  return { inlineCss: source.manifest.inlineCss, routes }
 }

@@ -3,7 +3,7 @@ import {
   ErrorComponent,
   Link,
   createFileRoute,
-  type ErrorComponentProps,
+  ErrorComponentProps,
 } from '@benjavicente/vue-router'
 import { postQueryOptions } from '~/utils/posts'
 

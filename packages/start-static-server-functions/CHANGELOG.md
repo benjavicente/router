@@ -1,5 +1,151 @@
 # @benjavicente/start-static-server-functions
 
+## 1.166.41
+
+### Patch Changes
+
+- Update seroval dependencies to version 1.5.4. ([#7340](https://github.com/TanStack/router/pull/7340))
+
+- Updated dependencies [[`35e88f0`](https://github.com/TanStack/router/commit/35e88f04996d71019a1868b7b06ecb4ddbc9df9e)]:
+  - @benjavicente/start-client-core@1.168.2
+  - @benjavicente/react-start@1.167.64
+  - @benjavicente/solid-start@1.167.61
+
+## 1.166.40
+
+### Patch Changes
+
+- Updated dependencies []:
+  - @benjavicente/start-client-core@1.168.1
+  - @benjavicente/react-start@1.167.57
+  - @benjavicente/solid-start@1.167.54
+
+## 1.166.39
+
+### Patch Changes
+
+- Updated dependencies [[`82b0613`](https://github.com/TanStack/router/commit/82b06132af776f74603ab27977cc277d6219a845)]:
+  - @benjavicente/start-client-core@1.168.0
+  - @benjavicente/react-start@1.167.56
+  - @benjavicente/solid-start@1.167.53
+
+## 1.166.38
+
+### Patch Changes
+
+- Updated dependencies [[`7fa0f39`](https://github.com/TanStack/router/commit/7fa0f39cabf4407aa1cb99e369566e8ea85554a2)]:
+  - @benjavicente/react-start@1.167.53
+  - @benjavicente/start-client-core@1.167.22
+  - @benjavicente/solid-start@1.167.50
+
+## 1.166.37
+
+### Patch Changes
+
+- Updated dependencies []:
+  - @benjavicente/start-client-core@1.167.21
+  - @benjavicente/react-start@1.167.52
+  - @benjavicente/solid-start@1.167.49
+
+## 1.166.36
+
+### Patch Changes
+
+- Updated dependencies []:
+  - @benjavicente/start-client-core@1.167.20
+  - @benjavicente/react-start@1.167.50
+  - @benjavicente/solid-start@1.167.48
+
+## 1.166.35
+
+### Patch Changes
+
+- Updated dependencies [[`8b97002`](https://github.com/TanStack/router/commit/8b97002af3f6d15204e60c55d3f5735b78bd7efe)]:
+  - @benjavicente/start-client-core@1.167.19
+  - @benjavicente/react-start@1.167.48
+  - @benjavicente/solid-start@1.167.43
+
+## 1.166.34
+
+### Patch Changes
+
+- Updated dependencies []:
+  - @benjavicente/react-start@1.167.46
+  - @benjavicente/start-client-core@1.167.18
+  - @benjavicente/solid-start@1.167.41
+
+## 1.166.33
+
+### Patch Changes
+
+- Updated dependencies []:
+  - @benjavicente/start-client-core@1.167.17
+  - @benjavicente/react-start@1.167.39
+  - @benjavicente/solid-start@1.167.35
+
+## 1.166.32
+
+### Patch Changes
+
+- Updated dependencies []:
+  - @benjavicente/react-start@1.167.31
+  - @benjavicente/solid-start@1.167.29
+  - @benjavicente/start-client-core@1.167.16
+
+## 1.166.31
+
+### Patch Changes
+
+- Updated dependencies []:
+  - @benjavicente/start-client-core@1.167.15
+  - @benjavicente/react-start@1.167.30
+  - @benjavicente/solid-start@1.167.28
+
+## 1.166.30
+
+### Patch Changes
+
+- Updated dependencies []:
+  - @benjavicente/start-client-core@1.167.14
+  - @benjavicente/react-start@1.167.29
+  - @benjavicente/solid-start@1.167.27
+
+## 1.166.29
+
+### Patch Changes
+
+- Updated dependencies []:
+  - @benjavicente/react-start@1.167.27
+  - @benjavicente/solid-start@1.167.25
+  - @benjavicente/start-client-core@1.167.13
+
+## 1.166.28
+
+### Patch Changes
+
+- Updated dependencies [[`459057c`](https://github.com/TanStack/router/commit/459057cd2d90cff20d20e51d4964b0a8c950555e)]:
+  - @benjavicente/start-client-core@1.167.12
+  - @benjavicente/react-start@1.167.26
+  - @benjavicente/solid-start@1.167.24
+
+## 1.166.27
+
+### Patch Changes
+
+- Updated dependencies [[`f8ac427`](https://github.com/TanStack/router/commit/f8ac427000c3fec99225926e72f9f2fc7a37231f)]:
+  - @benjavicente/start-client-core@1.167.11
+  - @benjavicente/react-start@1.167.25
+  - @benjavicente/solid-start@1.167.23
+
+## 1.166.26
+
+### Patch Changes
+
+- Updated dependencies [[`f7e9c5e`](https://github.com/TanStack/router/commit/f7e9c5e323793d1b28c96871819c265fd28ae397)]:
+  - @benjavicente/start-client-core@1.167.10
+  - @benjavicente/react-start@1.167.17
+  - @benjavicente/solid-start@1.167.16
+
 ## 1.166.25
 
 ### Patch Changes

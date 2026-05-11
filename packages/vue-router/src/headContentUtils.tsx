@@ -2,6 +2,7 @@ import * as Vue from 'vue'
 import {
   escapeHtml,
   getAssetCrossOrigin,
+  isInlinableStylesheet,
   resolveManifestAssetLink,
 } from '@benjavicente/router-core'
 import { useStore } from '@tanstack/vue-store'
@@ -13,10 +14,7 @@ import type {
 
 export const useTags = (assetCrossOrigin?: AssetCrossOriginConfig) => {
   const router = useRouter()
-  const matches = useStore(
-    router.stores.activeMatchesSnapshot,
-    (value) => value,
-  )
+  const matches = useStore(router.stores.matches, (value) => value)
 
   const meta = Vue.computed<Array<RouterManagedTag>>(() => {
     const resultMeta: Array<RouterManagedTag> = []
@@ -141,19 +139,38 @@ export const useTags = (assetCrossOrigin?: AssetCrossOriginConfig) => {
       .map((match) => manifest?.routes[match.routeId]?.assets ?? [])
       .filter(Boolean)
       .flat(1)
-      .filter((asset) => asset.tag === 'link')
-      .map(
-        (asset) =>
-          ({
-            tag: 'link',
-            attrs: {
-              ...asset.attrs,
-              crossOrigin:
-                getAssetCrossOrigin(assetCrossOrigin, 'stylesheet') ??
-                asset.attrs?.crossOrigin,
+      .flatMap((asset): Array<RouterManagedTag> => {
+        if (asset.tag === 'link') {
+          if (isInlinableStylesheet(manifest, asset)) {
+            return []
+          }
+
+          return [
+            {
+              tag: 'link',
+              attrs: {
+                ...asset.attrs,
+                crossOrigin:
+                  getAssetCrossOrigin(assetCrossOrigin, 'stylesheet') ??
+                  asset.attrs?.crossOrigin,
+              },
             },
-          }) satisfies RouterManagedTag,
-      )
+          ]
+        }
+
+        if (asset.tag === 'style') {
+          return [
+            {
+              tag: 'style',
+              attrs: asset.attrs,
+              children: asset.children,
+              ...(asset.inlineCss ? { inlineCss: true as const } : {}),
+            },
+          ]
+        }
+
+        return []
+      })
 
     return assets
   })

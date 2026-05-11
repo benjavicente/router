@@ -1,6 +1,6 @@
-import { Link, Outlet } from '@benjavicente/solid-router'
+import { Link, Outlet, createFileRoute } from '@benjavicente/solid-router'
 
-export const Route = createFileRoute({
+export const Route = createFileRoute('/_first/_second-layout')({
   component: LayoutComponent,
 })
 

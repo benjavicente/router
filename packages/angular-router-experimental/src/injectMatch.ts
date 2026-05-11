@@ -2,7 +2,7 @@ import * as Angular from '@angular/core'
 import { deepEqual, invariant } from '@benjavicente/router-core'
 import { MATCH_CONTEXT_INJECTOR_TOKEN } from './matchInjectorToken'
 import { injectRouter } from './injectRouter'
-import { injectStore } from './injectStore'
+import { injectStore } from './store/injectStore'
 import type {
   AnyRouter,
   MakeRouteMatch,
@@ -12,6 +12,11 @@ import type {
   ThrowConstraint,
   ThrowOrOptional,
 } from '@benjavicente/router-core'
+
+const dummyStore = {
+  get: () => undefined,
+  subscribe: () => ({ unsubscribe: () => {} }),
+} as any
 
 export interface InjectMatchBaseOptions<
   TRouter extends AnyRouter,
@@ -49,8 +54,8 @@ export type InjectMatchResult<
   TSelected,
 > = unknown extends TSelected
   ? TStrict extends true
-  ? MakeRouteMatch<TRouter['routeTree'], TFrom, TStrict>
-  : MakeRouteMatchUnion<TRouter>
+    ? MakeRouteMatch<TRouter['routeTree'], TFrom, TStrict>
+    : MakeRouteMatchUnion<TRouter>
   : TSelected
 
 export function injectMatch<
@@ -75,48 +80,54 @@ export function injectMatch<
     ? undefined
     : Angular.inject(MATCH_CONTEXT_INJECTOR_TOKEN)
 
+  const match = injectStore(
+    opts.from
+      ? router.stores.getRouteMatchStore(opts.from)
+      : () => {
+          const matchId = nearestMatch?.matchId()
+          return matchId
+            ? (router.stores.matchStores.get(matchId) ?? dummyStore)
+            : dummyStore
+        },
+    (d) => d,
+  )
   const pendingRouteIds = injectStore(
     router.stores.pendingRouteIds,
-    (s) => s,
+    (ids) => ids,
   )
   const isTransitioning = injectStore(
     router.stores.isTransitioning,
-    (s) => s,
+    (value) => value,
   )
 
-  const match = () => {
-    if (opts.from) {
-      return router.stores.getMatchStoreByRouteId(opts.from).state
-    }
+  return Angular.computed(
+    () => {
+      const selectedMatch = match()
 
-    return nearestMatch?.match()
-  }
-
-  return Angular.computed(() => {
-    const selectedMatch = match()
-
-    if (selectedMatch !== undefined) {
-      return opts.select ? opts.select(selectedMatch as any) : selectedMatch
-    }
-
-    const hasPendingMatch = opts.from
-      ? Boolean(pendingRouteIds()[opts.from])
-      : nearestMatch?.hasPending() ?? false
-
-    if (
-      !hasPendingMatch &&
-      !isTransitioning() &&
-      (opts.shouldThrow ?? true)
-    ) {
-      if (process.env.NODE_ENV !== 'production') {
-        throw new Error(
-          `Invariant failed: Could not find ${opts.from ? `an active match from "${opts.from}"` : 'a nearest match!'}`,
-        )
+      if (selectedMatch !== undefined) {
+        return opts.select ? opts.select(selectedMatch as any) : selectedMatch
       }
 
-      invariant()
-    }
+      const hasPendingMatch = opts.from
+        ? Boolean(pendingRouteIds()[opts.from!])
+        : (nearestMatch?.hasPending() ?? false)
 
-    return undefined
-  }, { equal: deepEqual }) as any
+      if (
+        !hasPendingMatch &&
+        !isTransitioning() &&
+        (opts.shouldThrow ?? true)
+      ) {
+        if (process.env.NODE_ENV !== 'production') {
+          throw new Error(
+            `Invariant failed: Could not find ${opts.from ? `an active match from "${opts.from}"` : 'a nearest match!'}`,
+          )
+        }
+
+        invariant()
+      }
+
+      return undefined
+    },
+    { equal: deepEqual },
+  ) as any
 }

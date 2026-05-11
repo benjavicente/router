@@ -1,6 +1,6 @@
 import { Component } from '@angular/core'
 import { injectRouter } from './injectRouter'
-import { injectStore } from './injectStore'
+import { injectStore } from './store/injectStore'
 import { injectRender } from './renderer/injectRender'
 import { RouteMatch } from './Match'
 import { injectSsrScrollRestorationScript } from './ssr-scroll-restoration'
@@ -17,7 +17,7 @@ import { injectTransitionerSetup } from './transitioner'
 export class Matches {
   router = injectRouter()
 
-  private matchId = injectStore(this.router.stores.firstMatchId, (id) => id)
+  private matchId = injectStore(this.router.stores.firstId, (id) => id)
 
   private ssrScrollRestoration = injectSsrScrollRestorationScript()
 

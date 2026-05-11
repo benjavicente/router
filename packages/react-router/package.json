@@ -1,6 +1,6 @@
 {
   "name": "@benjavicente/react-router",
-  "version": "1.168.10",
+  "version": "1.169.2",
   "description": "Modern and scalable routing for React applications",
   "author": "Tanner Linsley",
   "license": "MIT",
@@ -48,6 +48,10 @@
   "module": "dist/esm/index.js",
   "exports": {
     ".": {
+      "react-server": {
+        "types": "./dist/esm/index.rsc.d.ts",
+        "default": "./dist/esm/index.rsc.js"
+      },
       "import": {
         "types": "./dist/esm/index.d.ts",
         "development": "./dist/esm/index.dev.js",

@@ -20,3 +20,4 @@ packages:
   - 'e2e/react-start/*'
   - 'e2e/solid-start/*'
   - 'e2e/vue-start/*'
+  - 'e2e/eslint-plugin-start'

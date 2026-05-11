@@ -4,6 +4,7 @@ import {
   deepEqual,
   escapeHtml,
   getAssetCrossOrigin,
+  isInlinableStylesheet,
   resolveManifestAssetLink,
 } from '@benjavicente/router-core'
 import { isServer } from '@benjavicente/router-core/isServer'
@@ -103,21 +104,43 @@ function buildTagsFromMatches(
     .map((match) => manifest?.routes[match.routeId]?.assets ?? [])
     .filter(Boolean)
     .flat(1)
-    .filter((asset) => asset.tag === 'link')
-    .map(
-      (asset) =>
-        ({
-          tag: 'link',
-          attrs: {
-            ...asset.attrs,
-            crossOrigin:
-              getAssetCrossOrigin(assetCrossOrigin, 'stylesheet') ??
-              asset.attrs?.crossOrigin,
-            suppressHydrationWarning: true,
-            nonce,
+    .flatMap((asset): Array<RouterManagedTag> => {
+      if (asset.tag === 'link') {
+        if (isInlinableStylesheet(manifest, asset)) {
+          return []
+        }
+
+        return [
+          {
+            tag: 'link',
+            attrs: {
+              ...asset.attrs,
+              crossOrigin:
+                getAssetCrossOrigin(assetCrossOrigin, 'stylesheet') ??
+                asset.attrs?.crossOrigin,
+              suppressHydrationWarning: true,
+              nonce,
+            },
           },
-        }) satisfies RouterManagedTag,
-    )
+        ]
+      }
+
+      if (asset.tag === 'style') {
+        return [
+          {
+            tag: 'style',
+            attrs: {
+              ...asset.attrs,
+              nonce,
+            },
+            children: asset.children,
+            ...(asset.inlineCss ? { inlineCss: true as const } : {}),
+          },
+        ]
+      }
+
+      return []
+    })
 
   const preloadLinks: Array<RouterManagedTag> = []
   matches
@@ -194,14 +217,14 @@ export const useTags = (assetCrossOrigin?: AssetCrossOriginConfig) => {
     return buildTagsFromMatches(
       router,
       nonce,
-      router.stores.activeMatchesSnapshot.state,
+      router.stores.matches.get(),
       assetCrossOrigin,
     )
   }
 
   // eslint-disable-next-line react-hooks/rules-of-hooks -- condition is static
   const routeMeta = useStore(
-    router.stores.activeMatchesSnapshot,
+    router.stores.matches,
     (matches) => {
       return matches.map((match) => match.meta!).filter(Boolean)
     },
@@ -282,7 +305,7 @@ export const useTags = (assetCrossOrigin?: AssetCrossOriginConfig) => {
 
   // eslint-disable-next-line react-hooks/rules-of-hooks -- condition is static
   const links = useStore(
-    router.stores.activeMatchesSnapshot,
+    router.stores.matches,
     (matches) => {
       const constructed = matches
         .map((match) => match.links!)
@@ -304,21 +327,43 @@ export const useTags = (assetCrossOrigin?: AssetCrossOriginConfig) => {
         .map((match) => manifest?.routes[match.routeId]?.assets ?? [])
         .filter(Boolean)
         .flat(1)
-        .filter((asset) => asset.tag === 'link')
-        .map(
-          (asset) =>
-            ({
-              tag: 'link',
-              attrs: {
-                ...asset.attrs,
-                crossOrigin:
-                  getAssetCrossOrigin(assetCrossOrigin, 'stylesheet') ??
-                  asset.attrs?.crossOrigin,
-                suppressHydrationWarning: true,
-                nonce,
+        .flatMap((asset): Array<RouterManagedTag> => {
+          if (asset.tag === 'link') {
+            if (isInlinableStylesheet(manifest, asset)) {
+              return []
+            }
+
+            return [
+              {
+                tag: 'link',
+                attrs: {
+                  ...asset.attrs,
+                  crossOrigin:
+                    getAssetCrossOrigin(assetCrossOrigin, 'stylesheet') ??
+                    asset.attrs?.crossOrigin,
+                  suppressHydrationWarning: true,
+                  nonce,
+                },
               },
-            }) satisfies RouterManagedTag,
-        )
+            ]
+          }
+
+          if (asset.tag === 'style') {
+            return [
+              {
+                tag: 'style',
+                attrs: {
+                  ...asset.attrs,
+                  nonce,
+                },
+                children: asset.children,
+                ...(asset.inlineCss ? { inlineCss: true as const } : {}),
+              },
+            ]
+          }
+
+          return []
+        })
 
       return [...constructed, ...assets]
     },
@@ -327,7 +372,7 @@ export const useTags = (assetCrossOrigin?: AssetCrossOriginConfig) => {
 
   // eslint-disable-next-line react-hooks/rules-of-hooks -- condition is static
   const preloadLinks = useStore(
-    router.stores.activeMatchesSnapshot,
+    router.stores.matches,
     (matches) => {
       const preloadLinks: Array<RouterManagedTag> = []
 
@@ -359,7 +404,7 @@ export const useTags = (assetCrossOrigin?: AssetCrossOriginConfig) => {
 
   // eslint-disable-next-line react-hooks/rules-of-hooks -- condition is static
   const styles = useStore(
-    router.stores.activeMatchesSnapshot,
+    router.stores.matches,
     (matches) =>
       (
         matches
@@ -379,7 +424,7 @@ export const useTags = (assetCrossOrigin?: AssetCrossOriginConfig) => {
 
   // eslint-disable-next-line react-hooks/rules-of-hooks -- condition is static
   const headScripts: Array<RouterManagedTag> = useStore(
-    router.stores.activeMatchesSnapshot,
+    router.stores.matches,
     (matches) =>
       (
         matches

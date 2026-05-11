@@ -15,11 +15,11 @@
   "dependencies": {
     "@tailwindcss/vite": "^4.2.2",
     "@tanstack/solid-devtools": "^0.7.0",
-    "@benjavicente/solid-router": "^1.168.9",
-    "@benjavicente/solid-router-devtools": "^1.166.11",
-    "@benjavicente/solid-router-ssr-query": "^1.166.10",
-    "@benjavicente/solid-start": "^1.167.15",
-    "@benjavicente/router-plugin": "^1.167.12",
+    "@benjavicente/solid-router": "^1.169.2",
+    "@benjavicente/solid-router-devtools": "^1.166.13",
+    "@benjavicente/solid-router-ssr-query": "^1.166.12",
+    "@benjavicente/solid-start": "^1.167.62",
+    "@benjavicente/router-plugin": "^1.167.35",
     "solid-js": "^1.9.10",
     "tailwindcss": "^4.2.2"
   },
@@ -34,7 +34,7 @@
     "prettier": "^3.6.2",
     "typescript": "^6.0.2",
     "vite": "^8.0.0",
-    "vitest": "^3.2.4",
+    "vitest": "^4.1.4",
     "web-vitals": "^5.1.0"
   }
 }

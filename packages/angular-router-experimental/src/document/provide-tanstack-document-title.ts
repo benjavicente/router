@@ -1,6 +1,6 @@
 import { DOCUMENT } from '@angular/common'
 import * as Angular from '@angular/core'
-import { injectStore } from '../injectStore'
+import { injectStore } from '../store/injectStore'
 import { buildMatchManagedDocumentContent } from './build-match-managed-document'
 import { TANSTACK_DOCUMENT_ROUTER } from './document-router-token'
 import type { AnyRouter } from '@benjavicente/router-core'
@@ -10,14 +10,13 @@ export function installTanstackDocumentTitle(injectedRouter: AnyRouter) {
   const document = Angular.inject(DOCUMENT)
   const destroyRef = Angular.inject(Angular.DestroyRef)
   const activeMatches = injectStore(
-    injectedRouter.stores.activeMatchesSnapshot,
+    injectedRouter.stores.matches,
     (matches) => matches,
   )
 
   const initialTitle = document.title
-  let currentTitle: string | undefined = buildMatchManagedDocumentContent(
-    injectedRouter,
-  ).title
+  let currentTitle: string | undefined =
+    buildMatchManagedDocumentContent(injectedRouter).title
 
   const applyTitle = (next?: string) => {
     if (next !== undefined) {

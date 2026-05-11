@@ -1,5 +1,131 @@
 # @benjavicente/router-generator
 
+## 1.166.42
+
+### Patch Changes
+
+- Bump jiti dependency to 2.7.0. ([#7355](https://github.com/TanStack/router/pull/7355))
+
+## 1.166.41
+
+### Patch Changes
+
+- Updated dependencies [[`35e88f0`](https://github.com/TanStack/router/commit/35e88f04996d71019a1868b7b06ecb4ddbc9df9e)]:
+  - @benjavicente/router-core@1.169.2
+
+## 1.166.40
+
+### Patch Changes
+
+- Parse plain TypeScript files without JSX when a filename is available, preventing angle-bracket type assertions from being interpreted as JSX during route and Start import-protection transforms. ([#7342](https://github.com/TanStack/router/pull/7342))
+
+- Updated dependencies [[`056337e`](https://github.com/TanStack/router/commit/056337ef02ccbeaf45ec8533a227761be869e8f3)]:
+  - @benjavicente/router-utils@1.161.8
+
+## 1.166.39
+
+### Patch Changes
+
+- Updated dependencies [[`4a1e63f`](https://github.com/TanStack/router/commit/4a1e63f1d1230b1ed8234609acad4639d8982c13)]:
+  - @benjavicente/router-core@1.169.1
+
+## 1.166.38
+
+### Patch Changes
+
+- Updated dependencies [[`c992495`](https://github.com/TanStack/router/commit/c992495bf4010ff4c3597bb1f3b1ba02594e857e)]:
+  - @benjavicente/router-core@1.169.0
+
+## 1.166.37
+
+### Patch Changes
+
+- Updated dependencies [[`b5c4183`](https://github.com/TanStack/router/commit/b5c4183ab8b44be8a75647b7f7b588ad7c146ece)]:
+  - @benjavicente/router-core@1.168.18
+
+## 1.166.36
+
+### Patch Changes
+
+- Updated dependencies [[`493148b`](https://github.com/TanStack/router/commit/493148bc5378b7f9de1544d87f6aaa425c12eb34)]:
+  - @benjavicente/router-core@1.168.17
+
+## 1.166.35
+
+### Patch Changes
+
+- Use jiti instead of tsx to load virtual route config files. ([#7261](https://github.com/TanStack/router/pull/7261))
+
+## 1.166.34
+
+### Patch Changes
+
+- Updated dependencies [[`4d864ee`](https://github.com/TanStack/router/commit/4d864eebbd184265eabb563d326ab409c93feb17)]:
+  - @benjavicente/router-core@1.168.16
+
+## 1.166.33
+
+### Patch Changes
+
+- Updated dependencies [[`91a7089`](https://github.com/TanStack/router/commit/91a708989d00537a21911e74ff60bbfec8266295)]:
+  - @benjavicente/router-utils@1.161.7
+
+## 1.166.32
+
+### Patch Changes
+
+- Updated dependencies [[`16f6892`](https://github.com/TanStack/router/commit/16f6892d6b7ceadf606677c5a40e743f29163aa6)]:
+  - @benjavicente/router-core@1.168.15
+
+## 1.166.31
+
+### Patch Changes
+
+- Fix malformed generated paths when a `physical()` mount points at a subtree rooted by `__virtual.ts`, including nested virtual layouts that mount additional physical routes. ([#7169](https://github.com/TanStack/router/pull/7169))
+
+## 1.166.30
+
+### Patch Changes
+
+- Fix route file transforms to preserve route ID quoting, handle more exported `Route` patterns, and avoid incorrect import rewrites in edge cases. ([#7167](https://github.com/TanStack/router/pull/7167))
+
+  Improve transform robustness with clearer route-call detection, safer import removal, and expanded test coverage for quote preservation, constructor swaps, and unsupported route definitions.
+
+## 1.166.29
+
+### Patch Changes
+
+- Updated dependencies [[`0e2c900`](https://github.com/TanStack/router/commit/0e2c9003c18ae07c09969189c028f277ea562a7a)]:
+  - @benjavicente/router-core@1.168.14
+
+## 1.166.28
+
+### Patch Changes
+
+- Updated dependencies [[`812792f`](https://github.com/TanStack/router/commit/812792fbda3caf97b300770855cf5641252f413b)]:
+  - @benjavicente/router-core@1.168.13
+
+## 1.166.27
+
+### Patch Changes
+
+- Updated dependencies [[`8ec9ca9`](https://github.com/TanStack/router/commit/8ec9ca97b472779de878c2a6510f21deb24d386c)]:
+  - @benjavicente/router-core@1.168.12
+
+## 1.166.26
+
+### Patch Changes
+
+- Updated dependencies [[`6355bb7`](https://github.com/TanStack/router/commit/6355bb75f7637ba77f06a923c18fdaf37720bb48)]:
+  - @benjavicente/router-core@1.168.11
+
+## 1.166.25
+
+### Patch Changes
+
+- Updated dependencies [[`459057c`](https://github.com/TanStack/router/commit/459057cd2d90cff20d20e51d4964b0a8c950555e)]:
+  - @benjavicente/router-core@1.168.10
+
 ## 1.166.24
 
 ### Patch Changes

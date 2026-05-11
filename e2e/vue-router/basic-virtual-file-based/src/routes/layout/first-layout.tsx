@@ -1,6 +1,6 @@
-import { Outlet } from '@benjavicente/vue-router'
+import { Outlet, createFileRoute } from '@benjavicente/vue-router'
 
-export const Route = createFileRoute({
+export const Route = createFileRoute('/_first')({
   component: LayoutComponent,
 })
 

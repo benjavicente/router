@@ -10,9 +10,9 @@
   },
   "dependencies": {
     "@tailwindcss/vite": "^4.2.2",
-    "@benjavicente/router-plugin": "^1.167.12",
-    "@benjavicente/vue-router": "^1.168.9",
-    "@benjavicente/vue-router-devtools": "^1.166.11",
+    "@benjavicente/router-plugin": "^1.167.35",
+    "@benjavicente/vue-router": "^1.169.2",
+    "@benjavicente/vue-router-devtools": "^1.166.13",
     "@benjavicente/zod-adapter": "^1.166.9",
     "redaxios": "^0.5.1",
     "tailwindcss": "^4.2.2",
