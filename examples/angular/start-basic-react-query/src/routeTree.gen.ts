@@ -9,12 +9,18 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as OtherRouteRouteImport } from './routes/other-route'
 import { Route as PostsRouteRouteImport } from './routes/posts.route'
 import { Route as LazyRouteRouteImport } from './routes/lazy.route'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as PostsIndexRouteImport } from './routes/posts.index'
 import { Route as PostsPostIdRouteImport } from './routes/posts.$postId'
 
+const OtherRouteRoute = OtherRouteRouteImport.update({
+  id: '/other-route',
+  path: '/other-route',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const PostsRouteRoute = PostsRouteRouteImport.update({
   id: '/posts',
   path: '/posts',
@@ -45,12 +51,14 @@ export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/lazy': typeof LazyRouteRoute
   '/posts': typeof PostsRouteRouteWithChildren
+  '/other-route': typeof OtherRouteRoute
   '/posts/$postId': typeof PostsPostIdRoute
   '/posts/': typeof PostsIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/lazy': typeof LazyRouteRoute
+  '/other-route': typeof OtherRouteRoute
   '/posts/$postId': typeof PostsPostIdRoute
   '/posts': typeof PostsIndexRoute
 }
@@ -59,25 +67,47 @@ export interface FileRoutesById {
   '/': typeof IndexRoute
   '/lazy': typeof LazyRouteRoute
   '/posts': typeof PostsRouteRouteWithChildren
+  '/other-route': typeof OtherRouteRoute
   '/posts/$postId': typeof PostsPostIdRoute
   '/posts/': typeof PostsIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/lazy' | '/posts' | '/posts/$postId' | '/posts/'
+  fullPaths:
+    | '/'
+    | '/lazy'
+    | '/posts'
+    | '/other-route'
+    | '/posts/$postId'
+    | '/posts/'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/lazy' | '/posts/$postId' | '/posts'
-  id: '__root__' | '/' | '/lazy' | '/posts' | '/posts/$postId' | '/posts/'
+  to: '/' | '/lazy' | '/other-route' | '/posts/$postId' | '/posts'
+  id:
+    | '__root__'
+    | '/'
+    | '/lazy'
+    | '/posts'
+    | '/other-route'
+    | '/posts/$postId'
+    | '/posts/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   LazyRouteRoute: typeof LazyRouteRoute
   PostsRouteRoute: typeof PostsRouteRouteWithChildren
+  OtherRouteRoute: typeof OtherRouteRoute
 }
 
 declare module '@benjavicente/angular-router-experimental' {
   interface FileRoutesByPath {
+    '/other-route': {
+      id: '/other-route'
+      path: '/other-route'
+      fullPath: '/other-route'
+      preLoaderRoute: typeof OtherRouteRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/posts': {
       id: '/posts'
       path: '/posts'
@@ -134,6 +164,7 @@ const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   LazyRouteRoute: LazyRouteRoute,
   PostsRouteRoute: PostsRouteRouteWithChildren,
+  OtherRouteRoute: OtherRouteRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

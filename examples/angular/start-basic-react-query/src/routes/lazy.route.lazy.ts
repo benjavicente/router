@@ -6,7 +6,7 @@ export const Route = createLazyFileRoute('/lazy')({
 })
 
 @Component({
-  selector: 'lazy-route-component',
+  selector: 'lazy-route-component-lazy',
   standalone: true,
   template: `
     <div class="space-y-4">

@@ -40,7 +40,7 @@ export const Route = createRootRouteWithContext<{
 })
 
 @Component({
-  selector: 'root-route',
+  selector: 'root-route-index',
   standalone: true,
   imports: [Outlet, Link],
   template: `

@@ -39,7 +39,11 @@ import {
   replaceBackslash,
   trimPathLeft,
 } from './utils'
-import { fillTemplate, getTargetTemplate } from './template'
+import {
+  fillTemplate,
+  getAngularRouteSelector,
+  getTargetTemplate,
+} from './template'
 import { transform } from './transform/transform'
 import { validateRouteParams } from './validate-route-params'
 import type { GeneratorPlugin } from './plugin/types'
@@ -1023,6 +1027,10 @@ ${acc.routeTree.map((child) => `${child.variableName}Route: typeof ${getResolved
           {
             tsrImports: tLazyRouteTemplate.imports.tsrImports(),
             tsrPath: escapedRoutePath.replaceAll(/\{(.+?)\}/gm, '$1'),
+            tsrSelector: getAngularRouteSelector(
+              'lazy-route-component',
+              node.routePath ?? '',
+            ),
             tsrExportStart:
               tLazyRouteTemplate.imports.tsrExportStart(escapedRoutePath),
             tsrExportEnd: tLazyRouteTemplate.imports.tsrExportEnd(),
@@ -1051,6 +1059,10 @@ ${acc.routeTree.map((child) => `${child.variableName}Route: typeof ${getResolved
           {
             tsrImports: tRouteTemplate.imports.tsrImports(),
             tsrPath: escapedRoutePath.replaceAll(/\{(.+?)\}/gm, '$1'),
+            tsrSelector: getAngularRouteSelector(
+              'route-component',
+              node.routePath ?? '',
+            ),
             tsrExportStart:
               tRouteTemplate.imports.tsrExportStart(escapedRoutePath),
             tsrExportEnd: tRouteTemplate.imports.tsrExportEnd(),
@@ -1333,6 +1345,7 @@ ${acc.routeTree.map((child) => `${child.variableName}Route: typeof ${getResolved
         {
           tsrImports: rootTemplate.imports.tsrImports(),
           tsrPath: rootPathId,
+          tsrSelector: getAngularRouteSelector('root-route', rootPathId),
           tsrExportStart: rootTemplate.imports.tsrExportStart(),
           tsrExportEnd: rootTemplate.imports.tsrExportEnd(),
         },

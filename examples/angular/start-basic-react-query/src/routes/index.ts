@@ -19,7 +19,7 @@ export const Route = createFileRoute('/')({
 })
 
 @Component({
-  selector: 'route-component',
+  selector: 'route-component-index',
   standalone: true,
   template: `
     <div class="space-y-4">

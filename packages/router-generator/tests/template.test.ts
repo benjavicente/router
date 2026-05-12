@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest'
-import { getTargetTemplate } from '../src/template'
+import { getAngularRouteSelector, getTargetTemplate } from '../src/template'
 
 describe('template', () => {
   it('escapes quoted route paths in React route templates', () => {
@@ -46,6 +46,21 @@ describe('template', () => {
     expect(template.lazyRoute.imports.tsrExportStart(`/say-"hi"`)).toBe(
       `export const Route = createLazyFileRoute(${JSON.stringify('/say-"hi"')})(`,
     )
+  })
+
+  it('generates valid unique Angular selectors from route paths', () => {
+    expect(getAngularRouteSelector('route-component', '/')).toBe(
+      'route-component-index',
+    )
+    expect(getAngularRouteSelector('route-component', '/posts/')).toBe(
+      'route-component-posts-index',
+    )
+    expect(
+      getAngularRouteSelector('route-component', '/posts/{id}/detail'),
+    ).toBe('route-component-posts-id-detail')
+    expect(
+      getAngularRouteSelector('lazy-route-component', '/posts/$postId'),
+    ).toBe('lazy-route-component-posts-post-id')
   })
 
   it('supports custom Angular router package route templates', () => {

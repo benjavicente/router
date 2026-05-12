@@ -6,7 +6,7 @@ export const Route = createFileRoute('/posts/')({
 })
 
 @Component({
-  selector: 'route-component',
+  selector: 'route-component-posts-index',
   standalone: true,
   template: `
     <div class="space-y-2">
@@ -18,5 +18,4 @@ export const Route = createFileRoute('/posts/')({
     </div>
   `,
 })
-class PostsIndexComponent {
-}
+class PostsIndexComponent {}

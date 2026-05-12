@@ -25,7 +25,7 @@ export const Route = createFileRoute('/posts')({
 })
 
 @Component({
-  selector: 'route-component',
+  selector: 'route-component-posts',
   standalone: true,
   imports: [Link, Outlet],
   template: `

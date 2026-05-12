@@ -87,7 +87,7 @@ class PostNotFoundComponent {}
 class PostPendingComponent {}
 
 @Component({
-  selector: 'route-component',
+  selector: 'route-component-posts-post-id',
   standalone: true,
   template: `
     <div class="space-y-3">

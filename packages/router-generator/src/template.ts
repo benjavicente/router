@@ -2,15 +2,16 @@ import { format } from './utils'
 import type { Config } from './config'
 
 type TemplateTag = 'tsrImports' | 'tsrPath' | 'tsrExportStart' | 'tsrExportEnd'
+type TemplateValueTag = TemplateTag | 'tsrSelector'
 
 export function fillTemplate(
   config: Config,
   template: string,
-  values: Record<TemplateTag, string>,
+  values: Record<TemplateValueTag, string>,
 ) {
   const replaced = template.replace(
     /%%(\w+)%%/g,
-    (_, key) => values[key as TemplateTag] || '',
+    (_, key) => values[key as TemplateValueTag] || '',
   )
   return format(replaced, config)
 }
@@ -46,6 +47,29 @@ export type TargetTemplate = {
 
 function serializeRoutePath(routePath: string) {
   return JSON.stringify(routePath)
+}
+
+export function getAngularRouteSelector(prefix: string, routePath: string) {
+  const segments = routePath
+    .replaceAll('$', '')
+    .replaceAll(/\{(.+?)\}/g, '$1')
+    .split('/')
+    .filter(Boolean)
+
+  if (routePath === '/' || segments.length === 0) {
+    segments.push('index')
+  } else if (routePath.endsWith('/')) {
+    segments.push('index')
+  }
+
+  const routeSelector = segments
+    .join('-')
+    .replaceAll(/([a-z0-9])([A-Z])/g, '$1-$2')
+    .replaceAll(/[^a-zA-Z0-9]+/g, '-')
+    .replaceAll(/^-+|-+$/g, '')
+    .toLowerCase()
+
+  return `${prefix}-${routeSelector || 'index'}`
 }
 
 export function getTargetTemplate(config: Config): TargetTemplate {
@@ -231,7 +255,7 @@ export function getTargetTemplate(config: Config): TargetTemplate {
               '%%tsrImports%%',
               '\n\n',
               '%%tsrExportStart%%{\n component: () => RootComponent\n }%%tsrExportEnd%%\n\n',
-              '@Component({\n selector: "root-route",\n standalone: true,\n imports: [Outlet],\n template: `<div>Hello "%%tsrPath%%"!</div><outlet />`,\n})\n',
+              '@Component({\n selector: "%%tsrSelector%%",\n standalone: true,\n imports: [Outlet],\n template: `<div>Hello "%%tsrPath%%"!</div><outlet />`,\n})\n',
               'class RootComponent {}\n',
             ].join(''),
           imports: {
@@ -248,7 +272,7 @@ export function getTargetTemplate(config: Config): TargetTemplate {
               '%%tsrImports%%',
               '\n\n',
               '%%tsrExportStart%%{\n component: () => RouteComponent\n }%%tsrExportEnd%%\n\n',
-              '@Component({\n selector: "route-component",\n standalone: true,\n template: `<div>Hello "%%tsrPath%%"!</div>`,\n})\n',
+              '@Component({\n selector: "%%tsrSelector%%",\n standalone: true,\n template: `<div>Hello "%%tsrPath%%"!</div>`,\n})\n',
               'class RouteComponent {}\n',
             ].join(''),
           imports: {
@@ -266,7 +290,7 @@ export function getTargetTemplate(config: Config): TargetTemplate {
               '%%tsrImports%%',
               '\n\n',
               '%%tsrExportStart%%{\n component: () => RouteComponent\n }%%tsrExportEnd%%\n\n',
-              '@Component({\n selector: "lazy-route-component",\n standalone: true,\n template: `<div>Hello "%%tsrPath%%"!</div>`,\n})\n',
+              '@Component({\n selector: "%%tsrSelector%%",\n standalone: true,\n template: `<div>Hello "%%tsrPath%%"!</div>`,\n})\n',
               'class RouteComponent {}\n',
             ].join(''),
           imports: {
