@@ -17,6 +17,11 @@ import {
 import { TanStackRouterDevtoolsPanelCore } from '@benjavicente/router-devtools-core'
 import type { AnyRouter } from '@benjavicente/angular-router-experimental'
 
+type RouterDevtoolsStore<TValue> = {
+  get: () => TValue
+  subscribe: (listener: (value: TValue) => void) => { unsubscribe: () => void }
+}
+
 export interface TanStackRouterDevtoolsPanelOptions {
   /**
    * The standard React style object used to style a component with inline styles
@@ -51,6 +56,7 @@ export interface TanStackRouterDevtoolsPanelOptions {
 @Component({
   selector: 'tanstack-router-devtools-panel',
   template: '',
+  standalone: true,
   styles: `
     :host {
       display: block;
@@ -74,7 +80,12 @@ export class TanStackRouterDevtoolsPanel {
 
   private contextRouter = injectRouter({ warn: false })
   private router = computed(() => this.inputRouter() ?? this.contextRouter)
-  private routerState = injectStore(() => this.router().stores.__store)
+  private routerState = injectStore(
+    () =>
+      this.router().stores.__store as RouterDevtoolsStore<
+        ReturnType<ReturnType<typeof this.router>['stores']['__store']['get']>
+      >,
+  )
 
   private injector = inject(EnvironmentInjector)
 

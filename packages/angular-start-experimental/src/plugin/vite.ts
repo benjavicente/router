@@ -1,10 +1,13 @@
 import { fileURLToPath } from 'node:url'
 import {
-  TanStackStartVitePluginCore,
-  VITE_ENVIRONMENT_NAMES,
-} from '@benjavicente/start-plugin-core'
+  START_ENVIRONMENT_NAMES,
+  tanStackStartVite,
+} from '@benjavicente/start-plugin-core/vite'
 import path from 'pathe'
-import type { TanStackStartInputConfig } from '@benjavicente/start-plugin-core'
+import type {
+  TanStackStartViteInputConfig,
+  TanStackStartVitePluginCoreOptions,
+} from '@benjavicente/start-plugin-core/vite'
 import type { PluginOption } from 'vite'
 
 const currentDir = path.dirname(fileURLToPath(import.meta.url))
@@ -22,16 +25,26 @@ const defaultEntryPaths = {
 }
 
 export function tanstackStart(
-  options?: TanStackStartInputConfig,
+  options?: TanStackStartViteInputConfig,
 ): Array<PluginOption> {
+  const corePluginOpts: TanStackStartVitePluginCoreOptions = {
+    framework: 'angular',
+    defaultEntryPaths,
+    providerEnvironmentName: START_ENVIRONMENT_NAMES.server,
+    ssrIsProvider: true,
+    ssrResolverStrategy: {
+      type: 'default',
+    },
+  }
+
   return [
     {
       name: 'tanstack-angular-start-experimental:config',
       configEnvironment(environmentName, options) {
         return {
           optimizeDeps:
-            environmentName === VITE_ENVIRONMENT_NAMES.client ||
-            (environmentName === VITE_ENVIRONMENT_NAMES.server &&
+            environmentName === START_ENVIRONMENT_NAMES.client ||
+            (environmentName === START_ENVIRONMENT_NAMES.server &&
               options.optimizeDeps?.noDiscovery === false)
               ? {
                   exclude: [
@@ -44,12 +57,6 @@ export function tanstackStart(
         }
       },
     },
-    TanStackStartVitePluginCore(
-      {
-        framework: 'angular',
-        defaultEntryPaths,
-      },
-      options,
-    ),
+    tanStackStartVite(corePluginOpts, options),
   ]
 }

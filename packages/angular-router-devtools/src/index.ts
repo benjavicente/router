@@ -22,16 +22,14 @@ export const TanStackRouterDevtools: typeof Devtools.TanStackRouterDevtools =
     ? (NoOpTanStackRouterDevtools as any)
     : Devtools.TanStackRouterDevtools
 
-export const TanStackRouterDevtoolsInProd: typeof Devtools.TanStackRouterDevtools =
-  Devtools.TanStackRouterDevtools
+export { TanStackRouterDevtools as TanStackRouterDevtoolsInProd } from './tanstack-router-devtools'
 
 export const TanStackRouterDevtoolsPanel: typeof DevtoolsPanel.TanStackRouterDevtoolsPanel =
   process.env.NODE_ENV !== 'development'
     ? (NoOpTanStackRouterDevtoolsPanel as any)
     : DevtoolsPanel.TanStackRouterDevtoolsPanel
 
-export const TanStackRouterDevtoolsPanelInProd: typeof DevtoolsPanel.TanStackRouterDevtoolsPanel =
-  DevtoolsPanel.TanStackRouterDevtoolsPanel
+export { TanStackRouterDevtoolsPanel as TanStackRouterDevtoolsPanelInProd } from './tanstack-router-devtools-panel'
 
 export type { TanStackRouterDevtoolsOptions } from './tanstack-router-devtools'
 export type { TanStackRouterDevtoolsPanelOptions } from './tanstack-router-devtools-panel'

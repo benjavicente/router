@@ -18,6 +18,11 @@ import {
 import { TanStackRouterDevtoolsCore } from '@benjavicente/router-devtools-core'
 import type { AnyRouter } from '@benjavicente/angular-router-experimental'
 
+type RouterDevtoolsStore<TValue> = {
+  get: () => TValue
+  subscribe: (listener: (value: TValue) => void) => { unsubscribe: () => void }
+}
+
 export interface TanStackRouterDevtoolsOptions {
   /**
    * Set this true if you want the dev tools to default to being open
@@ -59,6 +64,7 @@ export interface TanStackRouterDevtoolsOptions {
 @Component({
   selector: 'router-devtools',
   template: '',
+  standalone: true,
 })
 export class TanStackRouterDevtools {
   initialIsOpen = input<TanStackRouterDevtoolsOptions['initialIsOpen']>()
@@ -81,7 +87,12 @@ export class TanStackRouterDevtools {
 
     const contextRouter = injectRouter({ warn: false })
     const router = computed(() => this.inputRouter() ?? contextRouter)
-    const routerState = injectStore(() => router().stores.__store)
+    const routerState = injectStore(
+      () =>
+        router().stores.__store as RouterDevtoolsStore<
+          ReturnType<ReturnType<typeof router>['stores']['__store']['get']>
+        >,
+    )
 
     const devtoolsSignal = computed(() =>
       untracked(() => {

@@ -57,6 +57,28 @@ const testGroups: Array<{ name: string; groupings: CodeSplitGroupings }> = [
 ]
 
 describe('code-splitter works', () => {
+  it('uses the configured Angular router package when splitting reference routes', () => {
+    const compileResult = compileCodeSplitReferenceRoute({
+      code: `
+import { createFileRoute } from '@scope/angular-router'
+const RouteComponent = () => null
+export const Route = createFileRoute('/')({
+  component: RouteComponent,
+})
+`,
+      filename: 'index.ts',
+      id: 'index.ts',
+      addHmr: false,
+      codeSplitGroupings: [['component']],
+      targetFramework: 'angular',
+      angularRouterPackage: '@scope/angular-router',
+    })
+
+    expect(compileResult?.code).toContain(
+      "import { lazyRouteComponent } from '@scope/angular-router';",
+    )
+  })
+
   describe.each(frameworks)('FRAMEWORK=%s', (framework) => {
     describe.each(testGroups)(
       'SPLIT_GROUP=$name',

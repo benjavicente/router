@@ -41,7 +41,7 @@ function injectOnRendered({
   const destroyRef = inject(DestroyRef)
   const location = injectStore(
     router.stores.resolvedLocation,
-    (resolvedLocation) => resolvedLocation?.state.__TSR_key,
+    (resolvedLocation) => resolvedLocation?.state?.__TSR_key,
   )
   const loadedAt = injectStore(router.stores.loadedAt, (value) => value)
 

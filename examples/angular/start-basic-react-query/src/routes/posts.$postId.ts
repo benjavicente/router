@@ -67,11 +67,19 @@ class PostNotFoundComponent {}
       >
         Loading post
       </p>
-      <div class="h-7 w-3/4 max-w-md animate-pulse rounded-md bg-gray-200 dark:bg-gray-800"></div>
+      <div
+        class="h-7 w-3/4 max-w-md animate-pulse rounded-md bg-gray-200 dark:bg-gray-800"
+      ></div>
       <div class="space-y-2">
-        <div class="h-3 w-full animate-pulse rounded bg-gray-100 dark:bg-gray-900"></div>
-        <div class="h-3 w-full animate-pulse rounded bg-gray-100 dark:bg-gray-900"></div>
-        <div class="h-3 w-5/6 animate-pulse rounded bg-gray-100 dark:bg-gray-900"></div>
+        <div
+          class="h-3 w-full animate-pulse rounded bg-gray-100 dark:bg-gray-900"
+        ></div>
+        <div
+          class="h-3 w-full animate-pulse rounded bg-gray-100 dark:bg-gray-900"
+        ></div>
+        <div
+          class="h-3 w-5/6 animate-pulse rounded bg-gray-100 dark:bg-gray-900"
+        ></div>
       </div>
     </div>
   `,

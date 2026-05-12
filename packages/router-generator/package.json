@@ -72,6 +72,9 @@
     "jiti": "^2.7.0",
     "magic-string": "^0.30.21",
     "prettier": "^3.5.0",
+    "recast": "^0.23.11",
+    "source-map": "^0.7.6",
+    "tsx": "^4.21.0",
     "zod": "^3.24.2"
   },
   "devDependencies": {

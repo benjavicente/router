@@ -140,8 +140,8 @@ export const routeTree = rootRouteImport
   ._addFileTypes<FileRouteTypes>()
 
 import type { getRouter } from './router.ts'
-import type { createStart } from '@benjavicente/angular-start-experimental'
-declare module '@benjavicente/angular-start-experimental' {
+import type { createStart } from '@benjavicente/angular-start'
+declare module '@benjavicente/angular-start' {
   interface Register {
     ssr: true
     router: Awaited<ReturnType<typeof getRouter>>

@@ -14,6 +14,32 @@ function makeNode(
 }
 
 describe('transform', () => {
+  it('uses the configured target module for route constructor imports', async () => {
+    const result = await transform({
+      source: [
+        "import { createFileRoute } from '@benjavicente/angular-router-experimental'",
+        '',
+        "export const Route = createFileRoute('/old')({})",
+      ].join('\n'),
+      ctx: {
+        target: 'angular',
+        targetModule: '@benjavicente/angular-router-experimental',
+        routeId: '/',
+        lazy: false,
+      },
+      node: makeNode(),
+    })
+
+    expect(result).toEqual({
+      result: 'modified',
+      output: [
+        "import { createFileRoute } from '@benjavicente/angular-router-experimental'",
+        '',
+        "export const Route = createFileRoute('/')({})",
+      ].join('\n'),
+    })
+  })
+
   it('does not treat root route exports as missing Route exports', async () => {
     const result = await transform({
       source: [

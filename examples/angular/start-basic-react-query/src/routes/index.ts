@@ -10,7 +10,8 @@ export const Route = createFileRoute('/')({
       },
       {
         name: 'description',
-        content: 'Home page for the Angular Start experimental scaffold example.',
+        content:
+          'Home page for the Angular Start experimental scaffold example.',
       },
     ],
   }),
@@ -23,14 +24,28 @@ export const Route = createFileRoute('/')({
   template: `
     <div class="space-y-4">
       <h2 class="text-xl font-semibold">Scaffold status</h2>
-      <ul class="list-disc space-y-2 pl-5 text-sm text-gray-700 dark:text-gray-300">
-        <li>The Angular Start packages exist and export the shared Start surface.</li>
-        <li>The Vite plugin now treats Angular as a first-class Start framework.</li>
-        <li>Client bootstrap now hydrates through the Angular Start experimental client package.</li>
-        <li>Server rendering now runs through a minimal Angular Start handler and document manager.</li>
+      <ul
+        class="list-disc space-y-2 pl-5 text-sm text-gray-700 dark:text-gray-300"
+      >
+        <li>
+          The Angular Start packages exist and export the shared Start surface.
+        </li>
+        <li>
+          The Vite plugin now treats Angular as a first-class Start framework.
+        </li>
+        <li>
+          Client bootstrap now hydrates through the Angular Start experimental
+          client package.
+        </li>
+        <li>
+          Server rendering now runs through a minimal Angular Start handler and
+          document manager.
+        </li>
         <li>
           TanStack Query (Angular) is provided via
-          <code class="rounded bg-gray-100 px-1 dark:bg-gray-800">provideTanStackQuery</code>
+          <code class="rounded bg-gray-100 px-1 dark:bg-gray-800"
+            >provideTanStackQuery</code
+          >
           with devtools in development.
         </li>
       </ul>

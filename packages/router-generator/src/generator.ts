@@ -1072,6 +1072,7 @@ ${acc.routeTree.map((child) => `${child.variableName}Route: typeof ${getResolved
         filename: node.fullPath,
         ctx: {
           target: this.config.target,
+          targetModule: this.targetTemplate.fullPkg,
           routeId: escapedRoutePath,
           lazy: node._fsRouteType === 'lazy',
         },

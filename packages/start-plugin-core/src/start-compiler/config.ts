@@ -4,6 +4,7 @@ import {
   getLookupKindsForEnv,
   isCompilerTransformEnabledForEnv,
 } from './compiler'
+import { getRouterPackageName, getStartPackageName } from '../frameworkPackages'
 import type { BuiltInLookupKind, LookupConfig } from './compiler'
 import type {
   CompileStartFrameworkOptions,
@@ -43,24 +44,26 @@ export function getLookupConfigurationsForEnv(
     compilerTransforms?: Array<StartCompilerImportTransform> | undefined
   },
 ): Array<LookupConfig> {
+  const startPackageName = getStartPackageName(framework)
+  const routerPackageName = getRouterPackageName(framework)
   const commonConfigs: Array<LookupConfig> = [
     {
-      libName: `@benjavicente/${framework}-start`,
+      libName: startPackageName,
       rootExport: 'createServerFn',
       kind: 'Root',
     },
     {
-      libName: `@benjavicente/${framework}-start`,
+      libName: startPackageName,
       rootExport: 'createIsomorphicFn',
       kind: 'IsomorphicFn',
     },
     {
-      libName: `@benjavicente/${framework}-start`,
+      libName: startPackageName,
       rootExport: 'createServerOnlyFn',
       kind: 'ServerOnlyFn',
     },
     {
-      libName: `@benjavicente/${framework}-start`,
+      libName: startPackageName,
       rootExport: 'createClientOnlyFn',
       kind: 'ClientOnlyFn',
     },
@@ -83,12 +86,12 @@ export function getLookupConfigurationsForEnv(
   if (env === 'client') {
     return [
       {
-        libName: `@benjavicente/${framework}-start`,
+        libName: startPackageName,
         rootExport: 'createMiddleware',
         kind: 'Root',
       },
       {
-        libName: `@benjavicente/${framework}-start`,
+        libName: startPackageName,
         rootExport: 'createStart',
         kind: 'Root',
       },
@@ -100,7 +103,7 @@ export function getLookupConfigurationsForEnv(
   const serverConfigs: Array<LookupConfig> = [
     ...commonConfigs,
     {
-      libName: `@benjavicente/${framework}-router`,
+      libName: routerPackageName,
       rootExport: 'ClientOnly',
       kind: 'ClientOnlyJSX',
     },

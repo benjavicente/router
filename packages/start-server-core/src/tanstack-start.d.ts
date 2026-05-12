@@ -22,6 +22,13 @@ declare module '#tanstack-start-server-fn-resolver' {
   ): Promise<ServerFn>
 }
 
+declare module '#tanstack-start-plugin-adapters' {
+  import type { AnySerializationAdapter } from '@benjavicente/router-core'
+
+  export const pluginSerializationAdapters: Array<AnySerializationAdapter>
+  export const hasPluginAdapters: boolean
+}
+
 declare module 'tanstack-start-injected-head-scripts:v' {
   export const injectedHeadScripts: string | undefined
 }

@@ -119,7 +119,7 @@ export function transform({
     routeCall.routeIdArg.start!,
     routeCall.routeIdArg.end!,
   )
-  const targetModule = `@benjavicente/${ctx.target}-router`
+  const targetModule = ctx.targetModule ?? `@benjavicente/${ctx.target}-router`
   const imports = parseTargetImports(ast.program.body, source, targetModule)
 
   const s = new MagicString(source)

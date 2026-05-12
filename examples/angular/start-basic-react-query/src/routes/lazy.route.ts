@@ -8,7 +8,8 @@ export const Route = createFileRoute('/lazy')({
       },
       {
         name: 'description',
-        content: 'Lazy route rendered through the Angular Start experimental adapter.',
+        content:
+          'Lazy route rendered through the Angular Start experimental adapter.',
       },
     ],
   }),

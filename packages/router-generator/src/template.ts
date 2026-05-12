@@ -216,6 +216,69 @@ export function getTargetTemplate(config: Config): TargetTemplate {
           },
         },
       }
+    case 'angular': {
+      const angularRouterPackage =
+        config.angularRouterPackage ??
+        '@benjavicente/angular-router-experimental'
+
+      return {
+        fullPkg: angularRouterPackage,
+        subPkg: 'angular-router-experimental',
+        rootRoute: {
+          template: () =>
+            [
+              'import { Component } from "@angular/core"\n',
+              '%%tsrImports%%',
+              '\n\n',
+              '%%tsrExportStart%%{\n component: () => RootComponent\n }%%tsrExportEnd%%\n\n',
+              '@Component({\n selector: "root-route",\n standalone: true,\n imports: [Outlet],\n template: `<div>Hello "%%tsrPath%%"!</div><outlet />`,\n})\n',
+              'class RootComponent {}\n',
+            ].join(''),
+          imports: {
+            tsrImports: () =>
+              `import { Outlet, createRootRoute } from '${angularRouterPackage}';`,
+            tsrExportStart: () => 'export const Route = createRootRoute(',
+            tsrExportEnd: () => ');',
+          },
+        },
+        route: {
+          template: () =>
+            [
+              'import { Component } from "@angular/core"\n',
+              '%%tsrImports%%',
+              '\n\n',
+              '%%tsrExportStart%%{\n component: () => RouteComponent\n }%%tsrExportEnd%%\n\n',
+              '@Component({\n selector: "route-component",\n standalone: true,\n template: `<div>Hello "%%tsrPath%%"!</div>`,\n})\n',
+              'class RouteComponent {}\n',
+            ].join(''),
+          imports: {
+            tsrImports: () =>
+              `import { createFileRoute } from '${angularRouterPackage}';`,
+            tsrExportStart: (routePath) =>
+              `export const Route = createFileRoute(${serializeRoutePath(routePath)})(`,
+            tsrExportEnd: () => ');',
+          },
+        },
+        lazyRoute: {
+          template: () =>
+            [
+              'import { Component } from "@angular/core"\n',
+              '%%tsrImports%%',
+              '\n\n',
+              '%%tsrExportStart%%{\n component: () => RouteComponent\n }%%tsrExportEnd%%\n\n',
+              '@Component({\n selector: "lazy-route-component",\n standalone: true,\n template: `<div>Hello "%%tsrPath%%"!</div>`,\n})\n',
+              'class RouteComponent {}\n',
+            ].join(''),
+          imports: {
+            tsrImports: () =>
+              `import { createLazyFileRoute } from '${angularRouterPackage}';`,
+            tsrExportStart: (routePath) =>
+              `export const Route = createLazyFileRoute(${serializeRoutePath(routePath)})(`,
+            tsrExportEnd: () => ');',
+          },
+        },
+      }
+    }
     default:
       throw new Error(`router-generator: Unknown target type: ${target}`)
   }

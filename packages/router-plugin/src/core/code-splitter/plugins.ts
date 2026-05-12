@@ -8,6 +8,7 @@ export type CompileCodeSplitReferenceRouteOptions = {
   codeSplitGroupings: CodeSplitGroupings
   deleteNodes?: Set<DeletableNodes>
   targetFramework: Config['target']
+  angularRouterPackage?: string
   filename: string
   id: string
   addHmr?: boolean

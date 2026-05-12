@@ -144,6 +144,39 @@ test('renders success route', async () => {
   await expect(screen.findByTestId('home')).resolves.toBeTruthy()
 })
 
+test('keeps renderer host elements hidden', async () => {
+  const router = makeRouter()
+
+  @Angular.Component({
+    imports: [RouterProvider],
+    template: '<router-provider [router]="router" />',
+    standalone: true,
+  })
+  class HostComponent {
+    router = router
+  }
+
+  await render(HostComponent)
+
+  await expect(screen.findByTestId('home')).resolves.toBeTruthy()
+
+  const selectors = [
+    'router-provider',
+    'router-matches',
+    'router-match',
+    'outlet',
+  ]
+
+  for (const selector of selectors) {
+    const elements = document.querySelectorAll(selector)
+    expect(elements.length).toBeGreaterThan(0)
+
+    for (const element of elements) {
+      expect(element.hasAttribute('hidden')).toBe(true)
+    }
+  }
+})
+
 // Intentionally skipped: pending-route UI during async load is not an Angular parity
 // target (see repo PARITY_MATRIX); PendingComponent often never wins the race vs success.
 test.skip('renders pending state and then success state', async () => {

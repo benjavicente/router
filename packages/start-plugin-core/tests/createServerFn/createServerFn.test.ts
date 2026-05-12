@@ -2,6 +2,7 @@ import { readFile, readdir } from 'node:fs/promises'
 import path from 'node:path'
 import { describe, expect, test, vi } from 'vitest'
 import { StartCompiler } from '../../src/start-compiler/compiler'
+import { getLookupConfigurationsForEnv } from '../../src/start-compiler/config'
 
 // Default test options for StartCompiler
 function getDefaultTestOptions(env: 'client' | 'server') {
@@ -63,6 +64,40 @@ async function compile(opts: {
 
 describe('createServerFn compiles correctly', async () => {
   const filenames = await getFilenames()
+
+  test('compiles angular experimental start imports', async () => {
+    const compiler = new StartCompiler({
+      env: 'client',
+      envName: 'client',
+      root: '/test',
+      framework: 'angular',
+      providerEnvName: 'ssr',
+      loadModule: async () => {},
+      lookupKinds: new Set(['ServerFn']),
+      lookupConfigurations: getLookupConfigurationsForEnv('client', 'angular'),
+      getKnownServerFns: () => ({}),
+      resolveId: async (id) => id,
+      mode: 'build',
+    })
+
+    const result = await compiler.compile({
+      code: `
+        import { createServerFn } from '@benjavicente/angular-start-experimental'
+        export const getPosts = createServerFn().handler(async () => ['post'])
+      `,
+      id: '/test/src/postsFns.ts',
+    })
+
+    expect(result!.code).toContain(
+      "import { createClientRpc } from '@benjavicente/angular-start-experimental/client-rpc';",
+    )
+    expect(result!.code).toContain(
+      "import { createServerFn } from '@benjavicente/angular-start-experimental';",
+    )
+    expect(result!.code).toContain(
+      'export const getPosts = createServerFn().handler(createClientRpc(',
+    )
+  })
 
   describe.each(filenames)('should handle "%s"', async (filename) => {
     const file = await readFile(

@@ -19,7 +19,4 @@ export const Route = createFileRoute('/posts/')({
   `,
 })
 class PostsIndexComponent {
-  constructor() {
-    console.log('post layout rendered')
-  }
 }

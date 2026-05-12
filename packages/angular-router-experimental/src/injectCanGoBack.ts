@@ -6,6 +6,6 @@ export function injectCanGoBack() {
 
   return injectStore(
     router.stores.location,
-    (location) => location.state.__TSR_index !== 0,
+    (location) => (location.state?.__TSR_index ?? 0) !== 0,
   )
 }
