@@ -1,0 +1,36 @@
+{
+  "name": "tanstack-angular-start-example-basic-spa",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "vite dev",
+    "build": "vite build",
+    "preview": "vite preview",
+    "start": "node .output/server/index.mjs",
+    "generate": "tsr generate"
+  },
+  "dependencies": {
+    "@angular/common": "^21.2.6",
+    "@angular/compiler": "^21.2.6",
+    "@angular/core": "^21.2.6",
+    "@angular/platform-browser": "^21.2.6",
+    "@angular/platform-server": "^21.2.6",
+    "@benjavicente/angular-router-devtools": "workspace:^",
+    "@benjavicente/angular-router-experimental": "workspace:^",
+    "@benjavicente/angular-start-experimental": "workspace:*",
+    "@tailwindcss/vite": "^4.1.18",
+    "rxjs": "~7.8.0",
+    "tailwindcss": "^4.1.18",
+    "tslib": "^2.3.0"
+  },
+  "devDependencies": {
+    "@benjavicente/router-cli": "workspace:*",
+    "@oxc-angular/vite": "^0.0.22",
+    "@types/node": "^22.5.4",
+    "@vitejs/devtools": "^0.1.13",
+    "nitro": "^3.0.260311-beta",
+    "serve": "^14.2.6",
+    "typescript": "~5.9.2",
+    "vite": "^8.0.0"
+  }
+}
