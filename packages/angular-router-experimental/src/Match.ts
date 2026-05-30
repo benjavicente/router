@@ -21,7 +21,7 @@ import { DefaultNotFoundComponent } from './DefaultNotFound'
 import { MATCH_CONTEXT_INJECTOR_TOKEN } from './matchInjectorToken'
 import { injectRender } from './renderer/injectRender'
 import { ERROR_STATE_INJECTOR_TOKEN } from './injectErrorState'
-import { injectIsCatchingError } from './renderer/injectIsCatchingError'
+import { injectCatchingErrorMatch } from './renderer/injectIsCatchingError'
 import type { Signal } from '@angular/core'
 import type { NearestMatchContextValue } from './matchInjectorToken'
 import type { AnyRouteMatch } from '@benjavicente/router-core'
@@ -29,6 +29,26 @@ import type { AnyRouteMatch } from '@benjavicente/router-core'
 const dummyMatchStore = {
   get: () => undefined as AnyRouteMatch | undefined,
   subscribe: () => ({ unsubscribe: () => {} }),
+}
+
+@Component({
+  selector: 'tanstack-router-default-error',
+  template: `
+    <div role="alert">
+      <p>Something went wrong.</p>
+      <pre>{{ message() }}</pre>
+    </div>
+  `,
+  standalone: true,
+})
+export class DefaultErrorComponent {
+  state = inject(ERROR_STATE_INJECTOR_TOKEN)
+
+  message = computed(() => {
+    const error = this.state.error
+    if (error instanceof Error) return error.stack ?? error.message
+    return String(error)
+  })
 }
 
 function injectOnRendered({
@@ -167,7 +187,7 @@ export class RouteMatch {
     hasPending: this.hasPendingMatch,
   }
 
-  isCatchingError = injectIsCatchingError({
+  catchingErrorMatch = injectCatchingErrorMatch({
     matchId: this.matchId,
   })
 
@@ -175,11 +195,15 @@ export class RouteMatch {
     const matchData = this.matchData()
     if (!matchData) return null
 
-    if (this.shouldClientOnly() && this.router.isServer) {
-      return null
-    }
-
     const { match, route } = matchData
+
+    if (this.shouldClientOnly() && this.router.isServer) {
+      const PendingComponent =
+        getComponent(route.options.pendingComponent) ??
+        getComponent(this.router.options.defaultPendingComponent)
+
+      return PendingComponent ? { component: PendingComponent } : null
+    }
 
     if (match.status === 'notFound') {
       const NotFoundComponent = getNotFoundComponent(this.router, route)
@@ -187,18 +211,18 @@ export class RouteMatch {
       return {
         component: NotFoundComponent,
       }
-    } else if (match.status === 'error' || this.isCatchingError()) {
-      const RouteErrorComponent =
-        getComponent(route.options.errorComponent) ??
-        getComponent(this.router.options.defaultErrorComponent)
+    } else if (match.status === 'error' || this.catchingErrorMatch()) {
+      const caughtMatch = this.catchingErrorMatch()
+      const RouteErrorComponent = getErrorComponent(this.router, route)
 
       return {
-        component: RouteErrorComponent || null,
+        component: RouteErrorComponent,
         providers: [
           {
             provide: ERROR_STATE_INJECTOR_TOKEN,
             useValue: {
-              error: match.error,
+              error:
+                match.status === 'error' ? match.error : caughtMatch?.error,
               reset: () => {
                 this.router.invalidate()
               },
@@ -350,4 +374,22 @@ function getNotFoundComponent(router: AnyRouter, route: AnyRoute) {
   }
 
   return DefaultNotFoundComponent
+}
+
+function getErrorComponent(router: AnyRouter, route: AnyRoute) {
+  const RouteErrorComponent =
+    getComponent(route.options.errorComponent) ??
+    getComponent(router.options.defaultErrorComponent)
+
+  if (RouteErrorComponent) {
+    return RouteErrorComponent
+  }
+
+  if (isDevMode() && !route.options.errorComponent) {
+    console.warn(
+      `An error was encountered on the route with ID "${route.id}", but an errorComponent option was not configured, nor was a router level defaultErrorComponent configured. Consider configuring at least one of these to avoid TanStack Router's generic defaultErrorComponent.`,
+    )
+  }
+
+  return DefaultErrorComponent
 }

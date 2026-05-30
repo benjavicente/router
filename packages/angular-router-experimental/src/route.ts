@@ -53,9 +53,6 @@ declare module '@benjavicente/router-core' {
   }
 
   export interface RootRouteOptionsExtensions {
-    shellComponent?: Angular.Type<{
-      children: any
-    }>
   }
 
   export interface RouteExtensions<

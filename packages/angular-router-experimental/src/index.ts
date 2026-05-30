@@ -61,6 +61,7 @@ export {
 
 // Injection functions
 export { injectRouter } from './injectRouter'
+export { injectIsShell } from './injectIsShell'
 
 export {
   injectRouterState,

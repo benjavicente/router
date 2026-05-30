@@ -6984,7 +6984,7 @@ importers:
         version: link:../../../packages/router-plugin
       '@oxc-angular/vite':
         specifier: ^0.0.22
-        version: 0.0.22(vite@8.0.0(@emnapi/core@1.10.0)(@emnapi/runtime@1.10.0)(@types/node@25.0.9)(esbuild@0.27.4)(jiti@2.7.0)(sass-embedded@1.97.2)(sass@1.97.3)(terser@5.37.0)(tsx@4.21.0)(yaml@2.8.1))
+        version: 0.0.22(vite@8.0.0)
       typescript:
         specifier: ~5.9.2
         version: 5.9.3
@@ -7103,7 +7103,7 @@ importers:
         version: link:../../../packages/router-cli
       '@oxc-angular/vite':
         specifier: ^0.0.22
-        version: 0.0.22(vite@8.0.0(@emnapi/core@1.10.0)(@emnapi/runtime@1.10.0)(@types/node@25.0.9)(esbuild@0.27.4)(jiti@2.7.0)(sass-embedded@1.97.2)(sass@1.97.3)(terser@5.37.0)(tsx@4.21.0)(yaml@2.8.1))
+        version: 0.0.22(vite@8.0.0)
       '@types/node':
         specifier: 25.0.9
         version: 25.0.9
@@ -7170,7 +7170,7 @@ importers:
         version: link:../../../packages/router-cli
       '@oxc-angular/vite':
         specifier: ^0.0.22
-        version: 0.0.22(vite@8.0.0(@emnapi/core@1.10.0)(@emnapi/runtime@1.10.0)(@types/node@25.0.9)(esbuild@0.27.4)(jiti@2.7.0)(sass-embedded@1.97.2)(sass@1.97.3)(terser@5.37.0)(tsx@4.21.0)(yaml@2.8.1))
+        version: 0.0.22(vite@8.0.0)
       '@types/node':
         specifier: 25.0.9
         version: 25.0.9
@@ -7231,7 +7231,7 @@ importers:
         version: link:../../../packages/router-cli
       '@oxc-angular/vite':
         specifier: ^0.0.22
-        version: 0.0.22(vite@8.0.0(@emnapi/core@1.10.0)(@emnapi/runtime@1.10.0)(@types/node@25.0.9)(esbuild@0.27.4)(jiti@2.7.0)(sass-embedded@1.97.2)(sass@1.97.3)(terser@5.37.0)(tsx@4.21.0)(yaml@2.8.1))
+        version: 0.0.22(vite@8.0.0)
       '@types/node':
         specifier: 25.0.9
         version: 25.0.9
@@ -12683,7 +12683,7 @@ importers:
         version: 21.2.12(@angular/common@21.2.12(@angular/core@21.2.12(@angular/compiler@21.2.12)(rxjs@7.8.2))(rxjs@7.8.2))(@angular/core@21.2.12(@angular/compiler@21.2.12)(rxjs@7.8.2))
       '@oxc-angular/vite':
         specifier: ^0.0.22
-        version: 0.0.22(vite@8.0.0(@emnapi/core@1.10.0)(@emnapi/runtime@1.10.0)(@types/node@25.0.9)(esbuild@0.27.4)(jiti@2.7.0)(sass-embedded@1.97.2)(sass@1.97.3)(terser@5.37.0)(tsx@4.21.0)(yaml@2.8.1))
+        version: 0.0.22(vite@8.0.0)
       '@tanstack/vite-config':
         specifier: 0.5.2
         version: 0.5.2(@types/node@25.0.9)(rollup@4.56.0)(typescript@6.0.2)(vite@8.0.0(@emnapi/core@1.10.0)(@emnapi/runtime@1.10.0)(@types/node@25.0.9)(esbuild@0.27.4)(jiti@2.7.0)(sass-embedded@1.97.2)(sass@1.97.3)(terser@5.37.0)(tsx@4.21.0)(yaml@2.8.1))
@@ -12741,7 +12741,7 @@ importers:
         version: 21.2.12(@angular/common@21.2.12(@angular/core@21.2.12(@angular/compiler@21.2.12)(rxjs@7.8.2))(rxjs@7.8.2))(@angular/core@21.2.12(@angular/compiler@21.2.12)(rxjs@7.8.2))
       '@oxc-angular/vite':
         specifier: ^0.0.22
-        version: 0.0.22(vite@8.0.0(@emnapi/core@1.10.0)(@emnapi/runtime@1.10.0)(@types/node@25.0.9)(esbuild@0.27.4)(jiti@2.7.0)(sass-embedded@1.97.2)(sass@1.97.3)(terser@5.37.0)(tsx@4.21.0)(yaml@2.8.1))
+        version: 0.0.22(vite@8.0.0)
       '@tanstack/vite-config':
         specifier: 0.5.2
         version: 0.5.2(@types/node@25.0.9)(rollup@4.56.0)(typescript@6.0.2)(vite@8.0.0(@emnapi/core@1.10.0)(@emnapi/runtime@1.10.0)(@types/node@25.0.9)(esbuild@0.27.4)(jiti@2.7.0)(sass-embedded@1.97.2)(sass@1.97.3)(terser@5.37.0)(tsx@4.21.0)(yaml@2.8.1))
@@ -12823,7 +12823,7 @@ importers:
         version: 21.2.12(@angular/common@21.2.12(@angular/core@21.2.12(@angular/compiler@21.2.12)(rxjs@7.8.2))(rxjs@7.8.2))(@angular/core@21.2.12(@angular/compiler@21.2.12)(rxjs@7.8.2))
       '@oxc-angular/vite':
         specifier: ^0.0.22
-        version: 0.0.22(vite@8.0.0(@emnapi/core@1.10.0)(@emnapi/runtime@1.10.0)(@types/node@25.0.9)(esbuild@0.27.4)(jiti@2.7.0)(sass-embedded@1.97.2)(sass@1.97.3)(terser@5.37.0)(tsx@4.21.0)(yaml@2.8.1))
+        version: 0.0.22(vite@8.0.0)
       '@types/node':
         specifier: 25.0.9
         version: 25.0.9
@@ -12848,7 +12848,7 @@ importers:
         version: 21.2.12(@angular/common@21.2.12(@angular/core@21.2.12(@angular/compiler@21.2.12)(rxjs@7.8.2))(rxjs@7.8.2))(@angular/core@21.2.12(@angular/compiler@21.2.12)(rxjs@7.8.2))
       '@oxc-angular/vite':
         specifier: ^0.0.22
-        version: 0.0.22(vite@8.0.0(@emnapi/core@1.10.0)(@emnapi/runtime@1.10.0)(@types/node@25.0.9)(esbuild@0.27.4)(jiti@2.7.0)(sass-embedded@1.97.2)(sass@1.97.3)(terser@5.37.0)(tsx@4.21.0)(yaml@2.8.1))
+        version: 0.0.22(vite@8.0.0)
       '@types/node':
         specifier: 25.0.9
         version: 25.0.9
@@ -33547,7 +33547,7 @@ snapshots:
   '@oxc-angular/binding-win32-x64-msvc@0.0.22':
     optional: true
 
-  '@oxc-angular/vite@0.0.22(vite@8.0.0(@emnapi/core@1.10.0)(@emnapi/runtime@1.10.0)(@types/node@25.0.9)(esbuild@0.27.4)(jiti@2.7.0)(sass-embedded@1.97.2)(sass@1.97.3)(terser@5.37.0)(tsx@4.21.0)(yaml@2.8.1))':
+  '@oxc-angular/vite@0.0.22(vite@8.0.0)':
     dependencies:
       obug: 2.1.1
       vite: 8.0.0(@emnapi/core@1.10.0)(@emnapi/runtime@1.10.0)(@types/node@25.0.9)(@vitejs/devtools@0.1.21)(esbuild@0.27.4)(jiti@2.7.0)(sass-embedded@1.97.2)(sass@1.97.3)(terser@5.37.0)(tsx@4.21.0)(yaml@2.8.1)

@@ -10,6 +10,7 @@ import {
   createRoute,
   createRouter,
   injectErrorState,
+  injectIsShell,
 } from '../src'
 import { sleep } from './utils'
 
@@ -144,6 +145,32 @@ test('renders success route', async () => {
   await expect(screen.findByTestId('home')).resolves.toBeTruthy()
 })
 
+test('injectIsShell reflects router shell prerender state', async () => {
+  @Angular.Component({
+    template: '<p data-testid="is-shell">{{ isShell() }}</p>',
+    standalone: true,
+  })
+  class ShellProbeComponent {
+    isShell = injectIsShell()
+  }
+
+  const rootRoute = createRootRoute({
+    component: () => ShellProbeComponent,
+  })
+
+  const router = createRouter({
+    routeTree: rootRoute,
+    history: createMemoryHistory({ initialEntries: ['/'] }),
+    isShell: true,
+  })
+
+  await render(RouterProvider, {
+    bindings: [Angular.inputBinding('router', () => router)],
+  })
+
+  await expect(screen.findByTestId('is-shell')).resolves.toHaveTextContent('true')
+})
+
 test('keeps renderer host elements hidden', async () => {
   const router = makeRouter()
 
@@ -189,8 +216,9 @@ test.skip('renders pending state and then success state', async () => {
   const slowLink = await screen.findByTestId('slow-link')
   fireEvent.click(slowLink)
 
-  await expect(screen.findByTestId('pending', undefined, { timeout: 2000 }))
-    .resolves.toBeTruthy()
+  await expect(
+    screen.findByTestId('pending', undefined, { timeout: 2000 }),
+  ).resolves.toBeTruthy()
   await expect(screen.findByTestId('slow')).resolves.toBeTruthy()
 })
 
@@ -218,4 +246,77 @@ test('renders error and notFound states', async () => {
   fireEvent.click(missingLink)
 
   await expect(screen.findByTestId('not-found')).resolves.toBeTruthy()
+})
+
+test('renders a default error component when loader errors have no configured boundary', async () => {
+  const warnSpy = vi.spyOn(console, 'warn').mockImplementation(() => undefined)
+
+  const rootRoute = createRootRoute({
+    component: () => RootComponent,
+  })
+
+  const badRoute = createRoute({
+    getParentRoute: () => rootRoute,
+    path: '/bad',
+    loader: () => {
+      throw new Error('loader exploded')
+    },
+    component: () => HomeComponent,
+  })
+
+  const router = createRouter({
+    routeTree: rootRoute.addChildren([badRoute]),
+    history: createMemoryHistory({ initialEntries: ['/bad'] }),
+  })
+
+  await render(RouterProvider, {
+    bindings: [Angular.inputBinding('router', () => router)],
+  })
+
+  await expect(screen.findByRole('alert')).resolves.toBeTruthy()
+  await expect(screen.findByText(/loader exploded/)).resolves.toBeTruthy()
+  expect(warnSpy).toHaveBeenCalledWith(
+    expect.stringContaining('__root__'),
+  )
+})
+
+test('renders a parent error boundary for descendant errors without their own boundary', async () => {
+  @Angular.Component({
+    imports: [Outlet],
+    template: '<div data-testid="layout">Layout<outlet /></div>',
+    standalone: true,
+  })
+  class LayoutComponent {}
+
+  @Angular.Component({
+    template: '<div data-testid="parent-error">Parent error boundary</div>',
+    standalone: true,
+  })
+  class ParentErrorComponent {}
+
+  const rootRoute = createRootRoute({
+    component: () => LayoutComponent,
+    errorComponent: () => ParentErrorComponent,
+  })
+
+  const badRoute = createRoute({
+    getParentRoute: () => rootRoute,
+    path: '/bad',
+    loader: () => {
+      throw new Error('child loader exploded')
+    },
+    component: () => HomeComponent,
+  })
+
+  const router = createRouter({
+    routeTree: rootRoute.addChildren([badRoute]),
+    history: createMemoryHistory({ initialEntries: ['/bad'] }),
+  })
+
+  await render(RouterProvider, {
+    bindings: [Angular.inputBinding('router', () => router)],
+  })
+
+  await expect(screen.findByTestId('parent-error')).resolves.toBeTruthy()
+  expect(screen.queryByTestId('layout')).toBeNull()
 })
