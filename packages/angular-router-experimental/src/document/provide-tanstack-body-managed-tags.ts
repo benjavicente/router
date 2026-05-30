@@ -1,4 +1,3 @@
-import { DOCUMENT } from '@angular/common'
 import * as Angular from '@angular/core'
 import { injectStore } from '../store/injectStore'
 import { buildMatchManagedDocumentContent } from './build-match-managed-document'
@@ -14,7 +13,7 @@ import type { ManagedTag } from './managed-document-types'
  * on the server only (call from an injection context).
  */
 export function installTanstackBodyManagedTags(injectedRouter: AnyRouter) {
-  const document = Angular.inject(DOCUMENT)
+  const document = Angular.inject(Angular.DOCUMENT)
   const rendererFactory = Angular.inject(Angular.RendererFactory2, {
     optional: true,
   })

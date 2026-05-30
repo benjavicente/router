@@ -1,4 +1,4 @@
-import { DOCUMENT } from '@angular/common'
+import { DOCUMENT } from '@angular/core'
 import { EnvironmentInjector, afterNextRender, inject } from '@angular/core'
 import { getScrollRestorationScriptForRouter } from '@benjavicente/router-core/scroll-restoration-script'
 import { injectRouter } from './injectRouter'
