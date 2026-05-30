@@ -1,6 +1,6 @@
 {
   "name": "@benjavicente/angular-start-experimental",
-  "version": "1.145.5",
+  "version": "1.145.6",
   "description": "Modern and scalable routing for Angular applications",
   "author": "Tanner Linsley",
   "license": "MIT",
@@ -111,6 +111,8 @@
   "peerDependencies": {
     "@angular/core": "^21.2.6",
     "@angular/platform-browser": "^21.2.6",
+    "@benjavicente/angular-router-experimental": "workspace:^",
+    "@benjavicente/router-core": "workspace:^",
     "vite": ">=7.0.0"
   }
 }
