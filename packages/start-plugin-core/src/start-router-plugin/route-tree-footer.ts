@@ -1,4 +1,5 @@
 import path from 'pathe'
+import { getStartPackageName } from '../frameworkPackages'
 import type { GetConfigFn, TanStackStartCoreOptions } from '../types'
 
 function buildRouteTreeFileFooter(opts: {
@@ -35,6 +36,7 @@ function buildRouteTreeFileFooter(opts: {
   }
 
   const footer: Array<string> = []
+  const startPackageName = getStartPackageName(opts.framework)
 
   appendFooterBlock(
     footer,
@@ -49,13 +51,13 @@ function buildRouteTreeFileFooter(opts: {
   } else {
     appendFooterBlock(
       footer,
-      `import type { createStart } from '@benjavicente/${opts.framework}-start'`,
+      `import type { createStart } from '${startPackageName}'`,
     )
   }
 
   appendFooterBlock(
     footer,
-    `declare module '@benjavicente/${opts.framework}-start' {
+    `declare module '${startPackageName}' {
   interface Register {
     ssr: true
     router: Awaited<ReturnType<typeof getRouter>>`,

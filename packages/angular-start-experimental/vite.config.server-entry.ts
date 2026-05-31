@@ -14,7 +14,6 @@ export default mergeConfig(
       '@benjavicente/angular-router-experimental',
       '@angular/compiler',
       '@angular/core',
-      '@angular/common',
       '@angular/platform-browser',
       '@angular/platform-server',
     ],

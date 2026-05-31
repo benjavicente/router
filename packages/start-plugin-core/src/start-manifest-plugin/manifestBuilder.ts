@@ -19,6 +19,7 @@ const VISITING_CHUNK = 1
 
 type RouteTreeRoute = {
   filePath?: string
+  filePaths?: Array<string>
   preloads?: Array<string>
   assets?: Array<RouterManagedTag>
   children?: Array<string>
@@ -165,7 +166,10 @@ export function buildStartManifest(options: {
     Record<string, ReadonlyArray<RouterManagedTag>>
   >
 }): StartManifest {
-  const scannedChunks = scanClientChunks(options.clientBuild)
+  const scannedChunks = scanClientChunks(
+    options.clientBuild,
+    options.routeTreeRoutes,
+  )
   const assetResolvers = createManifestAssetResolvers(options.basePath)
 
   const routes = buildRouteManifestRoutes({
@@ -211,6 +215,7 @@ export function serializeStartManifest(startManifest: StartManifest) {
 
 export function scanClientChunks(
   clientBuild: NormalizedClientBuild,
+  routeTreeRoutes?: RouteTreeRoutes,
 ): ScannedClientChunks {
   const entryChunk = clientBuild.chunksByFileName.get(
     clientBuild.entryChunkFileName,
@@ -221,16 +226,15 @@ export function scanClientChunks(
   }
 
   const routeChunksByFilePath = new Map<string, Array<NormalizedClientChunk>>()
+  const knownRouteFilePaths = routeTreeRoutes
+    ? getKnownRouteFilePaths(routeTreeRoutes)
+    : undefined
 
   for (const chunk of clientBuild.chunksByFileName.values()) {
-    if (chunk.routeFilePaths.length > 0) {
-      for (const routeFilePath of chunk.routeFilePaths) {
-        let chunks = routeChunksByFilePath.get(routeFilePath)
-        if (chunks === undefined) {
-          chunks = []
-          routeChunksByFilePath.set(routeFilePath, chunks)
-        }
-        chunks.push(chunk)
+    const routeFilePaths = getChunkRouteFilePaths(chunk, knownRouteFilePaths)
+    if (routeFilePaths.length > 0) {
+      for (const routeFilePath of routeFilePaths) {
+        appendRouteChunk(routeChunksByFilePath, routeFilePath, chunk)
       }
     }
   }
@@ -240,6 +244,77 @@ export function scanClientChunks(
     chunksByFileName: clientBuild.chunksByFileName,
     routeChunksByFilePath,
   }
+}
+
+function appendRouteChunk(
+  routeChunksByFilePath: Map<string, Array<NormalizedClientChunk>>,
+  routeFilePath: string,
+  chunk: NormalizedClientChunk,
+) {
+  let chunks = routeChunksByFilePath.get(routeFilePath)
+  if (chunks === undefined) {
+    chunks = []
+    routeChunksByFilePath.set(routeFilePath, chunks)
+  }
+  chunks.push(chunk)
+}
+
+function getKnownRouteFilePaths(routeTreeRoutes: RouteTreeRoutes) {
+  const routeFilePaths = new Set<string>()
+
+  for (const route of Object.values(routeTreeRoutes)) {
+    if (route.filePath) {
+      routeFilePaths.add(route.filePath)
+    }
+
+    for (const filePath of route.filePaths ?? []) {
+      routeFilePaths.add(filePath)
+    }
+  }
+
+  return routeFilePaths
+}
+
+function getChunkRouteFilePaths(
+  chunk: NormalizedClientChunk,
+  knownRouteFilePaths: ReadonlySet<string> | undefined,
+) {
+  if (!knownRouteFilePaths || knownRouteFilePaths.size === 0) {
+    return chunk.routeFilePaths
+  }
+
+  let routeFilePaths: Array<string> | undefined
+  let seenRouteFilePaths: Set<string> | undefined
+
+  const append = (routeFilePath: string) => {
+    if (seenRouteFilePaths?.has(routeFilePath)) {
+      return
+    }
+
+    if (routeFilePaths === undefined || seenRouteFilePaths === undefined) {
+      routeFilePaths = []
+      seenRouteFilePaths = new Set<string>()
+    }
+
+    routeFilePaths.push(routeFilePath)
+    seenRouteFilePaths.add(routeFilePath)
+  }
+
+  for (const routeFilePath of chunk.routeFilePaths) {
+    append(routeFilePath)
+  }
+
+  for (const moduleId of chunk.moduleIds) {
+    const queryIndex = moduleId.indexOf('?')
+    const sourcePath =
+      queryIndex >= 0 ? moduleId.slice(0, queryIndex) : moduleId
+
+    if (knownRouteFilePaths.has(sourcePath)) {
+      append(sourcePath)
+    }
+  }
+
+  return routeFilePaths ?? []
 }
 
 export function createManifestAssetResolvers(
@@ -446,8 +521,8 @@ export function buildRouteManifestRoutes(options: {
       throw new Error(`expected filePath to be set for ${routeId}`)
     }
 
-    const chunks = options.routeChunksByFilePath.get(route.filePath)
-    if (!chunks) {
+    const chunks = getRouteChunks(options.routeChunksByFilePath, route)
+    if (chunks.length === 0) {
       routes[routeId] = route
       continue
     }
@@ -493,6 +568,41 @@ export function buildRouteManifestRoutes(options: {
   }
 
   return routes
+}
+
+function getRouteChunks(
+  routeChunksByFilePath: ReadonlyMap<
+    string,
+    ReadonlyArray<NormalizedClientChunk>
+  >,
+  route: RouteTreeRoute,
+) {
+  const routeFilePaths = route.filePaths ?? (route.filePath ? [route.filePath] : [])
+  let chunks: Array<NormalizedClientChunk> | undefined
+  let seenChunks: Set<NormalizedClientChunk> | undefined
+
+  for (const routeFilePath of routeFilePaths) {
+    const routeChunks = routeChunksByFilePath.get(routeFilePath)
+    if (!routeChunks) {
+      continue
+    }
+
+    for (const chunk of routeChunks) {
+      if (seenChunks?.has(chunk)) {
+        continue
+      }
+
+      if (chunks === undefined || seenChunks === undefined) {
+        chunks = []
+        seenChunks = new Set<NormalizedClientChunk>()
+      }
+
+      chunks.push(chunk)
+      seenChunks.add(chunk)
+    }
+  }
+
+  return chunks ?? []
 }
 
 export {

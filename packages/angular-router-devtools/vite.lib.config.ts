@@ -21,6 +21,10 @@ export default defineConfig({
     lib: {
       entry: {
         'tanstack-angular-router-devtools': resolve(root, 'src/index.ts'),
+        'tanstack-angular-router-devtools.development': resolve(
+          root,
+          'src/development.ts',
+        ),
       },
       formats: ['es'],
       fileName: (_format, name) => `fesm2022/${name}.mjs`,

@@ -11,6 +11,7 @@ export function normalizeViteClientChunk(
     isEntry: chunk.isEntry,
     imports: chunk.imports,
     dynamicImports: chunk.dynamicImports,
+    moduleIds: chunk.moduleIds,
     css: Array.from(chunk.viteMetadata?.importedCss ?? []),
     routeFilePaths: getRouteFilePathsFromModuleIds(chunk.moduleIds),
   }

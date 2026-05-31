@@ -10,6 +10,9 @@ import type { ManagedTag } from './managed-document-types'
 /** Managed `<head>` tags from active matches (call from an injection context). */
 export function installTanstackHeadManagedTags(injectedRouter: AnyRouter) {
   const document = Angular.inject(Angular.DOCUMENT)
+  if (!document.head) {
+    return
+  }
   const rendererFactory = Angular.inject(Angular.RendererFactory2, {
     optional: true,
   })

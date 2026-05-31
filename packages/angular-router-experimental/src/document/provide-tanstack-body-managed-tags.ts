@@ -14,6 +14,9 @@ import type { ManagedTag } from './managed-document-types'
  */
 export function installTanstackBodyManagedTags(injectedRouter: AnyRouter) {
   const document = Angular.inject(Angular.DOCUMENT)
+  if (!document.body) {
+    return
+  }
   const rendererFactory = Angular.inject(Angular.RendererFactory2, {
     optional: true,
   })

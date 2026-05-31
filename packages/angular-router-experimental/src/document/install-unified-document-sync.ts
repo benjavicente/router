@@ -13,6 +13,10 @@ import type {
   ManagedTagCollection,
 } from './managed-document-types'
 
+function hasManagedDocumentRoots(document: Document | null | undefined): document is Document {
+  return !!document?.head && !!document?.body
+}
+
 function applyManagedDocumentContent({
   document,
   initialTitle,
@@ -42,6 +46,9 @@ function applyManagedDocumentContent({
  */
 export function installUnifiedTanstackDocumentSync(injectedRouter: AnyRouter) {
   const document = Angular.inject(Angular.DOCUMENT)
+  if (!hasManagedDocumentRoots(document)) {
+    return
+  }
   const rendererFactory = Angular.inject(Angular.RendererFactory2, {
     optional: true,
   })

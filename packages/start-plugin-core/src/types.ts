@@ -80,6 +80,7 @@ export interface NormalizedClientChunk {
   isEntry: boolean
   imports: Array<string>
   dynamicImports: Array<string>
+  moduleIds: Array<string>
   css: Array<string>
   routeFilePaths: Array<string>
 }

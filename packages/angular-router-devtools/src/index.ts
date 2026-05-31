@@ -1,35 +1,45 @@
-import { Component } from '@angular/core'
-import * as Devtools from './tanstack-router-devtools'
-import * as DevtoolsPanel from './tanstack-router-devtools-panel'
+import { Component, input } from '@angular/core'
+import type { TanStackRouterDevtoolsOptions } from './tanstack-router-devtools'
+import type { TanStackRouterDevtoolsPanelOptions } from './tanstack-router-devtools-panel'
 
-// No-op component for production
 @Component({
   selector: 'router-devtools',
   template: '',
   standalone: true,
 })
-class NoOpTanStackRouterDevtools {}
+export class TanStackRouterDevtools {
+  initialIsOpen = input<TanStackRouterDevtoolsOptions['initialIsOpen']>()
+  panelProps = input<TanStackRouterDevtoolsOptions['panelProps']>()
+  closeButtonProps = input<TanStackRouterDevtoolsOptions['closeButtonProps']>()
+  toggleButtonProps =
+    input<TanStackRouterDevtoolsOptions['toggleButtonProps']>()
+  position = input<TanStackRouterDevtoolsOptions['position']>()
+  containerElement = input<TanStackRouterDevtoolsOptions['containerElement']>()
+  router = input<TanStackRouterDevtoolsOptions['router']>()
+  shadowDOMTarget = input<TanStackRouterDevtoolsOptions['shadowDOMTarget']>()
+}
 
 @Component({
   selector: 'router-devtools-panel',
   template: '',
   standalone: true,
+  styles: `
+    :host {
+      display: block;
+    }
+  `,
 })
-class NoOpTanStackRouterDevtoolsPanel {}
-
-export const TanStackRouterDevtools: typeof Devtools.TanStackRouterDevtools =
-  process.env.NODE_ENV !== 'development'
-    ? (NoOpTanStackRouterDevtools as any)
-    : Devtools.TanStackRouterDevtools
-
-export { TanStackRouterDevtools as TanStackRouterDevtoolsInProd } from './tanstack-router-devtools'
-
-export const TanStackRouterDevtoolsPanel: typeof DevtoolsPanel.TanStackRouterDevtoolsPanel =
-  process.env.NODE_ENV !== 'development'
-    ? (NoOpTanStackRouterDevtoolsPanel as any)
-    : DevtoolsPanel.TanStackRouterDevtoolsPanel
-
-export { TanStackRouterDevtoolsPanel as TanStackRouterDevtoolsPanelInProd } from './tanstack-router-devtools-panel'
+export class TanStackRouterDevtoolsPanel {
+  style = input<TanStackRouterDevtoolsPanelOptions['style']>()
+  className = input<TanStackRouterDevtoolsPanelOptions['className']>()
+  isOpen = input<TanStackRouterDevtoolsPanelOptions['isOpen']>()
+  setIsOpen = input<TanStackRouterDevtoolsPanelOptions['setIsOpen']>()
+  handleDragStart =
+    input<TanStackRouterDevtoolsPanelOptions['handleDragStart']>()
+  router = input<TanStackRouterDevtoolsPanelOptions['router']>()
+  shadowDOMTarget =
+    input<TanStackRouterDevtoolsPanelOptions['shadowDOMTarget']>()
+}
 
 export type { TanStackRouterDevtoolsOptions } from './tanstack-router-devtools'
 export type { TanStackRouterDevtoolsPanelOptions } from './tanstack-router-devtools-panel'

@@ -57,6 +57,10 @@ function getRouteFilePathsFromModules(
   return routeFilePaths ?? []
 }
 
+function getModuleIdsFromModules(modules: Array<RspackModule>): Array<string> {
+  return modules.map((mod) => mod.nameForCondition() ?? mod.identifier())
+}
+
 /**
  * Returns true for Rspack/webpack HMR runtime chunks that should never be
  * surfaced to the Start manifest. These files are emitted on every rebuild
@@ -240,6 +244,7 @@ export function normalizeRspackClientBuild(
         isEntry: isEntryChunk,
         imports,
         dynamicImports,
+        moduleIds: getModuleIdsFromModules(modules),
         css: [],
         routeFilePaths,
       }

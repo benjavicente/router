@@ -10,7 +10,6 @@ import {
   input,
   untracked,
 } from '@angular/core'
-import { isPlatformBrowser } from '@angular/common'
 import {
   injectRouter,
   injectStore,
@@ -82,8 +81,9 @@ export class TanStackRouterDevtools {
   private elementRef = inject(ElementRef<HTMLElement>)
 
   constructor() {
+    // https://github.com/angular/angular/blob/main/packages/common/src/platform_id.ts#L16-L18
     const platformId = inject(PLATFORM_ID)
-    if (!isPlatformBrowser(platformId)) return
+    if (platformId !== 'browser') return
 
     const contextRouter = injectRouter({ warn: false })
     const router = computed(() => this.inputRouter() ?? contextRouter)

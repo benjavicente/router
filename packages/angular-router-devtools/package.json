@@ -1,6 +1,6 @@
 {
   "name": "@benjavicente/angular-router-devtools",
-  "version": "1.142.12",
+  "version": "1.142.13",
   "description": "Modern and scalable routing for Angular applications",
   "author": "Tanner Linsley",
   "license": "MIT",
@@ -46,6 +46,7 @@
     },
     ".": {
       "types": "./dist/types/tanstack-angular-router-devtools.d.ts",
+      "development": "./dist/fesm2022/tanstack-angular-router-devtools.development.mjs",
       "require": null,
       "default": "./dist/fesm2022/tanstack-angular-router-devtools.mjs"
     }
@@ -63,7 +64,6 @@
   },
   "devDependencies": {
     "@analogjs/vitest-angular": "^2.2.1",
-    "@angular/common": "^21.2.6",
     "@angular/compiler": "^21.2.6",
     "@angular/compiler-cli": "^21.2.6",
     "@angular/core": "^21.2.6",
