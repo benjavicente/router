@@ -1,6 +1,6 @@
 {
   "name": "@benjavicente/angular-start-experimental",
-  "version": "1.145.7",
+  "version": "1.145.8",
   "description": "Modern and scalable routing for Angular applications",
   "author": "Tanner Linsley",
   "license": "MIT",
@@ -102,15 +102,16 @@
     "pathe": "^2.0.3"
   },
   "devDependencies": {
-    "@angular/compiler": "^21.2.6",
-    "@angular/core": "^21.2.6",
-    "@angular/platform-browser": "^21.2.6",
-    "@oxc-angular/vite": "^0.0.22",
+    "@angular/common": "^22.0.0",
+    "@angular/compiler": "^22.0.0",
+    "@angular/core": "^22.0.0",
+    "@angular/platform-browser": "^22.0.0",
+    "@oxc-angular/vite": "^0.0.31",
     "@types/node": ">=20"
   },
   "peerDependencies": {
-    "@angular/core": "^21.2.6",
-    "@angular/platform-browser": "^21.2.6",
+    "@angular/core": "^22.0.0",
+    "@angular/platform-browser": "^22.0.0",
     "@benjavicente/angular-router-experimental": "workspace:^",
     "@benjavicente/router-core": "workspace:^",
     "vite": ">=7.0.0"

@@ -1,6 +1,6 @@
 {
   "name": "@benjavicente/angular-router-devtools",
-  "version": "1.142.13",
+  "version": "1.142.14",
   "description": "Modern and scalable routing for Angular applications",
   "author": "Tanner Linsley",
   "license": "MIT",
@@ -63,12 +63,15 @@
     "tslib": "^2.3.0"
   },
   "devDependencies": {
-    "@analogjs/vitest-angular": "^2.2.1",
-    "@angular/compiler": "^21.2.6",
-    "@angular/compiler-cli": "^21.2.6",
-    "@angular/core": "^21.2.6",
-    "@angular/platform-browser": "^21.2.6",
-    "@oxc-angular/vite": "^0.0.22",
+    "@analogjs/vitest-angular": "^2.6.0",
+    "@analogjs/vite-plugin-angular": "^2.6.0",
+    "@angular/build": "^22.0.0",
+    "@angular/common": "^22.0.0",
+    "@angular/compiler": "^22.0.0",
+    "@angular/compiler-cli": "^22.0.0",
+    "@angular/core": "^22.0.0",
+    "@angular/platform-browser": "^22.0.0",
+    "@oxc-angular/vite": "^0.0.31",
     "@tanstack/vite-config": "0.5.2",
     "jsdom": "^27.4.0",
     "rxjs": "~7.8.0",
@@ -77,7 +80,7 @@
     "vitest": "^4.0.17"
   },
   "peerDependencies": {
-    "@angular/core": "^21.2.6",
+    "@angular/core": "^22.0.0",
     "@benjavicente/angular-router-experimental": "workspace:^"
   }
 }
