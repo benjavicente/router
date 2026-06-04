@@ -1,4 +1,4 @@
-import { createFileRoute, redirect } from '@tanstack/solid-router'
+import { createFileRoute, redirect } from '@benjavicente/solid-router'
 import { Show } from 'solid-js'
 
 export const Route = createFileRoute('/protected')({

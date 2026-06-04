@@ -14,7 +14,7 @@ interface Plugin extends Omit<ESLint.Plugin, 'rules'> {
 
 const plugin: Plugin = {
   meta: {
-    name: '@tanstack/eslint-plugin-start',
+    name: '@benjavicente/eslint-plugin-start',
   },
   configs: {} as Plugin['configs'],
   rules,
@@ -23,20 +23,20 @@ const plugin: Plugin = {
 // Assign configs here so we can reference `plugin`
 Object.assign(plugin.configs, {
   recommended: {
-    plugins: ['@tanstack/eslint-plugin-start'],
+    plugins: ['@benjavicente/eslint-plugin-start'],
     rules: {
-      '@tanstack/start/no-client-code-in-server-component': 'error',
-      '@tanstack/start/no-async-client-component': 'error',
+      '@benjavicente/start/no-client-code-in-server-component': 'error',
+      '@benjavicente/start/no-async-client-component': 'error',
     },
   },
   'flat/recommended': [
     {
       plugins: {
-        '@tanstack/start': plugin,
+        '@benjavicente/start': plugin,
       },
       rules: {
-        '@tanstack/start/no-client-code-in-server-component': 'error',
-        '@tanstack/start/no-async-client-component': 'error',
+        '@benjavicente/start/no-client-code-in-server-component': 'error',
+        '@benjavicente/start/no-async-client-component': 'error',
       },
     },
   ],

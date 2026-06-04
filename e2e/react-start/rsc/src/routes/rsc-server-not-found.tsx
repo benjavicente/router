@@ -1,5 +1,5 @@
-import { Link, createFileRoute, notFound } from '@tanstack/react-router'
-import { createServerFn } from '@tanstack/react-start'
+import { Link, createFileRoute, notFound } from '@benjavicente/react-router'
+import { createServerFn } from '@benjavicente/react-start'
 import { pageStyles } from '~/utils/styles'
 
 const getMissingResource = createServerFn({

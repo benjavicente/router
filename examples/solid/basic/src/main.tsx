@@ -7,10 +7,10 @@ import {
   createRootRoute,
   createRoute,
   createRouter,
-} from '@tanstack/solid-router'
-import { TanStackRouterDevtools } from '@tanstack/solid-router-devtools'
+} from '@benjavicente/solid-router'
+import { TanStackRouterDevtools } from '@benjavicente/solid-router-devtools'
 import { NotFoundError, fetchPost, fetchPosts } from './posts'
-import type { ErrorComponentProps } from '@tanstack/solid-router'
+import type { ErrorComponentProps } from '@benjavicente/solid-router'
 import './styles.css'
 
 const rootRoute = createRootRoute({
@@ -219,7 +219,7 @@ const router = createRouter({
 })
 
 // Register things for typesafety
-declare module '@tanstack/solid-router' {
+declare module '@benjavicente/solid-router' {
   interface Register {
     router: typeof router
   }

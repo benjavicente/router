@@ -1,4 +1,4 @@
-# @tanstack/solid-start — Skill Spec
+# @benjavicente/solid-start — Skill Spec
 
 Solid bindings for TanStack Start. useServerFn hook, tanstackStart Vite plugin, Solid-specific setup.
 

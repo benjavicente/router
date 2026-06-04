@@ -5,7 +5,7 @@ import {
   Html,
   Scripts,
   createRootRoute,
-} from '@tanstack/vue-router'
+} from '@benjavicente/vue-router'
 import { AppShell } from '~/components/AppShell'
 
 export const Route = createRootRoute({

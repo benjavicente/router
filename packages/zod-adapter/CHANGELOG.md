@@ -1,4 +1,4 @@
-# @tanstack/zod-adapter
+# @benjavicente/zod-adapter
 
 ## 1.166.9
 

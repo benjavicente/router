@@ -1,4 +1,4 @@
-import { isServer } from '@tanstack/router-core/isServer'
+import { isServer } from '@benjavicente/router-core/isServer'
 import type { RouteIds } from './routeInfo'
 import type { AnyRouter } from './router'
 

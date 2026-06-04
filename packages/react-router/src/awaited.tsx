@@ -1,6 +1,6 @@
 import * as React from 'react'
 
-import { TSR_DEFERRED_PROMISE, defer } from '@tanstack/router-core'
+import { TSR_DEFERRED_PROMISE, defer } from '@benjavicente/router-core'
 import { reactUse } from './utils'
 
 export type AwaitOptions<T> = {

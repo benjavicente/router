@@ -1,6 +1,6 @@
 # packages/start-client-core/skills/_artifacts/skill_tree.yaml
 library:
-  name: '@tanstack/start-client-core'
+  name: '@benjavicente/start-client-core'
   version: '1.166.2'
   repository: 'https://github.com/TanStack/router'
   description: >-

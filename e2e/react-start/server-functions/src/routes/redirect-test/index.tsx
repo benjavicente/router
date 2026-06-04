@@ -1,6 +1,6 @@
 import { useQuery } from '@tanstack/react-query'
-import { createFileRoute, redirect } from '@tanstack/react-router'
-import { createServerFn, useServerFn } from '@tanstack/react-start'
+import { createFileRoute, redirect } from '@benjavicente/react-router'
+import { createServerFn, useServerFn } from '@benjavicente/react-start'
 import { Suspense } from 'react'
 
 const $redirectServerFn = createServerFn({ method: 'GET' }).handler(

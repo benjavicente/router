@@ -1,4 +1,4 @@
-import { redirect, createFileRoute } from '@tanstack/react-router'
+import { redirect, createFileRoute } from '@benjavicente/react-router'
 
 export const Route = createFileRoute(
   '/$project/$version/docs/framework/$framework/',

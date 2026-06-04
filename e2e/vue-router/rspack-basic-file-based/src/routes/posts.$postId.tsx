@@ -1,6 +1,6 @@
-import { ErrorComponent, createFileRoute } from '@tanstack/vue-router'
+import { ErrorComponent, createFileRoute } from '@benjavicente/vue-router'
 import { fetchPost } from '../posts'
-import type { ErrorComponentProps } from '@tanstack/vue-router'
+import type { ErrorComponentProps } from '@benjavicente/vue-router'
 
 export function PostErrorComponent({ error }: ErrorComponentProps) {
   return <ErrorComponent error={error} />

@@ -1,5 +1,5 @@
-import { createFileRoute } from '@tanstack/react-router'
-import { CompositeComponent } from '@tanstack/react-start/rsc'
+import { createFileRoute } from '@benjavicente/react-router'
+import { CompositeComponent } from '@benjavicente/react-start/rsc'
 import { getProductPage } from '~/e-Commerce/server-functions'
 import { AddToCartButton } from '~/e-Commerce/components/AddToCartButton'
 import { AlsoBoughtCarousel } from '~/e-Commerce/components/AlsoBoughtCarousel'

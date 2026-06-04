@@ -1,4 +1,4 @@
-import { createServerFn } from '@tanstack/react-start'
+import { createServerFn } from '@benjavicente/react-start'
 import { getSecret } from './secret.server'
 
 export const secretServerFn = createServerFn().handler(async () => {

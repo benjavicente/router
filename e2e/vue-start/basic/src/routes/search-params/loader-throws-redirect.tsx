@@ -1,4 +1,4 @@
-import { redirect, createFileRoute } from '@tanstack/vue-router'
+import { redirect, createFileRoute } from '@benjavicente/vue-router'
 import { z } from 'zod'
 
 export const Route = createFileRoute('/search-params/loader-throws-redirect')({

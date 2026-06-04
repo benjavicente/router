@@ -3,7 +3,7 @@ import type {
   AnyRouteMatch,
   AnyRouter,
   RouterWritableStore,
-} from '@tanstack/router-core'
+} from '@benjavicente/router-core'
 
 type AnyRouteWithPrivateProps = AnyRoute & {
   options: Record<string, unknown>

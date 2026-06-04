@@ -1,4 +1,4 @@
-import { createServerFn } from '@tanstack/react-start'
+import { createServerFn } from '@benjavicente/react-start'
 
 const postServerFn = createServerFn({ method: 'POST' }).handler(
   ({ method }) => {

@@ -1,8 +1,8 @@
 const $$splitComponentImporter = () => import('shared-destructured-export.tsx?tsr-split=component---loader---notFoundComponent---pendingComponent');
-import { lazyRouteComponent } from '@tanstack/react-router';
+import { lazyRouteComponent } from '@benjavicente/react-router';
 const $$splitLoaderImporter = () => import('shared-destructured-export.tsx?tsr-split=component---loader---notFoundComponent---pendingComponent');
-import { lazyFn } from '@tanstack/react-router';
-import { createFileRoute } from '@tanstack/react-router';
+import { lazyFn } from '@benjavicente/react-router';
+import { createFileRoute } from '@benjavicente/react-router';
 export const {
   apiUrl,
   timeout

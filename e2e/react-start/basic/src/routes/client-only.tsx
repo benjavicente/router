@@ -1,4 +1,4 @@
-import { ClientOnly, createFileRoute } from '@tanstack/react-router'
+import { ClientOnly, createFileRoute } from '@benjavicente/react-router'
 import { WindowSize } from '~/components/WindowSize'
 
 export const Route = createFileRoute('/client-only')({

@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ErrorComponent } from '@tanstack/vue-router'
+import { ErrorComponent } from '@benjavicente/vue-router'
 
 defineProps<{
   error: any

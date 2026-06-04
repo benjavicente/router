@@ -14,7 +14,7 @@ The `useRouter` method is a hook that returns the current instance of [`Router`]
 ## Examples
 
 ```tsx
-import { useRouter } from '@tanstack/react-router'
+import { useRouter } from '@benjavicente/react-router'
 
 function Component() {
   const router = useRouter()

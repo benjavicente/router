@@ -3,7 +3,7 @@ import {
   Outlet,
   createFileRoute,
   useLocation,
-} from '@tanstack/vue-router'
+} from '@benjavicente/vue-router'
 import { getProjects } from '~/server/projects'
 
 export const Route = createFileRoute('/_library')({

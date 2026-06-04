@@ -1,4 +1,4 @@
-import handler from '@tanstack/solid-start/server-entry'
+import handler from '@benjavicente/solid-start/server-entry'
 
 export default {
   fetch(request: Request) {

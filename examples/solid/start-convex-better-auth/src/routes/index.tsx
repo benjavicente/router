@@ -1,4 +1,4 @@
-import { createFileRoute, redirect } from '@tanstack/solid-router'
+import { createFileRoute, redirect } from '@benjavicente/solid-router'
 
 import LoginSignupForm from '~/components/login-signup-form'
 

@@ -1,5 +1,5 @@
 import { SignIn } from '@clerk/tanstack-react-start'
-import { createFileRoute } from '@tanstack/react-router'
+import { createFileRoute } from '@benjavicente/react-router'
 
 export const Route = createFileRoute('/_authed')({
   beforeLoad: ({ context }) => {

@@ -1,4 +1,4 @@
-import { createFileRoute, notFound, rootRouteId } from '@tanstack/vue-router'
+import { createFileRoute, notFound, rootRouteId } from '@benjavicente/vue-router'
 
 export const Route = createFileRoute('/not-found/via-beforeLoad-target-root')({
   beforeLoad: () => {

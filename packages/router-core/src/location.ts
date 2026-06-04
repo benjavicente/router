@@ -1,4 +1,4 @@
-import type { ParsedHistoryState } from '@tanstack/history'
+import type { ParsedHistoryState } from '@benjavicente/history'
 import type { AnySchema } from './validators'
 
 export interface ParsedLocation<TSearchObj extends AnySchema = {}> {

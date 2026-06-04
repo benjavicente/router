@@ -6,6 +6,6 @@ export {
   redirect,
   isRedirect,
   rootRouteId,
-} from '@tanstack/router-core'
+} from '@benjavicente/router-core'
 
-export type { NotFoundError } from '@tanstack/router-core'
+export type { NotFoundError } from '@benjavicente/router-core'

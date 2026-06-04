@@ -1,4 +1,4 @@
-import { Await, createFileRoute } from '@tanstack/react-router'
+import { Await, createFileRoute } from '@benjavicente/react-router'
 import { Suspense, useEffect, useRef, useState } from 'react'
 
 export const Route = createFileRoute('/stream')({

@@ -1,4 +1,4 @@
-import { createFileRoute } from '@tanstack/react-router'
+import { createFileRoute } from '@benjavicente/react-router'
 import { cast } from '~/utils/cast'
 
 export const Route = createFileRoute('/plain-ts-type-assertion')({

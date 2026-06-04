@@ -1,4 +1,4 @@
-import { ClientOnly, Link, Outlet, linkOptions } from '@tanstack/react-router'
+import { ClientOnly, Link, Outlet, linkOptions } from '@benjavicente/react-router'
 import styles from '~/styles/root-shell.module.css'
 
 const ROUTES = linkOptions([

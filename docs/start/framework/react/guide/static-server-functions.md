@@ -11,8 +11,8 @@ title: Static Server Functions
 Static server functions are server functions that are executed at build time and cached as static assets when using prerendering/static-generation. They can be set to "static" mode by applying the `staticFunctionMiddleware` middleware to `createServerFn`:
 
 ```tsx
-import { createServerFn } from '@tanstack/react-start'
-import { staticFunctionMiddleware } from '@tanstack/start-static-server-functions'
+import { createServerFn } from '@benjavicente/react-start'
+import { staticFunctionMiddleware } from '@benjavicente/start-static-server-functions'
 
 const myServerFn = createServerFn({ method: 'GET' })
   .middleware([staticFunctionMiddleware])

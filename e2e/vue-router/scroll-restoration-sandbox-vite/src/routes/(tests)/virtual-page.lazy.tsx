@@ -1,4 +1,4 @@
-import { createLazyFileRoute } from '@tanstack/vue-router'
+import { createLazyFileRoute } from '@benjavicente/vue-router'
 import { ScrollBlock } from '../-components/scroll-block'
 
 export const Route = createLazyFileRoute('/(tests)/virtual-page')({

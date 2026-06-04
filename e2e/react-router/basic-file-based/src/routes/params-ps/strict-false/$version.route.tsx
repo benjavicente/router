@@ -1,4 +1,4 @@
-import { createFileRoute, useParams } from '@tanstack/react-router'
+import { createFileRoute, useParams } from '@benjavicente/react-router'
 
 export const Route = createFileRoute('/params-ps/strict-false/$version')({
   params: {

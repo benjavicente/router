@@ -24,7 +24,7 @@ The `useAwaited` hook accepts a single argument, an `options` object.
 ## Examples
 
 ```tsx
-import { useAwaited } from '@tanstack/react-router'
+import { useAwaited } from '@benjavicente/react-router'
 
 function Component() {
   const { deferredPromise } = route.useLoaderData()

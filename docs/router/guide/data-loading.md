@@ -113,7 +113,7 @@ If you don't have ready access to your route object (i.e. you're deep in the com
 # React
 
 ```tsx
-import { getRouteApi } from '@tanstack/react-router'
+import { getRouteApi } from '@benjavicente/react-router'
 
 // in your component
 
@@ -124,7 +124,7 @@ const data = routeApi.useLoaderData()
 # Solid
 
 ```tsx
-import { getRouteApi } from '@tanstack/solid-router'
+import { getRouteApi } from '@benjavicente/solid-router'
 
 // in your component
 
@@ -349,7 +349,7 @@ export const fetchPosts = async () => {
 # React
 
 ```tsx
-import { createRootRouteWithContext } from '@tanstack/react-router'
+import { createRootRouteWithContext } from '@benjavicente/react-router'
 
 // Create a root route using the createRootRouteWithContext<{...}>() function and pass it whatever types you would like to be available in your router context.
 export const Route = createRootRouteWithContext<{
@@ -360,7 +360,7 @@ export const Route = createRootRouteWithContext<{
 # Solid
 
 ```tsx
-import { createRootRouteWithContext } from '@tanstack/solid-router'
+import { createRootRouteWithContext } from '@benjavicente/solid-router'
 
 // Create a root route using the createRootRouteWithContext<{...}>() function and pass it whatever types you would like to be available in your router context.
 export const Route = createRootRouteWithContext<{

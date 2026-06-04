@@ -30,7 +30,7 @@ Whichever you choose, the cookie flags matter:
 import {
   getRequestHeader,
   setResponseHeader,
-} from '@tanstack/react-start/server'
+} from '@benjavicente/react-start/server'
 
 const SESSION_COOKIE = '__Host-session'
 const ONE_DAY = 60 * 60 * 24
@@ -84,7 +84,7 @@ Centralize session loading in middleware so every protected handler sees a typed
 
 ```ts
 // src/server/auth-middleware.ts
-import { createMiddleware } from '@tanstack/react-start'
+import { createMiddleware } from '@benjavicente/react-start'
 import { readSessionToken } from './session'
 
 export const authMiddleware = createMiddleware({ type: 'function' }).server(
@@ -100,7 +100,7 @@ export const authMiddleware = createMiddleware({ type: 'function' }).server(
 Attach to every protected server function:
 
 ```ts
-import { createServerFn } from '@tanstack/react-start'
+import { createServerFn } from '@benjavicente/react-start'
 import { authMiddleware } from '~/server/auth-middleware'
 
 export const getMyOrders = createServerFn({ method: 'GET' })
@@ -114,7 +114,7 @@ export const getMyOrders = createServerFn({ method: 'GET' })
 
 ```ts
 // src/server/login.functions.ts
-import { createServerFn } from '@tanstack/react-start'
+import { createServerFn } from '@benjavicente/react-start'
 import { z } from 'zod'
 import { setSessionCookie } from './session'
 
@@ -144,7 +144,7 @@ The `Invalid email or password` message is identical for "user not found" and "w
 ## Logout
 
 ```ts
-import { createServerFn } from '@tanstack/react-start'
+import { createServerFn } from '@benjavicente/react-start'
 import { authMiddleware } from '~/server/auth-middleware'
 import { clearSessionCookie } from '~/server/session'
 
@@ -167,9 +167,9 @@ For OAuth authorization-code flow:
 
 ```ts
 // src/server/oauth.functions.ts
-import { createServerFn } from '@tanstack/react-start'
-import { redirect } from '@tanstack/react-router'
-import { setResponseHeader } from '@tanstack/react-start/server'
+import { createServerFn } from '@benjavicente/react-start'
+import { redirect } from '@benjavicente/react-router'
+import { setResponseHeader } from '@benjavicente/react-start/server'
 import crypto from 'node:crypto'
 
 const OAUTH_STATE_COOKIE = '__Host-oauth'
@@ -224,7 +224,7 @@ If any of those checks fail, the request did not originate from your `startOAuth
 The reset endpoint must NOT tell the caller whether a given email is registered. Returning 200 vs 404 — or even different copy — leaks user existence to anyone who can hit the endpoint.
 
 ```ts
-import { createServerFn } from '@tanstack/react-start'
+import { createServerFn } from '@benjavicente/react-start'
 import { z } from 'zod'
 
 export const requestPasswordReset = createServerFn({ method: 'POST' })
@@ -254,8 +254,8 @@ Do NOT:
 2. **POST from a sibling subdomain** — `SameSite=Lax` does not block this; verify the `Origin` header matches your app.
 
 ```ts
-import { createMiddleware } from '@tanstack/react-start'
-import { getRequest } from '@tanstack/react-start/server'
+import { createMiddleware } from '@benjavicente/react-start'
+import { getRequest } from '@benjavicente/react-start/server'
 
 export const csrfMiddleware = createMiddleware().server(async ({ next }) => {
   const request = getRequest()
@@ -278,8 +278,8 @@ Attach this in `src/start.ts` global `requestMiddleware` so it runs on every non
 A login endpoint without rate limiting is a credential-stuffing target. Limit per IP (and per-account if you can identify the user) with a sliding window or token bucket.
 
 ```ts
-import { createMiddleware } from '@tanstack/react-start'
-import { getRequest } from '@tanstack/react-start/server'
+import { createMiddleware } from '@benjavicente/react-start'
+import { getRequest } from '@benjavicente/react-start/server'
 
 function rateLimitMiddleware(opts: {
   key: string

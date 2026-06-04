@@ -21,7 +21,7 @@ Here, you can configure everything from the default [preloading functionality](/
 
 ```tsx
 // src/router.tsx
-import { createRouter } from '@tanstack/react-router'
+import { createRouter } from '@benjavicente/react-router'
 import { routeTree } from './routeTree.gen'
 
 // You must export a getRouter function that
@@ -74,7 +74,7 @@ import {
   createRootRoute,
   HeadContent,
   Scripts,
-} from '@tanstack/react-router'
+} from '@benjavicente/react-router'
 import type { ReactNode } from 'react'
 
 export const Route = createRootRoute({
@@ -218,7 +218,7 @@ Then, define the route like this:
 
 ```tsx
 // src/routes/posts/$postId.tsx
-import { createFileRoute } from '@tanstack/react-router'
+import { createFileRoute } from '@benjavicente/react-router'
 
 export const Route = createFileRoute('/posts/$postId')({
   component: PostComponent,

@@ -1,7 +1,7 @@
 import { defineConfig, mergeConfig } from 'vitest/config'
 import { tanstackViteConfig } from '@tanstack/vite-config'
 import react from '@vitejs/plugin-react'
-import { copyFilesPlugin } from '@tanstack/router-utils'
+import { copyFilesPlugin } from '@benjavicente/router-utils'
 import packageJson from './package.json'
 
 const config = defineConfig({

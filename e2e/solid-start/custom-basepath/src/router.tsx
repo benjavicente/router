@@ -1,4 +1,4 @@
-import { createRouter } from '@tanstack/solid-router'
+import { createRouter } from '@benjavicente/solid-router'
 import { routeTree } from './routeTree.gen'
 import { DefaultCatchBoundary } from './components/DefaultCatchBoundary'
 import { NotFound } from './components/NotFound'

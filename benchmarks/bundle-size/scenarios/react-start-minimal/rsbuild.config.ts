@@ -1,6 +1,6 @@
 import { defineConfig } from '@rsbuild/core'
 import { pluginReact } from '@rsbuild/plugin-react'
-import { tanstackStart } from '@tanstack/react-start/plugin/rsbuild'
+import { tanstackStart } from '@benjavicente/react-start/plugin/rsbuild'
 
 const outDir = process.env.BUNDLE_SIZE_DIST_DIR ?? 'dist-rsbuild'
 

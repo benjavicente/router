@@ -1,4 +1,4 @@
-import { Link, createFileRoute, deepEqual } from '@tanstack/vue-router'
+import { Link, createFileRoute, deepEqual } from '@benjavicente/vue-router'
 import { computed, defineComponent, ref } from 'vue'
 import {
   getServerFnCallingPost,

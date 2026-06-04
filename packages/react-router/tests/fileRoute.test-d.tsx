@@ -42,7 +42,7 @@ const attachmentRoute = createFileRoute(
   },
 })
 
-declare module '@tanstack/router-core' {
+declare module '@benjavicente/router-core' {
   interface FileRoutesByPath {
     '/': {
       preLoaderRoute: typeof indexRoute

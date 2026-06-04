@@ -1,6 +1,6 @@
-import { mergeHeaders } from '@tanstack/router-core/ssr/client'
+import { mergeHeaders } from '@benjavicente/router-core/ssr/client'
 
-import { isRedirect, parseRedirect } from '@tanstack/router-core'
+import { isRedirect, parseRedirect } from '@benjavicente/router-core'
 import { TSS_SERVER_FUNCTION_FACTORY } from './constants'
 import { getStartOptions } from './getStartOptions'
 import { getStartContextServerOnly } from './getStartContextServerOnly'
@@ -20,7 +20,7 @@ import type {
   ValidateSerializable,
   ValidateSerializableInput,
   Validator,
-} from '@tanstack/router-core'
+} from '@benjavicente/router-core'
 import type {
   AnyFunctionMiddleware,
   AnyRequestMiddleware,

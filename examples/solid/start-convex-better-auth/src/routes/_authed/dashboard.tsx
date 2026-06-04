@@ -2,7 +2,7 @@ import {
   createFileRoute,
   useNavigate,
   useRouteContext,
-} from '@tanstack/solid-router'
+} from '@benjavicente/solid-router'
 import { useQuery } from 'convex-solidjs'
 import { api } from 'convex/_generated/api'
 import { For, Show } from 'solid-js'

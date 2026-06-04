@@ -15,7 +15,7 @@ In addition to being able to access this data from the route itself, you can als
 <!-- ::start:tabs variant="files" -->
 
 ```tsx title='src/routes/posts.tsx'
-import { createFileRoute } from '@tanstack/react-router'
+import { createFileRoute } from '@benjavicente/react-router'
 
 export const Route = createFileRoute('/posts')({
   staticData: {
@@ -31,7 +31,7 @@ You can then access this data anywhere you have access to your routes, including
 <!-- ::start:tabs variant="files" -->
 
 ```tsx title='src/routes/__root.tsx'
-import { createRootRoute } from '@tanstack/react-router'
+import { createRootRoute } from '@benjavicente/react-router'
 
 export const Route = createRootRoute({
   component: () => {
@@ -55,7 +55,7 @@ export const Route = createRootRoute({
 <!-- ::start:tabs variant="files" -->
 
 ```tsx title='src/routes/posts.tsx'
-import { createFileRoute } from '@tanstack/solid-router'
+import { createFileRoute } from '@benjavicente/solid-router'
 
 export const Route = createFileRoute('/posts')({
   staticData: {
@@ -71,7 +71,7 @@ You can then access this data anywhere you have access to your routes, including
 <!-- ::start:tabs variant="files" -->
 
 ```tsx title='src/routes/__root.tsx'
-import { createRootRoute, useMatches } from '@tanstack/solid-router'
+import { createRootRoute, useMatches } from '@benjavicente/solid-router'
 import { For } from 'solid-js'
 
 export const Route = createRootRoute({
@@ -102,7 +102,7 @@ If you want to enforce that a route has static data, you can use declaration mer
 # React
 
 ```tsx
-declare module '@tanstack/react-router' {
+declare module '@benjavicente/react-router' {
   interface StaticDataRouteOption {
     customData: string
   }
@@ -112,7 +112,7 @@ declare module '@tanstack/react-router' {
 # Solid
 
 ```tsx
-declare module '@tanstack/solid-router' {
+declare module '@benjavicente/solid-router' {
   interface StaticDataRouteOption {
     customData: string
   }
@@ -140,7 +140,7 @@ If you want to make static data optional, simply add a `?` to the property:
 # React
 
 ```tsx
-declare module '@tanstack/react-router' {
+declare module '@benjavicente/react-router' {
   interface StaticDataRouteOption {
     customData?: string
   }
@@ -150,7 +150,7 @@ declare module '@tanstack/react-router' {
 # Solid
 
 ```tsx
-declare module '@tanstack/solid-router' {
+declare module '@benjavicente/solid-router' {
   interface StaticDataRouteOption {
     customData?: string
   }
@@ -255,7 +255,7 @@ export const Route = createFileRoute('/posts/$postId')({
 <!-- ::start:tabs variant="files" -->
 
 ```tsx title='src/components/Breadcrumbs.tsx'
-import { useMatches } from '@tanstack/solid-router'
+import { useMatches } from '@benjavicente/solid-router'
 import { For } from 'solid-js'
 
 function Breadcrumbs() {

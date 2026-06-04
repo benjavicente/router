@@ -1,4 +1,4 @@
-import { createFileRoute } from '@tanstack/react-router';
+import { createFileRoute } from '@benjavicente/react-router';
 import { Box, Flex, Heading, Text, TextField } from '@radix-ui/themes';
 import { getAuth } from '@workos/authkit-tanstack-react-start';
 

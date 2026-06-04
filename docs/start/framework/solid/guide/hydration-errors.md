@@ -16,12 +16,12 @@ title: Hydration Errors
 
 ```tsx
 // src/start.ts
-import { createStart, createMiddleware } from '@tanstack/solid-start'
+import { createStart, createMiddleware } from '@benjavicente/solid-start'
 import {
   getRequestHeader,
   getCookie,
   setCookie,
-} from '@tanstack/solid-start/server'
+} from '@benjavicente/solid-start/server'
 
 const localeTzMiddleware = createMiddleware().server(async ({ next }) => {
   const header = getRequestHeader('accept-language')
@@ -44,9 +44,9 @@ export const startInstance = createStart(() => ({
 
 ```tsx
 // src/routes/index.tsx (example)
-import { createFileRoute } from '@tanstack/solid-router'
-import { createServerFn } from '@tanstack/solid-start'
-import { getCookie } from '@tanstack/solid-start/server'
+import { createFileRoute } from '@benjavicente/solid-router'
+import { createServerFn } from '@benjavicente/solid-start'
+import { getCookie } from '@benjavicente/solid-start/server'
 
 export const getServerNow = createServerFn().handler(async () => {
   const locale = getCookie('locale') || 'en-US'
@@ -72,7 +72,7 @@ export const Route = createFileRoute('/')({
 - On first visit, set a cookie with the client time zone; SSR uses `UTC` until then
 
 ```tsx
-import { ClientOnly } from '@tanstack/solid-router'
+import { ClientOnly } from '@benjavicente/solid-router'
 
 function SetTimeZoneCookie() {
   if (typeof window !== 'undefined') {
@@ -92,7 +92,7 @@ function SetTimeZoneCookie() {
 - Use `<ClientOnly>` or Solid’s `<NoHydration>` to avoid SSR/hydration
 
 ```tsx
-import { ClientOnly } from '@tanstack/solid-router'
+import { ClientOnly } from '@benjavicente/solid-router'
 import { NoHydration } from 'solid-js/web'
 
 <ClientOnly fallback={<span>—</span>}>

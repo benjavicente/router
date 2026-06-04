@@ -24,7 +24,7 @@ The most common ISR pattern uses the `Cache-Control` header with `max-age` and `
 
 ```tsx
 // vite.config.ts
-import { tanstackStart } from '@tanstack/react-start/plugin/vite'
+import { tanstackStart } from '@benjavicente/react-start/plugin/vite'
 import { defineConfig } from 'vite'
 
 export default defineConfig({
@@ -41,7 +41,7 @@ export default defineConfig({
 
 ```tsx
 // routes/blog/posts/$postId.tsx
-import { createFileRoute } from '@tanstack/react-router'
+import { createFileRoute } from '@benjavicente/react-router'
 
 export const Route = createFileRoute('/blog/posts/$postId')({
   loader: async ({ params }) => {
@@ -80,7 +80,7 @@ Server functions can also set cache headers for dynamic data endpoints:
 
 ```tsx
 // routes/api/products/$productId.ts
-import { createFileRoute } from '@tanstack/react-router'
+import { createFileRoute } from '@benjavicente/react-router'
 
 export const Route = createFileRoute('/api/products/$productId')({
   server: {
@@ -110,8 +110,8 @@ For API routes, you can use middleware to set cache headers:
 
 ```tsx
 // routes/api/products/$productId.ts
-import { createFileRoute } from '@tanstack/react-router'
-import { createMiddleware } from '@tanstack/react-start'
+import { createFileRoute } from '@benjavicente/react-router'
+import { createMiddleware } from '@benjavicente/react-start'
 
 const cacheMiddleware = createMiddleware().server(async ({ next }) => {
   const result = await next()
@@ -142,7 +142,7 @@ For page routes, it's simpler to use the `headers` property directly:
 
 ```tsx
 // routes/blog/posts/$postId.tsx
-import { createFileRoute } from '@tanstack/react-router'
+import { createFileRoute } from '@benjavicente/react-router'
 
 export const Route = createFileRoute('/blog/posts/$postId')({
   loader: async ({ params }) => {
@@ -161,7 +161,7 @@ While time-based revalidation works well for most cases, you may need to invalid
 
 ```tsx
 // routes/api/revalidate.ts
-import { createFileRoute } from '@tanstack/react-router'
+import { createFileRoute } from '@benjavicente/react-router'
 
 export const Route = createFileRoute('/api/revalidate')({
   server: {
@@ -334,7 +334,7 @@ Begin with shorter cache times and increase as you understand your content updat
 ETags help CDNs efficiently revalidate content:
 
 ```tsx
-import { createMiddleware } from '@tanstack/react-start'
+import { createMiddleware } from '@benjavicente/react-start'
 import crypto from 'crypto'
 
 const etagMiddleware = createMiddleware().server(async ({ next }) => {
@@ -388,7 +388,7 @@ Prerender at build time for instant first load, then use ISR for updates:
 
 ```tsx
 // vite.config.ts
-import { tanstackStart } from '@tanstack/react-start/plugin/vite'
+import { tanstackStart } from '@benjavicente/react-start/plugin/vite'
 import { defineConfig } from 'vite'
 
 export default defineConfig({

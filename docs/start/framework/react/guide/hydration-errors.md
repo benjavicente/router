@@ -16,12 +16,12 @@ title: Hydration Errors
 
 ```tsx
 // src/start.ts
-import { createStart, createMiddleware } from '@tanstack/react-start'
+import { createStart, createMiddleware } from '@benjavicente/react-start'
 import {
   getRequestHeader,
   getCookie,
   setCookie,
-} from '@tanstack/react-start/server'
+} from '@benjavicente/react-start/server'
 
 const localeTzMiddleware = createMiddleware().server(async ({ next }) => {
   const header = getRequestHeader('accept-language')
@@ -46,9 +46,9 @@ export const startInstance = createStart(() => ({
 ```tsx
 // src/routes/index.tsx (example)
 import * as React from 'react'
-import { createFileRoute } from '@tanstack/react-router'
-import { createServerFn } from '@tanstack/react-start'
-import { getCookie } from '@tanstack/react-start/server'
+import { createFileRoute } from '@benjavicente/react-router'
+import { createServerFn } from '@benjavicente/react-start'
+import { getCookie } from '@benjavicente/react-start/server'
 
 export const getServerNow = createServerFn().handler(async () => {
   const locale = getCookie('locale') || 'en-US'
@@ -76,7 +76,7 @@ export const Route = createFileRoute('/')({
 
 ```tsx
 import * as React from 'react'
-import { ClientOnly } from '@tanstack/react-router'
+import { ClientOnly } from '@benjavicente/react-router'
 
 function SetTimeZoneCookie() {
   React.useEffect(() => {
@@ -100,7 +100,7 @@ export function AppBoot() {
 - Wrap unstable UI in `<ClientOnly>` to avoid SSR and mismatches
 
 ```tsx
-import { ClientOnly } from '@tanstack/react-router'
+import { ClientOnly } from '@benjavicente/react-router'
 ;<ClientOnly fallback={<span>—</span>}>
   <RelativeTime ts={someTs} />
 </ClientOnly>

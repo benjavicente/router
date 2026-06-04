@@ -120,9 +120,9 @@ Let's create our route that fetches data from the TMDB API. Create a new file at
 
 ```typescript
 // src/routes/fetch-movies.tsx
-import { createFileRoute } from '@tanstack/react-router'
+import { createFileRoute } from '@benjavicente/react-router'
 import type { Movie, TMDBResponse } from '../types/movie'
-import { createServerFn } from '@tanstack/react-start'
+import { createServerFn } from '@benjavicente/react-start'
 
 const API_URL =
   'https://api.themoviedb.org/3/discover/movie?include_adult=false&include_video=false&language=en-US&page=1&sort_by=popularity.desc'

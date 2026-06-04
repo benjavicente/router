@@ -6,7 +6,7 @@ import {
   ErrorComponentProps,
   Link,
   createLazyFileRoute,
-} from '@tanstack/react-router'
+} from '@benjavicente/react-router'
 
 export const Route = createLazyFileRoute('/(test)/bar')({
   loader: async ({ params: { postId } }) => ({

@@ -1,5 +1,5 @@
 import { expect } from '@playwright/test'
-import { test } from '@tanstack/router-e2e-utils'
+import { test } from '@benjavicente/router-e2e-utils'
 import { isSpaMode } from './utils/isSpaMode'
 import { isPrerender } from './utils/isPrerender'
 import type { Response } from '@playwright/test'

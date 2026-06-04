@@ -1,5 +1,5 @@
-import { createServerFn } from '@tanstack/react-start'
-import { renderServerComponent } from '@tanstack/react-start/rsc'
+import { createServerFn } from '@benjavicente/react-start'
+import { renderServerComponent } from '@benjavicente/react-start/rsc'
 import { ConditionalOrangePanel } from './ConditionalOrangePanel'
 import { ConditionalVioletPanel } from './ConditionalVioletPanel'
 

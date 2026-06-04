@@ -1,6 +1,6 @@
-import { createFileRoute } from '@tanstack/vue-router'
+import { createFileRoute } from '@benjavicente/vue-router'
 
-import { ErrorComponent } from '@tanstack/vue-router'
+import { ErrorComponent } from '@benjavicente/vue-router'
 import { fetchPost } from '../posts'
 
 export const Route = createFileRoute('/posts/$postId')({

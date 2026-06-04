@@ -1,15 +1,15 @@
-import { createFileRoute } from '@tanstack/react-router'
-import { createMiddleware, createServerFn } from '@tanstack/react-start'
-import { getRequestHeaders } from '@tanstack/react-start/server'
+import { createFileRoute } from '@benjavicente/react-router'
+import { createMiddleware, createServerFn } from '@benjavicente/react-start'
+import { getRequestHeaders } from '@benjavicente/react-start/server'
 import React from 'react'
 
 /**
- * This test verifies that server-only imports (like getRequestHeaders from @tanstack/react-start/server)
+ * This test verifies that server-only imports (like getRequestHeaders from @benjavicente/react-start/server)
  * are properly removed from the client bundle when used inside createMiddleware().server().
  *
  * If the .server() part is not stripped from the client build, this will fail with:
  * "Module node:async_hooks has been externalized for browser compatibility"
- * because @tanstack/react-start/server uses node:async_hooks internally.
+ * because @benjavicente/react-start/server uses node:async_hooks internally.
  */
 const serverImportMiddleware = createMiddleware({ type: 'function' }).server(
   async ({ next }) => {

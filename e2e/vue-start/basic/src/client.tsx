@@ -5,7 +5,7 @@ import {
   StartClient,
   configureHydrationSuppressions,
   hydrateStart,
-} from '@tanstack/vue-start/client'
+} from '@benjavicente/vue-start/client'
 
 console.log("[client-entry]: using custom client entry in 'src/client.tsx'")
 

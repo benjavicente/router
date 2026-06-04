@@ -53,7 +53,7 @@ TanStack Start is powered by [Vite](https://vite.dev/) and [TanStack Router](htt
 To install them, run:
 
 ```shell
-npm i @tanstack/solid-start @tanstack/solid-router vite
+npm i @benjavicente/solid-start @benjavicente/solid-router vite
 ```
 
 You'll also need SolidJS:
@@ -88,7 +88,7 @@ Then configure TanStack Start's Vite plugin in `vite.config.ts`:
 ```ts
 // vite.config.ts
 import { defineConfig } from 'vite'
-import { tanstackStart } from '@tanstack/solid-start/plugin/vite'
+import { tanstackStart } from '@benjavicente/solid-start/plugin/vite'
 import viteSolid from 'vite-plugin-solid'
 
 export default defineConfig({
@@ -137,7 +137,7 @@ from the default [preloading functionality](/router/latest/docs/framework/solid/
 
 ```tsx
 // src/router.tsx
-import { createRouter } from '@tanstack/solid-router'
+import { createRouter } from '@benjavicente/solid-router'
 import { routeTree } from './routeTree.gen'
 
 export function getRouter() {
@@ -163,7 +163,7 @@ import {
   createRootRoute,
   HeadContent,
   Scripts,
-} from '@tanstack/solid-router'
+} from '@benjavicente/solid-router'
 import { HydrationScript } from 'solid-js/web'
 
 export const Route = createRootRoute({
@@ -214,8 +214,8 @@ Now that we have the basic templating setup, we can write our first route. This 
 
 ```tsx
 import * as fs from 'node:fs'
-import { createFileRoute, useRouter } from '@tanstack/solid-router'
-import { createServerFn } from '@tanstack/solid-start'
+import { createFileRoute, useRouter } from '@benjavicente/solid-router'
+import { createServerFn } from '@benjavicente/solid-start'
 
 const filePath = 'count.txt'
 

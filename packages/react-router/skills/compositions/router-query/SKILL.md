@@ -39,7 +39,7 @@ import {
   RouterProvider,
   createRouter,
   createRootRouteWithContext,
-} from '@tanstack/react-router'
+} from '@benjavicente/react-router'
 import { routeTree } from './routeTree.gen'
 
 // Root route declares that router context includes queryClient
@@ -56,7 +56,7 @@ const router = createRouter({
   ),
 })
 
-declare module '@tanstack/react-router' {
+declare module '@benjavicente/react-router' {
   interface Register {
     router: typeof router
   }
@@ -71,7 +71,7 @@ function App() {
 
 ```tsx
 // src/routes/__root.tsx
-import { createRootRouteWithContext, Outlet } from '@tanstack/react-router'
+import { createRootRouteWithContext, Outlet } from '@benjavicente/react-router'
 import type { QueryClient } from '@tanstack/react-query'
 
 // Double parentheses: factory pattern
@@ -87,7 +87,7 @@ export const Route = createRootRouteWithContext<{
 ```tsx
 // src/router.tsx
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
-import { createRouter } from '@tanstack/react-router'
+import { createRouter } from '@benjavicente/react-router'
 import { routeTree } from './routeTree.gen'
 
 export function createAppRouter() {
@@ -104,7 +104,7 @@ export function createAppRouter() {
   })
 }
 
-declare module '@tanstack/react-router' {
+declare module '@benjavicente/react-router' {
   interface Register {
     router: ReturnType<typeof createAppRouter>
   }
@@ -116,14 +116,14 @@ declare module '@tanstack/react-router' {
 For automatic SSR dehydration/hydration and streaming:
 
 ```bash
-npm install @tanstack/react-router-ssr-query
+npm install @benjavicente/react-router-ssr-query
 ```
 
 ```tsx
 // src/router.tsx
 import { QueryClient } from '@tanstack/react-query'
-import { createRouter } from '@tanstack/react-router'
-import { setupRouterSsrQueryIntegration } from '@tanstack/react-router-ssr-query'
+import { createRouter } from '@benjavicente/react-router'
+import { setupRouterSsrQueryIntegration } from '@benjavicente/react-router-ssr-query'
 import { routeTree } from './routeTree.gen'
 
 export function createAppRouter() {
@@ -158,7 +158,7 @@ The integration:
 // src/router.tsx
 import { QueryClient, dehydrate, hydrate } from '@tanstack/react-query'
 import { QueryClientProvider } from '@tanstack/react-query'
-import { createRouter } from '@tanstack/react-router'
+import { createRouter } from '@benjavicente/react-router'
 import { routeTree } from './routeTree.gen'
 
 export function createAppRouter() {
@@ -188,7 +188,7 @@ This is the recommended pattern. The loader ensures data is in the cache before 
 ```tsx
 // src/routes/posts.tsx
 import { queryOptions, useSuspenseQuery } from '@tanstack/react-query'
-import { createFileRoute } from '@tanstack/react-router'
+import { createFileRoute } from '@benjavicente/react-router'
 
 interface Post {
   id: string
@@ -229,7 +229,7 @@ function PostsPage() {
 ```tsx
 // src/routes/posts/$postId.tsx
 import { queryOptions, useSuspenseQuery } from '@tanstack/react-query'
-import { createFileRoute } from '@tanstack/react-router'
+import { createFileRoute } from '@benjavicente/react-router'
 
 interface Post {
   id: string
@@ -299,7 +299,7 @@ function Dashboard() {
 ```tsx
 import { useEffect } from 'react'
 import { useQueryErrorResetBoundary } from '@tanstack/react-query'
-import { useRouter } from '@tanstack/react-router'
+import { useRouter } from '@benjavicente/react-router'
 
 export const Route = createFileRoute('/posts')({
   loader: ({ context }) =>

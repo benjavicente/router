@@ -1,5 +1,5 @@
-import { createFileRoute } from '@tanstack/react-router'
-import { createServerFn } from '@tanstack/react-start'
+import { createFileRoute } from '@benjavicente/react-router'
+import { createServerFn } from '@benjavicente/react-start'
 
 // Regression test for issue #6647:
 // Global request middleware in createStartHandler was not receiving `pathname`.

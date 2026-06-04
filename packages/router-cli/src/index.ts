@@ -1,6 +1,6 @@
 import yargs from 'yargs'
 import { hideBin } from 'yargs/helpers'
-import { getConfig } from '@tanstack/router-generator'
+import { getConfig } from '@benjavicente/router-generator'
 import { generate } from './generate'
 import { watch } from './watch'
 

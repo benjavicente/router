@@ -6,7 +6,7 @@ import type {
   NavigateOptions,
   RegisteredRouter,
   UseNavigateResult,
-} from '@tanstack/router-core'
+} from '@benjavicente/router-core'
 
 export function useNavigate<
   TRouter extends AnyRouter = RegisteredRouter,

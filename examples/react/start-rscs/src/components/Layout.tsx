@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { Link, Outlet, useRouterState } from '@tanstack/react-router'
+import { Link, Outlet, useRouterState } from '@benjavicente/react-router'
 
 const navItems = [
   { path: '/', label: 'Home', description: 'Overview of all demos' },

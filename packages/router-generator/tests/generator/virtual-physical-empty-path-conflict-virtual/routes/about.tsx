@@ -1,4 +1,4 @@
-import { createFileRoute } from '@tanstack/react-router'
+import { createFileRoute } from '@benjavicente/react-router'
 
 // Virtual about route - conflicts with merged/about.tsx
 export const Route = createFileRoute('/about')({

@@ -18,7 +18,7 @@ A great example is configuring the root route of your application. Let's give ou
 # React
 
 ```tsx
-import { createRootRoute, Outlet } from '@tanstack/react-router'
+import { createRootRoute, Outlet } from '@benjavicente/react-router'
 
 export const Route = createRootRoute({
   component: RootComponent,
@@ -37,7 +37,7 @@ function RootComponent() {
 # Solid
 
 ```tsx
-import { createRootRoute, Outlet } from '@tanstack/solid-router'
+import { createRootRoute, Outlet } from '@benjavicente/solid-router'
 
 export const Route = createRootRoute({
   component: RootComponent,

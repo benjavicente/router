@@ -35,8 +35,8 @@ Understanding where code runs is fundamental to TanStack Start. This skill cover
 | `createIsomorphicFn()`                      | Different impl per env      | Uses `.client()` impl     | Uses `.server()` impl |
 | `<ClientOnly>`                              | Browser-only components     | Renders children          | Renders fallback      |
 | `useHydrated()`                             | Hydration-dependent logic   | `true` after hydration    | `false`               |
-| `import '@tanstack/<fw>-start/server-only'` | Mark whole file server-only | Import denied             | Allowed               |
-| `import '@tanstack/<fw>-start/client-only'` | Mark whole file client-only | Allowed                   | Import denied         |
+| `import '@benjavicente/<fw>-start/server-only'` | Mark whole file server-only | Import denied             | Allowed               |
+| `import '@benjavicente/<fw>-start/client-only'` | Mark whole file client-only | Allowed                   | Import denied         |
 
 ## Server-Only Execution
 
@@ -45,8 +45,8 @@ Understanding where code runs is fundamental to TanStack Start. This skill cover
 The primary way to run server-only code. On the client, calls become fetch requests:
 
 ```tsx
-// Use @tanstack/<framework>-start for your framework (react, solid, vue)
-import { createServerFn } from '@tanstack/react-start'
+// Use @benjavicente/<framework>-start for your framework (react, solid, vue)
+import { createServerFn } from '@benjavicente/react-start'
 
 const fetchUser = createServerFn().handler(async () => {
   const secret = process.env.API_SECRET // safe — server only
@@ -62,8 +62,8 @@ const user = await fetchUser()
 For utility functions that must never run on client:
 
 ```tsx
-// Use @tanstack/<framework>-start for your framework (react, solid, vue)
-import { createServerOnlyFn } from '@tanstack/react-start'
+// Use @benjavicente/<framework>-start for your framework (react, solid, vue)
+import { createServerOnlyFn } from '@benjavicente/react-start'
 
 const getSecret = createServerOnlyFn(() => process.env.DATABASE_URL)
 
@@ -76,8 +76,8 @@ const getSecret = createServerOnlyFn(() => process.env.DATABASE_URL)
 ### createClientOnlyFn
 
 ```tsx
-// Use @tanstack/<framework>-start for your framework (react, solid, vue)
-import { createClientOnlyFn } from '@tanstack/react-start'
+// Use @benjavicente/<framework>-start for your framework (react, solid, vue)
+import { createClientOnlyFn } from '@benjavicente/react-start'
 
 const saveToStorage = createClientOnlyFn((key: string, value: string) => {
   localStorage.setItem(key, value)
@@ -87,8 +87,8 @@ const saveToStorage = createClientOnlyFn((key: string, value: string) => {
 ### ClientOnly Component
 
 ```tsx
-// Use @tanstack/<framework>-router for your framework (react, solid, vue)
-import { ClientOnly } from '@tanstack/react-router'
+// Use @benjavicente/<framework>-router for your framework (react, solid, vue)
+import { ClientOnly } from '@benjavicente/react-router'
 
 function Analytics() {
   return (
@@ -102,8 +102,8 @@ function Analytics() {
 ### useHydrated Hook
 
 ```tsx
-// Use @tanstack/<framework>-router for your framework (react, solid, vue)
-import { useHydrated } from '@tanstack/react-router'
+// Use @benjavicente/<framework>-router for your framework (react, solid, vue)
+import { useHydrated } from '@benjavicente/react-router'
 
 function TimeZoneDisplay() {
   const hydrated = useHydrated()
@@ -120,8 +120,8 @@ Behavior: SSR → `false`, first client render → `false`, after hydration → 
 ## Environment-Specific Implementations
 
 ```tsx
-// Use @tanstack/<framework>-start for your framework (react, solid, vue)
-import { createIsomorphicFn } from '@tanstack/react-start'
+// Use @benjavicente/<framework>-start for your framework (react, solid, vue)
+import { createIsomorphicFn } from '@benjavicente/react-start'
 
 const getDeviceInfo = createIsomorphicFn()
   .server(() => ({ type: 'server', platform: process.platform }))
@@ -136,8 +136,8 @@ The `.server.*` and `.client.*` filename suffixes (e.g. `db.server.ts`) opt a fi
 
 ```ts
 // src/lib/secrets.ts (filename can't be *.server.ts)
-import '@tanstack/react-start/server-only'
-// (or @tanstack/solid-start/server-only, @tanstack/vue-start/server-only)
+import '@benjavicente/react-start/server-only'
+// (or @benjavicente/solid-start/server-only, @benjavicente/vue-start/server-only)
 
 export function getApiKey() {
   return process.env.API_KEY
@@ -146,8 +146,8 @@ export function getApiKey() {
 
 ```ts
 // src/lib/storage.ts
-import '@tanstack/react-start/client-only'
-// (or @tanstack/solid-start/client-only, @tanstack/vue-start/client-only)
+import '@benjavicente/react-start/client-only'
+// (or @benjavicente/solid-start/client-only, @benjavicente/vue-start/client-only)
 
 export function savePreferences(prefs: Record<string, string>) {
   localStorage.setItem('prefs', JSON.stringify(prefs))
@@ -162,7 +162,7 @@ Rules:
 
 Pick the right tool:
 
-- File should never run on the wrong side **and** has no client API → `*.server.ts` filename or `import '@tanstack/<fw>-start/server-only'`.
+- File should never run on the wrong side **and** has no client API → `*.server.ts` filename or `import '@benjavicente/<fw>-start/server-only'`.
 - One symbol needs to behave differently per environment → `createIsomorphicFn().client(...).server(...)`.
 - One function should error if called from the wrong side → `createServerOnlyFn` / `createClientOnlyFn`.
 - Component renders only after hydration → `<ClientOnly>` or `useHydrated()`.

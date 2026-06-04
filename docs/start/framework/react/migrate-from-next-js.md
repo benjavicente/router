@@ -55,7 +55,7 @@ rm postcss.config.* next.config.*
 TanStack Start leverages Tanstack Router, [Vite](https://vite.dev), and a vite deployment plugin e.g. [nitro](https://nitro.build/).
 
 ```sh
-npm i @tanstack/react-router @tanstack/react-start nitro vite @vitejs/plugin-react
+npm i @benjavicente/react-router @benjavicente/react-start nitro vite @vitejs/plugin-react
 ```
 
 For Tailwind CSS:
@@ -86,7 +86,7 @@ Now that you've installed the necessary dependencies, update your project config
 ```ts
 // vite.config.ts
 import { defineConfig } from 'vite'
-import { tanstackStart } from '@tanstack/react-start/plugin/vite'
+import { tanstackStart } from '@benjavicente/react-start/plugin/vite'
 import viteReact from '@vitejs/plugin-react'
 import tailwindcss from '@tailwindcss/vite'
 import { nitro } from 'nitro/vite'
@@ -131,7 +131,7 @@ import {
   createRootRoute,
   HeadContent,
   Scripts,
-} from "@tanstack/react-router"
+} from "@benjavicente/react-router"
 import appCss from "./globals.css?url"
 
 - export const metadata: Metadata = { // [!code --]
@@ -191,7 +191,7 @@ Instead of `page.tsx`, create an `index.tsx` file for the `/` route.
 - `src/app/page.tsx` to `src/app/index.tsx`
 
 ```tsx
-+ import { createFileRoute } from '@tanstack/react-router' // [!code ++]
++ import { createFileRoute } from '@benjavicente/react-router' // [!code ++]
 
 - export default function Home() { // [!code --]
 + export const Route = createFileRoute('/')({ // [!code ++]
@@ -228,7 +228,7 @@ Before you can run the development server, you need to create a file that will d
 - `src/router.tsx`
 
 ```tsx
-import { createRouter } from '@tanstack/react-router'
+import { createRouter } from '@benjavicente/react-router'
 import { routeTree } from './routeTree.gen'
 
 export function getRouter() {
@@ -305,7 +305,7 @@ Learn more about the [Dynamic and Catch-All Routes](/router/latest/docs/framewor
 
 ```tsx
 - import Link from "next/link" // [!code --]
-+ import { Link } from "@tanstack/react-router" // [!code ++]
++ import { Link } from "@benjavicente/react-router" // [!code ++]
 
 function Component() {
 -   return <Link href="/dashboard">Dashboard</Link> // [!code --]
@@ -341,7 +341,7 @@ function Component() {
 
 ```tsx
 - 'use server' // [!code --]
-+ import { createServerFn } from "@tanstack/react-start" // [!code ++]
++ import { createServerFn } from "@benjavicente/react-start" // [!code ++]
 
 - export const create = async () => { // [!code --]
 + export const create = createServerFn().handler(async () => { // [!code ++]

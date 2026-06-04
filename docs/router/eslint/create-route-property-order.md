@@ -32,8 +32,8 @@ Examples of **incorrect** code for this rule:
 <!-- ::start:tabs variant="files" -->
 
 ```tsx title="src/routes/path.tsx"
-/* eslint "@tanstack/router/create-route-property-order": "warn" */
-import { createFileRoute } from '@tanstack/react-router'
+/* eslint "@benjavicente/eslint-plugin-router/create-route-property-order": "warn" */
+import { createFileRoute } from '@benjavicente/react-router'
 
 export const Route = createFileRoute('/path')({
   loader: async ({ context }) => {
@@ -50,8 +50,8 @@ export const Route = createFileRoute('/path')({
 <!-- ::start:tabs variant="files" -->
 
 ```tsx title="src/routes/path.tsx"
-/* eslint "@tanstack/router/create-route-property-order": "warn" */
-import { createFileRoute } from '@tanstack/solid-router'
+/* eslint "@benjavicente/eslint-plugin-router/create-route-property-order": "warn" */
+import { createFileRoute } from '@benjavicente/solid-router'
 
 export const Route = createFileRoute('/path')({
   loader: async ({ context }) => {
@@ -74,8 +74,8 @@ Examples of **correct** code for this rule:
 <!-- ::start:tabs variant="files" -->
 
 ```tsx title="src/routes/path.tsx"
-/* eslint "@tanstack/router/create-route-property-order": "warn" */
-import { createFileRoute } from '@tanstack/react-router'
+/* eslint "@benjavicente/eslint-plugin-router/create-route-property-order": "warn" */
+import { createFileRoute } from '@benjavicente/react-router'
 
 export const Route = createFileRoute('/path')({
   beforeLoad: () => ({ hello: 'world' }),
@@ -92,8 +92,8 @@ export const Route = createFileRoute('/path')({
 <!-- ::start:tabs variant="files" -->
 
 ```tsx title="src/routes/path.tsx"
-/* eslint "@tanstack/router/create-route-property-order": "warn" */
-import { createFileRoute } from '@tanstack/solid-router'
+/* eslint "@benjavicente/eslint-plugin-router/create-route-property-order": "warn" */
+import { createFileRoute } from '@benjavicente/solid-router'
 
 export const Route = createFileRoute('/path')({
   beforeLoad: () => ({ hello: 'world' }),

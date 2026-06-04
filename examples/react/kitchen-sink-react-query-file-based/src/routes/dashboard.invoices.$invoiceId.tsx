@@ -1,6 +1,6 @@
-import { createFileRoute } from '@tanstack/react-router'
+import { createFileRoute } from '@benjavicente/react-router'
 import * as React from 'react'
-import { Link, useNavigate } from '@tanstack/react-router'
+import { Link, useNavigate } from '@benjavicente/react-router'
 import { useSuspenseQuery } from '@tanstack/react-query'
 import { z } from 'zod'
 import { InvoiceFields } from '../components/InvoiceFields'

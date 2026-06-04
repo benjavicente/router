@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { ref } from 'vue'
-import { useBlocker, useNavigate } from '@tanstack/vue-router'
+import { useBlocker, useNavigate } from '@benjavicente/vue-router'
 
 const navigate = useNavigate()
 const input = ref('')

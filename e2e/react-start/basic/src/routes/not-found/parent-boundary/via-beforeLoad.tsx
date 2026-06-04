@@ -1,4 +1,4 @@
-import { createFileRoute, notFound } from '@tanstack/react-router'
+import { createFileRoute, notFound } from '@benjavicente/react-router'
 import z from 'zod'
 import { Route as ParentBoundaryRoute } from './route'
 

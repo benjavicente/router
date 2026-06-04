@@ -18,7 +18,7 @@ The `createRouter` function accepts a [`RouterOptions`](./RouterOptionsType.md) 
 ## Examples
 
 ```tsx
-import { createRouter, RouterProvider } from '@tanstack/react-router'
+import { createRouter, RouterProvider } from '@benjavicente/react-router'
 import { routeTree } from './routeTree.gen'
 
 const router = createRouter({

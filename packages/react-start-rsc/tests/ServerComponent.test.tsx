@@ -3,7 +3,7 @@ import { describe, expect, it, vi } from 'vitest'
 import { act, render } from '@testing-library/react'
 
 // Force the client implementation to be used in tests.
-vi.mock('@tanstack/start-client-core', () => {
+vi.mock('@benjavicente/start-client-core', () => {
   return {
     createIsomorphicFn: () => {
       const chain: any = {

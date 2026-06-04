@@ -1,5 +1,5 @@
 import { useQuery } from '@tanstack/solid-query'
-import { createFileRoute } from '@tanstack/solid-router'
+import { createFileRoute } from '@benjavicente/solid-router'
 import { invoicesQueryOptions } from '../utils/queryOptions'
 
 export const Route = createFileRoute('/dashboard/')({

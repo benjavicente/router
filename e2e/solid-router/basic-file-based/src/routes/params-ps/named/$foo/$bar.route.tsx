@@ -3,7 +3,7 @@ import {
   Outlet,
   createFileRoute,
   useParams,
-} from '@tanstack/solid-router'
+} from '@benjavicente/solid-router'
 import { createEffect, createSignal } from 'solid-js'
 
 export const Route = createFileRoute('/params-ps/named/$foo/$bar')({

@@ -1,6 +1,6 @@
 import * as Vue from 'vue'
 import { renderToString as vueRenderToString } from 'vue/server-renderer'
-import type { AnyRouter } from '@tanstack/router-core'
+import type { AnyRouter } from '@benjavicente/router-core'
 import type { Component } from 'vue'
 
 export const renderRouterToString = async ({

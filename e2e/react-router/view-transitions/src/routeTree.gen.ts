@@ -99,7 +99,7 @@ export interface RootRouteChildren {
   HowItWorksRoute: typeof HowItWorksRoute
 }
 
-declare module '@tanstack/react-router' {
+declare module '@benjavicente/react-router' {
   interface FileRoutesByPath {
     '/how-it-works': {
       id: '/how-it-works'

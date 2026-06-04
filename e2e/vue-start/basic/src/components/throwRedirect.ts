@@ -1,5 +1,5 @@
-import { redirect } from '@tanstack/vue-router'
-import { createServerFn } from '@tanstack/vue-start'
+import { redirect } from '@benjavicente/vue-router'
+import { createServerFn } from '@benjavicente/vue-start'
 
 export const throwRedirect = createServerFn()
   .inputValidator(

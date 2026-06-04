@@ -1,5 +1,5 @@
 import { expect } from '@playwright/test'
-import { test } from '@tanstack/router-e2e-utils'
+import { test } from '@benjavicente/router-e2e-utils'
 
 // All user-rendered scripts added in __root.tsx (not via head() API)
 const ALL_USER_SCRIPTS = [

@@ -52,9 +52,9 @@
     "perf:bench:huge": "pnpm perf:gen:huge && pnpm perf:bench"
   },
   "devDependencies": {
-    "@tanstack/eslint-plugin-start": "workspace:^",
-    "@tanstack/react-router": "workspace:^",
-    "@tanstack/react-start": "workspace:^",
+    "@benjavicente/eslint-plugin-start": "workspace:^",
+    "@benjavicente/react-router": "workspace:^",
+    "@benjavicente/react-start": "workspace:^",
     "@types/node": "^22.10.2",
     "@types/react": "^19.0.8",
     "@typescript-eslint/parser": "^8.23.0",

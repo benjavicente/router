@@ -184,7 +184,7 @@ Let's make a simple static link!
 # React
 
 ```tsx
-import { Link } from '@tanstack/react-router'
+import { Link } from '@benjavicente/react-router'
 
 const link = <Link to="/about">About</Link>
 ```
@@ -192,7 +192,7 @@ const link = <Link to="/about">About</Link>
 # Solid
 
 ```tsx
-import { Link } from '@tanstack/solid-router'
+import { Link } from '@benjavicente/solid-router'
 
 const link = <Link to="/about">About</Link>
 ```

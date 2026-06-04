@@ -1,11 +1,11 @@
 # domain_map.yaml
-# Library: @tanstack/virtual-file-routes
+# Library: @benjavicente/virtual-file-routes
 # Version: 1.161.4
 # Date: 2026-03-08
 # Status: reviewed
 
 library:
-  name: '@tanstack/virtual-file-routes'
+  name: '@benjavicente/virtual-file-routes'
   version: '1.161.4'
   repository: 'https://github.com/TanStack/router'
   description: >-
@@ -32,7 +32,7 @@ skills:
       TanStack Router plugin's virtualRouteConfig option.
     type: core
     packages:
-      - '@tanstack/virtual-file-routes'
+      - '@benjavicente/virtual-file-routes'
     covers:
       - rootRoute helper
       - index helper

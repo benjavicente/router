@@ -1,11 +1,11 @@
 # domain_map.yaml
-# Library: @tanstack/vue-router
+# Library: @benjavicente/vue-router
 # Version: 1.166.2
 # Date: 2026-03-08
 # Status: reviewed
 
 library:
-  name: '@tanstack/vue-router'
+  name: '@benjavicente/vue-router'
   version: '1.166.2'
   repository: 'https://github.com/TanStack/router'
   description: >-
@@ -32,7 +32,7 @@ skills:
       Html/Body components.
     type: framework
     packages:
-      - '@tanstack/vue-router'
+      - '@benjavicente/vue-router'
     covers:
       - Vue-specific router components
       - Ref<T> return types

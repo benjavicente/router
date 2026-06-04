@@ -1,6 +1,6 @@
 'use client'
 
-import { useHydrated } from '@tanstack/react-router'
+import { useHydrated } from '@benjavicente/react-router'
 import * as React from 'react'
 import styles from './ClientWidgetA.module.css'
 

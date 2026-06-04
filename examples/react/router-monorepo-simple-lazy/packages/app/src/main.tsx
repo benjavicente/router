@@ -1,10 +1,10 @@
 import React, { StrictMode } from 'react'
 import ReactDOM from 'react-dom/client'
-import { RouterProvider } from '@tanstack/react-router'
+import { RouterProvider } from '@benjavicente/react-router'
 import { router } from '@router-mono-simple-lazy/router'
 import { RootComponent } from './rootComponent'
 import type { RouteById, RouterIds } from '@router-mono-simple-lazy/router'
-import type { LazyRoute } from '@tanstack/react-router'
+import type { LazyRoute } from '@benjavicente/react-router'
 import './style.css'
 
 // Generic to enforce that the route returned matches the route path

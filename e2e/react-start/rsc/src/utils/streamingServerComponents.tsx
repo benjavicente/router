@@ -1,5 +1,5 @@
-import { createServerFn } from '@tanstack/react-start'
-import { createCompositeComponent } from '@tanstack/react-start/rsc'
+import { createServerFn } from '@benjavicente/react-start'
+import { createCompositeComponent } from '@benjavicente/react-start/rsc'
 import { serverBox, serverBadge, serverHeader, timestamp } from './serverStyles'
 
 // ============================================================================

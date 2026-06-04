@@ -1,6 +1,6 @@
 import path from 'node:path'
 import { defineConfig } from 'vite'
-import { tanstackStart } from '@tanstack/react-start/plugin/vite'
+import { tanstackStart } from '@benjavicente/react-start/plugin/vite'
 import { getStartModeConfig } from './start-mode-config'
 
 const outDir = process.env.E2E_DIST_DIR ?? 'dist'

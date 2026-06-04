@@ -8,11 +8,11 @@ import {
   createRoute,
   createRouter,
   redirect,
-} from '@tanstack/react-router'
-import { TanStackRouterDevtools } from '@tanstack/react-router-devtools'
+} from '@benjavicente/react-router'
+import { TanStackRouterDevtools } from '@benjavicente/react-router-devtools'
 import { NotFoundError, fetchPost, fetchPosts } from './posts'
 import './styles.css'
-import type { ErrorComponentProps } from '@tanstack/react-router'
+import type { ErrorComponentProps } from '@benjavicente/react-router'
 
 const rootRoute = createRootRoute({
   component: RootComponent,
@@ -441,7 +441,7 @@ const router = createRouter({
 })
 
 // Register things for typesafety
-declare module '@tanstack/react-router' {
+declare module '@benjavicente/react-router' {
   interface Register {
     router: typeof router
   }

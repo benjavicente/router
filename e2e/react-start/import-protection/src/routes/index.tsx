@@ -1,4 +1,4 @@
-import { createFileRoute } from '@tanstack/react-router'
+import { createFileRoute } from '@benjavicente/react-router'
 // This import chain triggers a file-based violation in the CLIENT env:
 //   index.tsx -> violations/edge-a.ts -> violations/secret.server.ts
 import { getWrappedSecret } from '../violations/edge-a'

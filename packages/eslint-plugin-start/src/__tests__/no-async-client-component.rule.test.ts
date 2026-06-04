@@ -34,7 +34,7 @@ ruleTester.run(name, rule as any, {
     {
       filename: 'SyncRoute.tsx',
       code: `
-        import { createFileRoute } from '@tanstack/react-router'
+        import { createFileRoute } from '@benjavicente/react-router'
         
         function SyncComponent() {
           return <div>Hello</div>
@@ -49,7 +49,7 @@ ruleTester.run(name, rule as any, {
     {
       filename: 'ServerComponent.tsx',
       code: `
-        import { createCompositeComponent } from '@tanstack/react-start/rsc'
+        import { createCompositeComponent } from '@benjavicente/react-start/rsc'
         
         createCompositeComponent(async () => {
           const data = await fetch('/api')
@@ -72,7 +72,7 @@ ruleTester.run(name, rule as any, {
     {
       filename: 'InlineRoute.tsx',
       code: `
-        import { createFileRoute } from '@tanstack/react-router'
+        import { createFileRoute } from '@benjavicente/react-router'
         
         export const Route = createFileRoute('/')({
           component: () => <div>Hello</div>,
@@ -83,7 +83,7 @@ ruleTester.run(name, rule as any, {
     {
       filename: 'SyncPending.tsx',
       code: `
-        import { createFileRoute } from '@tanstack/react-router'
+        import { createFileRoute } from '@benjavicente/react-router'
         
         function Loading() {
           return <div>Loading...</div>
@@ -99,7 +99,7 @@ ruleTester.run(name, rule as any, {
     {
       filename: 'RootSync.tsx',
       code: `
-        import { createRootRoute } from '@tanstack/react-router'
+        import { createRootRoute } from '@benjavicente/react-router'
         
         function RootLayout() {
           return <div>Layout</div>
@@ -116,7 +116,7 @@ ruleTester.run(name, rule as any, {
     {
       filename: 'AsyncRoute.tsx',
       code: `
-        import { createFileRoute } from '@tanstack/react-router'
+        import { createFileRoute } from '@benjavicente/react-router'
         
         async function AsyncPage() {
           const data = await fetch('/api')
@@ -153,7 +153,7 @@ ruleTester.run(name, rule as any, {
     {
       filename: 'AsyncArrowRoute.tsx',
       code: `
-        import { createFileRoute } from '@tanstack/react-router'
+        import { createFileRoute } from '@benjavicente/react-router'
         
         const AsyncPage = async () => {
           return <div>Async</div>
@@ -173,7 +173,7 @@ ruleTester.run(name, rule as any, {
     {
       filename: 'AsyncPending.tsx',
       code: `
-        import { createFileRoute } from '@tanstack/react-router'
+        import { createFileRoute } from '@benjavicente/react-router'
         
         async function AsyncPending() {
           return <div>Loading...</div>
@@ -194,7 +194,7 @@ ruleTester.run(name, rule as any, {
     {
       filename: 'AsyncError.tsx',
       code: `
-        import { createFileRoute } from '@tanstack/react-router'
+        import { createFileRoute } from '@benjavicente/react-router'
         
         async function AsyncError() {
           return <div>Error</div>
@@ -215,7 +215,7 @@ ruleTester.run(name, rule as any, {
     {
       filename: 'AsyncRoot.tsx',
       code: `
-        import { createRootRoute } from '@tanstack/react-router'
+        import { createRootRoute } from '@benjavicente/react-router'
         
         async function AsyncRoot() {
           return <div>Root</div>
@@ -235,7 +235,7 @@ ruleTester.run(name, rule as any, {
     {
       filename: 'AsyncRootWithContext.tsx',
       code: `
-        import { createRootRouteWithContext, Outlet } from '@tanstack/react-router'
+        import { createRootRouteWithContext, Outlet } from '@benjavicente/react-router'
 
         interface MyRouterContext {
           foo: string
@@ -259,7 +259,7 @@ ruleTester.run(name, rule as any, {
     {
       filename: 'AsyncMultiple.tsx',
       code: `
-        import { createFileRoute } from '@tanstack/react-router'
+        import { createFileRoute } from '@benjavicente/react-router'
         
         async function AsyncOne() {
           return <div>One</div>

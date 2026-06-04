@@ -34,7 +34,7 @@ export default defineConfig({
         'react',
         'react-dom',
         'react/jsx-runtime',
-        '@tanstack/react-router',
+        '@benjavicente/react-router',
         '@router-mono-simple-lazy/post-query',
         '@router-mono-simple-lazy/router',
       ],

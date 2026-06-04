@@ -3,7 +3,7 @@ import {
   ErrorComponent,
   RouterProvider,
   createRouter,
-} from '@tanstack/solid-router'
+} from '@benjavicente/solid-router'
 import { auth } from './utils/auth'
 import { Spinner } from './components/Spinner'
 import { routeTree } from './routeTree.gen'
@@ -28,7 +28,7 @@ const router = createRouter({
   scrollRestoration: true,
 })
 
-declare module '@tanstack/solid-router' {
+declare module '@benjavicente/solid-router' {
   interface Register {
     router: typeof router
   }

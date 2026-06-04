@@ -1,4 +1,4 @@
-import { tsrSplit } from '@tanstack/router-plugin'
+import { tsrSplit } from '@benjavicente/router-plugin'
 import { getCssAssetSource } from '../../start-manifest-plugin/inlineCss'
 import type { Rollup } from 'vite'
 import type { NormalizedClientBuild, NormalizedClientChunk } from '../../types'
@@ -11,6 +11,7 @@ export function normalizeViteClientChunk(
     isEntry: chunk.isEntry,
     imports: chunk.imports,
     dynamicImports: chunk.dynamicImports,
+    moduleIds: chunk.moduleIds,
     css: Array.from(chunk.viteMetadata?.importedCss ?? []),
     routeFilePaths: getRouteFilePathsFromModuleIds(chunk.moduleIds),
   }

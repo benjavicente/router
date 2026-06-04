@@ -1,12 +1,12 @@
 import * as React from 'react'
-import { createFileRoute, useHydrated } from '@tanstack/react-router'
-import { createServerFn } from '@tanstack/react-start'
+import { createFileRoute, useHydrated } from '@benjavicente/react-router'
+import { createServerFn } from '@benjavicente/react-start'
 import {
   renderServerComponent,
   createCompositeComponent,
   CompositeComponent,
   AnyCompositeComponent,
-} from '@tanstack/react-start/rsc'
+} from '@benjavicente/react-start/rsc'
 import {
   serverBox,
   serverBadge,

@@ -1,5 +1,5 @@
 import { expect } from '@playwright/test'
-import { collectBrowserErrors, test } from '@tanstack/router-e2e-utils'
+import { collectBrowserErrors, test } from '@benjavicente/router-e2e-utils'
 
 test.describe('pending component hydration', () => {
   test('data-only route hydrates from pending element to loaded state on first load', async ({

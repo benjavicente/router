@@ -1,4 +1,4 @@
-import { ClientOnly, createFileRoute, Link } from '@tanstack/react-router'
+import { ClientOnly, createFileRoute, Link } from '@benjavicente/react-router'
 import { getConditionalCssServerComponent } from '~/utils/conditionalCssServerComponent'
 import { pageStyles } from '~/utils/styles'
 

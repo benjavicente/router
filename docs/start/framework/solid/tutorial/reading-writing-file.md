@@ -156,7 +156,7 @@ Let's create a new file `src/serverActions/jokesActions.ts` to create a server f
 
 ```tsx
 // src/serverActions/jokesActions.ts
-import { createServerFn } from '@tanstack/solid-start'
+import { createServerFn } from '@benjavicente/solid-start'
 import * as fs from 'node:fs'
 import type { JokesData } from '../types'
 
@@ -210,7 +210,7 @@ Now let's call our server function inside `index.tsx` using TanStack Router whic
 
 ```jsx
 // src/routes/index.tsx
-import { createFileRoute } from '@tanstack/solid-router'
+import { createFileRoute } from '@benjavicente/solid-router'
 import { getJokes } from './serverActions/jokesActions'
 import { JokesList } from './JokesList'
 
@@ -250,7 +250,7 @@ It's time to modify the `jokes.json` file so that we can add new jokes to it. Le
 
 ```tsx
 // src/serverActions/jokesActions.ts
-import { createServerFn } from '@tanstack/solid-start'
+import { createServerFn } from '@benjavicente/solid-start'
 import * as fs from 'node:fs'
 import { v4 as uuidv4 } from 'uuid' // Add this import
 import type { Joke, JokesData } from '../types'
@@ -320,7 +320,7 @@ Now, let's modify our home page to display jokes and provide a form to add new o
 ```tsx
 // src/components/JokeForm.tsx
 import { createSignal } from 'solid'
-import { useRouter } from '@tanstack/solid-router'
+import { useRouter } from '@benjavicente/solid-router'
 import { addJoke } from '../serverActions/jokesActions'
 
 export function JokeForm() {
@@ -377,7 +377,7 @@ Now, let's wire the form up to our `addJoke` server function in the `handleSubmi
 ```tsx
 //JokeForm.tsx
 import { createSignal } from 'solid'
-import { useRouter } from '@tanstack/solid-router'
+import { useRouter } from '@benjavicente/solid-router'
 import { addJoke } from '../serverActions/jokesActions'
 
 export function JokeForm() {

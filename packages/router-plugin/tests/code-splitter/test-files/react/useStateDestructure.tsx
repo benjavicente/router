@@ -11,14 +11,14 @@ import {
   FaTshirt,
   FaTwitter,
 } from 'react-icons/fa'
-import { Await, Link, getRouteApi } from '@tanstack/react-router'
+import { Await, Link, getRouteApi } from '@benjavicente/react-router'
 import { Carbon } from '~/components/Carbon'
 import { Footer } from '~/components/Footer'
 import { VscPreview, VscWand } from 'react-icons/vsc'
 import { TbHeartHandshake } from 'react-icons/tb'
 import SponsorPack from '~/components/SponsorPack'
 import { startProject } from '~/projects/start'
-import { createFileRoute } from '@tanstack/react-router'
+import { createFileRoute } from '@benjavicente/react-router'
 import { Framework, getBranch } from '~/projects'
 import { seo } from '~/utils/seo'
 
@@ -472,9 +472,9 @@ Check it out at https://tanstack.com/start/`,
       {/* {[''].includes(framework) ? (
         <div className="px-2">
           <div className="p-8 text-center text-lg w-full max-w-screen-lg mx-auto bg-black text-white rounded-xl">
-            Looking for the <strong>@tanstack/{framework}-query</strong>{' '}
+            Looking for the <strong>@benjavicente/{framework}-query</strong>{' '}
             example? We could use your help to build the{' '}
-            <strong>@tanstack/{framework}-query</strong> adapter! Join the{' '}
+            <strong>@benjavicente/{framework}-query</strong> adapter! Join the{' '}
             <a
               href="https://tlinz.com/discord"
               className="text-teal-500 font-bold"

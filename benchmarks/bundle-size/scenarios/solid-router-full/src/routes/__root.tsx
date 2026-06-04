@@ -42,7 +42,7 @@ import {
   useRouterState,
   useSearch,
   useTags,
-} from '@tanstack/solid-router'
+} from '@benjavicente/solid-router'
 
 export const Route = createRootRoute({
   component: RootComponent,

@@ -1,5 +1,5 @@
-import { Link, Outlet, createFileRoute } from '@tanstack/solid-router'
-import { getRouterInstance } from '@tanstack/solid-start'
+import { Link, Outlet, createFileRoute } from '@benjavicente/solid-router'
+import { getRouterInstance } from '@benjavicente/solid-start'
 import axios from 'redaxios'
 
 import type { User } from '~/utils/users'

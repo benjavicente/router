@@ -2,7 +2,7 @@ import { SERVER_PROP } from './constants'
 import type {
   HandleNodeAccumulator,
   RouteNode,
-} from '@tanstack/router-generator'
+} from '@benjavicente/router-generator'
 
 export function pruneServerOnlySubtrees({
   rootRouteNode,

@@ -39,27 +39,27 @@ function createFullCompiler(
 
   const lookupConfigurations: Array<LookupConfig> = [
     {
-      libName: '@tanstack/react-start',
+      libName: '@benjavicente/react-start',
       rootExport: 'createServerFn',
       kind: 'Root',
     },
     {
-      libName: '@tanstack/react-start',
+      libName: '@benjavicente/react-start',
       rootExport: 'createMiddleware',
       kind: 'Root',
     },
     {
-      libName: '@tanstack/react-start',
+      libName: '@benjavicente/react-start',
       rootExport: 'createIsomorphicFn',
       kind: 'IsomorphicFn',
     },
     {
-      libName: '@tanstack/react-start',
+      libName: '@benjavicente/react-start',
       rootExport: 'createServerOnlyFn',
       kind: 'ServerOnlyFn',
     },
     {
-      libName: '@tanstack/react-start',
+      libName: '@benjavicente/react-start',
       rootExport: 'createClientOnlyFn',
       kind: 'ClientOnlyFn',
     },
@@ -130,7 +130,7 @@ describe('detectKindsInCode', () => {
   describe('detects individual kinds correctly', () => {
     test('detects ServerFn via .handler(', () => {
       const code = `
-        import { createServerFn } from '@tanstack/react-start'
+        import { createServerFn } from '@benjavicente/react-start'
         const fn = createServerFn().handler(() => 'hello')
       `
       expect(detectKindsInCode(code, 'client')).toEqual(new Set(['ServerFn']))
@@ -139,7 +139,7 @@ describe('detectKindsInCode', () => {
 
     test('detects Middleware', () => {
       const code = `
-        import { createMiddleware } from '@tanstack/react-start'
+        import { createMiddleware } from '@benjavicente/react-start'
         const mw = createMiddleware().server(({ next }) => next())
       `
       // Middleware is only valid on client
@@ -149,7 +149,7 @@ describe('detectKindsInCode', () => {
 
     test('detects IsomorphicFn', () => {
       const code = `
-        import { createIsomorphicFn } from '@tanstack/react-start'
+        import { createIsomorphicFn } from '@benjavicente/react-start'
         const fn = createIsomorphicFn().client(() => 'c').server(() => 's')
       `
       expect(detectKindsInCode(code, 'client')).toEqual(
@@ -162,7 +162,7 @@ describe('detectKindsInCode', () => {
 
     test('detects ServerOnlyFn', () => {
       const code = `
-        import { createServerOnlyFn } from '@tanstack/react-start'
+        import { createServerOnlyFn } from '@benjavicente/react-start'
         const fn = createServerOnlyFn(() => 'server only')
       `
       expect(detectKindsInCode(code, 'client')).toEqual(
@@ -175,7 +175,7 @@ describe('detectKindsInCode', () => {
 
     test('detects ClientOnlyFn', () => {
       const code = `
-        import { createClientOnlyFn } from '@tanstack/react-start'
+        import { createClientOnlyFn } from '@benjavicente/react-start'
         const fn = createClientOnlyFn(() => 'client only')
       `
       expect(detectKindsInCode(code, 'client')).toEqual(
@@ -190,7 +190,7 @@ describe('detectKindsInCode', () => {
   describe('detects multiple kinds in same file', () => {
     test('detects ServerFn and IsomorphicFn', () => {
       const code = `
-        import { createServerFn, createIsomorphicFn } from '@tanstack/react-start'
+        import { createServerFn, createIsomorphicFn } from '@benjavicente/react-start'
         const serverFn = createServerFn().handler(() => 'hello')
         const isoFn = createIsomorphicFn().client(() => 'client')
       `
@@ -201,7 +201,7 @@ describe('detectKindsInCode', () => {
 
     test('detects all kinds on client', () => {
       const code = `
-        import { createServerFn, createMiddleware, createIsomorphicFn, createServerOnlyFn, createClientOnlyFn } from '@tanstack/react-start'
+        import { createServerFn, createMiddleware, createIsomorphicFn, createServerOnlyFn, createClientOnlyFn } from '@benjavicente/react-start'
         const a = createServerFn().handler(() => {})
         const b = createMiddleware().server(({ next }) => next())
         const c = createIsomorphicFn()
@@ -221,7 +221,7 @@ describe('detectKindsInCode', () => {
 
     test('detects all valid kinds on server (excludes Middleware)', () => {
       const code = `
-        import { createServerFn, createMiddleware, createIsomorphicFn, createServerOnlyFn, createClientOnlyFn } from '@tanstack/react-start'
+        import { createServerFn, createMiddleware, createIsomorphicFn, createServerOnlyFn, createClientOnlyFn } from '@benjavicente/react-start'
         const a = createServerFn().handler(() => {})
         const b = createMiddleware().server(({ next }) => next())
         const c = createIsomorphicFn()
@@ -271,7 +271,7 @@ describe('detectKindsInCode', () => {
     test('detects createServerFn() call directly', () => {
       // The pattern should match createServerFn() calls, not just .handler()
       const code = `
-        import { createServerFn } from '@tanstack/react-start'
+        import { createServerFn } from '@benjavicente/react-start'
         const fn = createServerFn()
       `
       expect(detectKindsInCode(code, 'client')).toEqual(new Set(['ServerFn']))
@@ -308,7 +308,7 @@ describe('compiler handles multiple files with different kinds', () => {
     // File 1: ServerFn only
     const result1 = await compiler.compile({
       code: `
-        import { createServerFn } from '@tanstack/react-start'
+        import { createServerFn } from '@benjavicente/react-start'
         export const fn = createServerFn().handler(() => 'hello')
       `,
       id: 'file1.ts',
@@ -323,7 +323,7 @@ describe('compiler handles multiple files with different kinds', () => {
     // File 2: Middleware only
     const result2 = await compiler.compile({
       code: `
-        import { createMiddleware } from '@tanstack/react-start'
+        import { createMiddleware } from '@benjavicente/react-start'
         export const mw = createMiddleware().server(({ next }) => {
           console.log('server only')
           return next()
@@ -341,7 +341,7 @@ describe('compiler handles multiple files with different kinds', () => {
     // File 3: IsomorphicFn only
     const result3 = await compiler.compile({
       code: `
-        import { createIsomorphicFn } from '@tanstack/react-start'
+        import { createIsomorphicFn } from '@benjavicente/react-start'
         export const fn = createIsomorphicFn()
           .client(() => 'client-value')
           .server(() => 'server-value')
@@ -358,7 +358,7 @@ describe('compiler handles multiple files with different kinds', () => {
     // File 4: ServerOnlyFn only
     const result4 = await compiler.compile({
       code: `
-        import { createServerOnlyFn } from '@tanstack/react-start'
+        import { createServerOnlyFn } from '@benjavicente/react-start'
         export const fn = createServerOnlyFn(() => 'server only value')
       `,
       id: 'file4.ts',
@@ -373,7 +373,7 @@ describe('compiler handles multiple files with different kinds', () => {
     // File 5: Mix of ServerFn and IsomorphicFn
     const result5 = await compiler.compile({
       code: `
-        import { createServerFn, createIsomorphicFn } from '@tanstack/react-start'
+        import { createServerFn, createIsomorphicFn } from '@benjavicente/react-start'
         export const serverFn = createServerFn().handler(() => 'hello')
         export const isoFn = createIsomorphicFn().client(() => 'client-iso')
       `,
@@ -392,7 +392,7 @@ describe('compiler handles multiple files with different kinds', () => {
     // First file with IsomorphicFn
     const result1 = await compiler.compile({
       code: `
-        import { createIsomorphicFn } from '@tanstack/react-start'
+        import { createIsomorphicFn } from '@benjavicente/react-start'
         export const fn1 = createIsomorphicFn().client(() => 'first')
       `,
       id: 'first.ts',
@@ -404,7 +404,7 @@ describe('compiler handles multiple files with different kinds', () => {
     // Second file with different IsomorphicFn
     const result2 = await compiler.compile({
       code: `
-        import { createIsomorphicFn } from '@tanstack/react-start'
+        import { createIsomorphicFn } from '@benjavicente/react-start'
         export const fn2 = createIsomorphicFn().client(() => 'second')
       `,
       id: 'second.ts',
@@ -421,7 +421,7 @@ describe('compiler handles multiple files with different kinds', () => {
     // Even if Middleware is in detectedKinds, server env should ignore it
     const result = await compiler.compile({
       code: `
-        import { createMiddleware } from '@tanstack/react-start'
+        import { createMiddleware } from '@benjavicente/react-start'
         export const mw = createMiddleware().server(({ next }) => next())
       `,
       id: 'middleware.ts',
@@ -440,7 +440,7 @@ describe('compiler handles external import transforms', () => {
 
     const result = await compiler.compile({
       code: `
-        import { createServerFn } from '@tanstack/react-start'
+        import { createServerFn } from '@benjavicente/react-start'
         import { renderThing as renderAlias } from '@example/runtime'
 
         export const getComponent = createServerFn({ method: 'GET' }).handler(async () => {
@@ -493,7 +493,7 @@ describe('compiler handles external import transforms', () => {
 
 describe('server function provider module directives', () => {
   const code = `
-    import { createServerFn } from '@tanstack/react-start'
+    import { createServerFn } from '@benjavicente/react-start'
 
     export const getMessage = createServerFn({ method: 'GET' }).handler(() => {
       return 'hello'
@@ -558,7 +558,7 @@ describe('edge cases for detectedKinds', () => {
     // When detectedKinds is not provided, should check all valid kinds
     const result = await compiler.compile({
       code: `
-        import { createIsomorphicFn } from '@tanstack/react-start'
+        import { createIsomorphicFn } from '@benjavicente/react-start'
         export const fn = createIsomorphicFn().client(() => 'works')
       `,
       id: 'no-detected.ts',
@@ -576,7 +576,7 @@ describe('edge cases for detectedKinds', () => {
     // Passing Middleware (invalid for server) along with valid kind
     const result = await compiler.compile({
       code: `
-        import { createIsomorphicFn } from '@tanstack/react-start'
+        import { createIsomorphicFn } from '@benjavicente/react-start'
         export const fn = createIsomorphicFn().server(() => 'server-impl')
       `,
       id: 'filtered.ts',
@@ -622,7 +622,7 @@ describe('calling result of createServerOnlyFn/createClientOnlyFn', () => {
     const compiler = createFullCompiler('server')
 
     const code = `
-      import { createServerFn, createServerOnlyFn } from '@tanstack/react-start'
+      import { createServerFn, createServerOnlyFn } from '@benjavicente/react-start'
 
       const createRandomNumber = createServerOnlyFn(() => Math.floor(Math.random() * 100))
       const randomNumber = createRandomNumber()
@@ -646,7 +646,7 @@ describe('calling result of createServerOnlyFn/createClientOnlyFn', () => {
     const compiler = createFullCompiler('client')
 
     const code = `
-      import { createClientOnlyFn, createServerFn } from '@tanstack/react-start'
+      import { createClientOnlyFn, createServerFn } from '@benjavicente/react-start'
 
       const getWindowWidth = createClientOnlyFn(() => window.innerWidth)
       const width = getWindowWidth()
@@ -666,8 +666,8 @@ describe('calling result of createServerOnlyFn/createClientOnlyFn', () => {
   test('re-exported createServerOnlyFn still resolves correctly', async () => {
     // Ensure the fix doesn't break re-export chain resolution (issue #6583)
     const virtualModules: Record<string, string> = {
-      '@tanstack/start-client-core': `
-        export { createServerOnlyFn } from '@tanstack/start-fn-stubs'
+      '@benjavicente/start-client-core': `
+        export { createServerOnlyFn } from '@benjavicente/start-fn-stubs'
       `,
     }
 
@@ -692,7 +692,7 @@ describe('calling result of createServerOnlyFn/createClientOnlyFn', () => {
     })
 
     const code = `
-      import { createServerOnlyFn } from '@tanstack/start-client-core'
+      import { createServerOnlyFn } from '@benjavicente/start-client-core'
       const myFn = createServerOnlyFn(() => 'server-only-value')
     `
 
@@ -707,7 +707,7 @@ describe('calling result of createServerOnlyFn/createClientOnlyFn', () => {
     const compiler = createFullCompiler('server')
 
     const code = `
-      import { createServerOnlyFn } from '@tanstack/react-start'
+      import { createServerOnlyFn } from '@benjavicente/react-start'
 
       const createSO = createServerOnlyFn
       const myFn = createSO(() => 'aliased-server-only')
@@ -722,24 +722,24 @@ describe('calling result of createServerOnlyFn/createClientOnlyFn', () => {
 
 describe('re-export chain resolution', () => {
   // This tests the fix for https://github.com/TanStack/router/issues/6583
-  // Third-party packages may import from @tanstack/start-client-core (which re-exports
-  // from @tanstack/start-fn-stubs) rather than directly from @tanstack/react-start.
+  // Third-party packages may import from @benjavicente/start-client-core (which re-exports
+  // from @benjavicente/start-fn-stubs) rather than directly from @benjavicente/react-start.
   // The compiler should correctly resolve these imports via the slow path.
 
   // Virtual module contents for simulating the re-export chain:
-  // @third-party/lib -> @tanstack/start-client-core -> @tanstack/start-fn-stubs
+  // @third-party/lib -> @benjavicente/start-client-core -> @benjavicente/start-fn-stubs
   //
-  // Note: We don't need a virtual module for @tanstack/start-fn-stubs because
+  // Note: We don't need a virtual module for @benjavicente/start-fn-stubs because
   // init() hardcodes it in knownRootImports. When the slow path resolution reaches
   // that package, it uses the fast path lookup and never needs to parse the module.
   const virtualModules: Record<string, string> = {
     // The client-core package that re-exports from stubs
-    '@tanstack/start-client-core': `
-      export { createIsomorphicFn, createServerOnlyFn, createClientOnlyFn } from '@tanstack/start-fn-stubs'
+    '@benjavicente/start-client-core': `
+      export { createIsomorphicFn, createServerOnlyFn, createClientOnlyFn } from '@benjavicente/start-fn-stubs'
     `,
     // A third-party package that imports from start-client-core
     '@third-party/lib': `
-      import { createIsomorphicFn, createClientOnlyFn } from '@tanstack/start-client-core'
+      import { createIsomorphicFn, createClientOnlyFn } from '@benjavicente/start-client-core'
 
       export const getThemeData = createIsomorphicFn()
         .client(() => 'client-theme')
@@ -762,7 +762,7 @@ describe('re-export chain resolution', () => {
 
     // Note: We use empty lookupConfigurations because this test is specifically
     // testing the slow path resolution through re-export chains. The compiler
-    // should still work because @tanstack/start-fn-stubs is hardcoded in
+    // should still work because @benjavicente/start-fn-stubs is hardcoded in
     // knownRootImports during init().
     const compiler: StartCompiler = new StartCompiler({
       env,
@@ -846,7 +846,7 @@ describe('re-export chain resolution', () => {
       ...virtualModules,
       // Another intermediate package
       '@another-intermediate/pkg': `
-        export { createIsomorphicFn } from '@tanstack/start-client-core'
+        export { createIsomorphicFn } from '@benjavicente/start-client-core'
       `,
       '@deep-third-party/lib': `
         import { createIsomorphicFn } from '@another-intermediate/pkg'
@@ -898,22 +898,22 @@ describe('re-export chain resolution', () => {
       getKnownServerFns: () => ({}),
       loadModule: async () => {},
       resolveId: async (id) => {
-        return id === '@tanstack/start-client-core' ? id : null
+        return id === '@benjavicente/start-client-core' ? id : null
       },
       mode: 'build',
     })
 
     compiler.ingestModule({
-      id: '@tanstack/start-client-core',
+      id: '@benjavicente/start-client-core',
       code: `
-        export { createServerOnlyFn } from '@tanstack/start-fn-stubs'
+        export { createServerOnlyFn } from '@benjavicente/start-fn-stubs'
       `,
     })
 
     const result = await compiler.compile({
       id: 'cached-module-test.ts',
       code: `
-        import { createServerOnlyFn } from '@tanstack/start-client-core'
+        import { createServerOnlyFn } from '@benjavicente/start-client-core'
         const myFn = createServerOnlyFn(() => 'cached-server-only-value')
       `,
     })
@@ -928,7 +928,7 @@ describe('re-export chain resolution', () => {
         export { createServerOnlyFn } from './factory-inner'
       `,
       './factory-inner': `
-        export { createServerOnlyFn } from '@tanstack/start-fn-stubs'
+        export { createServerOnlyFn } from '@benjavicente/start-fn-stubs'
       `,
     }
 
@@ -968,7 +968,7 @@ describe('re-export chain resolution', () => {
     expect(initialResult!.code).not.toContain('throw new Error')
 
     virtualModules['./factory-inner'] = `
-      export { createClientOnlyFn as createServerOnlyFn } from '@tanstack/start-fn-stubs'
+      export { createClientOnlyFn as createServerOnlyFn } from '@benjavicente/start-fn-stubs'
     `
 
     expect(compiler.invalidateModule('./factory-inner')).toBe(true)
@@ -989,7 +989,7 @@ describe('re-export chain resolution', () => {
         export { createServerOnlyFn } from './factory-inner'
       `,
       './factory-inner': `
-        export { createServerOnlyFn } from '@tanstack/start-fn-stubs'
+        export { createServerOnlyFn } from '@benjavicente/start-fn-stubs'
       `,
     }
 
@@ -1002,12 +1002,12 @@ describe('re-export chain resolution', () => {
       lookupKinds: new Set(['ServerOnlyFn', 'ClientOnlyFn']),
       lookupConfigurations: [
         {
-          libName: '@tanstack/react-start',
+          libName: '@benjavicente/react-start',
           rootExport: 'createServerOnlyFn',
           kind: 'ServerOnlyFn',
         },
         {
-          libName: '@tanstack/react-start',
+          libName: '@benjavicente/react-start',
           rootExport: 'createClientOnlyFn',
           kind: 'ClientOnlyFn',
         },
@@ -1038,7 +1038,7 @@ describe('re-export chain resolution', () => {
     expect(initialResult!.code).toContain('server-only-value')
 
     virtualModules['./factory-inner'] = `
-      export { createClientOnlyFn as createServerOnlyFn } from '@tanstack/start-fn-stubs'
+      export { createClientOnlyFn as createServerOnlyFn } from '@benjavicente/start-fn-stubs'
     `
 
     expect(compiler.invalidateModule('./factory-inner')).toBe(true)
@@ -1056,7 +1056,7 @@ describe('re-export chain resolution', () => {
   test('recompiles aliased env-only direct calls when only server function syntax is detected', async () => {
     const virtualModules: Record<string, string> = {
       './factory': `
-        export { createServerOnlyFn } from '@tanstack/start-fn-stubs'
+        export { createServerOnlyFn } from '@benjavicente/start-fn-stubs'
       `,
     }
 
@@ -1070,7 +1070,7 @@ describe('re-export chain resolution', () => {
       lookupKinds: new Set(['ServerFn', 'ServerOnlyFn', 'ClientOnlyFn']),
       lookupConfigurations: [
         {
-          libName: '@tanstack/react-start',
+          libName: '@benjavicente/react-start',
           rootExport: 'createServerFn',
           kind: 'Root',
         },
@@ -1088,7 +1088,7 @@ describe('re-export chain resolution', () => {
     })
 
     const source = `
-      import { createServerFn } from '@tanstack/react-start'
+      import { createServerFn } from '@benjavicente/react-start'
       import { createServerOnlyFn as createServerFnHmrFactory } from './factory'
 
       const serverOnlyImpl = createServerFnHmrFactory(() => 'server-only-value')
@@ -1111,7 +1111,7 @@ describe('re-export chain resolution', () => {
     expect(initialResult!.code).not.toContain('throw new Error')
 
     virtualModules['./factory'] = `
-      export { createClientOnlyFn as createServerOnlyFn } from '@tanstack/start-fn-stubs'
+      export { createClientOnlyFn as createServerOnlyFn } from '@benjavicente/start-fn-stubs'
     `
 
     expect(compiler.invalidateModule('./factory')).toBe(true)

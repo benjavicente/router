@@ -1,5 +1,5 @@
-import { createFileRoute } from '@tanstack/react-router'
-import { type RequestHandler } from '@tanstack/react-start/server'
+import { createFileRoute } from '@benjavicente/react-router'
+import { type RequestHandler } from '@benjavicente/react-start/server'
 import type { TypeOnlySecret } from '../violations/type-only.server'
 
 type TypeOnlyStatus = TypeOnlySecret & {

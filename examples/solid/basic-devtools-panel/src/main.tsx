@@ -6,8 +6,8 @@ import {
   createRouter,
   createRoute,
   createRootRoute,
-} from '@tanstack/solid-router'
-import { TanStackRouterDevtoolsPanel } from '@tanstack/solid-router-devtools'
+} from '@benjavicente/solid-router'
+import { TanStackRouterDevtoolsPanel } from '@benjavicente/solid-router-devtools'
 import { render } from 'solid-js/web'
 
 const rootRoute = createRootRoute({
@@ -47,7 +47,7 @@ const routeTree = rootRoute.addChildren([indexRoute, aboutRoute])
 
 const router = createRouter({ routeTree })
 
-declare module '@tanstack/solid-router' {
+declare module '@benjavicente/solid-router' {
   interface Register {
     router: typeof router
   }

@@ -17,8 +17,8 @@ import {
   useRouter,
   useRouterState,
   useSearch,
-} from '@tanstack/react-router'
-import { TanStackRouterDevtools } from '@tanstack/react-router-devtools'
+} from '@benjavicente/react-router'
+import { TanStackRouterDevtools } from '@benjavicente/react-router-devtools'
 import {
   QueryClient,
   QueryClientProvider,
@@ -925,7 +925,7 @@ const router = createRouter({
   scrollRestoration: true,
 })
 
-declare module '@tanstack/react-router' {
+declare module '@benjavicente/react-router' {
   interface Register {
     router: typeof router
   }

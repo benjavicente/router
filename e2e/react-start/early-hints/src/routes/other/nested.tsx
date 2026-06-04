@@ -1,5 +1,5 @@
 /// <reference types="vite/client" />
-import { createFileRoute } from '@tanstack/react-router'
+import { createFileRoute } from '@benjavicente/react-router'
 import nestedCss from '../../styles/nested.css?url'
 import styles from '../../styles/nested.module.css'
 

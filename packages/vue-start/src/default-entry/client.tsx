@@ -3,7 +3,7 @@ import {
   StartClient,
   configureHydrationSuppressions,
   hydrateStart,
-} from '@tanstack/vue-start/client'
+} from '@benjavicente/vue-start/client'
 
 hydrateStart().then((router) => {
   const app = createSSRApp(StartClient, { router })

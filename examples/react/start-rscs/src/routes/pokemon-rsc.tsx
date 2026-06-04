@@ -1,4 +1,4 @@
-import { Link, createFileRoute } from '@tanstack/react-router'
+import { Link, createFileRoute } from '@benjavicente/react-router'
 import { getPokemonList } from '~/pokemon/server-functions'
 
 export const Route = createFileRoute('/pokemon-rsc')({

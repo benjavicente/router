@@ -12,7 +12,7 @@ const successCases: Array<{
     // This test should be updated whenever the `defaultCodeSplitGroupings` changes
     name: 'verbose:true-defaults',
     code: `
-import {createFileRoute} from '@tanstack/react-router'
+import {createFileRoute} from '@benjavicente/react-router'
 export const Route = createFileRoute('/posts')({
 codeSplitGroupings: [
   ['component'],
@@ -40,7 +40,7 @@ codeSplitGroupings: [
   {
     name: 'verbose:true-loader-separate-components-combined',
     code: `
-import {createFileRoute} from '@tanstack/react-router'
+import {createFileRoute} from '@benjavicente/react-router'
 export const Route = createFileRoute('/posts')({
 codeSplitGroupings: [
   ['loader'],
@@ -71,7 +71,7 @@ codeSplitGroupings: [
   {
     name: 'verbose:true-limited-loader-and-component',
     code: `
-import {createFileRoute} from '@tanstack/react-router'
+import {createFileRoute} from '@benjavicente/react-router'
 export const Route = createFileRoute('/posts')({
 codeSplitGroupings: [
   ['loader', 'component'],
@@ -102,7 +102,7 @@ codeSplitGroupings: [
   {
     name: 'verbose:true-empty',
     code: `
-import {createFileRoute} from '@tanstack/react-router'
+import {createFileRoute} from '@benjavicente/react-router'
 export const Route = createFileRoute('/posts')({})
 `,
     expectedGrouping: undefined,
@@ -137,7 +137,7 @@ const failCases: Array<{
   {
     name: 'verbose:true-not-nested-array',
     code: `
-  import {createFileRoute} from '@tanstack/react-router'
+  import {createFileRoute} from '@benjavicente/react-router'
   export const Route = createFileRoute('/')({
   codeSplitGroupings: [
       'loader',
@@ -158,7 +158,7 @@ const failCases: Array<{
   {
     name: 'verbose:true-reference-variable',
     code: `
-import {createFileRoute} from '@tanstack/react-router'
+import {createFileRoute} from '@benjavicente/react-router'
 const groupings = [
   ['loader'],
   ['component'],

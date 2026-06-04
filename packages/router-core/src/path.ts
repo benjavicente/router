@@ -1,4 +1,4 @@
-import { isServer } from '@tanstack/router-core/isServer'
+import { isServer } from '@benjavicente/router-core/isServer'
 import { last } from './utils'
 import {
   SEGMENT_TYPE_OPTIONAL_PARAM,

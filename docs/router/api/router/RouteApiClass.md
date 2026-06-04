@@ -26,7 +26,7 @@ The `RouteApi` constructor accepts a single argument: the `options` that will be
 ## Examples
 
 ```tsx
-import { RouteApi } from '@tanstack/react-router'
+import { RouteApi } from '@benjavicente/react-router'
 
 const routeApi = new RouteApi({ id: '/posts' })
 

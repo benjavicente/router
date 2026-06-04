@@ -17,7 +17,7 @@
 import {
   createClientOnlyFn,
   createIsomorphicFn,
-} from '@tanstack/start-fn-stubs'
+} from '@benjavicente/start-fn-stubs'
 
 /**
  * Decode a Flight stream into React elements.

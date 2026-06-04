@@ -1,4 +1,4 @@
-import { Link, createFileRoute } from '@tanstack/solid-router'
+import { Link, createFileRoute } from '@benjavicente/solid-router'
 import { fetchPost } from '../utils/posts'
 
 export const Route = createFileRoute('/posts_/$postId/deep')({

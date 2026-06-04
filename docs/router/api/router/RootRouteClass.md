@@ -41,7 +41,7 @@ A new [`Route`](./RouteType.md) instance.
 ## Examples
 
 ```tsx
-import { RootRoute, createRouter, Outlet } from '@tanstack/react-router'
+import { RootRoute, createRouter, Outlet } from '@benjavicente/react-router'
 
 const rootRoute = new RootRoute({
   component: () => <Outlet />,

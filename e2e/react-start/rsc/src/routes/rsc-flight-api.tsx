@@ -1,10 +1,10 @@
-import { createFileRoute, useHydrated } from '@tanstack/react-router'
-import { createServerFn } from '@tanstack/react-start'
+import { createFileRoute, useHydrated } from '@benjavicente/react-router'
+import { createServerFn } from '@benjavicente/react-start'
 import {
   createFromFetch,
   createFromReadableStream,
   renderToReadableStream,
-} from '@tanstack/react-start/rsc'
+} from '@benjavicente/react-start/rsc'
 import { Suspense, use, useState } from 'react'
 import { formatTime, pageStyles, serverStyles } from '~/utils/styles'
 

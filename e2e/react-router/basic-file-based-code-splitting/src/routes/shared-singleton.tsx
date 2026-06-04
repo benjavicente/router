@@ -1,4 +1,4 @@
-import { createFileRoute } from '@tanstack/react-router'
+import { createFileRoute } from '@benjavicente/react-router'
 import * as React from 'react'
 
 // All shared state lives in declarations — no bare expression statements.

@@ -1,5 +1,5 @@
 import { expect } from '@playwright/test'
-import { test } from '@tanstack/router-e2e-utils'
+import { test } from '@benjavicente/router-e2e-utils'
 import { readFile, writeFile } from 'node:fs/promises'
 import path from 'node:path'
 import type { Page } from '@playwright/test'
@@ -236,7 +236,7 @@ function normalizeRouteSource(routeFileKey: RouteFileKey, source: string) {
   if (routeFileKey === 'serverFnHmrFactory') {
     next = next.replace(
       /^import \{ .* \} from '@tanstack\/react-start'$/m,
-      "import { createClientOnlyFn, createServerOnlyFn } from '@tanstack/react-start'",
+      "import { createClientOnlyFn, createServerOnlyFn } from '@benjavicente/react-start'",
     )
     next = replaceAll(
       next,

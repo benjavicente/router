@@ -1,6 +1,6 @@
 import MagicString from 'magic-string'
 import * as t from '@babel/types'
-import { parseAst } from '@tanstack/router-utils'
+import { parseAst } from '@benjavicente/router-utils'
 import type { TransformOptions, TransformResult } from './types'
 
 const routeConstructors = ['createFileRoute', 'createLazyFileRoute'] as const
@@ -119,7 +119,7 @@ export function transform({
     routeCall.routeIdArg.start!,
     routeCall.routeIdArg.end!,
   )
-  const targetModule = `@tanstack/${ctx.target}-router`
+  const targetModule = ctx.targetModule ?? `@benjavicente/${ctx.target}-router`
   const imports = parseTargetImports(ast.program.body, source, targetModule)
 
   const s = new MagicString(source)

@@ -1,4 +1,4 @@
-# @tanstack/router-plugin — Skill Spec
+# @benjavicente/router-plugin — Skill Spec
 
 Bundler plugin for route generation and automatic code splitting. Supports Vite, Webpack, Rspack, and esbuild via unplugin.
 

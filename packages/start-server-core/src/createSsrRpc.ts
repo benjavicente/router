@@ -1,6 +1,6 @@
-import { TSS_SERVER_FUNCTION } from '@tanstack/start-client-core'
+import { TSS_SERVER_FUNCTION } from '@benjavicente/start-client-core'
 import { getServerFnById } from './getServerFnById'
-import type { ClientFnMeta } from '@tanstack/start-client-core'
+import type { ClientFnMeta } from '@benjavicente/start-client-core'
 
 export const createSsrRpc = (functionId: string) => {
   const url = process.env.TSS_SERVER_FN_BASE + functionId

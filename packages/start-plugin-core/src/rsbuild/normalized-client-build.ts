@@ -1,4 +1,4 @@
-import { tsrSplit } from '@tanstack/router-plugin'
+import { tsrSplit } from '@benjavicente/router-plugin'
 import { getCssAssetSource } from '../start-manifest-plugin/inlineCss'
 import { RSBUILD_ENVIRONMENT_NAMES } from './planning'
 import type { RsbuildPluginAPI, Rspack } from '@rsbuild/core'
@@ -55,6 +55,10 @@ function getRouteFilePathsFromModules(
   }
 
   return routeFilePaths ?? []
+}
+
+function getModuleIdsFromModules(modules: Array<RspackModule>): Array<string> {
+  return modules.map((mod) => mod.nameForCondition() ?? mod.identifier())
 }
 
 /**
@@ -240,6 +244,7 @@ export function normalizeRspackClientBuild(
         isEntry: isEntryChunk,
         imports,
         dynamicImports,
+        moduleIds: getModuleIdsFromModules(modules),
         css: [],
         routeFilePaths,
       }

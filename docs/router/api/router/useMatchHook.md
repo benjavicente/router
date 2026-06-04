@@ -54,7 +54,7 @@ The `useMatch` hook accepts a single argument, an `options` object.
 ### Accessing a route match
 
 ```tsx
-import { useMatch } from '@tanstack/react-router'
+import { useMatch } from '@benjavicente/react-router'
 
 function Component() {
   const match = useMatch({ from: '/posts/$postId' })
@@ -69,7 +69,7 @@ function Component() {
 import {
   useMatch,
   rootRouteId, // <<<< use this token!
-} from '@tanstack/react-router'
+} from '@benjavicente/react-router'
 
 function Component() {
   const match = useMatch({ from: rootRouteId })
@@ -81,7 +81,7 @@ function Component() {
 ### Checking if a specific route is currently rendered
 
 ```tsx
-import { useMatch } from '@tanstack/react-router'
+import { useMatch } from '@benjavicente/react-router'
 
 function Component() {
   const match = useMatch({ from: '/posts', shouldThrow: false })

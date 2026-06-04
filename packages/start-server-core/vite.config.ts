@@ -24,6 +24,7 @@ export default mergeConfig(
       './src/createServerRpc.ts',
       './src/createSsrRpc.ts',
       './src/fake-start-server-fn-resolver.ts',
+      './src/fake-start-plugin-adapters.ts',
     ],
     externalDeps: [
       ...Object.values(VIRTUAL_MODULES),

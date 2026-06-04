@@ -279,7 +279,7 @@ The main differences are:
 To migrate from `NotFoundRoute` to `notFoundComponent`, you'll just need to make a few changes:
 
 ```tsx title='src/router.tsx'
-import { createRouter } from '@tanstack/react-router'
+import { createRouter } from '@benjavicente/react-router'
 import { routeTree } from './routeTree.gen.'
 - import { notFoundRoute } from './notFoundRoute'  // [!code --]
 
@@ -289,7 +289,7 @@ export const router = createRouter({
 })
 
 // routes/__root.tsx
-import { createRootRoute } from '@tanstack/react-router'
+import { createRootRoute } from '@benjavicente/react-router'
 
 export const Route = createRootRoute({
   // ...

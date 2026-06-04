@@ -5,7 +5,7 @@ import {
   Outlet,
   Scripts,
   createRootRoute,
-} from '@tanstack/react-router'
+} from '@benjavicente/react-router'
 import {
   ClerkProvider,
   SignInButton,
@@ -13,11 +13,11 @@ import {
   SignedOut,
   UserButton,
 } from '@clerk/tanstack-react-start'
-import { TanStackRouterDevtools } from '@tanstack/react-router-devtools'
-import { createServerFn } from '@tanstack/react-start'
+import { TanStackRouterDevtools } from '@benjavicente/react-router-devtools'
+import { createServerFn } from '@benjavicente/react-start'
 import * as React from 'react'
 import { getAuth } from '@clerk/tanstack-react-start/server'
-import { getRequest } from '@tanstack/react-start/server'
+import { getRequest } from '@benjavicente/react-start/server'
 import { DefaultCatchBoundary } from '~/components/DefaultCatchBoundary.js'
 import { NotFound } from '~/components/NotFound.js'
 import appCss from '~/styles/app.css?url'

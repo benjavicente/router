@@ -1,7 +1,7 @@
 import * as Vue from 'vue'
-import { isServer } from '@tanstack/router-core/isServer'
+import { isServer } from '@benjavicente/router-core/isServer'
 import { useRouter } from './useRouter'
-import type { RouterManagedTag } from '@tanstack/router-core'
+import type { RouterManagedTag } from '@benjavicente/router-core'
 
 const INLINE_CSS_HYDRATION_ATTR = 'data-tsr-inline-css'
 

@@ -1,4 +1,4 @@
-import { Link, Outlet, createLazyRoute } from '@tanstack/vue-router'
+import { Link, Outlet, createLazyRoute } from '@benjavicente/vue-router'
 
 export const Route = createLazyRoute('/posts')({
   component: PostsComponent,

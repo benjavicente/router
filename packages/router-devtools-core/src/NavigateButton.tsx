@@ -1,5 +1,5 @@
 import { useStyles } from './useStyles'
-import type { AnyRouter, NavigateOptions } from '@tanstack/router-core'
+import type { AnyRouter, NavigateOptions } from '@benjavicente/router-core'
 import type { Accessor } from 'solid-js'
 
 interface Props extends NavigateOptions {

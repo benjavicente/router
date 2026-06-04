@@ -15,7 +15,7 @@ import {
   createServerOnlyFn,
   createClientOnlyFn,
   createIsomorphicFn,
-} from '@tanstack/solid-start'
+} from '@benjavicente/solid-start'
 
 // Server function (RPC call)
 const getUsers = createServerFn().handler(async () => {

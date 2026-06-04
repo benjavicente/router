@@ -24,7 +24,7 @@ The `isRedirect` function accepts a single argument, an `input`.
 ## Examples
 
 ```tsx
-import { isRedirect } from '@tanstack/react-router'
+import { isRedirect } from '@benjavicente/react-router'
 
 function somewhere(obj: unknown) {
   if (isRedirect(obj)) {

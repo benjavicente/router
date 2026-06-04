@@ -27,7 +27,7 @@ The `rootRouteWithContext` function accepts a single generic argument:
 ## Examples
 
 ```tsx
-import { rootRouteWithContext, createRouter } from '@tanstack/react-router'
+import { rootRouteWithContext, createRouter } from '@benjavicente/react-router'
 import { QueryClient } from '@tanstack/react-query'
 
 interface MyRouterContext {

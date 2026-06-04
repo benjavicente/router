@@ -1,4 +1,4 @@
-import { Link, createFileRoute } from '@tanstack/react-router';
+import { Link, createFileRoute } from '@benjavicente/react-router';
 import { Badge, Box, Button, Callout, Code, Flex, Heading, Text, TextField } from '@radix-ui/themes';
 import { useAccessToken, useAuth } from '@workos/authkit-tanstack-react-start/client';
 import { useState } from 'react';

@@ -1,8 +1,9 @@
 import * as t from '@babel/types'
 import babel from '@babel/core'
-import { hasKeys } from '@tanstack/router-core'
+import { hasKeys } from '@benjavicente/router-core'
 import path from 'pathe'
 import { cleanId, codeFrameError, stripMethodCall } from './utils'
+import { getStartPackageName } from '../frameworkPackages'
 import type { CompilationContext, RewriteCandidate, ServerFn } from './types'
 import type { CompileStartFrameworkOptions } from '../types'
 
@@ -58,17 +59,18 @@ function getCachedRuntimeCode(
 ): t.Statement {
   let cache = RuntimeCodeCache.get(framework)
   if (!cache) {
+    const startPackageName = getStartPackageName(framework)
     cache = {
       provider: babel.template.ast(
-        `import { createServerRpc } from '@tanstack/${framework}-start/server-rpc'`,
+        `import { createServerRpc } from '${startPackageName}/server-rpc'`,
         { placeholderPattern: false },
       ) as t.Statement,
       client: babel.template.ast(
-        `import { createClientRpc } from '@tanstack/${framework}-start/client-rpc'`,
+        `import { createClientRpc } from '${startPackageName}/client-rpc'`,
         { placeholderPattern: false },
       ) as t.Statement,
       ssr: babel.template.ast(
-        `import { createSsrRpc } from '@tanstack/${framework}-start/ssr-rpc'`,
+        `import { createSsrRpc } from '${startPackageName}/ssr-rpc'`,
         { placeholderPattern: false },
       ) as t.Statement,
     }

@@ -5,9 +5,9 @@ import {
   Outlet,
   Scripts,
   createRootRouteWithContext,
-} from '@tanstack/react-router'
+} from '@benjavicente/react-router'
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools'
-import { TanStackRouterDevtoolsInProd } from '@tanstack/react-router-devtools'
+import { TanStackRouterDevtoolsInProd } from '@benjavicente/react-router-devtools'
 import * as React from 'react'
 import type { QueryClient } from '@tanstack/react-query'
 import { DefaultCatchBoundary } from '~/components/DefaultCatchBoundary'

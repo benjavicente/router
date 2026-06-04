@@ -2,7 +2,7 @@ import type * as babel from '@babel/core'
 import type * as t from '@babel/types'
 import type { TanStackStartOutputConfig } from './schema'
 
-export type CompileStartFrameworkOptions = 'react' | 'solid' | 'vue'
+export type CompileStartFrameworkOptions = 'react' | 'solid' | 'vue' | 'angular'
 
 export type ServerFnLookupAccess = { origin: 'client' } | { origin: 'server' }
 
@@ -80,6 +80,7 @@ export interface NormalizedClientChunk {
   isEntry: boolean
   imports: Array<string>
   dynamicImports: Array<string>
+  moduleIds: Array<string>
   css: Array<string>
   routeFilePaths: Array<string>
 }

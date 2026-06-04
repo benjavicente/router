@@ -199,9 +199,9 @@ describe('dedupeViolationKey', () => {
       dedupeViolationKey({
         type: 'specifier',
         importer: '/app/src/a.ts',
-        specifier: '@tanstack/react-start/server',
+        specifier: '@benjavicente/react-start/server',
       }),
-    ).toBe('specifier:/app/src/a.ts:@tanstack/react-start/server:')
+    ).toBe('specifier:/app/src/a.ts:@benjavicente/react-start/server:')
   })
 })
 

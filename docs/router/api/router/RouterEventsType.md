@@ -99,7 +99,7 @@ Once an event is emitted, the following properties will be present on the event 
 ## Example
 
 ```tsx
-import { createRouter } from '@tanstack/react-router'
+import { createRouter } from '@benjavicente/react-router'
 import { routeTree } from './routeTree.gen'
 
 const router = createRouter({ routeTree })

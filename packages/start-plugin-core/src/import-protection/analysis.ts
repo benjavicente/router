@@ -1,10 +1,10 @@
 import * as t from '@babel/types'
-import { parseAst } from '@tanstack/router-utils'
+import { parseAst } from '@benjavicente/router-utils'
 
 import { buildLineIndex } from './sourceLocation'
 import { getOrCreate } from './utils'
 import type { LineIndex, TransformResult } from './sourceLocation'
-import type { ParseAstResult } from '@tanstack/router-utils'
+import type { ParseAstResult } from '@benjavicente/router-utils'
 
 export type UsagePos = { line: number; column0: number }
 

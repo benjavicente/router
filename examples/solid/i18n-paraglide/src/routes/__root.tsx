@@ -1,4 +1,4 @@
-import { Link, Outlet, createRootRoute, redirect } from '@tanstack/solid-router'
+import { Link, Outlet, createRootRoute, redirect } from '@benjavicente/solid-router'
 import {
   getLocale,
   locales,

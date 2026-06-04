@@ -1,5 +1,5 @@
 import { render } from 'solid-js/web'
-import { RouterProvider } from '@tanstack/solid-router'
+import { RouterProvider } from '@benjavicente/solid-router'
 import { Outlet, router } from '@router-solid-mono-simple/router'
 import {
   PostErrorComponent,

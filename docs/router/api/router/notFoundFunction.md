@@ -20,7 +20,7 @@ The `notFound` function accepts a single optional argument, the `options` to cre
 ## Examples
 
 ```tsx
-import { notFound, createFileRoute, rootRouteId } from '@tanstack/react-router'
+import { notFound, createFileRoute, rootRouteId } from '@benjavicente/react-router'
 
 const Route = new createFileRoute('/posts/$postId')({
   // throwing a not-found object

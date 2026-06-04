@@ -3,8 +3,8 @@ import {
   Link,
   Scripts,
   createRootRoute,
-} from '@tanstack/react-router'
-import { TanStackRouterDevtoolsPanel } from '@tanstack/react-router-devtools'
+} from '@benjavicente/react-router'
+import { TanStackRouterDevtoolsPanel } from '@benjavicente/react-router-devtools'
 import { TanStackDevtools } from '@tanstack/react-devtools'
 import styles from '../styles.css?url'
 import { getLocale, locales, setLocale } from '@/paraglide/runtime'

@@ -1,5 +1,5 @@
 import { useQuery } from '@tanstack/vue-query'
-import { createFileRoute } from '@tanstack/vue-router'
+import { createFileRoute } from '@benjavicente/vue-router'
 import { makeQueryOptions } from '~/queryOptions'
 
 const qOptions = makeQueryOptions('useQuery')

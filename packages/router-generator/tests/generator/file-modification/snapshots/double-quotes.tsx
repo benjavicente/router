@@ -6,7 +6,7 @@ import {
   ErrorComponentProps,
   Link,
   createFileRoute,
-} from '@tanstack/react-router'
+} from '@benjavicente/react-router'
 
 export const Route = createFileRoute("/(test)/double-quotes")({
   loader: async ({ params: { postId } }) => ({

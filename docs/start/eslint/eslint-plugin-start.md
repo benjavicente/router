@@ -10,25 +10,25 @@ TanStack Start comes with its own ESLint plugin. This plugin is used to enforce 
 The plugin is a separate package that you need to install:
 
 ```sh
-npm install -D @tanstack/eslint-plugin-start
+npm install -D @benjavicente/eslint-plugin-start
 ```
 
 or
 
 ```sh
-pnpm add -D @tanstack/eslint-plugin-start
+pnpm add -D @benjavicente/eslint-plugin-start
 ```
 
 or
 
 ```sh
-yarn add -D @tanstack/eslint-plugin-start
+yarn add -D @benjavicente/eslint-plugin-start
 ```
 
 or
 
 ```sh
-bun add -D @tanstack/eslint-plugin-start
+bun add -D @benjavicente/eslint-plugin-start
 ```
 
 ## Flat Config (`eslint.config.js`)
@@ -41,7 +41,7 @@ To enable all recommended rules:
 
 ```js
 // eslint.config.js
-import pluginStart from '@tanstack/eslint-plugin-start'
+import pluginStart from '@benjavicente/eslint-plugin-start'
 
 export default [
   pluginStart.configs['flat/recommended'],
@@ -55,16 +55,16 @@ Alternatively, load the plugin and configure only the rules you want:
 
 ```js
 // eslint.config.js
-import pluginStart from '@tanstack/eslint-plugin-start'
+import pluginStart from '@benjavicente/eslint-plugin-start'
 
 export default [
   {
     plugins: {
-      '@tanstack/start': pluginStart,
+      '@benjavicente/start': pluginStart,
     },
     rules: {
-      '@tanstack/start/no-client-code-in-server-component': 'error',
-      '@tanstack/start/no-async-client-component': 'error',
+      '@benjavicente/start/no-client-code-in-server-component': 'error',
+      '@benjavicente/start/no-async-client-component': 'error',
     },
   },
   // Any other config...
@@ -77,24 +77,24 @@ Prior to ESLint 9.0, the most common way to configure ESLint was using a `.eslin
 
 ### Recommended Legacy Config setup
 
-To enable all recommended rules, add `plugin:@tanstack/eslint-plugin-start/recommended` in `extends`:
+To enable all recommended rules, add `plugin:@benjavicente/eslint-plugin-start/recommended` in `extends`:
 
 ```json
 {
-  "extends": ["plugin:@tanstack/eslint-plugin-start/recommended"]
+  "extends": ["plugin:@benjavicente/eslint-plugin-start/recommended"]
 }
 ```
 
 ### Custom Legacy Config setup
 
-Alternatively, add `@tanstack/eslint-plugin-start` to `plugins` and configure the rules you want:
+Alternatively, add `@benjavicente/eslint-plugin-start` to `plugins` and configure the rules you want:
 
 ```json
 {
-  "plugins": ["@tanstack/eslint-plugin-start"],
+  "plugins": ["@benjavicente/eslint-plugin-start"],
   "rules": {
-    "@tanstack/start/no-client-code-in-server-component": "error",
-    "@tanstack/start/no-async-client-component": "error"
+    "@benjavicente/start/no-client-code-in-server-component": "error",
+    "@benjavicente/start/no-async-client-component": "error"
   }
 }
 ```
@@ -103,5 +103,5 @@ Alternatively, add `@tanstack/eslint-plugin-start` to `plugins` and configure th
 
 The following rules are available in the TanStack Start ESLint plugin:
 
-- [@tanstack/start/no-client-code-in-server-component](./no-client-code-in-server-component.md)
-- [@tanstack/start/no-async-client-component](./no-async-client-component.md)
+- [@benjavicente/start/no-client-code-in-server-component](./no-client-code-in-server-component.md)
+- [@benjavicente/start/no-async-client-component](./no-async-client-component.md)

@@ -1,5 +1,5 @@
-import { createFileRoute } from '@tanstack/vue-router'
-import { createServerFn } from '@tanstack/vue-start'
+import { createFileRoute } from '@benjavicente/vue-router'
+import { createServerFn } from '@benjavicente/vue-start'
 
 export const Route = createFileRoute('/submit-post-formdata')({
   component: SubmitPostFormDataFn,

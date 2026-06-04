@@ -1,4 +1,4 @@
-import { createFileRoute, getRouteApi } from '@tanstack/react-router'
+import { createFileRoute, getRouteApi } from '@benjavicente/react-router'
 
 const routeApi = getRouteApi(
   '/redirect/$target/via-routeApi-redirect-beforeLoad',

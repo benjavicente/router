@@ -1,4 +1,4 @@
-import { Outlet, createFileRoute, useNavigate } from '@tanstack/solid-router'
+import { Outlet, createFileRoute, useNavigate } from '@benjavicente/solid-router'
 import { createEffect } from 'solid-js'
 
 export const Route = createFileRoute('/relative/useNavigate')({

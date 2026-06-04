@@ -2,7 +2,7 @@
 
 import * as React from 'react'
 import { routerContext } from './routerContext'
-import type { AnyRouter, RegisteredRouter } from '@tanstack/router-core'
+import type { AnyRouter, RegisteredRouter } from '@benjavicente/router-core'
 
 /**
  * Access the current TanStack Router instance from React context.

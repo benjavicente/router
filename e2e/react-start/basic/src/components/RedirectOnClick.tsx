@@ -1,4 +1,4 @@
-import { useServerFn } from '@tanstack/react-start'
+import { useServerFn } from '@benjavicente/react-start'
 import { throwRedirect } from './throwRedirect'
 
 interface RedirectOnClickProps {

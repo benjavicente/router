@@ -18,7 +18,7 @@ A new [`Route`](./RouteType.md) instance.
 ## Examples
 
 ```tsx
-import { createRoute } from '@tanstack/react-router'
+import { createRoute } from '@benjavicente/react-router'
 import { rootRoute } from './__root'
 
 const Route = createRoute({

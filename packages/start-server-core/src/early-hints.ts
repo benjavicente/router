@@ -1,14 +1,14 @@
 import {
   getStylesheetHref,
   resolveManifestAssetLink,
-} from '@tanstack/router-core'
+} from '@benjavicente/router-core'
 import type {
   AnyRoute,
   AnyRouteMatch,
   AssetCrossOrigin,
   Manifest,
   RouterManagedTag,
-} from '@tanstack/router-core'
+} from '@benjavicente/router-core'
 
 export type EarlyHint = {
   href: string

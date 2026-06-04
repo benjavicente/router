@@ -6,7 +6,7 @@
 # Status: reviewed
 
 library:
-  name: '@tanstack/react-start'
+  name: '@benjavicente/react-start'
   version: '1.166.2'
   repository: 'https://github.com/TanStack/router'
   description: >-
@@ -71,8 +71,8 @@ skills:
       configure client and server entry points.
     type: core
     packages:
-      - '@tanstack/react-start'
-      - '@tanstack/start-plugin-core'
+      - '@benjavicente/react-start'
+      - '@benjavicente/start-plugin-core'
     covers:
       - tanstackStart Vite plugin
       - getRouter() factory pattern
@@ -129,9 +129,9 @@ skills:
       responses with ReadableStream or async generators.
     type: core
     packages:
-      - '@tanstack/react-start'
-      - '@tanstack/start-client-core'
-      - '@tanstack/start-server-core'
+      - '@benjavicente/react-start'
+      - '@benjavicente/start-client-core'
+      - '@benjavicente/start-server-core'
     covers:
       - createServerFn (GET/POST)
       - inputValidator (Zod or function)
@@ -216,9 +216,9 @@ skills:
       precedence, header merging.
     type: core
     packages:
-      - '@tanstack/react-start'
-      - '@tanstack/start-client-core'
-      - '@tanstack/start-server-core'
+      - '@benjavicente/react-start'
+      - '@benjavicente/start-client-core'
+      - '@benjavicente/start-server-core'
     covers:
       - createMiddleware
       - Request middleware (.server only)
@@ -275,9 +275,9 @@ skills:
       environment variable safety (VITE_ prefix), useHydrated hook.
     type: core
     packages:
-      - '@tanstack/react-start'
-      - '@tanstack/start-client-core'
-      - '@tanstack/start-server-core'
+      - '@benjavicente/react-start'
+      - '@benjavicente/start-client-core'
+      - '@benjavicente/start-server-core'
     covers:
       - Isomorphic-by-default principle
       - createServerFn (RPC boundary)
@@ -364,8 +364,8 @@ skills:
       middleware via createHandlers, request/response patterns.
     type: core
     packages:
-      - '@tanstack/react-start'
-      - '@tanstack/start-server-core'
+      - '@benjavicente/react-start'
+      - '@benjavicente/start-server-core'
     covers:
       - server property on createFileRoute
       - handlers object (GET, POST, PUT, DELETE)
@@ -397,8 +397,8 @@ skills:
       mode, static prerendering, ISR with Cache-Control headers.
     type: core
     packages:
-      - '@tanstack/react-start'
-      - '@tanstack/start-plugin-core'
+      - '@benjavicente/react-start'
+      - '@benjavicente/start-plugin-core'
     covers:
       - Cloudflare Workers deployment
       - Netlify deployment

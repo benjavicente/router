@@ -117,8 +117,8 @@ export function createViteConfigPlan(opts: {
     },
     resolve: {
       noExternal: [
-        '@tanstack/start**',
-        `@tanstack/${opts.framework}-start**`,
+        '@benjavicente/start**',
+        `@benjavicente/${opts.framework}-start**`,
         ...opts.noExternal,
       ],
       alias: {

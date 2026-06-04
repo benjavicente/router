@@ -10,7 +10,7 @@ import useLocalStorage from './useLocalStorage'
 import { TanStackLogo } from './logo'
 import { useStyles } from './useStyles'
 import type { Accessor, JSX } from 'solid-js'
-import type { AnyRouter } from '@tanstack/router-core'
+import type { AnyRouter } from '@benjavicente/router-core'
 
 export interface FloatingDevtoolsOptions {
   /**

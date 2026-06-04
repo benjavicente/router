@@ -1,4 +1,4 @@
-import { ClientOnly, createFileRoute } from '@tanstack/solid-router'
+import { ClientOnly, createFileRoute } from '@benjavicente/solid-router'
 import { SharedWidget } from '~/components/SharedWidget'
 
 export const Route = createFileRoute('/lazy-css-static')({

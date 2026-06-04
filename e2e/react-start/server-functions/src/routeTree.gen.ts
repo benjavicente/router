@@ -612,7 +612,7 @@ export interface RootRouteChildren {
   MiddlewareRedirectWithMiddlewareIndexRoute: typeof MiddlewareRedirectWithMiddlewareIndexRoute
 }
 
-declare module '@tanstack/react-router' {
+declare module '@benjavicente/react-router' {
   interface FileRoutesByPath {
     '/submit-post-formdata': {
       id: '/submit-post-formdata'
@@ -979,7 +979,7 @@ export const routeTree = rootRouteImport
 
 import type { getRouter } from './router.tsx'
 import type { startInstance } from './start.ts'
-declare module '@tanstack/react-start' {
+declare module '@benjavicente/react-start' {
   interface Register {
     ssr: true
     router: Awaited<ReturnType<typeof getRouter>>

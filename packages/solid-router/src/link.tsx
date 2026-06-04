@@ -10,9 +10,9 @@ import {
   isDangerousProtocol,
   preloadWarning,
   removeTrailingSlash,
-} from '@tanstack/router-core'
+} from '@benjavicente/router-core'
 
-import { isServer } from '@tanstack/router-core/isServer'
+import { isServer } from '@benjavicente/router-core/isServer'
 import { Dynamic } from 'solid-js/web'
 import { useRouter } from './useRouter'
 
@@ -25,7 +25,7 @@ import type {
   LinkOptions,
   RegisteredRouter,
   RoutePaths,
-} from '@tanstack/router-core'
+} from '@benjavicente/router-core'
 import type {
   ValidateLinkOptions,
   ValidateLinkOptionsArray,
@@ -249,6 +249,8 @@ export function useLinkProps<
     return true
   })
 
+  const [ref, setRef] = Solid.createSignal<Element | null>(null)
+
   const doPreload = () =>
     router
       .preloadRoute({ ..._options(), _builtLocation: next() } as any)
@@ -257,32 +259,33 @@ export function useLinkProps<
         console.warn(preloadWarning)
       })
 
-  const preloadViewportIoCallback = (
-    entry: IntersectionObserverEntry | undefined,
-  ) => {
-    if (entry?.isIntersecting) {
-      doPreload()
+  // Only set up preloaders for internal links
+  if (!externalLink()) {
+    const preloadViewportIoCallback = (
+      entry: IntersectionObserverEntry | undefined,
+    ) => {
+      if (entry?.isIntersecting) {
+        doPreload()
+      }
     }
+
+    useIntersectionObserver(
+      ref,
+      preloadViewportIoCallback,
+      { rootMargin: '100px' },
+      { disabled: !!local.disabled || !(preload() === 'viewport') },
+    )
+
+    Solid.createEffect(() => {
+      if (hasRenderFetched) {
+        return
+      }
+      if (!local.disabled && preload() === 'render') {
+        doPreload()
+        hasRenderFetched = true
+      }
+    })
   }
-
-  const [ref, setRef] = Solid.createSignal<Element | null>(null)
-
-  useIntersectionObserver(
-    ref,
-    preloadViewportIoCallback,
-    { rootMargin: '100px' },
-    { disabled: !!local.disabled || !(preload() === 'viewport') },
-  )
-
-  Solid.createEffect(() => {
-    if (hasRenderFetched) {
-      return
-    }
-    if (!local.disabled && preload() === 'render') {
-      doPreload()
-      hasRenderFetched = true
-    }
-  })
 
   if (externalLink()) {
     return Solid.mergeProps(

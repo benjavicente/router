@@ -1,4 +1,4 @@
-import { createFileRoute, Link } from '@tanstack/react-router'
+import { createFileRoute, Link } from '@benjavicente/react-router'
 import { pageStyles } from '~/utils/styles'
 
 export const Route = createFileRoute('/rsc-param/')({

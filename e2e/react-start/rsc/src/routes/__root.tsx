@@ -5,8 +5,8 @@ import {
   Scripts,
   createRootRoute,
   useHydrated,
-} from '@tanstack/react-router'
-import { TanStackRouterDevtools } from '@tanstack/react-router-devtools'
+} from '@benjavicente/react-router'
+import { TanStackRouterDevtools } from '@benjavicente/react-router-devtools'
 import { colors } from '~/utils/styles'
 
 export const Route = createRootRoute({

@@ -1,6 +1,6 @@
-import { ErrorComponent, createFileRoute } from '@tanstack/react-router'
+import { ErrorComponent, createFileRoute } from '@benjavicente/react-router'
 import axios from 'redaxios'
-import type { ErrorComponentProps } from '@tanstack/react-router'
+import type { ErrorComponentProps } from '@benjavicente/react-router'
 
 import type { User } from '~/utils/users'
 import { NotFound } from '~/components/NotFound'

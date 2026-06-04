@@ -3,8 +3,8 @@ import {
   Link,
   Outlet,
   createRootRouteWithContext,
-} from '@tanstack/solid-router'
-import { TanStackRouterDevtools } from '@tanstack/solid-router-devtools'
+} from '@benjavicente/solid-router'
+import { TanStackRouterDevtools } from '@benjavicente/solid-router-devtools'
 import { SolidQueryDevtools } from '@tanstack/solid-query-devtools'
 import type { QueryClient } from '@tanstack/solid-query'
 

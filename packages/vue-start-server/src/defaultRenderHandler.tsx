@@ -1,5 +1,5 @@
-import { defineHandlerCallback } from '@tanstack/start-server-core'
-import { renderRouterToString } from '@tanstack/vue-router/ssr/server'
+import { defineHandlerCallback } from '@benjavicente/start-server-core'
+import { renderRouterToString } from '@benjavicente/vue-router/ssr/server'
 import { StartServer } from './StartServer'
 
 export const defaultRenderHandler = defineHandlerCallback(

@@ -7,7 +7,7 @@ export { mounts }
 
 <script setup lang="ts">
 import { onMounted } from 'vue'
-import { useSearch, useNavigate } from '@tanstack/vue-router'
+import { useSearch, useNavigate } from '@benjavicente/vue-router'
 
 const search = useSearch({ from: '/remountDeps' })
 const navigate = useNavigate()

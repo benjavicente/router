@@ -1,12 +1,12 @@
 // Low-level Flight stream APIs.
 // Prefer high-level helpers unless you need a custom transport.
 
-import { createAPIFileRoute } from '@tanstack/react-start/api'
-import { createServerFn } from '@tanstack/react-start'
+import { createAPIFileRoute } from '@benjavicente/react-start/api'
+import { createServerFn } from '@benjavicente/react-start'
 import {
   createFromFetch,
   renderToReadableStream,
-} from '@tanstack/react-start/rsc'
+} from '@benjavicente/react-start/rsc'
 import { useSuspenseQuery } from '@tanstack/react-query'
 
 const getFlightStream = createServerFn({ method: 'GET' }).handler(async () => {

@@ -1,5 +1,5 @@
-import { createFileRoute } from '@tanstack/solid-router'
-import { createServerFn } from '@tanstack/solid-start'
+import { createFileRoute } from '@benjavicente/solid-router'
+import { createServerFn } from '@benjavicente/solid-start'
 import { Login } from '../components/Login'
 import { getSupabaseServerClient } from '../utils/supabase'
 

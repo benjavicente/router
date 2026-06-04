@@ -1,5 +1,5 @@
 import { useStore } from '@tanstack/react-store'
-import { isServer } from '@tanstack/router-core/isServer'
+import { isServer } from '@benjavicente/router-core/isServer'
 import { useRouter } from './useRouter'
 
 export function useCanGoBack() {

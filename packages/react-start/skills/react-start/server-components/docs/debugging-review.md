@@ -14,7 +14,7 @@ Likely causes:
 Checks:
 
 - inspect `vite.config.*`
-- inspect imports from `@tanstack/react-start/rsc`
+- inspect imports from `@benjavicente/react-start/rsc`
 - normalize to `renderServerComponent`, `createCompositeComponent`, `CompositeComponent`, `.inputValidator(...)`
 
 ### 2. Wrong environment failure

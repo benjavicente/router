@@ -1,4 +1,4 @@
-import { Await, createFileRoute } from '@tanstack/solid-router'
+import { Await, createFileRoute } from '@benjavicente/solid-router'
 import { createEffect, createSignal, Suspense } from 'solid-js'
 
 export const Route = createFileRoute('/stream')({

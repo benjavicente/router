@@ -1,5 +1,5 @@
 import * as Solid from 'solid-js'
-import type { AnyRouteMatch } from '@tanstack/router-core'
+import type { AnyRouteMatch } from '@benjavicente/router-core'
 
 export type NearestMatchContextValue = {
   matchId: Solid.Accessor<string | undefined>

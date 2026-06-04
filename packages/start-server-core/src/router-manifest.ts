@@ -1,9 +1,9 @@
-import { buildDevStylesUrl, rootRouteId } from '@tanstack/router-core'
+import { buildDevStylesUrl, rootRouteId } from '@benjavicente/router-core'
 import type {
   AnyRoute,
   ManifestAssetLink,
   RouterManagedTag,
-} from '@tanstack/router-core'
+} from '@benjavicente/router-core'
 import type { StartManifestWithClientEntry } from './transformAssetUrls'
 
 // Pre-computed constant for dev styles URL basepath.

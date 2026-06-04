@@ -1,4 +1,4 @@
-import { HeadContent, Scripts, createRootRoute } from '@tanstack/solid-router'
+import { HeadContent, Scripts, createRootRoute } from '@benjavicente/solid-router'
 import { HydrationScript } from 'solid-js/web'
 import { AppShell } from '~/components/AppShell'
 

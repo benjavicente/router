@@ -1,4 +1,4 @@
-import { Outlet, createRootRoute } from '@tanstack/solid-router'
+import { Outlet, createRootRoute } from '@benjavicente/solid-router'
 
 export const Route = createRootRoute({
   component: RootComponent,

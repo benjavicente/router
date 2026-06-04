@@ -1,4 +1,4 @@
-import { createFileRoute } from '@tanstack/react-router'
+import { createFileRoute } from '@benjavicente/react-router'
 import { Tweet } from 'react-tweet'
 
 export const Route = createFileRoute('/noexternal-client-pkg')({

@@ -1,6 +1,6 @@
 const $$splitComponentImporter = () => import('conditional-properties.tsx?tsr-split=component');
-import { lazyRouteComponent } from '@tanstack/react-router';
-import { createFileRoute } from '@tanstack/react-router';
+import { lazyRouteComponent } from '@benjavicente/react-router';
+import { createFileRoute } from '@benjavicente/react-router';
 import { isEnabled } from '@features/feature-flags';
 import TrueImport from '@modules/true-component';
 import { falseLoader } from '@modules/false-component';

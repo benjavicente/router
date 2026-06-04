@@ -6,7 +6,7 @@ import {
   findReferencedIdentifiers,
   generateFromAst,
   parseAst,
-} from '@tanstack/router-utils'
+} from '@benjavicente/router-utils'
 import { tsrShared, tsrSplit } from '../constants'
 import { createRouteHmrStatement } from '../hmr'
 import { getObjectPropertyKeyName } from '../utils'
@@ -16,7 +16,10 @@ import type {
   CompileCodeSplitReferenceRouteOptions,
   ReferenceRouteCompilerPlugin,
 } from './plugins'
-import type { GeneratorResult, ParseAstOptions } from '@tanstack/router-utils'
+import type {
+  GeneratorResult,
+  ParseAstOptions,
+} from '@benjavicente/router-utils'
 import type { CodeSplitGroupings, SplitRouteIdentNodes } from '../constants'
 import type { SplitNodeMeta } from './types'
 
@@ -654,7 +657,12 @@ export function compileCodeSplitReferenceRoute(
     )
   }
 
-  const frameworkOptions = getFrameworkOptions(opts.targetFramework)
+  const frameworkOptions = getFrameworkOptions(
+    opts.targetFramework,
+    opts.targetFramework === 'angular'
+      ? { angularRouterPackage: opts.angularRouterPackage }
+      : undefined,
+  )
   const PACKAGE = frameworkOptions.package
   const LAZY_ROUTE_COMPONENT_IDENT = frameworkOptions.idents.lazyRouteComponent
   const LAZY_FN_IDENT = frameworkOptions.idents.lazyFn

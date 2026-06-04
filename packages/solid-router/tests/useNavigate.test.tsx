@@ -10,7 +10,7 @@ import {
 } from '@solidjs/testing-library'
 
 import { z } from 'zod'
-import { trailingSlashOptions } from '@tanstack/router-core'
+import { trailingSlashOptions } from '@benjavicente/router-core'
 import {
   Outlet,
   RouterProvider,

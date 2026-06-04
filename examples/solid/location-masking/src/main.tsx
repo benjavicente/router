@@ -11,9 +11,9 @@ import {
   createRouter,
   useNavigate,
   useRouterState,
-} from '@tanstack/solid-router'
-import { TanStackRouterDevtools } from '@tanstack/solid-router-devtools'
-import type { ErrorComponentProps } from '@tanstack/solid-router'
+} from '@benjavicente/solid-router'
+import { TanStackRouterDevtools } from '@benjavicente/solid-router-devtools'
+import type { ErrorComponentProps } from '@benjavicente/solid-router'
 import './styles.css'
 
 type PhotoType = {
@@ -344,7 +344,7 @@ const router = createRouter({
 })
 
 // Register things for typesafety
-declare module '@tanstack/solid-router' {
+declare module '@benjavicente/solid-router' {
   interface Register {
     router: typeof router
   }

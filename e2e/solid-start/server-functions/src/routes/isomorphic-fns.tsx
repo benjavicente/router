@@ -1,5 +1,5 @@
-import { createFileRoute } from '@tanstack/solid-router'
-import { createIsomorphicFn, createServerFn } from '@tanstack/solid-start'
+import { createFileRoute } from '@benjavicente/solid-router'
+import { createIsomorphicFn, createServerFn } from '@benjavicente/solid-start'
 import { createSignal } from 'solid-js'
 
 const getEnv = createIsomorphicFn()

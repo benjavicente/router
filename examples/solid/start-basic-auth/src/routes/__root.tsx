@@ -5,9 +5,9 @@ import {
   Outlet,
   Scripts,
   createRootRoute,
-} from '@tanstack/solid-router'
-import { TanStackRouterDevtools } from '@tanstack/solid-router-devtools'
-import { createServerFn } from '@tanstack/solid-start'
+} from '@benjavicente/solid-router'
+import { TanStackRouterDevtools } from '@benjavicente/solid-router-devtools'
+import { createServerFn } from '@benjavicente/solid-start'
 import { HydrationScript } from 'solid-js/web'
 import type * as Solid from 'solid-js'
 import { DefaultCatchBoundary } from '~/components/DefaultCatchBoundary.js'

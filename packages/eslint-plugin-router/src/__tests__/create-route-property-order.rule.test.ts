@@ -150,7 +150,7 @@ function getCode({ createRouteFunction, properties }: TestCase) {
     return `${property}: () => null`
   }
   return `
-    import { ${createRouteFunction} } from '@tanstack/react-router'
+    import { ${createRouteFunction} } from '@benjavicente/react-router'
 
     const Route = ${createRouteFunction}${invocation}({
         ${properties.map(getPropertyCode).join(',\n        ')}

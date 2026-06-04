@@ -1,8 +1,8 @@
-import { Link, Outlet, createFileRoute } from '@tanstack/solid-router'
+import { Link, Outlet, createFileRoute } from '@benjavicente/solid-router'
 import axios from 'redaxios'
-import { createServerFn } from '@tanstack/solid-start'
+import { createServerFn } from '@benjavicente/solid-start'
 import type { User } from '../utils/users'
-import { staticFunctionMiddleware } from '@tanstack/start-static-server-functions'
+import { staticFunctionMiddleware } from '@benjavicente/start-static-server-functions'
 
 const fetchUsers = createServerFn({ method: 'GET' })
   .middleware([staticFunctionMiddleware])

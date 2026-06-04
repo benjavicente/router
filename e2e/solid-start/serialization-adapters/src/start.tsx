@@ -1,4 +1,4 @@
-import { createStart } from '@tanstack/solid-start'
+import { createStart } from '@benjavicente/solid-start'
 import { carAdapter, fooAdapter, nestedOuterAdapter } from './data'
 import { customErrorAdapter } from './CustomError'
 

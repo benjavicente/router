@@ -58,7 +58,7 @@ TanStack Start applications run in two environments:
 | `createServerOnlyFn(fn)` | Utility functions         | Throws error              |
 
 ```tsx
-import { createServerFn, createServerOnlyFn } from '@tanstack/react-start'
+import { createServerFn, createServerOnlyFn } from '@benjavicente/react-start'
 
 // RPC: Server execution, callable from client
 const updateUser = createServerFn({ method: 'POST' })
@@ -80,8 +80,8 @@ const getEnvVar = createServerOnlyFn(() => process.env.DATABASE_URL)
 | `<ClientOnly>`           | Components needing browser APIs | Renders fallback |
 
 ```tsx
-import { createClientOnlyFn } from '@tanstack/react-start'
-import { ClientOnly } from '@tanstack/react-router'
+import { createClientOnlyFn } from '@benjavicente/react-start'
+import { ClientOnly } from '@benjavicente/react-router'
 
 // Utility: Client-only, server crashes if called
 const saveToStorage = createClientOnlyFn((key: string, value: any) => {
@@ -103,7 +103,7 @@ function Analytics() {
 For more granular control over hydration-dependent behavior, use the `useHydrated` hook. It returns a boolean indicating whether the client has been hydrated:
 
 ```tsx
-import { useHydrated } from '@tanstack/react-router'
+import { useHydrated } from '@benjavicente/react-router'
 
 function TimeZoneDisplay() {
   const hydrated = useHydrated()
@@ -126,7 +126,7 @@ This is useful when you need to conditionally render content based on client-sid
 ### Environment-Specific Implementations
 
 ```tsx
-import { createIsomorphicFn } from '@tanstack/react-start'
+import { createIsomorphicFn } from '@benjavicente/react-start'
 
 // Different implementation per environment
 const getDeviceInfo = createIsomorphicFn()
@@ -282,7 +282,7 @@ The `.server.*` and `.client.*` filename suffixes opt a file into Start's import
 
 ```ts
 // src/lib/secrets.ts (filename can't be *.server.ts)
-import '@tanstack/react-start/server-only'
+import '@benjavicente/react-start/server-only'
 
 export function getApiKey() {
   return process.env.API_KEY
@@ -291,7 +291,7 @@ export function getApiKey() {
 
 ```ts
 // src/lib/storage.ts
-import '@tanstack/react-start/client-only'
+import '@benjavicente/react-start/client-only'
 
 export function savePreferences(prefs: Record<string, string>) {
   localStorage.setItem('prefs', JSON.stringify(prefs))

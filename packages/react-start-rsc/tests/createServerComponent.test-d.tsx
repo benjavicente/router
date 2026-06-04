@@ -5,13 +5,13 @@ import type {
 } from '../src/ServerComponentTypes'
 import { CompositeComponent } from '../src/CompositeComponent'
 
-vi.mock('@tanstack/start-server-core', () => {
+vi.mock('@benjavicente/start-server-core', () => {
   return {
     getRequest: () => undefined,
   }
 })
 
-vi.mock('@tanstack/start-storage-context', () => {
+vi.mock('@benjavicente/start-storage-context', () => {
   return {
     getStartContext: () => undefined,
   }

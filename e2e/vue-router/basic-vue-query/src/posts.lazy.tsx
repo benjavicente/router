@@ -1,4 +1,4 @@
-import { Link, Outlet, createLazyRoute } from '@tanstack/vue-router'
+import { Link, Outlet, createLazyRoute } from '@benjavicente/vue-router'
 import { useQuery } from '@tanstack/vue-query'
 import { postsQueryOptions } from './posts'
 

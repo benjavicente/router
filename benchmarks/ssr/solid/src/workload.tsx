@@ -1,5 +1,5 @@
 import { For, createEffect } from 'solid-js'
-import { Link, useParams, useSearch } from '@tanstack/solid-router'
+import { Link, useParams, useSearch } from '@benjavicente/solid-router'
 
 const probes = Array.from({ length: 10 }, (_, index) => index)
 

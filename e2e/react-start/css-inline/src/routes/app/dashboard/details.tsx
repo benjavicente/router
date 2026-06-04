@@ -1,4 +1,4 @@
-import { createFileRoute } from '@tanstack/react-router'
+import { createFileRoute } from '@benjavicente/react-router'
 import { NestedPanel } from '~/components/NestedPanel'
 import styles from '~/styles/dashboard-details.module.css'
 

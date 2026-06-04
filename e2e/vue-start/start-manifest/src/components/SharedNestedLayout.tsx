@@ -1,5 +1,5 @@
 /// <reference types="vite/client" />
-import { Link, linkOptions } from '@tanstack/vue-router'
+import { Link, linkOptions } from '@benjavicente/vue-router'
 import { defineComponent } from 'vue'
 import styles from '~/styles/shared-layout.module.css'
 

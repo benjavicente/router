@@ -1,4 +1,4 @@
-import { createFileRoute } from '@tanstack/solid-router'
+import { createFileRoute } from '@benjavicente/solid-router'
 import { m } from '@/paraglide/messages'
 
 export const Route = createFileRoute('/')({

@@ -8,8 +8,8 @@ import {
   createRoute,
   createRouter,
   useElementScrollRestoration,
-} from '@tanstack/solid-router'
-import { TanStackRouterDevtools } from '@tanstack/solid-router-devtools'
+} from '@benjavicente/solid-router'
+import { TanStackRouterDevtools } from '@benjavicente/solid-router-devtools'
 import { createVirtualizer } from '@tanstack/solid-virtual'
 import './styles.css'
 import { createRenderEffect } from 'solid-js'
@@ -267,7 +267,7 @@ router.subscribe('onResolved', (event) => {
   window.invokeOrders.push(event.type)
 })
 
-declare module '@tanstack/solid-router' {
+declare module '@benjavicente/solid-router' {
   interface Register {
     router: typeof router
   }

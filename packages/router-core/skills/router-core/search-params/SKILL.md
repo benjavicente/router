@@ -23,18 +23,18 @@ sources:
 
 TanStack Router treats search params as JSON-first application state. They are automatically parsed from the URL into structured objects (numbers, booleans, arrays, nested objects) and validated via `validateSearch` on each route.
 
-> **CRITICAL**: When using `zodValidator()` and Zod v3, use `fallback()` from `@tanstack/zod-adapter`, NOT zod's `.catch()`. Using `.catch()` with the zod adapter makes the output type `unknown`, destroying type safety. This does not apply to Valibot or ArkType (which use their own fallback mechanisms). It also does not apply to Zod v4, which should use `.catch()` and not use the `zodValidator()`.
+> **CRITICAL**: When using `zodValidator()` and Zod v3, use `fallback()` from `@benjavicente/zod-adapter`, NOT zod's `.catch()`. Using `.catch()` with the zod adapter makes the output type `unknown`, destroying type safety. This does not apply to Valibot or ArkType (which use their own fallback mechanisms). It also does not apply to Zod v4, which should use `.catch()` and not use the `zodValidator()`.
 > **CRITICAL**: Types are fully inferred. Never annotate the return of `useSearch()`.
 
 ## Setup: Zod Adapter (Recommended)
 
 ```bash
-npm install zod @tanstack/zod-adapter
+npm install zod @benjavicente/zod-adapter
 ```
 
 ```tsx
 // src/routes/products.tsx
-import { createFileRoute } from '@tanstack/react-router'
+import { createFileRoute } from '@benjavicente/react-router'
 import { z } from 'zod'
 
 const productSearchSchema = z.object({
@@ -77,7 +77,7 @@ function ProductsPage() {
 ### In Code-Split Components: `getRouteApi()`
 
 ```tsx
-import { getRouteApi } from '@tanstack/react-router'
+import { getRouteApi } from '@benjavicente/react-router'
 
 const routeApi = getRouteApi('/products')
 
@@ -90,7 +90,7 @@ function ProductFilters() {
 ### From Any Component: `useSearch({ from })`
 
 ```tsx
-import { useSearch } from '@tanstack/react-router'
+import { useSearch } from '@benjavicente/react-router'
 
 function SortIndicator() {
   const { sort } = useSearch({ from: '/products' })
@@ -113,7 +113,7 @@ function GenericPaginator() {
 ### Link with Function Form (Preserves Existing Params)
 
 ```tsx
-import { Link } from '@tanstack/react-router'
+import { Link } from '@benjavicente/react-router'
 
 function Pagination() {
   return (
@@ -138,7 +138,7 @@ function Pagination() {
 ### Programmatic: `useNavigate()`
 
 ```tsx
-import { useNavigate } from '@tanstack/react-router'
+import { useNavigate } from '@benjavicente/react-router'
 
 function SortDropdown() {
   const navigate = useNavigate({ from: '/products' })
@@ -164,7 +164,7 @@ Parent route search params are automatically merged into child routes:
 
 ```tsx
 // src/routes/shop.tsx — parent defines shared params
-import { createFileRoute } from '@tanstack/react-router'
+import { createFileRoute } from '@benjavicente/react-router'
 import { z } from 'zod'
 
 const shopSearchSchema = z.object({
@@ -178,7 +178,7 @@ export const Route = createFileRoute('/shop')({
 
 ```tsx
 // src/routes/shop/products.tsx — child inherits currency
-import { createFileRoute } from '@tanstack/react-router'
+import { createFileRoute } from '@benjavicente/react-router'
 
 export const Route = createFileRoute('/shop/products')({
   component: ShopProducts,
@@ -196,7 +196,7 @@ function ShopProducts() {
 ### `retainSearchParams` — Keep Params Across Navigation
 
 ```tsx
-import { createRootRoute, retainSearchParams } from '@tanstack/react-router'
+import { createRootRoute, retainSearchParams } from '@benjavicente/react-router'
 import { z } from 'zod'
 
 const rootSearchSchema = z.object({
@@ -214,7 +214,7 @@ export const Route = createRootRoute({
 ### `stripSearchParams` — Remove Default Values from URL
 
 ```tsx
-import { createFileRoute, stripSearchParams } from '@tanstack/react-router'
+import { createFileRoute, stripSearchParams } from '@benjavicente/react-router'
 import { z } from 'zod'
 
 const defaults = { sort: 'newest', page: 1 }
@@ -259,7 +259,7 @@ import {
   createRouter,
   parseSearchWith,
   stringifySearchWith,
-} from '@tanstack/react-router'
+} from '@benjavicente/react-router'
 
 const router = createRouter({
   routeTree,
@@ -292,7 +292,7 @@ const schema = z.object({ page: z.number().catch(1) })
 validateSearch: zodValidator(schema) // page is typed as unknown!
 
 // CORRECT — fallback() preserves the inferred type
-import { fallback } from '@tanstack/zod-adapter'
+import { fallback } from '@benjavicente/zod-adapter'
 const schema = z.object({ page: fallback(z.number(), 1) })
 ```
 

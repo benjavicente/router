@@ -10,7 +10,7 @@ import {
   createRouter,
   useParams,
   useSearch,
-} from '@tanstack/solid-router'
+} from '@benjavicente/solid-router'
 
 function runPerfSelectorComputation(seed: number) {
   let value = Math.trunc(seed) | 0

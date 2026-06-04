@@ -3,7 +3,7 @@ name: react-start/server-components
 description: >-
   Implement, review, debug, and refactor TanStack Start React Server
   Components in React 19 apps. Use when tasks mention
-  @tanstack/react-start/rsc, renderServerComponent,
+  @benjavicente/react-start/rsc, renderServerComponent,
   createCompositeComponent, CompositeComponent,
   renderToReadableStream, createFromReadableStream, createFromFetch,
   Composite Components, React Flight streams, loader or query owned
@@ -34,7 +34,7 @@ Treat TanStack Start RSCs as fetchable React Flight payloads, not as a framework
 
 1. Inspect `vite.config.*` for `tanstackStart({ rsc: { enabled: true } })`, `rsc()`, and `viteReact()`.
 2. Inspect route files for `loader`, `loaderDeps`, `staleTime`, `ssr`, and `errorComponent`.
-3. Inspect server boundaries: `createServerFn`, `createServerOnlyFn`, `.server.*`, and imports from `@tanstack/react-start/server`.
+3. Inspect server boundaries: `createServerFn`, `createServerOnlyFn`, `.server.*`, and imports from `@benjavicente/react-start/server`.
 4. Identify the cache owner: Router loader cache, TanStack Query, or HTTP/server cache.
 5. Identify the refresh path: `router.invalidate()`, `invalidateQueries`, `refetchQueries`, or GET cache headers.
 

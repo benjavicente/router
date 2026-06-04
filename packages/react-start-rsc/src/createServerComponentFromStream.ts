@@ -1,7 +1,7 @@
 'use client'
 
 import { use } from 'react'
-import { trackPostProcessPromise } from '@tanstack/start-client-core'
+import { trackPostProcessPromise } from '@benjavicente/start-client-core'
 import { createFromReadableStream as browserDecode } from 'virtual:tanstack-rsc-browser-decode'
 
 import { awaitLazyElements } from './awaitLazyElements'

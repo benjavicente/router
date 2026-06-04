@@ -1,6 +1,6 @@
-import { createFileRoute } from '@tanstack/react-router'
+import { createFileRoute } from '@benjavicente/react-router'
 import * as React from 'react'
-import { RawStream } from '@tanstack/react-start'
+import { RawStream } from '@benjavicente/react-start'
 import {
   encode,
   createDelayedStream,

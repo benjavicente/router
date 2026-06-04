@@ -1,6 +1,6 @@
-import { createFileRoute } from '@tanstack/solid-router'
-import { createServerFn, createServerOnlyFn } from '@tanstack/solid-start'
-import { getRequest } from '@tanstack/solid-start/server'
+import { createFileRoute } from '@benjavicente/solid-router'
+import { createServerFn, createServerOnlyFn } from '@benjavicente/solid-start'
+import { getRequest } from '@benjavicente/solid-start/server'
 import * as Solid from 'solid-js'
 import z from 'zod'
 

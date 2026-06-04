@@ -16,12 +16,12 @@
     "test:types:vue": "tsc -p ./vue/tsconfig.json --noEmit"
   },
   "dependencies": {
-    "@tanstack/react-router": "workspace:^",
-    "@tanstack/react-start": "workspace:^",
-    "@tanstack/solid-router": "workspace:^",
-    "@tanstack/solid-start": "workspace:^",
-    "@tanstack/vue-router": "workspace:^",
-    "@tanstack/vue-start": "workspace:^",
+    "@benjavicente/react-router": "workspace:^",
+    "@benjavicente/react-start": "workspace:^",
+    "@benjavicente/solid-router": "workspace:^",
+    "@benjavicente/solid-start": "workspace:^",
+    "@benjavicente/vue-router": "workspace:^",
+    "@benjavicente/vue-start": "workspace:^",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
     "solid-js": "^1.9.10",
@@ -43,7 +43,7 @@
         "dependsOn": [
           {
             "projects": [
-              "@tanstack/react-start"
+              "@benjavicente/react-start"
             ],
             "target": "build"
           }
@@ -54,7 +54,7 @@
         "dependsOn": [
           {
             "projects": [
-              "@tanstack/solid-start"
+              "@benjavicente/solid-start"
             ],
             "target": "build"
           }
@@ -65,7 +65,7 @@
         "dependsOn": [
           {
             "projects": [
-              "@tanstack/vue-start"
+              "@benjavicente/vue-start"
             ],
             "target": "build"
           }

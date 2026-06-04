@@ -9,7 +9,7 @@ import {
   Scripts,
   createRootRoute,
   useRouterState,
-} from '@tanstack/vue-router'
+} from '@benjavicente/vue-router'
 import { z } from 'zod'
 import { ssrSchema } from '~/search'
 import appCss from '~/styles/app.css?url'

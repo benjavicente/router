@@ -2,12 +2,12 @@
 title: Installation with Esbuild
 ---
 
-To use file-based routing with **Esbuild**, you'll need to install the `@tanstack/router-plugin` package.
+To use file-based routing with **Esbuild**, you'll need to install the `@benjavicente/router-plugin` package.
 
 <!-- ::start:tabs variant="package-manager" mode="dev-install" -->
 
-react: @tanstack/router-plugin
-solid: @tanstack/router-plugin
+react: @benjavicente/router-plugin
+solid: @benjavicente/router-plugin
 
 <!-- ::end:tabs -->
 
@@ -18,7 +18,7 @@ Once installed, you'll need to add the plugin to your configuration.
 # React
 
 ```ts title="esbuild.config.js"
-import { tanstackRouter } from '@tanstack/router-plugin/esbuild'
+import { tanstackRouter } from '@benjavicente/router-plugin/esbuild'
 
 export default {
   // ...
@@ -38,7 +38,7 @@ Or, you can clone our [Quickstart Esbuild example](https://github.com/TanStack/r
 ```ts title="build.js"
 import * as esbuild from 'esbuild'
 import { solidPlugin } from 'esbuild-plugin-solid'
-import { tanstackRouter } from '@tanstack/router-plugin/esbuild'
+import { tanstackRouter } from '@benjavicente/router-plugin/esbuild'
 
 const isDev = process.argv.includes('--dev')
 

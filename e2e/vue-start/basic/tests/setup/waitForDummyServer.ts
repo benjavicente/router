@@ -1,4 +1,4 @@
-import { getDummyServerPort } from '@tanstack/router-e2e-utils'
+import { getDummyServerPort } from '@benjavicente/router-e2e-utils'
 import { getE2EPortKey } from '../utils/getE2EPortKey.ts'
 
 const timeoutMs = 10_000

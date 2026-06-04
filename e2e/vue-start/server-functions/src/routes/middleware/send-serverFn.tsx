@@ -1,5 +1,5 @@
-import { createFileRoute } from '@tanstack/vue-router'
-import { createMiddleware, createServerFn } from '@tanstack/vue-start'
+import { createFileRoute } from '@benjavicente/vue-router'
+import { createMiddleware, createServerFn } from '@benjavicente/vue-start'
 import { defineComponent, ref } from 'vue'
 
 const middleware = createMiddleware({ type: 'function' }).client(

@@ -1,4 +1,4 @@
-import { createFileRoute } from '@tanstack/solid-router'
+import { createFileRoute } from '@benjavicente/solid-router'
 import Cookies from 'js-cookie'
 import * as Solid from 'solid-js'
 

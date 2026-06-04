@@ -28,7 +28,7 @@ The `useRouteContext` hook accepts an `options` object.
 ## Examples
 
 ```tsx
-import { useRouteContext } from '@tanstack/react-router'
+import { useRouteContext } from '@benjavicente/react-router'
 
 function Component() {
   const context = useRouteContext({ from: '/posts/$postId' })

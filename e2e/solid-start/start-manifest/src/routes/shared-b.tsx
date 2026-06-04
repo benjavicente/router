@@ -1,4 +1,4 @@
-import { createFileRoute } from '@tanstack/solid-router'
+import { createFileRoute } from '@benjavicente/solid-router'
 import { SharedNestedLayout } from '~/components/SharedNestedLayout'
 
 export const Route = createFileRoute('/shared-b')({

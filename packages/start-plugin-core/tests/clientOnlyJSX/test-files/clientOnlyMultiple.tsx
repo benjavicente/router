@@ -1,4 +1,4 @@
-import { ClientOnly } from '@tanstack/react-router'
+import { ClientOnly } from '@benjavicente/react-router'
 import { VideoPlayer } from 'video-player-lib'
 import { AudioVisualizer } from 'audio-viz-lib'
 

@@ -35,7 +35,7 @@ The `CatchNotFound` component accepts the following props:
 ## Examples
 
 ```tsx
-import { CatchNotFound } from '@tanstack/react-router'
+import { CatchNotFound } from '@benjavicente/react-router'
 
 function Component() {
   return (

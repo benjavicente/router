@@ -1,5 +1,5 @@
 import { AsyncLocalStorage } from 'node:async_hooks'
-import { VIRTUAL_MODULES } from '@tanstack/start-server-core'
+import { VIRTUAL_MODULES } from '@benjavicente/start-server-core'
 import { resolve as resolvePath } from 'pathe'
 import {
   SERVER_FN_LOOKUP,

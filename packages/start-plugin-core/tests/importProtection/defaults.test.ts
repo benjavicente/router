@@ -10,9 +10,9 @@ describe('getDefaultImportProtectionRules', () => {
 
     expect(rules.client.specifiers).toEqual(
       expect.arrayContaining([
-        '@tanstack/react-start/server',
-        '@tanstack/solid-start/server',
-        '@tanstack/vue-start/server',
+        '@benjavicente/react-start/server',
+        '@benjavicente/solid-start/server',
+        '@benjavicente/vue-start/server',
       ]),
     )
 
@@ -52,8 +52,8 @@ describe('getMarkerSpecifiers', () => {
   test('returns server-only and client-only markers', () => {
     const markers = getMarkerSpecifiers()
 
-    expect(markers.serverOnly).toContain('@tanstack/react-start/server-only')
-    expect(markers.clientOnly).toContain('@tanstack/react-start/client-only')
+    expect(markers.serverOnly).toContain('@benjavicente/react-start/server-only')
+    expect(markers.clientOnly).toContain('@benjavicente/react-start/client-only')
   })
 
   test('includes all frameworks', () => {
@@ -62,7 +62,7 @@ describe('getMarkerSpecifiers', () => {
     expect(markers.serverOnly.length).toBe(3)
     expect(markers.clientOnly.length).toBe(3)
 
-    expect(markers.serverOnly).toContain('@tanstack/solid-start/server-only')
-    expect(markers.clientOnly).toContain('@tanstack/vue-start/client-only')
+    expect(markers.serverOnly).toContain('@benjavicente/solid-start/server-only')
+    expect(markers.clientOnly).toContain('@benjavicente/vue-start/client-only')
   })
 })

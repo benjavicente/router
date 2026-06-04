@@ -37,7 +37,7 @@ The recommended session storage is an HTTP-only cookie holding either an opaque 
 import {
   getRequestHeader,
   setResponseHeader,
-} from '@tanstack/react-start/server'
+} from '@benjavicente/react-start/server'
 
 const SESSION_COOKIE = '__Host-session' // __Host- prefix binds to the exact origin + path '/'
 const ONE_DAY = 60 * 60 * 24
@@ -91,7 +91,7 @@ Use middleware to centralize session loading so every protected handler sees a t
 
 ```tsx
 // src/server/auth-middleware.ts
-import { createMiddleware } from '@tanstack/react-start'
+import { createMiddleware } from '@benjavicente/react-start'
 import { readSessionToken } from './session'
 
 export const authMiddleware = createMiddleware({ type: 'function' }).server(
@@ -107,7 +107,7 @@ export const authMiddleware = createMiddleware({ type: 'function' }).server(
 Attach it to every server function that needs a logged-in user:
 
 ```tsx
-import { createServerFn } from '@tanstack/react-start'
+import { createServerFn } from '@benjavicente/react-start'
 import { authMiddleware } from '~/server/auth-middleware'
 
 export const getMyOrders = createServerFn({ method: 'GET' })
@@ -123,7 +123,7 @@ export const getMyOrders = createServerFn({ method: 'GET' })
 
 ```tsx
 // src/server/login.functions.ts
-import { createServerFn } from '@tanstack/react-start'
+import { createServerFn } from '@benjavicente/react-start'
 import { z } from 'zod'
 import { setSessionCookie } from './session'
 
@@ -151,7 +151,7 @@ export const login = createServerFn({ method: 'POST' })
 ## Logout
 
 ```tsx
-import { createServerFn } from '@tanstack/react-start'
+import { createServerFn } from '@benjavicente/react-start'
 import { authMiddleware } from '~/server/auth-middleware'
 import { clearSessionCookie } from '~/server/session'
 
@@ -170,12 +170,12 @@ For OAuth authorization-code flow, generate a one-time `state` (CSRF defense) an
 
 ```tsx
 // src/server/oauth.functions.ts
-import { createServerFn } from '@tanstack/react-start'
-import { redirect } from '@tanstack/react-router'
+import { createServerFn } from '@benjavicente/react-start'
+import { redirect } from '@benjavicente/react-router'
 import {
   getRequestHeader,
   setResponseHeader,
-} from '@tanstack/react-start/server'
+} from '@benjavicente/react-start/server'
 import crypto from 'node:crypto'
 
 const OAUTH_STATE_COOKIE = '__Host-oauth' // expires fast; one-shot
@@ -222,7 +222,7 @@ In the callback handler, **verify the cookie state matches the returned state** 
 When a user requests a reset, do not let the response shape or timing reveal whether the email is registered.
 
 ```tsx
-import { createServerFn } from '@tanstack/react-start'
+import { createServerFn } from '@benjavicente/react-start'
 import { z } from 'zod'
 
 export const requestPasswordReset = createServerFn({ method: 'POST' })
@@ -253,8 +253,8 @@ Do NOT:
 2. **POST from a page on a sibling subdomain** — `SameSite=Lax` does NOT block this; verify the `Origin` header matches your app's origin in middleware.
 
 ```tsx
-import { createMiddleware } from '@tanstack/react-start'
-import { getRequest } from '@tanstack/react-start/server'
+import { createMiddleware } from '@benjavicente/react-start'
+import { getRequest } from '@benjavicente/react-start/server'
 
 export const csrfMiddleware = createMiddleware().server(async ({ next }) => {
   const request = getRequest()
@@ -277,8 +277,8 @@ Attach this to global request middleware in `src/start.ts` so it covers every no
 A login endpoint without rate limiting is a credential-stuffing target. Limit per-IP (and ideally per-account) with a sliding window.
 
 ```tsx
-import { createMiddleware } from '@tanstack/react-start'
-import { getRequest } from '@tanstack/react-start/server'
+import { createMiddleware } from '@benjavicente/react-start'
+import { getRequest } from '@benjavicente/react-start/server'
 
 function rateLimitMiddleware(opts: {
   key: string

@@ -1,6 +1,6 @@
 import { expect, test } from '@playwright/test'
 import type { Page } from '@playwright/test'
-import { toRuntimePath } from '@tanstack/router-e2e-utils'
+import { toRuntimePath } from '@benjavicente/router-e2e-utils'
 
 const attemptCount = 3
 const sourceScrollTargetY = 6000

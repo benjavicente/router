@@ -4,7 +4,7 @@ import {
   invariant,
   isNotFound,
   parseRedirect,
-} from '@tanstack/router-core'
+} from '@benjavicente/router-core'
 import { fromCrossJSON, toJSONAsync } from 'seroval'
 import { getDefaultSerovalPlugins } from '../getDefaultSerovalPlugins'
 import {

@@ -6,8 +6,8 @@ import {
   isNotFound,
   isRedirect,
   rootRouteId,
-} from '@tanstack/router-core'
-import { isServer } from '@tanstack/router-core/isServer'
+} from '@benjavicente/router-core'
+import { isServer } from '@benjavicente/router-core/isServer'
 import { Dynamic } from 'solid-js/web'
 import { CatchBoundary, ErrorComponent } from './CatchBoundary'
 import { useRouter } from './useRouter'
@@ -16,7 +16,7 @@ import { nearestMatchContext } from './matchContext'
 import { SafeFragment } from './SafeFragment'
 import { renderRouteNotFound } from './renderRouteNotFound'
 import { ScrollRestoration } from './scroll-restoration'
-import type { AnyRoute, RootRouteOptions } from '@tanstack/router-core'
+import type { AnyRoute, RootRouteOptions } from '@benjavicente/router-core'
 
 export const Match = (props: { matchId: string }) => {
   const router = useRouter()

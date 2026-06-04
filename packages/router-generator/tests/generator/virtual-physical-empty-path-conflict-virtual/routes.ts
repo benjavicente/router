@@ -1,4 +1,4 @@
-import { physical, rootRoute, route } from '@tanstack/virtual-file-routes'
+import { physical, rootRoute, route } from '@benjavicente/virtual-file-routes'
 
 // This test verifies that a virtual route path conflicts with
 // a physical route path when using empty path prefix

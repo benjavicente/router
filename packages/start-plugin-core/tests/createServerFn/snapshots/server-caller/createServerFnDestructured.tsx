@@ -1,5 +1,5 @@
-import { createSsrRpc } from '@tanstack/react-start/ssr-rpc';
-import { createServerFn } from '@tanstack/react-start';
+import { createSsrRpc } from '@benjavicente/react-start/ssr-rpc';
+import { createServerFn } from '@benjavicente/react-start';
 import { z } from 'zod';
 export const withUseServer = createServerFn({
   method: 'GET'

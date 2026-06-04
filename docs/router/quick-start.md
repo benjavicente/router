@@ -101,8 +101,8 @@ To install TanStack Router in your project, run the following command using your
 
 <!-- ::start:tabs variant="package-managers" -->
 
-react: @tanstack/react-router
-solid: @tanstack/solid-router
+react: @benjavicente/react-router
+solid: @benjavicente/solid-router
 
 <!-- ::end:tabs -->
 
@@ -115,7 +115,7 @@ Once installed, you can verify the installation by checking your `package.json` 
 ```json
 {
   "dependencies": {
-    "@tanstack/react-router": "^x.x.x"
+    "@benjavicente/react-router": "^x.x.x"
   }
 }
 ```
@@ -125,7 +125,7 @@ Once installed, you can verify the installation by checking your `package.json` 
 ```json
 {
   "dependencies": {
-    "@tanstack/solid-router": "^x.x.x"
+    "@benjavicente/solid-router": "^x.x.x"
   }
 }
 ```

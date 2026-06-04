@@ -1,4 +1,4 @@
-import { Outlet, createFileRoute } from '@tanstack/react-router'
+import { Outlet, createFileRoute } from '@benjavicente/react-router'
 import styles from '~/styles/app-layout.module.css'
 
 export const Route = createFileRoute('/app')({

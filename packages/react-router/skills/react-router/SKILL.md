@@ -20,7 +20,7 @@ sources:
   - TanStack/router:docs/router/installation/manual.md
 ---
 
-# React Router (`@tanstack/react-router`)
+# React Router (`@benjavicente/react-router`)
 
 This skill builds on router-core. Read [router-core](../../../router-core/skills/router-core/SKILL.md) first for foundational concepts.
 
@@ -28,15 +28,15 @@ This skill covers the React-specific bindings, components, hooks, and setup for 
 
 > **CRITICAL**: TanStack Router types are FULLY INFERRED. Never cast, never annotate inferred values.
 > **CRITICAL**: TanStack Router is CLIENT-FIRST. Loaders run on the client by default, not on the server.
-> **CRITICAL**: Do not confuse `@tanstack/react-router` with `react-router-dom`/`react-router`. They are completely different libraries with different APIs.
+> **CRITICAL**: Do not confuse `@benjavicente/react-router` with `react-router-dom`/`react-router`. They are completely different libraries with different APIs.
 
 ## Full Setup: File-Based Routing with Vite
 
 ### 1. Install Dependencies
 
 ```bash
-npm install @tanstack/react-router
-npm install -D @tanstack/router-plugin @tanstack/react-router-devtools
+npm install @benjavicente/react-router
+npm install -D @benjavicente/router-plugin @benjavicente/react-router-devtools
 ```
 
 ### 2. Configure Vite Plugin
@@ -45,7 +45,7 @@ npm install -D @tanstack/router-plugin @tanstack/react-router-devtools
 // vite.config.ts
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
-import { tanstackRouter } from '@tanstack/router-plugin/vite'
+import { tanstackRouter } from '@benjavicente/router-plugin/vite'
 
 export default defineConfig({
   plugins: [
@@ -63,8 +63,8 @@ export default defineConfig({
 
 ```tsx
 // src/routes/__root.tsx
-import { createRootRoute, Link, Outlet } from '@tanstack/react-router'
-import { TanStackRouterDevtools } from '@tanstack/react-router-devtools'
+import { createRootRoute, Link, Outlet } from '@benjavicente/react-router'
+import { TanStackRouterDevtools } from '@benjavicente/react-router-devtools'
 
 export const Route = createRootRoute({
   component: RootLayout,
@@ -93,7 +93,7 @@ function RootLayout() {
 
 ```tsx
 // src/routes/index.tsx
-import { createFileRoute } from '@tanstack/react-router'
+import { createFileRoute } from '@benjavicente/react-router'
 
 export const Route = createFileRoute('/')({
   component: HomePage,
@@ -106,7 +106,7 @@ function HomePage() {
 
 ```tsx
 // src/routes/about.tsx
-import { createFileRoute } from '@tanstack/react-router'
+import { createFileRoute } from '@benjavicente/react-router'
 
 export const Route = createFileRoute('/about')({
   component: AboutPage,
@@ -123,13 +123,13 @@ function AboutPage() {
 // src/main.tsx
 import { StrictMode } from 'react'
 import ReactDOM from 'react-dom/client'
-import { RouterProvider, createRouter } from '@tanstack/react-router'
+import { RouterProvider, createRouter } from '@benjavicente/react-router'
 import { routeTree } from './routeTree.gen'
 
 const router = createRouter({ routeTree })
 
 // REQUIRED — without this, Link/useNavigate/useSearch have no type safety
-declare module '@tanstack/react-router' {
+declare module '@benjavicente/react-router' {
   interface Register {
     router: typeof router
   }
@@ -148,14 +148,14 @@ if (!rootElement.innerHTML) {
 
 ## Hooks Reference
 
-All hooks are imported from `@tanstack/react-router`.
+All hooks are imported from `@benjavicente/react-router`.
 
 ### `useRouter()`
 
 Access the router instance directly:
 
 ```tsx
-import { useRouter } from '@tanstack/react-router'
+import { useRouter } from '@benjavicente/react-router'
 
 function InvalidateButton() {
   const router = useRouter()
@@ -169,7 +169,7 @@ Subscribe to router state changes. Exposes the entire state and thus incurs
 a performance cost. For matches or location favor `useMatches` and `useLocation`.
 
 ```tsx
-import { useRouterState } from '@tanstack/react-router'
+import { useRouterState } from '@benjavicente/react-router'
 
 function LoadingIndicator() {
   const isLoading = useRouterState({ select: (s) => s.isLoading })
@@ -182,7 +182,7 @@ function LoadingIndicator() {
 Programmatic navigation (prefer `<Link>` for user-clickable elements):
 
 ```tsx
-import { useNavigate } from '@tanstack/react-router'
+import { useNavigate } from '@benjavicente/react-router'
 
 function AfterSubmit() {
   const navigate = useNavigate()
@@ -201,7 +201,7 @@ function AfterSubmit() {
 Read validated search params:
 
 ```tsx
-import { useSearch } from '@tanstack/react-router'
+import { useSearch } from '@benjavicente/react-router'
 
 function Pagination() {
   const { page } = useSearch({ from: '/products' })
@@ -214,7 +214,7 @@ function Pagination() {
 Read path params:
 
 ```tsx
-import { useParams } from '@tanstack/react-router'
+import { useParams } from '@benjavicente/react-router'
 
 function PostHeader() {
   const { postId } = useParams({ from: '/posts/$postId' })
@@ -227,7 +227,7 @@ function PostHeader() {
 Read data returned from the route loader:
 
 ```tsx
-import { useLoaderData } from '@tanstack/react-router'
+import { useLoaderData } from '@benjavicente/react-router'
 
 function PostContent() {
   const { post } = useLoaderData({ from: '/posts/$postId' })
@@ -240,7 +240,7 @@ function PostContent() {
 Access the full route match (params, search, loader data, context):
 
 ```tsx
-import { useMatch } from '@tanstack/react-router'
+import { useMatch } from '@benjavicente/react-router'
 
 function PostDetails() {
   const match = useMatch({ from: '/posts/$postId' })
@@ -250,7 +250,7 @@ function PostDetails() {
 
 ### Other Hooks
 
-All imported from `@tanstack/react-router`:
+All imported from `@benjavicente/react-router`:
 
 - **`useMatches()`** — array of all active route matches (useful for breadcrumbs)
 - **`useRouteContext({ from })`** — read context from `beforeLoad` or parent routes
@@ -302,7 +302,7 @@ function Layout() {
 Declarative redirect component:
 
 ```tsx
-import { Navigate } from '@tanstack/react-router'
+import { Navigate } from '@benjavicente/react-router'
 
 function OldPage() {
   return <Navigate to="/new-page" />
@@ -314,7 +314,7 @@ function OldPage() {
 Renders deferred data from unawaited loader promises with Suspense:
 
 ```tsx
-import { Await } from '@tanstack/react-router'
+import { Await } from '@benjavicente/react-router'
 import { Suspense } from 'react'
 
 function PostWithComments() {
@@ -343,7 +343,7 @@ function PostWithComments() {
 Error boundary for component-level error handling (route-level errors use `errorComponent` route option):
 
 ```tsx
-import { CatchBoundary } from '@tanstack/react-router'
+import { CatchBoundary } from '@benjavicente/react-router'
 ;<CatchBoundary
   getResetKey={() => 'widget'}
   onCatch={(error) => console.error(error)}
@@ -360,7 +360,7 @@ import { CatchBoundary } from '@tanstack/react-router'
 Wrap `Link` in a custom component while preserving type safety:
 
 ```tsx
-import { createLink } from '@tanstack/react-router'
+import { createLink } from '@benjavicente/react-router'
 import { forwardRef, type ComponentPropsWithoutRef } from 'react'
 
 const StyledLinkComponent = forwardRef<

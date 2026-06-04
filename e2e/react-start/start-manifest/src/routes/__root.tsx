@@ -1,5 +1,5 @@
 /// <reference types="vite/client" />
-import { HeadContent, Scripts, createRootRoute } from '@tanstack/react-router'
+import { HeadContent, Scripts, createRootRoute } from '@benjavicente/react-router'
 import { AppShell } from '~/components/AppShell'
 import type { ReactNode } from 'react'
 

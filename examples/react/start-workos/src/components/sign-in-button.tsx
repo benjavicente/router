@@ -1,5 +1,5 @@
 import { Button, Flex } from '@radix-ui/themes';
-import { Link } from '@tanstack/react-router';
+import { Link } from '@benjavicente/react-router';
 import type { User } from '@workos/authkit-tanstack-react-start';
 
 export default function SignInButton({ large, user, url }: { large?: boolean; user: User | null; url: string }) {

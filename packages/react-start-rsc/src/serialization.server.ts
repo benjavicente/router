@@ -1,7 +1,7 @@
 import { AsyncLocalStorage } from 'node:async_hooks'
-import { createSerializationAdapter } from '@tanstack/react-router'
-import { RawStream } from '@tanstack/router-core'
-import { getStartContext } from '@tanstack/start-storage-context'
+import { createSerializationAdapter } from '@benjavicente/react-router'
+import { RawStream } from '@benjavicente/router-core'
+import { getStartContext } from '@benjavicente/start-storage-context'
 import {
   setOnClientReference,
   createFromReadableStream as ssrDecode,

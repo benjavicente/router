@@ -8,7 +8,7 @@
 // You should NOT make any changes in this file as it will be overwritten.
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
-import { lazyRouteComponent } from '@tanstack/vue-router'
+import { lazyRouteComponent } from '@benjavicente/vue-router'
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as Char45824Char54620Char48124Char44397RouteImport } from './routes/대한민국'
@@ -386,7 +386,7 @@ export interface RootRouteChildren {
   PostsPostIdEditRoute: typeof PostsPostIdEditRoute
 }
 
-declare module '@tanstack/vue-router' {
+declare module '@benjavicente/vue-router' {
   interface FileRoutesByPath {
     '/대한민국': {
       id: '/대한민국'

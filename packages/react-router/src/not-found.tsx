@@ -1,11 +1,11 @@
 import * as React from 'react'
-import { isNotFound } from '@tanstack/router-core'
-import { isServer } from '@tanstack/router-core/isServer'
+import { isNotFound } from '@benjavicente/router-core'
+import { isServer } from '@benjavicente/router-core/isServer'
 import { useStore } from '@tanstack/react-store'
 import { CatchBoundary } from './CatchBoundary'
 import { useRouter } from './useRouter'
 import type { ErrorInfo } from 'react'
-import type { NotFoundError } from '@tanstack/router-core'
+import type { NotFoundError } from '@benjavicente/router-core'
 
 export function CatchNotFound(props: {
   fallback?: (error: NotFoundError) => React.ReactElement

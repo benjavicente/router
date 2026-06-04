@@ -14,9 +14,9 @@
     "test:e2e:local": "playwright test --project=chromium"
   },
   "dependencies": {
-    "@tanstack/solid-router": "workspace:^",
-    "@tanstack/solid-router-devtools": "workspace:^",
-    "@tanstack/solid-start": "workspace:^",
+    "@benjavicente/solid-router": "workspace:^",
+    "@benjavicente/solid-router-devtools": "workspace:^",
+    "@benjavicente/solid-start": "workspace:^",
     "express": "^5.1.0",
     "http-proxy-middleware": "^3.0.5",
     "js-cookie": "^3.0.5",
@@ -33,7 +33,7 @@
     "@rsbuild/plugin-solid": "^1.1.1",
     "@tailwindcss/postcss": "^4.2.2",
     "@tailwindcss/vite": "^4.2.2",
-    "@tanstack/router-e2e-utils": "workspace:^",
+    "@benjavicente/router-e2e-utils": "workspace:^",
     "@types/js-cookie": "^3.0.6",
     "@types/node": "^22.10.2",
     "combinate": "^1.1.11",

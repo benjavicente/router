@@ -1,5 +1,5 @@
-import { ErrorComponent, Link, createFileRoute } from '@tanstack/solid-router'
-import type { ErrorComponentProps } from '@tanstack/solid-router'
+import { ErrorComponent, Link, createFileRoute } from '@benjavicente/solid-router'
+import type { ErrorComponentProps } from '@benjavicente/solid-router'
 
 import { fetchPost } from '~/utils/posts'
 import { NotFound } from '~/components/NotFound'

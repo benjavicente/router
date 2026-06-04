@@ -10,7 +10,7 @@ import { Asset } from '../Asset'
 import { useTags } from '../headContentUtils'
 import { RouterProvider } from '../RouterProvider'
 import { Scripts } from '../Scripts'
-import type { AnyRouter } from '@tanstack/router-core'
+import type { AnyRouter } from '@benjavicente/router-core'
 
 export function ServerHeadContent() {
   const tags = useTags()

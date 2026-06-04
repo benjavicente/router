@@ -1,5 +1,5 @@
-import { createServerFn } from '@tanstack/react-start'
-import { renderToReadableStream } from '@tanstack/react-start/rsc'
+import { createServerFn } from '@benjavicente/react-start'
+import { renderToReadableStream } from '@benjavicente/react-start/rsc'
 
 // Colors for the counter-based RSC
 const counterColors = [

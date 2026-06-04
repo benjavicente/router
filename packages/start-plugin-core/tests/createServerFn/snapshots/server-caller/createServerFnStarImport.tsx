@@ -1,5 +1,5 @@
-import { createSsrRpc } from '@tanstack/react-start/ssr-rpc';
-import * as TanStackStart from '@tanstack/react-start';
+import { createSsrRpc } from '@benjavicente/react-start/ssr-rpc';
+import * as TanStackStart from '@benjavicente/react-start';
 export const withUseServer = TanStackStart.createServerFn({
   method: 'GET'
 }).handler(createSsrRpc("b6fe31e85836ae6c65d8ab262dd1af6a68620aeef609029d50127f4cceaaf320"));

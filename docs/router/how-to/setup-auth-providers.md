@@ -93,7 +93,7 @@ export function useAuth0Context() {
 Update `src/App.tsx`:
 
 ```tsx
-import { RouterProvider } from '@tanstack/react-router'
+import { RouterProvider } from '@benjavicente/react-router'
 import { Auth0Wrapper, useAuth0Context } from './auth/auth0'
 import { router } from './router'
 
@@ -127,7 +127,7 @@ export default App
 Create `src/routes/_authenticated.tsx`:
 
 ```tsx
-import { createFileRoute, redirect, Outlet } from '@tanstack/react-router'
+import { createFileRoute, redirect, Outlet } from '@benjavicente/react-router'
 
 export const Route = createFileRoute('/_authenticated')({
   beforeLoad: ({ context, location }) => {
@@ -206,7 +206,7 @@ export function useClerkAuth() {
 Create `src/routes/sign-in.tsx`:
 
 ```tsx
-import { createFileRoute } from '@tanstack/react-router'
+import { createFileRoute } from '@benjavicente/react-router'
 import { SignIn } from '@clerk/clerk-react'
 
 export const Route = createFileRoute('/sign-in')({
@@ -221,7 +221,7 @@ export const Route = createFileRoute('/sign-in')({
 Create `src/routes/sign-up.tsx`:
 
 ```tsx
-import { createFileRoute } from '@tanstack/react-router'
+import { createFileRoute } from '@benjavicente/react-router'
 import { SignUp } from '@clerk/clerk-react'
 
 export const Route = createFileRoute('/sign-up')({
@@ -238,7 +238,7 @@ export const Route = createFileRoute('/sign-up')({
 Update `src/App.tsx`:
 
 ```tsx
-import { RouterProvider } from '@tanstack/react-router'
+import { RouterProvider } from '@benjavicente/react-router'
 import { ClerkWrapper, useClerkAuth } from './auth/clerk'
 import { router } from './router'
 
@@ -272,7 +272,7 @@ export default App
 Create `src/routes/_authenticated.tsx`:
 
 ```tsx
-import { createFileRoute, redirect, Outlet } from '@tanstack/react-router'
+import { createFileRoute, redirect, Outlet } from '@benjavicente/react-router'
 
 export const Route = createFileRoute('/_authenticated')({
   beforeLoad: ({ context, location }) => {
@@ -404,7 +404,7 @@ export function useSupabaseAuth() {
 Create `src/routes/login.tsx`:
 
 ```tsx
-import { createFileRoute, redirect } from '@tanstack/react-router'
+import { createFileRoute, redirect } from '@benjavicente/react-router'
 import { useState } from 'react'
 
 export const Route = createFileRoute('/login')({
@@ -503,7 +503,7 @@ function LoginComponent() {
 Update `src/App.tsx`:
 
 ```tsx
-import { RouterProvider } from '@tanstack/react-router'
+import { RouterProvider } from '@benjavicente/react-router'
 import { SupabaseAuthProvider, useSupabaseAuth } from './auth/supabase'
 import { router } from './router'
 

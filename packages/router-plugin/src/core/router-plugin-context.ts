@@ -1,4 +1,4 @@
-import type { GetRoutesByFileMapResult } from '@tanstack/router-generator'
+import type { GetRoutesByFileMapResult } from '@benjavicente/router-generator'
 
 export type RouterPluginContext = {
   routesByFile: GetRoutesByFileMapResult

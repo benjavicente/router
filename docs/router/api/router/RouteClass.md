@@ -26,7 +26,7 @@ A new [`Route`](./RouteType.md) instance.
 ## Examples
 
 ```tsx
-import { Route } from '@tanstack/react-router'
+import { Route } from '@benjavicente/react-router'
 import { rootRoute } from './__root'
 
 const indexRoute = new Route({

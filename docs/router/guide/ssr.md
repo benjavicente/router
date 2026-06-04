@@ -8,7 +8,7 @@ title: SSR
 
 Server Side Rendering (SSR) is the process of rendering a component on the server and sending the HTML markup to the client. The client then hydrates the markup into a fully interactive component.
 
-> **TanStack Router is not Next.js, Remix, or React Router DOM.** When generating routes or components, do **not** use `src/pages/`, `app/layout.tsx`, `_app/index.tsx`, `getServerSideProps`, `getStaticProps`, Remix-style `loader`/`action` exports, or imports from `react-router-dom` or `next/`. TanStack uses `src/routes/` with `createFileRoute`, `Link`/`useNavigate`/`redirect` from `@tanstack/react-router`, and (for Start) `createServerFn` from `@tanstack/<framework>-start`. Wrong-framework code typically fails to build or produces conflicting `/` routes at runtime.
+> **TanStack Router is not Next.js, Remix, or React Router DOM.** When generating routes or components, do **not** use `src/pages/`, `app/layout.tsx`, `_app/index.tsx`, `getServerSideProps`, `getStaticProps`, Remix-style `loader`/`action` exports, or imports from `react-router-dom` or `next/`. TanStack uses `src/routes/` with `createFileRoute`, `Link`/`useNavigate`/`redirect` from `@benjavicente/react-router`, and (for Start) `createServerFn` from `@benjavicente/<framework>-start`. Wrong-framework code typically fails to build or produces conflicting `/` routes at runtime.
 
 There are usually two different flavors of SSR to be considered:
 
@@ -30,30 +30,30 @@ To implement non-streaming SSR with TanStack Router, you will need the following
 
 # React
 
-- `RouterClient` from `@tanstack/react-router`
+- `RouterClient` from `@benjavicente/react-router`
   - e.g. `<RouterClient router={router} />`
   - Rendering this component in your client entry will render your application and also automatically implement the `Wrap` component option on `Router`
 - And, either:
-  - `defaultRenderHandler` from `@tanstack/react-router`
+  - `defaultRenderHandler` from `@benjavicente/react-router`
     - This will render your application in your server entry and also automatically handle application-level hydration/dehydration and also automatically implement the RouterServer component.
       or:
-  - `renderRouterToString` from `@tanstack/react-router`
+  - `renderRouterToString` from `@benjavicente/react-router`
     - This differs from defaultRenderHandler in that it allows you to manually specify the `Wrap` component option on `Router` together with any other providers you may need to wrap it with.
-  - `RouterServer` from `@tanstack/react-router`
+  - `RouterServer` from `@benjavicente/react-router`
     - This implements the `Wrap` component option on `Router`
 
 # Solid
 
-- `RouterClient` from `@tanstack/solid-router`
+- `RouterClient` from `@benjavicente/solid-router`
   - e.g. `<RouterClient router={router} />`
   - Rendering this component in your client entry will render your application and also automatically implement the `Wrap` component option on `Router`
 - And, either:
-  - `defaultRenderHandler` from `@tanstack/solid-router`
+  - `defaultRenderHandler` from `@benjavicente/solid-router`
     - This will render your application in your server entry and also automatically handle application-level hydration/dehydration and also automatically implement the RouterServer component.
       or:
-  - `renderRouterToString` from `@tanstack/solid-router`
+  - `renderRouterToString` from `@benjavicente/solid-router`
     - This differs from defaultRenderHandler in that it allows you to manually specify the `Wrap` component option on `Router` together with any other providers you may need to wrap it with.
-  - `RouterServer` from `@tanstack/solid-router`
+  - `RouterServer` from `@benjavicente/solid-router`
     - This implements the `Wrap` component option on `Router`
 
 <!-- ::end:framework -->
@@ -79,14 +79,14 @@ Since your router will exist both on the server and the client, it's important t
 # React
 
 ```tsx title='src/router.tsx'
-import { createRouter as createTanstackRouter } from '@tanstack/react-router'
+import { createRouter as createTanstackRouter } from '@benjavicente/react-router'
 import { routeTree } from './routeTree.gen'
 
 export function createRouter() {
   return createTanstackRouter({ routeTree })
 }
 
-declare module '@tanstack/react-router' {
+declare module '@benjavicente/react-router' {
   interface Register {
     router: ReturnType<typeof createRouter>
   }
@@ -96,14 +96,14 @@ declare module '@tanstack/react-router' {
 # Solid
 
 ```tsx title='src/router.tsx'
-import { createRouter as createTanstackRouter } from '@tanstack/solid-router'
+import { createRouter as createTanstackRouter } from '@benjavicente/solid-router'
 import { routeTree } from './routeTree.gen'
 
 export function createRouter() {
   return createTanstackRouter({ routeTree })
 }
 
-declare module '@tanstack/solid-router' {
+declare module '@benjavicente/solid-router' {
   interface Register {
     router: ReturnType<typeof createRouter>
   }
@@ -126,7 +126,7 @@ using `defaultRenderHandler`
 import {
   createRequestHandler,
   defaultRenderHandler,
-} from '@tanstack/react-router/ssr/server'
+} from '@benjavicente/react-router/ssr/server'
 import { createRouter } from './router'
 
 export async function render({ request }: { request: Request }) {
@@ -142,7 +142,7 @@ export async function render({ request }: { request: Request }) {
 import {
   createRequestHandler,
   defaultRenderHandler,
-} from '@tanstack/solid-router/ssr/server'
+} from '@benjavicente/solid-router/ssr/server'
 import { createRouter } from './router'
 
 export async function render({ request }: { request: Request }) {
@@ -165,7 +165,7 @@ import {
   createRequestHandler,
   renderRouterToString,
   RouterServer,
-} from '@tanstack/react-router/ssr/server'
+} from '@benjavicente/react-router/ssr/server'
 import { createRouter } from './router'
 
 export function render({ request }: { request: Request }) {
@@ -189,7 +189,7 @@ import {
   createRequestHandler,
   renderRouterToString,
   RouterServer,
-} from '@tanstack/react-router/ssr/server'
+} from '@benjavicente/react-router/ssr/server'
 import { createRouter } from './router'
 
 export function render({ request }: { request: Request }) {
@@ -225,7 +225,7 @@ On the client, things are much simpler.
 
 ```tsx title="src/entry-client.tsx"
 import { hydrateRoot } from 'react-dom/client'
-import { RouterClient } from '@tanstack/react-router/ssr/client'
+import { RouterClient } from '@benjavicente/react-router/ssr/client'
 import { createRouter } from './router'
 
 const router = createRouter()
@@ -237,7 +237,7 @@ hydrateRoot(document, <RouterClient router={router} />)
 
 ```tsx title="src/entry-client.tsx"
 import { hydrate } from 'solid-js/web'
-import { RouterClient } from '@tanstack/solid-router/ssr/client'
+import { RouterClient } from '@benjavicente/solid-router/ssr/client'
 import { createRouter } from './router'
 
 const router = createRouter()
@@ -268,7 +268,7 @@ using `defaultStreamHandler`
 import {
   createRequestHandler,
   defaultStreamHandler,
-} from '@tanstack/react-router/ssr/server'
+} from '@benjavicente/react-router/ssr/server'
 import { createRouter } from './router'
 
 export async function render({ request }: { request: Request }) {
@@ -284,7 +284,7 @@ export async function render({ request }: { request: Request }) {
 import {
   createRequestHandler,
   defaultStreamHandler,
-} from '@tanstack/solid-router/ssr/server'
+} from '@benjavicente/solid-router/ssr/server'
 import { createRouter } from './router'
 
 export async function render({ request }: { request: Request }) {
@@ -307,7 +307,7 @@ import {
   createRequestHandler,
   renderRouterToStream,
   RouterServer,
-} from '@tanstack/react-router/ssr/server'
+} from '@benjavicente/react-router/ssr/server'
 import { createRouter } from './router'
 
 export function render({ request }: { request: Request }) {
@@ -331,7 +331,7 @@ import {
   createRequestHandler,
   renderRouterToStream,
   RouterServer,
-} from '@tanstack/solid-router/ssr/server'
+} from '@benjavicente/solid-router/ssr/server'
 import { createRouter } from './router'
 
 export function render({ request }: { request: Request }) {

@@ -1,1 +1,1 @@
-export { rscSerializationAdapter } from '@tanstack/react-start-rsc/serialization.client'
+export { rscSerializationAdapter } from '@benjavicente/react-start-rsc/serialization.client'

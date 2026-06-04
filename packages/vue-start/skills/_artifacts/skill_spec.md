@@ -1,4 +1,4 @@
-# @tanstack/vue-start — Skill Spec
+# @benjavicente/vue-start — Skill Spec
 
 Vue bindings for TanStack Start. useServerFn hook, tanstackStart Vite plugin, Html/Body SSR shell, Vue-specific setup.
 

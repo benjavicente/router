@@ -1,5 +1,5 @@
-import { redirect, createFileRoute } from '@tanstack/react-router'
-import { createServerFn } from '@tanstack/react-start'
+import { redirect, createFileRoute } from '@benjavicente/react-router'
+import { createServerFn } from '@benjavicente/react-start'
 import { getSupabaseServerClient } from '../utils/supabase'
 
 const logoutFn = createServerFn().handler(async () => {

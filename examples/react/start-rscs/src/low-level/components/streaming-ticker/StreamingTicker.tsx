@@ -1,5 +1,5 @@
 import { useCallback, useEffect, useRef, useState } from 'react'
-import { createFromReadableStream } from '@tanstack/react-start/rsc'
+import { createFromReadableStream } from '@benjavicente/react-start/rsc'
 
 import { streamTickerRscs } from './server-functions'
 

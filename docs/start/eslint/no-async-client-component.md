@@ -17,9 +17,9 @@ This rule helps you catch async components that have become "client" (directly o
 Examples of **incorrect** code for this rule:
 
 ```tsx
-/* eslint "@tanstack/start/no-async-client-component": "error" */
+/* eslint "@benjavicente/start/no-async-client-component": "error" */
 
-import { createFileRoute } from '@tanstack/react-router'
+import { createFileRoute } from '@benjavicente/react-router'
 
 export async function Page() {
   return <div />
@@ -33,9 +33,9 @@ export const Route = createFileRoute(undefined)({
 Examples of **correct** code for this rule:
 
 ```tsx
-/* eslint "@tanstack/start/no-async-client-component": "error" */
+/* eslint "@benjavicente/start/no-async-client-component": "error" */
 
-import { createFileRoute } from '@tanstack/react-router'
+import { createFileRoute } from '@benjavicente/react-router'
 
 export function Page() {
   return <div />
@@ -47,9 +47,9 @@ export const Route = createFileRoute(undefined)({
 ```
 
 ```tsx
-/* eslint "@tanstack/start/no-async-client-component": "error" */
+/* eslint "@benjavicente/start/no-async-client-component": "error" */
 
-import { createCompositeComponent } from '@tanstack/react-start/rsc'
+import { createCompositeComponent } from '@benjavicente/react-start/rsc'
 
 export const ServerPage = createCompositeComponent(async () => {
   const message = await Promise.resolve('hello')

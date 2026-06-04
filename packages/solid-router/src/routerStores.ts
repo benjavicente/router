@@ -2,17 +2,17 @@ import * as Solid from 'solid-js'
 import {
   createNonReactiveMutableStore,
   createNonReactiveReadonlyStore,
-} from '@tanstack/router-core'
-import { isServer } from '@tanstack/router-core/isServer'
+} from '@benjavicente/router-core'
+import { isServer } from '@benjavicente/router-core/isServer'
 import type {
   AnyRoute,
   GetStoreConfig,
   RouterReadableStore,
   RouterStores,
   RouterWritableStore,
-} from '@tanstack/router-core'
+} from '@benjavicente/router-core'
 
-declare module '@tanstack/router-core' {
+declare module '@benjavicente/router-core' {
   export interface RouterStores<in out TRouteTree extends AnyRoute> {
     /** Maps each active routeId to the matchId of its child in the match tree. */
     childMatchIdByRouteId: RouterReadableStore<Record<string, string>>

@@ -1,4 +1,4 @@
-import * as TanstackStart from '@tanstack/react-start'
+import * as TanstackStart from '@benjavicente/react-start'
 
 const serverFunc = TanstackStart.createServerOnlyFn(() => 'server')
 

@@ -89,7 +89,7 @@ export interface RootRouteChildren {
   Char91routeChar93Route: typeof Char91routeChar93Route
 }
 
-declare module '@tanstack/react-router' {
+declare module '@benjavicente/react-router' {
   interface FileRoutesByPath {
     '/index': {
       id: '/index'

@@ -1,4 +1,4 @@
-import { createStart } from '@tanstack/vue-start'
+import { createStart } from '@benjavicente/vue-start'
 import { carAdapter, fooAdapter, nestedOuterAdapter } from './data'
 import { customErrorAdapter } from './CustomError'
 

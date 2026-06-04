@@ -1,4 +1,4 @@
-# @tanstack/start-fn-stubs
+# @benjavicente/start-fn-stubs
 
 ## 1.161.6
 

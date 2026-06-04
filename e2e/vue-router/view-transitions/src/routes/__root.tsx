@@ -3,8 +3,8 @@ import {
   Link,
   Outlet,
   createRootRoute,
-} from '@tanstack/vue-router'
-import { TanStackRouterDevtools } from '@tanstack/vue-router-devtools'
+} from '@benjavicente/vue-router'
+import { TanStackRouterDevtools } from '@benjavicente/vue-router-devtools'
 
 export const Route = createRootRoute({
   component: RootComponent,

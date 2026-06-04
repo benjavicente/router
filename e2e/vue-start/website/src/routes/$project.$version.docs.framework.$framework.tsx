@@ -3,7 +3,7 @@ import {
   Outlet,
   createFileRoute,
   useLocation,
-} from '@tanstack/vue-router'
+} from '@benjavicente/vue-router'
 import { getDocumentHeads } from '~/server/document'
 import { getProject } from '~/server/projects'
 

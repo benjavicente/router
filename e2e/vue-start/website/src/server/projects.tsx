@@ -1,5 +1,5 @@
-import { createServerFn } from '@tanstack/vue-start'
-import { notFound } from '@tanstack/vue-router'
+import { createServerFn } from '@benjavicente/vue-start'
+import { notFound } from '@benjavicente/vue-router'
 import { capitalize } from '~/utils/seo'
 
 const projects = ['router', 'table', 'query', 'form', 'ranger']

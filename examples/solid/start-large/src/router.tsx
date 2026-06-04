@@ -1,4 +1,4 @@
-import { createRouter } from '@tanstack/solid-router'
+import { createRouter } from '@benjavicente/solid-router'
 import { QueryClient } from '@tanstack/solid-query'
 import { routeTree } from './routeTree.gen'
 

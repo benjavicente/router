@@ -6,7 +6,7 @@
  *
  * @example
  * ```tsx
- * import { renderToReadableStream } from '@tanstack/react-start/rsc'
+ * import { renderToReadableStream } from '@benjavicente/react-start/rsc'
  *
  * const stream = renderToReadableStream(<MyServerComponent />)
  * return new Response(stream, {

@@ -1,5 +1,5 @@
 import { expect } from '@playwright/test'
-import { test } from '@tanstack/router-e2e-utils'
+import { test } from '@benjavicente/router-e2e-utils'
 import type { Page } from '@playwright/test'
 import { readdir } from 'node:fs/promises'
 import path from 'node:path'

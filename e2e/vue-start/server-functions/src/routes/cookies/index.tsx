@@ -1,4 +1,4 @@
-import { Link, createFileRoute } from '@tanstack/vue-router'
+import { Link, createFileRoute } from '@benjavicente/vue-router'
 import { z } from 'zod'
 
 const cookieSchema = z

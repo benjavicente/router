@@ -28,5 +28,5 @@ export { renderToReadableStream } from './flight.stub.js'
 
 // Note: rscSerializationAdapter is intentionally NOT exported here.
 // It imports virtual:tanstack-rsc-hmr which is client-only (not available in SSR).
-// Import directly from '@tanstack/react-start-rsc/serialization.client' or
-// '@tanstack/react-start-rsc/serialization.server' as needed.
+// Import directly from '@benjavicente/react-start-rsc/serialization.client' or
+// '@benjavicente/react-start-rsc/serialization.server' as needed.

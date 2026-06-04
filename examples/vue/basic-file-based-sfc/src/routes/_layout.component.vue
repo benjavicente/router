@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { Outlet } from '@tanstack/vue-router'
+import { Outlet } from '@benjavicente/vue-router'
 </script>
 
 <template>

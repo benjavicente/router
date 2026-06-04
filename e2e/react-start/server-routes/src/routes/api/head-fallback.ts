@@ -1,4 +1,4 @@
-import { createFileRoute } from '@tanstack/react-router'
+import { createFileRoute } from '@benjavicente/react-router'
 
 // A server-only route with only a GET handler.
 // Used to test that HEAD requests fall back to the GET handler per RFC 9110.

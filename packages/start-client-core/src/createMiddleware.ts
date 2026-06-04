@@ -16,7 +16,7 @@ import type {
   ResolveValidatorInput,
   ResolveValidatorOutput,
   ValidateSerializableInput,
-} from '@tanstack/router-core'
+} from '@benjavicente/router-core'
 
 export type CreateMiddlewareFn<TRegister> = <TType extends MiddlewareType>(
   options?: {

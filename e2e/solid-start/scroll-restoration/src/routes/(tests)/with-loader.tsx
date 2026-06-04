@@ -1,4 +1,4 @@
-import { createFileRoute } from '@tanstack/solid-router'
+import { createFileRoute } from '@benjavicente/solid-router'
 import { sleep } from '../../utils/posts'
 import { ScrollBlock } from '../-components/scroll-block'
 

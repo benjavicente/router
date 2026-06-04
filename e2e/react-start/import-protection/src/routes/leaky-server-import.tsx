@@ -1,4 +1,4 @@
-import { createFileRoute } from '@tanstack/react-router'
+import { createFileRoute } from '@benjavicente/react-router'
 import { leakyGetRequestUsage } from '../violations/leaky-server-import'
 
 export const Route = createFileRoute('/leaky-server-import')({

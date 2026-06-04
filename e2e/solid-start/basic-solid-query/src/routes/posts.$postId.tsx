@@ -1,5 +1,5 @@
 import { useQuery } from '@tanstack/solid-query'
-import { ErrorComponent, Link, createFileRoute } from '@tanstack/solid-router'
+import { ErrorComponent, Link, createFileRoute } from '@benjavicente/solid-router'
 import { postQueryOptions } from '~/utils/posts'
 
 export function PostErrorComponent({ error }: { error: any }) {

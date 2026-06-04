@@ -75,8 +75,8 @@ import {
   createRootRoute,
   createRoute,
   createRouter,
-} from '@tanstack/react-router'
-import type { RouterHistory } from '@tanstack/react-router'
+} from '@benjavicente/react-router'
+import type { RouterHistory } from '@benjavicente/react-router'
 
 let history: RouterHistory
 
@@ -125,8 +125,8 @@ import {
   createRoute,
   RouterProvider,
   Outlet,
-} from '@tanstack/react-router'
-import { createMemoryHistory } from '@tanstack/react-router'
+} from '@benjavicente/react-router'
+import { createMemoryHistory } from '@benjavicente/react-router'
 
 // Create a root route for testing
 const rootRoute = createRootRoute({
@@ -199,7 +199,7 @@ export function renderWithRouter(
 Create `src/test/mock-routes.tsx`:
 
 ```tsx
-import { createRoute } from '@tanstack/react-router'
+import { createRoute } from '@benjavicente/react-router'
 import { rootRoute } from './router-utils'
 
 export const createMockRoute = (
@@ -238,7 +238,7 @@ export function ErrorComponent({ error }: { error: Error }) {
 ```tsx
 import { describe, it, expect } from 'vitest'
 import { screen } from '@testing-library/react'
-import { createRoute } from '@tanstack/react-router'
+import { createRoute } from '@benjavicente/react-router'
 import {
   renderWithRouter,
   rootRoute,
@@ -289,7 +289,7 @@ describe('Code-Based Route Component Testing', () => {
 ```tsx
 import { describe, it, expect } from 'vitest'
 import { screen } from '@testing-library/react'
-import { createRoute } from '@tanstack/react-router'
+import { createRoute } from '@benjavicente/react-router'
 import { renderWithRouter, rootRoute } from '../test/router-utils'
 
 describe('Route Parameters', () => {
@@ -353,7 +353,7 @@ describe('Route Parameters', () => {
 import { describe, it, expect } from 'vitest'
 import { screen, fireEvent } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
-import { Link, createRoute } from '@tanstack/react-router'
+import { Link, createRoute } from '@benjavicente/react-router'
 import {
   renderWithRouter,
   rootRoute,
@@ -459,7 +459,7 @@ describe('Code-Based Route Navigation', () => {
 ```tsx
 import { describe, it, expect } from 'vitest'
 import { screen } from '@testing-library/react'
-import { createRoute, redirect } from '@tanstack/react-router'
+import { createRoute, redirect } from '@benjavicente/react-router'
 import { renderWithRouter, rootRoute } from '../test/router-utils'
 
 describe('Code-Based Route Guards', () => {
@@ -537,7 +537,7 @@ describe('Code-Based Route Guards', () => {
 ```tsx
 import { describe, it, expect, vi } from 'vitest'
 import { screen, waitFor } from '@testing-library/react'
-import { createRoute } from '@tanstack/react-router'
+import { createRoute } from '@benjavicente/react-router'
 import { renderWithRouter, rootRoute } from '../test/router-utils'
 
 describe('Code-Based Route Data Loading', () => {
@@ -617,7 +617,7 @@ describe('Code-Based Route Data Loading', () => {
 import { describe, it, expect, vi } from 'vitest'
 import { screen, waitFor } from '@testing-library/react'
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
-import { createRoute } from '@tanstack/react-router'
+import { createRoute } from '@benjavicente/react-router'
 import { renderWithRouter, rootRoute } from '../test/router-utils'
 
 describe('React Query Integration', () => {
@@ -692,7 +692,7 @@ import {
   createRootRouteWithContext,
   createRoute,
   Outlet,
-} from '@tanstack/react-router'
+} from '@benjavicente/react-router'
 
 interface RouterContext {
   auth: {

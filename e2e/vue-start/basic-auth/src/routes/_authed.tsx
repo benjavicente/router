@@ -1,5 +1,5 @@
-import { createFileRoute } from '@tanstack/vue-router'
-import { createServerFn } from '@tanstack/vue-start'
+import { createFileRoute } from '@benjavicente/vue-router'
+import { createServerFn } from '@benjavicente/vue-start'
 
 import { hashPassword, prismaClient } from '~/utils/prisma'
 import { Login } from '~/components/Login'

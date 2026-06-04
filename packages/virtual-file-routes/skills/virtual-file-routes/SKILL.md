@@ -13,7 +13,7 @@ sources:
   - TanStack/router:docs/router/routing/virtual-file-routes.md
 ---
 
-# Virtual File Routes (`@tanstack/virtual-file-routes`)
+# Virtual File Routes (`@benjavicente/virtual-file-routes`)
 
 Build route trees programmatically instead of relying on filesystem conventions. Useful when you want explicit control over route structure, need to mix virtual and physical routes, or want to define route subtrees within file-based routing directories.
 
@@ -22,7 +22,7 @@ Build route trees programmatically instead of relying on filesystem conventions.
 ## Install
 
 ```bash
-npm install @tanstack/virtual-file-routes
+npm install @benjavicente/virtual-file-routes
 ```
 
 ## API Reference
@@ -32,7 +32,7 @@ npm install @tanstack/virtual-file-routes
 Creates the root of a virtual route tree.
 
 ```ts
-import { rootRoute, index, route } from '@tanstack/virtual-file-routes'
+import { rootRoute, index, route } from '@benjavicente/virtual-file-routes'
 
 const routes = rootRoute('root.tsx', [
   index('index.tsx'),
@@ -45,7 +45,7 @@ const routes = rootRoute('root.tsx', [
 Creates an index route — the default rendered when the parent path matches exactly.
 
 ```ts
-import { index } from '@tanstack/virtual-file-routes'
+import { index } from '@benjavicente/virtual-file-routes'
 
 index('home.tsx')
 ```
@@ -55,7 +55,7 @@ index('home.tsx')
 Creates a route node. Three call signatures:
 
 ```ts
-import { route, index } from '@tanstack/virtual-file-routes'
+import { route, index } from '@benjavicente/virtual-file-routes'
 
 // Leaf route: path + file
 route('/about', 'about.tsx')
@@ -75,7 +75,7 @@ route('/api', [route('/users', 'users.tsx'), route('/posts', 'posts.tsx')])
 Creates a pathless layout route — wraps children without adding a URL segment.
 
 ```ts
-import { layout, route, index } from '@tanstack/virtual-file-routes'
+import { layout, route, index } from '@benjavicente/virtual-file-routes'
 
 // ID derived from filename
 layout('authLayout.tsx', [
@@ -92,7 +92,7 @@ layout('admin-layout', 'adminLayout.tsx', [route('/admin', 'admin.tsx')])
 Mounts a directory of file-based routes at a URL prefix. Uses TanStack Router's standard file-based routing conventions within that directory.
 
 ```ts
-import { physical } from '@tanstack/virtual-file-routes'
+import { physical } from '@benjavicente/virtual-file-routes'
 
 // Mount posts/ directory under /posts
 physical('/posts', 'posts')
@@ -111,7 +111,7 @@ import {
   defineVirtualSubtreeConfig,
   index,
   route,
-} from '@tanstack/virtual-file-routes'
+} from '@benjavicente/virtual-file-routes'
 
 export default defineVirtualSubtreeConfig([
   index('home.tsx'),
@@ -126,7 +126,7 @@ Pass the virtual route config to the TanStack Router plugin:
 ```ts
 // vite.config.ts
 import { defineConfig } from 'vite'
-import { tanstackRouter } from '@tanstack/router-plugin/vite'
+import { tanstackRouter } from '@benjavicente/router-plugin/vite'
 import { routes } from './routes'
 
 export default defineConfig({
@@ -159,7 +159,7 @@ import {
   index,
   layout,
   physical,
-} from '@tanstack/virtual-file-routes'
+} from '@benjavicente/virtual-file-routes'
 
 export const routes = rootRoute('root.tsx', [
   index('index.tsx'),

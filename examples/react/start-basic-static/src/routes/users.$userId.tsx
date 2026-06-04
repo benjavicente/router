@@ -1,10 +1,10 @@
-import { ErrorComponent, createFileRoute } from '@tanstack/react-router'
+import { ErrorComponent, createFileRoute } from '@benjavicente/react-router'
 import axios from 'redaxios'
-import { createServerFn } from '@tanstack/react-start'
-import type { ErrorComponentProps } from '@tanstack/react-router'
+import { createServerFn } from '@benjavicente/react-start'
+import type { ErrorComponentProps } from '@benjavicente/react-router'
 import type { User } from '~/utils/users'
 import { NotFound } from '~/components/NotFound'
-import { staticFunctionMiddleware } from '@tanstack/start-static-server-functions'
+import { staticFunctionMiddleware } from '@benjavicente/start-static-server-functions'
 
 const fetchUser = createServerFn({ method: 'GET' })
   .middleware([staticFunctionMiddleware])

@@ -14,10 +14,36 @@ function makeNode(
 }
 
 describe('transform', () => {
+  it('uses the configured target module for route constructor imports', async () => {
+    const result = await transform({
+      source: [
+        "import { createFileRoute } from '@benjavicente/angular-router-experimental'",
+        '',
+        "export const Route = createFileRoute('/old')({})",
+      ].join('\n'),
+      ctx: {
+        target: 'angular',
+        targetModule: '@benjavicente/angular-router-experimental',
+        routeId: '/',
+        lazy: false,
+      },
+      node: makeNode(),
+    })
+
+    expect(result).toEqual({
+      result: 'modified',
+      output: [
+        "import { createFileRoute } from '@benjavicente/angular-router-experimental'",
+        '',
+        "export const Route = createFileRoute('/')({})",
+      ].join('\n'),
+    })
+  })
+
   it('does not treat root route exports as missing Route exports', async () => {
     const result = await transform({
       source: [
-        "import { createRootRoute } from '@tanstack/react-router'",
+        "import { createRootRoute } from '@benjavicente/react-router'",
         '',
         'export const Route = createRootRoute()({})',
       ].join('\n'),
@@ -35,7 +61,7 @@ describe('transform', () => {
   it('does not treat createRootRouteWithContext exports as missing Route exports', async () => {
     const result = await transform({
       source: [
-        "import { createRootRouteWithContext } from '@tanstack/react-router'",
+        "import { createRootRouteWithContext } from '@benjavicente/react-router'",
         '',
         'interface RouterContext {}',
         '',
@@ -55,7 +81,7 @@ describe('transform', () => {
   it('does not treat createRootRoute exported via export { Route } as missing Route exports', async () => {
     const result = await transform({
       source: [
-        "import { createRootRoute } from '@tanstack/react-router'",
+        "import { createRootRoute } from '@benjavicente/react-router'",
         '',
         'const Route = createRootRoute()({})',
         '',
@@ -90,7 +116,7 @@ describe('transform', () => {
     const node = makeNode()
     const result = await transform({
       source: [
-        "import { createFileRoute } from '@tanstack/react-router'",
+        "import { createFileRoute } from '@benjavicente/react-router'",
         '',
         "const MyRoute = createFileRoute('/old')({ component: Component })",
         '',
@@ -119,8 +145,8 @@ describe('transform', () => {
   it('removes imports cleanly with CRLF line endings', async () => {
     const result = await transform({
       source: [
-        "import { createFileRoute } from '@tanstack/react-router'",
-        "import { createLazyFileRoute } from '@tanstack/react-router'",
+        "import { createFileRoute } from '@benjavicente/react-router'",
+        "import { createLazyFileRoute } from '@benjavicente/react-router'",
         '',
         "export const Route = createFileRoute('/old')({})",
       ].join('\r\n'),
@@ -138,7 +164,7 @@ describe('transform', () => {
     }
     expect(result.output).toBe(
       [
-        "import { createFileRoute } from '@tanstack/react-router'",
+        "import { createFileRoute } from '@benjavicente/react-router'",
         '',
         "export const Route = createFileRoute('/new')({})",
       ].join('\r\n'),
@@ -151,7 +177,7 @@ describe('transform', () => {
         'import {',
         '  Link,',
         '  createFileRoute,',
-        `} from '@tanstack/react-router'`,
+        `} from '@benjavicente/react-router'`,
         '',
         "export const Route = createFileRoute('/old')({})",
       ].join('\n'),
@@ -172,7 +198,7 @@ describe('transform', () => {
         'import {',
         '  Link,',
         '  createLazyFileRoute,',
-        `} from '@tanstack/react-router'`,
+        `} from '@benjavicente/react-router'`,
         '',
         "export const Route = createLazyFileRoute('/new')({})",
       ].join('\n'),
@@ -182,7 +208,7 @@ describe('transform', () => {
   it('adds the missing constructor import with the file line ending', async () => {
     const result = await transform({
       source: [
-        "import { Link } from '@tanstack/react-router'",
+        "import { Link } from '@benjavicente/react-router'",
         '',
         "export const Route = createFileRoute('/old')({})",
       ].join('\r\n'),
@@ -200,7 +226,7 @@ describe('transform', () => {
     }
     expect(result.output).toBe(
       [
-        "import { Link, createFileRoute } from '@tanstack/react-router'",
+        "import { Link, createFileRoute } from '@benjavicente/react-router'",
         '',
         "export const Route = createFileRoute('/new')({})",
       ].join('\r\n'),
@@ -210,7 +236,7 @@ describe('transform', () => {
   it('ignores non-exported route constructor calls in the same file', async () => {
     const result = await transform({
       source: [
-        "import { createFileRoute } from '@tanstack/react-router'",
+        "import { createFileRoute } from '@benjavicente/react-router'",
         '',
         "const OtherRoute = createFileRoute('/other')({})",
         "export const Route = createFileRoute('/old')({})",
@@ -238,7 +264,7 @@ describe('transform', () => {
   it('returns an error for unsupported route id expressions', async () => {
     const result = await transform({
       source: [
-        "import { createFileRoute } from '@tanstack/react-router'",
+        "import { createFileRoute } from '@benjavicente/react-router'",
         '',
         'const routeId = getRouteId()',
         'export const Route = createFileRoute(routeId)({})',
@@ -263,7 +289,7 @@ describe('transform', () => {
   it('returns a distinct error for malformed direct createFileRoute calls', async () => {
     const result = await transform({
       source: [
-        "import { createFileRoute } from '@tanstack/react-router'",
+        "import { createFileRoute } from '@benjavicente/react-router'",
         '',
         'export const Route = createFileRoute({ component: Home })',
       ].join('\n'),
@@ -287,7 +313,7 @@ describe('transform', () => {
   it('returns a distinct error for malformed direct createLazyFileRoute calls', async () => {
     const result = await transform({
       source: [
-        "import { createLazyFileRoute } from '@tanstack/react-router'",
+        "import { createLazyFileRoute } from '@benjavicente/react-router'",
         '',
         'export const Route = createLazyFileRoute({ component: Home })',
       ].join('\n'),
@@ -311,7 +337,7 @@ describe('transform', () => {
   it('preserves double-quote route IDs', async () => {
     const result = await transform({
       source: [
-        "import { createFileRoute } from '@tanstack/react-router'",
+        "import { createFileRoute } from '@benjavicente/react-router'",
         '',
         'export const Route = createFileRoute("/old")({})',
       ].join('\n'),
@@ -333,7 +359,7 @@ describe('transform', () => {
   it('preserves template-literal route IDs', async () => {
     const result = await transform({
       source: [
-        "import { createFileRoute } from '@tanstack/react-router'",
+        "import { createFileRoute } from '@benjavicente/react-router'",
         '',
         'export const Route = createFileRoute(`/old`)({})',
       ].join('\n'),
@@ -355,7 +381,7 @@ describe('transform', () => {
   it('rewrites createLazyFileRoute to createFileRoute when lazy changes', async () => {
     const result = await transform({
       source: [
-        "import { createLazyFileRoute } from '@tanstack/react-router'",
+        "import { createLazyFileRoute } from '@benjavicente/react-router'",
         '',
         "export const Route = createLazyFileRoute('/test')({})",
       ].join('\n'),
@@ -378,7 +404,7 @@ describe('transform', () => {
   it('handles export { Route } with a separate const declaration', async () => {
     const result = await transform({
       source: [
-        "import { createFileRoute } from '@tanstack/react-router'",
+        "import { createFileRoute } from '@benjavicente/react-router'",
         '',
         "const Route = createFileRoute('/old')({})",
         '',
@@ -402,7 +428,7 @@ describe('transform', () => {
   it('returns an error for multiple exported route calls', async () => {
     const result = await transform({
       source: [
-        "import { createFileRoute } from '@tanstack/react-router'",
+        "import { createFileRoute } from '@benjavicente/react-router'",
         '',
         "export const Route = createFileRoute('/a')({})",
         '',
@@ -447,7 +473,7 @@ describe('transform', () => {
     }
     expect(result.output).toBe(
       [
-        "import { createFileRoute } from '@tanstack/react-router'",
+        "import { createFileRoute } from '@benjavicente/react-router'",
         "import { useState } from 'react'",
         '',
         "export const Route = createFileRoute('/new')({})",
@@ -458,7 +484,7 @@ describe('transform', () => {
   it('returns not-modified for a non-route-constructor call', async () => {
     const result = await transform({
       source: [
-        "import { createFileRoute } from '@tanstack/react-router'",
+        "import { createFileRoute } from '@benjavicente/react-router'",
         '',
         'export const Route = someOtherFactory()({})',
       ].join('\n'),
@@ -476,7 +502,7 @@ describe('transform', () => {
   it('preserves semicolons in normalized imports', async () => {
     const result = await transform({
       source: [
-        "import { createLazyFileRoute } from '@tanstack/react-router';",
+        "import { createLazyFileRoute } from '@benjavicente/react-router';",
         '',
         "export const Route = createLazyFileRoute('/old')({});",
       ].join('\n'),
@@ -493,7 +519,7 @@ describe('transform', () => {
       throw new Error(`expected modified result, got ${result.result}`)
     }
     expect(result.output).toContain(
-      "import { createFileRoute } from '@tanstack/react-router';",
+      "import { createFileRoute } from '@benjavicente/react-router';",
     )
     expect(result.output).not.toContain('createLazyFileRoute')
   })
@@ -501,7 +527,7 @@ describe('transform', () => {
   it('preserves type import specifiers when normalizing route imports', async () => {
     const result = await transform({
       source: [
-        "import { type LinkProps, createLazyFileRoute } from '@tanstack/react-router'",
+        "import { type LinkProps, createLazyFileRoute } from '@benjavicente/react-router'",
         '',
         "export const Route = createLazyFileRoute('/old')({})",
       ].join('\n'),
@@ -518,7 +544,7 @@ describe('transform', () => {
       throw new Error(`expected modified result, got ${result.result}`)
     }
     expect(result.output).toContain(
-      "import { type LinkProps, createFileRoute } from '@tanstack/react-router'",
+      "import { type LinkProps, createFileRoute } from '@benjavicente/react-router'",
     )
     expect(result.output).not.toContain('createLazyFileRoute')
   })

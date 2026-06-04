@@ -7,7 +7,7 @@ import {
   screen,
   waitFor,
 } from '@solidjs/testing-library'
-import { createMemoryHistory } from '@tanstack/history'
+import { createMemoryHistory } from '@benjavicente/history'
 import {
   Link,
   MatchRoute,

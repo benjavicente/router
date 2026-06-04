@@ -4,7 +4,7 @@ import {
   ErrorComponent,
   RouterProvider,
   createRouter,
-} from '@tanstack/react-router'
+} from '@benjavicente/react-router'
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 import { auth } from './utils/auth'
 import { Spinner } from './components/Spinner'
@@ -35,7 +35,7 @@ const router = createRouter({
   scrollRestoration: true,
 })
 
-declare module '@tanstack/react-router' {
+declare module '@benjavicente/react-router' {
   interface Register {
     router: typeof router
   }

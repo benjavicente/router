@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { createLazyFileRoute } from '@tanstack/react-router'
+import { createLazyFileRoute } from '@benjavicente/react-router'
 
 export const Route = createLazyFileRoute('/foo')({
   component: RouteComponent,

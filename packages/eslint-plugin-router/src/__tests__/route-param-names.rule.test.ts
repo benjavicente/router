@@ -10,35 +10,35 @@ ruleTester.run(name, rule, {
     {
       name: 'valid simple param: $userId',
       code: `
-        import { createFileRoute } from '@tanstack/react-router'
+        import { createFileRoute } from '@benjavicente/react-router'
         const Route = createFileRoute('/users/$userId')({})
       `,
     },
     {
       name: 'valid simple param: $id',
       code: `
-        import { createFileRoute } from '@tanstack/react-router'
+        import { createFileRoute } from '@benjavicente/react-router'
         const Route = createFileRoute('/posts/$id')({})
       `,
     },
     {
       name: 'valid simple param: $_id (underscore prefix)',
       code: `
-        import { createFileRoute } from '@tanstack/react-router'
+        import { createFileRoute } from '@benjavicente/react-router'
         const Route = createFileRoute('/items/$_id')({})
       `,
     },
     {
       name: 'valid simple param: $$var (dollar prefix)',
       code: `
-        import { createFileRoute } from '@tanstack/react-router'
+        import { createFileRoute } from '@benjavicente/react-router'
         const Route = createFileRoute('/data/$$var')({})
       `,
     },
     {
       name: 'valid param with numbers: $user123',
       code: `
-        import { createFileRoute } from '@tanstack/react-router'
+        import { createFileRoute } from '@benjavicente/react-router'
         const Route = createFileRoute('/users/$user123')({})
       `,
     },
@@ -47,14 +47,14 @@ ruleTester.run(name, rule, {
     {
       name: 'valid braces param: {$userName}',
       code: `
-        import { createFileRoute } from '@tanstack/react-router'
+        import { createFileRoute } from '@benjavicente/react-router'
         const Route = createFileRoute('/users/{$userName}')({})
       `,
     },
     {
       name: 'valid braces param with prefix/suffix: prefix{$id}suffix',
       code: `
-        import { createFileRoute } from '@tanstack/react-router'
+        import { createFileRoute } from '@benjavicente/react-router'
         const Route = createFileRoute('/items/item-{$id}-details')({})
       `,
     },
@@ -63,14 +63,14 @@ ruleTester.run(name, rule, {
     {
       name: 'valid optional param: {-$optional}',
       code: `
-        import { createFileRoute } from '@tanstack/react-router'
+        import { createFileRoute } from '@benjavicente/react-router'
         const Route = createFileRoute('/search/{-$query}')({})
       `,
     },
     {
       name: 'valid optional param with prefix/suffix: prefix{-$opt}suffix',
       code: `
-        import { createFileRoute } from '@tanstack/react-router'
+        import { createFileRoute } from '@benjavicente/react-router'
         const Route = createFileRoute('/filter/by-{-$category}-items')({})
       `,
     },
@@ -79,14 +79,14 @@ ruleTester.run(name, rule, {
     {
       name: 'wildcard: $ alone',
       code: `
-        import { createFileRoute } from '@tanstack/react-router'
+        import { createFileRoute } from '@benjavicente/react-router'
         const Route = createFileRoute('/files/$')({})
       `,
     },
     {
       name: 'wildcard: {$}',
       code: `
-        import { createFileRoute } from '@tanstack/react-router'
+        import { createFileRoute } from '@benjavicente/react-router'
         const Route = createFileRoute('/catch/{$}')({})
       `,
     },
@@ -95,7 +95,7 @@ ruleTester.run(name, rule, {
     {
       name: 'multiple valid params in path',
       code: `
-        import { createFileRoute } from '@tanstack/react-router'
+        import { createFileRoute } from '@benjavicente/react-router'
         const Route = createFileRoute('/users/$userId/posts/$postId')({})
       `,
     },
@@ -104,7 +104,7 @@ ruleTester.run(name, rule, {
     {
       name: 'createRoute with valid param in path property',
       code: `
-        import { createRoute } from '@tanstack/react-router'
+        import { createRoute } from '@benjavicente/react-router'
         const Route = createRoute({ path: '/users/$userId' })
       `,
     },
@@ -113,7 +113,7 @@ ruleTester.run(name, rule, {
     {
       name: 'createLazyFileRoute with valid param',
       code: `
-        import { createLazyFileRoute } from '@tanstack/react-router'
+        import { createLazyFileRoute } from '@benjavicente/react-router'
         const Route = createLazyFileRoute('/users/$userId')({})
       `,
     },
@@ -122,7 +122,7 @@ ruleTester.run(name, rule, {
     {
       name: 'createLazyRoute with valid param',
       code: `
-        import { createLazyRoute } from '@tanstack/react-router'
+        import { createLazyRoute } from '@benjavicente/react-router'
         const Route = createLazyRoute('/users/$userId')({})
       `,
     },
@@ -131,7 +131,7 @@ ruleTester.run(name, rule, {
     {
       name: 'no params in path',
       code: `
-        import { createFileRoute } from '@tanstack/react-router'
+        import { createFileRoute } from '@benjavicente/react-router'
         const Route = createFileRoute('/users/list')({})
       `,
     },
@@ -151,7 +151,7 @@ ruleTester.run(name, rule, {
     {
       name: 'invalid param starting with number: $123',
       code: `
-        import { createFileRoute } from '@tanstack/react-router'
+        import { createFileRoute } from '@benjavicente/react-router'
         const Route = createFileRoute('/users/$123')({})
       `,
       errors: [{ messageId: 'invalidParamName', data: { paramName: '123' } }],
@@ -159,7 +159,7 @@ ruleTester.run(name, rule, {
     {
       name: 'invalid param starting with number: $1user',
       code: `
-        import { createFileRoute } from '@tanstack/react-router'
+        import { createFileRoute } from '@benjavicente/react-router'
         const Route = createFileRoute('/users/$1user')({})
       `,
       errors: [{ messageId: 'invalidParamName', data: { paramName: '1user' } }],
@@ -169,7 +169,7 @@ ruleTester.run(name, rule, {
     {
       name: 'invalid param with hyphen: $user-name',
       code: `
-        import { createFileRoute } from '@tanstack/react-router'
+        import { createFileRoute } from '@benjavicente/react-router'
         const Route = createFileRoute('/users/$user-name')({})
       `,
       errors: [
@@ -181,7 +181,7 @@ ruleTester.run(name, rule, {
     {
       name: 'invalid param with dot: {$my.param}',
       code: `
-        import { createFileRoute } from '@tanstack/react-router'
+        import { createFileRoute } from '@benjavicente/react-router'
         const Route = createFileRoute('/users/{$my.param}')({})
       `,
       errors: [
@@ -193,7 +193,7 @@ ruleTester.run(name, rule, {
     {
       name: 'invalid param with space: {$param name}',
       code: `
-        import { createFileRoute } from '@tanstack/react-router'
+        import { createFileRoute } from '@benjavicente/react-router'
         const Route = createFileRoute('/users/{$param name}')({})
       `,
       errors: [
@@ -205,7 +205,7 @@ ruleTester.run(name, rule, {
     {
       name: 'invalid optional param: {-$123invalid}',
       code: `
-        import { createFileRoute } from '@tanstack/react-router'
+        import { createFileRoute } from '@benjavicente/react-router'
         const Route = createFileRoute('/search/{-$123invalid}')({})
       `,
       errors: [
@@ -217,7 +217,7 @@ ruleTester.run(name, rule, {
     {
       name: 'multiple invalid params in path',
       code: `
-        import { createFileRoute } from '@tanstack/react-router'
+        import { createFileRoute } from '@benjavicente/react-router'
         const Route = createFileRoute('/users/$1id/posts/$post-id')({})
       `,
       errors: [
@@ -230,7 +230,7 @@ ruleTester.run(name, rule, {
     {
       name: 'createRoute with invalid param in path property',
       code: `
-        import { createRoute } from '@tanstack/react-router'
+        import { createRoute } from '@benjavicente/react-router'
         const Route = createRoute({ path: '/users/$123' })
       `,
       errors: [{ messageId: 'invalidParamName', data: { paramName: '123' } }],
@@ -240,7 +240,7 @@ ruleTester.run(name, rule, {
     {
       name: 'createLazyFileRoute with invalid param',
       code: `
-        import { createLazyFileRoute } from '@tanstack/react-router'
+        import { createLazyFileRoute } from '@benjavicente/react-router'
         const Route = createLazyFileRoute('/users/$user-id')({})
       `,
       errors: [
@@ -252,7 +252,7 @@ ruleTester.run(name, rule, {
     {
       name: 'createLazyRoute with invalid param',
       code: `
-        import { createLazyRoute } from '@tanstack/react-router'
+        import { createLazyRoute } from '@benjavicente/react-router'
         const Route = createLazyRoute('/users/$1abc')({})
       `,
       errors: [{ messageId: 'invalidParamName', data: { paramName: '1abc' } }],
@@ -262,7 +262,7 @@ ruleTester.run(name, rule, {
     {
       name: 'invalid braces param with prefix/suffix',
       code: `
-        import { createFileRoute } from '@tanstack/react-router'
+        import { createFileRoute } from '@benjavicente/react-router'
         const Route = createFileRoute('/items/item-{$123}-details')({})
       `,
       errors: [{ messageId: 'invalidParamName', data: { paramName: '123' } }],

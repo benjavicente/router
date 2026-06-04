@@ -118,7 +118,7 @@ export function useAuth() {
 Update `src/routes/__root.tsx`:
 
 ```tsx
-import { createRootRouteWithContext, Outlet } from '@tanstack/react-router'
+import { createRootRouteWithContext, Outlet } from '@benjavicente/react-router'
 
 interface AuthState {
   isAuthenticated: boolean
@@ -159,7 +159,7 @@ export const Route = createRootRouteWithContext<MyRouterContext>()({
 Create `src/routes/_authenticated/_admin.tsx`:
 
 ```tsx
-import { createFileRoute, redirect, Outlet } from '@tanstack/react-router'
+import { createFileRoute, redirect, Outlet } from '@benjavicente/react-router'
 
 export const Route = createFileRoute('/_authenticated/_admin')({
   beforeLoad: ({ context, location }) => {
@@ -192,7 +192,7 @@ function AdminLayout() {
 Create `src/routes/_authenticated/_moderator.tsx`:
 
 ```tsx
-import { createFileRoute, redirect, Outlet } from '@tanstack/react-router'
+import { createFileRoute, redirect, Outlet } from '@benjavicente/react-router'
 
 export const Route = createFileRoute('/_authenticated/_moderator')({
   beforeLoad: ({ context, location }) => {
@@ -229,7 +229,7 @@ function ModeratorLayout() {
 Create `src/routes/_authenticated/_users.tsx`:
 
 ```tsx
-import { createFileRoute, redirect, Outlet } from '@tanstack/react-router'
+import { createFileRoute, redirect, Outlet } from '@benjavicente/react-router'
 
 export const Route = createFileRoute('/_authenticated/_users')({
   beforeLoad: ({ context, location }) => {
@@ -257,7 +257,7 @@ export const Route = createFileRoute('/_authenticated/_users')({
 Create `src/routes/_authenticated/_admin/dashboard.tsx`:
 
 ```tsx
-import { createFileRoute } from '@tanstack/react-router'
+import { createFileRoute } from '@benjavicente/react-router'
 
 export const Route = createFileRoute('/_authenticated/_admin/dashboard')({
   component: AdminDashboard,
@@ -312,7 +312,7 @@ function AdminDashboard() {
 Create `src/routes/_authenticated/_users/manage.tsx`:
 
 ```tsx
-import { createFileRoute } from '@tanstack/react-router'
+import { createFileRoute } from '@benjavicente/react-router'
 
 export const Route = createFileRoute('/_authenticated/_users/manage')({
   beforeLoad: ({ context }) => {
@@ -398,7 +398,7 @@ function UserManagement() {
 Create `src/routes/unauthorized.tsx`:
 
 ```tsx
-import { createFileRoute, Link } from '@tanstack/react-router'
+import { createFileRoute, Link } from '@benjavicente/react-router'
 
 export const Route = createFileRoute('/unauthorized')({
   validateSearch: (search) => ({
@@ -487,7 +487,7 @@ function UnauthorizedPage() {
 Create `src/hooks/usePermissions.ts`:
 
 ```tsx
-import { useRouter } from '@tanstack/react-router'
+import { useRouter } from '@benjavicente/react-router'
 
 export function usePermissions() {
   const router = useRouter()

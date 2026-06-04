@@ -1,4 +1,4 @@
-import { createFileRoute } from '@tanstack/react-router'
+import { createFileRoute } from '@benjavicente/react-router'
 
 const BASE_URL = 'https://api.example.com'
 const config = { url: BASE_URL, timeout: 5000 }

@@ -1,4 +1,4 @@
-# @tanstack/nitro-v2-vite-plugin
+# @benjavicente/nitro-v2-vite-plugin
 
 ## 1.154.9
 

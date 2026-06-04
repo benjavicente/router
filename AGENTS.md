@@ -27,17 +27,17 @@ TanStack Router is a type-safe router with built-in caching and URL state manage
 - This is a pnpm workspace monorepo with packages organized by functionality
 - Nx provides caching, affected testing, targeting, and parallel execution for efficiency
 - Use `pnpm nx show projects` to list all available packages
-- Target specific packages: `pnpm nx run @tanstack/react-router:test:unit`
-- Target multiple packages: `pnpm nx run-many --target=test:eslint --projects=@tanstack/history,@tanstack/router-core`
+- Target specific packages: `pnpm nx run @benjavicente/react-router:test:unit`
+- Target multiple packages: `pnpm nx run-many --target=test:eslint --projects=@benjavicente/history,@benjavicente/router-core`
 - Run affected tests only: `pnpm nx affected --target=test:unit`
 - Exclude patterns: `pnpm nx run-many --target=test:unit --exclude="examples/**,e2e/**"`
 - Navigate to examples and run `pnpm dev` to test changes: `cd examples/react/basic && pnpm dev`
 - **Granular unit testing through Nx (recommended):**
-  - Specific files: `pnpm nx run @tanstack/react-router:test:unit -- tests/link.test.tsx tests/Scripts.test.tsx`
-  - Test patterns: `pnpm nx run @tanstack/react-router:test:unit -- tests/ClientOnly.test.tsx -t "should render fallback"`
-  - Name patterns: `pnpm nx run @tanstack/react-router:test:unit -- -t "navigation"` (all tests with "navigation" in name)
-  - Exclude patterns: `pnpm nx run @tanstack/react-router:test:unit -- --exclude="**/*link*" tests/`
-  - List tests: `pnpm nx run @tanstack/react-router:test:unit -- list tests/link.test.tsx` (or `-- list` for all)
+  - Specific files: `pnpm nx run @benjavicente/react-router:test:unit -- tests/link.test.tsx tests/Scripts.test.tsx`
+  - Test patterns: `pnpm nx run @benjavicente/react-router:test:unit -- tests/ClientOnly.test.tsx -t "should render fallback"`
+  - Name patterns: `pnpm nx run @benjavicente/react-router:test:unit -- -t "navigation"` (all tests with "navigation" in name)
+  - Exclude patterns: `pnpm nx run @benjavicente/react-router:test:unit -- --exclude="**/*link*" tests/`
+  - List tests: `pnpm nx run @benjavicente/react-router:test:unit -- list tests/link.test.tsx` (or `-- list` for all)
 - **Available test targets per package:** `test:unit`, `test:types`, `test:eslint`, `test:build`, `test:perf`, `build`
 - **Testing strategy:** Package level (nx) → File-level args via nx → Test-level args (`-t`) via nx → Pattern-level args (`--exclude`) via nx
 - **Agent execution guardrails (important):**
@@ -56,15 +56,15 @@ TanStack Router is a type-safe router with built-in caching and URL state manage
 - **Fix formatting:** `pnpm format`
 - **Efficient targeted testing workflow:**
   1. **Affected only:** `pnpm nx affected --target=test:unit` (compares to main branch)
-  2. **Specific packages:** `pnpm nx run @tanstack/react-router:test:unit`
-  3. **Specific files:** `pnpm nx run @tanstack/react-router:test:unit -- tests/link.test.tsx`
-  4. **Specific patterns:** `pnpm nx run @tanstack/react-router:test:unit -- tests/link.test.tsx -t "preloading"`
+  2. **Specific packages:** `pnpm nx run @benjavicente/react-router:test:unit`
+  3. **Specific files:** `pnpm nx run @benjavicente/react-router:test:unit -- tests/link.test.tsx`
+  4. **Specific patterns:** `pnpm nx run @benjavicente/react-router:test:unit -- tests/link.test.tsx -t "preloading"`
 - **Pro tips:**
-  - Use `pnpm nx run @tanstack/react-router:test:unit -- list` to explore available tests before running
+  - Use `pnpm nx run @benjavicente/react-router:test:unit -- list` to explore available tests before running
   - Use `-t "pattern"` to focus on specific functionality during development
   - Use `--exclude` patterns to skip unrelated tests
   - Keep all test filtering arguments behind `pnpm nx run ... -- ...` for maximum precision while preserving task dependencies
-- **Example workflow:** `pnpm nx run @tanstack/react-router:test:unit` → `pnpm nx run @tanstack/react-router:test:unit -- tests/link.test.tsx` → `pnpm nx run @tanstack/react-router:test:unit -- tests/link.test.tsx -t "preloading"`
+- **Example workflow:** `pnpm nx run @benjavicente/react-router:test:unit` → `pnpm nx run @benjavicente/react-router:test:unit -- tests/link.test.tsx` → `pnpm nx run @benjavicente/react-router:test:unit -- tests/link.test.tsx -t "preloading"`
 
 ## PR instructions
 
@@ -138,14 +138,14 @@ TanStack Router is a type-safe router with built-in caching and URL state manage
 - Uses React Router components and hooks
 - Supports React Server Components (RSC)
 - Examples include React Query integration
-- Package: `@tanstack/react-router`
+- Package: `@benjavicente/react-router`
 
 **Solid:**
 
 - Uses Solid Router components and primitives
 - Supports Solid Start for full-stack applications
 - Examples include Solid Query integration
-- Package: `@tanstack/solid-router`
+- Package: `@benjavicente/solid-router`
 
 ## Environment requirements
 

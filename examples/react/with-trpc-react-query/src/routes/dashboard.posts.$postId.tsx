@@ -1,5 +1,5 @@
 import * as React from 'react'
-import { Link, createFileRoute } from '@tanstack/react-router'
+import { Link, createFileRoute } from '@benjavicente/react-router'
 import { z } from 'zod'
 import { useQuery } from '@tanstack/react-query'
 import { trpc } from '../router'

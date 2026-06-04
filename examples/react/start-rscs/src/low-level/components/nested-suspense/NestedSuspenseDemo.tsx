@@ -1,5 +1,5 @@
 import { Suspense, useCallback, useState } from 'react'
-import { createFromReadableStream } from '@tanstack/react-start/rsc'
+import { createFromReadableStream } from '@benjavicente/react-start/rsc'
 
 import { getNestedServerComponent } from './server-functions'
 

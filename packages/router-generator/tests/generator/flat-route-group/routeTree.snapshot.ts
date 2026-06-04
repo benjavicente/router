@@ -81,7 +81,7 @@ export interface RootRouteChildren {
   AppRoute: typeof AppRouteWithChildren
 }
 
-declare module '@tanstack/react-router' {
+declare module '@benjavicente/react-router' {
   interface FileRoutesByPath {
     '/app': {
       id: '/app'

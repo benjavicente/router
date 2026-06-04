@@ -1,6 +1,6 @@
-import { createFileRoute } from '@tanstack/solid-router'
-import { createMiddleware, createServerFn } from '@tanstack/solid-start'
-import { getRequest } from '@tanstack/solid-start/server'
+import { createFileRoute } from '@benjavicente/solid-router'
+import { createMiddleware, createServerFn } from '@benjavicente/solid-start'
+import { getRequest } from '@benjavicente/solid-start/server'
 import { createSignal, Show } from 'solid-js'
 
 const requestMiddleware = createMiddleware({ type: 'request' }).server(

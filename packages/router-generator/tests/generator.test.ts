@@ -9,7 +9,7 @@ import {
   physical,
   rootRoute,
   route,
-} from '@tanstack/virtual-file-routes'
+} from '@benjavicente/virtual-file-routes'
 import { Generator, getConfig, virtualGetRouteNodes } from '../src'
 import type { Config } from '../src'
 
@@ -251,9 +251,9 @@ async function preprocess(folderName: string) {
     await fs.writeFile(
       makeRoutePath('duplicate-import.tsx'),
       [
-        "import { createFileRoute } from '@tanstack/react-router'",
+        "import { createFileRoute } from '@benjavicente/react-router'",
         "import * as React from 'react'",
-        "import { Link, Outlet } from '@tanstack/react-router'",
+        "import { Link, Outlet } from '@benjavicente/react-router'",
         '',
         "export const Route = createFileRoute('/foo/bar')({",
         '  component: PostsLayoutComponent,',

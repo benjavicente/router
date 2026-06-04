@@ -40,7 +40,7 @@ You can restrict access to these routes using a conditional check in the `before
 
 ```tsx
 // src/routes/_pathless-layout.tsx
-import { createFileRoute, Outlet } from '@tanstack/react-router'
+import { createFileRoute, Outlet } from '@benjavicente/react-router'
 import { isAuthenticated } from '../utils/auth'
 
 export const Route = createFileRoute('/_pathless-layout', {
@@ -70,7 +70,7 @@ function PathlessLayoutRouteComponent() {
 
 ```tsx
 // src/routes/_pathless-layout.tsx
-import { createFileRoute, Outlet } from '@tanstack/solid-router'
+import { createFileRoute, Outlet } from '@benjavicente/solid-router'
 import { isAuthenticated } from '../utils/auth'
 
 export const Route = createFileRoute('/_pathless-layout', {

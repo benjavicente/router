@@ -1,5 +1,5 @@
 import { useQuery } from '@tanstack/solid-query'
-import { Link, Outlet, createFileRoute } from '@tanstack/solid-router'
+import { Link, Outlet, createFileRoute } from '@benjavicente/solid-router'
 import { For, Suspense } from 'solid-js'
 import { postsQueryOptions } from '~/utils/posts'
 

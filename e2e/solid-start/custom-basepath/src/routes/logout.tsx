@@ -1,5 +1,5 @@
-import { createFileRoute, redirect } from '@tanstack/solid-router'
-import { createServerFn } from '@tanstack/solid-start'
+import { createFileRoute, redirect } from '@benjavicente/solid-router'
+import { createServerFn } from '@benjavicente/solid-start'
 
 const logoutFn = createServerFn({
   method: 'POST',

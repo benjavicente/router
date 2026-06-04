@@ -58,7 +58,7 @@ TanStack Start's architecture provides several opportunities for built-in observ
 Add logging to your server functions to track execution, performance, and errors:
 
 ```tsx
-import { createServerFn } from '@tanstack/react-start'
+import { createServerFn } from '@benjavicente/react-start'
 
 const getUser = createServerFn({ method: 'GET' })
   .inputValidator((id: string) => id)
@@ -95,7 +95,7 @@ const getUser = createServerFn({ method: 'GET' })
 Create middleware to log all requests and responses:
 
 ```tsx
-import { createMiddleware } from '@tanstack/react-start'
+import { createMiddleware } from '@benjavicente/react-start'
 
 const requestLogger = createMiddleware().server(async ({ request, next }) => {
   const startTime = Date.now()
@@ -140,7 +140,7 @@ export const Route = createFileRoute('/api/users')({
 Track route loading performance on both client and server:
 
 ```tsx
-import { createFileRoute } from '@tanstack/react-router'
+import { createFileRoute } from '@benjavicente/react-router'
 
 export const Route = createFileRoute('/dashboard')({
   loader: async ({ context }) => {
@@ -184,7 +184,7 @@ Create server routes for health monitoring:
 
 ```tsx
 // routes/health.ts
-import { createFileRoute } from '@tanstack/react-router'
+import { createFileRoute } from '@benjavicente/react-router'
 
 export const Route = createFileRoute('/health')({
   server: {
@@ -332,7 +332,7 @@ export const Route = createFileRoute('/metrics')({
 Add helpful debug information to responses:
 
 ```tsx
-import { createMiddleware } from '@tanstack/react-start'
+import { createMiddleware } from '@benjavicente/react-start'
 
 const debugMiddleware = createMiddleware().server(async ({ next }) => {
   const result = await next()
@@ -353,7 +353,7 @@ Configure different logging strategies for development vs production:
 
 ```tsx
 // utils/logger.ts
-import { createIsomorphicFn } from '@tanstack/react-start'
+import { createIsomorphicFn } from '@benjavicente/react-start'
 
 type LogLevel = 'debug' | 'info' | 'warn' | 'error'
 
@@ -517,8 +517,8 @@ import {
   createStartHandler,
   defaultStreamHandler,
   defineHandlerCallback,
-} from '@tanstack/react-start/server'
-import type { ServerEntry } from '@tanstack/react-start/server-entry'
+} from '@benjavicente/react-start/server'
+import type { ServerEntry } from '@benjavicente/react-start/server-entry'
 
 const customHandler = defineHandlerCallback(async (ctx) => {
   // We do this so that transactions are grouped under the route ID instead of unique URLs
@@ -556,7 +556,7 @@ If you want to add monitoring for server functions and server routes, you will n
 ```ts
 // newrelic-middleware.ts
 import newrelic from 'newrelic'
-import { createMiddleware } from '@tanstack/react-start'
+import { createMiddleware } from '@benjavicente/react-start'
 
 export const nrTransactionMiddleware = createMiddleware().server(
   async ({ request, next }) => {
@@ -569,7 +569,7 @@ export const nrTransactionMiddleware = createMiddleware().server(
 
 ```ts
 // start.ts
-import { createStart } from '@tanstack/react-start'
+import { createStart } from '@benjavicente/react-start'
 import { nrTransactionMiddleware } from './newrelic-middleware'
 
 export const startInstance = createStart(() => {
@@ -662,7 +662,7 @@ const getUserWithTracing = createServerFn({ method: 'GET' })
 
 ```tsx
 // Middleware for automatic tracing
-import { createMiddleware } from '@tanstack/react-start'
+import { createMiddleware } from '@benjavicente/react-start'
 import { trace, SpanStatusCode } from '@opentelemetry/api'
 
 const tracer = trace.getTracer('tanstack-start')

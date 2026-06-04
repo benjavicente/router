@@ -238,7 +238,7 @@ async function writeRouteFiles(baseDir, count) {
 
     let contents
     if (hasAsyncViolation) {
-      contents = `import { createFileRoute } from '@tanstack/react-router'
+      contents = `import { createFileRoute } from '@benjavicente/react-router'
 import { AsyncLeaf } from '../chain/AsyncLeaf'
 
 export const Route${i} = createFileRoute(undefined)({
@@ -246,7 +246,7 @@ export const Route${i} = createFileRoute(undefined)({
 })
 `
     } else {
-      contents = `import { createFileRoute } from '@tanstack/react-router'
+      contents = `import { createFileRoute } from '@benjavicente/react-router'
 import { Comp0 } from '../chain/Comp0'
 
 export const Route${i} = createFileRoute(undefined)({
@@ -278,7 +278,7 @@ async function writeServerComponentFiles(baseDir, count) {
 
     let contents
     if (hasServerViolation) {
-      contents = `import { createCompositeComponent } from '@tanstack/react-start/rsc'
+      contents = `import { createCompositeComponent } from '@benjavicente/react-start/rsc'
 import { HookLeaf } from '../chain/HookLeaf'
 
 export const ServerComp${i} = createCompositeComponent(() => {
@@ -286,7 +286,7 @@ export const ServerComp${i} = createCompositeComponent(() => {
 })
 `
     } else {
-      contents = `import { createCompositeComponent } from '@tanstack/react-start/rsc'
+      contents = `import { createCompositeComponent } from '@benjavicente/react-start/rsc'
 import { CleanLeaf } from '../chain/CleanLeaf'
 
 export const ServerComp${i} = createCompositeComponent(() => {

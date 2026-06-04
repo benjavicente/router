@@ -30,8 +30,8 @@ The simplest usage is passing a string. Every manifest asset URL will be prefixe
 import {
   createStartHandler,
   defaultStreamHandler,
-} from '@tanstack/react-start/server'
-import { createServerEntry } from '@tanstack/react-start/server-entry'
+} from '@benjavicente/react-start/server'
+import { createServerEntry } from '@benjavicente/react-start/server-entry'
 
 const handler = createStartHandler({
   handler: defaultStreamHandler,
@@ -54,8 +54,8 @@ If you also need to set `crossOrigin` on manifest-managed `<link>` tags, use the
 import {
   createStartHandler,
   defaultStreamHandler,
-} from '@tanstack/react-start/server'
-import { createServerEntry } from '@tanstack/react-start/server-entry'
+} from '@benjavicente/react-start/server'
+import { createServerEntry } from '@benjavicente/react-start/server-entry'
 
 const handler = createStartHandler({
   handler: defaultStreamHandler,
@@ -91,8 +91,8 @@ For more control, pass a callback that receives `{ kind, url }` and returns a st
 import {
   createStartHandler,
   defaultStreamHandler,
-} from '@tanstack/react-start/server'
-import { createServerEntry } from '@tanstack/react-start/server-entry'
+} from '@benjavicente/react-start/server'
+import { createServerEntry } from '@benjavicente/react-start/server-entry'
 
 const handler = createStartHandler({
   handler: defaultStreamHandler,
@@ -134,9 +134,9 @@ For per-request transforms - where the CDN URL depends on request-specific data 
 import {
   createStartHandler,
   defaultStreamHandler,
-} from '@tanstack/react-start/server'
-import { createServerEntry } from '@tanstack/react-start/server-entry'
-import { getRequest } from '@tanstack/react-start/server'
+} from '@benjavicente/react-start/server'
+import { createServerEntry } from '@benjavicente/react-start/server-entry'
+import { getRequest } from '@benjavicente/react-start/server'
 
 const handler = createStartHandler({
   handler: defaultStreamHandler,

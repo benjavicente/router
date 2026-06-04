@@ -1,5 +1,5 @@
-import { createServerFn } from '@tanstack/react-start'
-import { createCompositeComponent } from '@tanstack/react-start/rsc'
+import { createServerFn } from '@benjavicente/react-start'
+import { createCompositeComponent } from '@benjavicente/react-start/rsc'
 
 export interface DemoInfo {
   title: string

@@ -6,7 +6,7 @@ import {
   createRootRoute,
   createRoute,
   createRouter,
-} from '@tanstack/solid-router'
+} from '@benjavicente/solid-router'
 import * as v from 'valibot'
 import '@testing-library/jest-dom/vitest'
 

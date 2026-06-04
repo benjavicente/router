@@ -130,7 +130,7 @@ If your setup uses `getTestServerPort`, `getDummyServerPort`,
 `process.env.E2E_PORT_KEY` first.
 
 ```ts
-import { getTestServerPort } from '@tanstack/router-e2e-utils'
+import { getTestServerPort } from '@benjavicente/router-e2e-utils'
 import packageJson from './package.json' with { type: 'json' }
 
 const e2ePortKey = process.env.E2E_PORT_KEY ?? packageJson.name
@@ -146,7 +146,7 @@ await e2eStopDummyServer(process.env.E2E_PORT_KEY ?? packageJson.name)
 
 ## 6. Clean stale port files once per Playwright run
 
-If the project allocates ports through `@tanstack/router-e2e-utils`, clean stale
+If the project allocates ports through `@benjavicente/router-e2e-utils`, clean stale
 `port-*.txt` files before resolving the port.
 
 Important: do this only in the main Playwright config load. Playwright loads the

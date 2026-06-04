@@ -1,4 +1,4 @@
-import { isServer } from '@tanstack/router-core/isServer'
+import { isServer } from '@benjavicente/router-core/isServer'
 import { functionalUpdate, isPlainObject } from './utils'
 import type { AnyRouter } from './router'
 import type { ParsedLocation } from './location'

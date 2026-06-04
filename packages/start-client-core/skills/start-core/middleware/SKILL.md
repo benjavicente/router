@@ -40,8 +40,8 @@ Request middleware cannot depend on server function middleware. Server function 
 Runs on ALL server requests (SSR, server routes, server functions):
 
 ```tsx
-// Use @tanstack/<framework>-start for your framework (react, solid, vue)
-import { createMiddleware } from '@tanstack/react-start'
+// Use @benjavicente/<framework>-start for your framework (react, solid, vue)
+import { createMiddleware } from '@benjavicente/react-start'
 
 const loggingMiddleware = createMiddleware().server(
   async ({ next, context, request }) => {
@@ -57,8 +57,8 @@ const loggingMiddleware = createMiddleware().server(
 Has both client and server phases:
 
 ```tsx
-// Use @tanstack/<framework>-start for your framework (react, solid, vue)
-import { createMiddleware } from '@tanstack/react-start'
+// Use @benjavicente/<framework>-start for your framework (react, solid, vue)
+import { createMiddleware } from '@benjavicente/react-start'
 
 const authMiddleware = createMiddleware({ type: 'function' })
   .client(async ({ next }) => {
@@ -78,8 +78,8 @@ const authMiddleware = createMiddleware({ type: 'function' })
 ## Attaching Middleware to Server Functions
 
 ```tsx
-// Use @tanstack/<framework>-start for your framework (react, solid, vue)
-import { createServerFn } from '@tanstack/react-start'
+// Use @benjavicente/<framework>-start for your framework (react, solid, vue)
+import { createServerFn } from '@benjavicente/react-start'
 
 const fn = createServerFn()
   .middleware([authMiddleware])
@@ -157,7 +157,7 @@ const clientLogger = createMiddleware({ type: 'function' })
 
 ```tsx
 import { z } from 'zod'
-import { zodValidator } from '@tanstack/zod-adapter'
+import { zodValidator } from '@benjavicente/zod-adapter'
 
 const workspaceMiddleware = createMiddleware({ type: 'function' })
   .inputValidator(zodValidator(z.object({ workspaceId: z.string() })))
@@ -173,8 +173,8 @@ Create `src/start.ts` to configure global middleware:
 
 ```tsx
 // src/start.ts
-// Use @tanstack/<framework>-start for your framework (react, solid, vue)
-import { createStart, createMiddleware } from '@tanstack/react-start'
+// Use @benjavicente/<framework>-start for your framework (react, solid, vue)
+import { createStart, createMiddleware } from '@benjavicente/react-start'
 
 const requestLogger = createMiddleware().server(async ({ next, request }) => {
   console.log(`${request.method} ${request.url}`)
@@ -285,8 +285,8 @@ Headers merge across middleware. Later middleware overrides earlier. Call-site h
 ### Custom fetch
 
 ```tsx
-// Use @tanstack/<framework>-start for your framework (react, solid, vue)
-import type { CustomFetch } from '@tanstack/react-start'
+// Use @benjavicente/<framework>-start for your framework (react, solid, vue)
+import type { CustomFetch } from '@benjavicente/react-start'
 
 const loggingMiddleware = createMiddleware({ type: 'function' }).client(
   async ({ next }) => {

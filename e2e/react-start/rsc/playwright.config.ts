@@ -3,7 +3,7 @@ import { defineConfig, devices } from '@playwright/test'
 import {
   getDummyServerPort,
   getTestServerPort,
-} from '@tanstack/router-e2e-utils'
+} from '@benjavicente/router-e2e-utils'
 import packageJson from './package.json' with { type: 'json' }
 
 const e2ePortKey = process.env.E2E_PORT_KEY ?? packageJson.name

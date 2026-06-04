@@ -1,4 +1,4 @@
-import { createMiddleware, createServerFn } from '@tanstack/react-start'
+import { createMiddleware, createServerFn } from '@benjavicente/react-start'
 
 const starReexportMiddleware = createMiddleware({ type: 'function' }).server(
   ({ next }) => {

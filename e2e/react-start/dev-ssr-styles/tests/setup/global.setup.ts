@@ -3,7 +3,7 @@ import {
   getTestServerPort,
   preOptimizeDevServer,
   waitForServer,
-} from '@tanstack/router-e2e-utils'
+} from '@benjavicente/router-e2e-utils'
 import packageJson from '../../package.json' with { type: 'json' }
 import { ssrStylesMode, useNitro } from '../../env'
 

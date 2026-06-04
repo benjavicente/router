@@ -1,5 +1,5 @@
 /// <reference types="vite/client" />
-import { createFileRoute } from '@tanstack/vue-router'
+import { createFileRoute } from '@benjavicente/vue-router'
 import { SharedCard } from '~/components/SharedCard'
 import styles from '~/styles/page-a.module.css'
 

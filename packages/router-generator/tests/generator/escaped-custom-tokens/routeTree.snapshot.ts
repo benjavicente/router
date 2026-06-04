@@ -87,7 +87,7 @@ export interface RootRouteChildren {
   PostsChar91_r0ut3_Char93Route: typeof PostsChar91_r0ut3_Char93Route
 }
 
-declare module '@tanstack/react-router' {
+declare module '@benjavicente/react-router' {
   interface FileRoutesByPath {
     '/_1nd3x': {
       id: '/_1nd3x'

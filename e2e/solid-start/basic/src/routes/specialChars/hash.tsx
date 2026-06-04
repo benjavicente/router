@@ -1,4 +1,4 @@
-import { createFileRoute, useLocation } from '@tanstack/solid-router'
+import { createFileRoute, useLocation } from '@benjavicente/solid-router'
 import { createSignal } from 'solid-js'
 
 export const Route = createFileRoute('/specialChars/hash')({

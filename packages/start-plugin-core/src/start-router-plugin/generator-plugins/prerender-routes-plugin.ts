@@ -1,5 +1,5 @@
-import { inferFullPath } from '@tanstack/router-generator'
-import type { GeneratorPlugin, RouteNode } from '@tanstack/router-generator'
+import { inferFullPath } from '@benjavicente/router-generator'
+import type { GeneratorPlugin, RouteNode } from '@benjavicente/router-generator'
 
 /**
  * this plugin gets the prerenderable paths and stores it on globalThis

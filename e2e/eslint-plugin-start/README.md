@@ -1,6 +1,6 @@
 # ESLint Plugin Start (e2e)
 
-Runs end-to-end linting tests against `@tanstack/eslint-plugin-start`.
+Runs end-to-end linting tests against `@benjavicente/eslint-plugin-start`.
 
 ## Prereqs
 

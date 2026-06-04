@@ -2,9 +2,9 @@
 title: History Types
 ---
 
-While it's not required to know the `@tanstack/history` API itself to use TanStack Router, it's a good idea to understand how it works. Under the hood, TanStack Router requires and uses a `history` abstraction to manage the routing history.
+While it's not required to know the `@benjavicente/history` API itself to use TanStack Router, it's a good idea to understand how it works. Under the hood, TanStack Router requires and uses a `history` abstraction to manage the routing history.
 
-If you don't create a history instance, a browser-oriented instance of this API is created for you when the router is initialized. If you need a special history API type, You can use the `@tanstack/history` package to create your own:
+If you don't create a history instance, a browser-oriented instance of this API is created for you when the router is initialized. If you need a special history API type, You can use the `@benjavicente/history` package to create your own:
 
 - `createBrowserHistory`: The default history type.
 - `createHashHistory`: A history type that uses a hash to track history.
@@ -17,7 +17,7 @@ Once you have a history instance, you can pass it to the `Router` constructor:
 # React
 
 ```ts
-import { createMemoryHistory, createRouter } from '@tanstack/react-router'
+import { createMemoryHistory, createRouter } from '@benjavicente/react-router'
 
 const memoryHistory = createMemoryHistory({
   initialEntries: ['/'], // Pass your initial url
@@ -29,7 +29,7 @@ const router = createRouter({ routeTree, history: memoryHistory })
 # Solid
 
 ```ts
-import { createMemoryHistory, createRouter } from '@tanstack/solid-router'
+import { createMemoryHistory, createRouter } from '@benjavicente/solid-router'
 
 const memoryHistory = createMemoryHistory({
   initialEntries: ['/'], // Pass your initial url
@@ -53,7 +53,7 @@ Hash routing can be helpful if your server doesn't support rewrites to index.htm
 # React
 
 ```ts
-import { createHashHistory, createRouter } from '@tanstack/react-router'
+import { createHashHistory, createRouter } from '@benjavicente/react-router'
 
 const hashHistory = createHashHistory()
 
@@ -63,7 +63,7 @@ const router = createRouter({ routeTree, history: hashHistory })
 # Solid
 
 ```ts
-import { createHashHistory, createRouter } from '@tanstack/solid-router'
+import { createHashHistory, createRouter } from '@benjavicente/solid-router'
 
 const hashHistory = createHashHistory()
 
@@ -81,7 +81,7 @@ Memory routing is useful in environments that are not a browser or when you do n
 # React
 
 ```ts
-import { createMemoryHistory, createRouter } from '@tanstack/react-router'
+import { createMemoryHistory, createRouter } from '@benjavicente/react-router'
 
 const memoryHistory = createMemoryHistory({
   initialEntries: ['/'], // Pass your initial url
@@ -93,7 +93,7 @@ const router = createRouter({ routeTree, history: memoryHistory })
 # Solid
 
 ```ts
-import { createMemoryHistory, createRouter } from '@tanstack/solid-router'
+import { createMemoryHistory, createRouter } from '@benjavicente/solid-router'
 
 const memoryHistory = createMemoryHistory({
   initialEntries: ['/'], // Pass your initial url

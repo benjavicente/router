@@ -1,4 +1,4 @@
-import { Link } from '@tanstack/solid-router'
+import { Link } from '@benjavicente/solid-router'
 
 const HeaderLink: typeof Link = (props) => {
   return <Link class="text-lg text-blue-700" {...props} />

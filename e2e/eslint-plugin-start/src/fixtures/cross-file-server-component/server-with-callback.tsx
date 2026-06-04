@@ -1,6 +1,6 @@
 // This file uses createCompositeComponent with a callback that renders a component
 // which has client-only code (onClick handler)
-import { createCompositeComponent } from '@tanstack/react-start/rsc'
+import { createCompositeComponent } from '@benjavicente/react-start/rsc'
 import { ClientComponent } from './client-component'
 
 export const ServerComponent = createCompositeComponent(() => {

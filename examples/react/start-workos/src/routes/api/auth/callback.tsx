@@ -1,4 +1,4 @@
-import { createFileRoute } from '@tanstack/react-router';
+import { createFileRoute } from '@benjavicente/react-router';
 import { handleCallbackRoute } from '@workos/authkit-tanstack-react-start';
 
 export const Route = createFileRoute('/api/auth/callback')({

@@ -1,5 +1,5 @@
-import { createMiddleware, createServerFn } from '@tanstack/react-start'
-import { getRequest } from '@tanstack/react-start/server'
+import { createMiddleware, createServerFn } from '@benjavicente/react-start'
+import { getRequest } from '@benjavicente/react-start/server'
 
 const fooMiddleware = createMiddleware({ type: 'function' }).server(
   ({ next }) => {

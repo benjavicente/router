@@ -27,7 +27,7 @@ sources:
 Basic type-safe `Link` with `to` and `params`:
 
 ```tsx
-import { Link } from '@tanstack/react-router'
+import { Link } from '@benjavicente/react-router'
 
 function PostLink({ postId }: { postId: string }) {
   return (
@@ -43,7 +43,7 @@ function PostLink({ postId }: { postId: string }) {
 ### Link with Active States
 
 ```tsx
-import { Link } from '@tanstack/react-router'
+import { Link } from '@benjavicente/react-router'
 
 function NavLink() {
   return (
@@ -80,7 +80,7 @@ Children can receive `isActive` as a render function:
 Without `from`, navigation resolves from root `/`. To use relative paths like `..`, provide `from`:
 
 ```tsx
-import { createFileRoute, Link } from '@tanstack/react-router'
+import { createFileRoute, Link } from '@benjavicente/react-router'
 
 export const Route = createFileRoute('/posts/$postId')({
   component: PostComponent,
@@ -108,7 +108,7 @@ function PostComponent() {
 Use `useNavigate` only for side-effect-driven navigation (e.g., after a form submission). For anything the user clicks, prefer `Link`.
 
 ```tsx
-import { useNavigate } from '@tanstack/react-router'
+import { useNavigate } from '@benjavicente/react-router'
 
 function CreatePostForm() {
   const navigate = useNavigate({ from: '/posts' })
@@ -130,7 +130,7 @@ function CreatePostForm() {
 The `Navigate` component performs an immediate client-side navigation on mount:
 
 ```tsx
-import { Navigate } from '@tanstack/react-router'
+import { Navigate } from '@benjavicente/react-router'
 
 function LegacyRedirect() {
   return <Navigate to="/posts/$postId" params={{ postId: 'my-first-post' }} />
@@ -146,7 +146,7 @@ Strategies: `intent` (hover/touchstart), `viewport` (intersection observer), `re
 Set globally:
 
 ```tsx
-import { createRouter } from '@tanstack/react-router'
+import { createRouter } from '@benjavicente/react-router'
 
 const router = createRouter({
   routeTree,
@@ -173,7 +173,7 @@ Preloaded data stays fresh for 30 seconds by default (`defaultPreloadStaleTime: 
 Manual preloading via the router instance:
 
 ```tsx
-import { useRouter } from '@tanstack/react-router'
+import { useRouter } from '@benjavicente/react-router'
 
 function Component() {
   const router = useRouter()
@@ -191,7 +191,7 @@ function Component() {
 Use `useBlocker` to prevent navigation when a form has unsaved changes:
 
 ```tsx
-import { useBlocker } from '@tanstack/react-router'
+import { useBlocker } from '@benjavicente/react-router'
 import { useState } from 'react'
 
 function EditForm() {
@@ -212,7 +212,7 @@ function EditForm() {
 With custom UI using `withResolver`:
 
 ```tsx
-import { useBlocker } from '@tanstack/react-router'
+import { useBlocker } from '@benjavicente/react-router'
 import { useState } from 'react'
 
 function EditForm() {
@@ -257,7 +257,7 @@ import {
   Link,
   useNavigate,
   redirect,
-} from '@tanstack/react-router'
+} from '@benjavicente/react-router'
 
 const dashboardLinkOptions = linkOptions({
   to: '/dashboard',
@@ -306,7 +306,7 @@ Wraps any component with TanStack Router's type-safe navigation:
 
 ```tsx
 import * as React from 'react'
-import { createLink, LinkComponent } from '@tanstack/react-router'
+import { createLink, LinkComponent } from '@benjavicente/react-router'
 
 interface BasicLinkProps extends React.AnchorHTMLAttributes<HTMLAnchorElement> {}
 
@@ -371,7 +371,7 @@ Prevent scroll reset for a specific navigation:
 ### MatchRoute for Pending UI
 
 ```tsx
-import { Link, MatchRoute } from '@tanstack/react-router'
+import { Link, MatchRoute } from '@benjavicente/react-router'
 
 function Nav() {
   return (

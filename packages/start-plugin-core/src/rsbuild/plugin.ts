@@ -1,7 +1,7 @@
 import { existsSync, readdirSync, realpathSync, statSync } from 'node:fs'
 import { dirname, join, resolve } from 'node:path'
 import { fileURLToPath } from 'node:url'
-import { hasKeys } from '@tanstack/router-core'
+import { hasKeys } from '@benjavicente/router-core'
 import { joinURL } from 'ufo'
 import {
   applyResolvedBaseAndOutput,
@@ -355,7 +355,7 @@ export function tanStackStartRsbuild(
       // ---------------------------------------------------------------
       // 6b. Dev watcher: ignore workspace package `dist/**` directories.
       //
-      //     In a real user app, `@tanstack/react-router` and friends live
+      //     In a real user app, `@benjavicente/react-router` and friends live
       //     inside `node_modules/` and are ignored by Rspack's default
       //     watcher. In this monorepo, pnpm symlinks them to
       //     `packages/*/dist` (realpath outside node_modules), so the
@@ -365,7 +365,7 @@ export function tanStackStartRsbuild(
       //     relative imports between them.
       //
       //     Only apply this in monorepo development. In user apps this
-      //     is a no-op — their `node_modules/@tanstack/*/dist/**` is
+      //     is a no-op — their `node_modules/@benjavicente/*/dist/**` is
       //     already ignored by Rspack's default watchOptions.
       // ---------------------------------------------------------------
       if (isInsideRouterMonoRepo && api.context.action === 'dev') {

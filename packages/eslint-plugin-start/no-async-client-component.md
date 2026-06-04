@@ -37,7 +37,7 @@ For each file in program:
      - Files with 'use client' directive
 
 Notes:
-- `createRootRoute`/`createFileRoute` refer to `@tanstack/react-router` APIs.
+- `createRootRoute`/`createFileRoute` refer to `@benjavicente/react-router` APIs.
 - `createLazyFileRoute` is intentionally out of scope.
 - Prefer TS symbol resolution (e.g. aliases/re-exports via `checker.getAliasedSymbol`).
 ```

@@ -4,7 +4,7 @@ import {
   Outlet,
   Scripts,
   createRootRoute,
-} from '@tanstack/react-router'
+} from '@benjavicente/react-router'
 import styles from '../styles.css?url'
 import { getLocale, locales, setLocale } from '@/paraglide/runtime'
 import { m } from '@/paraglide/messages'

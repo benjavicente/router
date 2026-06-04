@@ -4,7 +4,7 @@ import type {
   AnyRouter,
   RegisteredRouter,
   RouterState,
-} from '@tanstack/router-core'
+} from '@benjavicente/router-core'
 import type * as Vue from 'vue'
 
 export interface UseLocationBaseOptions<TRouter extends AnyRouter, TSelected> {

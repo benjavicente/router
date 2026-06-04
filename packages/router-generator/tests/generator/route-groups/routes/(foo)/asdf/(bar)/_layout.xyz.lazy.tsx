@@ -1,4 +1,4 @@
-import { createLazyFileRoute } from '@tanstack/react-router'
+import { createLazyFileRoute } from '@benjavicente/react-router'
 // @ts-nocheck
 
 export const Route = createLazyFileRoute('/(foo)/asdf/(bar)/_layout/xyz')({

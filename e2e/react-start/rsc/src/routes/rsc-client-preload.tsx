@@ -1,4 +1,4 @@
-import { createFileRoute } from '@tanstack/react-router'
+import { createFileRoute } from '@benjavicente/react-router'
 import { formatTime, pageStyles } from '~/utils/styles'
 import { getClientPreloadServerComponent } from '~/utils/clientPreloadServerComponent'
 

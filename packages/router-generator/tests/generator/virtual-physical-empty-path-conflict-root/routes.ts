@@ -1,4 +1,4 @@
-import { physical, rootRoute } from '@tanstack/virtual-file-routes'
+import { physical, rootRoute } from '@benjavicente/virtual-file-routes'
 
 // This test verifies that a __root.tsx in a physical directory mounted at root
 // produces a proper conflict error with the virtual root

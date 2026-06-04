@@ -32,7 +32,7 @@ The `Await` component accepts the following props:
 ## Examples
 
 ```tsx
-import { Await } from '@tanstack/react-router'
+import { Await } from '@benjavicente/react-router'
 
 function Component() {
   const { deferredPromise } = route.useLoaderData()

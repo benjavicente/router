@@ -35,7 +35,7 @@ export default defineConfig({
         'solid-js',
         'solid-js/web',
         '@tanstack/solid-query',
-        '@tanstack/solid-router',
+        '@benjavicente/solid-router',
         '@router-solid-mono-solid-query/post-query',
         '@router-solid-mono-solid-query/router',
       ],

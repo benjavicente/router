@@ -1,6 +1,6 @@
 import path from 'node:path'
 import url from 'node:url'
-import { tanstackRouter } from '@tanstack/router-plugin/vite'
+import { tanstackRouter } from '@benjavicente/router-plugin/vite'
 import { defineConfig } from 'vite'
 import solid from 'vite-plugin-solid'
 import type { BuildEnvironmentOptions } from 'vite'

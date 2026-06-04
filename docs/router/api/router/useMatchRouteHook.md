@@ -26,7 +26,7 @@ The `matchRoute` function accepts a single argument, an `options` object.
 ## Examples
 
 ```tsx
-import { useMatchRoute } from '@tanstack/react-router'
+import { useMatchRoute } from '@benjavicente/react-router'
 
 // Current location: /posts/123
 function Component() {

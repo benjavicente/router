@@ -1,5 +1,5 @@
 import { defineConfig, devices } from '@playwright/test'
-import { getTestServerPort } from '@tanstack/router-e2e-utils'
+import { getTestServerPort } from '@benjavicente/router-e2e-utils'
 import { isErrorMode } from './tests/utils/isErrorMode'
 import packageJson from './package.json' with { type: 'json' }
 

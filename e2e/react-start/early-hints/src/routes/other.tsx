@@ -1,5 +1,5 @@
 /// <reference types="vite/client" />
-import { createFileRoute, Outlet } from '@tanstack/react-router'
+import { createFileRoute, Outlet } from '@benjavicente/react-router'
 import otherCss from '../styles/other.css?url'
 import styles from '../styles/other.module.css'
 

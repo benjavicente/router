@@ -1,4 +1,4 @@
-import { createFileRoute } from '@tanstack/react-router'
+import { createFileRoute } from '@benjavicente/react-router'
 import { getGlobalCssServerComponent } from '~/utils/globalCssServerComponent'
 import { formatTime, pageStyles } from '~/utils/styles'
 // Import global CSS to ensure styles are included in the client bundle

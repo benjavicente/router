@@ -1,15 +1,15 @@
 import {
   START_ENVIRONMENT_NAMES,
   tanStackStartVite,
-} from '@tanstack/start-plugin-core/vite'
+} from '@benjavicente/start-plugin-core/vite'
 import type {
   TanStackStartViteInputConfig,
   TanStackStartVitePluginCoreOptions,
-} from '@tanstack/start-plugin-core/vite'
+} from '@benjavicente/start-plugin-core/vite'
 import {
   configureRsc,
   reactStartRscVitePlugin,
-} from '@tanstack/react-start-rsc/plugin/vite'
+} from '@benjavicente/react-start-rsc/plugin/vite'
 import path from 'pathe'
 import { reactStartDefaultEntryPaths, reactStartPluginDir } from './shared'
 import type { PluginOption } from 'vite'
@@ -58,12 +58,12 @@ export function tanstackStart(
             // This indicates that the server environment has opted in to dependency optimization
             options.optimizeDeps?.noDiscovery === false)
 
-        // Check if @tanstack/react-router is in noExternal (as array)
+        // Check if @benjavicente/react-router is in noExternal (as array)
         const reactRouterInNoExternal =
           Array.isArray(options.resolve?.noExternal) &&
           options.resolve.noExternal.some(
             (pattern) =>
-              pattern === '@tanstack/react-router' ||
+              pattern === '@benjavicente/react-router' ||
               (typeof pattern === 'string' && pattern.includes('react-router')),
           )
 
@@ -72,8 +72,8 @@ export function tanstackStart(
             dedupe: [
               'react',
               'react-dom',
-              '@tanstack/react-start',
-              '@tanstack/react-router',
+              '@benjavicente/react-start',
+              '@benjavicente/react-router',
             ],
             // Don't mark react-router as external if:
             // 1. noExternal is true (bundle everything)
@@ -84,16 +84,16 @@ export function tanstackStart(
               !isInsideRouterMonoRepo ||
               reactRouterInNoExternal
                 ? undefined
-                : ['@tanstack/react-router', '@tanstack/react-router-devtools'],
+                : ['@benjavicente/react-router', '@benjavicente/react-router-devtools'],
           },
           optimizeDeps: needsOptimizeDeps
             ? {
-                // As `@tanstack/react-start` depends on `@tanstack/react-router`, we should exclude both.
+                // As `@benjavicente/react-start` depends on `@benjavicente/react-router`, we should exclude both.
                 exclude: [
-                  '@tanstack/react-start',
-                  '@tanstack/react-router',
-                  '@tanstack/react-router-devtools',
-                  '@tanstack/start-static-server-functions',
+                  '@benjavicente/react-start',
+                  '@benjavicente/react-router',
+                  '@benjavicente/react-router-devtools',
+                  '@benjavicente/start-static-server-functions',
                 ],
                 include: [
                   'react',
@@ -105,7 +105,7 @@ export function tanstackStart(
                     : ['react-dom/server']),
                   // `@tanstack/react-store` has a dependency on `use-sync-external-store`, which is CJS.
                   // It therefore needs to be included so that it is converted to ESM.
-                  '@tanstack/react-router > @tanstack/react-store',
+                  '@benjavicente/react-router > @tanstack/react-store',
                   ...(options.optimizeDeps?.exclude?.find(
                     (x) => x === '@tanstack/react-form',
                   )

@@ -1,4 +1,4 @@
-import { createSerializationAdapter } from '@tanstack/vue-router'
+import { createSerializationAdapter } from '@benjavicente/vue-router'
 
 export class CustomError extends Error {
   public foo: string

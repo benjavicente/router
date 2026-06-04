@@ -201,7 +201,7 @@ An adapter is provided for [Zod](https://zod.dev/) which will pipe through the c
 For Zod v3:
 
 ```tsx
-import { zodValidator } from '@tanstack/zod-adapter'
+import { zodValidator } from '@benjavicente/zod-adapter'
 import { z } from 'zod'
 
 const productSearchSchema = z.object({
@@ -241,7 +241,7 @@ The important part here is the following use of `Link` no longer requires `searc
 In Zod v3, the use of `catch` here overrides the types and makes `page`, `filter` and `sort` `unknown` causing type loss. We have handled this case by providing a `fallback` generic function which retains the types but provides a `fallback` value when validation fails:
 
 ```tsx
-import { fallback, zodValidator } from '@tanstack/zod-adapter'
+import { fallback, zodValidator } from '@benjavicente/zod-adapter'
 import { z } from 'zod'
 
 const productSearchSchema = z.object({
@@ -581,7 +581,7 @@ The following example shows how to make sure that for **every** link that is bei
 
 ```tsx
 import { z } from 'zod'
-import { zodValidator } from '@tanstack/zod-adapter'
+import { zodValidator } from '@benjavicente/zod-adapter'
 
 const searchSchema = z.object({
   rootValue: z.string().optional(),
@@ -611,8 +611,8 @@ Since this specific use case is quite common, TanStack Router provides a generic
 
 ```tsx
 import { z } from 'zod'
-import { createFileRoute, retainSearchParams } from '@tanstack/react-router'
-import { zodValidator } from '@tanstack/zod-adapter'
+import { createFileRoute, retainSearchParams } from '@benjavicente/react-router'
+import { zodValidator } from '@benjavicente/zod-adapter'
 
 const searchSchema = z.object({
   rootValue: z.string().optional(),
@@ -630,8 +630,8 @@ export const Route = createRootRoute({
 
 ```tsx
 import { z } from 'zod'
-import { createFileRoute, retainSearchParams } from '@tanstack/solid-router'
-import { zodValidator } from '@tanstack/zod-adapter'
+import { createFileRoute, retainSearchParams } from '@benjavicente/solid-router'
+import { zodValidator } from '@benjavicente/zod-adapter'
 
 const searchSchema = z.object({
   rootValue: z.string().optional(),
@@ -655,8 +655,8 @@ Another common use case is to strip out search params from links if their defaul
 
 ```tsx
 import { z } from 'zod'
-import { createFileRoute, stripSearchParams } from '@tanstack/react-router'
-import { zodValidator } from '@tanstack/zod-adapter'
+import { createFileRoute, stripSearchParams } from '@benjavicente/react-router'
+import { zodValidator } from '@benjavicente/zod-adapter'
 
 const defaultValues = {
   one: 'abc',
@@ -681,8 +681,8 @@ export const Route = createFileRoute('/hello')({
 
 ```tsx
 import { z } from 'zod'
-import { createFileRoute, stripSearchParams } from '@tanstack/solid-router'
-import { zodValidator } from '@tanstack/zod-adapter'
+import { createFileRoute, stripSearchParams } from '@benjavicente/solid-router'
+import { zodValidator } from '@benjavicente/zod-adapter'
 
 const defaultValues = {
   one: 'abc',
@@ -717,9 +717,9 @@ import {
   createFileRoute,
   retainSearchParams,
   stripSearchParams,
-} from '@tanstack/react-router'
+} from '@benjavicente/react-router'
 import { z } from 'zod'
-import { zodValidator } from '@tanstack/zod-adapter'
+import { zodValidator } from '@benjavicente/zod-adapter'
 
 const defaultValues = ['foo', 'bar']
 
@@ -748,9 +748,9 @@ import {
   createFileRoute,
   retainSearchParams,
   stripSearchParams,
-} from '@tanstack/solid-router'
+} from '@benjavicente/solid-router'
 import { z } from 'zod'
-import { zodValidator } from '@tanstack/zod-adapter'
+import { zodValidator } from '@benjavicente/zod-adapter'
 
 const defaultValues = ['foo', 'bar']
 

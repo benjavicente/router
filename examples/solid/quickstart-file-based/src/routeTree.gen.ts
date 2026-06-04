@@ -49,7 +49,7 @@ export interface RootRouteChildren {
   AboutRoute: typeof AboutRoute
 }
 
-declare module '@tanstack/solid-router' {
+declare module '@benjavicente/solid-router' {
   interface FileRoutesByPath {
     '/about': {
       id: '/about'

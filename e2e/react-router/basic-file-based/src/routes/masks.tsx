@@ -3,7 +3,7 @@ import {
   Outlet,
   createFileRoute,
   useRouterState,
-} from '@tanstack/react-router'
+} from '@benjavicente/react-router'
 
 export const Route = createFileRoute('/masks')({
   component: MasksLayout,

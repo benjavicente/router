@@ -1,5 +1,5 @@
 import { ref, defineComponent } from 'vue'
-import { useBlocker, useNavigate } from '@tanstack/vue-router'
+import { useBlocker, useNavigate } from '@benjavicente/vue-router'
 
 export const EditingAComponent = defineComponent({
   setup() {

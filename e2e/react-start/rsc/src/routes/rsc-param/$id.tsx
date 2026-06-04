@@ -1,11 +1,11 @@
 import * as React from 'react'
-import { createFileRoute } from '@tanstack/react-router'
-import { createServerFn } from '@tanstack/react-start'
+import { createFileRoute } from '@benjavicente/react-router'
+import { createServerFn } from '@benjavicente/react-start'
 import {
   CompositeComponent,
   createCompositeComponent,
   renderServerComponent,
-} from '@tanstack/react-start/rsc'
+} from '@benjavicente/react-start/rsc'
 import { ClientRenderedDirect } from '~/utils/rsc-param/ClientRenderedDirect'
 import { SlotChild } from '~/utils/rsc-param/SlotChild'
 import { SlotRenderProp } from '~/utils/rsc-param/SlotRenderProp'

@@ -1,4 +1,4 @@
-import { Outlet, createFileRoute } from '@tanstack/vue-router'
+import { Outlet, createFileRoute } from '@benjavicente/vue-router'
 import { RenderData, makeData } from '~/data'
 
 export const Route = createFileRoute('/ssr/data-only')({

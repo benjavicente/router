@@ -9,7 +9,7 @@ Learn how to add type-safe, production-ready search parameters to your TanStack 
 Set up search parameters with schema validation (recommended for production):
 
 ```tsx
-import { createFileRoute } from '@tanstack/react-router'
+import { createFileRoute } from '@benjavicente/react-router'
 import { z } from 'zod'
 
 const productSearchSchema = z.object({
@@ -70,11 +70,11 @@ export const Route = createFileRoute('/products')({
 For Zod v3:
 
 ```bash
-npm install zod @tanstack/zod-adapter
+npm install zod @benjavicente/zod-adapter
 ```
 
 ```tsx
-import { zodValidator, fallback } from '@tanstack/zod-adapter'
+import { zodValidator, fallback } from '@benjavicente/zod-adapter'
 import { z } from 'zod'
 
 const searchSchema = z.object({
@@ -100,7 +100,7 @@ Start by identifying what search parameters your route needs:
 
 ```tsx
 import { z } from 'zod'
-import { fallback } from '@tanstack/zod-adapter'
+import { fallback } from '@benjavicente/zod-adapter'
 
 const shopSearchSchema = z.object({
   // Pagination
@@ -261,7 +261,7 @@ For code-split components or separate files:
 
 ```tsx
 // components/ProductFilters.tsx
-import { getRouteApi } from '@tanstack/react-router'
+import { getRouteApi } from '@benjavicente/react-router'
 
 const routeApi = getRouteApi('/products')
 
@@ -284,7 +284,7 @@ export function ProductFilters() {
 ### Using useSearch with from
 
 ```tsx
-import { useSearch } from '@tanstack/react-router'
+import { useSearch } from '@benjavicente/react-router'
 
 function GenericSearchDisplay() {
   const search = useSearch({ from: '/products' })

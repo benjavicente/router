@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Outlet } from '@tanstack/react-router';
+import { Outlet } from '@benjavicente/react-router';
 import { importedComponent as ImportedComponent } from '../../shared/imported';
 function Layout() {
   return <main>

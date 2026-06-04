@@ -1,6 +1,6 @@
 # skills/_artifacts/start_skill_tree.yaml
 library:
-  name: '@tanstack/react-start'
+  name: '@benjavicente/react-start'
   version: '1.166.2'
   repository: 'https://github.com/TanStack/router'
   description: >-
@@ -130,7 +130,7 @@ skills:
     description: >-
       React bindings for TanStack Start: createStart, StartClient,
       StartServer, React-specific imports, re-exports from
-      @tanstack/react-router, full project setup with React.
+      @benjavicente/react-router, full project setup with React.
     requires:
       - 'start-core'
     sources:

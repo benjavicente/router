@@ -1,4 +1,4 @@
-import { createRouter } from '@tanstack/vue-router'
+import { createRouter } from '@benjavicente/vue-router'
 import { routeTree } from './routeTree.gen'
 
 export function getRouter() {
@@ -9,7 +9,7 @@ export function getRouter() {
   })
 }
 
-declare module '@tanstack/vue-router' {
+declare module '@benjavicente/vue-router' {
   interface Register {
     router: ReturnType<typeof getRouter>
   }

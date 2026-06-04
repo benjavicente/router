@@ -1,4 +1,4 @@
-import { createMemoryHistory } from '@tanstack/history'
+import { createMemoryHistory } from '@benjavicente/history'
 import {
   createCsrfMiddleware,
   createNullProtoObject,
@@ -6,21 +6,21 @@ import {
   flattenMiddlewares,
   mergeHeaders,
   safeObjectMerge,
-} from '@tanstack/start-client-core'
+} from '@benjavicente/start-client-core'
 import {
   executeRewriteInput,
   isRedirect,
   isResolvedRedirect,
-} from '@tanstack/router-core'
+} from '@benjavicente/router-core'
 import {
   attachRouterServerSsrUtils,
   getNormalizedURL,
   getOrigin,
-} from '@tanstack/router-core/ssr/server'
+} from '@benjavicente/router-core/ssr/server'
 import {
   getStartContext,
   runWithStartContext,
-} from '@tanstack/start-storage-context'
+} from '@benjavicente/start-storage-context'
 import { requestHandler } from './request-response'
 import { getStartManifest } from './router-manifest'
 import { handleServerAction } from './server-functions-handler'
@@ -48,7 +48,7 @@ import type {
   RouteMethodHandlerFn,
   RouterEntry,
   StartEntry,
-} from '@tanstack/start-client-core'
+} from '@benjavicente/start-client-core'
 import type { RequestHandler } from './request-handler'
 import type {
   EarlyHint,
@@ -65,8 +65,8 @@ import type {
   AnySerializationAdapter,
   Manifest,
   Register,
-} from '@tanstack/router-core'
-import type { HandlerCallback } from '@tanstack/router-core/ssr/server'
+} from '@benjavicente/router-core'
+import type { HandlerCallback } from '@benjavicente/router-core/ssr/server'
 import type {
   StartManifestWithClientEntry,
   TransformAssetUrls,

@@ -3,8 +3,8 @@ import {
   Generator,
   getConfig,
   resolveConfigPath,
-} from '@tanstack/router-generator'
-import type { FileEventType } from '@tanstack/router-generator'
+} from '@benjavicente/router-generator'
+import type { FileEventType } from '@benjavicente/router-generator'
 
 export function watch(root: string) {
   const configPath = resolveConfigPath({

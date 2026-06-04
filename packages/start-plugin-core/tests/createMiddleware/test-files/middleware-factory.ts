@@ -1,4 +1,4 @@
-import { createMiddleware } from '@tanstack/react-start'
+import { createMiddleware } from '@benjavicente/react-start'
 
 // Middleware factory function - returns a middleware with .server() call
 export function createPublicRateLimitMiddleware(keySuffix) {

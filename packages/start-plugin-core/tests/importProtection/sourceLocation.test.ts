@@ -389,7 +389,7 @@ describe('findOriginalUsageLocation', () => {
     const provider = makeProvider(
       'const secretServerFn = createServerFn().handler(rpc())\n',
       [
-        "import { createServerFn } from '@tanstack/react-start'",
+        "import { createServerFn } from '@benjavicente/react-start'",
         "import { getSecret } from './secret.server'",
         '',
         'export const secretServerFn = createServerFn().handler(async () => {',
@@ -420,7 +420,7 @@ describe('findOriginalUsageLocation', () => {
     const provider = makeProvider(
       'export const safe = noop\n',
       [
-        "import { createServerOnlyFn } from '@tanstack/react-start'",
+        "import { createServerOnlyFn } from '@benjavicente/react-start'",
         "import { getSecret } from './secret.server'",
         '',
         'export const safe = createServerOnlyFn(() => {',

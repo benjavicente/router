@@ -1,6 +1,6 @@
-import { createFileRoute } from '@tanstack/react-router'
-import { createServerFn } from '@tanstack/react-start'
-import { renderServerComponent } from '@tanstack/react-start/rsc'
+import { createFileRoute } from '@benjavicente/react-router'
+import { createServerFn } from '@benjavicente/react-start'
+import { renderServerComponent } from '@benjavicente/react-start/rsc'
 import {
   serverBox,
   serverBadge,
@@ -16,7 +16,7 @@ import { formatTime, pageStyles } from '~/utils/styles'
 const getLinkServerComponent = createServerFn({ method: 'GET' })
   .inputValidator((data: { targetRoute: string; linkText: string }) => data)
   .handler(async ({ data }) => {
-    const { Link } = await import('@tanstack/react-router')
+    const { Link } = await import('@benjavicente/react-router')
     const serverTimestamp = Date.now()
 
     return renderServerComponent(
@@ -142,7 +142,7 @@ function RscLinkComponent() {
       >
         <strong>Key Points:</strong>
         <ul style={{ margin: '8px 0 0 0', paddingLeft: '20px' }}>
-          <li>Link component from @tanstack/react-router works inside RSC</li>
+          <li>Link component from @benjavicente/react-router works inside RSC</li>
           <li>
             Clicking the link performs client-side navigation (no full reload)
           </li>

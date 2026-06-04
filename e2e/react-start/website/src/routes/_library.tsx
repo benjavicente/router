@@ -3,7 +3,7 @@ import {
   Outlet,
   useLocation,
   createFileRoute,
-} from '@tanstack/react-router'
+} from '@benjavicente/react-router'
 import { getProjects } from '~/server/projects'
 
 export const Route = createFileRoute('/_library')({

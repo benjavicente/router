@@ -1,4 +1,4 @@
-import { createFileRoute } from '@tanstack/solid-router'
+import { createFileRoute } from '@benjavicente/solid-router'
 import { ScrollBlock } from '../-components/scroll-block'
 
 export const Route = createFileRoute('/(tests)/normal-page')({

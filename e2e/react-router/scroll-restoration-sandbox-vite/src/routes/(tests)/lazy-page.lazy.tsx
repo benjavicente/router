@@ -1,4 +1,4 @@
-import { createLazyFileRoute } from '@tanstack/react-router'
+import { createLazyFileRoute } from '@benjavicente/react-router'
 import * as React from 'react'
 
 import { ScrollBlock } from '../-components/scroll-block'

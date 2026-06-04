@@ -1,13 +1,13 @@
 /// <reference types="vite/client" />
 import * as React from 'react'
-import { TanStackRouterDevtools } from '@tanstack/react-router-devtools'
+import { TanStackRouterDevtools } from '@benjavicente/react-router-devtools'
 import {
   HeadContent,
   Link,
   Outlet,
   Scripts,
   createRootRoute,
-} from '@tanstack/react-router'
+} from '@benjavicente/react-router'
 import appCss from '~/styles/app.css?url'
 
 export const Route = createRootRoute({

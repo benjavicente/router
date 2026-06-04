@@ -33,7 +33,7 @@ A new [`Route`](./RouteType.md) instance.
 ## Examples
 
 ```tsx
-import { createRootRoute, createRouter, Outlet } from '@tanstack/react-router'
+import { createRootRoute, createRouter, Outlet } from '@benjavicente/react-router'
 
 const rootRoute = createRootRoute({
   component: () => <Outlet />,

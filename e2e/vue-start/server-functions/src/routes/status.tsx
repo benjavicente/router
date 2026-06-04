@@ -1,6 +1,6 @@
-import { createFileRoute } from '@tanstack/vue-router'
-import { createServerFn, useServerFn } from '@tanstack/vue-start'
-import { setResponseStatus } from '@tanstack/vue-start/server'
+import { createFileRoute } from '@benjavicente/vue-router'
+import { createServerFn, useServerFn } from '@benjavicente/vue-start'
+import { setResponseStatus } from '@benjavicente/vue-start/server'
 
 const helloFn = createServerFn().handler(() => {
   setResponseStatus(225, `hello`)

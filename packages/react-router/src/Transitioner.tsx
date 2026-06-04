@@ -6,7 +6,7 @@ import {
   getLocationChangeInfo,
   handleHashScroll,
   trimPathRight,
-} from '@tanstack/router-core'
+} from '@benjavicente/router-core'
 import { useLayoutEffect, usePrevious } from './utils'
 import { useRouter } from './useRouter'
 

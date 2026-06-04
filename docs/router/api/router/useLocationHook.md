@@ -22,7 +22,7 @@ The `useLocation` hook accepts an optional `options` object.
 ## Examples
 
 ```tsx
-import { useLocation } from '@tanstack/react-router'
+import { useLocation } from '@benjavicente/react-router'
 
 function Component() {
   const location = useLocation()

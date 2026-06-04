@@ -1,11 +1,11 @@
-import { createFileRoute } from '@tanstack/react-router'
+import { createFileRoute } from '@benjavicente/react-router'
 import * as React from 'react'
-import { createServerFn } from '@tanstack/react-start'
+import { createServerFn } from '@benjavicente/react-start'
 import {
   getRequestHeaders,
   setResponseHeader,
-} from '@tanstack/react-start/server'
-import type { RequestHeaderName } from '@tanstack/react-start/server'
+} from '@benjavicente/react-start/server'
+import type { RequestHeaderName } from '@benjavicente/react-start/server'
 
 export const Route = createFileRoute('/headers')({
   loader: async () => {

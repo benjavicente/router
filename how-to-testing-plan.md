@@ -83,7 +83,7 @@ Each test will use **agent-friendly static analysis** rather than running full p
   - **Error Checks**: API differences, TypeScript compatibility, import accuracy
   - **RESULTS**:
     - ✅ **API Compatibility**: All imports (`createFileRoute`, `createRootRoute`, `Link`, `Outlet`) exist
-    - ✅ **Plugin Integration**: `tanstackRouter` from `@tanstack/router-plugin/vite` correctly referenced
+    - ✅ **Plugin Integration**: `tanstackRouter` from `@benjavicente/router-plugin/vite` correctly referenced
     - ✅ **Hook Patterns**: `Route.useLoaderData()` and `Route.useParams()` confirmed in examples
     - ✅ **TypeScript Usage**: Code examples use correct types and syntax patterns
     - ✅ **Documentation Consistency**: Migration patterns match working examples in codebase
@@ -100,7 +100,7 @@ Each test will use **agent-friendly static analysis** rather than running full p
     - ✅ **Hook Patterns**: `Route.useRouteContext()`, `Route.useSearch()`, `Route.useNavigate()` confirmed
     - ✅ **Context Setup**: Router context typing and patterns match working examples
     - ✅ **Layout Routes**: `/_authenticated` pattern works correctly
-    - ✅ **Fixed Import**: Updated to correct `@tanstack/react-router-devtools` import
+    - ✅ **Fixed Import**: Updated to correct `@benjavicente/react-router-devtools` import
     - ✅ **Fixed Navigation**: Updated to use `navigate({ to: redirect })` instead of `window.location.href`
   - **Status**: PASSED - All patterns validated against working examples
 

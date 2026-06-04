@@ -1,6 +1,6 @@
 import { Dynamic } from 'solid-js/web'
 import { createResource } from 'solid-js'
-import { isModuleNotFoundError } from '@tanstack/router-core'
+import { isModuleNotFoundError } from '@benjavicente/router-core'
 import type { AsyncRouteComponent } from './route'
 
 export function lazyRouteComponent<

@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { useSearch, getRouteApi } from '@tanstack/vue-router'
+import { useSearch, getRouteApi } from '@benjavicente/vue-router'
 
 const routeApi = getRouteApi('/(group)/lazyinside')
 

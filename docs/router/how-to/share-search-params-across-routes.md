@@ -20,7 +20,7 @@ Share parameters across your entire application by validating them in the root r
 
 ```tsx
 // routes/__root.tsx
-import { createRootRoute, Outlet } from '@tanstack/react-router'
+import { createRootRoute, Outlet } from '@benjavicente/react-router'
 import { z } from 'zod'
 
 const globalSearchSchema = z.object({
@@ -48,7 +48,7 @@ function RootComponent() {
 
 ```tsx
 // routes/products/index.tsx
-import { createFileRoute } from '@tanstack/react-router'
+import { createFileRoute } from '@benjavicente/react-router'
 import { z } from 'zod'
 
 const productSearchSchema = z.object({
@@ -81,7 +81,7 @@ Share parameters within a section of your app using layout routes:
 
 ```tsx
 // routes/_authenticated.tsx
-import { createFileRoute, Outlet } from '@tanstack/react-router'
+import { createFileRoute, Outlet } from '@benjavicente/react-router'
 import { z } from 'zod'
 
 const authSearchSchema = z.object({
@@ -113,7 +113,7 @@ function AuthenticatedLayout() {
 
 ```tsx
 // routes/_authenticated/dashboard.tsx
-import { createFileRoute } from '@tanstack/react-router'
+import { createFileRoute } from '@benjavicente/react-router'
 
 export const Route = createFileRoute('/_authenticated/dashboard')({
   component: DashboardPage,

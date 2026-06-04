@@ -1,4 +1,4 @@
-import { redirect, createFileRoute } from '@tanstack/solid-router'
+import { redirect, createFileRoute } from '@benjavicente/solid-router'
 
 export const Route = createFileRoute('/$project/$version/docs/')({
   beforeLoad: () => {

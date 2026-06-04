@@ -24,7 +24,7 @@ The `isNotFound` function accepts a single argument, an `input`.
 ## Examples
 
 ```tsx
-import { isNotFound } from '@tanstack/react-router'
+import { isNotFound } from '@benjavicente/react-router'
 
 function somewhere(obj: unknown) {
   if (isNotFound(obj)) {

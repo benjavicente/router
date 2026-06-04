@@ -11,7 +11,7 @@ declare module '#tanstack-router-entry' {
 }
 
 declare module '#tanstack-start-plugin-adapters' {
-  import type { AnySerializationAdapter } from '@tanstack/router-core'
+  import type { AnySerializationAdapter } from '@benjavicente/router-core'
 
   export const pluginSerializationAdapters: Array<AnySerializationAdapter>
   export const hasPluginAdapters: boolean

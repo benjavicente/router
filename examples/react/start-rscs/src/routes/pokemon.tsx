@@ -1,4 +1,4 @@
-import { Link, createFileRoute } from '@tanstack/react-router'
+import { Link, createFileRoute } from '@benjavicente/react-router'
 import type { PokemonDetails } from '~/pokemon/server-functions'
 import { fetchPokemonData, typeColors } from '~/pokemon/server-functions'
 

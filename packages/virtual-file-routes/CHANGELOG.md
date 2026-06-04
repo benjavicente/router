@@ -1,4 +1,4 @@
-# @tanstack/virtual-file-routes
+# @benjavicente/virtual-file-routes
 
 ## 1.161.7
 

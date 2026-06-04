@@ -1,4 +1,4 @@
-import type { HistoryState, ParsedHistoryState } from '@tanstack/history'
+import type { HistoryState, ParsedHistoryState } from '@benjavicente/history'
 import type {
   AllParams,
   CatchAllPaths,

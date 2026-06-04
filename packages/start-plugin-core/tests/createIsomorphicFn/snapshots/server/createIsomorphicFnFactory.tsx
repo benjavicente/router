@@ -1,4 +1,4 @@
-import { createIsomorphicFn } from '@tanstack/react-start';
+import { createIsomorphicFn } from '@benjavicente/react-start';
 
 // Isomorphic function factory - returns a createIsomorphicFn with .client() and .server() calls
 export function createPlatformFn(platform: string) {

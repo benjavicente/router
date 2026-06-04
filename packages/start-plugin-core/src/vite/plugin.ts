@@ -131,7 +131,7 @@ export function tanStackStartVite(
         })
 
         const startPackageName =
-          `@tanstack/${corePluginOpts.framework}-start` as const
+          `@benjavicente/${corePluginOpts.framework}-start` as const
 
         // crawl packages that have start in "peerDependencies"
         // see https://github.com/svitejs/vitefu/blob/d8d82fa121e3b2215ba437107093c77bde51b63b/src/index.js#L95-L101
@@ -148,7 +148,7 @@ export function tanStackStartVite(
             if (peerDependencies) {
               if (
                 startPackageName in peerDependencies ||
-                '@tanstack/start-client-core' in peerDependencies
+                '@benjavicente/start-client-core' in peerDependencies
               ) {
                 return true
               }

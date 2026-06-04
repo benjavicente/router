@@ -1,4 +1,4 @@
-import { createFileRoute } from '@tanstack/react-router'
+import { createFileRoute } from '@benjavicente/react-router'
 import { RedirectOnClick } from '~/components/RedirectOnClick'
 
 export const Route = createFileRoute(

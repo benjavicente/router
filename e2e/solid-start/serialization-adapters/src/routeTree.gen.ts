@@ -109,7 +109,7 @@ export interface RootRouteChildren {
   SsrStreamRoute: typeof SsrStreamRoute
 }
 
-declare module '@tanstack/solid-router' {
+declare module '@benjavicente/solid-router' {
   interface FileRoutesByPath {
     '/': {
       id: '/'
@@ -170,7 +170,7 @@ export const routeTree = rootRouteImport
 
 import type { getRouter } from './router.tsx'
 import type { startInstance } from './start.tsx'
-declare module '@tanstack/solid-start' {
+declare module '@benjavicente/solid-start' {
   interface Register {
     ssr: true
     router: Awaited<ReturnType<typeof getRouter>>

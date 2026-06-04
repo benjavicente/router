@@ -8,8 +8,8 @@ import {
   Scripts,
   createRootRoute,
   useRouterState,
-} from '@tanstack/vue-router'
-import { TanStackRouterDevtoolsInProd } from '@tanstack/vue-router-devtools'
+} from '@benjavicente/vue-router'
+import { TanStackRouterDevtoolsInProd } from '@benjavicente/vue-router-devtools'
 import appCss from '~/styles/app.css?url'
 
 export const Route = createRootRoute({

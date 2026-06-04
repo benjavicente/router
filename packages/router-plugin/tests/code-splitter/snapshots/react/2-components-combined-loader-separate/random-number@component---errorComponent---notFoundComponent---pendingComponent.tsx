@@ -1,4 +1,4 @@
-import { Await, Link } from '@tanstack/react-router';
+import { Await, Link } from '@benjavicente/react-router';
 import { Carbon } from '~/components/Carbon';
 import { twMerge } from 'tailwind-merge';
 import { FaDiscord, FaGithub, FaTshirt } from 'react-icons/fa';

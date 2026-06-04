@@ -1,5 +1,5 @@
-import { Outlet, createFileRoute } from '@tanstack/react-router'
-import type { NotFoundRouteProps } from '@tanstack/react-router'
+import { Outlet, createFileRoute } from '@benjavicente/react-router'
+import type { NotFoundRouteProps } from '@benjavicente/react-router'
 
 export const Route = createFileRoute('/not-found/parent-boundary')({
   loader: () => ({

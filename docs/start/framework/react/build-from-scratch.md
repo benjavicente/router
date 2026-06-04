@@ -54,7 +54,7 @@ TanStack Start is powered by [Vite](https://vite.dev/) and [TanStack Router](htt
 To install them, run:
 
 ```shell
-npm i @tanstack/react-start @tanstack/react-router
+npm i @benjavicente/react-start @benjavicente/react-router
 ```
 
 We also need vite as a devDependency:
@@ -103,7 +103,7 @@ Then configure TanStack Start's Vite plugin in `vite.config.ts`:
 ```ts
 // vite.config.ts
 import { defineConfig } from 'vite'
-import { tanstackStart } from '@tanstack/react-start/plugin/vite'
+import { tanstackStart } from '@benjavicente/react-start/plugin/vite'
 import viteReact from '@vitejs/plugin-react'
 
 export default defineConfig({
@@ -152,7 +152,7 @@ from the default [preloading functionality](/router/latest/docs/framework/react/
 
 ```tsx
 // src/router.tsx
-import { createRouter } from '@tanstack/react-router'
+import { createRouter } from '@benjavicente/react-router'
 import { routeTree } from './routeTree.gen'
 
 export function getRouter() {
@@ -178,7 +178,7 @@ import {
   createRootRoute,
   HeadContent,
   Scripts,
-} from '@tanstack/react-router'
+} from '@benjavicente/react-router'
 
 export const Route = createRootRoute({
   head: () => ({
@@ -228,8 +228,8 @@ Now that we have the basic templating setup, we can write our first route. This 
 ```tsx
 // src/routes/index.tsx
 import * as fs from 'node:fs'
-import { createFileRoute, useRouter } from '@tanstack/react-router'
-import { createServerFn } from '@tanstack/react-start'
+import { createFileRoute, useRouter } from '@benjavicente/react-router'
+import { createServerFn } from '@benjavicente/react-start'
 
 const filePath = 'count.txt'
 

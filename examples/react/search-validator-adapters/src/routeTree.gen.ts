@@ -69,7 +69,7 @@ export interface RootRouteChildren {
   UsersZodIndexRoute: typeof UsersZodIndexRoute
 }
 
-declare module '@tanstack/react-router' {
+declare module '@benjavicente/react-router' {
   interface FileRoutesByPath {
     '/': {
       id: '/'

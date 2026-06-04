@@ -1,4 +1,4 @@
-import { createFileRoute } from '@tanstack/vue-router'
+import { createFileRoute } from '@benjavicente/vue-router'
 import { RouteWorkload } from '../workload'
 
 export const Route = createFileRoute('/$a/$b/$c/$d')({

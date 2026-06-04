@@ -1,5 +1,5 @@
-import { createFileRoute } from '@tanstack/react-router'
-import { redirect } from '@tanstack/react-router'
+import { createFileRoute } from '@benjavicente/react-router'
+import { redirect } from '@benjavicente/react-router'
 import { auth } from '../utils/auth'
 
 export const Route = createFileRoute('/_auth')({

@@ -1,5 +1,5 @@
-import { createFileRoute, redirect } from '@tanstack/react-router'
-import { createServerFn } from '@tanstack/react-start'
+import { createFileRoute, redirect } from '@benjavicente/react-router'
+import { createServerFn } from '@benjavicente/react-start'
 import { pageStyles } from '~/utils/styles'
 
 const redirectToBasic = createServerFn({

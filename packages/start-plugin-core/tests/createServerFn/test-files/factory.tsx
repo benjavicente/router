@@ -1,4 +1,4 @@
-import { createServerFn, createMiddleware } from '@tanstack/react-start'
+import { createServerFn, createMiddleware } from '@benjavicente/react-start'
 
 const authMiddleware = createMiddleware({ type: 'function' }).server(
   ({ next }) => {

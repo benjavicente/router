@@ -76,7 +76,7 @@ export interface RootRouteChildren {
   ErrorRoute: typeof ErrorRoute
 }
 
-declare module '@tanstack/solid-router' {
+declare module '@benjavicente/solid-router' {
   interface FileRoutesByPath {
     '/error': {
       id: '/error'

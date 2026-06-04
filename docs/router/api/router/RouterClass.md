@@ -26,7 +26,7 @@ The `Router` constructor accepts a single argument: the `options` that will be u
 ## Examples
 
 ```tsx
-import { Router, RouterProvider } from '@tanstack/react-router'
+import { Router, RouterProvider } from '@benjavicente/react-router'
 import { routeTree } from './routeTree.gen'
 
 const router = new Router({

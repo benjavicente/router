@@ -1,7 +1,7 @@
 import { useState } from 'react'
-import { createFileRoute } from '@tanstack/react-router'
+import { createFileRoute } from '@benjavicente/react-router'
 import { useQueryClient, useSuspenseQuery } from '@tanstack/react-query'
-import { CompositeComponent } from '@tanstack/react-start/rsc'
+import { CompositeComponent } from '@benjavicente/react-start/rsc'
 import { getProductDetailComponent } from '~/utils/serverComponents'
 import { clientStyles, colors, pageStyles } from '~/utils/styles'
 

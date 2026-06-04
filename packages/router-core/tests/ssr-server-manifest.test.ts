@@ -1,4 +1,4 @@
-import { createMemoryHistory } from '@tanstack/history'
+import { createMemoryHistory } from '@benjavicente/history'
 import { runInNewContext } from 'node:vm'
 import { BaseRootRoute, BaseRoute } from '../src'
 import { attachRouterServerSsrUtils } from '../src/ssr/ssr-server'

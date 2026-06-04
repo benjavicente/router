@@ -1,4 +1,4 @@
-import { Link, createFileRoute, linkOptions } from '@tanstack/solid-router'
+import { Link, createFileRoute, linkOptions } from '@benjavicente/solid-router'
 import {
   ListItems,
   MyLink,

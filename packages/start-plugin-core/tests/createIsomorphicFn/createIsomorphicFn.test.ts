@@ -29,7 +29,7 @@ async function compile(opts: {
     lookupKinds: new Set(['IsomorphicFn']),
     lookupConfigurations: [
       {
-        libName: `@tanstack/react-start`,
+        libName: `@benjavicente/react-start`,
         rootExport: 'createIsomorphicFn',
         kind: 'IsomorphicFn',
       },
@@ -80,7 +80,7 @@ describe('createIsomorphicFn compiles correctly', async () => {
       compile({
         env: 'client',
         code: `
-        import { createIsomorphicFn } from '@tanstack/react-start'
+        import { createIsomorphicFn } from '@benjavicente/react-start'
         const clientOnly = createIsomorphicFn().client()`,
         id: 'no-fn.ts',
       }),
@@ -90,7 +90,7 @@ describe('createIsomorphicFn compiles correctly', async () => {
       compile({
         env: 'server',
         code: `
-        import { createIsomorphicFn } from '@tanstack/react-start'
+        import { createIsomorphicFn } from '@benjavicente/react-start'
         const serverOnly = createIsomorphicFn().server()`,
         id: 'no-fn.ts',
       }),

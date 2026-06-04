@@ -2,7 +2,7 @@ import { render } from 'solid-js/web'
 import { createSignal, lazy } from 'solid-js'
 import { DevtoolsOnCloseContext, ShadowDomTargetContext } from './context'
 import type { JSX } from 'solid-js'
-import type { AnyRouter } from '@tanstack/router-core'
+import type { AnyRouter } from '@benjavicente/router-core'
 
 export interface TanStackRouterDevtoolsPanelCoreOptions {
   /**

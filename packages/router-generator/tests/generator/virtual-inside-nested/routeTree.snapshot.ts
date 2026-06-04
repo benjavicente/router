@@ -66,7 +66,7 @@ export interface RootRouteChildren {
   FooBarRoute: typeof FooBarRouteWithChildren
 }
 
-declare module '@tanstack/react-router' {
+declare module '@benjavicente/react-router' {
   interface FileRoutesByPath {
     '/': {
       id: '/'

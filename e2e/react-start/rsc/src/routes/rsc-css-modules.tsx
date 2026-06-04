@@ -1,4 +1,4 @@
-import { createFileRoute } from '@tanstack/react-router'
+import { createFileRoute } from '@benjavicente/react-router'
 import { getCssModulesServerComponent } from '~/utils/cssModulesServerComponent'
 import { formatTime, pageStyles } from '~/utils/styles'
 

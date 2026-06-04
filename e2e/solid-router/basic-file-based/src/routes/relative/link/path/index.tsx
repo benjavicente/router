@@ -1,4 +1,4 @@
-import { Outlet, createFileRoute } from '@tanstack/solid-router'
+import { Outlet, createFileRoute } from '@benjavicente/solid-router'
 
 export const Route = createFileRoute('/relative/link/path/')({
   component: RouteComponent,

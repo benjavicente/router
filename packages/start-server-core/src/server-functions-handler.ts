@@ -3,14 +3,14 @@ import {
   invariant,
   isNotFound,
   isRedirect,
-} from '@tanstack/router-core'
+} from '@benjavicente/router-core'
 import {
   TSS_FORMDATA_CONTEXT,
   X_TSS_RAW_RESPONSE,
   X_TSS_SERIALIZED,
   getDefaultSerovalPlugins,
   safeObjectMerge,
-} from '@tanstack/start-client-core'
+} from '@benjavicente/start-client-core'
 import { fromJSON, toCrossJSONAsync, toCrossJSONStream } from 'seroval'
 import { getResponse } from './request-response'
 import { getServerFnById } from './getServerFnById'

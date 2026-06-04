@@ -14,8 +14,8 @@ The devtools are a separate package that you need to install:
 
 <!-- ::start:tabs variant="package-manager" -->
 
-react: @tanstack/react-router-devtools
-solid: @tanstack/solid-router-devtools
+react: @benjavicente/react-router-devtools
+solid: @benjavicente/solid-router-devtools
 
 <!-- ::end:tabs -->
 
@@ -26,13 +26,13 @@ solid: @tanstack/solid-router-devtools
 # React
 
 ```tsx
-import { TanStackRouterDevtools } from '@tanstack/react-router-devtools'
+import { TanStackRouterDevtools } from '@benjavicente/react-router-devtools'
 ```
 
 # Solid
 
 ```tsx
-import { TanStackRouterDevtools } from '@tanstack/solid-router-devtools'
+import { TanStackRouterDevtools } from '@benjavicente/solid-router-devtools'
 ```
 
 <!-- ::end:framework -->
@@ -46,13 +46,13 @@ The Devtools, if imported as `TanStackRouterDevtools` will not be shown in produ
 # React
 
 ```tsx
-import { TanStackRouterDevtoolsInProd } from '@tanstack/react-router-devtools'
+import { TanStackRouterDevtoolsInProd } from '@benjavicente/react-router-devtools'
 ```
 
 # Solid
 
 ```tsx
-import { TanStackRouterDevtoolsInProd } from '@tanstack/solid-router-devtools'
+import { TanStackRouterDevtoolsInProd } from '@benjavicente/solid-router-devtools'
 ```
 
 <!-- ::end:framework -->
@@ -68,8 +68,8 @@ The easiest way for the devtools to work is to render them inside of your root r
 <!-- ::start:tabs variant="files" -->
 
 ```tsx title="src/routes/__root.tsx"
-import { createRootRoute, Outlet } from '@tanstack/react-router'
-import { TanStackRouterDevtools } from '@tanstack/react-router-devtools'
+import { createRootRoute, Outlet } from '@benjavicente/react-router'
+import { TanStackRouterDevtools } from '@benjavicente/react-router-devtools'
 
 export const Route = createRootRoute({
   component: () => (
@@ -88,8 +88,8 @@ export const Route = createRootRoute({
 <!-- ::start:tabs variant="files" -->
 
 ```tsx title="src/routes/__root.tsx"
-import { createRootRoute, Outlet } from '@tanstack/solid-router'
-import { TanStackRouterDevtools } from '@tanstack/solid-router-devtools'
+import { createRootRoute, Outlet } from '@benjavicente/solid-router'
+import { TanStackRouterDevtools } from '@benjavicente/solid-router-devtools'
 
 export const Route = createRootRoute({
   component: () => (
@@ -207,13 +207,13 @@ To control the position of the devtools, import the `TanStackRouterDevtoolsPanel
 # React
 
 ```tsx
-import { TanStackRouterDevtoolsPanel } from '@tanstack/react-router-devtools'
+import { TanStackRouterDevtoolsPanel } from '@benjavicente/react-router-devtools'
 ```
 
 # Solid
 
 ```tsx
-import { TanStackRouterDevtoolsPanel } from '@tanstack/solid-router-devtools'
+import { TanStackRouterDevtoolsPanel } from '@benjavicente/solid-router-devtools'
 ```
 
 <!-- ::end:framework -->
@@ -253,7 +253,7 @@ Embedded Mode will embed the devtools as a regular component in your application
 # React
 
 ```tsx
-import { TanStackRouterDevtoolsPanel } from '@tanstack/react-router-devtools'
+import { TanStackRouterDevtoolsPanel } from '@benjavicente/react-router-devtools'
 
 function App() {
   return (
@@ -272,7 +272,7 @@ function App() {
 # Solid
 
 ```tsx
-import { TanStackRouterDevtoolsPanel } from '@tanstack/solid-router-devtools'
+import { TanStackRouterDevtoolsPanel } from '@benjavicente/solid-router-devtools'
 
 function App() {
   return (

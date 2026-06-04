@@ -1,5 +1,5 @@
-import { Await, createFileRoute } from '@tanstack/solid-router'
-import { createServerFn } from '@tanstack/solid-start'
+import { Await, createFileRoute } from '@benjavicente/solid-router'
+import { createServerFn } from '@benjavicente/solid-start'
 
 const promise = createServerFn().handler(async () => {
   await new Promise((r) => setTimeout(r, 3000))

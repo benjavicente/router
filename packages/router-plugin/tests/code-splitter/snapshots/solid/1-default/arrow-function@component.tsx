@@ -1,5 +1,5 @@
 import * as Solid from 'solid-js';
-import { Link, Outlet } from '@tanstack/solid-router';
+import { Link, Outlet } from '@benjavicente/solid-router';
 import { Route } from "arrow-function.tsx";
 const PostsComponent = () => {
   const posts = Route.useLoaderData();

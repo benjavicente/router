@@ -32,7 +32,7 @@ ruleTester.run(name, rule as any, {
     // useId is allowed in server components
     {
       code: `
-        import { createCompositeComponent } from '@tanstack/react-start/rsc'
+        import { createCompositeComponent } from '@benjavicente/react-start/rsc'
         
         createCompositeComponent(() => {
           const id = useId()
@@ -56,7 +56,7 @@ ruleTester.run(name, rule as any, {
     // Async server component is fine
     {
       code: `
-        import { createCompositeComponent } from '@tanstack/react-start/rsc'
+        import { createCompositeComponent } from '@benjavicente/react-start/rsc'
         
         createCompositeComponent(async () => {
           const data = await fetch('/api/data')
@@ -76,7 +76,7 @@ ruleTester.run(name, rule as any, {
     // Component passed as prop (slot) is allowed
     {
       code: `
-        import { createCompositeComponent } from '@tanstack/react-start/rsc'
+        import { createCompositeComponent } from '@benjavicente/react-start/rsc'
         
         createCompositeComponent(({ ActionButton }) => {
           return <div><ActionButton /></div>
@@ -86,7 +86,7 @@ ruleTester.run(name, rule as any, {
     // Component from destructured props is allowed
     {
       code: `
-        import { createCompositeComponent } from '@tanstack/react-start/rsc'
+        import { createCompositeComponent } from '@benjavicente/react-start/rsc'
         
         createCompositeComponent((props) => {
           const { ActionButton } = props
@@ -97,7 +97,7 @@ ruleTester.run(name, rule as any, {
     // Non-JSX attribute function is allowed (not an event handler)
     {
       code: `
-        import { createCompositeComponent } from '@tanstack/react-start/rsc'
+        import { createCompositeComponent } from '@benjavicente/react-start/rsc'
         
         createCompositeComponent(() => {
           return <div style={{ color: 'red' }}>Content</div>
@@ -107,7 +107,7 @@ ruleTester.run(name, rule as any, {
     // Static strings and primitives are fine
     {
       code: `
-        import { createCompositeComponent } from '@tanstack/react-start/rsc'
+        import { createCompositeComponent } from '@benjavicente/react-start/rsc'
         
         createCompositeComponent(() => {
           const name = "John"
@@ -118,7 +118,7 @@ ruleTester.run(name, rule as any, {
     // Custom hook allowed via options
     {
       code: `
-        import { createCompositeComponent } from '@tanstack/react-start/rsc'
+        import { createCompositeComponent } from '@benjavicente/react-start/rsc'
         
         createCompositeComponent(() => {
           const data = useServerData()
@@ -132,7 +132,7 @@ ruleTester.run(name, rule as any, {
     // Hook in inline server component
     {
       code: `
-        import { createCompositeComponent } from '@tanstack/react-start/rsc'
+        import { createCompositeComponent } from '@benjavicente/react-start/rsc'
         
         createCompositeComponent(() => {
           const [state] = useState(0)
@@ -144,7 +144,7 @@ ruleTester.run(name, rule as any, {
     // Browser API in server component
     {
       code: `
-        import { createCompositeComponent } from '@tanstack/react-start/rsc'
+        import { createCompositeComponent } from '@benjavicente/react-start/rsc'
         
         createCompositeComponent(() => {
           const width = window.innerWidth
@@ -156,7 +156,7 @@ ruleTester.run(name, rule as any, {
     // Event handler in server component
     {
       code: `
-        import { createCompositeComponent } from '@tanstack/react-start/rsc'
+        import { createCompositeComponent } from '@benjavicente/react-start/rsc'
         
         createCompositeComponent(() => {
           return <button onClick={() => {}}>Click</button>
@@ -167,7 +167,7 @@ ruleTester.run(name, rule as any, {
     // Event handler on intrinsic element (div) is also not allowed
     {
       code: `
-        import { createCompositeComponent } from '@tanstack/react-start/rsc'
+        import { createCompositeComponent } from '@benjavicente/react-start/rsc'
         
         createCompositeComponent(() => {
           return <div onClick={() => {}}>Click</div>
@@ -178,7 +178,7 @@ ruleTester.run(name, rule as any, {
     // Multiple violations
     {
       code: `
-        import { createCompositeComponent } from '@tanstack/react-start/rsc'
+        import { createCompositeComponent } from '@benjavicente/react-start/rsc'
         
         createCompositeComponent(() => {
           const [state] = useState(0)
@@ -195,7 +195,7 @@ ruleTester.run(name, rule as any, {
     // localStorage browser API
     {
       code: `
-        import { createCompositeComponent } from '@tanstack/react-start/rsc'
+        import { createCompositeComponent } from '@benjavicente/react-start/rsc'
         
         createCompositeComponent(() => {
           const val = localStorage.getItem('key')
@@ -207,7 +207,7 @@ ruleTester.run(name, rule as any, {
     // document browser API
     {
       code: `
-        import { createCompositeComponent } from '@tanstack/react-start/rsc'
+        import { createCompositeComponent } from '@benjavicente/react-start/rsc'
         
         createCompositeComponent(() => {
           const el = document.getElementById('foo')
@@ -219,7 +219,7 @@ ruleTester.run(name, rule as any, {
     // useEffect hook
     {
       code: `
-        import { createCompositeComponent } from '@tanstack/react-start/rsc'
+        import { createCompositeComponent } from '@benjavicente/react-start/rsc'
         
         createCompositeComponent(() => {
           useEffect(() => {}, [])
@@ -231,7 +231,7 @@ ruleTester.run(name, rule as any, {
     // useRef hook
     {
       code: `
-        import { createCompositeComponent } from '@tanstack/react-start/rsc'
+        import { createCompositeComponent } from '@benjavicente/react-start/rsc'
         
         createCompositeComponent(() => {
           const ref = useRef(null)
@@ -243,7 +243,7 @@ ruleTester.run(name, rule as any, {
     // useContext hook
     {
       code: `
-        import { createCompositeComponent } from '@tanstack/react-start/rsc'
+        import { createCompositeComponent } from '@benjavicente/react-start/rsc'
         
         createCompositeComponent(() => {
           const ctx = useContext(MyContext)
@@ -255,7 +255,7 @@ ruleTester.run(name, rule as any, {
     // onSubmit event handler
     {
       code: `
-        import { createCompositeComponent } from '@tanstack/react-start/rsc'
+        import { createCompositeComponent } from '@benjavicente/react-start/rsc'
         
         createCompositeComponent(() => {
           return <form onSubmit={() => {}}>Submit</form>
@@ -266,7 +266,7 @@ ruleTester.run(name, rule as any, {
     // onChange event handler
     {
       code: `
-        import { createCompositeComponent } from '@tanstack/react-start/rsc'
+        import { createCompositeComponent } from '@benjavicente/react-start/rsc'
         
         createCompositeComponent(() => {
           return <input onChange={() => {}} />
@@ -277,7 +277,7 @@ ruleTester.run(name, rule as any, {
     // onMouseEnter event handler
     {
       code: `
-        import { createCompositeComponent } from '@tanstack/react-start/rsc'
+        import { createCompositeComponent } from '@benjavicente/react-start/rsc'
         
         createCompositeComponent(() => {
           return <div onMouseEnter={() => {}}>Hover</div>

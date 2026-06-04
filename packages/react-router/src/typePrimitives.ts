@@ -9,7 +9,7 @@ import type {
   InferStrict,
   InferTo,
   RegisteredRouter,
-} from '@tanstack/router-core'
+} from '@benjavicente/router-core'
 import type { LinkComponentProps } from './link'
 import type { UseParamsOptions } from './useParams'
 import type { UseSearchOptions } from './useSearch'

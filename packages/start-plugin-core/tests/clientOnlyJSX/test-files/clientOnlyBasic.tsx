@@ -1,4 +1,4 @@
-import { ClientOnly } from '@tanstack/react-router'
+import { ClientOnly } from '@benjavicente/react-router'
 import { Chart } from 'heavy-chart-library'
 import { formatData } from './utils'
 

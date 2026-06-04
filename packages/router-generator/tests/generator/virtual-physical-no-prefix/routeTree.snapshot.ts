@@ -59,7 +59,7 @@ export interface RootRouteChildren {
   ContactRoute: typeof ContactRoute
 }
 
-declare module '@tanstack/react-router' {
+declare module '@benjavicente/react-router' {
   interface FileRoutesByPath {
     '/contact': {
       id: '/contact'

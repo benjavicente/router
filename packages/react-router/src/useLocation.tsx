@@ -2,8 +2,8 @@
 
 import { useStore } from '@tanstack/react-store'
 import { useRef } from 'react'
-import { replaceEqualDeep } from '@tanstack/router-core'
-import { isServer } from '@tanstack/router-core/isServer'
+import { replaceEqualDeep } from '@benjavicente/router-core'
+import { isServer } from '@benjavicente/router-core/isServer'
 import { useRouter } from './useRouter'
 import type {
   StructuralSharingOption,
@@ -13,7 +13,7 @@ import type {
   AnyRouter,
   RegisteredRouter,
   RouterState,
-} from '@tanstack/router-core'
+} from '@benjavicente/router-core'
 
 export interface UseLocationBaseOptions<
   TRouter extends AnyRouter,

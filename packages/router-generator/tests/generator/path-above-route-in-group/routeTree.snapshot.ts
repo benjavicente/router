@@ -56,7 +56,7 @@ export interface RootRouteChildren {
   ABcRouteRoute: typeof ABcRouteRouteWithChildren
 }
 
-declare module '@tanstack/react-router' {
+declare module '@benjavicente/react-router' {
   interface FileRoutesByPath {
     '/a/$b/(c)': {
       id: '/a/$b/(c)'

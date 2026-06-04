@@ -1,5 +1,5 @@
-import { ErrorComponent, Link, createFileRoute } from '@tanstack/react-router'
-import type { ErrorComponentProps } from '@tanstack/react-router'
+import { ErrorComponent, Link, createFileRoute } from '@benjavicente/react-router'
+import type { ErrorComponentProps } from '@benjavicente/react-router'
 
 import { fetchPost } from '~/utils/posts'
 import { NotFound } from '~/components/NotFound'

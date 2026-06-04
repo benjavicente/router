@@ -1,4 +1,4 @@
-import { createFileRoute } from '@tanstack/solid-router'
+import { createFileRoute } from '@benjavicente/solid-router'
 import Counter from './-components/Counter'
 
 export const Route = createFileRoute('/counter')({

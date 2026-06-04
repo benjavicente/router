@@ -3,8 +3,8 @@ import {
   getLocationChangeInfo,
   handleHashScroll,
   trimPathRight,
-} from '@tanstack/router-core'
-import { isServer } from '@tanstack/router-core/isServer'
+} from '@benjavicente/router-core'
+import { isServer } from '@benjavicente/router-core/isServer'
 import { useRouter } from './useRouter'
 
 export function Transitioner() {

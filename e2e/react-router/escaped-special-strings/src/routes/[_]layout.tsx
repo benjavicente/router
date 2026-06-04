@@ -1,4 +1,4 @@
-import { createFileRoute } from '@tanstack/react-router'
+import { createFileRoute } from '@benjavicente/react-router'
 
 // This file uses [_]layout escaping to create a literal /_layout path
 // instead of being treated as a pathless layout route

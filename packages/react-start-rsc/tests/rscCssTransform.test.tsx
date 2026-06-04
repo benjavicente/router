@@ -58,7 +58,7 @@ describe('RSC CSS compiler transforms', () => {
           createCompositeComponent,
           renderServerComponent,
           renderToReadableStream,
-        } from '@tanstack/react-start/rsc'
+        } from '@benjavicente/react-start/rsc'
 
         export const renderable = renderServerComponent(<Card kind="renderable" />)
         export const composite = createCompositeComponent(() => ({
@@ -69,7 +69,7 @@ describe('RSC CSS compiler transforms', () => {
     })
 
     expect(code).toMatchInlineSnapshot(`
-      "import { createCompositeComponent, renderServerComponent, renderToReadableStream } from '@tanstack/react-start/rsc';
+      "import { createCompositeComponent, renderServerComponent, renderToReadableStream } from '@benjavicente/react-start/rsc';
       export const renderable = renderServerComponent(<Card kind="renderable" />, {
         __tanstackStartRscCss: import.meta.viteRsc.loadCss()
       });
@@ -88,7 +88,7 @@ describe('RSC CSS compiler transforms', () => {
         import {
           renderServerComponent,
           renderToReadableStream,
-        } from '@tanstack/react-start/rsc'
+        } from '@benjavicente/react-start/rsc'
 
         const node = <Card />
         export const existingOptions = renderServerComponent(<Card />, {
@@ -99,7 +99,7 @@ describe('RSC CSS compiler transforms', () => {
     })
 
     expect(code).toMatchInlineSnapshot(`
-      "import { renderServerComponent, renderToReadableStream } from '@tanstack/react-start/rsc';
+      "import { renderServerComponent, renderToReadableStream } from '@benjavicente/react-start/rsc';
       const node = <Card />;
       export const existingOptions = renderServerComponent(<Card />, {
         alreadyConfigured: true
@@ -110,7 +110,7 @@ describe('RSC CSS compiler transforms', () => {
 
   test('honors provider-only transforms for Rsbuild', async () => {
     const source = `
-      import { renderServerComponent } from '@tanstack/react-start/rsc'
+      import { renderServerComponent } from '@benjavicente/react-start/rsc'
 
       export const renderable = renderServerComponent(<Card />)
     `
@@ -130,9 +130,9 @@ describe('RSC CSS compiler transforms', () => {
 
     expect({ callerCode, providerCode }).toMatchInlineSnapshot(`
       {
-        "callerCode": "import { renderServerComponent } from '@tanstack/react-start/rsc';
+        "callerCode": "import { renderServerComponent } from '@benjavicente/react-start/rsc';
       export const renderable = renderServerComponent(<Card />);",
-        "providerCode": "import { renderServerComponent } from '@tanstack/react-start/rsc';
+        "providerCode": "import { renderServerComponent } from '@benjavicente/react-start/rsc';
       export const renderable = renderServerComponent(<Card />, {
         __tanstackStartRscCss: import.meta.rspackRsc.loadCss()
       });",
@@ -147,7 +147,7 @@ describe('RSC CSS compiler transforms', () => {
       })
 
     const code = `
-      import { renderServerComponent } from '@tanstack/react-start/rsc'
+      import { renderServerComponent } from '@benjavicente/react-start/rsc'
       export const renderable = renderServerComponent(<Card />)
     `
 

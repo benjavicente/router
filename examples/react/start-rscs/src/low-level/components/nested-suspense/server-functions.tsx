@@ -1,6 +1,6 @@
 import { Suspense } from 'react'
-import { createServerFn } from '@tanstack/react-start'
-import { renderToReadableStream } from '@tanstack/react-start/rsc'
+import { createServerFn } from '@benjavicente/react-start'
+import { renderToReadableStream } from '@benjavicente/react-start/rsc'
 
 // Server Component with async data
 async function ServerDataCard({ delay }: { delay: number }) {

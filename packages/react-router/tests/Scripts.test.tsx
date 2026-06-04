@@ -22,7 +22,7 @@ import {
   createRouter,
 } from '../src'
 import { Scripts } from '../src/Scripts'
-import type { Manifest } from '@tanstack/router-core'
+import type { Manifest } from '@benjavicente/router-core'
 
 // React 19 keeps stylesheet resources keyed by href alive for the lifetime of
 // the test module, so these tests use explicit asset URLs to avoid collisions

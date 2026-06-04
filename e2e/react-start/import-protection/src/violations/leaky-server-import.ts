@@ -1,4 +1,4 @@
-import { getRequest } from '@tanstack/react-start/server'
+import { getRequest } from '@benjavicente/react-start/server'
 
 // This is intentionally NOT inside a compiler-recognized boundary.
 // We want the import to survive compilation and be denied in the client build.

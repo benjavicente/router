@@ -2,7 +2,7 @@ import { expectTypeOf, test } from 'vitest'
 import { createMiddleware } from '../createMiddleware'
 import type { RequestServerNextFn } from '../createMiddleware'
 import type { ConstrainValidator, CustomFetch } from '../createServerFn'
-import type { Register, SerializationError } from '@tanstack/router-core'
+import type { Register, SerializationError } from '@benjavicente/router-core'
 import type { ServerFnMeta } from '../constants'
 
 test('createServeMiddleware removes middleware after middleware,', () => {

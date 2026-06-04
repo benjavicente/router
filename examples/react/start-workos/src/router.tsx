@@ -1,4 +1,4 @@
-import { createRouter } from '@tanstack/react-router';
+import { createRouter } from '@benjavicente/react-router';
 import { routeTree } from './routeTree.gen';
 
 export function getRouter() {

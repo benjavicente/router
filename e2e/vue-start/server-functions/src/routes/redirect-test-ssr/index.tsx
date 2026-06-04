@@ -1,6 +1,6 @@
 import { useQuery } from '@tanstack/vue-query'
-import { createFileRoute, redirect } from '@tanstack/vue-router'
-import { createServerFn, useServerFn } from '@tanstack/vue-start'
+import { createFileRoute, redirect } from '@benjavicente/vue-router'
+import { createServerFn, useServerFn } from '@benjavicente/vue-start'
 import { Suspense, defineComponent } from 'vue'
 
 const $redirectServerFn = createServerFn({ method: 'GET' }).handler(

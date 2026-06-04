@@ -1,4 +1,4 @@
-import { Link, Outlet, createFileRoute } from '@tanstack/react-router'
+import { Link, Outlet, createFileRoute } from '@benjavicente/react-router'
 import type { User } from '../utils/users'
 
 export const Route = createFileRoute('/users')({

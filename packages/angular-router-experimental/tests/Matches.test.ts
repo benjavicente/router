@@ -1,0 +1,322 @@
+import * as Angular from '@angular/core'
+import { fireEvent, render, screen } from '@testing-library/angular'
+import { afterEach, expect, test, vi } from 'vitest'
+import {
+  Link,
+  Outlet,
+  RouterProvider,
+  createMemoryHistory,
+  createRootRoute,
+  createRoute,
+  createRouter,
+  injectErrorState,
+  injectIsShell,
+} from '../src'
+import { sleep } from './utils'
+
+afterEach(() => {
+  vi.clearAllMocks()
+  vi.resetAllMocks()
+  window.history.replaceState(null, 'root', '/')
+})
+
+@Angular.Component({
+  template: '<h1 data-testid="home">Home</h1>',
+  standalone: true,
+})
+class HomeComponent {}
+
+@Angular.Component({
+  template: '<h1 data-testid="pending">Pending</h1>',
+  standalone: true,
+})
+class PendingComponent {}
+
+@Angular.Component({
+  template: '<h1 data-testid="not-found">Not Found</h1>',
+  standalone: true,
+})
+class NotFoundComponent {}
+
+@Angular.Component({
+  template: '<h1 data-testid="error">Error: {{ state.error?.message }}</h1>',
+  standalone: true,
+})
+class ErrorComponent {
+  state = injectErrorState()
+}
+
+@Angular.Component({
+  imports: [Link, Outlet],
+  template: `
+    <a [link]="{ to: '/' }" data-testid="home-link">Home</a>
+    <a [link]="{ to: '/slow' }" data-testid="slow-link">Slow</a>
+    <a [link]="{ to: '/bad' }" data-testid="bad-link">Bad</a>
+    <a [link]="{ to: '/settings/' }" data-testid="settings-link">Settings</a>
+    <a [link]="{ to: '/settings/does-not-exist' }" data-testid="settings-missing-link">Missing</a>
+    <outlet />
+  `,
+})
+class RootComponent {}
+
+@Angular.Component({
+  template: '<h1 data-testid="slow">Slow Route</h1>',
+  standalone: true,
+})
+class SlowComponent {}
+
+@Angular.Component({
+  imports: [Outlet],
+  template: '<h1>Settings Layout</h1><outlet />',
+})
+class SettingsLayoutComponent {}
+
+@Angular.Component({
+  template: '<h1 data-testid="settings-index">Settings Index</h1>',
+  standalone: true,
+})
+class SettingsIndexComponent {}
+
+function makeRouter() {
+  const rootRoute = createRootRoute({
+    component: () => RootComponent,
+    notFoundComponent: () => NotFoundComponent,
+  })
+
+  const indexRoute = createRoute({
+    getParentRoute: () => rootRoute,
+    path: '/',
+    component: () => HomeComponent,
+  })
+
+  const slowRoute = createRoute({
+    getParentRoute: () => rootRoute,
+    path: '/slow',
+    pendingComponent: () => PendingComponent,
+    loader: async () => {
+      await sleep(1200)
+      return { ok: true }
+    },
+    component: () => SlowComponent,
+  })
+
+  const badRoute = createRoute({
+    getParentRoute: () => rootRoute,
+    path: '/bad',
+    loader: () => {
+      throw new Error('boom')
+    },
+    errorComponent: () => ErrorComponent,
+    component: () => HomeComponent,
+  })
+
+  const settingsRoute = createRoute({
+    getParentRoute: () => rootRoute,
+    path: '/settings',
+    notFoundComponent: () => NotFoundComponent,
+    component: () => SettingsLayoutComponent,
+  })
+
+  const settingsIndexRoute = createRoute({
+    getParentRoute: () => settingsRoute,
+    path: '/',
+    component: () => SettingsIndexComponent,
+  })
+
+  return createRouter({
+    routeTree: rootRoute.addChildren([
+      indexRoute,
+      slowRoute,
+      badRoute,
+      settingsRoute.addChildren([settingsIndexRoute]),
+    ]),
+    history: createMemoryHistory({ initialEntries: ['/'] }),
+    notFoundMode: 'fuzzy',
+  })
+}
+
+test('renders success route', async () => {
+  const router = makeRouter()
+
+  await render(RouterProvider, {
+    bindings: [Angular.inputBinding('router', () => router)],
+  })
+
+  await expect(screen.findByTestId('home')).resolves.toBeTruthy()
+})
+
+test('injectIsShell reflects router shell prerender state', async () => {
+  @Angular.Component({
+    template: '<p data-testid="is-shell">{{ isShell() }}</p>',
+    standalone: true,
+  })
+  class ShellProbeComponent {
+    isShell = injectIsShell()
+  }
+
+  const rootRoute = createRootRoute({
+    component: () => ShellProbeComponent,
+  })
+
+  const router = createRouter({
+    routeTree: rootRoute,
+    history: createMemoryHistory({ initialEntries: ['/'] }),
+    isShell: true,
+  })
+
+  await render(RouterProvider, {
+    bindings: [Angular.inputBinding('router', () => router)],
+  })
+
+  await expect(screen.findByTestId('is-shell')).resolves.toHaveTextContent('true')
+})
+
+test('keeps renderer host elements hidden', async () => {
+  const router = makeRouter()
+
+  @Angular.Component({
+    imports: [RouterProvider],
+    template: '<router-provider [router]="router" />',
+    standalone: true,
+  })
+  class HostComponent {
+    router = router
+  }
+
+  await render(HostComponent)
+
+  await expect(screen.findByTestId('home')).resolves.toBeTruthy()
+
+  const selectors = [
+    'router-provider',
+    'router-matches',
+    'router-match',
+    'outlet',
+  ]
+
+  for (const selector of selectors) {
+    const elements = document.querySelectorAll(selector)
+    expect(elements.length).toBeGreaterThan(0)
+
+    for (const element of elements) {
+      expect(element.hasAttribute('hidden')).toBe(true)
+    }
+  }
+})
+
+// Intentionally skipped: pending-route UI during async load is not an Angular parity
+// target (see repo PARITY_MATRIX); PendingComponent often never wins the race vs success.
+test.skip('renders pending state and then success state', async () => {
+  const router = makeRouter()
+
+  await render(RouterProvider, {
+    bindings: [Angular.inputBinding('router', () => router)],
+  })
+
+  const slowLink = await screen.findByTestId('slow-link')
+  fireEvent.click(slowLink)
+
+  await expect(
+    screen.findByTestId('pending', undefined, { timeout: 2000 }),
+  ).resolves.toBeTruthy()
+  await expect(screen.findByTestId('slow')).resolves.toBeTruthy()
+})
+
+test('renders error and notFound states', async () => {
+  const router = makeRouter()
+
+  await render(RouterProvider, {
+    bindings: [Angular.inputBinding('router', () => router)],
+  })
+
+  const badLink = await screen.findByTestId('bad-link')
+  fireEvent.click(badLink)
+
+  await expect(screen.findByTestId('error')).resolves.toBeTruthy()
+
+  const homeLink = await screen.findByTestId('home-link')
+  fireEvent.click(homeLink)
+  await expect(screen.findByTestId('home')).resolves.toBeTruthy()
+
+  const settingsLink = await screen.findByTestId('settings-link')
+  fireEvent.click(settingsLink)
+  await expect(screen.findByTestId('settings-index')).resolves.toBeTruthy()
+
+  const missingLink = await screen.findByTestId('settings-missing-link')
+  fireEvent.click(missingLink)
+
+  await expect(screen.findByTestId('not-found')).resolves.toBeTruthy()
+})
+
+test('renders a default error component when loader errors have no configured boundary', async () => {
+  const warnSpy = vi.spyOn(console, 'warn').mockImplementation(() => undefined)
+
+  const rootRoute = createRootRoute({
+    component: () => RootComponent,
+  })
+
+  const badRoute = createRoute({
+    getParentRoute: () => rootRoute,
+    path: '/bad',
+    loader: () => {
+      throw new Error('loader exploded')
+    },
+    component: () => HomeComponent,
+  })
+
+  const router = createRouter({
+    routeTree: rootRoute.addChildren([badRoute]),
+    history: createMemoryHistory({ initialEntries: ['/bad'] }),
+  })
+
+  await render(RouterProvider, {
+    bindings: [Angular.inputBinding('router', () => router)],
+  })
+
+  await expect(screen.findByRole('alert')).resolves.toBeTruthy()
+  await expect(screen.findByText(/loader exploded/)).resolves.toBeTruthy()
+  expect(warnSpy).toHaveBeenCalledWith(
+    expect.stringContaining('__root__'),
+  )
+})
+
+test('renders a parent error boundary for descendant errors without their own boundary', async () => {
+  @Angular.Component({
+    imports: [Outlet],
+    template: '<div data-testid="layout">Layout<outlet /></div>',
+    standalone: true,
+  })
+  class LayoutComponent {}
+
+  @Angular.Component({
+    template: '<div data-testid="parent-error">Parent error boundary</div>',
+    standalone: true,
+  })
+  class ParentErrorComponent {}
+
+  const rootRoute = createRootRoute({
+    component: () => LayoutComponent,
+    errorComponent: () => ParentErrorComponent,
+  })
+
+  const badRoute = createRoute({
+    getParentRoute: () => rootRoute,
+    path: '/bad',
+    loader: () => {
+      throw new Error('child loader exploded')
+    },
+    component: () => HomeComponent,
+  })
+
+  const router = createRouter({
+    routeTree: rootRoute.addChildren([badRoute]),
+    history: createMemoryHistory({ initialEntries: ['/bad'] }),
+  })
+
+  await render(RouterProvider, {
+    bindings: [Angular.inputBinding('router', () => router)],
+  })
+
+  await expect(screen.findByTestId('parent-error')).resolves.toBeTruthy()
+  expect(screen.queryByTestId('layout')).toBeNull()
+})

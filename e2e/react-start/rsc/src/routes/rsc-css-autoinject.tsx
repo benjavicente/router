@@ -1,13 +1,13 @@
 import * as React from 'react'
-import { createFileRoute } from '@tanstack/react-router'
-import { createServerFn } from '@tanstack/react-start'
+import { createFileRoute } from '@benjavicente/react-router'
+import { createServerFn } from '@benjavicente/react-start'
 import {
   CompositeComponent,
   createCompositeComponent,
   createFromFetch,
   renderServerComponent,
   renderToReadableStream,
-} from '@tanstack/react-start/rsc'
+} from '@benjavicente/react-start/rsc'
 import styles from './rsc-css-autoinject.module.css'
 import { pageStyles } from '~/utils/styles'
 

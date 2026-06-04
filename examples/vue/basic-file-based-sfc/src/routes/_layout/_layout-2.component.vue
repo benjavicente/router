@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { Link, Outlet } from '@tanstack/vue-router'
+import { Link, Outlet } from '@benjavicente/vue-router'
 </script>
 
 <template>

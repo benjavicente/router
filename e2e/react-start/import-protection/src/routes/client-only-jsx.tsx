@@ -1,4 +1,4 @@
-import { createFileRoute } from '@tanstack/react-router'
+import { createFileRoute } from '@benjavicente/react-router'
 // This import triggers a file-based violation in the SSR env:
 //   client-only-jsx.tsx -> violations/window-size.client.tsx (denied by **/*.client.*)
 // The binding is used directly in JSX, so the code snippet in the violation

@@ -1,4 +1,4 @@
-import { Outlet, createFileRoute } from '@tanstack/solid-router'
+import { Outlet, createFileRoute } from '@benjavicente/solid-router'
 import { RenderData, makeData } from '~/data'
 
 export const Route = createFileRoute('/ssr/data-only')({

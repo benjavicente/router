@@ -1,12 +1,12 @@
-import { RouterCore } from '@tanstack/router-core'
+import { RouterCore } from '@benjavicente/router-core'
 import { getStoreFactory } from './routerStores'
-import type { RouterHistory } from '@tanstack/history'
+import type { RouterHistory } from '@benjavicente/history'
 import type {
   AnyRoute,
   CreateRouterFn,
   RouterConstructorOptions,
   TrailingSlashOption,
-} from '@tanstack/router-core'
+} from '@benjavicente/router-core'
 
 import type {
   ErrorRouteComponent,
@@ -14,7 +14,7 @@ import type {
   RouteComponent,
 } from './route'
 
-declare module '@tanstack/router-core' {
+declare module '@benjavicente/router-core' {
   export interface RouterOptionsExtensions {
     /**
      * The default `component` a route should use if no component is provided.

@@ -1,6 +1,6 @@
-import { createFileRoute } from '@tanstack/solid-router'
-import { createServerFn, useServerFn } from '@tanstack/solid-start'
-import { setResponseStatus } from '@tanstack/solid-start/server'
+import { createFileRoute } from '@benjavicente/solid-router'
+import { createServerFn, useServerFn } from '@benjavicente/solid-start'
+import { setResponseStatus } from '@benjavicente/solid-start/server'
 
 const helloFn = createServerFn().handler(() => {
   setResponseStatus(225, `hello`)

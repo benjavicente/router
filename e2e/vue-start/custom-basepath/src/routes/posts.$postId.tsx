@@ -1,4 +1,4 @@
-import { Link, createFileRoute } from '@tanstack/vue-router'
+import { Link, createFileRoute } from '@benjavicente/vue-router'
 
 import { fetchPost } from '~/utils/posts'
 import { NotFound } from '~/components/NotFound'

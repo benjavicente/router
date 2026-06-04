@@ -1,6 +1,6 @@
 import { expect, test } from '@playwright/test'
 import { connect } from 'node:http2'
-import { getTestServerPort } from '@tanstack/router-e2e-utils'
+import { getTestServerPort } from '@benjavicente/router-e2e-utils'
 import packageJson from '../package.json' with { type: 'json' }
 import type { IncomingHttpHeaders } from 'node:http2'
 

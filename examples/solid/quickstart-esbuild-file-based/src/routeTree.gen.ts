@@ -28,7 +28,7 @@ const IndexRoute = IndexImport.update({
 
 // Populate the FileRoutesByPath interface
 
-declare module '@tanstack/solid-router' {
+declare module '@benjavicente/solid-router' {
   interface FileRoutesByPath {
     '/': {
       id: '/'

@@ -44,7 +44,7 @@ The `useLoaderData` hook accepts an `options` object.
 ## Examples
 
 ```tsx
-import { useLoaderData } from '@tanstack/react-router'
+import { useLoaderData } from '@benjavicente/react-router'
 
 function Component() {
   const loaderData = useLoaderData({ from: '/posts/$postId' })

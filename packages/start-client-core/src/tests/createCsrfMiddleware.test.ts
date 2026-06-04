@@ -6,7 +6,7 @@ import {
   isCsrfRequestAllowed,
 } from '../createCsrfMiddleware'
 import type { RequestServerOptions } from '../createMiddleware'
-import type { Register } from '@tanstack/router-core'
+import type { Register } from '@benjavicente/router-core'
 
 const requestOrigin = 'https://app.example.com'
 

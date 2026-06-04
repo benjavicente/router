@@ -1,4 +1,4 @@
-import { isServer } from '@tanstack/router-core/isServer'
+import { isServer } from '@benjavicente/router-core/isServer'
 import { invariant } from './invariant'
 import { createControlledPromise, isPromise } from './utils'
 import { isNotFound } from './not-found'

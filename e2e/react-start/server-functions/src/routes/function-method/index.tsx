@@ -1,4 +1,4 @@
-import { Link, createFileRoute, deepEqual } from '@tanstack/react-router'
+import { Link, createFileRoute, deepEqual } from '@benjavicente/react-router'
 import { useState } from 'react'
 import {
   getServerFnCallingPost,

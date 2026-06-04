@@ -26,7 +26,7 @@ The `createRootRouteWithContext` function accepts a single generic argument:
 import {
   createRootRouteWithContext,
   createRouter,
-} from '@tanstack/react-router'
+} from '@benjavicente/react-router'
 import { QueryClient } from '@tanstack/react-query'
 
 interface MyRouterContext {

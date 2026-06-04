@@ -36,7 +36,7 @@ Pick<
 
 ```tsx
 // src/route-pages/index.tsx
-import { createLazyRoute } from '@tanstack/react-router'
+import { createLazyRoute } from '@benjavicente/react-router'
 
 export const Route = createLazyRoute('/')({
   component: IndexComponent,
@@ -52,7 +52,7 @@ import {
   createRootRouteWithContext,
   createRoute,
   Outlet,
-} from '@tanstack/react-router'
+} from '@benjavicente/react-router'
 
 interface MyRouterContext {
   foo: string

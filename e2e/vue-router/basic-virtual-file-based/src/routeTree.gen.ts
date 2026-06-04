@@ -164,7 +164,7 @@ export interface RootRouteChildren {
   ClassicHelloRouteRoute: typeof ClassicHelloRouteRouteWithChildren
 }
 
-declare module '@tanstack/vue-router' {
+declare module '@benjavicente/vue-router' {
   interface FileRoutesByPath {
     '/posts': {
       id: '/posts'

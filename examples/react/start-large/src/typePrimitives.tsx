@@ -1,5 +1,5 @@
 import * as React from 'react'
-import { Link, redirect, useNavigate } from '@tanstack/react-router'
+import { Link, redirect, useNavigate } from '@benjavicente/react-router'
 import type {
   RegisteredRouter,
   ValidateFromPath,
@@ -7,7 +7,7 @@ import type {
   ValidateLinkOptionsArray,
   ValidateNavigateOptions,
   ValidateRedirectOptions,
-} from '@tanstack/react-router'
+} from '@benjavicente/react-router'
 
 export function customRedirect<TRouter extends RegisteredRouter, TOptions>(
   options: ValidateRedirectOptions<TRouter, TOptions>,

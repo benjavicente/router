@@ -58,7 +58,7 @@ TanStack Start's architecture provides several opportunities for built-in observ
 Add logging to your server functions to track execution, performance, and errors:
 
 ```tsx
-import { createServerFn } from '@tanstack/solid-start'
+import { createServerFn } from '@benjavicente/solid-start'
 
 const getUser = createServerFn({ method: 'GET' })
   .inputValidator((id: string) => id)
@@ -95,7 +95,7 @@ const getUser = createServerFn({ method: 'GET' })
 Create middleware to log all requests and responses:
 
 ```tsx
-import { createMiddleware } from '@tanstack/solid-start'
+import { createMiddleware } from '@benjavicente/solid-start'
 
 const requestLogger = createMiddleware().handler(async ({ next }) => {
   const startTime = Date.now()
@@ -140,7 +140,7 @@ export const Route = createFileRoute('/api/users')({
 Track route loading performance on both client and server:
 
 ```tsx
-import { createFileRoute } from '@tanstack/solid-router'
+import { createFileRoute } from '@benjavicente/solid-router'
 
 export const Route = createFileRoute('/dashboard')({
   loader: async ({ context }) => {
@@ -184,7 +184,7 @@ Create server routes for health monitoring:
 
 ```tsx
 // routes/health.ts
-import { createFileRoute } from '@tanstack/solid-router'
+import { createFileRoute } from '@benjavicente/solid-router'
 
 export const Route = createFileRoute('/health')({
   server: {
@@ -332,7 +332,7 @@ export const Route = createFileRoute('/metrics')({
 Add helpful debug information to responses:
 
 ```tsx
-import { createMiddleware } from '@tanstack/solid-start'
+import { createMiddleware } from '@benjavicente/solid-start'
 
 const debugMiddleware = createMiddleware().handler(async ({ next }) => {
   const response = await next()
@@ -353,7 +353,7 @@ Configure different logging strategies for development vs production:
 
 ```tsx
 // utils/logger.ts
-import { createIsomorphicFn } from '@tanstack/solid-start'
+import { createIsomorphicFn } from '@benjavicente/solid-start'
 
 type LogLevel = 'debug' | 'info' | 'warn' | 'error'
 
@@ -545,7 +545,7 @@ const getUserWithTracing = createServerFn({ method: 'GET' })
 
 ```tsx
 // Middleware for automatic tracing
-import { createMiddleware } from '@tanstack/solid-start'
+import { createMiddleware } from '@benjavicente/solid-start'
 import { trace, SpanStatusCode } from '@opentelemetry/api'
 
 const tracer = trace.getTracer('tanstack-start')

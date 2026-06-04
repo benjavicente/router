@@ -1,5 +1,5 @@
 import { useCallback, useEffect, useState } from 'react'
-import { createFromReadableStream } from '@tanstack/react-start/rsc'
+import { createFromReadableStream } from '@benjavicente/react-start/rsc'
 
 import { db } from '../../db'
 import { getCounterRscPayload } from './server-functions'

@@ -2,7 +2,7 @@ import { defineConfig } from '@rsbuild/core'
 import { pluginBabel } from '@rsbuild/plugin-babel'
 import { pluginVue } from '@rsbuild/plugin-vue'
 import { pluginVueJsx } from '@rsbuild/plugin-vue-jsx'
-import { tanstackStart } from '@tanstack/vue-start/plugin/rsbuild'
+import { tanstackStart } from '@benjavicente/vue-start/plugin/rsbuild'
 import { isPrerender } from './tests/utils/isPrerender'
 
 const outDir = process.env.E2E_DIST_DIR ?? 'dist'

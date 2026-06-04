@@ -1,10 +1,10 @@
-import { createMiddleware, createServerFn } from '@tanstack/react-start'
-import { getRequest } from '@tanstack/react-start/server'
+import { createMiddleware, createServerFn } from '@benjavicente/react-start'
+import { getRequest } from '@benjavicente/react-start/server'
 
 import { getSecret } from '../secret.server'
 
 // This file intentionally contains denied imports (./secret.server and
-// @tanstack/react-start/server), but they are only referenced inside
+// @benjavicente/react-start/server), but they are only referenced inside
 // compiler-recognized server boundaries.
 
 const secretMiddleware = createMiddleware({ type: 'function' }).server(

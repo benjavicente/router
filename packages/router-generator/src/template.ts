@@ -2,15 +2,16 @@ import { format } from './utils'
 import type { Config } from './config'
 
 type TemplateTag = 'tsrImports' | 'tsrPath' | 'tsrExportStart' | 'tsrExportEnd'
+type TemplateValueTag = TemplateTag | 'tsrSelector'
 
 export function fillTemplate(
   config: Config,
   template: string,
-  values: Record<TemplateTag, string>,
+  values: Record<TemplateValueTag, string>,
 ) {
   const replaced = template.replace(
     /%%(\w+)%%/g,
-    (_, key) => values[key as TemplateTag] || '',
+    (_, key) => values[key as TemplateValueTag] || '',
   )
   return format(replaced, config)
 }
@@ -48,12 +49,35 @@ function serializeRoutePath(routePath: string) {
   return JSON.stringify(routePath)
 }
 
+export function getAngularRouteSelector(prefix: string, routePath: string) {
+  const segments = routePath
+    .replaceAll('$', '')
+    .replaceAll(/\{(.+?)\}/g, '$1')
+    .split('/')
+    .filter(Boolean)
+
+  if (routePath === '/' || segments.length === 0) {
+    segments.push('index')
+  } else if (routePath.endsWith('/')) {
+    segments.push('index')
+  }
+
+  const routeSelector = segments
+    .join('-')
+    .replaceAll(/([a-z0-9])([A-Z])/g, '$1-$2')
+    .replaceAll(/[^a-zA-Z0-9]+/g, '-')
+    .replaceAll(/^-+|-+$/g, '')
+    .toLowerCase()
+
+  return `${prefix}-${routeSelector || 'index'}`
+}
+
 export function getTargetTemplate(config: Config): TargetTemplate {
   const target = config.target
   switch (target) {
     case 'react':
       return {
-        fullPkg: '@tanstack/react-router',
+        fullPkg: '@benjavicente/react-router',
         subPkg: 'react-router',
         rootRoute: {
           template: () =>
@@ -66,7 +90,7 @@ export function getTargetTemplate(config: Config): TargetTemplate {
             ].join(''),
           imports: {
             tsrImports: () =>
-              "import { Outlet, createRootRoute } from '@tanstack/react-router';",
+              "import { Outlet, createRootRoute } from '@benjavicente/react-router';",
             tsrExportStart: () => 'export const Route = createRootRoute(',
             tsrExportEnd: () => ');',
           },
@@ -81,7 +105,7 @@ export function getTargetTemplate(config: Config): TargetTemplate {
             ].join(''),
           imports: {
             tsrImports: () =>
-              "import { createFileRoute } from '@tanstack/react-router';",
+              "import { createFileRoute } from '@benjavicente/react-router';",
             tsrExportStart: (routePath) =>
               `export const Route = createFileRoute(${serializeRoutePath(routePath)})(`,
             tsrExportEnd: () => ');',
@@ -97,7 +121,7 @@ export function getTargetTemplate(config: Config): TargetTemplate {
             ].join(''),
           imports: {
             tsrImports: () =>
-              "import { createLazyFileRoute } from '@tanstack/react-router';",
+              "import { createLazyFileRoute } from '@benjavicente/react-router';",
             tsrExportStart: (routePath) =>
               `export const Route = createLazyFileRoute(${serializeRoutePath(routePath)})(`,
             tsrExportEnd: () => ');',
@@ -106,7 +130,7 @@ export function getTargetTemplate(config: Config): TargetTemplate {
       }
     case 'solid':
       return {
-        fullPkg: '@tanstack/solid-router',
+        fullPkg: '@benjavicente/solid-router',
         subPkg: 'solid-router',
         rootRoute: {
           template: () =>
@@ -119,7 +143,7 @@ export function getTargetTemplate(config: Config): TargetTemplate {
             ].join(''),
           imports: {
             tsrImports: () =>
-              "import { Outlet, createRootRoute } from '@tanstack/solid-router';",
+              "import { Outlet, createRootRoute } from '@benjavicente/solid-router';",
             tsrExportStart: () => 'export const Route = createRootRoute(',
             tsrExportEnd: () => ');',
           },
@@ -134,7 +158,7 @@ export function getTargetTemplate(config: Config): TargetTemplate {
             ].join(''),
           imports: {
             tsrImports: () =>
-              "import { createFileRoute } from '@tanstack/solid-router';",
+              "import { createFileRoute } from '@benjavicente/solid-router';",
             tsrExportStart: (routePath) =>
               `export const Route = createFileRoute(${serializeRoutePath(routePath)})(`,
             tsrExportEnd: () => ');',
@@ -150,7 +174,7 @@ export function getTargetTemplate(config: Config): TargetTemplate {
             ].join(''),
           imports: {
             tsrImports: () =>
-              "import { createLazyFileRoute } from '@tanstack/solid-router';",
+              "import { createLazyFileRoute } from '@benjavicente/solid-router';",
 
             tsrExportStart: (routePath) =>
               `export const Route = createLazyFileRoute(${serializeRoutePath(routePath)})(`,
@@ -161,7 +185,7 @@ export function getTargetTemplate(config: Config): TargetTemplate {
       }
     case 'vue':
       return {
-        fullPkg: '@tanstack/vue-router',
+        fullPkg: '@benjavicente/vue-router',
         subPkg: 'vue-router',
         rootRoute: {
           template: () =>
@@ -174,7 +198,7 @@ export function getTargetTemplate(config: Config): TargetTemplate {
             ].join(''),
           imports: {
             tsrImports: () =>
-              "import { Outlet, createRootRoute } from '@tanstack/vue-router';",
+              "import { Outlet, createRootRoute } from '@benjavicente/vue-router';",
             tsrExportStart: () => 'export const Route = createRootRoute(',
             tsrExportEnd: () => ');',
           },
@@ -190,7 +214,7 @@ export function getTargetTemplate(config: Config): TargetTemplate {
             ].join(''),
           imports: {
             tsrImports: () =>
-              "import { createFileRoute } from '@tanstack/vue-router';",
+              "import { createFileRoute } from '@benjavicente/vue-router';",
             tsrExportStart: (routePath) =>
               `export const Route = createFileRoute(${serializeRoutePath(routePath)})(`,
             tsrExportEnd: () => ');',
@@ -207,7 +231,7 @@ export function getTargetTemplate(config: Config): TargetTemplate {
             ].join(''),
           imports: {
             tsrImports: () =>
-              "import { createLazyFileRoute } from '@tanstack/vue-router';",
+              "import { createLazyFileRoute } from '@benjavicente/vue-router';",
 
             tsrExportStart: (routePath) =>
               `export const Route = createLazyFileRoute(${serializeRoutePath(routePath)})(`,
@@ -216,6 +240,69 @@ export function getTargetTemplate(config: Config): TargetTemplate {
           },
         },
       }
+    case 'angular': {
+      const angularRouterPackage =
+        config.angularRouterPackage ??
+        '@benjavicente/angular-router-experimental'
+
+      return {
+        fullPkg: angularRouterPackage,
+        subPkg: 'angular-router-experimental',
+        rootRoute: {
+          template: () =>
+            [
+              'import { Component } from "@angular/core"\n',
+              '%%tsrImports%%',
+              '\n\n',
+              '%%tsrExportStart%%{\n component: () => RootComponent\n }%%tsrExportEnd%%\n\n',
+              '@Component({\n selector: "%%tsrSelector%%",\n standalone: true,\n imports: [Outlet],\n template: `<div>Hello "%%tsrPath%%"!</div><outlet />`,\n})\n',
+              'class RootComponent {}\n',
+            ].join(''),
+          imports: {
+            tsrImports: () =>
+              `import { Outlet, createRootRoute } from '${angularRouterPackage}';`,
+            tsrExportStart: () => 'export const Route = createRootRoute(',
+            tsrExportEnd: () => ');',
+          },
+        },
+        route: {
+          template: () =>
+            [
+              'import { Component } from "@angular/core"\n',
+              '%%tsrImports%%',
+              '\n\n',
+              '%%tsrExportStart%%{\n component: () => RouteComponent\n }%%tsrExportEnd%%\n\n',
+              '@Component({\n selector: "%%tsrSelector%%",\n standalone: true,\n template: `<div>Hello "%%tsrPath%%"!</div>`,\n})\n',
+              'class RouteComponent {}\n',
+            ].join(''),
+          imports: {
+            tsrImports: () =>
+              `import { createFileRoute } from '${angularRouterPackage}';`,
+            tsrExportStart: (routePath) =>
+              `export const Route = createFileRoute(${serializeRoutePath(routePath)})(`,
+            tsrExportEnd: () => ');',
+          },
+        },
+        lazyRoute: {
+          template: () =>
+            [
+              'import { Component } from "@angular/core"\n',
+              '%%tsrImports%%',
+              '\n\n',
+              '%%tsrExportStart%%{\n component: () => RouteComponent\n }%%tsrExportEnd%%\n\n',
+              '@Component({\n selector: "%%tsrSelector%%",\n standalone: true,\n template: `<div>Hello "%%tsrPath%%"!</div>`,\n})\n',
+              'class RouteComponent {}\n',
+            ].join(''),
+          imports: {
+            tsrImports: () =>
+              `import { createLazyFileRoute } from '${angularRouterPackage}';`,
+            tsrExportStart: (routePath) =>
+              `export const Route = createLazyFileRoute(${serializeRoutePath(routePath)})(`,
+            tsrExportEnd: () => ');',
+          },
+        },
+      }
+    }
     default:
       throw new Error(`router-generator: Unknown target type: ${target}`)
   }

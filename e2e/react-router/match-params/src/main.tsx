@@ -6,7 +6,7 @@ import {
   createRootRoute,
   createRoute,
   createRouter,
-} from '@tanstack/react-router'
+} from '@benjavicente/react-router'
 
 const rootRoute = createRootRoute({
   component: RootComponent,
@@ -216,7 +216,7 @@ const routeTree = rootRoute.addChildren([
 
 const router = createRouter({ routeTree })
 
-declare module '@tanstack/react-router' {
+declare module '@benjavicente/react-router' {
   interface Register {
     router: typeof router
   }

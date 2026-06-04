@@ -1,4 +1,4 @@
-import { createFileRoute } from '@tanstack/react-router'
+import { createFileRoute } from '@benjavicente/react-router'
 import '~/styles/quotes.css'
 
 export const Route = createFileRoute('/quotes')({

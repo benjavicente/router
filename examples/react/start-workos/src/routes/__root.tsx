@@ -1,6 +1,6 @@
 import { Box, Button, Card, Container, Flex, Theme } from '@radix-ui/themes';
-import { HeadContent, Link, Outlet, Scripts, createRootRoute } from '@tanstack/react-router';
-import { TanStackRouterDevtools } from '@tanstack/react-router-devtools';
+import { HeadContent, Link, Outlet, Scripts, createRootRoute } from '@benjavicente/react-router';
+import { TanStackRouterDevtools } from '@benjavicente/react-router-devtools';
 import { Suspense } from 'react';
 import { getSignInUrl } from '@workos/authkit-tanstack-react-start';
 import { AuthKitProvider, getAuthAction } from '@workos/authkit-tanstack-react-start/client';

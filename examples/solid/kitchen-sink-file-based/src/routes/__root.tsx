@@ -4,7 +4,7 @@ import {
   Outlet,
   createRootRouteWithContext,
   useRouterState,
-} from '@tanstack/solid-router'
+} from '@benjavicente/solid-router'
 import { Spinner } from '../components/Spinner'
 import { Breadcrumbs } from '../components/Breadcrumbs'
 import type { Auth } from '../utils/auth'

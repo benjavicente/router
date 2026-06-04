@@ -2,7 +2,7 @@ import url from 'node:url'
 import path from 'node:path'
 import { defineConfig } from 'vite'
 import solid from 'vite-plugin-solid'
-import { tanstackRouter } from '@tanstack/router-plugin/vite'
+import { tanstackRouter } from '@benjavicente/router-plugin/vite'
 import type { BuildEnvironmentOptions } from 'vite'
 import tailwindcss from '@tailwindcss/vite'
 

@@ -1,7 +1,7 @@
-import { createFileRoute } from '@tanstack/solid-router'
-import { getRouteApi, useSearch } from '@tanstack/solid-router'
+import { createFileRoute } from '@benjavicente/solid-router'
+import { getRouteApi, useSearch } from '@benjavicente/solid-router'
 import { z } from 'zod'
-import { zodValidator } from '@tanstack/zod-adapter'
+import { zodValidator } from '@benjavicente/zod-adapter'
 
 const routeApi = getRouteApi('/(another-group)/onlyrouteinside')
 

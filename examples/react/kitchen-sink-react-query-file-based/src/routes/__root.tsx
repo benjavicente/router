@@ -4,8 +4,8 @@ import {
   Outlet,
   createRootRouteWithContext,
   useRouterState,
-} from '@tanstack/react-router'
-import { TanStackRouterDevtools } from '@tanstack/react-router-devtools'
+} from '@benjavicente/react-router'
+import { TanStackRouterDevtools } from '@benjavicente/react-router-devtools'
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools'
 import { Spinner } from '../components/Spinner'
 import type { QueryClient } from '@tanstack/react-query'

@@ -7,7 +7,7 @@ import {
   Scripts,
   createRootRoute,
   useRouterState,
-} from '@tanstack/solid-router'
+} from '@benjavicente/solid-router'
 import { z } from 'zod'
 import { HydrationScript } from 'solid-js/web'
 import type * as Solid from 'solid-js'

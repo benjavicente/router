@@ -1,4 +1,4 @@
-# @tanstack/vue-router — Skill Spec
+# @benjavicente/vue-router — Skill Spec
 
 Vue bindings for TanStack Router. Ref<T> returns, defineComponent, h() render functions, provide/inject, Html/Body components.
 

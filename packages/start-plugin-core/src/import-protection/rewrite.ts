@@ -1,9 +1,9 @@
 import * as t from '@babel/types'
-import { generateFromAst, parseAst } from '@tanstack/router-utils'
+import { generateFromAst, parseAst } from '@benjavicente/router-utils'
 
 import { MOCK_MODULE_ID } from './constants'
 import type { SourceMapLike } from './sourceLocation'
-import type { ParseAstResult } from '@tanstack/router-utils'
+import type { ParseAstResult } from '@benjavicente/router-utils'
 
 function getModuleExportName(node: t.Identifier | t.StringLiteral): string {
   return t.isIdentifier(node) ? node.name : node.value

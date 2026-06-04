@@ -35,7 +35,7 @@ export function AppHeader() {
 Server functions can access **any** environment variable using `process.env`:
 
 ```typescript
-import { createServerFn } from '@tanstack/solid-start'
+import { createServerFn } from '@benjavicente/solid-start'
 
 // Database connection (server-only)
 const connectToDatabase = createServerFn().handler(async () => {
@@ -136,7 +136,7 @@ DATABASE_POOL_SIZE=20
 
 ```typescript
 // src/lib/database.ts
-import { createServerFn } from '@tanstack/solid-start'
+import { createServerFn } from '@benjavicente/solid-start'
 
 const getDatabaseConnection = createServerFn().handler(async () => {
   const config = {
@@ -182,7 +182,7 @@ export function AuthProvider(props) {
 
 ```typescript
 // src/lib/external-api.ts
-import { createServerFn } from '@tanstack/solid-start'
+import { createServerFn } from '@benjavicente/solid-start'
 
 // Server-side API calls (can use secret keys)
 const fetchUserData = createServerFn()
@@ -490,7 +490,7 @@ The replacement is controlled by the `server.build.staticNodeEnv` option:
 ```ts
 // vite.config.ts
 import { defineConfig } from 'vite'
-import { tanstackStart } from '@tanstack/solid-start/plugin/vite'
+import { tanstackStart } from '@benjavicente/solid-start/plugin/vite'
 
 export default defineConfig({
   plugins: [

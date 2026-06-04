@@ -1,4 +1,4 @@
-import { createMiddleware } from '@tanstack/solid-start'
+import { createMiddleware } from '@benjavicente/solid-start'
 import { createFooServerFn } from './createFooServerFn'
 
 const barMiddleware = createMiddleware({ type: 'function' }).server(

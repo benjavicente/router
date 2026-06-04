@@ -1,11 +1,11 @@
 import {
   START_ENVIRONMENT_NAMES,
   tanStackStartVite,
-} from '@tanstack/start-plugin-core/vite'
+} from '@benjavicente/start-plugin-core/vite'
 import type {
   TanStackStartViteInputConfig,
   TanStackStartVitePluginCoreOptions,
-} from '@tanstack/start-plugin-core/vite'
+} from '@benjavicente/start-plugin-core/vite'
 import { vueStartDefaultEntryPaths } from './shared'
 import type { PluginOption } from 'vite'
 
@@ -33,11 +33,11 @@ export function tanstackStart(
               // This indicates that the server environment has opted in to dependency optimization
               options.optimizeDeps?.noDiscovery === false)
               ? {
-                  // As `@tanstack/vue-start` depends on `@tanstack/vue-router`, we should exclude both.
+                  // As `@benjavicente/vue-start` depends on `@benjavicente/vue-router`, we should exclude both.
                   exclude: [
-                    '@tanstack/vue-start',
-                    '@tanstack/vue-router',
-                    '@tanstack/start-static-server-functions',
+                    '@benjavicente/vue-start',
+                    '@benjavicente/vue-router',
+                    '@benjavicente/start-static-server-functions',
                   ],
                 }
               : undefined,

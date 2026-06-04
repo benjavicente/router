@@ -1,5 +1,5 @@
-import { createServerRpc } from '@tanstack/react-start/server-rpc';
-import { createIsomorphicFn, createServerFn } from '@tanstack/react-start';
+import { createServerRpc } from '@benjavicente/react-start/server-rpc';
+import { createIsomorphicFn, createServerFn } from '@benjavicente/react-start';
 const getEnv = createIsomorphicFn().server(() => 'server').client(() => 'client');
 const getServerEnv_createServerFn_handler = createServerRpc({
   id: "6049dd46bc00e0980e387f3e74924b40e92f37634a3fe74a1a1facda9e9207c2",

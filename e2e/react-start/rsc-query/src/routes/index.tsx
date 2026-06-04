@@ -1,4 +1,4 @@
-import { createFileRoute, Link, linkOptions } from '@tanstack/react-router'
+import { createFileRoute, Link, linkOptions } from '@benjavicente/react-router'
 import { pageStyles, colors } from '~/utils/styles'
 
 export const Route = createFileRoute('/')({

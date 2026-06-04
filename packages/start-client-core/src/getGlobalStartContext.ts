@@ -1,7 +1,7 @@
-import { getStartContext } from '@tanstack/start-storage-context'
-import { createIsomorphicFn } from '@tanstack/start-fn-stubs'
+import { getStartContext } from '@benjavicente/start-storage-context'
+import { createIsomorphicFn } from '@benjavicente/start-fn-stubs'
 import type { AssignAllServerRequestContext } from './createMiddleware'
-import type { Expand, Register } from '@tanstack/router-core'
+import type { Expand, Register } from '@benjavicente/router-core'
 
 export const getGlobalStartContext: () =>
   | Expand<AssignAllServerRequestContext<Register, []>>

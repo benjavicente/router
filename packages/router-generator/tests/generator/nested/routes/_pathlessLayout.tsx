@@ -1,4 +1,4 @@
-import { createFileRoute, Outlet } from '@tanstack/react-router'
+import { createFileRoute, Outlet } from '@benjavicente/react-router'
 export const Route = createFileRoute('/_pathlessLayout')({
   component: () => <Outlet />,
 })

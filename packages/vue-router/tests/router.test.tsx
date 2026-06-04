@@ -7,7 +7,7 @@ import {
   waitFor,
 } from '@testing-library/vue'
 import { z } from 'zod'
-import { composeRewrites, notFound } from '@tanstack/router-core'
+import { composeRewrites, notFound } from '@benjavicente/router-core'
 import {
   Link,
   Outlet,
@@ -20,7 +20,7 @@ import {
   useNavigate,
 } from '../src'
 import { sleep } from './utils'
-import type { StandardSchemaValidator } from '@tanstack/router-core'
+import type { StandardSchemaValidator } from '@benjavicente/router-core'
 import type {
   AnyRoute,
   AnyRouter,

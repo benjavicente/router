@@ -1,5 +1,5 @@
-import { createServerFn } from '@tanstack/react-start'
-import { renderToReadableStream } from '@tanstack/react-start/rsc'
+import { createServerFn } from '@benjavicente/react-start'
+import { renderToReadableStream } from '@benjavicente/react-start/rsc'
 
 // Server Component that will be rendered to a Flight stream
 function ServerGreeting({

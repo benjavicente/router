@@ -1,4 +1,4 @@
-import type { NavigateOptions } from '@tanstack/router-core'
+import type { NavigateOptions } from '@benjavicente/router-core'
 import type * as App from './app'
 import { getRequiredLink, waitForRequiredLink } from '../setup-helpers'
 

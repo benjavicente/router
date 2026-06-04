@@ -1,5 +1,5 @@
 library:
-  name: '@tanstack/start-server-core'
+  name: '@benjavicente/start-server-core'
   version: '1.166.2'
   repository: 'https://github.com/TanStack/router'
   description: >-

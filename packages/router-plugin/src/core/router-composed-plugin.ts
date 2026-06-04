@@ -1,4 +1,4 @@
-import { getConfig } from '@tanstack/router-generator'
+import { getConfig } from '@benjavicente/router-generator'
 import { createRouterGeneratorPlugin } from './router-generator-plugin'
 import { createRouterCodeSplitterPlugin } from './router-code-splitter-plugin'
 import { createRouterHmrPlugin } from './router-hmr-plugin'

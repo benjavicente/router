@@ -1,5 +1,5 @@
 import { QueryClient, QueryClientProvider } from '@tanstack/solid-query'
-import { createRouter } from '@tanstack/solid-router'
+import { createRouter } from '@benjavicente/solid-router'
 import { routeTree } from './routeTree.gen'
 
 export function getRouter() {
@@ -14,7 +14,7 @@ export function getRouter() {
   })
 }
 
-declare module '@tanstack/solid-router' {
+declare module '@benjavicente/solid-router' {
   interface Register {
     router: ReturnType<typeof getRouter>
   }

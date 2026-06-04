@@ -3,7 +3,7 @@ import type {
   LooseAsyncReturnType,
   LooseReturnType,
   ValidateSerializable,
-} from '@tanstack/router-core'
+} from '@benjavicente/router-core'
 import type { ComponentProps, ComponentType } from 'react'
 
 export interface ServerComponentStream {
@@ -203,7 +203,7 @@ export interface RenderableServerComponentAttributes<TNode> {
   [RENDERABLE_RSC]: true
 }
 
-declare module '@tanstack/router-core' {
+declare module '@benjavicente/router-core' {
   export interface SerializableExtensions {
     CompositeComponent: AnyCompositeComponent
     RenderableServerComponent: AnyRenderableServerComponent

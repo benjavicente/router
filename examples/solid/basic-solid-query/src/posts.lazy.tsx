@@ -1,4 +1,4 @@
-import { Link, Outlet, createLazyRoute } from '@tanstack/solid-router'
+import { Link, Outlet, createLazyRoute } from '@benjavicente/solid-router'
 import { useQuery } from '@tanstack/solid-query'
 import { createMemo } from 'solid-js'
 import { postsQueryOptions } from './posts'

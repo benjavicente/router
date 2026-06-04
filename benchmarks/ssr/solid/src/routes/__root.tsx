@@ -3,7 +3,7 @@ import {
   Outlet,
   Scripts,
   createRootRoute,
-} from '@tanstack/solid-router'
+} from '@benjavicente/solid-router'
 
 export const Route = createRootRoute({
   component: RootComponent,

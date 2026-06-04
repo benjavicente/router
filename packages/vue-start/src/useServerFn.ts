@@ -1,4 +1,4 @@
-import { isRedirect, useRouter } from '@tanstack/vue-router'
+import { isRedirect, useRouter } from '@benjavicente/vue-router'
 
 export function useServerFn<T extends (...deps: Array<any>) => Promise<any>>(
   serverFn: T,

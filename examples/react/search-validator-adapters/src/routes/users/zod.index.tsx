@@ -1,6 +1,6 @@
 import * as React from 'react'
-import { useNavigate, createFileRoute } from '@tanstack/react-router'
-import { fallback, zodValidator } from '@tanstack/zod-adapter'
+import { useNavigate, createFileRoute } from '@benjavicente/react-router'
+import { fallback, zodValidator } from '@benjavicente/zod-adapter'
 import { z } from 'zod'
 import { Header } from '../../components/Header'
 import { Users, usersQueryOptions } from '../../components/Users'

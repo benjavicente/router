@@ -1,4 +1,4 @@
-import { Link, createRootRoute } from '@tanstack/solid-router'
+import { Link, createRootRoute } from '@benjavicente/solid-router'
 
 export const Route = createRootRoute({
   notFoundComponent: () => {

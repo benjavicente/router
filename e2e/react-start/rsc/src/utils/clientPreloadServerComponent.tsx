@@ -1,5 +1,5 @@
-import { createServerFn } from '@tanstack/react-start'
-import { renderServerComponent } from '@tanstack/react-start/rsc'
+import { createServerFn } from '@benjavicente/react-start'
+import { renderServerComponent } from '@benjavicente/react-start/rsc'
 // Import the component from a separate file so vite-plugin-rsc's CSS transform
 // can properly wrap it (without interference from server function splitting)
 import { ClientPreloadContent } from './ClientPreloadContent'

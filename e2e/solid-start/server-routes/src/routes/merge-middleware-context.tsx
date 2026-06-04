@@ -1,4 +1,4 @@
-import { createFileRoute } from '@tanstack/solid-router'
+import { createFileRoute } from '@benjavicente/solid-router'
 import { createSignal } from 'solid-js'
 
 export const Route = createFileRoute('/merge-middleware-context')({

@@ -20,7 +20,7 @@ import type {
   MakeRouteMatchFromRoute,
   MakeRouteMatchUnion,
   ParsedLocation,
-} from '@tanstack/router-core'
+} from '@benjavicente/router-core'
 
 test('when creating the root', () => {
   const rootRoute = createRootRoute()

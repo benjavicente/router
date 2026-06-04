@@ -1,6 +1,6 @@
 import * as fs from 'node:fs'
 import { expect } from '@playwright/test'
-import { test } from '@tanstack/router-e2e-utils'
+import { test } from '@benjavicente/router-e2e-utils'
 import { PORT } from '../playwright.config'
 import type { Page } from '@playwright/test'
 

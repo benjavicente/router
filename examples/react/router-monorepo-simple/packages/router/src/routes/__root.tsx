@@ -1,4 +1,4 @@
-import { Link, createRootRoute } from '@tanstack/react-router'
+import { Link, createRootRoute } from '@benjavicente/react-router'
 
 export const Route = createRootRoute({
   notFoundComponent: () => {

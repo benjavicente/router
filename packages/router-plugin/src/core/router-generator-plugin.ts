@@ -1,9 +1,9 @@
 import { isAbsolute, join, normalize } from 'node:path'
-import { Generator, resolveConfigPath } from '@tanstack/router-generator'
+import { Generator, resolveConfigPath } from '@benjavicente/router-generator'
 import { getConfig } from './config'
 import { createRouterPluginContext } from './router-plugin-context'
 
-import type { GeneratorEvent } from '@tanstack/router-generator'
+import type { GeneratorEvent } from '@benjavicente/router-generator'
 import type { FSWatcher } from 'chokidar'
 import type { UnpluginFactory } from 'unplugin'
 import type { Config } from './config'

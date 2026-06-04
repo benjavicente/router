@@ -1,4 +1,4 @@
-import { Link, createFileRoute } from '@tanstack/vue-router'
+import { Link, createFileRoute } from '@benjavicente/vue-router'
 import { useQuery } from '@tanstack/vue-query'
 import { postQueryOptions } from '../utils/posts'
 import { PostErrorComponent } from './posts.$postId'

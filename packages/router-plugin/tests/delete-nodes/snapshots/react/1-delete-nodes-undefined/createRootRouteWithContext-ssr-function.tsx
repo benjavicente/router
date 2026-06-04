@@ -1,4 +1,4 @@
-import { createRootRouteWithContext } from '@tanstack/react-router'
+import { createRootRouteWithContext } from '@benjavicente/react-router'
 import crypto from 'node:crypto'
 
 export const Route = createRootRouteWithContext<{}>()({

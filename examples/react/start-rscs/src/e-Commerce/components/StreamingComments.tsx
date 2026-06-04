@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from 'react'
-import { createFromReadableStream } from '@tanstack/react-start/rsc'
+import { createFromReadableStream } from '@benjavicente/react-start/rsc'
 import { streamComments } from '~/e-Commerce/server-functions'
 
 interface CommentEntry {

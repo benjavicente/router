@@ -1,4 +1,4 @@
-import { createFileRoute } from '@tanstack/react-router'
+import { createFileRoute } from '@benjavicente/react-router'
 import { sharedUtil } from '../utils'
 
 export const Route = createFileRoute('/imported')({

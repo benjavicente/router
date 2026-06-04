@@ -1,14 +1,14 @@
 'use client'
 
 import * as React from 'react'
-import { hasKeys } from '@tanstack/router-core'
+import { hasKeys } from '@benjavicente/router-core'
 import { Matches } from './Matches'
 import { routerContext } from './routerContext'
 import type {
   AnyRouter,
   RegisteredRouter,
   RouterOptions,
-} from '@tanstack/router-core'
+} from '@benjavicente/router-core'
 
 /**
  * Low-level provider that places the router into React context and optionally

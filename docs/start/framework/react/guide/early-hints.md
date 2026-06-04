@@ -17,7 +17,7 @@ Add `onEarlyHints` in `src/server.ts` and send `event.links` through your runtim
 
 ```tsx
 // src/server.ts
-import handler, { createServerEntry } from '@tanstack/react-start/server-entry'
+import handler, { createServerEntry } from '@benjavicente/react-start/server-entry'
 
 export default createServerEntry({
   fetch(request) {
@@ -163,7 +163,7 @@ This example appends all collected static and dynamic links to non-redirect HTML
 
 ```tsx
 // src/server.ts
-import handler, { createServerEntry } from '@tanstack/react-start/server-entry'
+import handler, { createServerEntry } from '@benjavicente/react-start/server-entry'
 
 export default createServerEntry({
   fetch(request) {
@@ -190,7 +190,7 @@ If your runtime exposes Node's `ServerResponse`, call `writeEarlyHints` with `li
 
 ```tsx
 // src/server.ts
-import handler, { createServerEntry } from '@tanstack/react-start/server-entry'
+import handler, { createServerEntry } from '@benjavicente/react-start/server-entry'
 import type { ServerResponse } from 'node:http'
 
 export default createServerEntry({
@@ -218,7 +218,7 @@ Nitro uses [srvx](https://srvx.h3.dev/) under the hood for Node deployments. srv
 
 ```tsx
 // src/server.ts
-import handler from '@tanstack/react-start/server-entry'
+import handler from '@benjavicente/react-start/server-entry'
 import type { ServerRequest } from 'srvx'
 
 export default {

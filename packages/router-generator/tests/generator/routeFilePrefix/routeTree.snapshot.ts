@@ -49,7 +49,7 @@ export interface RootRouteChildren {
   BlogRouteRoute: typeof BlogRouteRoute
 }
 
-declare module '@tanstack/react-router' {
+declare module '@benjavicente/react-router' {
   interface FileRoutesByPath {
     '/blog': {
       id: '/blog'

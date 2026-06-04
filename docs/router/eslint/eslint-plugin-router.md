@@ -11,8 +11,8 @@ The plugin is a separate package that you need to install:
 
 <!-- ::start:tabs variant="package-manager" mode="dev-install" -->
 
-react: @tanstack/eslint-plugin-router
-solid: @tanstack/eslint-plugin-router
+react: @benjavicente/eslint-plugin-router
+solid: @benjavicente/eslint-plugin-router
 
 <!-- ::end:tabs -->
 
@@ -28,7 +28,7 @@ To enable all of the recommended rules for our plugin, add the following config:
 <!-- ::start:tabs variant="files" -->
 
 ```js title="eslint.config.js"
-import pluginRouter from '@tanstack/eslint-plugin-router'
+import pluginRouter from '@benjavicente/eslint-plugin-router'
 
 export default [
   ...pluginRouter.configs['flat/recommended'],
@@ -45,15 +45,15 @@ Alternatively, you can load the plugin and configure only the rules you want to 
 <!-- ::start:tabs variant="files" -->
 
 ```js title="eslint.config.js"
-import pluginRouter from '@tanstack/eslint-plugin-router'
+import pluginRouter from '@benjavicente/eslint-plugin-router'
 
 export default [
   {
     plugins: {
-      '@tanstack/router': pluginRouter,
+      '@benjavicente/eslint-plugin-router': pluginRouter,
     },
     rules: {
-      '@tanstack/router/create-route-property-order': 'error',
+      '@benjavicente/eslint-plugin-router/create-route-property-order': 'error',
     },
   },
   // Any other config...
@@ -68,23 +68,23 @@ Prior to the ESLint 9.0 release, the most common way of configuring EsLint was u
 
 ### Recommended Legacy Config setup
 
-To enable all of the recommended rules for our plugin, add `plugin:@tanstack/eslint-plugin-router/recommended` in extends:
+To enable all of the recommended rules for our plugin, add `plugin:@benjavicente/eslint-plugin-router/recommended` in extends:
 
 ```json
 {
-  "extends": ["plugin:@tanstack/eslint-plugin-router/recommended"]
+  "extends": ["plugin:@benjavicente/eslint-plugin-router/recommended"]
 }
 ```
 
 ### Custom Legacy Config setup
 
-Alternatively, add `@tanstack/eslint-plugin-router` to the plugins section, and configure the rules you want to use:
+Alternatively, add `@benjavicente/eslint-plugin-router` to the plugins section, and configure the rules you want to use:
 
 ```json
 {
-  "plugins": ["@tanstack/eslint-plugin-router"],
+  "plugins": ["@benjavicente/eslint-plugin-router"],
   "rules": {
-    "@tanstack/router/create-route-property-order": "error"
+    "@benjavicente/eslint-plugin-router/create-route-property-order": "error"
   }
 }
 ```
@@ -93,7 +93,7 @@ Alternatively, add `@tanstack/eslint-plugin-router` to the plugins section, and 
 
 The following rules are available in the TanStack Router ESLint Plugin:
 
-- [@tanstack/router/create-route-property-order](./create-route-property-order.md)
+- [@benjavicente/eslint-plugin-router/create-route-property-order](./create-route-property-order.md)
 
 ## Conflicts with other ESLint plugins
 
@@ -114,12 +114,12 @@ To ensure it does not conflict with TanStack Router, you should allow `redirect`
         "allow": [
           {
             "from": "package",
-            "package": "@tanstack/router-core",
+            "package": "@benjavicente/router-core",
             "name": "Redirect"
           },
           {
             "from": "package",
-            "package": "@tanstack/router-core",
+            "package": "@benjavicente/router-core",
             "name": "NotFoundError"
           }
         ]

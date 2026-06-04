@@ -2,6 +2,7 @@ import { readFile, readdir } from 'node:fs/promises'
 import path from 'node:path'
 import { describe, expect, test, vi } from 'vitest'
 import { StartCompiler } from '../../src/start-compiler/compiler'
+import { getLookupConfigurationsForEnv } from '../../src/start-compiler/config'
 
 // Default test options for StartCompiler
 function getDefaultTestOptions(env: 'client' | 'server') {
@@ -43,7 +44,7 @@ async function compile(opts: {
     lookupKinds: new Set(['ServerFn']),
     lookupConfigurations: [
       {
-        libName: `@tanstack/react-start`,
+        libName: `@benjavicente/react-start`,
         rootExport: 'createServerFn',
         kind: 'Root',
       },
@@ -63,6 +64,40 @@ async function compile(opts: {
 
 describe('createServerFn compiles correctly', async () => {
   const filenames = await getFilenames()
+
+  test('compiles angular experimental start imports', async () => {
+    const compiler = new StartCompiler({
+      env: 'client',
+      envName: 'client',
+      root: '/test',
+      framework: 'angular',
+      providerEnvName: 'ssr',
+      loadModule: async () => {},
+      lookupKinds: new Set(['ServerFn']),
+      lookupConfigurations: getLookupConfigurationsForEnv('client', 'angular'),
+      getKnownServerFns: () => ({}),
+      resolveId: async (id) => id,
+      mode: 'build',
+    })
+
+    const result = await compiler.compile({
+      code: `
+        import { createServerFn } from '@benjavicente/angular-start-experimental'
+        export const getPosts = createServerFn().handler(async () => ['post'])
+      `,
+      id: '/test/src/postsFns.ts',
+    })
+
+    expect(result!.code).toContain(
+      "import { createClientRpc } from '@benjavicente/angular-start-experimental/client-rpc';",
+    )
+    expect(result!.code).toContain(
+      "import { createServerFn } from '@benjavicente/angular-start-experimental';",
+    )
+    expect(result!.code).toContain(
+      'export const getPosts = createServerFn().handler(createClientRpc(',
+    )
+  })
 
   describe.each(filenames)('should handle "%s"', async (filename) => {
     const file = await readFile(
@@ -97,7 +132,7 @@ describe('createServerFn compiles correctly', async () => {
 
   test('should work with identifiers of functions', async () => {
     const code = `
-        import { createServerFn } from '@tanstack/react-start'
+        import { createServerFn } from '@benjavicente/react-start'
         const myFunc = () => {
           return 'hello from the server'
         }
@@ -129,22 +164,22 @@ describe('createServerFn compiles correctly', async () => {
     })
 
     expect(compiledResultClient!.code).toMatchInlineSnapshot(`
-      "import { createClientRpc } from '@tanstack/react-start/client-rpc';
-      import { createServerFn } from '@tanstack/react-start';
+      "import { createClientRpc } from '@benjavicente/react-start/client-rpc';
+      import { createServerFn } from '@benjavicente/react-start';
       const myServerFn = createServerFn().handler(createClientRpc("2c205add8e6755de551521133ddff3d48859b1631add5f1bbe5c48a5664f319b"));"
     `)
 
     // Server caller: no second argument (implementation from extracted chunk)
     expect(compiledResultServerCaller!.code).toMatchInlineSnapshot(`
-      "import { createSsrRpc } from '@tanstack/react-start/ssr-rpc';
-      import { createServerFn } from '@tanstack/react-start';
+      "import { createSsrRpc } from '@benjavicente/react-start/ssr-rpc';
+      import { createServerFn } from '@benjavicente/react-start';
       const myServerFn = createServerFn().handler(createSsrRpc("2c205add8e6755de551521133ddff3d48859b1631add5f1bbe5c48a5664f319b"));"
     `)
 
     // Server provider: has second argument (this is the implementation file)
     expect(compiledResultServerProvider!.code).toMatchInlineSnapshot(`
-      "import { createServerRpc } from '@tanstack/react-start/server-rpc';
-      import { createServerFn } from '@tanstack/react-start';
+      "import { createServerRpc } from '@benjavicente/react-start/server-rpc';
+      import { createServerFn } from '@benjavicente/react-start';
       const myFunc = () => {
         return 'hello from the server';
       };
@@ -160,7 +195,7 @@ describe('createServerFn compiles correctly', async () => {
 
   test('should use dce by default', async () => {
     const code = `
-      import { createServerFn } from '@tanstack/react-start'
+      import { createServerFn } from '@benjavicente/react-start'
       const exportedVar = 'exported'
       export const exportedFn = createServerFn().handler(async () => {
         return exportedVar
@@ -179,8 +214,8 @@ describe('createServerFn compiles correctly', async () => {
     })
 
     expect(compiledResult!.code).toMatchInlineSnapshot(`
-      "import { createClientRpc } from '@tanstack/react-start/client-rpc';
-      import { createServerFn } from '@tanstack/react-start';
+      "import { createClientRpc } from '@benjavicente/react-start/client-rpc';
+      import { createServerFn } from '@benjavicente/react-start';
       export const exportedFn = createServerFn().handler(createClientRpc("c306c96e9256c7604f2a6022c4c94eb89f863274c022bc45b03970f067ea9864"));
       const nonExportedFn = createServerFn().handler(createClientRpc("f4403dc0b18e216dfe0a9711cab028bc1b9768175daa9236d7115e29c99d76c2"));"
     `)
@@ -194,8 +229,8 @@ describe('createServerFn compiles correctly', async () => {
     })
 
     expect(compiledResultServerCaller!.code).toMatchInlineSnapshot(`
-      "import { createSsrRpc } from '@tanstack/react-start/ssr-rpc';
-      import { createServerFn } from '@tanstack/react-start';
+      "import { createSsrRpc } from '@benjavicente/react-start/ssr-rpc';
+      import { createServerFn } from '@benjavicente/react-start';
       export const exportedFn = createServerFn().handler(createSsrRpc("c306c96e9256c7604f2a6022c4c94eb89f863274c022bc45b03970f067ea9864"));
       const nonExportedFn = createServerFn().handler(createSsrRpc("f4403dc0b18e216dfe0a9711cab028bc1b9768175daa9236d7115e29c99d76c2"));"
     `)
@@ -209,8 +244,8 @@ describe('createServerFn compiles correctly', async () => {
     })
 
     expect(compiledResultServerProvider!.code).toMatchInlineSnapshot(`
-      "import { createServerRpc } from '@tanstack/react-start/server-rpc';
-      import { createServerFn } from '@tanstack/react-start';
+      "import { createServerRpc } from '@benjavicente/react-start/server-rpc';
+      import { createServerFn } from '@benjavicente/react-start';
       const exportedVar = 'exported';
       const exportedFn_createServerFn_handler = createServerRpc({
         id: "c306c96e9256c7604f2a6022c4c94eb89f863274c022bc45b03970f067ea9864",
@@ -235,7 +270,7 @@ describe('createServerFn compiles correctly', async () => {
 
   test('should use fast path for direct imports from known library (no extra resolveId calls)', async () => {
     const code = `
-      import { createServerFn } from '@tanstack/react-start'
+      import { createServerFn } from '@benjavicente/react-start'
       const myServerFn = createServerFn().handler(async () => {
         return 'hello'
       })`
@@ -249,7 +284,7 @@ describe('createServerFn compiles correctly', async () => {
       lookupKinds: new Set(['ServerFn']),
       lookupConfigurations: [
         {
-          libName: '@tanstack/react-start',
+          libName: '@benjavicente/react-start',
           rootExport: 'createServerFn',
           kind: 'Root',
         },
@@ -287,7 +322,7 @@ describe('createServerFn compiles correctly', async () => {
         if (id === './factory') {
           compiler.ingestModule({
             code: `
-              import { createServerFn } from '@tanstack/react-start'
+              import { createServerFn } from '@benjavicente/react-start'
               export const createFooServerFn = createServerFn
             `,
             id: './factory',
@@ -297,7 +332,7 @@ describe('createServerFn compiles correctly', async () => {
       lookupKinds: new Set(['ServerFn']),
       lookupConfigurations: [
         {
-          libName: '@tanstack/react-start',
+          libName: '@benjavicente/react-start',
           rootExport: 'createServerFn',
           kind: 'Root',
         },
@@ -315,7 +350,7 @@ describe('createServerFn compiles correctly', async () => {
     // resolveId should only be called for './factory'. Direct known-library
     // imports use the knownRootImports fast path.
     //
-    // Note: The factory module's import from '@tanstack/react-start' ALSO uses
+    // Note: The factory module's import from '@benjavicente/react-start' ALSO uses
     // the fast path (knownRootImports), so no additional resolveId call is needed there.
     expect(resolveIdMock).toHaveBeenCalledTimes(1)
     expect(resolveIdMock).toHaveBeenNthCalledWith(
@@ -341,7 +376,7 @@ describe('createServerFn compiles correctly', async () => {
         if (id === './factory') {
           compiler.ingestModule({
             code: `
-              export { createServerFn as createFooServerFn } from '@tanstack/react-start'
+              export { createServerFn as createFooServerFn } from '@benjavicente/react-start'
             `,
             id: './factory',
           })
@@ -350,7 +385,7 @@ describe('createServerFn compiles correctly', async () => {
       lookupKinds: new Set(['ServerFn']),
       lookupConfigurations: [
         {
-          libName: '@tanstack/react-start',
+          libName: '@benjavicente/react-start',
           rootExport: 'createServerFn',
           kind: 'Root',
         },
@@ -400,7 +435,7 @@ describe('createServerFn compiles correctly', async () => {
         if (id === './factory-inner') {
           compiler.ingestModule({
             code: `
-              export { createServerFn as createFooServerFn } from '@tanstack/react-start'
+              export { createServerFn as createFooServerFn } from '@benjavicente/react-start'
             `,
             id: './factory-inner',
           })
@@ -409,7 +444,7 @@ describe('createServerFn compiles correctly', async () => {
       lookupKinds: new Set(['ServerFn']),
       lookupConfigurations: [
         {
-          libName: '@tanstack/react-start',
+          libName: '@benjavicente/react-start',
           rootExport: 'createServerFn',
           kind: 'Root',
         },
@@ -460,7 +495,7 @@ describe('createServerFn compiles correctly', async () => {
         lookupKinds: new Set(['ServerFn']),
         lookupConfigurations: [
           {
-            libName: '@tanstack/react-start',
+            libName: '@benjavicente/react-start',
             rootExport: 'createServerFn',
             kind: 'Root',
           },
@@ -480,7 +515,7 @@ describe('createServerFn compiles correctly', async () => {
     const firstCompiler = createCompiler()
     await firstCompiler.compile({
       code: `
-        import { createServerFn } from '@tanstack/react-start'
+        import { createServerFn } from '@benjavicente/react-start'
         export const greetUser = createServerFn().handler(async () => 'first')
       `,
       id: '/test/src/submit-post-formdata.tsx',
@@ -488,7 +523,7 @@ describe('createServerFn compiles correctly', async () => {
 
     await firstCompiler.compile({
       code: `
-        import { createServerFn } from '@tanstack/react-start'
+        import { createServerFn } from '@benjavicente/react-start'
         export const greetUser = createServerFn().handler(async () => 'second')
       `,
       id: '/test/src/formdata-redirect/index.tsx',
@@ -503,7 +538,7 @@ describe('createServerFn compiles correctly', async () => {
     const secondCompiler = createCompiler()
     const firstResult = await secondCompiler.compile({
       code: `
-        import { createServerFn } from '@tanstack/react-start'
+        import { createServerFn } from '@benjavicente/react-start'
         export const greetUser = createServerFn().handler(async () => 'first')
       `,
       id: '/test/src/submit-post-formdata.tsx',
@@ -511,7 +546,7 @@ describe('createServerFn compiles correctly', async () => {
 
     const secondResult = await secondCompiler.compile({
       code: `
-        import { createServerFn } from '@tanstack/react-start'
+        import { createServerFn } from '@benjavicente/react-start'
         export const greetUser = createServerFn().handler(async () => 'second')
       `,
       id: '/test/src/formdata-redirect/index.tsx',

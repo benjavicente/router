@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest'
 import * as t from '@babel/types'
-import { parseAst } from '@tanstack/router-utils'
+import { parseAst } from '@benjavicente/router-utils'
 
 import {
   addSharedSearchParamToFilename,
@@ -577,7 +577,7 @@ describe('computeSharedBindings', () => {
 
   it('should return empty set for root routes (unsplittable)', () => {
     const code = `
-import { createRootRoute } from '@tanstack/react-router'
+import { createRootRoute } from '@benjavicente/react-router'
 const shared = 42
 export const Route = createRootRoute({
   component: () => shared,
@@ -593,7 +593,7 @@ export const Route = createRootRoute({
 
   it('should detect binding shared between split and non-split properties', () => {
     const code = `
-import { createFileRoute } from '@tanstack/react-router'
+import { createFileRoute } from '@benjavicente/react-router'
 const sharedValue = 42
 export const Route = createFileRoute('/')({
   component: () => sharedValue,
@@ -609,7 +609,7 @@ export const Route = createFileRoute('/')({
 
   it('should NOT mark binding as shared if only used by split properties', () => {
     const code = `
-import { createFileRoute } from '@tanstack/react-router'
+import { createFileRoute } from '@benjavicente/react-router'
 const myComponent = () => <div />
 export const Route = createFileRoute('/')({
   component: myComponent,
@@ -624,7 +624,7 @@ export const Route = createFileRoute('/')({
 
   it('should NOT mark binding as shared if only used by non-split properties', () => {
     const code = `
-import { createFileRoute } from '@tanstack/react-router'
+import { createFileRoute } from '@benjavicente/react-router'
 const validator = () => true
 export const Route = createFileRoute('/')({
   component: () => <div />,
@@ -640,7 +640,7 @@ export const Route = createFileRoute('/')({
 
   it('should detect shared function declaration', () => {
     const code = `
-import { createFileRoute } from '@tanstack/react-router'
+import { createFileRoute } from '@benjavicente/react-router'
 function helperFn() { return 42 }
 export const Route = createFileRoute('/')({
   component: () => helperFn(),
@@ -656,7 +656,7 @@ export const Route = createFileRoute('/')({
 
   it('should mark shared when binding used by two different split groups', () => {
     const code = `
-import { createFileRoute } from '@tanstack/react-router'
+import { createFileRoute } from '@benjavicente/react-router'
 class Config { value = 1 }
 export const Route = createFileRoute('/')({
   component: () => new Config(),
@@ -673,7 +673,7 @@ export const Route = createFileRoute('/')({
 
   it('should detect shared class when used by split and non-split', () => {
     const code = `
-import { createFileRoute } from '@tanstack/react-router'
+import { createFileRoute } from '@benjavicente/react-router'
 class Config { value = 1 }
 export const Route = createFileRoute('/')({
   component: () => new Config(),
@@ -689,7 +689,7 @@ export const Route = createFileRoute('/')({
 
   it('should expand transitive deps into shared set', () => {
     const code = `
-import { createFileRoute } from '@tanstack/react-router'
+import { createFileRoute } from '@benjavicente/react-router'
 const BASE = 10
 const multiplier = BASE * 2
 export const Route = createFileRoute('/')({
@@ -707,7 +707,7 @@ export const Route = createFileRoute('/')({
 
   it('should expand destructured declarations', () => {
     const code = `
-import { createFileRoute } from '@tanstack/react-router'
+import { createFileRoute } from '@benjavicente/react-router'
 const { a, b } = getValues()
 export const Route = createFileRoute('/')({
   component: () => a,
@@ -724,7 +724,7 @@ export const Route = createFileRoute('/')({
 
   it('should handle no local bindings gracefully', () => {
     const code = `
-import { createFileRoute } from '@tanstack/react-router'
+import { createFileRoute } from '@benjavicente/react-router'
 export const Route = createFileRoute('/')({
   component: () => <div />,
   beforeLoad: () => {},
@@ -739,7 +739,7 @@ export const Route = createFileRoute('/')({
 
   it('should not include imported bindings as shared (bundlers dedupe them)', () => {
     const code = `
-import { createFileRoute } from '@tanstack/react-router'
+import { createFileRoute } from '@benjavicente/react-router'
 import { helper } from './utils'
 export const Route = createFileRoute('/')({
   component: () => helper(),
@@ -756,7 +756,7 @@ export const Route = createFileRoute('/')({
 
   it('should handle multiple shared bindings', () => {
     const code = `
-import { createFileRoute } from '@tanstack/react-router'
+import { createFileRoute } from '@benjavicente/react-router'
 const a = 1
 const b = 2
 export const Route = createFileRoute('/')({
@@ -774,7 +774,7 @@ export const Route = createFileRoute('/')({
 
   it('should handle chained createFileRoute call pattern', () => {
     const code = `
-import { createFileRoute } from '@tanstack/react-router'
+import { createFileRoute } from '@benjavicente/react-router'
 const data = { value: 42 }
 export const Route = createFileRoute('/')({
   component: () => data.value,
@@ -790,7 +790,7 @@ export const Route = createFileRoute('/')({
 
   it('should handle loader in default groupings (not split by default)', () => {
     const code = `
-import { createFileRoute } from '@tanstack/react-router'
+import { createFileRoute } from '@benjavicente/react-router'
 const config = { key: 'value' }
 export const Route = createFileRoute('/')({
   component: () => config.key,
@@ -809,7 +809,7 @@ export const Route = createFileRoute('/')({
   it('should handle custom groupings where loader and component are in different split groups', () => {
     const groupings: CodeSplitGroupings = [['component'], ['loader']]
     const code = `
-import { createFileRoute } from '@tanstack/react-router'
+import { createFileRoute } from '@benjavicente/react-router'
 const config = { key: 'value' }
 export const Route = createFileRoute('/')({
   component: () => config.key,
@@ -830,7 +830,7 @@ export const Route = createFileRoute('/')({
       ['errorComponent'],
     ]
     const code = `
-import { createFileRoute } from '@tanstack/react-router'
+import { createFileRoute } from '@benjavicente/react-router'
 const config = { key: 'value' }
 export const Route = createFileRoute('/')({
   component: () => config.key,
@@ -848,7 +848,7 @@ export const Route = createFileRoute('/')({
   it('should handle custom groupings with non-split property referencing shared binding', () => {
     const groupings: CodeSplitGroupings = [['component'], ['loader']]
     const code = `
-import { createFileRoute } from '@tanstack/react-router'
+import { createFileRoute } from '@benjavicente/react-router'
 const config = { key: 'value' }
 export const Route = createFileRoute('/')({
   component: () => config.key,
@@ -867,7 +867,7 @@ export const Route = createFileRoute('/')({
 
   it('should handle deep transitive chain with destructuring', () => {
     const code = `
-import { createFileRoute } from '@tanstack/react-router'
+import { createFileRoute } from '@benjavicente/react-router'
 const base = 10
 const { x, y } = compute(base)
 export const Route = createFileRoute('/')({
@@ -888,7 +888,7 @@ export const Route = createFileRoute('/')({
 
   it('should NOT include bindings that transitively depend on Route', () => {
     const code = `
-import { createFileRoute } from '@tanstack/react-router'
+import { createFileRoute } from '@benjavicente/react-router'
 const HEADER = 'Page'
 function usePageTitle() { return HEADER + ' - ' + Route.fullPath }
 export const Route = createFileRoute('/about')({
@@ -910,7 +910,7 @@ export const Route = createFileRoute('/about')({
 
   it('should remove entire transitive chain if it reaches Route', () => {
     const code = `
-import { createFileRoute } from '@tanstack/react-router'
+import { createFileRoute } from '@benjavicente/react-router'
 const routeInfo = { path: '' }
 function initRouteInfo() { routeInfo.path = Route.fullPath }
 function getTitle() { initRouteInfo(); return routeInfo.path }
@@ -933,7 +933,7 @@ export const Route = createFileRoute('/test')({
 
   it('should keep bindings that do NOT depend on Route alongside ones that do', () => {
     const code = `
-import { createFileRoute } from '@tanstack/react-router'
+import { createFileRoute } from '@benjavicente/react-router'
 const safeConfig = { timeout: 5000 }
 function unsafeHelper() { return Route.fullPath }
 export const Route = createFileRoute('/mixed')({

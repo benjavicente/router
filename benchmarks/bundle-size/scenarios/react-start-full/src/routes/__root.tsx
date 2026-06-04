@@ -42,12 +42,12 @@ import {
   useRouterState,
   useSearch,
   useTags,
-} from '@tanstack/react-router'
+} from '@benjavicente/react-router'
 import {
   createMiddleware,
   createServerFn,
   useServerFn,
-} from '@tanstack/react-start'
+} from '@benjavicente/react-start'
 
 const requestMiddleware = createMiddleware().server(async ({ next }) => {
   return next()

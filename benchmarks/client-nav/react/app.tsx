@@ -8,7 +8,7 @@ import {
   createRouter,
   useParams,
   useSearch,
-} from '@tanstack/react-router'
+} from '@benjavicente/react-router'
 import { createRoot } from 'react-dom/client'
 
 function runPerfSelectorComputation(seed: number) {

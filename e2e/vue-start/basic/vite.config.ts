@@ -1,5 +1,5 @@
 import { defineConfig } from 'vite'
-import { tanstackStart } from '@tanstack/vue-start/plugin/vite'
+import { tanstackStart } from '@benjavicente/vue-start/plugin/vite'
 import vueJsx from '@vitejs/plugin-vue-jsx'
 import { isSpaMode } from './tests/utils/isSpaMode'
 import { isPrerender } from './tests/utils/isPrerender'

@@ -2,7 +2,7 @@ import {
   createIsomorphicFn,
   createServerFn,
   createServerOnlyFn,
-} from '@tanstack/react-start'
+} from '@benjavicente/react-start'
 
 import { getSecret } from './secret.server'
 

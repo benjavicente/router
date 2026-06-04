@@ -2,14 +2,14 @@
 
 Comprehensive validation patterns for TanStack Router search params across all supported validation approaches.
 
-## Zod with `@tanstack/zod-adapter`
+## Zod with `@benjavicente/zod-adapter`
 
-Zod v3 does not implement Standard Schema, so the `@tanstack/zod-adapter` wrapper is required. Always use `fallback()` from the adapter instead of zod's `.catch()`. Always wrap with `zodValidator()`.
+Zod v3 does not implement Standard Schema, so the `@benjavicente/zod-adapter` wrapper is required. Always use `fallback()` from the adapter instead of zod's `.catch()`. Always wrap with `zodValidator()`.
 
 ### Basic Types
 
 ```tsx
-import { zodValidator, fallback } from '@tanstack/zod-adapter'
+import { zodValidator, fallback } from '@benjavicente/zod-adapter'
 import { z } from 'zod'
 
 const schema = z.object({
@@ -173,14 +173,14 @@ const userSearchSchema = paginationSchema.merge(sortSchema).extend({
 
 ## Valibot (Standard Schema)
 
-Valibot 1.0+ implements Standard Schema. No adapter wrapper needed — pass the schema directly to `validateSearch`. The `@tanstack/valibot-adapter` is optional and only needed for explicit input/output type control.
+Valibot 1.0+ implements Standard Schema. No adapter wrapper needed — pass the schema directly to `validateSearch`. The `@benjavicente/valibot-adapter` is optional and only needed for explicit input/output type control.
 
 ```bash
 npm install valibot
 ```
 
 ```tsx
-import { createFileRoute } from '@tanstack/react-router'
+import { createFileRoute } from '@benjavicente/react-router'
 import * as v from 'valibot'
 
 const productSearchSchema = v.object({
@@ -224,7 +224,7 @@ const schema = v.object({
 If you need explicit input/output type control:
 
 ```tsx
-import { valibotValidator } from '@tanstack/valibot-adapter'
+import { valibotValidator } from '@benjavicente/valibot-adapter'
 import * as v from 'valibot'
 
 const schema = v.object({
@@ -240,14 +240,14 @@ export const Route = createFileRoute('/items')({
 
 ## ArkType (Standard Schema)
 
-ArkType 2.0-rc+ implements Standard Schema. No adapter needed — pass the type directly to `validateSearch`. The `@tanstack/arktype-adapter` is optional and only needed for explicit input/output type control.
+ArkType 2.0-rc+ implements Standard Schema. No adapter needed — pass the type directly to `validateSearch`. The `@benjavicente/arktype-adapter` is optional and only needed for explicit input/output type control.
 
 ```bash
 npm install arktype
 ```
 
 ```tsx
-import { createFileRoute } from '@tanstack/react-router'
+import { createFileRoute } from '@benjavicente/react-router'
 import { type } from 'arktype'
 
 const productSearchSchema = type({
@@ -288,7 +288,7 @@ const searchSchema = type({
 For full control without any library. The function receives raw JSON-parsed (but unvalidated) search params.
 
 ```tsx
-import { createFileRoute } from '@tanstack/react-router'
+import { createFileRoute } from '@benjavicente/react-router'
 
 type ProductSearch = {
   page: number

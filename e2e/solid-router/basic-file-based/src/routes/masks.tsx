@@ -3,7 +3,7 @@ import {
   Outlet,
   createFileRoute,
   useRouterState,
-} from '@tanstack/solid-router'
+} from '@benjavicente/solid-router'
 
 export const Route = createFileRoute('/masks')({
   component: MasksLayout,

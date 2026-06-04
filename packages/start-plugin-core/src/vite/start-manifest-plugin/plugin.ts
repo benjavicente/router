@@ -1,6 +1,6 @@
 import { joinURL } from 'ufo'
-import { VIRTUAL_MODULES } from '@tanstack/start-server-core'
-import { rootRouteId } from '@tanstack/router-core'
+import { VIRTUAL_MODULES } from '@benjavicente/start-server-core'
+import { rootRouteId } from '@benjavicente/router-core'
 import { ENTRY_POINTS, START_ENVIRONMENT_NAMES } from '../../constants'
 import {
   buildStartManifest,

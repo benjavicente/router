@@ -1,1 +1,1 @@
-export * from '@tanstack/react-start-rsc/rsbuild/ssr-decode'
+export * from '@benjavicente/react-start-rsc/rsbuild/ssr-decode'

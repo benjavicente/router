@@ -1,5 +1,5 @@
-import { createFileRoute, redirect } from '@tanstack/vue-router'
-import { createServerFn } from '@tanstack/vue-start'
+import { createFileRoute, redirect } from '@benjavicente/vue-router'
+import { createServerFn } from '@benjavicente/vue-start'
 
 const logoutFn = createServerFn({
   method: 'POST',

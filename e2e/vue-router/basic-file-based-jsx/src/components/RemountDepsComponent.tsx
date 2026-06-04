@@ -1,5 +1,5 @@
 import { ref, onMounted, defineComponent } from 'vue'
-import { useSearch, useNavigate } from '@tanstack/vue-router'
+import { useSearch, useNavigate } from '@benjavicente/vue-router'
 
 // Module-scoped ref to persist across component remounts
 const mounts = ref(0)

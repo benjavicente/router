@@ -1,4 +1,4 @@
-import { createFileRoute } from '@tanstack/react-router'
+import { createFileRoute } from '@benjavicente/react-router'
 import { sleep } from '../../posts'
 
 export const Route = createFileRoute('/(tests)/lazy-with-loader-page')({

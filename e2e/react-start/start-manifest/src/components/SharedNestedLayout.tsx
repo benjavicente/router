@@ -1,4 +1,4 @@
-import { Link, linkOptions } from '@tanstack/react-router'
+import { Link, linkOptions } from '@benjavicente/react-router'
 import type { ReactNode } from 'react'
 import styles from '~/styles/shared-layout.module.css'
 

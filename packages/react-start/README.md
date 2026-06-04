@@ -12,11 +12,11 @@ SSR, Streaming, Server Functions, API Routes, bundling and more powered by [TanS
 <a href="https://discord.com/invite/WrRKjPJ" target="\_parent">
   <img alt="" src="https://img.shields.io/badge/Discord-TanStack-%235865F2" />
 </a>
-<a href="https://npmjs.com/package/@tanstack/react-start" target="\_parent">
-  <img alt="" src="https://img.shields.io/npm/dm/@tanstack/react-start.svg" />
+<a href="https://npmjs.com/package/@benjavicente/react-start" target="\_parent">
+  <img alt="" src="https://img.shields.io/npm/dm/@benjavicente/react-start.svg" />
 </a>
-<a href="https://bundlephobia.com/result?p=@tanstack/react-start" target="\_parent">
-  <img alt="" src="https://badgen.net/bundlephobia/minzip/@tanstack/react-start" />
+<a href="https://bundlephobia.com/result?p=@benjavicente/react-start" target="\_parent">
+  <img alt="" src="https://badgen.net/bundlephobia/minzip/@benjavicente/react-start" />
 </a>
 <a href="#badge">
   <img alt="semantic-release" src="https://img.shields.io/badge/%20%20%F0%9F%93%A6%F0%9F%9A%80-semantic--release-e10079.svg">

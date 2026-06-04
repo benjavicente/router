@@ -1,5 +1,5 @@
 import { render } from 'solid-js/web'
-import { RouterProvider, createRouter } from '@tanstack/solid-router'
+import { RouterProvider, createRouter } from '@benjavicente/solid-router'
 import { trpc } from './trpc'
 
 import { Spinner } from './routes/-components/spinner'
@@ -24,7 +24,7 @@ const router = createRouter({
 })
 
 // Register the router instance for type safety
-declare module '@tanstack/solid-router' {
+declare module '@benjavicente/solid-router' {
   interface Register {
     router: typeof router
   }

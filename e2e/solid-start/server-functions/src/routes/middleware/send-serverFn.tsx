@@ -1,5 +1,5 @@
-import { createFileRoute } from '@tanstack/solid-router'
-import { createMiddleware, createServerFn } from '@tanstack/solid-start'
+import { createFileRoute } from '@benjavicente/solid-router'
+import { createMiddleware, createServerFn } from '@benjavicente/solid-start'
 import { createSignal } from 'solid-js'
 
 const middleware = createMiddleware({ type: 'function' }).client(

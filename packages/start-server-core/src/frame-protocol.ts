@@ -9,7 +9,7 @@
  */
 
 // Re-export constants from shared location
-import { FRAME_HEADER_SIZE, FrameType } from '@tanstack/start-client-core'
+import { FRAME_HEADER_SIZE, FrameType } from '@benjavicente/start-client-core'
 
 export {
   FRAME_HEADER_SIZE,
@@ -17,7 +17,7 @@ export {
   TSS_CONTENT_TYPE_FRAMED,
   TSS_CONTENT_TYPE_FRAMED_VERSIONED,
   TSS_FRAMED_PROTOCOL_VERSION,
-} from '@tanstack/start-client-core'
+} from '@benjavicente/start-client-core'
 
 /** Cached TextEncoder for frame encoding */
 const textEncoder = new TextEncoder()

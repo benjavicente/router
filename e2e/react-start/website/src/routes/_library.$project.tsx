@@ -1,4 +1,4 @@
-import { Outlet, createFileRoute } from '@tanstack/react-router'
+import { Outlet, createFileRoute } from '@benjavicente/react-router'
 import { getProject } from '~/server/projects'
 import { seo } from '~/utils/seo'
 

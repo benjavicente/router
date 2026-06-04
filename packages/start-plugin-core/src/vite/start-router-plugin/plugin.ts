@@ -1,8 +1,8 @@
-import { createRouterPluginContext } from '@tanstack/router-plugin/context'
+import { createRouterPluginContext } from '@benjavicente/router-plugin/context'
 import {
   tanStackRouterCodeSplitter,
   tanstackRouterGenerator,
-} from '@tanstack/router-plugin/vite'
+} from '@benjavicente/router-plugin/vite'
 import path from 'pathe'
 import { normalizePath } from 'vite'
 import { VITE_ENVIRONMENT_NAMES } from '../../constants'
@@ -17,7 +17,7 @@ import type {
   Generator,
   GeneratorPlugin,
   RouteNode,
-} from '@tanstack/router-generator'
+} from '@benjavicente/router-generator'
 import type { DevEnvironment, Plugin, PluginOption } from 'vite'
 import type { TanStackStartInputConfig } from '../../schema'
 

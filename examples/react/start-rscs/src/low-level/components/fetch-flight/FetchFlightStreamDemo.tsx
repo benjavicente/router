@@ -1,5 +1,5 @@
 import { useCallback, useState } from 'react'
-import { createFromFetch } from '@tanstack/react-start/rsc'
+import { createFromFetch } from '@benjavicente/react-start/rsc'
 
 export function FetchFlightStreamDemo() {
   const [result, setResult] = useState<React.ReactNode | null>(null)

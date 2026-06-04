@@ -28,7 +28,7 @@ Either the `children` prop or the return value of the `children` function.
 ## Examples
 
 ```tsx
-import { MatchRoute } from '@tanstack/react-router'
+import { MatchRoute } from '@benjavicente/react-router'
 
 function Component() {
   return (

@@ -76,7 +76,7 @@ export interface RootRouteChildren {
   ErrorRoute: typeof ErrorRoute
 }
 
-declare module '@tanstack/react-router' {
+declare module '@benjavicente/react-router' {
   interface FileRoutesByPath {
     '/error': {
       id: '/error'

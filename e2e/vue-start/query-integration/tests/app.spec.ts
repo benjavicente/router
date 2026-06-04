@@ -1,5 +1,5 @@
 import { expect } from '@playwright/test'
-import { test } from '@tanstack/router-e2e-utils'
+import { test } from '@benjavicente/router-e2e-utils'
 
 test.describe('queries are streamed from the server', () => {
   test('direct visit - loader on server runs fetchQuery and awaits it', async ({

@@ -3,7 +3,7 @@ import {
   Outlet,
   Scripts,
   createRootRoute,
-} from '@tanstack/react-router'
+} from '@benjavicente/react-router'
 
 export const Route = createRootRoute({
   component: RootComponent,

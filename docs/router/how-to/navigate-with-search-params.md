@@ -11,7 +11,7 @@ This guide covers updating and managing search parameters during navigation usin
 Configure navigation that updates search parameters while preserving existing state:
 
 ```tsx
-import { Link, useNavigate } from '@tanstack/react-router'
+import { Link, useNavigate } from '@benjavicente/react-router'
 
 // Link with search parameter updates
 ;<Link to="/search" search={(prev) => ({ ...prev, query: 'new search' })}>
@@ -57,7 +57,7 @@ function SearchForm() {
 Merge with existing search parameters:
 
 ```tsx
-import { Link } from '@tanstack/react-router'
+import { Link } from '@benjavicente/react-router'
 
 function Pagination() {
   return (
@@ -96,7 +96,7 @@ function Pagination() {
 Use `search={true}` to keep all current search parameters when navigating:
 
 ```tsx
-import { Link } from '@tanstack/react-router'
+import { Link } from '@benjavicente/react-router'
 
 function Navigation() {
   return (
@@ -120,7 +120,7 @@ function Navigation() {
 Navigate to different routes with search parameters:
 
 ```tsx
-import { Link } from '@tanstack/react-router'
+import { Link } from '@benjavicente/react-router'
 
 function Navigation() {
   return (
@@ -163,7 +163,7 @@ function Navigation() {
 Navigate programmatically with search parameter updates:
 
 ```tsx
-import { useNavigate } from '@tanstack/react-router'
+import { useNavigate } from '@benjavicente/react-router'
 
 function SearchControls() {
   const navigate = useNavigate()
@@ -278,7 +278,7 @@ Navigate automatically when certain conditions are met:
 
 ```tsx
 import { useEffect } from 'react'
-import { useNavigate, useSearch } from '@tanstack/react-router'
+import { useNavigate, useSearch } from '@benjavicente/react-router'
 
 function ConditionalNavigation() {
   const navigate = useNavigate()

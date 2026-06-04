@@ -285,7 +285,7 @@ export function createBrowserHistory(opts?: {
 }): RouterHistory {
   const win =
     opts?.window ??
-    (typeof document !== 'undefined' ? window : (undefined as any))
+    (typeof window !== 'undefined' ? window : (undefined as any))
 
   const originalPushState = win.history.pushState
   const originalReplaceState = win.history.replaceState
@@ -552,7 +552,7 @@ export function createBrowserHistory(opts?: {
 export function createHashHistory(opts?: { window?: any }): RouterHistory {
   const win =
     opts?.window ??
-    (typeof document !== 'undefined' ? window : (undefined as any))
+    (typeof window !== 'undefined' ? window : (undefined as any))
   return createBrowserHistory({
     window: win,
     parseLocation: () => {

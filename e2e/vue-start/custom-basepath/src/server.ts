@@ -1,4 +1,4 @@
-import handler from '@tanstack/vue-start/server-entry'
+import handler from '@benjavicente/vue-start/server-entry'
 
 export default {
   fetch(request: Request) {

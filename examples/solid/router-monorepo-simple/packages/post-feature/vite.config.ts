@@ -34,7 +34,7 @@ export default defineConfig({
       external: [
         'solid-js',
         'solid-js/web',
-        '@tanstack/solid-router',
+        '@benjavicente/solid-router',
         '@router-solid-mono-simple/post-feature',
         '@router-solid-mono-simple/router',
       ],

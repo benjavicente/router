@@ -1,10 +1,10 @@
 import * as React from 'react'
-import { createFileRoute, useRouter } from '@tanstack/react-router'
-import { createServerFn } from '@tanstack/react-start'
+import { createFileRoute, useRouter } from '@benjavicente/react-router'
+import { createServerFn } from '@benjavicente/react-start'
 import {
   createCompositeComponent,
   CompositeComponent,
-} from '@tanstack/react-start/rsc'
+} from '@benjavicente/react-start/rsc'
 import {
   serverBox,
   serverBadge,

@@ -197,7 +197,7 @@ describe('findOriginalUnsafeUsagePos', () => {
   test('skips createServerFn handler usage in client env and finds later unsafe usage', () => {
     const p = originalPos(
       [
-        `import { createServerFn } from '@tanstack/react-start';`,
+        `import { createServerFn } from '@benjavicente/react-start';`,
         `import { getSecret } from './secret.server';`,
         `export const safeServerFn = createServerFn().handler(async () => {`,
         `  return getSecret();`,
@@ -217,7 +217,7 @@ describe('findOriginalUnsafeUsagePos', () => {
   test('returns undefined when usage is only inside createServerOnlyFn in client env', () => {
     const p = originalPos(
       [
-        `import { createServerOnlyFn } from '@tanstack/react-start';`,
+        `import { createServerOnlyFn } from '@benjavicente/react-start';`,
         `import { getSecret } from './secret.server';`,
         `export const safeServerOnly = createServerOnlyFn(() => {`,
         `  return getSecret();`,
@@ -233,7 +233,7 @@ describe('findOriginalUnsafeUsagePos', () => {
   test('returns undefined when usage is only inside createMiddleware.server in client env', () => {
     const p = originalPos(
       [
-        `import { createMiddleware } from '@tanstack/react-start';`,
+        `import { createMiddleware } from '@benjavicente/react-start';`,
         `import { getSecret } from './secret.server';`,
         `const middleware = createMiddleware({ type: 'function' }).server(({ next }) => {`,
         `  const secret = getSecret();`,
@@ -250,7 +250,7 @@ describe('findOriginalUnsafeUsagePos', () => {
   test('returns undefined when usage is only inside createIsomorphicFn.server in client env', () => {
     const p = originalPos(
       [
-        `import { createIsomorphicFn } from '@tanstack/react-start';`,
+        `import { createIsomorphicFn } from '@benjavicente/react-start';`,
         `import { getSecret } from './secret.server';`,
         `export const safeIsomorphic = createIsomorphicFn().server(() => {`,
         `  return getSecret();`,
@@ -266,7 +266,7 @@ describe('findOriginalUnsafeUsagePos', () => {
   test('returns undefined when usage is only inside createClientOnlyFn in server env', () => {
     const p = originalPos(
       [
-        `import { createClientOnlyFn } from '@tanstack/react-start';`,
+        `import { createClientOnlyFn } from '@benjavicente/react-start';`,
         `import { readWindow } from './browser.client';`,
         `export const safeClientOnly = createClientOnlyFn(() => {`,
         `  return readWindow();`,

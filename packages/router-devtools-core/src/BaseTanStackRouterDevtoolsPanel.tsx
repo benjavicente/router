@@ -4,7 +4,7 @@ import {
   interpolatePath,
   rootRouteId,
   trimPath,
-} from '@tanstack/router-core'
+} from '@benjavicente/router-core'
 import {
   For,
   Match,
@@ -34,7 +34,7 @@ import type {
   MakeRouteMatchUnion,
   Route,
   RouterState,
-} from '@tanstack/router-core'
+} from '@benjavicente/router-core'
 import type { Accessor, JSX } from 'solid-js'
 
 export interface BaseDevtoolsPanelOptions {

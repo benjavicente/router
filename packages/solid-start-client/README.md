@@ -2,7 +2,7 @@
 
 # TanStack Solid Start - Client
 
-This package is not meant to be used directly. It is a dependency of [`@tanstack/solid-start`](https://www.npmjs.com/package/@tanstack/solid-start).
+This package is not meant to be used directly. It is a dependency of [`@benjavicente/solid-start`](https://www.npmjs.com/package/@benjavicente/solid-start).
 
 TanStack Solid Start is a fullstack-framework made for SSR, Streaming, Server Functions, API Routes, bundling and more powered by [TanStack Router](https://tanstack.com/router).
 

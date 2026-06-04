@@ -1,9 +1,9 @@
 // Current TanStack Start RSC pattern.
 // Replace route paths and data sources with your own app code.
 
-import { createFileRoute } from '@tanstack/react-router'
-import { createServerFn } from '@tanstack/react-start'
-import { renderServerComponent } from '@tanstack/react-start/rsc'
+import { createFileRoute } from '@benjavicente/react-router'
+import { createServerFn } from '@benjavicente/react-start'
+import { renderServerComponent } from '@benjavicente/react-start/rsc'
 
 function Greeting() {
   return <h1>Hello from TanStack Start RSC</h1>

@@ -99,7 +99,7 @@ export interface RootRouteChildren {
   HowItWorksRoute: typeof HowItWorksRoute
 }
 
-declare module '@tanstack/vue-router' {
+declare module '@benjavicente/vue-router' {
   interface FileRoutesByPath {
     '/how-it-works': {
       id: '/how-it-works'

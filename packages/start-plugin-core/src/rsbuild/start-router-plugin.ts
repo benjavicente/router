@@ -1,9 +1,9 @@
 import path from 'pathe'
-import { createRouterPluginContext } from '@tanstack/router-plugin/context'
+import { createRouterPluginContext } from '@benjavicente/router-plugin/context'
 import {
   TanStackRouterCodeSplitterRspack,
   TanStackRouterGeneratorRspack,
-} from '@tanstack/router-plugin/rspack'
+} from '@benjavicente/router-plugin/rspack'
 import { routesManifestPlugin } from '../start-router-plugin/generator-plugins/routes-manifest-plugin'
 import { prerenderRoutesPlugin } from '../start-router-plugin/generator-plugins/prerender-routes-plugin'
 import { buildRouteTreeFileFooterFromConfig } from '../start-router-plugin/route-tree-footer'

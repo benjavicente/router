@@ -129,7 +129,7 @@ You'll do this once in your application.
 
 ```tsx
 // src/app.tsx
-declare module '@tanstack/react-router' {
+declare module '@benjavicente/react-router' {
   interface Register {
     router: typeof router
   }
@@ -170,7 +170,7 @@ As mentioned in the beginning, TanStack Router was designed for complex applicat
 A key difference in the set-up of a _basic_ application with TanStack Router, is that your route configurations require a function to be provided to `getParentRoute`, that returns the parent route of the current route.
 
 ```tsx
-import { createRoute } from '@tanstack/react-router'
+import { createRoute } from '@benjavicente/react-router'
 import { postsRoute } from './postsRoute'
 
 export const postsIndexRoute = createRoute({
@@ -198,7 +198,7 @@ This complexity only increases as you begin to use more features of the router, 
 Finally, comes the issue of code-splitting. As your application grows, you'll want to code-split your components to reduce the initial bundle size of your application. This can be a bit of a headache to manage when you're defining your routes in a single file or even across multiple files.
 
 ```tsx
-import { createRoute, lazyRouteComponent } from '@tanstack/react-router'
+import { createRoute, lazyRouteComponent } from '@benjavicente/react-router'
 import { postsRoute } from './postsRoute'
 
 export const postsIndexRoute = createRoute({
@@ -226,7 +226,7 @@ Let's take a look at how the route configuration for the previous example would 
 
 ```tsx
 // src/routes/posts/index.ts
-import { createFileRoute } from '@tanstack/react-router'
+import { createFileRoute } from '@benjavicente/react-router'
 
 export const Route = createFileRoute('/posts/')({
   component: () => 'Posts index component goes here!!!',

@@ -3,8 +3,8 @@ import {
   getLocationChangeInfo,
   handleHashScroll,
   trimPathRight,
-} from '@tanstack/router-core'
-import { isServer } from '@tanstack/router-core/isServer'
+} from '@benjavicente/router-core'
+import { isServer } from '@benjavicente/router-core/isServer'
 import { batch, useStore } from '@tanstack/vue-store'
 import { useRouter } from './useRouter'
 import { usePrevious } from './utils'

@@ -1,4 +1,4 @@
-import { notFound } from '@tanstack/solid-router'
+import { notFound } from '@benjavicente/solid-router'
 import axios from 'redaxios'
 
 export type PostType = {

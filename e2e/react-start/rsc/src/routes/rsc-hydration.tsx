@@ -1,5 +1,5 @@
 import * as React from 'react'
-import { ClientOnly, createFileRoute } from '@tanstack/react-router'
+import { ClientOnly, createFileRoute } from '@benjavicente/react-router'
 import { getBasicServerComponent } from '~/utils/basicServerComponent'
 import { pageStyles, clientStyles, formatTime } from '~/utils/styles'
 

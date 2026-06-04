@@ -42,12 +42,12 @@ import {
   useRouterState,
   useSearch,
   useTags,
-} from '@tanstack/solid-router'
+} from '@benjavicente/solid-router'
 import {
   createMiddleware,
   createServerFn,
   useServerFn,
-} from '@tanstack/solid-start'
+} from '@benjavicente/solid-start'
 
 type BundleSizeKeep = {
   hooksAndComponents: ReadonlyArray<unknown>

@@ -109,7 +109,7 @@ export interface RootRouteChildren {
   SsrStreamRoute: typeof SsrStreamRoute
 }
 
-declare module '@tanstack/vue-router' {
+declare module '@benjavicente/vue-router' {
   interface FileRoutesByPath {
     '/': {
       id: '/'
@@ -170,7 +170,7 @@ export const routeTree = rootRouteImport
 
 import type { getRouter } from './router.tsx'
 import type { startInstance } from './start.tsx'
-declare module '@tanstack/vue-start' {
+declare module '@benjavicente/vue-start' {
   interface Register {
     ssr: true
     router: Awaited<ReturnType<typeof getRouter>>

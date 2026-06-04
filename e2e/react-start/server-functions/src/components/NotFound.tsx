@@ -1,4 +1,4 @@
-import { Link } from '@tanstack/react-router'
+import { Link } from '@benjavicente/react-router'
 
 export function NotFound({ children }: { children?: any }) {
   return (

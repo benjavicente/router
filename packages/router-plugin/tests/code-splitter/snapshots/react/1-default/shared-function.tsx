@@ -1,7 +1,7 @@
 import { getCached, cache } from "shared-function.tsx?tsr-shared=1";
 const $$splitComponentImporter = () => import('shared-function.tsx?tsr-split=component');
-import { lazyRouteComponent } from '@tanstack/react-router';
-import { createFileRoute } from '@tanstack/react-router';
+import { lazyRouteComponent } from '@benjavicente/react-router';
+import { createFileRoute } from '@benjavicente/react-router';
 function setCached(key: string, val: unknown) {
   cache.set(key, val);
 }

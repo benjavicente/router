@@ -1,5 +1,5 @@
 library:
-  name: '@tanstack/solid-start'
+  name: '@benjavicente/solid-start'
   version: '1.166.2'
   repository: 'https://github.com/TanStack/router'
   description: >-

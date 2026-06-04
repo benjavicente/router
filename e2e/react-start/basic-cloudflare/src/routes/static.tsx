@@ -1,5 +1,5 @@
-import { createFileRoute } from '@tanstack/react-router'
-import { createServerFn } from '@tanstack/react-start'
+import { createFileRoute } from '@benjavicente/react-router'
+import { createServerFn } from '@benjavicente/react-start'
 import { env } from 'cloudflare:workers'
 
 export const Route = createFileRoute('/static')({

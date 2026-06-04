@@ -3,7 +3,7 @@ name: solid-start
 description: >-
   Solid bindings for TanStack Start: useServerFn hook, tanstackStart
   Vite plugin, StartClient, StartServer, Solid-specific setup,
-  re-exports from @tanstack/start-client-core. Full project setup
+  re-exports from @benjavicente/start-client-core. Full project setup
   with Solid.
 type: framework
 library: tanstack-start
@@ -16,7 +16,7 @@ sources:
   - TanStack/router:docs/start/framework/solid/build-from-scratch.md
 ---
 
-# Solid Start (`@tanstack/solid-start`)
+# Solid Start (`@benjavicente/solid-start`)
 
 This skill builds on start-core. Read [start-core](../../../start-client-core/skills/start-core/SKILL.md) first for foundational concepts.
 
@@ -24,26 +24,26 @@ This skill covers the Solid-specific bindings, setup, and patterns for TanStack 
 
 > **CRITICAL**: All code is ISOMORPHIC by default. Loaders run on BOTH server and client. Use `createServerFn` for server-only logic.
 
-> **CRITICAL**: Do not confuse `@tanstack/solid-start` with SolidStart (`@solidjs/start`). They are completely different frameworks with different APIs.
+> **CRITICAL**: Do not confuse `@benjavicente/solid-start` with SolidStart (`@solidjs/start`). They are completely different frameworks with different APIs.
 
 > **CRITICAL**: Types are FULLY INFERRED. Never cast, never annotate inferred values.
 
 ## Package API Surface
 
-`@tanstack/solid-start` re-exports everything from `@tanstack/start-client-core` plus:
+`@benjavicente/solid-start` re-exports everything from `@benjavicente/start-client-core` plus:
 
 - `useServerFn` — Solid hook for calling server functions from components
 
-All core APIs (`createServerFn`, `createMiddleware`, `createStart`, `createIsomorphicFn`, `createServerOnlyFn`, `createClientOnlyFn`) are available from `@tanstack/solid-start`.
+All core APIs (`createServerFn`, `createMiddleware`, `createStart`, `createIsomorphicFn`, `createServerOnlyFn`, `createClientOnlyFn`) are available from `@benjavicente/solid-start`.
 
-Server utilities (`getRequest`, `getRequestHeader`, `setResponseHeader`, `setCookie`, `getCookie`, `useSession`) are imported from `@tanstack/solid-start/server`.
+Server utilities (`getRequest`, `getRequestHeader`, `setResponseHeader`, `setCookie`, `getCookie`, `useSession`) are imported from `@benjavicente/solid-start/server`.
 
 ## Full Project Setup
 
 ### 1. Install Dependencies
 
 ```bash
-npm i @tanstack/solid-start @tanstack/solid-router solid-js
+npm i @benjavicente/solid-start @benjavicente/solid-router solid-js
 npm i -D vite vite-plugin-solid typescript
 ```
 
@@ -80,7 +80,7 @@ npm i -D vite vite-plugin-solid typescript
 
 ```ts
 import { defineConfig } from 'vite'
-import { tanstackStart } from '@tanstack/solid-start/plugin/vite'
+import { tanstackStart } from '@benjavicente/solid-start/plugin/vite'
 import solidPlugin from 'vite-plugin-solid'
 
 export default defineConfig({
@@ -94,7 +94,7 @@ export default defineConfig({
 ### 5. Router Factory (src/router.tsx)
 
 ```tsx
-import { createRouter } from '@tanstack/solid-router'
+import { createRouter } from '@benjavicente/solid-router'
 import { routeTree } from './routeTree.gen'
 
 export function getRouter() {
@@ -114,7 +114,7 @@ import {
   createRootRoute,
   HeadContent,
   Scripts,
-} from '@tanstack/solid-router'
+} from '@benjavicente/solid-router'
 import { HydrationScript } from 'solid-js/web'
 import { Suspense } from 'solid-js'
 
@@ -149,8 +149,8 @@ function RootDocument(props: { children: any }) {
 ### 7. Index Route (src/routes/index.tsx)
 
 ```tsx
-import { createFileRoute } from '@tanstack/solid-router'
-import { createServerFn } from '@tanstack/solid-start'
+import { createFileRoute } from '@benjavicente/solid-router'
+import { createServerFn } from '@benjavicente/solid-start'
 
 const getGreeting = createServerFn({ method: 'GET' }).handler(async () => {
   return 'Hello from TanStack Start!'
@@ -172,7 +172,7 @@ function HomePage() {
 Use `useServerFn` to call server functions from Solid components with automatic redirect handling:
 
 ```tsx
-import { createServerFn, useServerFn } from '@tanstack/solid-start'
+import { createServerFn, useServerFn } from '@benjavicente/solid-start'
 import { createSignal } from 'solid-js'
 
 const updatePost = createServerFn({ method: 'POST' })
@@ -204,7 +204,7 @@ Unlike the React version, `useServerFn` does NOT wrap the returned function in a
 
 ## Solid-Specific Components
 
-All routing components from `@tanstack/solid-router` work in Start:
+All routing components from `@benjavicente/solid-router` work in Start:
 
 - `<Outlet>` — renders matched child route
 - `<Link>` — type-safe navigation
@@ -217,7 +217,7 @@ All routing components from `@tanstack/solid-router` work in Start:
 
 ## Hooks Reference
 
-All hooks from `@tanstack/solid-router` work in Start. Most return `Accessor<T>` — call the accessor to read:
+All hooks from `@benjavicente/solid-router` work in Start. Most return `Accessor<T>` — call the accessor to read:
 
 - `useRouter()` — router instance (NOT an Accessor)
 - `useRouterState()` — `Accessor<T>`, subscribe to router state
@@ -236,13 +236,13 @@ All hooks from `@tanstack/solid-router` work in Start. Most return `Accessor<T>`
 
 ```tsx
 // WRONG — this is the SPA router, NOT Start
-import { createServerFn } from '@tanstack/solid-router'
+import { createServerFn } from '@benjavicente/solid-router'
 
 // CORRECT — server functions come from solid-start
-import { createServerFn } from '@tanstack/solid-start'
+import { createServerFn } from '@benjavicente/solid-start'
 
 // CORRECT — routing APIs come from solid-router (re-exported by Start too)
-import { createFileRoute, Link } from '@tanstack/solid-router'
+import { createFileRoute, Link } from '@benjavicente/solid-router'
 ```
 
 ### 2. CRITICAL: Forgetting to call Accessor

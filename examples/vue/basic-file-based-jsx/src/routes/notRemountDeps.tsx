@@ -1,4 +1,4 @@
-import { createFileRoute } from '@tanstack/vue-router'
+import { createFileRoute } from '@benjavicente/vue-router'
 import { NotRemountDepsComponent } from '../components/NotRemountDepsComponent'
 
 export const Route = createFileRoute('/notRemountDeps')({

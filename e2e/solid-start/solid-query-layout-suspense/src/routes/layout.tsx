@@ -1,5 +1,5 @@
 import { useQuery } from '@tanstack/solid-query'
-import { Outlet, createFileRoute } from '@tanstack/solid-router'
+import { Outlet, createFileRoute } from '@benjavicente/solid-router'
 
 export const Route = createFileRoute('/layout')({
   component: RouteComponent,

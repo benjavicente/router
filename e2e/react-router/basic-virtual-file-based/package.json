@@ -12,10 +12,10 @@
   },
   "dependencies": {
     "@tailwindcss/vite": "^4.2.2",
-    "@tanstack/react-router": "workspace:^",
-    "@tanstack/react-router-devtools": "workspace:^",
-    "@tanstack/router-plugin": "workspace:^",
-    "@tanstack/virtual-file-routes": "workspace:^",
+    "@benjavicente/react-router": "workspace:^",
+    "@benjavicente/react-router-devtools": "workspace:^",
+    "@benjavicente/router-plugin": "workspace:^",
+    "@benjavicente/virtual-file-routes": "workspace:^",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
     "redaxios": "^0.5.1",
@@ -24,7 +24,7 @@
   },
   "devDependencies": {
     "@playwright/test": "^1.50.1",
-    "@tanstack/router-e2e-utils": "workspace:^",
+    "@benjavicente/router-e2e-utils": "workspace:^",
     "@types/react": "^19.0.8",
     "@types/react-dom": "^19.0.3",
     "@vitejs/plugin-react": "^6.0.1",

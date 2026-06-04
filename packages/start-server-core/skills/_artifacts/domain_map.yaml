@@ -1,11 +1,11 @@
 # domain_map.yaml
-# Library: @tanstack/start-server-core
+# Library: @benjavicente/start-server-core
 # Version: 1.166.2
 # Date: 2026-03-08
 # Status: reviewed
 
 library:
-  name: '@tanstack/start-server-core'
+  name: '@benjavicente/start-server-core'
   version: '1.166.2'
   repository: 'https://github.com/TanStack/router'
   description: >-
@@ -32,7 +32,7 @@ skills:
       three-phase request handling, AsyncLocalStorage context.
     type: core
     packages:
-      - '@tanstack/start-server-core'
+      - '@benjavicente/start-server-core'
     covers:
       - createStartHandler factory
       - Request/response utilities

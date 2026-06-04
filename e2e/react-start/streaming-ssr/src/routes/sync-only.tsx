@@ -1,4 +1,4 @@
-import { createFileRoute } from '@tanstack/react-router'
+import { createFileRoute } from '@benjavicente/react-router'
 
 /**
  * This route tests synchronous serialization - no deferred data, no streaming.

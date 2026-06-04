@@ -1,5 +1,5 @@
-import { Await, createFileRoute } from '@tanstack/solid-router'
-import { RawStream } from '@tanstack/solid-start'
+import { Await, createFileRoute } from '@benjavicente/solid-router'
+import { RawStream } from '@benjavicente/solid-start'
 import { Suspense, createEffect, createSignal } from 'solid-js'
 import {
   createDelayedStream,

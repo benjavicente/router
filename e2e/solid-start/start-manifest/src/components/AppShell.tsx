@@ -1,5 +1,5 @@
 /// <reference types="vite/client" />
-import { ClientOnly, Link, Outlet, linkOptions } from '@tanstack/solid-router'
+import { ClientOnly, Link, Outlet, linkOptions } from '@benjavicente/solid-router'
 import styles from '~/styles/root-shell.module.css'
 
 const ROUTES = linkOptions([

@@ -1,4 +1,4 @@
-import { Link, Outlet } from '@tanstack/react-router'
+import { Link, Outlet } from '@benjavicente/react-router'
 import { useEffect } from 'react'
 import styles from '~/styles/shell.module.css'
 

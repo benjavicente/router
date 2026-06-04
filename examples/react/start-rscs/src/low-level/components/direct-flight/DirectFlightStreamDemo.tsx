@@ -1,5 +1,5 @@
 import { useCallback, useState } from 'react'
-import { createFromReadableStream } from '@tanstack/react-start/rsc'
+import { createFromReadableStream } from '@benjavicente/react-start/rsc'
 
 import { getFlightStreamDirect } from './server-functions'
 

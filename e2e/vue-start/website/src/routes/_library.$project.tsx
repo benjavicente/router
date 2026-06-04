@@ -1,4 +1,4 @@
-import { Outlet, createFileRoute } from '@tanstack/vue-router'
+import { Outlet, createFileRoute } from '@benjavicente/vue-router'
 import { getProject } from '~/server/projects'
 import { seo } from '~/utils/seo'
 

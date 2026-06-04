@@ -1,4 +1,4 @@
-import { createFileRoute } from '@tanstack/vue-router'
+import { createFileRoute } from '@benjavicente/vue-router'
 import { EditingAComponent } from '../components/EditingAComponent'
 
 export const Route = createFileRoute('/editing-a')({

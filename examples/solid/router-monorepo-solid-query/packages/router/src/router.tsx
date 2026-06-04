@@ -1,10 +1,10 @@
 import React from 'react'
-import { createRouter } from '@tanstack/solid-router'
+import { createRouter } from '@benjavicente/solid-router'
 
 // Import the generated route tree
 import { QueryClient } from '@tanstack/solid-query'
 import { routeTree } from './routeTree.gen'
-import type { RouteIds } from '@tanstack/solid-router'
+import type { RouteIds } from '@benjavicente/solid-router'
 
 export const queryClient = new QueryClient()
 

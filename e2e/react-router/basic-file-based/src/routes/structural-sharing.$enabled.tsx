@@ -1,5 +1,5 @@
-import { createFileRoute } from '@tanstack/react-router'
-import { Link, getRouteApi, useSearch } from '@tanstack/react-router'
+import { createFileRoute } from '@benjavicente/react-router'
+import { Link, getRouteApi, useSearch } from '@benjavicente/react-router'
 import React from 'react'
 import { z } from 'zod'
 

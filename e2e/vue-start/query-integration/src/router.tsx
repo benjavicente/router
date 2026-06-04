@@ -1,6 +1,6 @@
 import { QueryClient } from '@tanstack/vue-query'
-import { createRouter } from '@tanstack/vue-router'
-import { setupRouterSsrQueryIntegration } from '@tanstack/vue-router-ssr-query'
+import { createRouter } from '@benjavicente/vue-router'
+import { setupRouterSsrQueryIntegration } from '@benjavicente/vue-router-ssr-query'
 import { routeTree } from './routeTree.gen'
 
 export function getRouter() {

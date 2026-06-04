@@ -1,6 +1,6 @@
 import axios from 'redaxios'
 import type { User } from '~/utils/users'
-import { createFileRoute } from '@tanstack/react-router'
+import { createFileRoute } from '@benjavicente/react-router'
 
 let queryURL = 'https://jsonplaceholder.typicode.com'
 

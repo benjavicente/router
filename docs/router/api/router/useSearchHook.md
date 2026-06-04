@@ -49,7 +49,7 @@ The `useSearch` hook accepts an `options` object.
 ## Examples
 
 ```tsx
-import { useSearch } from '@tanstack/react-router'
+import { useSearch } from '@benjavicente/react-router'
 
 function Component() {
   const search = useSearch({ from: '/posts/$postId' })

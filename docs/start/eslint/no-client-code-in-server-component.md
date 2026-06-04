@@ -23,9 +23,9 @@ This rule detects common client-only patterns in server components:
 Examples of **incorrect** code for this rule:
 
 ```tsx
-/* eslint "@tanstack/start/no-client-code-in-server-component": "error" */
+/* eslint "@benjavicente/start/no-client-code-in-server-component": "error" */
 
-import { createCompositeComponent } from '@tanstack/react-start/rsc'
+import { createCompositeComponent } from '@benjavicente/react-start/rsc'
 import { useState } from 'react'
 
 export const Server = createCompositeComponent(() => {
@@ -35,9 +35,9 @@ export const Server = createCompositeComponent(() => {
 ```
 
 ```tsx
-/* eslint "@tanstack/start/no-client-code-in-server-component": "error" */
+/* eslint "@benjavicente/start/no-client-code-in-server-component": "error" */
 
-import { createCompositeComponent } from '@tanstack/react-start/rsc'
+import { createCompositeComponent } from '@benjavicente/react-start/rsc'
 
 export const Server = createCompositeComponent(() => {
   return <div>{window.location.href}</div>
@@ -47,9 +47,9 @@ export const Server = createCompositeComponent(() => {
 Examples of **correct** code for this rule:
 
 ```tsx
-/* eslint "@tanstack/start/no-client-code-in-server-component": "error" */
+/* eslint "@benjavicente/start/no-client-code-in-server-component": "error" */
 
-import { renderServerComponent } from '@tanstack/react-start/rsc'
+import { renderServerComponent } from '@benjavicente/react-start/rsc'
 
 export const Server = renderServerComponent(
   (async () => {

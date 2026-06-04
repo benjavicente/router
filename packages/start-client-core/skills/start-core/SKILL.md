@@ -60,7 +60,7 @@ Need to deploy, configure SSR, or prerender?
 ### 1. Install Dependencies
 
 ```bash
-npm i @tanstack/react-start @tanstack/react-router react react-dom
+npm i @benjavicente/react-start @benjavicente/react-router react react-dom
 npm i -D vite @vitejs/plugin-react typescript
 ```
 
@@ -69,7 +69,7 @@ npm i -D vite @vitejs/plugin-react typescript
 ```ts
 // vite.config.ts
 import { defineConfig } from 'vite'
-import { tanstackStart } from '@tanstack/react-start/plugin/vite'
+import { tanstackStart } from '@benjavicente/react-start/plugin/vite'
 import viteReact from '@vitejs/plugin-react'
 
 export default defineConfig({
@@ -85,7 +85,7 @@ export default defineConfig({
 
 ```tsx
 // src/router.tsx
-import { createRouter } from '@tanstack/react-router'
+import { createRouter } from '@benjavicente/react-router'
 import { routeTree } from './routeTree.gen'
 
 export function getRouter() {
@@ -108,7 +108,7 @@ import {
   createRootRoute,
   HeadContent,
   Scripts,
-} from '@tanstack/react-router'
+} from '@benjavicente/react-router'
 
 export const Route = createRootRoute({
   head: () => ({
@@ -140,8 +140,8 @@ function RootComponent() {
 
 ```tsx
 // src/routes/index.tsx
-import { createFileRoute } from '@tanstack/react-router'
-import { createServerFn } from '@tanstack/react-start'
+import { createFileRoute } from '@benjavicente/react-router'
+import { createServerFn } from '@benjavicente/react-start'
 
 const getGreeting = createServerFn({ method: 'GET' }).handler(async () => {
   return { message: 'Hello from the server!' }
@@ -211,4 +211,4 @@ function RootComponent() {
 
 ## Version Note
 
-This skill targets `@tanstack/react-start` v1.166.2 and `@tanstack/start-client-core` v1.166.2.
+This skill targets `@benjavicente/react-start` v1.166.2 and `@benjavicente/start-client-core` v1.166.2.

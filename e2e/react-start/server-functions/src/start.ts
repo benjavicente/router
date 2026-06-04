@@ -1,5 +1,5 @@
-import { createCsrfMiddleware, createStart } from '@tanstack/react-start'
-import type { CustomFetch } from '@tanstack/react-start'
+import { createCsrfMiddleware, createStart } from '@benjavicente/react-start'
+import type { CustomFetch } from '@benjavicente/react-start'
 
 /**
  * Global custom fetch implementation for all server functions.

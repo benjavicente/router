@@ -2,12 +2,12 @@ import { z } from 'zod'
 import {
   configSchema as generatorConfigSchema,
   getConfig as getGeneratorConfig,
-} from '@tanstack/router-generator'
+} from '@benjavicente/router-generator'
 import type {
   CreateFileRoute,
   RegisteredRouter,
   RouteIds,
-} from '@tanstack/router-core'
+} from '@benjavicente/router-core'
 import type { CodeSplitGroupings } from './constants'
 
 export const splitGroupingsSchema = z

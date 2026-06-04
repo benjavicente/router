@@ -24,7 +24,7 @@ export {
   retainSearchParams,
   stripSearchParams,
   createSerializationAdapter,
-} from '@tanstack/router-core'
+} from '@benjavicente/router-core'
 
 export type {
   AnyRoute,
@@ -107,14 +107,14 @@ export type {
   SerializationAdapter,
   AnySerializationAdapter,
   SerializableExtensions,
-} from '@tanstack/router-core'
+} from '@benjavicente/router-core'
 
 export {
   createHistory,
   createBrowserHistory,
   createHashHistory,
   createMemoryHistory,
-} from '@tanstack/history'
+} from '@benjavicente/history'
 
 export type {
   BlockerFn,
@@ -122,7 +122,7 @@ export type {
   RouterHistory,
   ParsedPath,
   HistoryState,
-} from '@tanstack/history'
+} from '@benjavicente/history'
 
 export { useAwaited, Await } from './awaited'
 export type { AwaitOptions } from './awaited'
@@ -216,7 +216,7 @@ export type {
   RouteMask,
   MatchRouteOptions,
   CreateLazyFileRoute,
-} from '@tanstack/router-core'
+} from '@benjavicente/router-core'
 export type {
   UseLinkPropsOptions,
   ActiveLinkOptions,
@@ -248,7 +248,7 @@ export {
   isRedirect,
   createRouterConfig,
   DEFAULT_PROTOCOL_ALLOWLIST,
-} from '@tanstack/router-core'
+} from '@benjavicente/router-core'
 
 export {
   RouteApi,
@@ -274,7 +274,7 @@ export type {
 
 export { createRouter, Router } from './router'
 
-export { lazyFn, SearchParamError } from '@tanstack/router-core'
+export { lazyFn, SearchParamError } from '@benjavicente/router-core'
 
 export { RouterProvider, RouterContextProvider } from './RouterProvider'
 export type { RouterProps } from './RouterProvider'
@@ -299,8 +299,8 @@ export { useLocation } from './useLocation'
 export { useCanGoBack } from './useCanGoBack'
 
 export { CatchNotFound, DefaultGlobalNotFound } from './not-found'
-export { notFound, isNotFound } from '@tanstack/router-core'
-export type { NotFoundError } from '@tanstack/router-core'
+export { notFound, isNotFound } from '@benjavicente/router-core'
+export type { NotFoundError } from '@benjavicente/router-core'
 
 export type {
   ValidateLinkOptions,
@@ -332,7 +332,7 @@ export type {
   SerializerExtensions,
   RegisteredSerializableInput,
   Serializable,
-} from '@tanstack/router-core'
+} from '@benjavicente/router-core'
 
 export { ScriptOnce } from './ScriptOnce'
 export { Asset } from './Asset'
@@ -340,8 +340,8 @@ export { HeadContent } from './HeadContent'
 export { useTags } from './headContentUtils'
 export { Scripts } from './Scripts'
 export type * from './ssr/serializer'
-export { composeRewrites } from '@tanstack/router-core'
+export { composeRewrites } from '@benjavicente/router-core'
 export type {
   LocationRewrite,
   LocationRewriteFunction,
-} from '@tanstack/router-core'
+} from '@benjavicente/router-core'

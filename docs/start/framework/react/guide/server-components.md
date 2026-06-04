@@ -30,7 +30,7 @@ Update your `vite.config.ts` to enable RSC in the TanStack Start plugin and add 
 
 ```tsx
 import { defineConfig } from 'vite'
-import { tanstackStart } from '@tanstack/react-start/plugin/vite'
+import { tanstackStart } from '@benjavicente/react-start/plugin/vite'
 import viteReact from '@vitejs/plugin-react'
 import rsc from '@vitejs/plugin-rsc'
 
@@ -61,9 +61,9 @@ There are two high-level RSC helpers:
 ### Renderable (no slots)
 
 ```tsx
-import { createFileRoute } from '@tanstack/react-router'
-import { createServerFn } from '@tanstack/react-start'
-import { renderServerComponent } from '@tanstack/react-start/rsc'
+import { createFileRoute } from '@benjavicente/react-router'
+import { createServerFn } from '@benjavicente/react-start'
+import { renderServerComponent } from '@benjavicente/react-start/rsc'
 
 function Greeting() {
   return <h1>Hello from RSC</h1>
@@ -91,12 +91,12 @@ function HomePage() {
 ### Composite (slots)
 
 ```tsx
-import { createFileRoute } from '@tanstack/react-router'
-import { createServerFn } from '@tanstack/react-start'
+import { createFileRoute } from '@benjavicente/react-router'
+import { createServerFn } from '@benjavicente/react-start'
 import {
   CompositeComponent,
   createCompositeComponent,
-} from '@tanstack/react-start/rsc'
+} from '@benjavicente/react-start/rsc'
 
 const getCard = createServerFn().handler(async () => {
   const src = await createCompositeComponent(
@@ -158,7 +158,7 @@ Pass client components as children. Simple and familiar, but the server cannot p
 import {
   CompositeComponent,
   createCompositeComponent,
-} from '@tanstack/react-start/rsc'
+} from '@benjavicente/react-start/rsc'
 
 const getCard = createServerFn().handler(async () => {
   const src = await createCompositeComponent(
@@ -194,7 +194,7 @@ Use render props when the server needs to pass data to client-rendered content:
 import {
   CompositeComponent,
   createCompositeComponent,
-} from '@tanstack/react-start/rsc'
+} from '@benjavicente/react-start/rsc'
 
 const getPost = createServerFn()
   .validator(z.object({ postId: z.string() }))
@@ -250,7 +250,7 @@ Pass React components as props. On the client, the passed in props will be rende
 import {
   CompositeComponent,
   createCompositeComponent,
-} from '@tanstack/react-start/rsc'
+} from '@benjavicente/react-start/rsc'
 
 const getProductCard = createServerFn()
   .validator(z.object({ productId: z.string() }))
@@ -390,7 +390,7 @@ function PostPage() {
 To refetch a server component after data changes, use `router.invalidate()`:
 
 ```tsx
-import { useRouter } from '@tanstack/react-router'
+import { useRouter } from '@benjavicente/react-router'
 
 function PostPage() {
   const router = useRouter()
@@ -652,7 +652,7 @@ export const Route = createFileRoute('/dashboard')({
 Render nested composites using dot notation:
 
 ```tsx
-import { CompositeComponent } from '@tanstack/react-start/rsc'
+import { CompositeComponent } from '@benjavicente/react-start/rsc'
 
 function DashboardPage() {
   const { Layout } = Route.useLoaderData()
@@ -675,7 +675,7 @@ function DashboardPage() {
 Or destructure them from the loader data:
 
 ```tsx
-import { CompositeComponent } from '@tanstack/react-start/rsc'
+import { CompositeComponent } from '@benjavicente/react-start/rsc'
 
 function DashboardPage() {
   const { Header, Content, Footer } = Route.useLoaderData().Layout
@@ -815,7 +815,7 @@ Use async generators to stream server components one at a time. The client recei
 import {
   CompositeComponent,
   createCompositeComponent,
-} from '@tanstack/react-start/rsc'
+} from '@benjavicente/react-start/rsc'
 
 const streamNotifications = createServerFn().handler(async function* () {
   // Yield initial batch immediately
@@ -969,7 +969,7 @@ async function UserSidebar() {
 TanStack Router's `Link` component works inside server components. The link is serialized and hydrates on the client for client-side navigation:
 
 ```tsx
-import { Link } from '@tanstack/react-router'
+import { Link } from '@benjavicente/react-router'
 
 const getNavigation = createServerFn().handler(async () => {
   const pages = await db.pages.list()
@@ -1051,7 +1051,7 @@ Questions? [Open an issue](https://github.com/tanstack/router/issues) or join th
 
 For advanced use cases (custom streaming protocols, API route integration, external RSC-aware systems), TanStack Start exposes low-level Flight stream APIs. For most cases, prefer the high-level helpers which handle caching, streaming, and (for composites) slots automatically.
 
-Import from `@tanstack/react-start/rsc`:
+Import from `@benjavicente/react-start/rsc`:
 
 | Function                   | Available in          | Description                                        |
 | -------------------------- | --------------------- | -------------------------------------------------- |
@@ -1065,9 +1065,9 @@ Import from `@tanstack/react-start/rsc`:
 
 ```tsx
 // src/routes/api/rsc.ts - API route with Flight stream
-import { createAPIFileRoute } from '@tanstack/react-start/api'
-import { createServerFn } from '@tanstack/react-start'
-import { renderToReadableStream } from '@tanstack/react-start/rsc'
+import { createAPIFileRoute } from '@benjavicente/react-start/api'
+import { createServerFn } from '@benjavicente/react-start'
+import { renderToReadableStream } from '@benjavicente/react-start/rsc'
 
 const getFlightStream = createServerFn({ method: 'GET' }).handler(async () => {
   return renderToReadableStream(<div>Server Rendered Content</div>)
@@ -1085,7 +1085,7 @@ export const APIRoute = createAPIFileRoute('/api/rsc')({
 
 ```tsx
 // Client: fetch and decode the Flight stream
-import { createFromFetch } from '@tanstack/react-start/rsc'
+import { createFromFetch } from '@benjavicente/react-start/rsc'
 
 async function fetchRSC() {
   return createFromFetch(fetch('/api/rsc'))

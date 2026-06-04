@@ -1,5 +1,5 @@
 import { createSignal } from 'solid-js'
-import { createFileRoute } from '@tanstack/solid-router'
+import { createFileRoute } from '@benjavicente/solid-router'
 
 export const Route = createFileRoute('/')({
   component: Home,

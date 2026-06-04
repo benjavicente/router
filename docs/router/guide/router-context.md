@@ -25,7 +25,7 @@ Like everything else, the root router context is strictly typed. This type can b
 import {
   createRootRouteWithContext,
   createRouter,
-} from '@tanstack/react-router'
+} from '@benjavicente/react-router'
 
 interface MyRouterContext {
   user: User
@@ -52,7 +52,7 @@ const router = createRouter({
 import {
   createRootRouteWithContext,
   createRouter,
-} from '@tanstack/solid-router'
+} from '@benjavicente/solid-router'
 
 interface MyRouterContext {
   user: User
@@ -90,7 +90,7 @@ The router context is passed to the router at instantiation time. You can pass t
 # React
 
 ```tsx
-import { createRouter } from '@tanstack/react-router'
+import { createRouter } from '@benjavicente/react-router'
 
 // Use the routerContext you created to create your router
 const router = createRouter({
@@ -107,7 +107,7 @@ const router = createRouter({
 # Solid
 
 ```tsx
-import { createRouter } from '@tanstack/solid-router'
+import { createRouter } from '@benjavicente/solid-router'
 
 // Use the routerContext you created to create your router
 const router = createRouter({
@@ -223,7 +223,7 @@ export const Route = createFileRoute('/todos')({
 import {
   createRootRouteWithContext,
   createRouter,
-} from '@tanstack/react-router'
+} from '@benjavicente/react-router'
 
 interface MyRouterContext {
   queryClient: QueryClient
@@ -249,7 +249,7 @@ const router = createRouter({
 import {
   createRootRouteWithContext,
   createRouter,
-} from '@tanstack/solid-router'
+} from '@benjavicente/solid-router'
 
 interface MyRouterContext {
   queryClient: QueryClient
@@ -302,7 +302,7 @@ Let's look at the setup for an example, where we pass down a `useNetworkStrength
 
 ```tsx title="src/routes/__root.tsx"
 // First, make sure the context for the root route is typed
-import { createRootRouteWithContext } from '@tanstack/react-router'
+import { createRootRouteWithContext } from '@benjavicente/react-router'
 import { useNetworkStrength } from '@/hooks/useNetworkStrength'
 
 interface MyRouterContext {
@@ -321,7 +321,7 @@ In this example, we'd instantiate the hook before rendering the router using the
 <!-- ::start:tabs variant="files" -->
 
 ```tsx title="src/router.tsx"
-import { createRouter } from '@tanstack/react-router'
+import { createRouter } from '@benjavicente/react-router'
 
 import { routeTree } from './routeTree.gen'
 
@@ -340,7 +340,7 @@ Then, we can call the `useNetworkStrength` hook in our `App` component and pass 
 <!-- ::start:tabs variant="files" -->
 
 ```tsx title="src/main.tsx"
-import { RouterProvider } from '@tanstack/react-router'
+import { RouterProvider } from '@benjavicente/react-router'
 import { router } from './router'
 
 import { useNetworkStrength } from '@/hooks/useNetworkStrength'
@@ -361,7 +361,7 @@ So, now in our route's `loader` function, we can access the `networkStrength` ho
 <!-- ::start:tabs variant="files" -->
 
 ```tsx title="src/routes/posts.tsx"
-import { createFileRoute } from '@tanstack/react-router'
+import { createFileRoute } from '@benjavicente/react-router'
 
 export const Route = createFileRoute('/posts')({
   component: Posts,
@@ -388,7 +388,7 @@ The router context is passed down the route tree and is merged at each route. Th
 <!-- ::start:tabs variant="files" -->
 
 ```tsx title="src/routes/__root.tsx"
-import { createRootRouteWithContext } from '@tanstack/react-router'
+import { createRootRouteWithContext } from '@benjavicente/react-router'
 
 interface MyRouterContext {
   foo: boolean
@@ -404,7 +404,7 @@ export const Route = createRootRouteWithContext<MyRouterContext>()({
 <!-- ::start:tabs variant="files" -->
 
 ```tsx title="src/router.tsx"
-import { createRouter } from '@tanstack/react-router'
+import { createRouter } from '@benjavicente/react-router'
 
 import { routeTree } from './routeTree.gen'
 
@@ -421,7 +421,7 @@ const router = createRouter({
 <!-- ::start:tabs variant="files" -->
 
 ```tsx title="src/routes/todos.tsx"
-import { createFileRoute } from '@tanstack/react-router'
+import { createFileRoute } from '@benjavicente/react-router'
 
 export const Route = createFileRoute('/todos')({
   component: Todos,
@@ -444,7 +444,7 @@ export const Route = createFileRoute('/todos')({
 <!-- ::start:tabs variant="files" -->
 
 ```tsx title="src/routes/__root.tsx"
-import { createRootRouteWithContext } from '@tanstack/solid-router'
+import { createRootRouteWithContext } from '@benjavicente/solid-router'
 
 interface MyRouterContext {
   foo: boolean
@@ -460,7 +460,7 @@ export const Route = createRootRouteWithContext<MyRouterContext>()({
 <!-- ::start:tabs variant="files" -->
 
 ```tsx title="src/router.tsx"
-import { createRouter } from '@tanstack/solid-router'
+import { createRouter } from '@benjavicente/solid-router'
 
 import { routeTree } from './routeTree.gen'
 
@@ -477,7 +477,7 @@ const router = createRouter({
 <!-- ::start:tabs variant="files" -->
 
 ```tsx title="src/routes/todos.tsx"
-import { createFileRoute } from '@tanstack/solid-router'
+import { createFileRoute } from '@benjavicente/solid-router'
 
 export const Route = createFileRoute('/todos')({
   component: Todos,

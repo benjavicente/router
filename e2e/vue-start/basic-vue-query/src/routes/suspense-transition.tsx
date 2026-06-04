@@ -1,5 +1,5 @@
 import { queryOptions, useQuery } from '@tanstack/vue-query'
-import { Link, createFileRoute } from '@tanstack/vue-router'
+import { Link, createFileRoute } from '@benjavicente/vue-router'
 import { ref, watchEffect } from 'vue'
 
 const doubleQueryOptions = (n: number) =>

@@ -1,4 +1,4 @@
-import { createServerFn } from '@tanstack/solid-start'
+import { createServerFn } from '@benjavicente/solid-start'
 import { getServerFn, postServerFn } from './normalServerFn'
 
 export const getServerFnCallingServerFn = createServerFn().handler(

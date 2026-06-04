@@ -1,5 +1,5 @@
-import { createFileRoute } from '@tanstack/react-router'
-import { Link, redirect } from '@tanstack/react-router'
+import { createFileRoute } from '@benjavicente/react-router'
+import { Link, redirect } from '@benjavicente/react-router'
 
 export const Route = createFileRoute('/')({
   beforeLoad: ({ context }) => {

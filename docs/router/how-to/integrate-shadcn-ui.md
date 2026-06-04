@@ -80,8 +80,8 @@ Update your root route to support portals and animations:
 
 ```tsx
 // src/routes/__root.tsx
-import { createRootRoute, Outlet } from '@tanstack/react-router'
-import { TanStackRouterDevtools } from '@tanstack/react-router-devtools'
+import { createRootRoute, Outlet } from '@benjavicente/react-router'
+import { TanStackRouterDevtools } from '@benjavicente/react-router-devtools'
 
 export const Route = createRootRoute({
   component: () => (
@@ -212,7 +212,7 @@ export function RouterDialog({
 
 ```tsx
 // src/components/navigation/main-nav.tsx
-import { Link, useMatchRoute } from '@tanstack/react-router'
+import { Link, useMatchRoute } from '@benjavicente/react-router'
 import { cn } from '@/lib/utils'
 import {
   NavigationMenu,
@@ -266,7 +266,7 @@ export function MainNav({ items, className }: MainNavProps) {
 
 ```tsx
 // src/components/ui/router-button.tsx
-import { createLink } from '@tanstack/react-router'
+import { createLink } from '@benjavicente/react-router'
 import { Button, type ButtonProps } from '@/components/ui/button'
 import { forwardRef } from 'react'
 
@@ -282,7 +282,7 @@ export const RouterButton = createLink(
 
 ```tsx
 // src/routes/posts/index.tsx
-import { createFileRoute } from '@tanstack/react-router'
+import { createFileRoute } from '@benjavicente/react-router'
 import { MainNav } from '@/components/navigation/main-nav'
 import { RouterButton } from '@/components/ui/router-button'
 import { RouterSheet } from '@/components/ui/router-sheet'
@@ -373,7 +373,7 @@ function PostsPage() {
 **Solution:** Use `createLink` for proper typing:
 
 ```tsx
-import { createLink } from '@tanstack/react-router'
+import { createLink } from '@benjavicente/react-router'
 import { Button } from '@/components/ui/button'
 
 // This provides full type safety

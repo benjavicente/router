@@ -14,7 +14,7 @@ TanStack Start uses TanStack Router's route-level error boundaries.
 
 ```tsx
 // src/router.tsx
-import { createRouter, ErrorComponent } from '@tanstack/react-router'
+import { createRouter, ErrorComponent } from '@benjavicente/react-router'
 import { routeTree } from './routeTree.gen'
 
 export function getRouter() {
@@ -33,8 +33,8 @@ export function getRouter() {
 
 ```tsx
 // src/routes/posts.$postId.tsx
-import { createFileRoute, ErrorComponent } from '@tanstack/react-router'
-import type { ErrorComponentProps } from '@tanstack/react-router'
+import { createFileRoute, ErrorComponent } from '@benjavicente/react-router'
+import type { ErrorComponentProps } from '@benjavicente/react-router'
 
 function PostError({ error, reset }: ErrorComponentProps) {
   return <ErrorComponent error={error} />

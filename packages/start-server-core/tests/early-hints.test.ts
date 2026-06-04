@@ -7,7 +7,7 @@ import {
   serializeEarlyHint,
 } from '../src/early-hints'
 import type { EarlyHint } from '../src/early-hints'
-import type { AnyRoute, AnyRouteMatch, Manifest } from '@tanstack/router-core'
+import type { AnyRoute, AnyRouteMatch, Manifest } from '@benjavicente/router-core'
 
 describe('early hints', () => {
   it('formats Link header values', () => {

@@ -127,7 +127,7 @@ export interface RootRouteChildren {
   AnchorRoute: typeof AnchorRoute
 }
 
-declare module '@tanstack/react-router' {
+declare module '@benjavicente/react-router' {
   interface FileRoutesByPath {
     '/anchor': {
       id: '/anchor'

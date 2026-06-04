@@ -227,7 +227,7 @@ export interface RootRouteChildren {
   ExpensiveIndexRoute: typeof ExpensiveIndexRoute
 }
 
-declare module '@tanstack/solid-router' {
+declare module '@benjavicente/solid-router' {
   interface FileRoutesByPath {
     '/login': {
       id: '/login'

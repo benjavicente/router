@@ -1,4 +1,4 @@
-import { createFileRoute } from '@tanstack/solid-router'
+import { createFileRoute } from '@benjavicente/solid-router'
 import { RenderNestedData, makeNested } from '~/data'
 
 export const Route = createFileRoute('/ssr/nested')({

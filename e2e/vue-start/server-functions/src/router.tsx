@@ -1,5 +1,5 @@
-import { createRouter } from '@tanstack/vue-router'
-import { setupRouterSsrQueryIntegration } from '@tanstack/vue-router-ssr-query'
+import { createRouter } from '@benjavicente/vue-router'
+import { setupRouterSsrQueryIntegration } from '@benjavicente/vue-router-ssr-query'
 import { QueryClient } from '@tanstack/vue-query'
 import { routeTree } from './routeTree.gen'
 import { DefaultCatchBoundary } from './components/DefaultCatchBoundary'
@@ -25,7 +25,7 @@ export function getRouter() {
   return router
 }
 
-declare module '@tanstack/vue-router' {
+declare module '@benjavicente/vue-router' {
   interface Register {
     router: ReturnType<typeof getRouter>
   }

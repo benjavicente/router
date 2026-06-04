@@ -1,5 +1,5 @@
 import { useState, useEffect, Suspense } from 'react'
-import { createFileRoute, redirect } from '@tanstack/react-router'
+import { createFileRoute, redirect } from '@benjavicente/react-router'
 
 export const Route = createFileRoute('/login')({
   beforeLoad: ({ context }) => {

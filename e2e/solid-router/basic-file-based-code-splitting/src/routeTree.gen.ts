@@ -143,7 +143,7 @@ export interface RootRouteChildren {
   WithoutLoaderRoute: typeof WithoutLoaderRoute
 }
 
-declare module '@tanstack/solid-router' {
+declare module '@benjavicente/solid-router' {
   interface FileRoutesByPath {
     '/without-loader': {
       id: '/without-loader'

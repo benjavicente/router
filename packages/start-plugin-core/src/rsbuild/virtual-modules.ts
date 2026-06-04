@@ -1,4 +1,4 @@
-import { VIRTUAL_MODULES } from '@tanstack/start-server-core'
+import { VIRTUAL_MODULES } from '@benjavicente/start-server-core'
 import { generateSerializationAdaptersModule } from '../serialization-adapters-module'
 import { generateServerFnResolverModule } from '../start-compiler/server-fn-resolver-module'
 import { buildStartManifest } from '../start-manifest-plugin/manifestBuilder'
@@ -412,11 +412,11 @@ export function registerVirtualModules(
       // virtual:tanstack-rsc-hmr
       content[rscPaths.rscHmr] = generateRscHmrModule(isClientEnv, isDev)
       content[rscPaths.rscBrowserDecode] = isClientEnv
-        ? `export * from '@tanstack/react-start/rsbuild/browser-decode'`
+        ? `export * from '@benjavicente/react-start/rsbuild/browser-decode'`
         : `export function createFromReadableStream() { throw new Error('RSC browser decode is only available in the client environment') }
 export function createFromFetch() { throw new Error('RSC browser decode is only available in the client environment') }`
       content[rscPaths.rscSsrDecode] = isServerEnv
-        ? `export * from '@tanstack/react-start/rsbuild/ssr-decode'`
+        ? `export * from '@benjavicente/react-start/rsbuild/ssr-decode'`
         : `export function setOnClientReference() {}
 export function createFromReadableStream() { throw new Error('RSC SSR decode is only available in the server environment') }`
     }

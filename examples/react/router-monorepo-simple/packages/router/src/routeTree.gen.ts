@@ -49,7 +49,7 @@ export interface RootRouteChildren {
   PostIdRoute: typeof PostIdRoute
 }
 
-declare module '@tanstack/react-router' {
+declare module '@benjavicente/react-router' {
   interface FileRoutesByPath {
     '/$postId': {
       id: '/$postId'

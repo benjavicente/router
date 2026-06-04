@@ -1,5 +1,5 @@
-import { createFileRoute } from '@tanstack/vue-router'
-import { Outlet } from '@tanstack/vue-router'
+import { createFileRoute } from '@benjavicente/vue-router'
+import { Outlet } from '@benjavicente/vue-router'
 
 export const Route = createFileRoute('/_pathlessLayout')({
   component: LayoutComponent,

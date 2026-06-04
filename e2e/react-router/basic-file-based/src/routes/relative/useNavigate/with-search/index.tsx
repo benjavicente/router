@@ -1,4 +1,4 @@
-import { createFileRoute, useNavigate } from '@tanstack/react-router'
+import { createFileRoute, useNavigate } from '@benjavicente/react-router'
 import { z } from 'zod'
 
 export const Route = createFileRoute('/relative/useNavigate/with-search/')({

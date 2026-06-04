@@ -1,5 +1,5 @@
 import { useQuery } from '@tanstack/react-query'
-import { createFileRoute } from '@tanstack/react-router'
+import { createFileRoute } from '@benjavicente/react-router'
 import { makeQueryOptions } from '~/queryOptions'
 
 const qOptions = makeQueryOptions('useQuery')

@@ -48,7 +48,7 @@ Enable `autoCodeSplitting: true` in the bundler plugin. This is the recommended 
 // vite.config.ts
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
-import { tanstackRouter } from '@tanstack/router-plugin/vite'
+import { tanstackRouter } from '@benjavicente/router-plugin/vite'
 
 export default defineConfig({
   plugins: [
@@ -65,7 +65,7 @@ With this enabled, route files are automatically transformed. Components are spl
 
 ```tsx
 // src/routes/posts.tsx — everything in one file, splitting is automatic
-import { createFileRoute } from '@tanstack/react-router'
+import { createFileRoute } from '@benjavicente/react-router'
 import { fetchPosts } from '../api'
 
 export const Route = createFileRoute('/posts')({
@@ -92,7 +92,7 @@ If you cannot use automatic code splitting (e.g. CLI-only, no bundler plugin), s
 
 ```tsx
 // src/routes/posts.tsx — critical route config only
-import { createFileRoute } from '@tanstack/react-router'
+import { createFileRoute } from '@benjavicente/react-router'
 import { fetchPosts } from '../api'
 
 export const Route = createFileRoute('/posts')({
@@ -102,7 +102,7 @@ export const Route = createFileRoute('/posts')({
 
 ```tsx
 // src/routes/posts.lazy.tsx — non-critical (lazy-loaded)
-import { createLazyFileRoute } from '@tanstack/react-router'
+import { createLazyFileRoute } from '@benjavicente/react-router'
 
 export const Route = createLazyFileRoute('/posts')({
   component: PostsComponent,
@@ -122,7 +122,7 @@ If splitting leaves the critical route file empty, delete it entirely. A virtual
 
 ```tsx
 // src/routes/about.lazy.tsx — no about.tsx needed
-import { createLazyFileRoute } from '@tanstack/react-router'
+import { createLazyFileRoute } from '@benjavicente/react-router'
 
 export const Route = createLazyFileRoute('/about')({
   component: () => <h1>About Us</h1>,
@@ -135,7 +135,7 @@ For code-based (non-file-based) routing, use `createLazyRoute` and the `.lazy()`
 
 ```tsx
 // src/posts.lazy.tsx
-import { createLazyRoute } from '@tanstack/react-router'
+import { createLazyRoute } from '@benjavicente/react-router'
 
 export const Route = createLazyRoute('/posts')({
   component: PostsComponent,
@@ -148,7 +148,7 @@ function PostsComponent() {
 
 ```tsx
 // src/app.tsx
-import { createRoute } from '@tanstack/react-router'
+import { createRoute } from '@benjavicente/react-router'
 
 const postsRoute = createRoute({
   getParentRoute: () => rootRoute,
@@ -162,7 +162,7 @@ When your component lives in a separate file, use `getRouteApi` to get typed acc
 
 ```tsx
 // src/routes/posts.lazy.tsx
-import { createLazyFileRoute, getRouteApi } from '@tanstack/react-router'
+import { createLazyFileRoute, getRouteApi } from '@benjavicente/react-router'
 
 const routeApi = getRouteApi('/posts')
 
@@ -187,7 +187,7 @@ Override split behavior for a specific route by adding `codeSplitGroupings` dire
 
 ```tsx
 // src/routes/posts.tsx
-import { createFileRoute } from '@tanstack/react-router'
+import { createFileRoute } from '@benjavicente/react-router'
 import { loadPostsData } from './-heavy-posts-utils'
 
 export const Route = createFileRoute('/posts')({
@@ -210,7 +210,7 @@ function PostsComponent() {
 ```ts
 // vite.config.ts
 import { defineConfig } from 'vite'
-import { tanstackRouter } from '@tanstack/router-plugin/vite'
+import { tanstackRouter } from '@benjavicente/router-plugin/vite'
 
 export default defineConfig({
   plugins: [
@@ -237,7 +237,7 @@ export default defineConfig({
 ```ts
 // vite.config.ts
 import { defineConfig } from 'vite'
-import { tanstackRouter } from '@tanstack/router-plugin/vite'
+import { tanstackRouter } from '@benjavicente/router-plugin/vite'
 
 export default defineConfig({
   plugins: [
@@ -311,7 +311,7 @@ import { Route } from './posts.tsx'
 const data = Route.useLoaderData()
 
 // CORRECT — getRouteApi gives typed hooks without pulling in the route
-import { getRouteApi } from '@tanstack/react-router'
+import { getRouteApi } from '@benjavicente/react-router'
 const routeApi = getRouteApi('/posts')
 const data = routeApi.useLoaderData()
 ```

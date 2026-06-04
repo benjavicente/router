@@ -1,4 +1,4 @@
-import { redirect, createFileRoute } from '@tanstack/vue-router'
+import { redirect, createFileRoute } from '@benjavicente/vue-router'
 
 export const Route = createFileRoute('/redirect/$target/via-beforeLoad')({
   beforeLoad: ({

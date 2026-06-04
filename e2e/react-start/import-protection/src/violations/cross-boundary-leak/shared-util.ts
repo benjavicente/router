@@ -1,4 +1,4 @@
-import { getRequest } from '@tanstack/react-start/server'
+import { getRequest } from '@benjavicente/react-start/server'
 
 // Utility that wraps a denied server import.  It is consumed by BOTH a
 // safe consumer (inside compiler boundaries) AND a leaky consumer (outside

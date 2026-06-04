@@ -1,5 +1,5 @@
-import { Outlet, createFileRoute, notFound } from '@tanstack/react-router'
-import type { NotFoundRouteProps } from '@tanstack/react-router'
+import { Outlet, createFileRoute, notFound } from '@benjavicente/react-router'
+import type { NotFoundRouteProps } from '@benjavicente/react-router'
 
 export const Route = createFileRoute('/not-found/deep/b/c')({
   beforeLoad: ({ search }) => {

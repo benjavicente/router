@@ -141,7 +141,7 @@ export interface RootRouteChildren {
   PostsRoute: typeof PostsRouteWithChildren
 }
 
-declare module '@tanstack/react-router' {
+declare module '@benjavicente/react-router' {
   interface FileRoutesByPath {
     '/posts': {
       id: '/posts'

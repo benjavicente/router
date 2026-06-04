@@ -1,5 +1,5 @@
 import { describe, expect, test } from 'vitest'
-import { createMemoryHistory } from '@tanstack/history'
+import { createMemoryHistory } from '@benjavicente/history'
 import { BaseRootRoute, BaseRoute } from '../src'
 import { createTestRouter } from './routerTestUtils'
 import type { RouteMask } from '../src'

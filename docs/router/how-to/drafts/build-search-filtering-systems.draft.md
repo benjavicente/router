@@ -14,7 +14,7 @@
 Handle search result navigation with query preservation:
 
 ```tsx
-import { Link, useSearch } from '@tanstack/react-router'
+import { Link, useSearch } from '@benjavicente/react-router'
 
 function SearchResults() {
   const search = useSearch({ from: '/search' })
@@ -64,7 +64,7 @@ function SearchResults() {
 Build filtering interfaces with search parameter navigation:
 
 ```tsx
-import { Link, useSearch } from '@tanstack/react-router'
+import { Link, useSearch } from '@benjavicente/react-router'
 
 const categories = ['electronics', 'clothing', 'books', 'home']
 const sortOptions = [
@@ -130,7 +130,7 @@ function FilterNavigation() {
 Navigate programmatically with search parameter updates:
 
 ```tsx
-import { useNavigate } from '@tanstack/react-router'
+import { useNavigate } from '@benjavicente/react-router'
 
 function SearchControls() {
   const navigate = useNavigate()

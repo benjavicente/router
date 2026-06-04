@@ -1,4 +1,4 @@
-import { resolveManifestAssetLink, rootRouteId } from '@tanstack/router-core'
+import { resolveManifestAssetLink, rootRouteId } from '@benjavicente/router-core'
 
 import type {
   AssetCrossOrigin,
@@ -6,7 +6,7 @@ import type {
   Manifest,
   ManifestAssetLink,
   RouterManagedTag,
-} from '@tanstack/router-core'
+} from '@benjavicente/router-core'
 
 export type { AssetCrossOrigin }
 

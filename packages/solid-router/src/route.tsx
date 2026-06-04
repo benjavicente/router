@@ -3,7 +3,7 @@ import {
   BaseRoute,
   BaseRouteApi,
   notFound,
-} from '@tanstack/router-core'
+} from '@benjavicente/router-core'
 import { Link } from './link'
 import { useLoaderData } from './useLoaderData'
 import { useLoaderDeps } from './useLoaderDeps'
@@ -38,7 +38,7 @@ import type {
   RouterCore,
   ToMaskOptions,
   UseNavigateResult,
-} from '@tanstack/router-core'
+} from '@benjavicente/router-core'
 import type { UseLoaderDataRoute } from './useLoaderData'
 import type { UseMatchRoute } from './useMatch'
 import type { UseLoaderDepsRoute } from './useLoaderDeps'
@@ -48,7 +48,7 @@ import type * as Solid from 'solid-js'
 import type { UseRouteContextRoute } from './useRouteContext'
 import type { LinkComponentRoute } from './link'
 
-declare module '@tanstack/router-core' {
+declare module '@benjavicente/router-core' {
   export interface UpdatableRouteOptionsExtensions {
     component?: RouteComponent
     errorComponent?: false | null | undefined | ErrorRouteComponent

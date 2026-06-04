@@ -1,8 +1,8 @@
 import { expectTypeOf, test } from 'vitest'
 import { createFileRoute, createRootRoute } from '../src'
-import type { Route } from '@tanstack/router-core'
+import type { Route } from '@benjavicente/router-core'
 
-declare module '@tanstack/router-core' {
+declare module '@benjavicente/router-core' {
   interface FilebaseRouteOptionsInterface<
     TRegister,
     TParentRoute,
@@ -65,7 +65,7 @@ const postRoute = createFileRoute('/_postLayout/posts/$postId_')()
 
 const protectedRoute = createFileRoute('/(auth)/protected')()
 
-declare module '@tanstack/router-core' {
+declare module '@benjavicente/router-core' {
   interface FileRoutesByPath {
     '/': {
       preLoaderRoute: typeof indexRoute

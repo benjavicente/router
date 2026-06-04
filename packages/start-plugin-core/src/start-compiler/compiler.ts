@@ -6,7 +6,7 @@ import {
   findReferencedIdentifiers,
   generateFromAst,
   parseAst,
-} from '@tanstack/router-utils'
+} from '@benjavicente/router-utils'
 import babel from '@babel/core'
 import { handleCreateServerFn } from './handleCreateServerFn'
 import { handleCreateMiddleware } from './handleCreateMiddleware'
@@ -465,7 +465,7 @@ export class StartCompiler {
     string,
     Map<string, { moduleInfo: ModuleInfo; binding: Binding } | null>
   >()
-  // Fast lookup for direct imports from known libraries (e.g., '@tanstack/react-start')
+  // Fast lookup for direct imports from known libraries (e.g., '@benjavicente/react-start')
   // Maps: libName → (exportName → Kind)
   // This allows O(1) resolution for the common case without async resolveId calls
   private knownRootImports = new Map<string, Map<string, Kind>>()
@@ -689,7 +689,7 @@ export class StartCompiler {
     // Register internal stub package exports for recognition.
     // These don't need module resolution - only the knownRootImports fast path.
     this.knownRootImports.set(
-      '@tanstack/start-fn-stubs',
+      '@benjavicente/start-fn-stubs',
       new Map<string, Kind>([
         ['createIsomorphicFn', 'IsomorphicFn'],
         ['createServerOnlyFn', 'ServerOnlyFn'],
@@ -700,7 +700,7 @@ export class StartCompiler {
     // Register start-client-core exports for internal package usage.
     // These don't need module resolution - only the knownRootImports fast path.
     this.knownRootImports.set(
-      '@tanstack/start-client-core',
+      '@benjavicente/start-client-core',
       new Map<string, Kind>([
         ['createIsomorphicFn', 'IsomorphicFn'],
         ['createServerOnlyFn', 'ServerOnlyFn'],
@@ -1191,7 +1191,7 @@ export class StartCompiler {
         },
         // Pattern 3: JSX element pattern (e.g., <ClientOnly>)
         // Collect JSX elements where the component is imported from a known package
-        // and resolves to a JSX kind (e.g., ClientOnly from @tanstack/react-router)
+        // and resolves to a JSX kind (e.g., ClientOnly from @benjavicente/react-router)
         JSXElement: (path) => {
           if (!checkJSX) return
 
@@ -1558,7 +1558,7 @@ export class StartCompiler {
     }
     if (binding.type === 'import') {
       // Fast path: check if this is a direct import from a known library
-      // (e.g., import { createServerFn } from '@tanstack/react-start')
+      // (e.g., import { createServerFn } from '@benjavicente/react-start')
       // This avoids async resolveId calls for the common case
       const knownExports = this.knownRootImports.get(binding.source)
       if (knownExports) {
@@ -1669,9 +1669,9 @@ export class StartCompiler {
       // For direct calls (callee is Identifier like createServerOnlyFn()),
       // trust calleeKind if it resolved to a valid LookupKind. This means
       // resolveBindingKind successfully traced the import back to
-      // @tanstack/start-fn-stubs (via fast path or slow path through re-exports).
-      // This handles both direct imports from @tanstack/react-start and imports
-      // from intermediate packages that re-export from @tanstack/start-client-core.
+      // @benjavicente/start-fn-stubs (via fast path or slow path through re-exports).
+      // This handles both direct imports from @benjavicente/react-start and imports
+      // from intermediate packages that re-export from @benjavicente/start-client-core.
       if (t.isIdentifier(expr.callee)) {
         if (this.validLookupKinds.has(calleeKind as LookupKind)) {
           return calleeKind

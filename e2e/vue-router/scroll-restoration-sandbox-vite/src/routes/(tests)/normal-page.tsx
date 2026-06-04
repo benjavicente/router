@@ -1,4 +1,4 @@
-import { createFileRoute } from '@tanstack/vue-router'
+import { createFileRoute } from '@benjavicente/vue-router'
 import { ScrollBlock } from '../-components/scroll-block'
 
 export const Route = createFileRoute('/(tests)/normal-page')({

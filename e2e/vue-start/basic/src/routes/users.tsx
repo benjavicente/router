@@ -1,5 +1,5 @@
-import { Link, Outlet, createFileRoute } from '@tanstack/vue-router'
-import { getRouterInstance } from '@tanstack/vue-start'
+import { Link, Outlet, createFileRoute } from '@benjavicente/vue-router'
+import { getRouterInstance } from '@benjavicente/vue-start'
 import axios from 'redaxios'
 
 import type { User } from '~/utils/users'

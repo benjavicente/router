@@ -156,7 +156,7 @@ export interface RootRouteChildren {
   WithoutLoaderRoute: typeof WithoutLoaderRoute
 }
 
-declare module '@tanstack/react-router' {
+declare module '@benjavicente/react-router' {
   interface FileRoutesByPath {
     '/without-loader': {
       id: '/without-loader'

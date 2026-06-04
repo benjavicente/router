@@ -1,6 +1,6 @@
-import { createFileRoute, redirect } from '@tanstack/solid-router'
-import { createServerFn } from '@tanstack/solid-start'
-import { setCookie } from '@tanstack/solid-start/server'
+import { createFileRoute, redirect } from '@benjavicente/solid-router'
+import { createServerFn } from '@benjavicente/solid-start'
+import { setCookie } from '@benjavicente/solid-start/server'
 
 const setMultipleCookiesAndRedirect = createServerFn().handler(() => {
   // Set multiple cookies before redirecting

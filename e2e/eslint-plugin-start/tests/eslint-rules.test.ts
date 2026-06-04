@@ -27,7 +27,7 @@ function getErrorsForRule(result: ESLint.LintResult, ruleId: string) {
 }
 
 describe('no-client-code-in-server-component', () => {
-  const ruleId = '@tanstack/start/no-client-code-in-server-component'
+  const ruleId = '@benjavicente/start/no-client-code-in-server-component'
 
   test('errors on cross-file client code via callback pattern', async () => {
     const result = await lintFile(
@@ -66,7 +66,7 @@ describe('no-client-code-in-server-component', () => {
 })
 
 describe('no-async-client-component', () => {
-  const ruleId = '@tanstack/start/no-async-client-component'
+  const ruleId = '@benjavicente/start/no-async-client-component'
 
   test('errors on async component in route options (direct ref) - at usage site only', async () => {
     // Should error at route file, not at async component definition

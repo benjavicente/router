@@ -3,7 +3,7 @@ import * as Vue from 'vue'
 import { Asset } from './Asset'
 import { useHydrated } from './ClientOnly'
 import { useTags } from './headContentUtils'
-import type { AssetCrossOriginConfig } from '@tanstack/router-core'
+import type { AssetCrossOriginConfig } from '@benjavicente/router-core'
 
 const DEV_STYLES_ATTR = 'data-tanstack-router-dev-styles'
 

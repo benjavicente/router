@@ -1,4 +1,4 @@
-import { joinPaths } from '@tanstack/router-core'
+import { joinPaths } from '@benjavicente/router-core'
 import { join } from 'pathe'
 import { resolveEntry } from './resolve-entries'
 import type { TanStackStartOutputConfig } from './schema'

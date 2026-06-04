@@ -1,4 +1,4 @@
-import { createStart } from '@tanstack/react-start';
+import { createStart } from '@benjavicente/react-start';
 import { authkitMiddleware } from '@workos/authkit-tanstack-react-start';
 
 /**

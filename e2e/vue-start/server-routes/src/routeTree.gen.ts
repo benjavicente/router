@@ -142,7 +142,7 @@ export interface RootRouteChildren {
   ApiParamsFooRouteRoute: typeof ApiParamsFooRouteRouteWithChildren
 }
 
-declare module '@tanstack/vue-router' {
+declare module '@benjavicente/vue-router' {
   interface FileRoutesByPath {
     '/merge-middleware-context': {
       id: '/merge-middleware-context'
@@ -248,8 +248,8 @@ export const routeTree = rootRouteImport
   ._addFileTypes<FileRouteTypes>()
 
 import type { getRouter } from './router.tsx'
-import type { createStart } from '@tanstack/vue-start'
-declare module '@tanstack/vue-start' {
+import type { createStart } from '@benjavicente/vue-start'
+declare module '@benjavicente/vue-start' {
   interface Register {
     ssr: true
     router: Awaited<ReturnType<typeof getRouter>>

@@ -3,7 +3,7 @@ import {
   Outlet,
   createFileRoute,
   useLocation,
-} from '@tanstack/solid-router'
+} from '@benjavicente/solid-router'
 import { getProjects } from '~/server/projects'
 
 export const Route = createFileRoute('/_library')({

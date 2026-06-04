@@ -1,4 +1,4 @@
-import { Outlet, createFileRoute } from '@tanstack/vue-router'
+import { Outlet, createFileRoute } from '@benjavicente/vue-router'
 import { RouteWorkload } from '../workload'
 
 export const Route = createFileRoute('/$a')({

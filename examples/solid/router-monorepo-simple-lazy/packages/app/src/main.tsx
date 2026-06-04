@@ -1,12 +1,12 @@
 import { render } from 'solid-js/web'
-import { RouterProvider } from '@tanstack/solid-router'
+import { RouterProvider } from '@benjavicente/solid-router'
 import { router } from '@router-solid-mono-simple-lazy/router'
 import { RootComponent } from './rootComponent'
 import type {
   RouteById,
   RouterIds,
 } from '@router-solid-mono-simple-lazy/router'
-import type { LazyRoute } from '@tanstack/solid-router'
+import type { LazyRoute } from '@benjavicente/solid-router'
 import './style.css'
 
 // Generic to enforce that the route returned matches the route path

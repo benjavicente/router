@@ -1,6 +1,6 @@
-import { createFileRoute } from '@tanstack/react-router'
-import { createMiddleware, createServerFn } from '@tanstack/react-start'
-import { getRequestHeaders } from '@tanstack/react-start/server'
+import { createFileRoute } from '@benjavicente/react-router'
+import { createMiddleware, createServerFn } from '@benjavicente/react-start'
+import { getRequestHeaders } from '@benjavicente/react-start/server'
 import React from 'react'
 
 /**
@@ -9,7 +9,7 @@ import React from 'react'
  *
  * If the .server() part inside the factory is not stripped from the client build, this will fail with:
  * "Module node:async_hooks has been externalized for browser compatibility"
- * because @tanstack/react-start/server uses node:async_hooks internally.
+ * because @benjavicente/react-start/server uses node:async_hooks internally.
  */
 
 // Middleware factory function - returns a middleware with .server() call

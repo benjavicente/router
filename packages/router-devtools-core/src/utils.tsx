@@ -2,7 +2,7 @@ import { Dynamic } from 'solid-js/web'
 import { createEffect, createRenderEffect, createSignal } from 'solid-js'
 import { useTheme } from './theme'
 import useMediaQuery from './useMediaQuery'
-import type { AnyRoute, AnyRouteMatch } from '@tanstack/router-core'
+import type { AnyRoute, AnyRouteMatch } from '@benjavicente/router-core'
 
 import type { Theme } from './theme'
 import type { JSX } from 'solid-js'

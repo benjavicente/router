@@ -33,7 +33,7 @@ The `useParentMatches` hook accepts an optional `options` object.
 ## Examples
 
 ```tsx
-import { useParentMatches } from '@tanstack/react-router'
+import { useParentMatches } from '@benjavicente/react-router'
 
 function Component() {
   const parentMatches = useParentMatches()

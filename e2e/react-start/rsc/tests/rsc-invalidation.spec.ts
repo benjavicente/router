@@ -1,5 +1,5 @@
 import { expect } from '@playwright/test'
-import { test } from '@tanstack/router-e2e-utils'
+import { test } from '@benjavicente/router-e2e-utils'
 
 test.describe('RSC Invalidation Tests - Search with pagination and refetch', () => {
   test('Page loads with default search params and renders UI', async ({

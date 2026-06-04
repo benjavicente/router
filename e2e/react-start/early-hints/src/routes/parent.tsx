@@ -1,5 +1,5 @@
 /// <reference types="vite/client" />
-import { createFileRoute, Outlet } from '@tanstack/react-router'
+import { createFileRoute, Outlet } from '@benjavicente/react-router'
 import parentCss from '../styles/parent.css?url'
 import styles from '../styles/parent.module.css'
 

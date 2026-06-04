@@ -201,7 +201,7 @@ Add the content-collections plugin to your Vite config:
 
 ```tsx
 // app.config.ts
-import { defineConfig } from '@tanstack/react-start/config'
+import { defineConfig } from '@benjavicente/react-start/config'
 import contentCollections from '@content-collections/vite'
 
 export default defineConfig({
@@ -246,7 +246,7 @@ Access your posts through the generated collection:
 
 ```tsx
 // src/routes/blog.index.tsx
-import { createFileRoute } from '@tanstack/react-router'
+import { createFileRoute } from '@benjavicente/react-router'
 import { allPosts } from 'content-collections'
 
 export const Route = createFileRoute('/blog/')({
@@ -282,7 +282,7 @@ function BlogIndex() {
 
 ```tsx
 // src/routes/blog.$slug.tsx
-import { createFileRoute, notFound } from '@tanstack/react-router'
+import { createFileRoute, notFound } from '@benjavicente/react-router'
 import { allPosts } from 'content-collections'
 import { Markdown } from '~/components/Markdown'
 
@@ -322,7 +322,7 @@ For content stored externally (like GitHub repositories), you can fetch and rend
 
 ```tsx
 // src/utils/docs.server.ts
-import { createServerFn } from '@tanstack/react-start'
+import { createServerFn } from '@benjavicente/react-start'
 import matter from 'gray-matter'
 
 type FetchDocsParams = {
@@ -384,7 +384,7 @@ export const fetchDocs = createServerFn({ method: 'GET' })
 
 ```tsx
 // src/routes/docs.$path.tsx
-import { createFileRoute } from '@tanstack/react-router'
+import { createFileRoute } from '@benjavicente/react-router'
 import { fetchDocs } from '~/utils/docs.server'
 import { Markdown } from '~/components/Markdown'
 

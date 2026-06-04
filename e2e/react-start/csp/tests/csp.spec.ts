@@ -1,5 +1,5 @@
 import { expect } from '@playwright/test'
-import { test } from '@tanstack/router-e2e-utils'
+import { test } from '@benjavicente/router-e2e-utils'
 
 test('CSP header is set with nonce', async ({ page }) => {
   const response = await page.goto('/')

@@ -1,4 +1,4 @@
-import { createFileRoute } from '@tanstack/solid-router'
+import { createFileRoute } from '@benjavicente/solid-router'
 import { Suspense, lazy } from 'solid-js'
 
 const LazySharedWidget = lazy(() => import('~/components/SharedWidgetLazy'))

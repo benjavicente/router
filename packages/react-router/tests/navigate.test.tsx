@@ -1,6 +1,6 @@
 import { afterEach, describe, expect, it, test, vi } from 'vitest'
 
-import { trailingSlashOptions } from '@tanstack/router-core'
+import { trailingSlashOptions } from '@benjavicente/router-core'
 import {
   createMemoryHistory,
   createRootRoute,

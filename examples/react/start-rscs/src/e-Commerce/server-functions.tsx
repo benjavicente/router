@@ -1,8 +1,8 @@
-import { createServerFn } from '@tanstack/react-start'
+import { createServerFn } from '@benjavicente/react-start'
 import {
   createCompositeComponent,
   renderToReadableStream,
-} from '@tanstack/react-start/rsc'
+} from '@benjavicente/react-start/rsc'
 
 // ============================================
 // Product Data & Types

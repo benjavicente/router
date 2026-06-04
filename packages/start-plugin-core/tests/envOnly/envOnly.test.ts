@@ -29,12 +29,12 @@ async function compile(opts: {
     lookupKinds: new Set(['ServerOnlyFn', 'ClientOnlyFn']),
     lookupConfigurations: [
       {
-        libName: `@tanstack/react-start`,
+        libName: `@benjavicente/react-start`,
         rootExport: 'createServerOnlyFn',
         kind: 'ServerOnlyFn',
       },
       {
-        libName: `@tanstack/react-start`,
+        libName: `@benjavicente/react-start`,
         rootExport: 'createClientOnlyFn',
         kind: 'ClientOnlyFn',
       },
@@ -85,7 +85,7 @@ describe('envOnly functions compile correctly', async () => {
       compile({
         env: 'client',
         code: `
-        import { createClientOnlyFn } from '@tanstack/react-start'
+        import { createClientOnlyFn } from '@benjavicente/react-start'
         const fn = createClientOnlyFn()`,
         id: 'no-fn.ts',
       }),
@@ -95,7 +95,7 @@ describe('envOnly functions compile correctly', async () => {
       compile({
         env: 'server',
         code: `
-        import { createServerOnlyFn } from '@tanstack/react-start'
+        import { createServerOnlyFn } from '@benjavicente/react-start'
         const fn = createServerOnlyFn()`,
         id: 'no-fn.ts',
       }),

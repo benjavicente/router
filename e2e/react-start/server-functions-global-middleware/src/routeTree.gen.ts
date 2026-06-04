@@ -95,7 +95,7 @@ export interface RootRouteChildren {
   SimpleRoute: typeof SimpleRoute
 }
 
-declare module '@tanstack/react-router' {
+declare module '@benjavicente/react-router' {
   interface FileRoutesByPath {
     '/simple': {
       id: '/simple'
@@ -148,7 +148,7 @@ export const routeTree = rootRouteImport
 
 import type { getRouter } from './router.tsx'
 import type { startInstance } from './start.ts'
-declare module '@tanstack/react-start' {
+declare module '@benjavicente/react-start' {
   interface Register {
     ssr: true
     router: Awaited<ReturnType<typeof getRouter>>

@@ -1,6 +1,6 @@
-import { getStartContext } from '@tanstack/start-storage-context'
-import { createIsomorphicFn } from '@tanstack/start-fn-stubs'
-import type { Awaitable, RegisteredRouter } from '@tanstack/router-core'
+import { getStartContext } from '@benjavicente/start-storage-context'
+import { createIsomorphicFn } from '@benjavicente/start-fn-stubs'
+import type { Awaitable, RegisteredRouter } from '@benjavicente/router-core'
 
 export const getRouterInstance: () => Awaitable<RegisteredRouter> =
   createIsomorphicFn()

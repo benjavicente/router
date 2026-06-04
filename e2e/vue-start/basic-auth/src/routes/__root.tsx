@@ -7,9 +7,9 @@ import {
   Outlet,
   Scripts,
   createRootRoute,
-} from '@tanstack/vue-router'
-import { TanStackRouterDevtools } from '@tanstack/vue-router-devtools'
-import { createServerFn } from '@tanstack/vue-start'
+} from '@benjavicente/vue-router'
+import { TanStackRouterDevtools } from '@benjavicente/vue-router-devtools'
+import { createServerFn } from '@benjavicente/vue-start'
 
 import { DefaultCatchBoundary } from '~/components/DefaultCatchBoundary.js'
 import { NotFound } from '~/components/NotFound.js'

@@ -1,5 +1,5 @@
 import { Stack } from '@mui/material'
-import { useSearch } from '@tanstack/react-router'
+import { useSearch } from '@benjavicente/react-router'
 import { CustomButtonLink } from '~/components/CustomButtonLink'
 
 export function Counter() {

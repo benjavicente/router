@@ -3,9 +3,9 @@ import {
   RouterProvider,
   createHashHistory,
   createRouter,
-} from '@tanstack/solid-router'
+} from '@benjavicente/solid-router'
 import { routeTree } from './routeTree.gen'
-import type { RouterHistory } from '@tanstack/solid-router'
+import type { RouterHistory } from '@benjavicente/solid-router'
 import './styles.css'
 
 let history: RouterHistory | undefined
@@ -22,7 +22,7 @@ const router = createRouter({
 })
 
 // Register things for typesafety
-declare module '@tanstack/solid-router' {
+declare module '@benjavicente/solid-router' {
   interface Register {
     router: typeof router
   }

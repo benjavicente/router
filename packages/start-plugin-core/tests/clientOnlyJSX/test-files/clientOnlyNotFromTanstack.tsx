@@ -1,4 +1,4 @@
-// This should NOT be transformed because ClientOnly is not from @tanstack/*-router
+// This should NOT be transformed because ClientOnly is not from @benjavicente/*-router
 import { ClientOnly } from 'some-other-package'
 
 export function MyComponent() {

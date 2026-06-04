@@ -1,4 +1,4 @@
-import handler from '@tanstack/react-start/server-entry'
+import handler from '@benjavicente/react-start/server-entry'
 import type { ServerRequest } from 'srvx'
 
 export default {

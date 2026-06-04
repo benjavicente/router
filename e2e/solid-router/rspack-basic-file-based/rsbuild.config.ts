@@ -1,6 +1,6 @@
 import { defineConfig } from '@rsbuild/core'
 import { pluginSolid } from '@rsbuild/plugin-solid'
-import { tanstackRouter } from '@tanstack/router-plugin/rspack'
+import { tanstackRouter } from '@benjavicente/router-plugin/rspack'
 import { pluginBabel } from '@rsbuild/plugin-babel'
 
 export default defineConfig({

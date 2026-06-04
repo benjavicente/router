@@ -69,7 +69,7 @@ export interface RootRouteChildren {
   UsersZodIndexRoute: typeof UsersZodIndexRoute
 }
 
-declare module '@tanstack/solid-router' {
+declare module '@benjavicente/solid-router' {
   interface FileRoutesByPath {
     '/': {
       id: '/'

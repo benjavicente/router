@@ -1,6 +1,6 @@
 const $$splitComponentImporter = () => import('destructured-export.tsx?tsr-split=component');
-import { lazyRouteComponent } from '@tanstack/react-router';
-import { createFileRoute } from '@tanstack/react-router';
+import { lazyRouteComponent } from '@benjavicente/react-router';
+import { createFileRoute } from '@benjavicente/react-router';
 export function getObjectCallback() {
   return {
     getObject: () => ({

@@ -4,7 +4,7 @@ import {
   createFileRoute,
   redirect,
   useRouter,
-} from '@tanstack/solid-router'
+} from '@benjavicente/solid-router'
 import { useAuth } from '../auth'
 
 export const Route = createFileRoute('/_auth')({

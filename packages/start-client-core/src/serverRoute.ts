@@ -6,13 +6,13 @@ import type {
   Expand,
   ResolveAllParamsFromParent,
   UnionToIntersection,
-} from '@tanstack/router-core'
+} from '@benjavicente/router-core'
 import type {
   AnyRequestMiddleware,
   AssignAllServerRequestContext,
 } from './createMiddleware'
 
-declare module '@tanstack/router-core' {
+declare module '@benjavicente/router-core' {
   interface FilebaseRouteOptionsInterface<
     TRegister,
     TParentRoute extends AnyRoute = AnyRoute,
@@ -73,7 +73,7 @@ declare module '@tanstack/router-core' {
     >
   }
 
-  interface BeforeLoadContextOptions<
+  interface BeforeLoadContextOptionsExtensions<
     in out TRegister,
     in out TParentRoute extends AnyRoute,
     in out TSearchValidator,
@@ -92,7 +92,7 @@ declare module '@tanstack/router-core' {
     >
   }
 
-  interface LoaderFnContext<
+  interface LoaderFnContextExtensions<
     in out TRegister,
     in out TParentRoute extends AnyRoute = AnyRoute,
     in out TId extends string = string,

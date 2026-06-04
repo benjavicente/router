@@ -1,4 +1,4 @@
-import { createFileRoute } from '@tanstack/router'
+import { createFileRoute } from '@benjavicente/react-router'
 
 // Test errorComponent with false literal
 export const Route = createFileRoute('/test')({

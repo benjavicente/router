@@ -26,7 +26,7 @@ Basic loader returning data, consumed via `useLoaderData`:
 
 ```tsx
 // src/routes/posts.tsx
-import { createFileRoute } from '@tanstack/react-router'
+import { createFileRoute } from '@benjavicente/react-router'
 
 export const Route = createFileRoute('/posts')({
   loader: () => fetchPosts(),
@@ -48,7 +48,7 @@ function PostsComponent() {
 In code-split components, use `getRouteApi` instead of importing Route:
 
 ```tsx
-import { getRouteApi } from '@tanstack/react-router'
+import { getRouteApi } from '@benjavicente/react-router'
 
 const routeApi = getRouteApi('/posts')
 
@@ -85,7 +85,7 @@ Loaders don't receive search params directly. Use `loaderDeps` to declare which 
 
 ```tsx
 // src/routes/posts.tsx
-import { createFileRoute } from '@tanstack/react-router'
+import { createFileRoute } from '@benjavicente/react-router'
 
 export const Route = createFileRoute('/posts')({
   validateSearch: (search) => ({
@@ -155,7 +155,7 @@ export const Route = createFileRoute('/posts')({
 
 ```tsx
 // src/routes/__root.tsx
-import { createRootRouteWithContext, Outlet } from '@tanstack/react-router'
+import { createRootRouteWithContext, Outlet } from '@benjavicente/react-router'
 
 interface MyRouterContext {
   auth: { userId: string }
@@ -172,7 +172,7 @@ Supply the context when creating the router:
 
 ```tsx
 // src/router.tsx
-import { createRouter } from '@tanstack/react-router'
+import { createRouter } from '@benjavicente/react-router'
 import { routeTree } from './routeTree.gen'
 
 const router = createRouter({
@@ -196,7 +196,7 @@ export const Route = createFileRoute('/posts')({
 To pass React hook values into the router context, call the hook above `RouterProvider` and inject via the `context` prop:
 
 ```tsx
-import { RouterProvider } from '@tanstack/react-router'
+import { RouterProvider } from '@benjavicente/react-router'
 
 function InnerApp() {
   const auth = useAuth()
@@ -228,7 +228,7 @@ export const Route = createFileRoute('/posts')({
 Return unawaited promises from the loader for non-critical data. Use the `Await` component to render them:
 
 ```tsx
-import { createFileRoute, Await } from '@tanstack/react-router'
+import { createFileRoute, Await } from '@benjavicente/react-router'
 
 export const Route = createFileRoute('/posts/$postId')({
   loader: async ({ params: { postId } }) => {
@@ -270,7 +270,7 @@ function PostComponent() {
 `router.invalidate()` forces all active route loaders to re-run and marks all cached data as stale:
 
 ```tsx
-import { useRouter } from '@tanstack/react-router'
+import { useRouter } from '@benjavicente/react-router'
 
 function AddPostButton() {
   const router = useRouter()
@@ -297,7 +297,7 @@ import {
   createFileRoute,
   ErrorComponent,
   useRouter,
-} from '@tanstack/react-router'
+} from '@benjavicente/react-router'
 
 export const Route = createFileRoute('/posts')({
   loader: () => fetchPosts(),

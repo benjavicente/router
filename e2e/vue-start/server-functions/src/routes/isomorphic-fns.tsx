@@ -1,5 +1,5 @@
-import { createFileRoute } from '@tanstack/vue-router'
-import { createIsomorphicFn, createServerFn } from '@tanstack/vue-start'
+import { createFileRoute } from '@benjavicente/vue-router'
+import { createIsomorphicFn, createServerFn } from '@benjavicente/vue-start'
 import { defineComponent, ref } from 'vue'
 
 const getEnv = createIsomorphicFn()

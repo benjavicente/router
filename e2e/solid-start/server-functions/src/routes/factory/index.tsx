@@ -1,7 +1,7 @@
-import { createFileRoute, deepEqual } from '@tanstack/solid-router'
+import { createFileRoute, deepEqual } from '@benjavicente/solid-router'
 
 import { createSignal, For } from 'solid-js'
-import { createServerFn } from '@tanstack/solid-start'
+import { createServerFn } from '@benjavicente/solid-start'
 import { fooFnInsideFactoryFile } from './-functions/createFooServerFn'
 import {
   barFn,

@@ -5,7 +5,7 @@ import {
   Outlet,
   Scripts,
   createRootRouteWithContext,
-} from '@tanstack/react-router'
+} from '@benjavicente/react-router'
 import type { QueryClient } from '@tanstack/react-query'
 
 export const Route = createRootRouteWithContext<{

@@ -1,9 +1,9 @@
-import { createFileRoute } from '@tanstack/vue-router'
-import { ErrorComponent, useRouter } from '@tanstack/vue-router'
+import { createFileRoute } from '@benjavicente/vue-router'
+import { ErrorComponent, useRouter } from '@benjavicente/vue-router'
 import { useQuery } from '@tanstack/vue-query'
 import { PostNotFoundError } from '../posts'
 import { postQueryOptions } from '../postQueryOptions'
-import type { ErrorComponentProps } from '@tanstack/vue-router'
+import type { ErrorComponentProps } from '@benjavicente/vue-router'
 
 export const Route = createFileRoute('/posts/$postId')({
   loader: ({ context: { queryClient }, params: { postId } }) => {

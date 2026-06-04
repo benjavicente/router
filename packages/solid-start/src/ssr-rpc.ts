@@ -1,1 +1,1 @@
-export { createSsrRpc } from '@tanstack/start-server-core/createSsrRpc'
+export { createSsrRpc } from '@benjavicente/start-server-core/createSsrRpc'

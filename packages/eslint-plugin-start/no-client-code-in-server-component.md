@@ -81,7 +81,7 @@ Example:
 ```js
 {
   rules: {
-    '@tanstack/start/no-client-code-in-server-component': [
+    '@benjavicente/start/no-client-code-in-server-component': [
       'error',
       {
         allowedServerHooks: ['useMyServerSafeHook'],
@@ -96,7 +96,7 @@ Example:
 ### Invalid: client hook in server component
 
 ```tsx
-import { createServerComponent } from '@tanstack/react-start/rsc'
+import { createServerComponent } from '@benjavicente/react-start/rsc'
 import { useState } from 'react'
 
 export const Server = createServerComponent(() => {
@@ -108,7 +108,7 @@ export const Server = createServerComponent(() => {
 ### Invalid: browser global access
 
 ```tsx
-import { createServerComponent } from '@tanstack/react-start/rsc'
+import { createServerComponent } from '@benjavicente/react-start/rsc'
 
 export const Server = createServerComponent(() => {
   return <div>{window.location.href}</div>
@@ -119,7 +119,7 @@ export const Server = createServerComponent(() => {
 
 ```tsx
 // server.tsx
-import { createServerComponent } from '@tanstack/react-start/rsc'
+import { createServerComponent } from '@benjavicente/react-start/rsc'
 import { Middle } from './middle'
 
 export const Server = createServerComponent(() => <Middle />)
@@ -139,7 +139,7 @@ export function ClientThing() {
 ### Valid: slot/prop boundary (pattern suggestion)
 
 ```tsx
-import { createServerComponent } from '@tanstack/react-start/rsc'
+import { createServerComponent } from '@benjavicente/react-start/rsc'
 
 export const Server = createServerComponent(({ ActionButton }) => {
   return (

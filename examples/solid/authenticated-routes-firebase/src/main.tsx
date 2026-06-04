@@ -1,5 +1,5 @@
 import { render } from 'solid-js/web'
-import { RouterProvider, createRouter } from '@tanstack/solid-router'
+import { RouterProvider, createRouter } from '@benjavicente/solid-router'
 
 import { routeTree } from './routeTree.gen'
 import { AuthContextProvider, useAuth } from './auth'
@@ -17,7 +17,7 @@ const router = createRouter({
 })
 
 // Register things for typesafety
-declare module '@tanstack/solid-router' {
+declare module '@benjavicente/solid-router' {
   interface Register {
     router: typeof router
   }

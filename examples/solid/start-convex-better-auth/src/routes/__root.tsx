@@ -1,7 +1,7 @@
 /// <reference types="vite/client" />
-import { HeadContent, Scripts, createRootRoute } from '@tanstack/solid-router'
+import { HeadContent, Scripts, createRootRoute } from '@benjavicente/solid-router'
 import { HydrationScript, Suspense } from 'solid-js/web'
-import { TanStackRouterDevtools } from '@tanstack/solid-router-devtools'
+import { TanStackRouterDevtools } from '@benjavicente/solid-router-devtools'
 import type * as Solid from 'solid-js'
 import appCss from '~/styles/app.css?url'
 import AppConvexProvider from '~/providers/convex'

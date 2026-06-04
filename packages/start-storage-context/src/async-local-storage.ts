@@ -3,7 +3,7 @@ import type {
   Awaitable,
   RegisteredRouter,
   RouterManagedTag,
-} from '@tanstack/router-core'
+} from '@benjavicente/router-core'
 
 export type StartHandlerType = 'router' | 'serverFn'
 

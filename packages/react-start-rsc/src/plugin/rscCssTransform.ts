@@ -1,7 +1,7 @@
 import type {
   StartCompilerImportTransform,
   StartCompilerTransformContext,
-} from '@tanstack/start-plugin-core'
+} from '@benjavicente/start-plugin-core'
 
 const TSS_SERVERFN_SPLIT_PARAM = 'tss-serverfn-split'
 const RSC_CSS_OPTIONS_KEY = '__tanstackStartRscCss'
@@ -62,11 +62,11 @@ function createRscCssCompilerTransform(opts: {
     environment: 'server',
     imports: [
       {
-        libName: '@tanstack/react-start/rsc',
+        libName: '@benjavicente/react-start/rsc',
         rootExport: opts.kind,
       },
       {
-        libName: '@tanstack/react-start-rsc',
+        libName: '@benjavicente/react-start-rsc',
         rootExport: opts.kind,
       },
     ],

@@ -1,11 +1,11 @@
 import { fileURLToPath } from 'node:url'
 import path from 'pathe'
-import { createVirtualModule } from '@tanstack/start-plugin-core/vite'
+import { createVirtualModule } from '@benjavicente/start-plugin-core/vite'
 import { createRscCssCompilerTransforms } from './rscCssTransform'
 import type {
   TanStackStartVitePluginCoreOptions,
   ViteRscForwardSsrResolverStrategy,
-} from '@tanstack/start-plugin-core/vite'
+} from '@benjavicente/start-plugin-core/vite'
 import type { PluginOption, UserConfig } from 'vite'
 
 const isClientEnvironment = (env: { config: { consumer: string } }) =>
@@ -36,12 +36,12 @@ export function configureRsc(): {
       // otherwise router-core ends up with non-adapter entries and Seroval crashes.
       {
         client: {
-          module: '@tanstack/react-start/rsc/serialization/client',
+          module: '@benjavicente/react-start/rsc/serialization/client',
           export: 'rscSerializationAdapter',
           isFactory: true,
         },
         server: {
-          module: '@tanstack/react-start/rsc/serialization/server',
+          module: '@benjavicente/react-start/rsc/serialization/server',
           export: 'rscSerializationAdapter',
           isFactory: true,
         },
@@ -102,10 +102,10 @@ export function reactStartRscVitePlugin(): PluginOption {
               //    with proper react-server conditions and pre-bundled deps
               resolve: {
                 noExternal: [
-                  '@tanstack/start**',
-                  '@tanstack/react-start',
-                  '@tanstack/react-start-rsc',
-                  '@tanstack/react-router',
+                  '@benjavicente/start**',
+                  '@benjavicente/react-start',
+                  '@benjavicente/react-start-rsc',
+                  '@benjavicente/react-router',
                 ],
               },
               build: {

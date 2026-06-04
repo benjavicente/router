@@ -1,4 +1,4 @@
-import { getRequest } from '@tanstack/react-start/server'
+import { getRequest } from '@benjavicente/react-start/server'
 
 // This utility wraps a denied server import and is used in a route's
 // `beforeLoad` hook.  `beforeLoad` is NOT in the compiler's

@@ -1,4 +1,4 @@
-import { createFileRoute } from '@tanstack/react-router'
+import { createFileRoute } from '@benjavicente/react-router'
 import { SharedCard } from '~/components/SharedCard'
 import styles from '~/styles/page-b.module.css'
 

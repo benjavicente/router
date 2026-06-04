@@ -4,12 +4,12 @@
 // - component prop slot for reusable typed interactive controls
 
 import type { ComponentType, ReactNode } from 'react'
-import { createFileRoute } from '@tanstack/react-router'
-import { createServerFn } from '@tanstack/react-start'
+import { createFileRoute } from '@benjavicente/react-router'
+import { createServerFn } from '@benjavicente/react-start'
 import {
   CompositeComponent,
   createCompositeComponent,
-} from '@tanstack/react-start/rsc'
+} from '@benjavicente/react-start/rsc'
 import { z } from 'zod'
 
 // Replace with your own server-only data layer

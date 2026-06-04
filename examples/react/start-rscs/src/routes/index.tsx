@@ -1,5 +1,5 @@
-import { Link, createFileRoute } from '@tanstack/react-router'
-import { CompositeComponent } from '@tanstack/react-start/rsc'
+import { Link, createFileRoute } from '@benjavicente/react-router'
+import { CompositeComponent } from '@benjavicente/react-start/rsc'
 import type { DemoInfo } from '~/home/server-functions'
 import { getHomePage } from '~/home/server-functions'
 

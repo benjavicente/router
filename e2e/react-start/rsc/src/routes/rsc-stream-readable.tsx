@@ -1,6 +1,6 @@
 import * as React from 'react'
-import { createFileRoute, useHydrated } from '@tanstack/react-router'
-import { CompositeComponent } from '@tanstack/react-start/rsc'
+import { createFileRoute, useHydrated } from '@benjavicente/react-router'
+import { CompositeComponent } from '@benjavicente/react-start/rsc'
 import { streamNotificationsReadable } from '~/utils/streamingServerComponents'
 import {
   pageStyles,

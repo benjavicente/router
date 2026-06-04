@@ -1,4 +1,4 @@
-import { createMiddleware as middlewareFn } from '@tanstack/react-start'
+import { createMiddleware as middlewareFn } from '@benjavicente/react-start'
 import { z } from 'zod'
 
 export const withUseServer = middlewareFn({

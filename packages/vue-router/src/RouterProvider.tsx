@@ -5,7 +5,7 @@ import type {
   AnyRouter,
   RegisteredRouter,
   RouterOptions,
-} from '@tanstack/router-core'
+} from '@benjavicente/router-core'
 
 // Component that provides router context and renders children
 export const RouterContextProvider = Vue.defineComponent({

@@ -1,4 +1,4 @@
-import { createSerializationAdapter } from '@tanstack/react-router'
+import { createSerializationAdapter } from '@benjavicente/react-router'
 // RSC HMR setup (dev-only, provided by the active Start bundler adapter).
 import { setupRscHmr } from 'virtual:tanstack-rsc-hmr'
 import {

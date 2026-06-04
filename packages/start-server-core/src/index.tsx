@@ -23,8 +23,8 @@ export {
   defineHandlerCallback,
   transformReadableStreamWithRouter,
   transformPipeableStreamWithRouter,
-} from '@tanstack/router-core/ssr/server'
-export type { HandlerCallback } from '@tanstack/router-core/ssr/server'
+} from '@benjavicente/router-core/ssr/server'
+export type { HandlerCallback } from '@benjavicente/router-core/ssr/server'
 
 export * from './request-response'
 

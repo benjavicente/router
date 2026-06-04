@@ -41,7 +41,7 @@ The `CatchBoundary` component accepts the following props:
 ## Examples
 
 ```tsx
-import { CatchBoundary } from '@tanstack/react-router'
+import { CatchBoundary } from '@benjavicente/react-router'
 
 function Component() {
   return (

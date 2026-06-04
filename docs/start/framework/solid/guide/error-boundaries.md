@@ -14,7 +14,7 @@ TanStack Start (Solid) uses TanStack Router's route-level error boundaries.
 
 ```tsx
 // src/router.tsx
-import { createRouter, ErrorComponent } from '@tanstack/solid-router'
+import { createRouter, ErrorComponent } from '@benjavicente/solid-router'
 import { routeTree } from './routeTree.gen'
 
 export function getRouter() {
@@ -32,8 +32,8 @@ export function getRouter() {
 
 ```tsx
 // src/routes/posts.$postId.tsx
-import { createFileRoute, ErrorComponent } from '@tanstack/solid-router'
-import type { ErrorComponentProps } from '@tanstack/solid-router'
+import { createFileRoute, ErrorComponent } from '@benjavicente/solid-router'
+import type { ErrorComponentProps } from '@benjavicente/solid-router'
 
 function PostError(props: ErrorComponentProps) {
   return <ErrorComponent error={props.error} />

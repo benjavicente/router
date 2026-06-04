@@ -1,4 +1,4 @@
-import { createFileRoute } from '@tanstack/react-router'
+import { createFileRoute } from '@benjavicente/react-router'
 import { ScrollBlock } from '../-components/scroll-block'
 import { sleep } from '~/utils/posts'
 

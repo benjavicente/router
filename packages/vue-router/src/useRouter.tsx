@@ -1,6 +1,6 @@
 import * as Vue from 'vue'
 import { routerContext } from './routerContext'
-import type { AnyRouter, RegisteredRouter } from '@tanstack/router-core'
+import type { AnyRouter, RegisteredRouter } from '@benjavicente/router-core'
 
 export function useRouter<TRouter extends AnyRouter = RegisteredRouter>(opts?: {
   warn?: boolean

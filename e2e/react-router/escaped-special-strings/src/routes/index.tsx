@@ -1,4 +1,4 @@
-import { createFileRoute } from '@tanstack/react-router'
+import { createFileRoute } from '@benjavicente/react-router'
 
 // This is the standard index route for the root path /
 // It coexists with [index].tsx which creates a literal /index route

@@ -7,9 +7,9 @@ import {
 
 describe('compileMatcher', () => {
   test('matches exact strings', () => {
-    const m = compileMatcher('@tanstack/react-start/server')
-    expect(m.test('@tanstack/react-start/server')).toBe(true)
-    expect(m.test('@tanstack/react-start/client')).toBe(false)
+    const m = compileMatcher('@benjavicente/react-start/server')
+    expect(m.test('@benjavicente/react-start/server')).toBe(true)
+    expect(m.test('@benjavicente/react-start/client')).toBe(false)
   })
 
   test('matches glob with *', () => {
@@ -42,11 +42,11 @@ describe('compileMatcher', () => {
 describe('compileMatchers', () => {
   test('compiles an array of patterns', () => {
     const matchers = compileMatchers([
-      '@tanstack/react-start/server',
+      '@benjavicente/react-start/server',
       /^node:fs$/,
     ])
     expect(matchers.length).toBe(2)
-    expect(matchers[0]!.test('@tanstack/react-start/server')).toBe(true)
+    expect(matchers[0]!.test('@benjavicente/react-start/server')).toBe(true)
     expect(matchers[1]!.test('node:fs')).toBe(true)
   })
 })
@@ -54,7 +54,7 @@ describe('compileMatchers', () => {
 describe('matchesAny', () => {
   test('returns the matching matcher', () => {
     const matchers = compileMatchers([
-      '@tanstack/react-start/server',
+      '@benjavicente/react-start/server',
       'pg',
       /^node:/,
     ])

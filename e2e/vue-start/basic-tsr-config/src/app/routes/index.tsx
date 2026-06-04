@@ -1,6 +1,6 @@
 import * as fs from 'node:fs'
-import { createFileRoute, useRouter } from '@tanstack/vue-router'
-import { createServerFn } from '@tanstack/vue-start'
+import { createFileRoute, useRouter } from '@benjavicente/vue-router'
+import { createServerFn } from '@benjavicente/vue-start'
 
 const filePath = 'count.txt'
 

@@ -22,7 +22,7 @@ The `getRouteApi` function accepts a single argument, a `routeId` string literal
 ## Examples
 
 ```tsx
-import { getRouteApi } from '@tanstack/react-router'
+import { getRouteApi } from '@benjavicente/react-router'
 
 const routeApi = getRouteApi('/posts')
 

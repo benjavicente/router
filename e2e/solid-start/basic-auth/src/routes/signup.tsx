@@ -1,5 +1,5 @@
-import { createFileRoute, redirect } from '@tanstack/solid-router'
-import { createServerFn, useServerFn } from '@tanstack/solid-start'
+import { createFileRoute, redirect } from '@benjavicente/solid-router'
+import { createServerFn, useServerFn } from '@benjavicente/solid-start'
 
 import { hashPassword, prismaClient } from '~/utils/prisma'
 import { useMutation } from '~/hooks/useMutation'

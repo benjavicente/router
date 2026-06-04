@@ -1,5 +1,5 @@
-import { createFileRoute } from '@tanstack/react-router'
-import { createMiddleware } from '@tanstack/react-start'
+import { createFileRoute } from '@benjavicente/react-router'
+import { createMiddleware } from '@benjavicente/react-start'
 
 const testParentMiddleware = createMiddleware().server(async ({ next }) => {
   const result = await next({ context: { testParent: true } })

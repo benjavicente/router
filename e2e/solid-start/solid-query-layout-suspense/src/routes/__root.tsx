@@ -4,7 +4,7 @@ import {
   Outlet,
   Scripts,
   createRootRouteWithContext,
-} from '@tanstack/solid-router'
+} from '@benjavicente/solid-router'
 import { Suspense } from 'solid-js'
 import { HydrationScript } from 'solid-js/web'
 

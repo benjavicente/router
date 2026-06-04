@@ -4,7 +4,7 @@ import {
   redirect,
   useRouter,
   useRouterState,
-} from '@tanstack/solid-router'
+} from '@benjavicente/solid-router'
 import { z } from 'zod'
 
 import { useAuth } from '../auth'

@@ -1,7 +1,7 @@
 import {
   createStartHandler,
   defaultStreamHandler,
-} from '@tanstack/react-start/server'
+} from '@benjavicente/react-start/server'
 import { createClerkHandler } from '@clerk/tanstack-react-start/server'
 import { createRouter } from './router'
 

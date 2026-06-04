@@ -49,7 +49,7 @@ export interface RootRouteChildren {
   historyRouteRoute: typeof historyRouteRoute
 }
 
-declare module '@tanstack/react-router' {
+declare module '@benjavicente/react-router' {
   interface FileRoutesByPath {
     '/device/$id': {
       id: '/device/$id'

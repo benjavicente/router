@@ -226,7 +226,7 @@ export interface RootRouteChildren {
   ExpensiveIndexRoute: typeof ExpensiveIndexRoute
 }
 
-declare module '@tanstack/react-router' {
+declare module '@benjavicente/react-router' {
   interface FileRoutesByPath {
     '/login': {
       id: '/login'

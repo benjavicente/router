@@ -2,9 +2,9 @@
 
 Cross-framework client-side navigation benchmarks for:
 
-- `@tanstack/react-router`
-- `@tanstack/solid-router`
-- `@tanstack/vue-router`
+- `@benjavicente/react-router`
+- `@benjavicente/solid-router`
+- `@benjavicente/vue-router`
 
 ## Layout
 

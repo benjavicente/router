@@ -1,5 +1,5 @@
 import { clerkMiddleware } from '@clerk/tanstack-react-start/server'
-import { createStart } from '@tanstack/react-start'
+import { createStart } from '@benjavicente/react-start'
 
 export const startInstance = createStart(() => {
   return {

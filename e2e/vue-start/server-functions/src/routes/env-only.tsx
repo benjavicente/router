@@ -1,9 +1,9 @@
-import { createFileRoute } from '@tanstack/vue-router'
+import { createFileRoute } from '@benjavicente/vue-router'
 import {
   createClientOnlyFn,
   createServerFn,
   createServerOnlyFn,
-} from '@tanstack/vue-start'
+} from '@benjavicente/vue-start'
 import { defineComponent, ref } from 'vue'
 
 const serverEcho = createServerOnlyFn((input: string) => 'server got: ' + input)

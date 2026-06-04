@@ -1,7 +1,7 @@
-import { createFileRoute, Link } from '@tanstack/react-router'
+import { createFileRoute, Link } from '@benjavicente/react-router'
 import * as v from 'valibot'
 import { queryOptions } from '@tanstack/react-query'
-import { createMiddleware, createServerFn } from '@tanstack/react-start'
+import { createMiddleware, createServerFn } from '@benjavicente/react-start'
 
 const search = v.object({
   searchPlaceholder: v.literal('searchPlaceholder'),

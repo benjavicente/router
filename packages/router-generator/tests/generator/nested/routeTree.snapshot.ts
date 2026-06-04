@@ -208,7 +208,7 @@ export interface RootRouteChildren {
   BlogBlogIdEditRoute: typeof BlogBlogIdEditRoute
 }
 
-declare module '@tanstack/react-router' {
+declare module '@benjavicente/react-router' {
   interface FileRoutesByPath {
     '/_pathlessLayout': {
       id: '/_pathlessLayout'

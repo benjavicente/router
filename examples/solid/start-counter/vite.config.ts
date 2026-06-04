@@ -1,5 +1,5 @@
 import { defineConfig } from 'vite'
-import { tanstackStart } from '@tanstack/solid-start/plugin/vite'
+import { tanstackStart } from '@benjavicente/solid-start/plugin/vite'
 import viteSolid from 'vite-plugin-solid'
 
 export default defineConfig({

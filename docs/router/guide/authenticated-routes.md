@@ -62,7 +62,7 @@ If your authentication check can throw errors (network failures, token validatio
 # React
 
 ```tsx
-import { createFileRoute, redirect, isRedirect } from '@tanstack/react-router'
+import { createFileRoute, redirect, isRedirect } from '@benjavicente/react-router'
 
 // src/routes/_authenticated.tsx
 export const Route = createFileRoute('/_authenticated')({
@@ -93,7 +93,7 @@ export const Route = createFileRoute('/_authenticated')({
 # Solid
 
 ```tsx
-import { createFileRoute, redirect, isRedirect } from '@tanstack/solid-router'
+import { createFileRoute, redirect, isRedirect } from '@benjavicente/solid-router'
 
 // src/routes/_authenticated.tsx
 export const Route = createFileRoute('/_authenticated')({
@@ -168,7 +168,7 @@ Here's an example that uses React context and hooks for protecting authenticated
 <!-- ::start:tabs variant="files" -->
 
 ```tsx title="src/routes/__root.tsx"
-import { createRootRouteWithContext } from '@tanstack/react-router'
+import { createRootRouteWithContext } from '@benjavicente/react-router'
 
 interface MyRouterContext {
   // The ReturnType of your useAuth hook or the value of your AuthContext
@@ -181,7 +181,7 @@ export const Route = createRootRouteWithContext<MyRouterContext>()({
 ```
 
 ```tsx title="src/router.tsx"
-import { createRouter } from '@tanstack/react-router'
+import { createRouter } from '@benjavicente/react-router'
 
 import { routeTree } from './routeTree.gen'
 
@@ -196,7 +196,7 @@ export const router = createRouter({
 ```
 
 ```tsx title="src/App.tsx"
-import { RouterProvider } from '@tanstack/react-router'
+import { RouterProvider } from '@benjavicente/react-router'
 
 import { AuthProvider, useAuth } from './auth'
 
@@ -223,7 +223,7 @@ function App() {
 <!-- ::start:tabs variant="files" -->
 
 ```tsx title="src/routes/__root.tsx"
-import { createRootRouteWithContext } from '@tanstack/solid-router'
+import { createRootRouteWithContext } from '@benjavicente/solid-router'
 
 interface MyRouterContext {
   // The ReturnType of your useAuth hook or the value of your AuthContext
@@ -236,7 +236,7 @@ export const Route = createRootRouteWithContext<MyRouterContext>()({
 ```
 
 ```tsx title="src/router.tsx"
-import { createRouter } from '@tanstack/solid-router'
+import { createRouter } from '@benjavicente/solid-router'
 
 import { routeTree } from './routeTree.gen'
 
@@ -251,7 +251,7 @@ export const router = createRouter({
 ```
 
 ```tsx title="src/App.tsx"
-import { RouterProvider } from '@tanstack/solid-router'
+import { RouterProvider } from '@benjavicente/solid-router'
 
 import { AuthProvider, useAuth } from './auth'
 
@@ -282,7 +282,7 @@ Then in the authenticated route, you can check the auth state using the `beforeL
 # React
 
 ```tsx title="src/routes/dashboard.route.tsx"
-import { createFileRoute, redirect } from '@tanstack/react-router'
+import { createFileRoute, redirect } from '@benjavicente/react-router'
 
 export const Route = createFileRoute('/dashboard')({
   beforeLoad: ({ context, location }) => {
@@ -301,7 +301,7 @@ export const Route = createFileRoute('/dashboard')({
 # Solid
 
 ```tsx title="src/routes/dashboard.route.tsx"
-import { createFileRoute, redirect } from '@tanstack/solid-router'
+import { createFileRoute, redirect } from '@benjavicente/solid-router'
 
 export const Route = createFileRoute('/dashboard')({
   beforeLoad: ({ context, location }) => {

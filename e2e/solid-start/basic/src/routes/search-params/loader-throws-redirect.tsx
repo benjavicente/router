@@ -1,4 +1,4 @@
-import { redirect, createFileRoute } from '@tanstack/solid-router'
+import { redirect, createFileRoute } from '@benjavicente/solid-router'
 import { z } from 'zod'
 
 export const Route = createFileRoute('/search-params/loader-throws-redirect')({

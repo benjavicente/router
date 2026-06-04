@@ -1,4 +1,4 @@
-import { createFileRoute, redirect } from '@tanstack/vue-router'
+import { createFileRoute, redirect } from '@benjavicente/vue-router'
 
 export const Route = createFileRoute('/redirect/throw-it')({
   beforeLoad: () => {

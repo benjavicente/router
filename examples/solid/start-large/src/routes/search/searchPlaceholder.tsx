@@ -1,7 +1,7 @@
-import { Link, createFileRoute } from '@tanstack/solid-router'
+import { Link, createFileRoute } from '@benjavicente/solid-router'
 import * as v from 'valibot'
 import { queryOptions } from '@tanstack/solid-query'
-import { createMiddleware, createServerFn } from '@tanstack/solid-start'
+import { createMiddleware, createServerFn } from '@benjavicente/solid-start'
 
 const search = v.object({
   searchPlaceholder: v.literal('searchPlaceholder'),

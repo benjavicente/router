@@ -26,7 +26,7 @@ npx @inlang/paraglide-js@latest init
 ```diff
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
-import { tanstackRouter } from '@tanstack/router-plugin/vite'
+import { tanstackRouter } from '@benjavicente/router-plugin/vite'
 +import { paraglideVitePlugin } from "@inlang/paraglide-js";
 
 export default defineConfig({
@@ -50,7 +50,7 @@ Run the app and start translating. See the [basics documentation](https://inlang
 If you want to handle how the URL looks when the user changes the locale, you can rewrite the URL in the router.
 
 ```diff
-import { createRouter } from "@tanstack/react-router";
+import { createRouter } from "@benjavicente/react-router";
 import { routeTree } from "./routeTree.gen";
 +import { deLocalizeUrl, localizeUrl } from "./paraglide/runtime.js";
 
@@ -69,7 +69,7 @@ Intercept the request in `server.ts` with the paraglideMiddleware:
 
 ```ts
 import { paraglideMiddleware } from './paraglide/server.js'
-import handler from '@tanstack/react-start/server-entry'
+import handler from '@benjavicente/react-start/server-entry'
 export default {
   fetch(req: Request): Promise<Response> {
     return paraglideMiddleware(req, ({ request }) => handler.fetch(request))

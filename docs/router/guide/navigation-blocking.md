@@ -38,7 +38,7 @@ Let's imagine we want to prevent navigation if a form is dirty. We can do this b
 # React
 
 ```tsx
-import { useBlocker } from '@tanstack/react-router'
+import { useBlocker } from '@benjavicente/react-router'
 
 function MyComponent() {
   const [formIsDirty, setFormIsDirty] = useState(false)
@@ -59,7 +59,7 @@ function MyComponent() {
 # Solid
 
 ```tsx
-import { useBlocker } from '@tanstack/solid-router'
+import { useBlocker } from '@benjavicente/solid-router'
 
 function MyComponent() {
   const [formIsDirty, setFormIsDirty] = createSignal(false)
@@ -86,7 +86,7 @@ function MyComponent() {
 # React
 
 ```tsx
-import { useBlocker } from '@tanstack/react-router'
+import { useBlocker } from '@benjavicente/react-router'
 
 function MyComponent() {
   // always block going from /foo to /bar/123?hello=world
@@ -109,7 +109,7 @@ function MyComponent() {
 # Solid
 
 ```tsx
-import { useBlocker } from '@tanstack/solid-router'
+import { useBlocker } from '@benjavicente/solid-router'
 
 function MyComponent() {
   // always block going from /foo to /bar/123?hello=world
@@ -138,7 +138,7 @@ Note that even if `shouldBlockFn` returns `false`, the browser's `beforeunload` 
 # React
 
 ```tsx
-import { useBlocker } from '@tanstack/react-router'
+import { useBlocker } from '@benjavicente/react-router'
 
 function MyComponent() {
   const [formIsDirty, setFormIsDirty] = useState(false)
@@ -155,7 +155,7 @@ function MyComponent() {
 # Solid
 
 ```tsx
-import { useBlocker } from '@tanstack/solid-router'
+import { useBlocker } from '@benjavicente/solid-router'
 
 function MyComponent() {
   const [formIsDirty, setFormIsDirty] = useState(false)
@@ -182,7 +182,7 @@ In addition to logical/hook based blocking, you can use the `Block` component to
 # React
 
 ```tsx
-import { Block } from '@tanstack/solid-router'
+import { Block } from '@benjavicente/solid-router'
 
 function MyComponent() {
   const [formIsDirty, setFormIsDirty] = useState(false)
@@ -216,7 +216,7 @@ function MyComponent() {
 # Solid
 
 ```tsx
-import { Block } from '@tanstack/solid-router'
+import { Block } from '@benjavicente/solid-router'
 
 function MyComponent() {
   const [formIsDirty, setFormIsDirty] = createSignal(false)
@@ -259,7 +259,7 @@ However, in some situations, you might want to show a custom UI that is intentio
 # React
 
 ```tsx
-import { useBlocker } from '@tanstack/react-router'
+import { useBlocker } from '@benjavicente/react-router'
 
 function MyComponent() {
   const [formIsDirty, setFormIsDirty] = useState(false)
@@ -288,7 +288,7 @@ function MyComponent() {
 # Solid
 
 ```tsx
-import { useBlocker } from '@tanstack/solid-router'
+import { useBlocker } from '@benjavicente/solid-router'
 
 function MyComponent() {
   const [formIsDirty, setFormIsDirty] = createSignal(false)
@@ -323,7 +323,7 @@ function MyComponent() {
 # React
 
 ```tsx
-import { useBlocker } from '@tanstack/react-router'
+import { useBlocker } from '@benjavicente/react-router'
 
 function MyComponent() {
   const [formIsDirty, setFormIsDirty] = useState(false)
@@ -364,7 +364,7 @@ function MyComponent() {
 # Solid
 
 ```tsx
-import { useBlocker } from '@tanstack/solid-router'
+import { useBlocker } from '@benjavicente/solid-router'
 
 function MyComponent() {
   const [formIsDirty, setFormIsDirty] = createSignal(false)
@@ -413,7 +413,7 @@ Similarly to the hook, the `Block` component returns the same state and function
 # React
 
 ```tsx
-import { Block } from '@tanstack/react-router'
+import { Block } from '@benjavicente/react-router'
 
 function MyComponent() {
   const [formIsDirty, setFormIsDirty] = useState(false)
@@ -440,7 +440,7 @@ function MyComponent() {
 # Solid
 
 ```tsx
-import { Block } from '@tanstack/solid-router'
+import { Block } from '@benjavicente/solid-router'
 
 function MyComponent() {
   const [formIsDirty, setFormIsDirty] = createSignal(false)

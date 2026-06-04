@@ -1,4 +1,4 @@
-import { createFileRoute } from '@tanstack/react-router'
+import { createFileRoute } from '@benjavicente/react-router'
 import { getMiddlewareExecutionCounts, loggingMiddleware } from '~/start'
 
 export const Route = createFileRoute('/server-route-with-middleware')({

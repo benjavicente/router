@@ -3,7 +3,7 @@ import {
   Outlet,
   createFileRoute,
   useParams,
-} from '@tanstack/react-router'
+} from '@benjavicente/react-router'
 
 export const Route = createFileRoute('/params-ps/strict-false')({
   component: RouteComponent,

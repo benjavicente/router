@@ -1,5 +1,5 @@
-import { createFileRoute } from '@tanstack/react-router'
-import { CompositeComponent } from '@tanstack/react-start/rsc'
+import { createFileRoute } from '@benjavicente/react-router'
+import { CompositeComponent } from '@benjavicente/react-start/rsc'
 import { formatTime, pageStyles } from '~/utils/styles'
 import { getComplexPreloadServerComponentA } from '~/utils/complexPreloadServerComponentA'
 import { getComplexPreloadServerComponentB } from '~/utils/complexPreloadServerComponentB'

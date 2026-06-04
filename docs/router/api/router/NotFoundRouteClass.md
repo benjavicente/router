@@ -35,7 +35,7 @@ Omit<
 ## Examples
 
 ```tsx
-import { NotFoundRoute, createRouter } from '@tanstack/react-router'
+import { NotFoundRoute, createRouter } from '@benjavicente/react-router'
 import { Route as rootRoute } from './routes/__root'
 import { routeTree } from './routeTree.gen'
 

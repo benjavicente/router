@@ -1,4 +1,4 @@
-import { createMiddleware, createServerFn } from '@tanstack/vue-start'
+import { createMiddleware, createServerFn } from '@benjavicente/vue-start'
 import { createBarServerFn } from './createBarServerFn'
 import { createFooServerFn } from './createFooServerFn'
 import { createFakeFn } from './createFakeFn'

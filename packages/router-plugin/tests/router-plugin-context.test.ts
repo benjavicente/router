@@ -1,7 +1,7 @@
 import path from 'node:path'
 import * as t from '@babel/types'
 import { describe, expect, it } from 'vitest'
-import { parseAst } from '@tanstack/router-utils'
+import { parseAst } from '@benjavicente/router-utils'
 import { createRouterCodeSplitterPlugin } from '../src/core/router-code-splitter-plugin'
 import { createRouterHmrPlugin } from '../src/core/router-hmr-plugin'
 import { createRouterPluginContext } from '../src/core/router-plugin-context'
@@ -86,7 +86,7 @@ describe('router plugin context', () => {
     )
 
     const routeCode = `
-import { createFileRoute } from '@tanstack/react-router'
+import { createFileRoute } from '@benjavicente/react-router'
 
 function Component() {
   return <div>Hello</div>
@@ -152,7 +152,7 @@ export const Route = createFileRoute('/owned')({
     )
 
     const routeCode = `
-import { createFileRoute } from '@tanstack/react-router'
+import { createFileRoute } from '@benjavicente/react-router'
 
 function Component() {
   return <div>Hello</div>

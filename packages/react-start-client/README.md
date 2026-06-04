@@ -2,7 +2,7 @@
 
 # TanStack React Start - Client
 
-This package is not meant to be used directly. It is a dependency of [`@tanstack/react-start`](https://www.npmjs.com/package/@tanstack/react-start).
+This package is not meant to be used directly. It is a dependency of [`@benjavicente/react-start`](https://www.npmjs.com/package/@benjavicente/react-start).
 
 TanStack React Start is a fullstack-framework made for SSR, Streaming, Server Functions, API Routes, bundling and more powered by [TanStack Router](https://tanstack.com/router).
 

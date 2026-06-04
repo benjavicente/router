@@ -1,4 +1,4 @@
-import { Link, Outlet, createFileRoute } from '@tanstack/solid-router'
+import { Link, Outlet, createFileRoute } from '@benjavicente/solid-router'
 import { createEffect, createSignal } from 'solid-js'
 
 export const Route = createFileRoute('/params-ps/named/$foo')({

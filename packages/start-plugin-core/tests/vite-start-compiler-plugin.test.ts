@@ -1,6 +1,6 @@
 import { describe, expect, test, vi } from 'vitest'
 
-vi.mock('@tanstack/start-server-core', () => ({
+vi.mock('@benjavicente/start-server-core', () => ({
   VIRTUAL_MODULES: {
     serverFnResolver: 'virtual:tanstack-start-server-fn-resolver',
   },

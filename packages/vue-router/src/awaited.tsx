@@ -1,7 +1,7 @@
 import * as Vue from 'vue'
 
-import { TSR_DEFERRED_PROMISE, defer } from '@tanstack/router-core'
-import type { DeferredPromise } from '@tanstack/router-core'
+import { TSR_DEFERRED_PROMISE, defer } from '@benjavicente/router-core'
+import type { DeferredPromise } from '@benjavicente/router-core'
 
 export type AwaitOptions<T> = {
   promise: Promise<T>

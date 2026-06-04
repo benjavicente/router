@@ -6,8 +6,8 @@ import {
   useCanGoBack,
   useRouter,
   useRouterState,
-} from '@tanstack/vue-router'
-import { TanStackRouterDevtools } from '@tanstack/vue-router-devtools'
+} from '@benjavicente/vue-router'
+import { TanStackRouterDevtools } from '@benjavicente/vue-router-devtools'
 import NotFoundComponent from '../components/NotFoundComponent.vue'
 
 export const Route = createRootRoute({

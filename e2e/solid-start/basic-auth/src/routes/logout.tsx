@@ -1,5 +1,5 @@
-import { redirect, createFileRoute } from '@tanstack/solid-router'
-import { createServerFn } from '@tanstack/solid-start'
+import { redirect, createFileRoute } from '@benjavicente/solid-router'
+import { createServerFn } from '@benjavicente/solid-start'
 
 import { useAppSession } from '~/utils/session'
 

@@ -1,6 +1,6 @@
 import { defineConfig } from '@rsbuild/core'
 import { pluginReact } from '@rsbuild/plugin-react'
-import { tanstackStart } from '@tanstack/react-start/plugin/rsbuild'
+import { tanstackStart } from '@benjavicente/react-start/plugin/rsbuild'
 import { getStartModeConfig } from './start-mode-config'
 
 const outDir = process.env.E2E_DIST_DIR ?? 'dist'

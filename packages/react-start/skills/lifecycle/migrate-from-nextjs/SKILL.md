@@ -38,7 +38,7 @@ git checkout -b migrate-to-tanstack-start
 - [ ] **Install TanStack Start**
 
 ```bash
-npm i @tanstack/react-start @tanstack/react-router
+npm i @benjavicente/react-start @benjavicente/react-router
 npm i -D vite @vitejs/plugin-react
 ```
 
@@ -59,8 +59,8 @@ npm uninstall next @next/font @next/image
 | `"use server"` + Server Actions  | `createServerFn()`                                                        |
 | `"use client"`                   | Not needed (everything is isomorphic)                                     |
 | Server Components (default)      | All components are isomorphic; use `createServerFn` for server-only logic |
-| `next/navigation` `useRouter`    | `useRouter()` from `@tanstack/react-router`                               |
-| `next/link` `Link`               | `<Link>` from `@tanstack/react-router`                                    |
+| `next/navigation` `useRouter`    | `useRouter()` from `@benjavicente/react-router`                               |
+| `next/link` `Link`               | `<Link>` from `@benjavicente/react-router`                                    |
 | `next/head` or `metadata` export | `head` property on route                                                  |
 | `middleware.ts` (edge)           | `createMiddleware()` in `src/start.ts`                                    |
 | `next.config.js`                 | `vite.config.ts` with `tanstackStart()`                                   |
@@ -73,7 +73,7 @@ Replace `next.config.js` with:
 ```ts
 // vite.config.ts
 import { defineConfig } from 'vite'
-import { tanstackStart } from '@tanstack/react-start/plugin/vite'
+import { tanstackStart } from '@benjavicente/react-start/plugin/vite'
 import viteReact from '@vitejs/plugin-react'
 
 export default defineConfig({
@@ -101,7 +101,7 @@ Update `package.json`:
 
 ```tsx
 // src/router.tsx
-import { createRouter } from '@tanstack/react-router'
+import { createRouter } from '@benjavicente/react-router'
 import { routeTree } from './routeTree.gen'
 
 export function getRouter() {
@@ -139,7 +139,7 @@ import {
   createRootRoute,
   HeadContent,
   Scripts,
-} from '@tanstack/react-router'
+} from '@benjavicente/react-router'
 
 export const Route = createRootRoute({
   head: () => ({
@@ -182,7 +182,7 @@ TanStack Start:
 
 ```tsx
 // src/routes/posts/$postId.tsx
-import { createFileRoute } from '@tanstack/react-router'
+import { createFileRoute } from '@benjavicente/react-router'
 
 export const Route = createFileRoute('/posts/$postId')({
   component: PostPage,
@@ -217,7 +217,7 @@ TanStack Start:
 
 ```tsx
 // src/utils/posts.functions.ts
-import { createServerFn } from '@tanstack/react-start'
+import { createServerFn } from '@benjavicente/react-start'
 
 export const createPost = createServerFn({ method: 'POST' })
   .inputValidator((data) => {
@@ -246,8 +246,8 @@ TanStack Start:
 
 ```tsx
 // src/routes/posts.tsx
-import { createFileRoute } from '@tanstack/react-router'
-import { createServerFn } from '@tanstack/react-start'
+import { createFileRoute } from '@benjavicente/react-router'
+import { createServerFn } from '@benjavicente/react-start'
 
 const getPosts = createServerFn({ method: 'GET' }).handler(async () => {
   return db.posts.findMany()
@@ -280,7 +280,7 @@ TanStack Start:
 
 ```ts
 // src/routes/api/users.ts
-import { createFileRoute } from '@tanstack/react-router'
+import { createFileRoute } from '@benjavicente/react-router'
 
 export const Route = createFileRoute('/api/users')({
   server: {
@@ -306,7 +306,7 @@ import Link from 'next/link'
 TanStack Start:
 
 ```tsx
-import { Link } from '@tanstack/react-router'
+import { Link } from '@benjavicente/react-router'
 ;<Link to="/posts/$postId" params={{ postId: post.id }}>
   View Post
 </Link>
@@ -331,8 +331,8 @@ TanStack Start:
 
 ```tsx
 // src/start.ts — must be manually created
-import { createStart, createMiddleware } from '@tanstack/react-start'
-import { redirect } from '@tanstack/react-router'
+import { createStart, createMiddleware } from '@benjavicente/react-start'
+import { redirect } from '@benjavicente/react-router'
 
 const authMiddleware = createMiddleware().server(async ({ next, request }) => {
   const cookie = request.headers.get('cookie')

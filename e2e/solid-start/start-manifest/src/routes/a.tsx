@@ -1,5 +1,5 @@
 /// <reference types="vite/client" />
-import { createFileRoute } from '@tanstack/solid-router'
+import { createFileRoute } from '@benjavicente/solid-router'
 import { SharedCard } from '~/components/SharedCard'
 import styles from '~/styles/page-a.module.css'
 

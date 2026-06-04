@@ -164,7 +164,7 @@ export interface RootRouteChildren {
   ClassicHelloRouteRoute: typeof ClassicHelloRouteRouteWithChildren
 }
 
-declare module '@tanstack/solid-router' {
+declare module '@benjavicente/solid-router' {
   interface FileRoutesByPath {
     '/posts': {
       id: '/posts'

@@ -1,4 +1,4 @@
-import { Link } from '@tanstack/solid-router'
+import { Link } from '@benjavicente/solid-router'
 import type { JSX } from 'solid-js'
 
 export function NotFound(props?: { children?: JSX.Element }) {

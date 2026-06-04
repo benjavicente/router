@@ -124,8 +124,8 @@ export function useAuth() {
 Update `src/routes/__root.tsx`:
 
 ```tsx
-import { createRootRouteWithContext, Outlet } from '@tanstack/react-router'
-import { TanStackRouterDevtools } from '@tanstack/react-router-devtools'
+import { createRootRouteWithContext, Outlet } from '@benjavicente/react-router'
+import { TanStackRouterDevtools } from '@benjavicente/react-router-devtools'
 
 interface AuthState {
   isAuthenticated: boolean
@@ -153,7 +153,7 @@ export const Route = createRootRouteWithContext<MyRouterContext>()({
 Update `src/router.tsx`:
 
 ```tsx
-import { createRouter } from '@tanstack/react-router'
+import { createRouter } from '@benjavicente/react-router'
 import { routeTree } from './routeTree.gen'
 
 export const router = createRouter({
@@ -164,7 +164,7 @@ export const router = createRouter({
   },
 })
 
-declare module '@tanstack/react-router' {
+declare module '@benjavicente/react-router' {
   interface Register {
     router: typeof router
   }
@@ -176,7 +176,7 @@ declare module '@tanstack/react-router' {
 Update `src/App.tsx`:
 
 ```tsx
-import { RouterProvider } from '@tanstack/react-router'
+import { RouterProvider } from '@benjavicente/react-router'
 import { AuthProvider, useAuth } from './auth'
 import { router } from './router'
 
@@ -205,7 +205,7 @@ export default App
 Create `src/routes/_authenticated.tsx`:
 
 ```tsx
-import { createFileRoute, redirect, Outlet } from '@tanstack/react-router'
+import { createFileRoute, redirect, Outlet } from '@benjavicente/react-router'
 
 export const Route = createFileRoute('/_authenticated')({
   beforeLoad: ({ context, location }) => {
@@ -228,7 +228,7 @@ export const Route = createFileRoute('/_authenticated')({
 Create `src/routes/login.tsx`:
 
 ```tsx
-import { createFileRoute, redirect } from '@tanstack/react-router'
+import { createFileRoute, redirect } from '@benjavicente/react-router'
 import { useState } from 'react'
 
 export const Route = createFileRoute('/login')({
@@ -329,7 +329,7 @@ function LoginComponent() {
 Create `src/routes/_authenticated/dashboard.tsx`:
 
 ```tsx
-import { createFileRoute } from '@tanstack/react-router'
+import { createFileRoute } from '@benjavicente/react-router'
 
 export const Route = createFileRoute('/_authenticated/dashboard')({
   component: DashboardComponent,

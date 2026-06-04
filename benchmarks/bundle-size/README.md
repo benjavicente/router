@@ -2,11 +2,11 @@
 
 This workspace contains deterministic bundle-size fixtures for:
 
-- `@tanstack/react-router`
-- `@tanstack/solid-router`
-- `@tanstack/vue-router`
-- `@tanstack/react-start`
-- `@tanstack/solid-start`
+- `@benjavicente/react-router`
+- `@benjavicente/solid-router`
+- `@benjavicente/vue-router`
+- `@benjavicente/react-start`
+- `@benjavicente/solid-start`
 
 Each package has `minimal` and `full` scenarios:
 
@@ -17,9 +17,9 @@ Each package has `minimal` and `full` scenarios:
 ## Design Notes
 
 - Scenarios use file-based routing as the default app style.
-- Router scenarios use `@tanstack/router-plugin/vite` with `autoCodeSplitting: true`.
-- Start Vite scenarios use `@tanstack/<framework>-start/plugin/vite` with router code-splitting enabled.
-- React Start also includes Rsbuild scenarios using `@tanstack/react-start/plugin/rsbuild`.
+- Router scenarios use `@benjavicente/router-plugin/vite` with `autoCodeSplitting: true`.
+- Start Vite scenarios use `@benjavicente/<framework>-start/plugin/vite` with router code-splitting enabled.
+- React Start also includes Rsbuild scenarios using `@benjavicente/react-start/plugin/rsbuild`.
 - Full-surface coverage is manually maintained (no strict export-coverage gate).
 - Primary metrics measure all emitted client JS chunks and are reported as raw/gzip/brotli bytes.
 - Initial-load JS graph metrics are also recorded as `initialRawBytes`, `initialGzipBytes`, and `initialBrotliBytes` for context.

@@ -37,7 +37,7 @@ export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
 }
 
-declare module '@tanstack/react-router' {
+declare module '@benjavicente/react-router' {
   interface FileRoutesByPath {
     '/': {
       id: '/'

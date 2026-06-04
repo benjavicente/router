@@ -43,8 +43,8 @@ TanStack Start provides the tools for both through server functions, sessions, a
 Server functions handle sensitive authentication logic securely on the server:
 
 ```tsx
-import { createServerFn } from '@tanstack/solid-start'
-import { redirect } from '@tanstack/solid-router'
+import { createServerFn } from '@benjavicente/solid-start'
+import { redirect } from '@benjavicente/solid-router'
 
 // Login server function
 export const loginFn = createServerFn({ method: 'POST' })
@@ -96,7 +96,7 @@ TanStack Start provides secure HTTP-only cookie sessions:
 
 ```tsx
 // utils/session.ts
-import { useSession } from '@tanstack/solid-start/server'
+import { useSession } from '@benjavicente/solid-start/server'
 
 type SessionData = {
   userId?: string
@@ -126,7 +126,7 @@ Share authentication state across your application:
 ```tsx
 // contexts/auth.tsx
 import { createContext, useContext } from 'solid-js'
-import { useServerFn } from '@tanstack/solid-start'
+import { useServerFn } from '@benjavicente/solid-start'
 import { getCurrentUserFn } from '../server/auth'
 
 type User = {
@@ -168,7 +168,7 @@ Protect routes using `beforeLoad`:
 
 ```tsx
 // routes/_authed.tsx - Layout route for protected pages
-import { createFileRoute, redirect } from '@tanstack/solid-router'
+import { createFileRoute, redirect } from '@benjavicente/solid-router'
 import { getCurrentUserFn } from '../server/auth'
 
 export const Route = createFileRoute('/_authed')({
@@ -190,7 +190,7 @@ export const Route = createFileRoute('/_authed')({
 
 ```tsx
 // routes/_authed/dashboard.tsx - Protected route
-import { createFileRoute } from '@tanstack/solid-router'
+import { createFileRoute } from '@benjavicente/solid-router'
 
 export const Route = createFileRoute('/_authed/dashboard')({
   component: DashboardComponent,
@@ -215,7 +215,7 @@ function DashboardComponent() {
 ```tsx
 // server/auth.ts
 import bcrypt from 'bcryptjs'
-import { createServerFn } from '@tanstack/solid-start'
+import { createServerFn } from '@benjavicente/solid-start'
 
 // User registration
 export const registerFn = createServerFn({ method: 'POST' })
@@ -468,7 +468,7 @@ describe('Authentication', () => {
 ```tsx
 // __tests__/auth-flow.test.tsx
 import { render, screen, fireEvent, waitFor } from '@solidjs/testing-library'
-import { RouterProvider, createMemoryHistory } from '@tanstack/solid-router'
+import { RouterProvider, createMemoryHistory } from '@benjavicente/solid-router'
 import { router } from '../router'
 
 describe('Authentication Flow', () => {

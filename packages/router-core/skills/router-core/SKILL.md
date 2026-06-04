@@ -70,7 +70,7 @@ Need server-side rendering?
 
 ```tsx
 // src/routes/__root.tsx
-import { createRootRoute, Outlet } from '@tanstack/react-router'
+import { createRootRoute, Outlet } from '@benjavicente/react-router'
 
 export const Route = createRootRoute({
   component: () => <Outlet />,
@@ -79,7 +79,7 @@ export const Route = createRootRoute({
 
 ```tsx
 // src/routes/index.tsx
-import { createFileRoute } from '@tanstack/react-router'
+import { createFileRoute } from '@benjavicente/react-router'
 
 export const Route = createFileRoute('/')({
   component: () => <h1>Home</h1>,
@@ -88,13 +88,13 @@ export const Route = createFileRoute('/')({
 
 ```tsx
 // src/router.tsx
-import { createRouter } from '@tanstack/react-router'
+import { createRouter } from '@benjavicente/react-router'
 import { routeTree } from './routeTree.gen'
 
 const router = createRouter({ routeTree })
 
 // REQUIRED for type safety — without this, Link/useNavigate have no autocomplete
-declare module '@tanstack/react-router' {
+declare module '@benjavicente/react-router' {
   interface Register {
     router: typeof router
   }
@@ -105,7 +105,7 @@ export default router
 
 ```tsx
 // src/main.tsx
-import { RouterProvider } from '@tanstack/react-router'
+import { RouterProvider } from '@benjavicente/react-router'
 import router from './router'
 
 function App() {
@@ -136,4 +136,4 @@ The plugin auto-generates this string. If you rename a route file, the plugin up
 
 ## Version Note
 
-This skill targets `@tanstack/router-core` v1.166.2 and `@tanstack/react-router` v1.166.2. APIs are stable. Splat routes use `$` (not `*`); the `*` compat alias will be removed in v2.
+This skill targets `@benjavicente/router-core` v1.166.2 and `@benjavicente/react-router` v1.166.2. APIs are stable. Splat routes use `$` (not `*`); the `*` compat alias will be removed in v2.

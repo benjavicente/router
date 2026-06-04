@@ -1,4 +1,4 @@
-import { createFileRoute, useLocation } from '@tanstack/react-router'
+import { createFileRoute, useLocation } from '@benjavicente/react-router'
 import { useState } from 'react'
 
 export const Route = createFileRoute('/specialChars/hash')({

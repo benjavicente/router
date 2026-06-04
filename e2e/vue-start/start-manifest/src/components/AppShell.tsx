@@ -1,5 +1,5 @@
 /// <reference types="vite/client" />
-import { ClientOnly, Link, Outlet, linkOptions } from '@tanstack/vue-router'
+import { ClientOnly, Link, Outlet, linkOptions } from '@benjavicente/vue-router'
 import styles from '~/styles/root-shell.module.css'
 
 const ROUTES = linkOptions([

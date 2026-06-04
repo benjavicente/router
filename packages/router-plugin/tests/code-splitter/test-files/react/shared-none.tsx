@@ -1,4 +1,4 @@
-import { createFileRoute } from '@tanstack/react-router'
+import { createFileRoute } from '@benjavicente/react-router'
 
 const loaderHelper = () => fetch('/api')
 const ComponentHelper = () => <span>helper</span>

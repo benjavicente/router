@@ -1,7 +1,7 @@
-import { createFileRoute } from '@tanstack/solid-router'
+import { createFileRoute } from '@benjavicente/solid-router'
 import * as fs from 'node:fs'
-import { createServerFn } from '@tanstack/solid-start'
-import { getRequestHeader } from '@tanstack/solid-start/server'
+import { createServerFn } from '@benjavicente/solid-start'
+import { getRequestHeader } from '@benjavicente/solid-start/server'
 import { createSignal } from 'solid-js'
 
 export const Route = createFileRoute('/dead-code-preserve')({

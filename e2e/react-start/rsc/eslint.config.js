@@ -1,7 +1,7 @@
 // @ts-check
 
 import tsParser from '@typescript-eslint/parser'
-import startPlugin from '@tanstack/eslint-plugin-start'
+import startPlugin from '@benjavicente/eslint-plugin-start'
 
 export default [
   {
@@ -14,11 +14,11 @@ export default [
       },
     },
     plugins: {
-      '@tanstack/start': startPlugin,
+      '@benjavicente/start': startPlugin,
     },
     rules: {
-      '@tanstack/start/no-client-code-in-server-component': 'error',
-      '@tanstack/start/no-async-client-component': 'error',
+      '@benjavicente/start/no-client-code-in-server-component': 'error',
+      '@benjavicente/start/no-async-client-component': 'error',
     },
   },
 ]

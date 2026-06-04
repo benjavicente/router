@@ -9,7 +9,7 @@ You can extend this interface to add additional properties to the state object a
 
 ```tsx
 // src/main.tsx
-declare module '@tanstack/react-router' {
+declare module '@benjavicente/react-router' {
   // ...
 
   interface HistoryState {

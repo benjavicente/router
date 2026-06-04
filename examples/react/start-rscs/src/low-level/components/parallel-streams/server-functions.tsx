@@ -1,5 +1,5 @@
-import { createServerFn } from '@tanstack/react-start'
-import { renderToReadableStream } from '@tanstack/react-start/rsc'
+import { createServerFn } from '@benjavicente/react-start'
+import { renderToReadableStream } from '@benjavicente/react-start/rsc'
 
 // Server Component with async data (used for parallel and nested demos)
 async function ServerDataCard({ delay }: { delay: number }) {

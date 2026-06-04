@@ -26,6 +26,7 @@ export type TransformResult =
 
 export interface TransformContext {
   target: Config['target']
+  targetModule?: string
   routeId: string
   lazy: boolean
 }

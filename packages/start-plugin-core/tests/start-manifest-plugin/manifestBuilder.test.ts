@@ -259,6 +259,30 @@ describe('scanClientChunks', () => {
     ])
   })
 
+  test('collects route chunk mappings from known route source files', () => {
+    const entryChunk = makeChunk({ fileName: 'entry.js', isEntry: true })
+    const routeChunk = makeChunk({
+      fileName: 'posts.js',
+      moduleIds: ['/routes/posts.lazy.ts'],
+    })
+
+    const normalizedBuild = normalizeTestBuild({
+      'entry.js': entryChunk,
+      'posts.js': routeChunk,
+    })
+    const scanned = scanClientChunks(normalizedBuild, {
+      __root__: {},
+      '/posts': {
+        filePath: '/routes/posts.ts',
+        filePaths: ['/routes/posts.ts', '/routes/posts.lazy.ts'],
+      },
+    })
+
+    expect(scanned.routeChunksByFilePath.get('/routes/posts.lazy.ts')).toEqual([
+      normalizedBuild.chunksByFileName.get('posts.js')!,
+    ])
+  })
+
   test('throws when no entry chunk exists', () => {
     const routeChunk = makeChunk({
       fileName: 'posts.js',
@@ -454,6 +478,47 @@ describe('buildStartManifest', () => {
     expect(manifest.inlineCss?.styles['/assets/dashboard.css']).toBe(
       '.card{background:url(/assets/dot.svg)}',
     )
+  })
+
+  test('links route chunks through alternate route file paths', () => {
+    const entryChunk = makeChunk({
+      fileName: 'entry.js',
+      isEntry: true,
+    })
+    const routeChunk = makeChunk({
+      fileName: 'posts.lazy.js',
+      importedCss: ['posts.css'],
+      moduleIds: ['/routes/posts.lazy.ts'],
+    })
+
+    const manifest = buildStartManifest({
+      clientBuild: normalizeTestBuild({
+        'entry.js': entryChunk,
+        'posts.lazy.js': routeChunk,
+      }),
+      routeTreeRoutes: {
+        __root__: { children: ['/posts'] } as any,
+        '/posts': {
+          filePath: '/routes/posts.ts',
+          filePaths: ['/routes/posts.ts', '/routes/posts.lazy.ts'],
+        },
+      },
+      basePath: '/assets',
+    })
+
+    expect(manifest.routes['/posts']!.preloads).toEqual([
+      '/assets/posts.lazy.js',
+    ])
+    expect(manifest.routes['/posts']!.assets).toEqual([
+      {
+        tag: 'link',
+        attrs: {
+          rel: 'stylesheet',
+          href: '/assets/posts.css',
+          type: 'text/css',
+        },
+      },
+    ])
   })
 
   test('throws when inline CSS content is missing for a stylesheet asset', () => {

@@ -1,10 +1,10 @@
-import { createIsomorphicFn } from '@tanstack/start-fn-stubs'
+import { createIsomorphicFn } from '@benjavicente/start-fn-stubs'
 import { createMiddleware } from './createMiddleware'
 import type {
   RequestMiddlewareAfterServer,
   RequestServerOptions,
 } from './createMiddleware'
-import type { Register } from '@tanstack/router-core'
+import type { Register } from '@benjavicente/router-core'
 
 export const csrfSymbol = Symbol.for('tanstack-start:csrf-middleware')
 

@@ -9,8 +9,8 @@ import {
   createRoute,
   createRouter,
   useRouter,
-} from '@tanstack/solid-router'
-import { TanStackRouterDevtools } from '@tanstack/solid-router-devtools'
+} from '@benjavicente/solid-router'
+import { TanStackRouterDevtools } from '@benjavicente/solid-router-devtools'
 import { SolidQueryDevtools } from '@tanstack/solid-query-devtools'
 import {
   QueryClient,
@@ -19,7 +19,7 @@ import {
 } from '@tanstack/solid-query'
 import { createEffect, createMemo } from 'solid-js'
 import { NotFoundError, postQueryOptions, postsQueryOptions } from './posts'
-import type { ErrorComponentProps } from '@tanstack/solid-router'
+import type { ErrorComponentProps } from '@benjavicente/solid-router'
 import './styles.css'
 
 const rootRoute = createRootRouteWithContext<{
@@ -257,7 +257,7 @@ const router = createRouter({
 })
 
 // Register things for typesafety
-declare module '@tanstack/solid-router' {
+declare module '@benjavicente/solid-router' {
   interface Register {
     router: typeof router
   }

@@ -1,5 +1,5 @@
 import * as Vue from 'vue'
-import { isServer } from '@tanstack/router-core/isServer'
+import { isServer } from '@benjavicente/router-core/isServer'
 import { useRouter } from './useRouter'
 
 export const ScriptOnce = Vue.defineComponent({

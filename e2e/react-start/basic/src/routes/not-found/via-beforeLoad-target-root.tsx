@@ -1,4 +1,4 @@
-import { createFileRoute, notFound, rootRouteId } from '@tanstack/react-router'
+import { createFileRoute, notFound, rootRouteId } from '@benjavicente/react-router'
 
 export const Route = createFileRoute('/not-found/via-beforeLoad-target-root')({
   beforeLoad: () => {

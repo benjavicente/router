@@ -1,4 +1,4 @@
-import { Link } from '@tanstack/solid-router'
+import { Link } from '@benjavicente/solid-router'
 
 export default function Header() {
   return (

@@ -44,7 +44,7 @@ Important because some current RSC docs snippets still show the older `.validato
 
 ### Old `renderRsc` examples
 
-You may still find older official repo examples using `renderRsc` and older config shapes. Do not cargo-cult them into new code. Normalize to the current docs and current `@tanstack/react-start/rsc` APIs.
+You may still find older official repo examples using `renderRsc` and older config shapes. Do not cargo-cult them into new code. Normalize to the current docs and current `@benjavicente/react-start/rsc` APIs.
 
 ### Old validation snippets
 

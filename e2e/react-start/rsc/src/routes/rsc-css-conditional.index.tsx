@@ -1,4 +1,4 @@
-import { Link, createFileRoute } from '@tanstack/react-router'
+import { Link, createFileRoute } from '@benjavicente/react-router'
 import { pageStyles } from '~/utils/styles'
 
 export const Route = createFileRoute('/rsc-css-conditional/')({

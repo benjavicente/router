@@ -12,16 +12,16 @@
     "test:e2e": "rm -rf port*.txt; playwright test --project=chromium"
   },
   "dependencies": {
-    "@tanstack/solid-router": "workspace:^",
-    "@tanstack/solid-router-devtools": "workspace:^",
-    "@tanstack/solid-start": "workspace:^",
+    "@benjavicente/solid-router": "workspace:^",
+    "@benjavicente/solid-router-devtools": "workspace:^",
+    "@benjavicente/solid-start": "workspace:^",
     "solid-js": "^1.9.10",
     "vite": "^8.0.0",
     "zod": "^3.24.2"
   },
   "devDependencies": {
     "@tailwindcss/vite": "^4.2.2",
-    "@tanstack/router-e2e-utils": "workspace:^",
+    "@benjavicente/router-e2e-utils": "workspace:^",
     "@types/node": "^22.10.2",
     "srvx": "^0.11.9",
     "tailwindcss": "^4.2.2",

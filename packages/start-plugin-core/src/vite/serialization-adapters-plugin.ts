@@ -1,4 +1,4 @@
-import { VIRTUAL_MODULES } from '@tanstack/start-server-core'
+import { VIRTUAL_MODULES } from '@benjavicente/start-server-core'
 import {
   EMPTY_SERIALIZATION_ADAPTERS_MODULE,
   generateSerializationAdaptersModule,

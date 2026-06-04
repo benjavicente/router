@@ -1,7 +1,7 @@
-import { Await, createFileRoute } from '@tanstack/react-router'
-import { createServerFn } from '@tanstack/react-start'
+import { Await, createFileRoute } from '@benjavicente/react-router'
+import { createServerFn } from '@benjavicente/react-start'
 import { Suspense, useState } from 'react'
-import { staticFunctionMiddleware } from '@tanstack/start-static-server-functions'
+import { staticFunctionMiddleware } from '@benjavicente/start-static-server-functions'
 
 const personServerFn = createServerFn({ method: 'GET' })
   .middleware([staticFunctionMiddleware])

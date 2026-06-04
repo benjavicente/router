@@ -112,7 +112,7 @@ export interface RootRouteChildren {
   PostsRoute: typeof PostsRouteWithChildren
 }
 
-declare module '@tanstack/vue-router' {
+declare module '@benjavicente/vue-router' {
   interface FileRoutesByPath {
     '/posts': {
       id: '/posts'

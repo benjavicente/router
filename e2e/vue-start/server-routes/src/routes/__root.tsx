@@ -5,9 +5,9 @@ import {
   Outlet,
   Scripts,
   createRootRoute,
-} from '@tanstack/vue-router'
+} from '@benjavicente/vue-router'
 
-import { TanStackRouterDevtools } from '@tanstack/vue-router-devtools'
+import { TanStackRouterDevtools } from '@benjavicente/vue-router-devtools'
 import { NotFound } from '~/components/NotFound'
 import appCss from '~/styles/app.css?url'
 

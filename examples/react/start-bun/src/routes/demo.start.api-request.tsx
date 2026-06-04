@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 
-import { createFileRoute } from '@tanstack/react-router'
+import { createFileRoute } from '@benjavicente/react-router'
 
 function getNames() {
   return fetch('/api/demo-names').then((res) => res.json())
